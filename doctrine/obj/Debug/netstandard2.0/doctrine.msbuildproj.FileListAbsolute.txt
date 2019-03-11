@@ -1,2 +1,0 @@
-C:\Users\igice\Documents\Visual Studio 2017\Projects\nextcloud\doctrine\obj\Debug\netstandard2.0\doctrine.msbuildprojAssemblyReference.cache
-C:\Users\igice\Documents\Visual Studio 2017\Projects\nextcloud\doctrine\obj\Debug\netstandard2.0\doctrine.msbuildproj.CoreCompileInputs.cache

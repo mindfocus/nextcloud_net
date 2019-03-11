@@ -1,6 +1,0 @@
-C:\Users\igice\Documents\Visual Studio 2017\Projects\nextcloud\nextcloud-psr-log\obj\Debug\netstandard2.0\nextcloud-psr-log.msbuildproj.CoreCompileInputs.cache
-C:\Users\igice\Documents\Visual Studio 2017\Projects\nextcloud\nextcloud-psr-log\bin\Debug\netstandard2.0\nextcloud-psr-log.deps.json
-C:\Users\igice\Documents\Visual Studio 2017\Projects\nextcloud\nextcloud-psr-log\bin\Debug\netstandard2.0\nextcloud-psr-log.dll
-C:\Users\igice\Documents\Visual Studio 2017\Projects\nextcloud\nextcloud-psr-log\bin\Debug\netstandard2.0\nextcloud-psr-log.pdb
-C:\Users\igice\Documents\Visual Studio 2017\Projects\nextcloud\nextcloud-psr-log\obj\Debug\netstandard2.0\nextcloud-psr-log.dll
-C:\Users\igice\Documents\Visual Studio 2017\Projects\nextcloud\nextcloud-psr-log\obj\Debug\netstandard2.0\nextcloud-psr-log.pdb

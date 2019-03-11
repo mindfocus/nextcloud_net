@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.28307.438
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{13B669BE-BB05-4DDF-9536-439F39A36129}") = "nextcloud", "nextcloud\nextcloud.msbuildproj", "{DBCAA63A-F633-4213-AB35-04A81CD43202}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Server", "PeachPied.NextCloud.AspNetCore\Server\Server.csproj", "{3AC61FD4-180E-44F4-80C2-112BCA858667}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Server", "Server\Server.csproj", "{3AC61FD4-180E-44F4-80C2-112BCA858667}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PeachPied.NextCloud.AspNetcore", "PeachPied.NextCloud.AspNetcore\PeachPied.NextCloud.AspNetcore.csproj", "{F00BFD83-C38A-45B0-AB71-A56D5ABFEF56}"
 EndProject
@@ -54,6 +54,14 @@ EndProject
 Project("{13B669BE-BB05-4DDF-9536-439F39A36129}") = "Symfony", "Symfony\Symfony.msbuildproj", "{3C56157E-66D5-4D79-AFBA-F2882B2EE67F}"
 EndProject
 Project("{13B669BE-BB05-4DDF-9536-439F39A36129}") = "nextcloud-psr-log", "nextcloud-psr-log\nextcloud-psr-log.msbuildproj", "{4736E5D0-44B5-4DE2-B708-6090D5C93440}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "nextcloud-icewind-streams", "nextcloud-icewind-streams\nextcloud-icewind-streams.msbuildproj", "{DD2E57DD-2A9E-4952-98ED-83EA020A6DD1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "nextcloud-icewind-searchdav", "nextcloud-icewind-searchdav\nextcloud-icewind-searchdav.msbuildproj", "{006E16DC-D418-4EC3-9729-5FCE34C31BC2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "nextcloud-sabre", "nextcloud-sabre\nextcloud-sabre.msbuildproj", "{64C9C394-483A-453D-9BFD-92E25FC949D1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "swiftmailer", "swiftmailer\swiftmailer.msbuildproj", "{908063AC-5595-4F62-8B6A-207796B001CA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -157,6 +165,22 @@ Global
 		{4736E5D0-44B5-4DE2-B708-6090D5C93440}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4736E5D0-44B5-4DE2-B708-6090D5C93440}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4736E5D0-44B5-4DE2-B708-6090D5C93440}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DD2E57DD-2A9E-4952-98ED-83EA020A6DD1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD2E57DD-2A9E-4952-98ED-83EA020A6DD1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD2E57DD-2A9E-4952-98ED-83EA020A6DD1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD2E57DD-2A9E-4952-98ED-83EA020A6DD1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{006E16DC-D418-4EC3-9729-5FCE34C31BC2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{006E16DC-D418-4EC3-9729-5FCE34C31BC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{006E16DC-D418-4EC3-9729-5FCE34C31BC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{006E16DC-D418-4EC3-9729-5FCE34C31BC2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{64C9C394-483A-453D-9BFD-92E25FC949D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{64C9C394-483A-453D-9BFD-92E25FC949D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{64C9C394-483A-453D-9BFD-92E25FC949D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{64C9C394-483A-453D-9BFD-92E25FC949D1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{908063AC-5595-4F62-8B6A-207796B001CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{908063AC-5595-4F62-8B6A-207796B001CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{908063AC-5595-4F62-8B6A-207796B001CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{908063AC-5595-4F62-8B6A-207796B001CA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -182,6 +206,10 @@ Global
 		{D88CAB76-E082-4371-8442-15D28B12DBA5} = {FADA6A78-A04F-4EA9-9BF0-EFF989E4C10F}
 		{3C56157E-66D5-4D79-AFBA-F2882B2EE67F} = {FADA6A78-A04F-4EA9-9BF0-EFF989E4C10F}
 		{4736E5D0-44B5-4DE2-B708-6090D5C93440} = {3AC695DD-9447-4BC9-AF2C-C0A113C4B190}
+		{DD2E57DD-2A9E-4952-98ED-83EA020A6DD1} = {FADA6A78-A04F-4EA9-9BF0-EFF989E4C10F}
+		{006E16DC-D418-4EC3-9729-5FCE34C31BC2} = {FADA6A78-A04F-4EA9-9BF0-EFF989E4C10F}
+		{64C9C394-483A-453D-9BFD-92E25FC949D1} = {FADA6A78-A04F-4EA9-9BF0-EFF989E4C10F}
+		{908063AC-5595-4F62-8B6A-207796B001CA} = {FADA6A78-A04F-4EA9-9BF0-EFF989E4C10F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0F851AAA-350E-4E33-A035-9973A8476173}

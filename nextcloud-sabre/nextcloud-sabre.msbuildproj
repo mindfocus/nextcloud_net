@@ -1,0 +1,280 @@
+﻿<Project Sdk="Peachpie.NET.Sdk/0.9.36">
+
+  <PropertyGroup>
+    <OutputType>Library</OutputType>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <Description>.NET class library in PHP</Description>
+    <AssemblyName>PhpLib1</AssemblyName>
+    <PackageId>PhpLib1</PackageId>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="**/*.php" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="dav\.gitignore">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+    </Content>
+    <Content Include="dav\CHANGELOG.md">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+    </Content>
+    <Content Include="dav\composer.json">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+    </Content>
+    <Content Include="dav\CONTRIBUTING.md">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+    </Content>
+    <Content Include="dav\lib\DAV\Browser\assets\favicon.ico">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+    </Content>
+    <Content Include="dav\lib\DAV\Browser\assets\openiconic\ICON-LICENSE">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+    </Content>
+    <Content Include="dav\lib\DAV\Browser\assets\openiconic\open-iconic.css">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+    </Content>
+    <Content Include="dav\lib\DAV\Browser\assets\openiconic\open-iconic.eot">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+    </Content>
+    <Content Include="dav\lib\DAV\Browser\assets\openiconic\open-iconic.otf">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+    </Content>
+    <Content Include="dav\lib\DAV\Browser\assets\openiconic\open-iconic.svg">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+    </Content>
+    <Content Include="dav\lib\DAV\Browser\assets\openiconic\open-iconic.ttf">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+    </Content>
+    <Content Include="dav\lib\DAV\Browser\assets\openiconic\open-iconic.woff">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+    </Content>
+    <Content Include="dav\lib\DAV\Browser\assets\sabredav.css">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+    </Content>
+    <Content Include="dav\lib\DAV\Browser\assets\sabredav.png">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+    </Content>
+    <Content Include="dav\LICENSE">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+    </Content>
+    <Content Include="dav\README.md">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+    </Content>
+    <Content Include="event\.gitignore">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+    </Content>
+    <Content Include="event\CHANGELOG.md">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+    </Content>
+    <Content Include="event\composer.json">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+    </Content>
+    <Content Include="event\LICENSE">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+    </Content>
+    <Content Include="event\phpunit.xml.dist">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+    </Content>
+    <Content Include="event\README.md">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+    </Content>
+    <Content Include="http\.gitignore">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+    </Content>
+    <Content Include="http\CHANGELOG.md">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+    </Content>
+    <Content Include="http\composer.json">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+    </Content>
+    <Content Include="http\LICENSE">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+    </Content>
+    <Content Include="http\README.md">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+    </Content>
+    <Content Include="uri\.gitignore">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+    </Content>
+    <Content Include="uri\CHANGELOG.md">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+    </Content>
+    <Content Include="uri\composer.json">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+    </Content>
+    <Content Include="uri\LICENSE">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+    </Content>
+    <Content Include="uri\README.md">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+    </Content>
+    <Content Include="vobject\.gitignore">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+    </Content>
+    <Content Include="vobject\composer.json">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+    </Content>
+    <Content Include="vobject\LICENSE">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+    </Content>
+    <Content Include="vobject\README.md">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+    </Content>
+    <Content Include="vobject\resources\schema\xcal.rng">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+    </Content>
+    <Content Include="vobject\resources\schema\xcard.rng">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+    </Content>
+    <Content Include="xml\.gitignore">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+    </Content>
+    <Content Include="xml\CHANGELOG.md">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+    </Content>
+    <Content Include="xml\composer.json">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+    </Content>
+    <Content Include="xml\LICENSE">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+    </Content>
+    <Content Include="xml\README.md">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\nextcloud-psr-log\nextcloud-psr-log.msbuildproj" />
+  </ItemGroup>
+</Project>

@@ -1,4 +1,4 @@
 <?php
 
 $myInteger = 1;
-echo $;
+echo $$myInteger;

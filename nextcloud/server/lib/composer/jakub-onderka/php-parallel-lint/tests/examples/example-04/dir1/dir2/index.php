@@ -1,3 +1,3 @@
 <?php
-$foo ='bar'
-echo $foo;
+// $foo ='bar'
+// echo $foo;

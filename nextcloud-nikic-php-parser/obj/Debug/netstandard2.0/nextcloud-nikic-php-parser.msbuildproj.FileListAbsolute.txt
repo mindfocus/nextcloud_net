@@ -1,6 +1,0 @@
-C:\Users\igice\Documents\Visual Studio 2017\Projects\nextcloud\nextcloud-nikic-php-parser\bin\Debug\netstandard2.0\nextcloud-nikic-php-parser.deps.json
-C:\Users\igice\Documents\Visual Studio 2017\Projects\nextcloud\nextcloud-nikic-php-parser\bin\Debug\netstandard2.0\nextcloud-nikic-php-parser.dll
-C:\Users\igice\Documents\Visual Studio 2017\Projects\nextcloud\nextcloud-nikic-php-parser\bin\Debug\netstandard2.0\nextcloud-nikic-php-parser.pdb
-C:\Users\igice\Documents\Visual Studio 2017\Projects\nextcloud\nextcloud-nikic-php-parser\obj\Debug\netstandard2.0\nextcloud-nikic-php-parser.msbuildproj.CoreCompileInputs.cache
-C:\Users\igice\Documents\Visual Studio 2017\Projects\nextcloud\nextcloud-nikic-php-parser\obj\Debug\netstandard2.0\nextcloud-nikic-php-parser.dll
-C:\Users\igice\Documents\Visual Studio 2017\Projects\nextcloud\nextcloud-nikic-php-parser\obj\Debug\netstandard2.0\nextcloud-nikic-php-parser.pdb
