@@ -1,4 +1,4 @@
-<Project Sdk="Peachpie.NET.Sdk/0.9.36">
+﻿<Project Sdk="Peachpie.NET.Sdk/0.9.36">
   <PropertyGroup>
     <OutputType>library</OutputType>
     <TargetFramework>netstandard2.0</TargetFramework>
@@ -1594,5 +1594,8 @@
       <CopyToPublishDirectory>true</CopyToPublishDirectory>
       <PackageCopyToOutput>true</PackageCopyToOutput>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Symfony\Symfony.msbuildproj" />
   </ItemGroup>
 </Project>
