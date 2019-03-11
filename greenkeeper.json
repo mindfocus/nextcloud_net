@@ -2,7 +2,6 @@
   "groups": {
     "default": {
       "packages": [
-        "nextcloud/server/build/package.json",
         "nextcloud/server/package.json"
       ]
     }
