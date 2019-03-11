@@ -1,2 +1,0 @@
-C:\Users\igice\Documents\Visual Studio 2017\Projects\nextcloud\Symfony\obj\Debug\netstandard2.0\Symfony.msbuildproj.CoreCompileInputs.cache
-C:\Users\igice\Documents\Visual Studio 2017\Projects\nextcloud\Symfony\obj\Debug\netstandard2.0\Symfony.msbuildprojAssemblyReference.cache

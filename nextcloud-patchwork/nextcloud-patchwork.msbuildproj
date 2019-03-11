@@ -1,0 +1,654 @@
+﻿<Project Sdk="Peachpie.NET.Sdk/0.9.36">
+
+  <PropertyGroup>
+    <OutputType>Library</OutputType>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <Description>.NET class library in PHP</Description>
+    <AssemblyName>PhpLib1</AssemblyName>
+    <PackageId>PhpLib1</PackageId>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="**/*.php" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="jsqueeze\composer.json">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+    </Content>
+    <Content Include="jsqueeze\LICENSE.ASL20">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+    </Content>
+    <Content Include="jsqueeze\LICENSE.GPLv2">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+    </Content>
+    <Content Include="jsqueeze\README.md">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+    </Content>
+    <Content Include="utf8\CHANGELOG.md">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+    </Content>
+    <Content Include="utf8\composer.json">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+    </Content>
+    <Content Include="utf8\LICENSE-APACHE">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+    </Content>
+    <Content Include="utf8\LICENSE-GPL">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+    </Content>
+    <Content Include="utf8\phpunit.xml.dist">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+    </Content>
+    <Content Include="utf8\README.md">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+    </Content>
+    <Content Include="utf8\src\Patchwork\PHP\Shim\charset\from.big5.ser">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+    </Content>
+    <Content Include="utf8\src\Patchwork\PHP\Shim\charset\from.cp037.ser">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+    </Content>
+    <Content Include="utf8\src\Patchwork\PHP\Shim\charset\from.cp1006.ser">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+    </Content>
+    <Content Include="utf8\src\Patchwork\PHP\Shim\charset\from.cp1026.ser">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+    </Content>
+    <Content Include="utf8\src\Patchwork\PHP\Shim\charset\from.cp424.ser">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+    </Content>
+    <Content Include="utf8\src\Patchwork\PHP\Shim\charset\from.cp437.ser">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+    </Content>
+    <Content Include="utf8\src\Patchwork\PHP\Shim\charset\from.cp500.ser">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+    </Content>
+    <Content Include="utf8\src\Patchwork\PHP\Shim\charset\from.cp737.ser">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+    </Content>
+    <Content Include="utf8\src\Patchwork\PHP\Shim\charset\from.cp775.ser">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+    </Content>
+    <Content Include="utf8\src\Patchwork\PHP\Shim\charset\from.cp850.ser">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+    </Content>
+    <Content Include="utf8\src\Patchwork\PHP\Shim\charset\from.cp852.ser">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+    </Content>
+    <Content Include="utf8\src\Patchwork\PHP\Shim\charset\from.cp855.ser">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+    </Content>
+    <Content Include="utf8\src\Patchwork\PHP\Shim\charset\from.cp856.ser">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+    </Content>
+    <Content Include="utf8\src\Patchwork\PHP\Shim\charset\from.cp857.ser">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+    </Content>
+    <Content Include="utf8\src\Patchwork\PHP\Shim\charset\from.cp860.ser">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+    </Content>
+    <Content Include="utf8\src\Patchwork\PHP\Shim\charset\from.cp861.ser">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+    </Content>
+    <Content Include="utf8\src\Patchwork\PHP\Shim\charset\from.cp862.ser">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+    </Content>
+    <Content Include="utf8\src\Patchwork\PHP\Shim\charset\from.cp863.ser">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+    </Content>
+    <Content Include="utf8\src\Patchwork\PHP\Shim\charset\from.cp864.ser">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+    </Content>
+    <Content Include="utf8\src\Patchwork\PHP\Shim\charset\from.cp865.ser">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+    </Content>
+    <Content Include="utf8\src\Patchwork\PHP\Shim\charset\from.cp866.ser">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+    </Content>
+    <Content Include="utf8\src\Patchwork\PHP\Shim\charset\from.cp869.ser">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+    </Content>
+    <Content Include="utf8\src\Patchwork\PHP\Shim\charset\from.cp874.ser">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+    </Content>
+    <Content Include="utf8\src\Patchwork\PHP\Shim\charset\from.cp875.ser">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+    </Content>
+    <Content Include="utf8\src\Patchwork\PHP\Shim\charset\from.cp932.ser">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+    </Content>
+    <Content Include="utf8\src\Patchwork\PHP\Shim\charset\from.cp936.ser">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+    </Content>
+    <Content Include="utf8\src\Patchwork\PHP\Shim\charset\from.cp949.ser">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+    </Content>
+    <Content Include="utf8\src\Patchwork\PHP\Shim\charset\from.cp950.ser">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+    </Content>
+    <Content Include="utf8\src\Patchwork\PHP\Shim\charset\from.gsm0338.ser">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+    </Content>
+    <Content Include="utf8\src\Patchwork\PHP\Shim\charset\from.iso-8859-1.ser">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+    </Content>
+    <Content Include="utf8\src\Patchwork\PHP\Shim\charset\from.iso-8859-10.ser">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+    </Content>
+    <Content Include="utf8\src\Patchwork\PHP\Shim\charset\from.iso-8859-11.ser">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+    </Content>
+    <Content Include="utf8\src\Patchwork\PHP\Shim\charset\from.iso-8859-13.ser">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+    </Content>
+    <Content Include="utf8\src\Patchwork\PHP\Shim\charset\from.iso-8859-14.ser">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+    </Content>
+    <Content Include="utf8\src\Patchwork\PHP\Shim\charset\from.iso-8859-15.ser">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+    </Content>
+    <Content Include="utf8\src\Patchwork\PHP\Shim\charset\from.iso-8859-16.ser">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+    </Content>
+    <Content Include="utf8\src\Patchwork\PHP\Shim\charset\from.iso-8859-2.ser">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+    </Content>
+    <Content Include="utf8\src\Patchwork\PHP\Shim\charset\from.iso-8859-3.ser">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+    </Content>
+    <Content Include="utf8\src\Patchwork\PHP\Shim\charset\from.iso-8859-4.ser">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+    </Content>
+    <Content Include="utf8\src\Patchwork\PHP\Shim\charset\from.iso-8859-5.ser">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+    </Content>
+    <Content Include="utf8\src\Patchwork\PHP\Shim\charset\from.iso-8859-6.ser">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+    </Content>
+    <Content Include="utf8\src\Patchwork\PHP\Shim\charset\from.iso-8859-7.ser">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+    </Content>
+    <Content Include="utf8\src\Patchwork\PHP\Shim\charset\from.iso-8859-8.ser">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+    </Content>
+    <Content Include="utf8\src\Patchwork\PHP\Shim\charset\from.iso-8859-9.ser">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+    </Content>
+    <Content Include="utf8\src\Patchwork\PHP\Shim\charset\from.koi8-r.ser">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+    </Content>
+    <Content Include="utf8\src\Patchwork\PHP\Shim\charset\from.koi8-u.ser">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+    </Content>
+    <Content Include="utf8\src\Patchwork\PHP\Shim\charset\from.mazovia.ser">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+    </Content>
+    <Content Include="utf8\src\Patchwork\PHP\Shim\charset\from.nextstep.ser">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+    </Content>
+    <Content Include="utf8\src\Patchwork\PHP\Shim\charset\from.stdenc.ser">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+    </Content>
+    <Content Include="utf8\src\Patchwork\PHP\Shim\charset\from.symbol.ser">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+    </Content>
+    <Content Include="utf8\src\Patchwork\PHP\Shim\charset\from.turkish.ser">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+    </Content>
+    <Content Include="utf8\src\Patchwork\PHP\Shim\charset\from.us-ascii-quotes.ser">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+    </Content>
+    <Content Include="utf8\src\Patchwork\PHP\Shim\charset\from.us-ascii.ser">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+    </Content>
+    <Content Include="utf8\src\Patchwork\PHP\Shim\charset\from.windows-1250.ser">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+    </Content>
+    <Content Include="utf8\src\Patchwork\PHP\Shim\charset\from.windows-1251.ser">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+    </Content>
+    <Content Include="utf8\src\Patchwork\PHP\Shim\charset\from.windows-1252.ser">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+    </Content>
+    <Content Include="utf8\src\Patchwork\PHP\Shim\charset\from.windows-1253.ser">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+    </Content>
+    <Content Include="utf8\src\Patchwork\PHP\Shim\charset\from.windows-1254.ser">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+    </Content>
+    <Content Include="utf8\src\Patchwork\PHP\Shim\charset\from.windows-1255.ser">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+    </Content>
+    <Content Include="utf8\src\Patchwork\PHP\Shim\charset\from.windows-1256.ser">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+    </Content>
+    <Content Include="utf8\src\Patchwork\PHP\Shim\charset\from.windows-1257.ser">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+    </Content>
+    <Content Include="utf8\src\Patchwork\PHP\Shim\charset\from.windows-1258.ser">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+    </Content>
+    <Content Include="utf8\src\Patchwork\PHP\Shim\charset\from.x-mac-ce.ser">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+    </Content>
+    <Content Include="utf8\src\Patchwork\PHP\Shim\charset\from.x-mac-cyrillic.ser">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+    </Content>
+    <Content Include="utf8\src\Patchwork\PHP\Shim\charset\from.x-mac-greek.ser">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+    </Content>
+    <Content Include="utf8\src\Patchwork\PHP\Shim\charset\from.x-mac-icelandic.ser">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+    </Content>
+    <Content Include="utf8\src\Patchwork\PHP\Shim\charset\from.x-mac-roman.ser">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+    </Content>
+    <Content Include="utf8\src\Patchwork\PHP\Shim\charset\from.zdingbat.ser">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+    </Content>
+    <Content Include="utf8\src\Patchwork\PHP\Shim\charset\to.gsm0338.ser">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+    </Content>
+    <Content Include="utf8\src\Patchwork\PHP\Shim\charset\to.mazovia.ser">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+    </Content>
+    <Content Include="utf8\src\Patchwork\PHP\Shim\charset\to.stdenc.ser">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+    </Content>
+    <Content Include="utf8\src\Patchwork\PHP\Shim\charset\to.symbol.ser">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+    </Content>
+    <Content Include="utf8\src\Patchwork\PHP\Shim\charset\to.zdingbat.ser">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+    </Content>
+    <Content Include="utf8\src\Patchwork\PHP\Shim\charset\translit.ser">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+    </Content>
+    <Content Include="utf8\src\Patchwork\PHP\Shim\unidata\canonicalComposition.ser">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+    </Content>
+    <Content Include="utf8\src\Patchwork\PHP\Shim\unidata\canonicalDecomposition.ser">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+    </Content>
+    <Content Include="utf8\src\Patchwork\PHP\Shim\unidata\combiningClass.ser">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+    </Content>
+    <Content Include="utf8\src\Patchwork\PHP\Shim\unidata\compatibilityDecomposition.ser">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+    </Content>
+    <Content Include="utf8\src\Patchwork\PHP\Shim\unidata\lowerCase.ser">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+    </Content>
+    <Content Include="utf8\src\Patchwork\PHP\Shim\unidata\upperCase.ser">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+    </Content>
+    <Content Include="utf8\src\Patchwork\Utf8\data\caseFolding_full.ser">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+    </Content>
+    <Content Include="utf8\src\Patchwork\Utf8\data\to.bestfit1250.ser">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+    </Content>
+    <Content Include="utf8\src\Patchwork\Utf8\data\to.bestfit1251.ser">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+    </Content>
+    <Content Include="utf8\src\Patchwork\Utf8\data\to.bestfit1252.ser">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+    </Content>
+    <Content Include="utf8\src\Patchwork\Utf8\data\to.bestfit1253.ser">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+    </Content>
+    <Content Include="utf8\src\Patchwork\Utf8\data\to.bestfit1254.ser">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+    </Content>
+    <Content Include="utf8\src\Patchwork\Utf8\data\to.bestfit1255.ser">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+    </Content>
+    <Content Include="utf8\src\Patchwork\Utf8\data\to.bestfit1256.ser">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+    </Content>
+    <Content Include="utf8\src\Patchwork\Utf8\data\to.bestfit1257.ser">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+    </Content>
+    <Content Include="utf8\src\Patchwork\Utf8\data\to.bestfit1258.ser">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+    </Content>
+    <Content Include="utf8\src\Patchwork\Utf8\data\to.bestfit874.ser">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+    </Content>
+    <Content Include="utf8\src\Patchwork\Utf8\data\to.bestfit932.ser">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+    </Content>
+    <Content Include="utf8\src\Patchwork\Utf8\data\to.bestfit936.ser">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+    </Content>
+    <Content Include="utf8\src\Patchwork\Utf8\data\to.bestfit949.ser">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+    </Content>
+    <Content Include="utf8\src\Patchwork\Utf8\data\to.bestfit950.ser">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+    </Content>
+    <Content Include="utf8\src\Patchwork\Utf8\data\translit_extra.ser">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+</Project>

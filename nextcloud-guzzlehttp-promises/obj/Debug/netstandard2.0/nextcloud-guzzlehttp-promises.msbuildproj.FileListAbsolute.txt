@@ -1,6 +1,0 @@
-C:\Users\igice\Documents\Visual Studio 2017\Projects\nextcloud\nextcloud-guzzlehttp-promises\bin\Debug\netstandard2.0\nextcloud-guzzlehttp-promises.deps.json
-C:\Users\igice\Documents\Visual Studio 2017\Projects\nextcloud\nextcloud-guzzlehttp-promises\bin\Debug\netstandard2.0\nextcloud-guzzlehttp-promises.dll
-C:\Users\igice\Documents\Visual Studio 2017\Projects\nextcloud\nextcloud-guzzlehttp-promises\bin\Debug\netstandard2.0\nextcloud-guzzlehttp-promises.pdb
-C:\Users\igice\Documents\Visual Studio 2017\Projects\nextcloud\nextcloud-guzzlehttp-promises\obj\Debug\netstandard2.0\nextcloud-guzzlehttp-promises.msbuildproj.CoreCompileInputs.cache
-C:\Users\igice\Documents\Visual Studio 2017\Projects\nextcloud\nextcloud-guzzlehttp-promises\obj\Debug\netstandard2.0\nextcloud-guzzlehttp-promises.dll
-C:\Users\igice\Documents\Visual Studio 2017\Projects\nextcloud\nextcloud-guzzlehttp-promises\obj\Debug\netstandard2.0\nextcloud-guzzlehttp-promises.pdb
