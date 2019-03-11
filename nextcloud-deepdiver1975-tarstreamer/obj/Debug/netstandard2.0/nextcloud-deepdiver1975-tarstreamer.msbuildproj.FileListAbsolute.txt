@@ -1,0 +1,6 @@
+C:\Users\igice\Documents\Visual Studio 2017\Projects\nextcloud\nextcloud-deepdiver1975-tarstreamer\bin\Debug\netstandard2.0\nextcloud-deepdiver1975-tarstreamer.deps.json
+C:\Users\igice\Documents\Visual Studio 2017\Projects\nextcloud\nextcloud-deepdiver1975-tarstreamer\bin\Debug\netstandard2.0\nextcloud-deepdiver1975-tarstreamer.dll
+C:\Users\igice\Documents\Visual Studio 2017\Projects\nextcloud\nextcloud-deepdiver1975-tarstreamer\bin\Debug\netstandard2.0\nextcloud-deepdiver1975-tarstreamer.pdb
+C:\Users\igice\Documents\Visual Studio 2017\Projects\nextcloud\nextcloud-deepdiver1975-tarstreamer\obj\Debug\netstandard2.0\nextcloud-deepdiver1975-tarstreamer.msbuildproj.CoreCompileInputs.cache
+C:\Users\igice\Documents\Visual Studio 2017\Projects\nextcloud\nextcloud-deepdiver1975-tarstreamer\obj\Debug\netstandard2.0\nextcloud-deepdiver1975-tarstreamer.dll
+C:\Users\igice\Documents\Visual Studio 2017\Projects\nextcloud\nextcloud-deepdiver1975-tarstreamer\obj\Debug\netstandard2.0\nextcloud-deepdiver1975-tarstreamer.pdb

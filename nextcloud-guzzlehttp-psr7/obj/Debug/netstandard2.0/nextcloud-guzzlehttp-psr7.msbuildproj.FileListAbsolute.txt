@@ -1,0 +1,12 @@
+C:\Users\igice\Documents\Visual Studio 2017\Projects\nextcloud\nextcloud-guzzlehttp-psr7\obj\Debug\netstandard2.0\nextcloud-guzzlehttp-psr7.msbuildproj.CoreCompileInputs.cache
+C:\Users\igice\Documents\Visual Studio 2017\Projects\nextcloud\nextcloud-guzzlehttp-psr7\obj\Debug\netstandard2.0\nextcloud-guzzlehttp-psr7.msbuildprojAssemblyReference.cache
+C:\Users\igice\Documents\Visual Studio 2017\Projects\nextcloud\nextcloud-guzzlehttp-psr7\bin\Debug\netstandard2.0\nextcloud-guzzlehttp-psr7.deps.json
+C:\Users\igice\Documents\Visual Studio 2017\Projects\nextcloud\nextcloud-guzzlehttp-psr7\bin\Debug\netstandard2.0\nextcloud-guzzlehttp-psr7.dll
+C:\Users\igice\Documents\Visual Studio 2017\Projects\nextcloud\nextcloud-guzzlehttp-psr7\bin\Debug\netstandard2.0\nextcloud-guzzlehttp-psr7.pdb
+C:\Users\igice\Documents\Visual Studio 2017\Projects\nextcloud\nextcloud-guzzlehttp-psr7\bin\Debug\netstandard2.0\nextcloud-guzzlehttp-streams.dll
+C:\Users\igice\Documents\Visual Studio 2017\Projects\nextcloud\nextcloud-guzzlehttp-psr7\bin\Debug\netstandard2.0\nextcloud-psr-http-message.dll
+C:\Users\igice\Documents\Visual Studio 2017\Projects\nextcloud\nextcloud-guzzlehttp-psr7\bin\Debug\netstandard2.0\nextcloud-guzzlehttp-streams.pdb
+C:\Users\igice\Documents\Visual Studio 2017\Projects\nextcloud\nextcloud-guzzlehttp-psr7\bin\Debug\netstandard2.0\nextcloud-psr-http-message.pdb
+C:\Users\igice\Documents\Visual Studio 2017\Projects\nextcloud\nextcloud-guzzlehttp-psr7\obj\Debug\netstandard2.0\nextcloud-guzzlehttp-psr7.msbuildproj.CopyComplete
+C:\Users\igice\Documents\Visual Studio 2017\Projects\nextcloud\nextcloud-guzzlehttp-psr7\obj\Debug\netstandard2.0\nextcloud-guzzlehttp-psr7.dll
+C:\Users\igice\Documents\Visual Studio 2017\Projects\nextcloud\nextcloud-guzzlehttp-psr7\obj\Debug\netstandard2.0\nextcloud-guzzlehttp-psr7.pdb

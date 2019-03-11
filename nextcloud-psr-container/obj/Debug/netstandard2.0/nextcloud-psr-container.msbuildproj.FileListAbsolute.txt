@@ -1,0 +1,6 @@
+C:\Users\igice\Documents\Visual Studio 2017\Projects\nextcloud\nextcloud-psr-container\bin\Debug\netstandard2.0\nextcloud-psr-container.deps.json
+C:\Users\igice\Documents\Visual Studio 2017\Projects\nextcloud\nextcloud-psr-container\bin\Debug\netstandard2.0\nextcloud-psr-container.dll
+C:\Users\igice\Documents\Visual Studio 2017\Projects\nextcloud\nextcloud-psr-container\bin\Debug\netstandard2.0\nextcloud-psr-container.pdb
+C:\Users\igice\Documents\Visual Studio 2017\Projects\nextcloud\nextcloud-psr-container\obj\Debug\netstandard2.0\nextcloud-psr-container.msbuildproj.CoreCompileInputs.cache
+C:\Users\igice\Documents\Visual Studio 2017\Projects\nextcloud\nextcloud-psr-container\obj\Debug\netstandard2.0\nextcloud-psr-container.dll
+C:\Users\igice\Documents\Visual Studio 2017\Projects\nextcloud\nextcloud-psr-container\obj\Debug\netstandard2.0\nextcloud-psr-container.pdb

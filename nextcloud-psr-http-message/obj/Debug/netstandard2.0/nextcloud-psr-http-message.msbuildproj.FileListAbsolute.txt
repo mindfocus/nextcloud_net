@@ -1,0 +1,6 @@
+C:\Users\igice\Documents\Visual Studio 2017\Projects\nextcloud\nextcloud-psr-http-message\bin\Debug\netstandard2.0\nextcloud-psr-http-message.deps.json
+C:\Users\igice\Documents\Visual Studio 2017\Projects\nextcloud\nextcloud-psr-http-message\bin\Debug\netstandard2.0\nextcloud-psr-http-message.dll
+C:\Users\igice\Documents\Visual Studio 2017\Projects\nextcloud\nextcloud-psr-http-message\bin\Debug\netstandard2.0\nextcloud-psr-http-message.pdb
+C:\Users\igice\Documents\Visual Studio 2017\Projects\nextcloud\nextcloud-psr-http-message\obj\Debug\netstandard2.0\nextcloud-psr-http-message.msbuildproj.CoreCompileInputs.cache
+C:\Users\igice\Documents\Visual Studio 2017\Projects\nextcloud\nextcloud-psr-http-message\obj\Debug\netstandard2.0\nextcloud-psr-http-message.dll
+C:\Users\igice\Documents\Visual Studio 2017\Projects\nextcloud\nextcloud-psr-http-message\obj\Debug\netstandard2.0\nextcloud-psr-http-message.pdb

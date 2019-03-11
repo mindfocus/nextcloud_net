@@ -1,0 +1,8 @@
+C:\Users\igice\Documents\Visual Studio 2017\Projects\nextcloud\PeachPied.NextCloud.Sdk\bin\Debug\netstandard2.0\PeachPied.NextCloud.Sdk.deps.json
+C:\Users\igice\Documents\Visual Studio 2017\Projects\nextcloud\PeachPied.NextCloud.Sdk\bin\Debug\netstandard2.0\PeachPied.NextCloud.Sdk.dll
+C:\Users\igice\Documents\Visual Studio 2017\Projects\nextcloud\PeachPied.NextCloud.Sdk\bin\Debug\netstandard2.0\PeachPied.NextCloud.Sdk.pdb
+C:\Users\igice\Documents\Visual Studio 2017\Projects\nextcloud\PeachPied.NextCloud.Sdk\obj\Debug\netstandard2.0\PeachPied.NextCloud.Sdk.csproj.CoreCompileInputs.cache
+C:\Users\igice\Documents\Visual Studio 2017\Projects\nextcloud\PeachPied.NextCloud.Sdk\obj\Debug\netstandard2.0\PeachPied.NextCloud.Sdk.AssemblyInfoInputs.cache
+C:\Users\igice\Documents\Visual Studio 2017\Projects\nextcloud\PeachPied.NextCloud.Sdk\obj\Debug\netstandard2.0\PeachPied.NextCloud.Sdk.AssemblyInfo.cs
+C:\Users\igice\Documents\Visual Studio 2017\Projects\nextcloud\PeachPied.NextCloud.Sdk\obj\Debug\netstandard2.0\PeachPied.NextCloud.Sdk.dll
+C:\Users\igice\Documents\Visual Studio 2017\Projects\nextcloud\PeachPied.NextCloud.Sdk\obj\Debug\netstandard2.0\PeachPied.NextCloud.Sdk.pdb

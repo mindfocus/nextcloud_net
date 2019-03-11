@@ -1,0 +1,263 @@
+<Project Sdk="Peachpie.NET.Sdk/0.9.36">
+  <PropertyGroup>
+    <OutputType>library</OutputType>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="**/*.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="azure-storage-blob\src\Blob\Internal\BlobResources.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="azure-storage-blob\src\Blob\Internal\IBlob.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="azure-storage-blob\src\Blob\Models\AccessCondition.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="azure-storage-blob\src\Blob\Models\AccessTierTrait.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="azure-storage-blob\src\Blob\Models\AppendBlockOptions.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="azure-storage-blob\src\Blob\Models\AppendBlockResult.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="azure-storage-blob\src\Blob\Models\Blob.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="azure-storage-blob\src\Blob\Models\BlobAccessPolicy.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="azure-storage-blob\src\Blob\Models\BlobBlockType.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="azure-storage-blob\src\Blob\Models\BlobPrefix.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="azure-storage-blob\src\Blob\Models\BlobProperties.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="azure-storage-blob\src\Blob\Models\BlobServiceOptions.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="azure-storage-blob\src\Blob\Models\BlobType.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="azure-storage-blob\src\Blob\Models\Block.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="azure-storage-blob\src\Blob\Models\BlockList.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="azure-storage-blob\src\Blob\Models\BreakLeaseResult.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="azure-storage-blob\src\Blob\Models\CommitBlobBlocksOptions.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="azure-storage-blob\src\Blob\Models\Container.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="azure-storage-blob\src\Blob\Models\ContainerAccessPolicy.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="azure-storage-blob\src\Blob\Models\ContainerACL.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="azure-storage-blob\src\Blob\Models\ContainerProperties.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="azure-storage-blob\src\Blob\Models\CopyBlobFromURLOptions.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="azure-storage-blob\src\Blob\Models\CopyBlobOptions.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="azure-storage-blob\src\Blob\Models\CopyBlobResult.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="azure-storage-blob\src\Blob\Models\CopyState.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="azure-storage-blob\src\Blob\Models\CreateBlobBlockOptions.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="azure-storage-blob\src\Blob\Models\CreateBlobOptions.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="azure-storage-blob\src\Blob\Models\CreateBlobPagesOptions.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="azure-storage-blob\src\Blob\Models\CreateBlobPagesResult.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="azure-storage-blob\src\Blob\Models\CreateBlobSnapshotOptions.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="azure-storage-blob\src\Blob\Models\CreateBlobSnapshotResult.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="azure-storage-blob\src\Blob\Models\CreateBlockBlobOptions.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="azure-storage-blob\src\Blob\Models\CreateContainerOptions.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="azure-storage-blob\src\Blob\Models\CreatePageBlobFromContentOptions.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="azure-storage-blob\src\Blob\Models\CreatePageBlobOptions.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="azure-storage-blob\src\Blob\Models\DeleteBlobOptions.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="azure-storage-blob\src\Blob\Models\GetBlobMetadataOptions.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="azure-storage-blob\src\Blob\Models\GetBlobMetadataResult.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="azure-storage-blob\src\Blob\Models\GetBlobOptions.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="azure-storage-blob\src\Blob\Models\GetBlobPropertiesOptions.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="azure-storage-blob\src\Blob\Models\GetBlobPropertiesResult.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="azure-storage-blob\src\Blob\Models\GetBlobResult.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="azure-storage-blob\src\Blob\Models\GetContainerACLResult.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="azure-storage-blob\src\Blob\Models\GetContainerPropertiesResult.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="azure-storage-blob\src\Blob\Models\LeaseMode.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="azure-storage-blob\src\Blob\Models\LeaseResult.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="azure-storage-blob\src\Blob\Models\ListBlobBlocksOptions.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="azure-storage-blob\src\Blob\Models\ListBlobBlocksResult.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="azure-storage-blob\src\Blob\Models\ListBlobsOptions.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="azure-storage-blob\src\Blob\Models\ListBlobsResult.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="azure-storage-blob\src\Blob\Models\ListContainersOptions.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="azure-storage-blob\src\Blob\Models\ListContainersResult.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="azure-storage-blob\src\Blob\Models\ListPageBlobRangesDiffResult.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="azure-storage-blob\src\Blob\Models\ListPageBlobRangesOptions.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="azure-storage-blob\src\Blob\Models\ListPageBlobRangesResult.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="azure-storage-blob\src\Blob\Models\PageWriteOption.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="azure-storage-blob\src\Blob\Models\PublicAccessType.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="azure-storage-blob\src\Blob\Models\PutBlobResult.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="azure-storage-blob\src\Blob\Models\PutBlockResult.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="azure-storage-blob\src\Blob\Models\SetBlobMetadataResult.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="azure-storage-blob\src\Blob\Models\SetBlobPropertiesOptions.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="azure-storage-blob\src\Blob\Models\SetBlobPropertiesResult.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="azure-storage-blob\src\Blob\Models\SetBlobTierOptions.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="azure-storage-blob\src\Blob\BlobRestProxy.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="azure-storage-blob\src\Blob\BlobSharedAccessSignatureHelper.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="azure-storage-blob\BreakingChanges.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="azure-storage-blob\ChangeLog.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="azure-storage-blob\composer.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="azure-storage-blob\CONTRIBUTING.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="azure-storage-blob\LICENSE" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="azure-storage-blob\README.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="azure-storage-blob\BreakingChanges.md">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+    </Content>
+    <Content Include="azure-storage-blob\ChangeLog.md">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+    </Content>
+    <Content Include="azure-storage-blob\composer.json">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+    </Content>
+    <Content Include="azure-storage-blob\CONTRIBUTING.md">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+    </Content>
+    <Content Include="azure-storage-blob\LICENSE">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+    </Content>
+    <Content Include="azure-storage-blob\README.md">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\nextcloud-microsoft-azure-storage-common\nextcloud-microsoft-azure-storage-common.msbuildproj" />
+  </ItemGroup>
+</Project>

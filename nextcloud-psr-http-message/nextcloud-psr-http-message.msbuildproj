@@ -1,0 +1,30 @@
+<Project Sdk="Peachpie.NET.Sdk/0.9.36">
+  <PropertyGroup>
+    <OutputType>library</OutputType>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="**/*.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="src\MessageInterface.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="src\RequestInterface.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="src\ResponseInterface.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="src\ServerRequestInterface.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="src\StreamInterface.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="src\UploadedFileInterface.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="src\UriInterface.php" />
+  </ItemGroup>
+</Project>

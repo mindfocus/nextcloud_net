@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Peachpie.AspNetCore.Web" Version="0.9.36" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\nextcloud\nextcloud.msbuildproj" />
+    <ProjectReference Include="..\..\PeachPied.NextCloud.Library.dav\PeachPied.NextCloud.Library.dav.msbuildproj" />
+    <ProjectReference Include="..\..\PeachPied.NextCloud.Sdk\PeachPied.NextCloud.Sdk.csproj" />
+    <ProjectReference Include="..\PeachPied.NextCloud.AspNetcore.csproj" />
+  </ItemGroup>
+
+</Project>

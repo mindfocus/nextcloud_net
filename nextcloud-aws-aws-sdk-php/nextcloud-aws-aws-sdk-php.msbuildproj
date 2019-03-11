@@ -1,0 +1,2599 @@
+<Project Sdk="Peachpie.NET.Sdk/0.9.36">
+  <PropertyGroup>
+    <OutputType>library</OutputType>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="**/*.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Acm\Exception\AcmException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Acm\AcmClient.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\ACMPCA\Exception\ACMPCAException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\ACMPCA\ACMPCAClient.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\AlexaForBusiness\Exception\AlexaForBusinessException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\AlexaForBusiness\AlexaForBusinessClient.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Api\ErrorParser\JsonParserTrait.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Api\ErrorParser\JsonRpcErrorParser.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Api\ErrorParser\RestJsonErrorParser.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Api\ErrorParser\XmlErrorParser.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Api\Parser\Exception\ParserException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Api\Parser\AbstractParser.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Api\Parser\AbstractRestParser.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Api\Parser\Crc32ValidatingParser.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Api\Parser\JsonParser.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Api\Parser\JsonRpcParser.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Api\Parser\PayloadParserTrait.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Api\Parser\QueryParser.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Api\Parser\RestJsonParser.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Api\Parser\RestXmlParser.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Api\Parser\XmlParser.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Api\Serializer\Ec2ParamBuilder.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Api\Serializer\JsonBody.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Api\Serializer\JsonRpcSerializer.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Api\Serializer\QueryParamBuilder.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Api\Serializer\QuerySerializer.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Api\Serializer\RestJsonSerializer.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Api\Serializer\RestSerializer.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Api\Serializer\RestXmlSerializer.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Api\Serializer\XmlBody.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Api\AbstractModel.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Api\ApiProvider.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Api\DateTimeResult.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Api\DocModel.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Api\ListShape.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Api\MapShape.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Api\Operation.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Api\Service.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Api\Shape.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Api\ShapeMap.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Api\StructureShape.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Api\TimestampShape.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Api\Validator.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\ApiGateway\Exception\ApiGatewayException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\ApiGateway\ApiGatewayClient.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\ApplicationAutoScaling\Exception\ApplicationAutoScalingException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\ApplicationAutoScaling\ApplicationAutoScalingClient.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\ApplicationDiscoveryService\Exception\ApplicationDiscoveryServiceException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\ApplicationDiscoveryService\ApplicationDiscoveryServiceClient.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Appstream\Exception\AppstreamException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Appstream\AppstreamClient.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\AppSync\Exception\AppSyncException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\AppSync\AppSyncClient.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Athena\Exception\AthenaException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Athena\AthenaClient.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\AutoScaling\Exception\AutoScalingException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\AutoScaling\AutoScalingClient.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\AutoScalingPlans\Exception\AutoScalingPlansException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\AutoScalingPlans\AutoScalingPlansClient.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Batch\Exception\BatchException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Batch\BatchClient.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Budgets\Exception\BudgetsException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Budgets\BudgetsClient.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Cloud9\Exception\Cloud9Exception.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Cloud9\Cloud9Client.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\CloudDirectory\Exception\CloudDirectoryException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\CloudDirectory\CloudDirectoryClient.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\CloudFormation\Exception\CloudFormationException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\CloudFormation\CloudFormationClient.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\CloudFront\Exception\CloudFrontException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\CloudFront\CloudFrontClient.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\CloudFront\CookieSigner.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\CloudFront\Signer.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\CloudFront\UrlSigner.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\CloudHsm\Exception\CloudHsmException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\CloudHsm\CloudHsmClient.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\CloudHSMV2\Exception\CloudHSMV2Exception.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\CloudHSMV2\CloudHSMV2Client.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\CloudSearch\Exception\CloudSearchException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\CloudSearch\CloudSearchClient.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\CloudSearchDomain\Exception\CloudSearchDomainException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\CloudSearchDomain\CloudSearchDomainClient.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\CloudTrail\Exception\CloudTrailException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\CloudTrail\CloudTrailClient.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\CloudTrail\LogFileIterator.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\CloudTrail\LogFileReader.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\CloudTrail\LogRecordIterator.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\CloudWatch\Exception\CloudWatchException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\CloudWatch\CloudWatchClient.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\CloudWatchEvents\Exception\CloudWatchEventsException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\CloudWatchEvents\CloudWatchEventsClient.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\CloudWatchLogs\Exception\CloudWatchLogsException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\CloudWatchLogs\CloudWatchLogsClient.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\CodeBuild\Exception\CodeBuildException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\CodeBuild\CodeBuildClient.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\CodeCommit\Exception\CodeCommitException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\CodeCommit\CodeCommitClient.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\CodeDeploy\Exception\CodeDeployException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\CodeDeploy\CodeDeployClient.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\CodePipeline\Exception\CodePipelineException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\CodePipeline\CodePipelineClient.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\CodeStar\Exception\CodeStarException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\CodeStar\CodeStarClient.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\CognitoIdentity\Exception\CognitoIdentityException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\CognitoIdentity\CognitoIdentityClient.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\CognitoIdentity\CognitoIdentityProvider.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\CognitoIdentityProvider\Exception\CognitoIdentityProviderException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\CognitoIdentityProvider\CognitoIdentityProviderClient.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\CognitoSync\Exception\CognitoSyncException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\CognitoSync\CognitoSyncClient.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Comprehend\Exception\ComprehendException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Comprehend\ComprehendClient.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\ConfigService\Exception\ConfigServiceException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\ConfigService\ConfigServiceClient.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Connect\Exception\ConnectException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Connect\ConnectClient.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\CostandUsageReportService\Exception\CostandUsageReportServiceException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\CostandUsageReportService\CostandUsageReportServiceClient.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\CostExplorer\Exception\CostExplorerException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\CostExplorer\CostExplorerClient.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Credentials\AssumeRoleCredentialProvider.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Credentials\CredentialProvider.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Credentials\Credentials.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Credentials\CredentialsInterface.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Credentials\EcsCredentialProvider.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Credentials\InstanceProfileProvider.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Crypto\Cipher\Cbc.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Crypto\Cipher\CipherBuilderTrait.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Crypto\Cipher\CipherMethod.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Crypto\AbstractCryptoClient.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Crypto\AesDecryptingStream.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Crypto\AesEncryptingStream.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Crypto\AesGcmDecryptingStream.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Crypto\AesGcmEncryptingStream.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Crypto\AesStreamInterface.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Crypto\DecryptionTrait.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Crypto\EncryptionTrait.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Crypto\KmsMaterialsProvider.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Crypto\MaterialsProvider.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Crypto\MetadataEnvelope.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Crypto\MetadataStrategyInterface.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\acm\2015-12-08\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\acm\2015-12-08\paginators-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\acm\2015-12-08\smoke.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\acm\2015-12-08\waiters-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\acm-pca\2017-08-22\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\acm-pca\2017-08-22\paginators-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\alexaforbusiness\2017-11-09\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\alexaforbusiness\2017-11-09\paginators-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\apigateway\2015-07-09\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\apigateway\2015-07-09\paginators-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\apigateway\2015-07-09\smoke.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\application-autoscaling\2016-02-06\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\application-autoscaling\2016-02-06\paginators-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\application-autoscaling\2016-02-06\smoke.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\appstream\2016-12-01\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\appstream\2016-12-01\paginators-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\appstream\2016-12-01\smoke.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\appstream\2016-12-01\waiters-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\appsync\2017-07-25\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\appsync\2017-07-25\paginators-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\athena\2017-05-18\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\athena\2017-05-18\paginators-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\autoscaling\2011-01-01\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\autoscaling\2011-01-01\paginators-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\autoscaling\2011-01-01\waiters-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\autoscaling-plans\2018-01-06\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\autoscaling-plans\2018-01-06\paginators-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\batch\2016-08-10\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\batch\2016-08-10\paginators-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\batch\2016-08-10\smoke.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\budgets\2016-10-20\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\budgets\2016-10-20\paginators-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\ce\2017-10-25\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\ce\2017-10-25\paginators-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\cloud9\2017-09-23\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\cloud9\2017-09-23\paginators-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\clouddirectory\2016-05-10\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\clouddirectory\2016-05-10\paginators-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\clouddirectory\2017-01-11\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\clouddirectory\2017-01-11\paginators-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\cloudformation\2010-05-15\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\cloudformation\2010-05-15\paginators-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\cloudformation\2010-05-15\waiters-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\cloudfront\2015-07-27\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\cloudfront\2015-07-27\paginators-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\cloudfront\2015-07-27\waiters-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\cloudfront\2016-01-28\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\cloudfront\2016-01-28\paginators-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\cloudfront\2016-01-28\waiters-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\cloudfront\2016-08-01\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\cloudfront\2016-08-01\paginators-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\cloudfront\2016-08-01\waiters-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\cloudfront\2016-08-20\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\cloudfront\2016-08-20\paginators-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\cloudfront\2016-08-20\waiters-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\cloudfront\2016-09-07\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\cloudfront\2016-09-07\paginators-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\cloudfront\2016-09-07\waiters-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\cloudfront\2016-09-07\waiters-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\cloudfront\2016-09-29\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\cloudfront\2016-09-29\paginators-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\cloudfront\2016-09-29\waiters-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\cloudfront\2016-09-29\waiters-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\cloudfront\2016-11-25\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\cloudfront\2016-11-25\paginators-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\cloudfront\2016-11-25\waiters-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\cloudfront\2016-11-25\waiters-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\cloudfront\2017-03-25\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\cloudfront\2017-03-25\paginators-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\cloudfront\2017-03-25\waiters-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\cloudfront\2017-03-25\waiters-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\cloudfront\2017-10-30\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\cloudfront\2017-10-30\paginators-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\cloudfront\2017-10-30\smoke.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\cloudfront\2017-10-30\waiters-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\cloudfront\2017-10-30\waiters-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\cloudhsm\2014-05-30\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\cloudhsm\2014-05-30\paginators-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\cloudhsmv2\2017-04-28\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\cloudhsmv2\2017-04-28\paginators-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\cloudhsmv2\2017-04-28\smoke.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\cloudsearch\2013-01-01\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\cloudsearch\2013-01-01\paginators-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\cloudsearchdomain\2013-01-01\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\cloudtrail\2013-11-01\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\cloudtrail\2013-11-01\paginators-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\codebuild\2016-10-06\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\codebuild\2016-10-06\paginators-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\codecommit\2015-04-13\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\codecommit\2015-04-13\paginators-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\codecommit\2015-04-13\smoke.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\codedeploy\2014-10-06\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\codedeploy\2014-10-06\paginators-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\codedeploy\2014-10-06\smoke.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\codedeploy\2014-10-06\waiters-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\codedeploy\2014-10-06\waiters-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\codepipeline\2015-07-09\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\codepipeline\2015-07-09\paginators-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\codestar\2017-04-19\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\codestar\2017-04-19\paginators-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\cognito-identity\2014-06-30\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\cognito-identity\2014-06-30\paginators-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\cognito-idp\2016-04-18\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\cognito-idp\2016-04-18\paginators-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\cognito-sync\2014-06-30\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\comprehend\2017-11-27\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\comprehend\2017-11-27\paginators-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\config\2014-11-12\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\config\2014-11-12\paginators-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\config\2014-11-12\smoke.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\connect\2017-08-08\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\connect\2017-08-08\paginators-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\cur\2017-01-06\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\cur\2017-01-06\paginators-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\data.iot\2015-05-28\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\datapipeline\2012-10-29\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\datapipeline\2012-10-29\paginators-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\dax\2017-04-19\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\dax\2017-04-19\paginators-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\devicefarm\2015-06-23\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\devicefarm\2015-06-23\paginators-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\devicefarm\2015-06-23\smoke.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\directconnect\2012-10-25\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\directconnect\2012-10-25\paginators-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\discovery\2015-11-01\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\discovery\2015-11-01\paginators-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\dms\2016-01-01\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\dms\2016-01-01\paginators-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\dms\2016-01-01\smoke.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\ds\2015-04-16\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\ds\2015-04-16\paginators-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\ds\2015-04-16\smoke.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\dynamodb\2011-12-05\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\dynamodb\2011-12-05\paginators-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\dynamodb\2011-12-05\waiters-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\dynamodb\2011-12-05\waiters-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\dynamodb\2012-08-10\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\dynamodb\2012-08-10\paginators-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\dynamodb\2012-08-10\waiters-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\dynamodb\2012-08-10\waiters-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\ec2\2015-10-01\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\ec2\2015-10-01\paginators-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\ec2\2015-10-01\waiters-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\ec2\2015-10-01\waiters-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\ec2\2016-04-01\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\ec2\2016-04-01\paginators-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\ec2\2016-04-01\waiters-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\ec2\2016-09-15\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\ec2\2016-09-15\paginators-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\ec2\2016-09-15\waiters-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\ec2\2016-09-15\waiters-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\ec2\2016-11-15\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\ec2\2016-11-15\paginators-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\ec2\2016-11-15\smoke.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\ec2\2016-11-15\waiters-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\ec2\2016-11-15\waiters-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\ecr\2015-09-21\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\ecr\2015-09-21\paginators-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\ecs\2014-11-13\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\ecs\2014-11-13\paginators-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\ecs\2014-11-13\waiters-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\eks\2017-11-01\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\eks\2017-11-01\paginators-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\elasticache\2015-02-02\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\elasticache\2015-02-02\paginators-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\elasticache\2015-02-02\waiters-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\elasticbeanstalk\2010-12-01\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\elasticbeanstalk\2010-12-01\paginators-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\elasticbeanstalk\2010-12-01\smoke.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\elasticfilesystem\2015-02-01\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\elasticfilesystem\2015-02-01\paginators-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\elasticloadbalancing\2012-06-01\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\elasticloadbalancing\2012-06-01\paginators-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\elasticloadbalancing\2012-06-01\waiters-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\elasticloadbalancingv2\2015-12-01\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\elasticloadbalancingv2\2015-12-01\paginators-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\elasticloadbalancingv2\2015-12-01\smoke.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\elasticloadbalancingv2\2015-12-01\waiters-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\elasticmapreduce\2009-03-31\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\elasticmapreduce\2009-03-31\paginators-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\elasticmapreduce\2009-03-31\waiters-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\elastictranscoder\2012-09-25\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\elastictranscoder\2012-09-25\paginators-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\elastictranscoder\2012-09-25\waiters-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\elastictranscoder\2012-09-25\waiters-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\email\2010-12-01\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\email\2010-12-01\paginators-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\email\2010-12-01\smoke.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\email\2010-12-01\waiters-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\email\2010-12-01\waiters-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\entitlement.marketplace\2017-01-11\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\entitlement.marketplace\2017-01-11\paginators-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\es\2015-01-01\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\es\2015-01-01\paginators-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\es\2015-01-01\smoke.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\events\2015-10-07\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\events\2015-10-07\paginators-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\events\2015-10-07\smoke.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\firehose\2015-08-04\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\firehose\2015-08-04\paginators-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\firehose\2015-08-04\smoke.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\fms\2018-01-01\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\fms\2018-01-01\paginators-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\gamelift\2015-10-01\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\gamelift\2015-10-01\paginators-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\glacier\2012-06-01\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\glacier\2012-06-01\paginators-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\glacier\2012-06-01\waiters-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\glacier\2012-06-01\waiters-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\glue\2017-03-31\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\glue\2017-03-31\paginators-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\greengrass\2017-06-07\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\guardduty\2017-11-28\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\guardduty\2017-11-28\paginators-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\health\2016-08-04\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\health\2016-08-04\paginators-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\iam\2010-05-08\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\iam\2010-05-08\paginators-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\iam\2010-05-08\smoke.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\iam\2010-05-08\waiters-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\importexport\2010-06-01\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\importexport\2010-06-01\paginators-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\inspector\2016-02-16\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\inspector\2016-02-16\paginators-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\iot\2015-05-28\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\iot\2015-05-28\paginators-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\iot1click-devices\2018-05-14\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\iot1click-projects\2018-05-14\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\iot1click-projects\2018-05-14\paginators-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\iotanalytics\2017-11-27\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\iotanalytics\2017-11-27\paginators-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\iot-jobs-data\2017-09-29\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\iot-jobs-data\2017-09-29\paginators-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\kinesis\2013-12-02\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\kinesis\2013-12-02\paginators-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\kinesis\2013-12-02\smoke.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\kinesis\2013-12-02\waiters-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\kinesisanalytics\2015-08-14\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\kinesisanalytics\2015-08-14\paginators-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\kinesisvideo\2017-09-30\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\kinesisvideo\2017-09-30\paginators-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\kinesis-video-archived-media\2017-09-30\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\kinesis-video-archived-media\2017-09-30\paginators-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\kinesis-video-media\2017-09-30\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\kinesis-video-media\2017-09-30\paginators-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\kms\2014-11-01\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\kms\2014-11-01\paginators-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\kms\2014-11-01\smoke.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\lambda\2015-03-31\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\lambda\2015-03-31\paginators-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\lambda\2015-03-31\smoke.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\lex-models\2017-04-19\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\lex-models\2017-04-19\paginators-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\lightsail\2016-11-28\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\lightsail\2016-11-28\paginators-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\logs\2014-03-28\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\logs\2014-03-28\paginators-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\machinelearning\2014-12-12\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\machinelearning\2014-12-12\paginators-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\machinelearning\2014-12-12\waiters-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\macie\2017-12-19\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\macie\2017-12-19\paginators-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\marketplacecommerceanalytics\2015-07-01\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\marketplacecommerceanalytics\2015-07-01\paginators-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\mediaconvert\2017-08-29\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\medialive\2017-10-14\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\medialive\2017-10-14\paginators-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\mediapackage\2017-10-12\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\mediapackage\2017-10-12\paginators-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\mediastore\2017-09-01\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\mediastore\2017-09-01\paginators-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\mediastore-data\2017-09-01\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\mediastore-data\2017-09-01\paginators-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\mediatailor\2018-04-23\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\mediatailor\2018-04-23\paginators-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\metering.marketplace\2016-01-14\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\mgh\2017-05-31\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\mgh\2017-05-31\paginators-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\mobile\2017-07-01\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\mobile\2017-07-01\paginators-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\monitoring\2010-08-01\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\monitoring\2010-08-01\paginators-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\monitoring\2010-08-01\waiters-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\mq\2017-11-27\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\mturk-requester\2017-01-17\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\mturk-requester\2017-01-17\paginators-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\mturk-requester\2017-01-17\smoke.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\neptune\2014-10-31\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\neptune\2014-10-31\paginators-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\neptune\2014-10-31\waiters-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\opsworks\2013-02-18\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\opsworks\2013-02-18\paginators-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\opsworks\2013-02-18\smoke.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\opsworks\2013-02-18\waiters-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\opsworkscm\2016-11-01\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\opsworkscm\2016-11-01\paginators-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\opsworkscm\2016-11-01\waiters-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\organizations\2016-11-28\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\organizations\2016-11-28\paginators-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\pi\2018-02-27\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\pi\2018-02-27\paginators-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\pinpoint\2016-12-01\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\polly\2016-06-10\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\polly\2016-06-10\paginators-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\polly\2016-06-10\smoke.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\pricing\2017-10-15\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\pricing\2017-10-15\paginators-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\rds\2014-09-01\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\rds\2014-09-01\paginators-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\rds\2014-09-01\smoke.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\rds\2014-10-31\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\rds\2014-10-31\paginators-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\rds\2014-10-31\smoke.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\rds\2014-10-31\waiters-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\rds\2014-10-31\waiters-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\redshift\2012-12-01\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\redshift\2012-12-01\paginators-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\redshift\2012-12-01\smoke.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\redshift\2012-12-01\waiters-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\redshift\2012-12-01\waiters-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\rekognition\2016-06-27\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\rekognition\2016-06-27\paginators-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\resource-groups\2017-11-27\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\resource-groups\2017-11-27\paginators-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\resourcegroupstaggingapi\2017-01-26\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\resourcegroupstaggingapi\2017-01-26\paginators-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\route53\2013-04-01\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\route53\2013-04-01\paginators-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\route53\2013-04-01\smoke.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\route53\2013-04-01\waiters-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\route53domains\2014-05-15\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\route53domains\2014-05-15\paginators-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\runtime.lex\2016-11-28\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\runtime.lex\2016-11-28\paginators-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\runtime.sagemaker\2017-05-13\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\runtime.sagemaker\2017-05-13\paginators-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\s3\2006-03-01\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\s3\2006-03-01\paginators-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\s3\2006-03-01\smoke.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\s3\2006-03-01\waiters-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\s3\2006-03-01\waiters-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\sagemaker\2017-07-24\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\sagemaker\2017-07-24\paginators-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\sagemaker\2017-07-24\waiters-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\secretsmanager\2017-10-17\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\secretsmanager\2017-10-17\paginators-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\secretsmanager\2017-10-17\smoke.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\serverlessrepo\2017-09-08\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\serverlessrepo\2017-09-08\paginators-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\servicecatalog\2015-12-10\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\servicecatalog\2015-12-10\paginators-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\servicecatalog\2015-12-10\smoke.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\servicediscovery\2017-03-14\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\servicediscovery\2017-03-14\paginators-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\shield\2016-06-02\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\shield\2016-06-02\paginators-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\sms\2016-10-24\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\sms\2016-10-24\paginators-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\snowball\2016-06-30\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\snowball\2016-06-30\paginators-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\sns\2010-03-31\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\sns\2010-03-31\paginators-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\sns\2010-03-31\smoke.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\sqs\2012-11-05\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\sqs\2012-11-05\paginators-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\sqs\2012-11-05\waiters-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\ssm\2014-11-06\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\ssm\2014-11-06\paginators-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\ssm\2014-11-06\smoke.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\states\2016-11-23\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\states\2016-11-23\paginators-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\storagegateway\2013-06-30\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\storagegateway\2013-06-30\paginators-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\streams.dynamodb\2012-08-10\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\streams.dynamodb\2012-08-10\paginators-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\sts\2011-06-15\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\sts\2011-06-15\paginators-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\sts\2011-06-15\smoke.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\support\2013-04-15\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\support\2013-04-15\paginators-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\swf\2012-01-25\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\swf\2012-01-25\paginators-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\transcribe\2017-10-26\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\transcribe\2017-10-26\paginators-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\translate\2017-07-01\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\translate\2017-07-01\paginators-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\waf\2015-08-24\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\waf\2015-08-24\paginators-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\waf\2015-08-24\smoke.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\waf-regional\2016-11-28\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\waf-regional\2016-11-28\paginators-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\waf-regional\2016-11-28\smoke.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\workdocs\2016-05-01\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\workdocs\2016-05-01\paginators-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\workmail\2017-10-01\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\workmail\2017-10-01\paginators-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\workspaces\2015-04-08\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\workspaces\2015-04-08\paginators-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\workspaces\2015-04-08\smoke.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\xray\2016-04-12\api-2.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\xray\2016-04-12\paginators-1.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\endpoints.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\data\manifest.json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\DatabaseMigrationService\Exception\DatabaseMigrationServiceException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\DatabaseMigrationService\DatabaseMigrationServiceClient.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\DataPipeline\Exception\DataPipelineException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\DataPipeline\DataPipelineClient.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\DAX\Exception\DAXException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\DAX\DAXClient.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\DeviceFarm\Exception\DeviceFarmException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\DeviceFarm\DeviceFarmClient.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\DirectConnect\Exception\DirectConnectException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\DirectConnect\DirectConnectClient.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\DirectoryService\Exception\DirectoryServiceException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\DirectoryService\DirectoryServiceClient.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\DynamoDb\Exception\DynamoDbException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\DynamoDb\BinaryValue.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\DynamoDb\DynamoDbClient.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\DynamoDb\LockingSessionConnection.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\DynamoDb\Marshaler.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\DynamoDb\NumberValue.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\DynamoDb\SessionConnectionInterface.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\DynamoDb\SessionHandler.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\DynamoDb\SetValue.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\DynamoDb\StandardSessionConnection.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\DynamoDb\WriteRequestBatch.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\DynamoDbStreams\Exception\DynamoDbStreamsException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\DynamoDbStreams\DynamoDbStreamsClient.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Ec2\Exception\Ec2Exception.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Ec2\Ec2Client.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Ecr\Exception\EcrException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Ecr\EcrClient.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Ecs\Exception\EcsException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Ecs\EcsClient.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Efs\Exception\EfsException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Efs\EfsClient.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\EKS\Exception\EKSException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\EKS\EKSClient.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\ElastiCache\Exception\ElastiCacheException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\ElastiCache\ElastiCacheClient.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\ElasticBeanstalk\Exception\ElasticBeanstalkException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\ElasticBeanstalk\ElasticBeanstalkClient.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\ElasticLoadBalancing\Exception\ElasticLoadBalancingException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\ElasticLoadBalancing\ElasticLoadBalancingClient.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\ElasticLoadBalancingV2\Exception\ElasticLoadBalancingV2Exception.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\ElasticLoadBalancingV2\ElasticLoadBalancingV2Client.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\ElasticsearchService\Exception\ElasticsearchServiceException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\ElasticsearchService\ElasticsearchServiceClient.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\ElasticTranscoder\Exception\ElasticTranscoderException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\ElasticTranscoder\ElasticTranscoderClient.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Emr\Exception\EmrException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Emr\EmrClient.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Endpoint\EndpointProvider.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Endpoint\Partition.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Endpoint\PartitionEndpointProvider.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Endpoint\PartitionInterface.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Endpoint\PatternEndpointProvider.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Exception\AwsException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Exception\CouldNotCreateChecksumException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Exception\CredentialsException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Exception\MultipartUploadException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Exception\UnresolvedApiException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Exception\UnresolvedEndpointException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Exception\UnresolvedSignatureException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Firehose\Exception\FirehoseException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Firehose\FirehoseClient.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\FMS\Exception\FMSException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\FMS\FMSClient.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\GameLift\Exception\GameLiftException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\GameLift\GameLiftClient.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Glacier\Exception\GlacierException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Glacier\GlacierClient.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Glacier\MultipartUploader.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Glacier\TreeHash.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Glue\Exception\GlueException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Glue\GlueClient.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Greengrass\Exception\GreengrassException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Greengrass\GreengrassClient.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\GuardDuty\Exception\GuardDutyException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\GuardDuty\GuardDutyClient.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Handler\GuzzleV5\GuzzleHandler.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Handler\GuzzleV5\GuzzleStream.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Handler\GuzzleV5\PsrStream.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Handler\GuzzleV6\GuzzleHandler.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Health\Exception\HealthException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Health\HealthClient.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Iam\Exception\IamException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Iam\IamClient.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\ImportExport\Exception\ImportExportException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\ImportExport\ImportExportClient.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Inspector\Exception\InspectorException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Inspector\InspectorClient.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Iot\Exception\IotException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Iot\IotClient.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\IoT1ClickDevicesService\Exception\IoT1ClickDevicesServiceException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\IoT1ClickDevicesService\IoT1ClickDevicesServiceClient.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\IoT1ClickProjects\Exception\IoT1ClickProjectsException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\IoT1ClickProjects\IoT1ClickProjectsClient.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\IoTAnalytics\Exception\IoTAnalyticsException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\IoTAnalytics\IoTAnalyticsClient.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\IotDataPlane\Exception\IotDataPlaneException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\IotDataPlane\IotDataPlaneClient.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\IoTJobsDataPlane\Exception\IoTJobsDataPlaneException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\IoTJobsDataPlane\IoTJobsDataPlaneClient.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Kinesis\Exception\KinesisException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Kinesis\KinesisClient.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\KinesisAnalytics\Exception\KinesisAnalyticsException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\KinesisAnalytics\KinesisAnalyticsClient.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\KinesisVideo\Exception\KinesisVideoException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\KinesisVideo\KinesisVideoClient.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\KinesisVideoArchivedMedia\Exception\KinesisVideoArchivedMediaException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\KinesisVideoArchivedMedia\KinesisVideoArchivedMediaClient.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\KinesisVideoMedia\Exception\KinesisVideoMediaException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\KinesisVideoMedia\KinesisVideoMediaClient.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Kms\Exception\KmsException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Kms\KmsClient.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Lambda\Exception\LambdaException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Lambda\LambdaClient.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\LexModelBuildingService\Exception\LexModelBuildingServiceException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\LexModelBuildingService\LexModelBuildingServiceClient.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\LexRuntimeService\Exception\LexRuntimeServiceException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\LexRuntimeService\LexRuntimeServiceClient.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Lightsail\Exception\LightsailException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Lightsail\LightsailClient.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\MachineLearning\Exception\MachineLearningException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\MachineLearning\MachineLearningClient.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Macie\Exception\MacieException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Macie\MacieClient.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\MarketplaceCommerceAnalytics\Exception\MarketplaceCommerceAnalyticsException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\MarketplaceCommerceAnalytics\MarketplaceCommerceAnalyticsClient.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\MarketplaceEntitlementService\Exception\MarketplaceEntitlementServiceException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\MarketplaceEntitlementService\MarketplaceEntitlementServiceClient.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\MarketplaceMetering\Exception\MarketplaceMeteringException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\MarketplaceMetering\MarketplaceMeteringClient.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\MediaConvert\Exception\MediaConvertException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\MediaConvert\MediaConvertClient.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\MediaLive\Exception\MediaLiveException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\MediaLive\MediaLiveClient.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\MediaPackage\Exception\MediaPackageException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\MediaPackage\MediaPackageClient.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\MediaStore\Exception\MediaStoreException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\MediaStore\MediaStoreClient.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\MediaStoreData\Exception\MediaStoreDataException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\MediaStoreData\MediaStoreDataClient.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\MediaTailor\Exception\MediaTailorException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\MediaTailor\MediaTailorClient.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\MigrationHub\Exception\MigrationHubException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\MigrationHub\MigrationHubClient.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Mobile\Exception\MobileException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Mobile\MobileClient.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\MQ\Exception\MQException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\MQ\MQClient.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\MTurk\Exception\MTurkException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\MTurk\MTurkClient.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Multipart\AbstractUploader.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Multipart\AbstractUploadManager.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Multipart\UploadState.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Neptune\Exception\NeptuneException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Neptune\NeptuneClient.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\OpsWorks\Exception\OpsWorksException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\OpsWorks\OpsWorksClient.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\OpsWorksCM\Exception\OpsWorksCMException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\OpsWorksCM\OpsWorksCMClient.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Organizations\Exception\OrganizationsException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Organizations\OrganizationsClient.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\PI\Exception\PIException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\PI\PIClient.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Pinpoint\Exception\PinpointException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Pinpoint\PinpointClient.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Polly\Exception\PollyException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Polly\PollyClient.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Pricing\Exception\PricingException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Pricing\PricingClient.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Rds\Exception\RdsException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Rds\AuthTokenGenerator.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Rds\RdsClient.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Redshift\Exception\RedshiftException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Redshift\RedshiftClient.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Rekognition\Exception\RekognitionException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Rekognition\RekognitionClient.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\ResourceGroups\Exception\ResourceGroupsException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\ResourceGroups\ResourceGroupsClient.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\ResourceGroupsTaggingAPI\Exception\ResourceGroupsTaggingAPIException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\ResourceGroupsTaggingAPI\ResourceGroupsTaggingAPIClient.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Route53\Exception\Route53Exception.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Route53\Route53Client.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Route53Domains\Exception\Route53DomainsException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Route53Domains\Route53DomainsClient.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\S3\Crypto\CryptoParamsTrait.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\S3\Crypto\HeadersMetadataStrategy.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\S3\Crypto\InstructionFileMetadataStrategy.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\S3\Crypto\S3EncryptionClient.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\S3\Crypto\S3EncryptionMultipartUploader.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\S3\Exception\DeleteMultipleObjectsException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\S3\Exception\PermanentRedirectException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\S3\Exception\S3Exception.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\S3\Exception\S3MultipartUploadException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\S3\AmbiguousSuccessParser.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\S3\ApplyChecksumMiddleware.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\S3\BatchDelete.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\S3\BucketEndpointMiddleware.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\S3\GetBucketLocationParser.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\S3\MultipartCopy.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\S3\MultipartUploader.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\S3\MultipartUploadingTrait.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\S3\ObjectCopier.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\S3\ObjectUploader.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\S3\PermanentRedirectMiddleware.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\S3\PostObject.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\S3\PostObjectV4.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\S3\PutObjectUrlMiddleware.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\S3\RetryableMalformedResponseParser.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\S3\S3Client.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\S3\S3ClientInterface.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\S3\S3ClientTrait.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\S3\S3EndpointMiddleware.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\S3\S3MultiRegionClient.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\S3\S3UriParser.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\S3\SSECMiddleware.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\S3\StreamWrapper.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\S3\Transfer.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\SageMaker\Exception\SageMakerException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\SageMaker\SageMakerClient.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\SageMakerRuntime\Exception\SageMakerRuntimeException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\SageMakerRuntime\SageMakerRuntimeClient.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\SecretsManager\Exception\SecretsManagerException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\SecretsManager\SecretsManagerClient.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\ServerlessApplicationRepository\Exception\ServerlessApplicationRepositoryException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\ServerlessApplicationRepository\ServerlessApplicationRepositoryClient.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\ServiceCatalog\Exception\ServiceCatalogException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\ServiceCatalog\ServiceCatalogClient.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\ServiceDiscovery\Exception\ServiceDiscoveryException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\ServiceDiscovery\ServiceDiscoveryClient.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Ses\Exception\SesException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Ses\SesClient.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Sfn\Exception\SfnException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Sfn\SfnClient.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Shield\Exception\ShieldException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Shield\ShieldClient.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Signature\AnonymousSignature.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Signature\S3SignatureV4.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Signature\SignatureInterface.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Signature\SignatureProvider.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Signature\SignatureTrait.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Signature\SignatureV4.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Sms\Exception\SmsException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Sms\SmsClient.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\SnowBall\Exception\SnowBallException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\SnowBall\SnowBallClient.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Sns\Exception\SnsException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Sns\SnsClient.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Sqs\Exception\SqsException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Sqs\SqsClient.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Ssm\Exception\SsmException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Ssm\SsmClient.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\StorageGateway\Exception\StorageGatewayException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\StorageGateway\StorageGatewayClient.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Sts\Exception\StsException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Sts\StsClient.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Support\Exception\SupportException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Support\SupportClient.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Swf\Exception\SwfException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Swf\SwfClient.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\TranscribeService\Exception\TranscribeServiceException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\TranscribeService\TranscribeServiceClient.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Translate\Exception\TranslateException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Translate\TranslateClient.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Waf\Exception\WafException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Waf\WafClient.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\WafRegional\Exception\WafRegionalException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\WafRegional\WafRegionalClient.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\WorkDocs\Exception\WorkDocsException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\WorkDocs\WorkDocsClient.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\WorkMail\Exception\WorkMailException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\WorkMail\WorkMailClient.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\WorkSpaces\Exception\WorkSpacesException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\WorkSpaces\WorkSpacesClient.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\XRay\Exception\XRayException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\XRay\XRayClient.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\AwsClient.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\AwsClientInterface.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\AwsClientTrait.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\CacheInterface.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\ClientResolver.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Command.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\CommandInterface.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\CommandPool.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\DoctrineCacheAdapter.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\functions.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\HandlerList.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\HasDataTrait.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\HashingStream.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\HashInterface.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\History.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\IdempotencyTokenMiddleware.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\JsonCompiler.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\LruArrayCache.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Middleware.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\MockHandler.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\MultiRegionClient.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\PhpHash.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\PresignUrlMiddleware.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\PsrCacheAdapter.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Result.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\ResultInterface.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\ResultPaginator.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\RetryMiddleware.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Sdk.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\TraceMiddleware.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\Waiter.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\src\WrappedHttpHandler.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\composer.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\LICENSE.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="aws-sdk-php\NOTICE.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="aws-sdk-php\composer.json">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+    </Content>
+    <Content Include="aws-sdk-php\LICENSE.md">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+    </Content>
+    <Content Include="aws-sdk-php\NOTICE.md">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\nextcloud-guzzlehttp-promises\nextcloud-guzzlehttp-promises.msbuildproj" />
+    <ProjectReference Include="..\nextcloud-guzzlehttp-psr7\nextcloud-guzzlehttp-psr7.msbuildproj" />
+    <ProjectReference Include="..\nextcloud-psr-http-message\nextcloud-psr-http-message.msbuildproj" />
+  </ItemGroup>
+</Project>

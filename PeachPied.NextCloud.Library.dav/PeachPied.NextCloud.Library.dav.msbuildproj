@@ -1,0 +1,1251 @@
+<Project Sdk="Peachpie.NET.Sdk/0.9.36">
+  <PropertyGroup>
+    <OutputType>library</OutputType>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="**/*.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="version.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="versioncheck.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\base.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Accounts\IAccount.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Accounts\IAccountManager.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Accounts\IAccountProperty.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Accounts\PropertyDoesNotExistException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Activity\IConsumer.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Activity\IEvent.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Activity\IEventMerger.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Activity\IExtension.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Activity\IFilter.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Activity\IManager.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Activity\IProvider.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Activity\ISetting.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\App\AppPathNotFoundException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\App\IAppManager.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\App\ManagerEvent.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\AppFramework\Db\DoesNotExistException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\AppFramework\Db\Entity.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\AppFramework\Db\IMapperException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\AppFramework\Db\Mapper.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\AppFramework\Db\MultipleObjectsReturnedException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\AppFramework\Db\QBMapper.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\AppFramework\Http\Template\ExternalShareMenuAction.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\AppFramework\Http\Template\IMenuAction.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\AppFramework\Http\Template\LinkMenuAction.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\AppFramework\Http\Template\PublicTemplateResponse.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\AppFramework\Http\Template\SimpleMenuAction.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\AppFramework\Http\ContentSecurityPolicy.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\AppFramework\Http\DataDisplayResponse.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\AppFramework\Http\DataDownloadResponse.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\AppFramework\Http\DataResponse.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\AppFramework\Http\DownloadResponse.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\AppFramework\Http\EmptyContentSecurityPolicy.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\AppFramework\Http\FileDisplayResponse.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\AppFramework\Http\ICallbackResponse.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\AppFramework\Http\IOutput.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\AppFramework\Http\JSONResponse.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\AppFramework\Http\NotFoundResponse.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\AppFramework\Http\OCSResponse.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\AppFramework\Http\RedirectResponse.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\AppFramework\Http\RedirectToDefaultAppResponse.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\AppFramework\Http\Response.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\AppFramework\Http\StandaloneTemplateResponse.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\AppFramework\Http\StreamResponse.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\AppFramework\Http\StrictContentSecurityPolicy.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\AppFramework\Http\StrictEvalContentSecurityPolicy.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\AppFramework\Http\StrictInlineContentSecurityPolicy.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\AppFramework\Http\TemplateResponse.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\AppFramework\Http\ZipResponse.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\AppFramework\OCS\OCSBadRequestException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\AppFramework\OCS\OCSException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\AppFramework\OCS\OCSForbiddenException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\AppFramework\OCS\OCSNotFoundException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\AppFramework\Utility\IControllerMethodReflector.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\AppFramework\Utility\ITimeFactory.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\AppFramework\ApiController.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\AppFramework\App.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\AppFramework\AuthPublicShareController.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\AppFramework\Controller.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\AppFramework\Http.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\AppFramework\IAppContainer.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\AppFramework\Middleware.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\AppFramework\OCSController.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\AppFramework\PublicShareController.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\AppFramework\QueryException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Authentication\Exceptions\CredentialsUnavailableException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Authentication\Exceptions\PasswordUnavailableException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Authentication\LoginCredentials\ICredentials.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Authentication\LoginCredentials\IStore.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Authentication\TwoFactorAuth\IActivatableByAdmin.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Authentication\TwoFactorAuth\IDeactivatableByAdmin.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Authentication\TwoFactorAuth\IPersonalProviderSettings.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Authentication\TwoFactorAuth\IProvider.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Authentication\TwoFactorAuth\IProvidesCustomCSP.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Authentication\TwoFactorAuth\IProvidesIcons.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Authentication\TwoFactorAuth\IProvidesPersonalSettings.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Authentication\TwoFactorAuth\IRegistry.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Authentication\TwoFactorAuth\RegistryEvent.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Authentication\TwoFactorAuth\TwoFactorException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Authentication\IApacheBackend.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\BackgroundJob\IJob.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\BackgroundJob\IJobList.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\BackgroundJob\Job.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\BackgroundJob\QueuedJob.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\BackgroundJob\TimedJob.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Calendar\Resource\IBackend.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Calendar\Resource\IManager.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Calendar\Resource\IResource.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Calendar\Room\IBackend.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Calendar\Room\IManager.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Calendar\Room\IRoom.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Calendar\BackendTemporarilyUnavailableException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Calendar\ICalendar.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Calendar\IManager.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Capabilities\ICapability.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Capabilities\IPublicCapability.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Collaboration\AutoComplete\AutoCompleteEvent.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Collaboration\AutoComplete\IManager.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Collaboration\AutoComplete\ISorter.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Collaboration\Collaborators\ISearch.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Collaboration\Collaborators\ISearchPlugin.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Collaboration\Collaborators\ISearchResult.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Collaboration\Collaborators\SearchResultType.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Collaboration\Resources\CollectionException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Collaboration\Resources\ICollection.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Collaboration\Resources\IManager.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Collaboration\Resources\IProvider.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Collaboration\Resources\IResource.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Collaboration\Resources\ResourceException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Command\IBus.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Command\ICommand.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Comments\CommentsEntityEvent.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Comments\CommentsEvent.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Comments\IComment.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Comments\ICommentsEventHandler.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Comments\ICommentsManager.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Comments\ICommentsManagerFactory.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Comments\IllegalIDChangeException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Comments\MessageTooLongException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Comments\NotFoundException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Console\ConsoleEvent.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Contacts\ContactsMenu\IAction.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Contacts\ContactsMenu\IActionFactory.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Contacts\ContactsMenu\IContactsStore.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Contacts\ContactsMenu\IEntry.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Contacts\ContactsMenu\ILinkAction.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Contacts\ContactsMenu\IProvider.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Contacts\IManager.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Dashboard\Exceptions\DashboardAppNotAvailableException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Dashboard\Model\IWidgetConfig.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Dashboard\Model\IWidgetRequest.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Dashboard\Model\WidgetSetting.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Dashboard\Model\WidgetSetup.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Dashboard\Model\WidgetTemplate.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Dashboard\Service\IEventsService.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Dashboard\Service\IWidgetsService.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Dashboard\IDashboardManager.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Dashboard\IDashboardWidget.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\DB\QueryBuilder\ICompositeExpression.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\DB\QueryBuilder\IExpressionBuilder.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\DB\QueryBuilder\IFunctionBuilder.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\DB\QueryBuilder\ILiteral.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\DB\QueryBuilder\IParameter.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\DB\QueryBuilder\IQueryBuilder.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\DB\QueryBuilder\IQueryFunction.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\DB\ISchemaWrapper.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Diagnostics\IEvent.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Diagnostics\IEventLogger.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Diagnostics\IQuery.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Diagnostics\IQueryLogger.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Encryption\Exceptions\GenericEncryptionException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Encryption\Keys\IStorage.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Encryption\IEncryptionModule.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Encryption\IFile.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Encryption\IManager.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Federation\Exceptions\ActionNotSupportedException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Federation\Exceptions\AuthenticationFailedException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Federation\Exceptions\BadRequestException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Federation\Exceptions\ProviderAlreadyExistsException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Federation\Exceptions\ProviderCouldNotAddShareException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Federation\Exceptions\ProviderDoesNotExistsException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Federation\ICloudFederationFactory.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Federation\ICloudFederationNotification.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Federation\ICloudFederationProvider.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Federation\ICloudFederationProviderManager.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Federation\ICloudFederationShare.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Federation\ICloudId.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Federation\ICloudIdManager.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Files\Cache\CacheInsertEvent.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Files\Cache\CacheUpdateEvent.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Files\Cache\ICache.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Files\Cache\ICacheEntry.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Files\Cache\ICacheEvent.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Files\Cache\IPropagator.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Files\Cache\IScanner.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Files\Cache\IUpdater.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Files\Cache\IWatcher.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Files\Config\ICachedMountFileInfo.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Files\Config\ICachedMountInfo.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Files\Config\IHomeMountProvider.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Files\Config\IMountProvider.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Files\Config\IMountProviderCollection.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Files\Config\IUserMountCache.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Files\Mount\IMountManager.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Files\Mount\IMountPoint.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Files\Notify\IChange.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Files\Notify\INotifyHandler.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Files\Notify\IRenameChange.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Files\ObjectStore\IObjectStore.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Files\Search\ISearchBinaryOperator.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Files\Search\ISearchComparison.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Files\Search\ISearchOperator.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Files\Search\ISearchOrder.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Files\Search\ISearchQuery.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Files\SimpleFS\InMemoryFile.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Files\SimpleFS\ISimpleFile.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Files\SimpleFS\ISimpleFolder.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Files\SimpleFS\ISimpleRoot.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Files\Storage\IDisableEncryptionStorage.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Files\Storage\ILockingStorage.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Files\Storage\INotifyStorage.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Files\Storage\IStorage.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Files\Storage\IStorageFactory.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Files\Storage\IWriteStreamStorage.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Files\AlreadyExistsException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Files\EmptyFileNameException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Files\EntityTooLargeException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Files\File.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Files\FileInfo.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Files\FileNameTooLongException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Files\Folder.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Files\ForbiddenException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Files\GenericFileException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Files\IAppData.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Files\IHomeStorage.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Files\IMimeTypeDetector.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Files\IMimeTypeLoader.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Files\InvalidCharacterInPathException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Files\InvalidContentException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Files\InvalidDirectoryException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Files\InvalidPathException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Files\IRootFolder.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Files\LockNotAcquiredException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Files\Node.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Files\NotEnoughSpaceException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Files\NotFoundException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Files\NotPermittedException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Files\ReservedWordException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Files\Storage.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Files\StorageAuthException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Files\StorageBadConfigException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Files\StorageConnectionException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Files\StorageInvalidException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Files\StorageNotAvailableException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Files\StorageTimeoutException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Files\UnseekableException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Files_FullTextSearch\Model\AFilesDocument.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\FullTextSearch\Exceptions\FullTextSearchAppNotAvailableException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\FullTextSearch\Model\IDocumentAccess.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\FullTextSearch\Model\IIndex.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\FullTextSearch\Model\IIndexDocument.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\FullTextSearch\Model\IIndexOptions.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\FullTextSearch\Model\IRunner.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\FullTextSearch\Model\ISearchOption.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\FullTextSearch\Model\ISearchRequest.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\FullTextSearch\Model\ISearchResult.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\FullTextSearch\Model\ISearchTemplate.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\FullTextSearch\Service\IIndexService.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\FullTextSearch\Service\IProviderService.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\FullTextSearch\Service\ISearchService.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\FullTextSearch\IFullTextSearchManager.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\FullTextSearch\IFullTextSearchPlatform.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\FullTextSearch\IFullTextSearchProvider.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\GlobalScale\IConfig.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Group\Backend\ABackend.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Group\Backend\IAddToGroupBackend.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Group\Backend\ICountDisabledInGroup.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Group\Backend\ICountUsersBackend.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Group\Backend\ICreateGroupBackend.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Group\Backend\IDeleteGroupBackend.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Group\Backend\IGroupDetailsBackend.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Group\Backend\IHideFromCollaborationBackend.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Group\Backend\IIsAdminBackend.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Group\Backend\IRemoveFromGroupBackend.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Group\ISubAdmin.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Http\Client\IClient.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Http\Client\IClientService.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Http\Client\IResponse.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\L10N\IFactory.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\L10N\ILanguageIterator.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\LDAP\IDeletionFlagSupport.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\LDAP\ILDAPProvider.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\LDAP\ILDAPProviderFactory.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Lock\ILockingProvider.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Lock\LockedException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Lockdown\ILockdownManager.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Log\IFileBased.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Log\ILogFactory.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Log\IWriter.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Log\RotationTrait.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Mail\IAttachment.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Mail\IEMailTemplate.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Mail\IMailer.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Mail\IMessage.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Migration\BigIntMigration.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Migration\IMigrationStep.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Migration\IOutput.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Migration\IRepairStep.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Migration\SimpleMigrationStep.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Notification\IAction.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Notification\IApp.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Notification\IManager.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Notification\INotification.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Notification\INotifier.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\OCS\IDiscoveryService.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Preview\IProvider.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Remote\Api\IApiCollection.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Remote\Api\IApiFactory.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Remote\Api\ICapabilitiesApi.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Remote\Api\IUserApi.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Remote\ICredentials.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Remote\IInstance.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Remote\IInstanceFactory.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Remote\IUser.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\RichObjectStrings\Definitions.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\RichObjectStrings\InvalidObjectExeption.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\RichObjectStrings\IValidator.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Route\IRoute.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Route\IRouter.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Search\PagedProvider.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Search\Provider.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Search\Result.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Security\IContentSecurityPolicyManager.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Security\ICredentialsManager.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Security\ICrypto.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Security\IHasher.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Security\ISecureRandom.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Security\StringUtils.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Session\Exceptions\SessionNotAvailableException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Settings\IIconSection.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Settings\IManager.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Settings\ISection.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Settings\ISettings.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Share\Exceptions\GenericShareException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Share\Exceptions\IllegalIDChangeException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Share\Exceptions\ShareNotFound.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Share\IManager.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Share\IProviderFactory.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Share\IShare.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Share\IShareHelper.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Share\IShareProvider.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Support\CrashReport\ICollectBreadcrumbs.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Support\CrashReport\IRegistry.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Support\CrashReport\IReporter.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\SystemTag\ISystemTag.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\SystemTag\ISystemTagManager.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\SystemTag\ISystemTagManagerFactory.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\SystemTag\ISystemTagObjectMapper.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\SystemTag\ManagerEvent.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\SystemTag\MapperEvent.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\SystemTag\SystemTagsEntityEvent.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\SystemTag\TagAlreadyExistsException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\SystemTag\TagNotFoundException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\User\Backend\ABackend.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\User\Backend\ICheckPasswordBackend.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\User\Backend\ICountUsersBackend.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\User\Backend\ICreateUserBackend.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\User\Backend\IGetDisplayNameBackend.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\User\Backend\IGetHomeBackend.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\User\Backend\IPasswordConfirmationBackend.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\User\Backend\IProvideAvatarBackend.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\User\Backend\ISetDisplayNameBackend.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\User\Backend\ISetPasswordBackend.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\WorkflowEngine\ICheck.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\WorkflowEngine\IManager.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\WorkflowEngine\IOperation.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\API.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\App.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\AutoloadNotAllowedException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\BackgroundJob.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Constants.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Defaults.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Files.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\GroupInterface.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\IAddressBook.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\IAppConfig.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\IAvatar.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\IAvatarManager.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\ICache.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\ICacheFactory.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\ICertificate.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\ICertificateManager.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\IConfig.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\IContainer.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\IDateTimeFormatter.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\IDateTimeZone.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\IDBConnection.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\IEventSource.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\IGroup.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\IGroupManager.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\IImage.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\IInitialStateService.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\IL10N.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\ILogger.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Image.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\IMemcache.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\IMemcacheTTL.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\INavigationManager.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\IPreview.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\IRequest.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\ISearch.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\IServerContainer.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\ISession.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\ITagManager.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\ITags.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\ITempManager.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\IURLGenerator.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\IUser.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\IUserBackend.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\IUserManager.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\IUserSession.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\PreConditionNotMetException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\SabrePluginEvent.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\SabrePluginException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Share.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Share_Backend.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Share_Backend_Collection.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Share_Backend_File_Dependent.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Template.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\User.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\UserInterface.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="lib\public\Util.php" />
+  </ItemGroup>
+</Project>

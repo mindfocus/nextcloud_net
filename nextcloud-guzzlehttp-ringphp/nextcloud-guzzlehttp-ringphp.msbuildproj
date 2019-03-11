@@ -1,0 +1,72 @@
+<Project Sdk="Peachpie.NET.Sdk/0.9.36">
+  <PropertyGroup>
+    <OutputType>library</OutputType>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="**/*.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="src\Client\ClientUtils.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="src\Client\CurlFactory.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="src\Client\CurlHandler.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="src\Client\CurlMultiHandler.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="src\Client\Middleware.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="src\Client\MockHandler.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="src\Client\StreamHandler.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="src\Exception\CancelledException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="src\Exception\CancelledFutureAccessException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="src\Exception\ConnectException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="src\Exception\RingException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="src\Future\BaseFutureTrait.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="src\Future\CompletedFutureArray.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="src\Future\CompletedFutureValue.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="src\Future\FutureArray.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="src\Future\FutureArrayInterface.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="src\Future\FutureInterface.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="src\Future\FutureValue.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="src\Future\MagicFutureTrait.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="src\Core.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\nextcloud-react-promise\nextcloud-react-promise.msbuildproj" />
+  </ItemGroup>
+</Project>

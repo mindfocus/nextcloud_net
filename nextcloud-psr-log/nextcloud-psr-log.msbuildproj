@@ -1,0 +1,39 @@
+<Project Sdk="Peachpie.NET.Sdk/0.9.36">
+  <PropertyGroup>
+    <OutputType>library</OutputType>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="**/*.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Psr\Log\Test\LoggerInterfaceTest.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Psr\Log\Test\TestLogger.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Psr\Log\AbstractLogger.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Psr\Log\InvalidArgumentException.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Psr\Log\LoggerAwareInterface.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Psr\Log\LoggerAwareTrait.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Psr\Log\LoggerInterface.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Psr\Log\LoggerTrait.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Psr\Log\LogLevel.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Psr\Log\NullLogger.php" />
+  </ItemGroup>
+</Project>

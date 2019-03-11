@@ -1,0 +1,53 @@
+<Project Sdk="Peachpie.NET.Sdk/0.9.36">
+  <PropertyGroup>
+    <OutputType>library</OutputType>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="**/*.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="zipstreamer\src\lib\Count64.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="zipstreamer\src\ZipStreamer.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="zipstreamer\composer.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="zipstreamer\COPYING" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="zipstreamer\MANUAL.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="zipstreamer\README.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="zipstreamer\composer.json">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+    </Content>
+    <Content Include="zipstreamer\COPYING">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+    </Content>
+    <Content Include="zipstreamer\MANUAL.md">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+    </Content>
+    <Content Include="zipstreamer\README.md">
+      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+    </Content>
+  </ItemGroup>
+</Project>
