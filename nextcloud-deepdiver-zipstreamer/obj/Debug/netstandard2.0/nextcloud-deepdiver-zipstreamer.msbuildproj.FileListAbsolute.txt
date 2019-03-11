@@ -1,6 +1,0 @@
-C:\Users\igice\Documents\Visual Studio 2017\Projects\nextcloud\nextcloud-deepdiver-zipstreamer\bin\Debug\netstandard2.0\nextcloud-deepdiver-zipstreamer.deps.json
-C:\Users\igice\Documents\Visual Studio 2017\Projects\nextcloud\nextcloud-deepdiver-zipstreamer\bin\Debug\netstandard2.0\nextcloud-deepdiver-zipstreamer.dll
-C:\Users\igice\Documents\Visual Studio 2017\Projects\nextcloud\nextcloud-deepdiver-zipstreamer\bin\Debug\netstandard2.0\nextcloud-deepdiver-zipstreamer.pdb
-C:\Users\igice\Documents\Visual Studio 2017\Projects\nextcloud\nextcloud-deepdiver-zipstreamer\obj\Debug\netstandard2.0\nextcloud-deepdiver-zipstreamer.msbuildproj.CoreCompileInputs.cache
-C:\Users\igice\Documents\Visual Studio 2017\Projects\nextcloud\nextcloud-deepdiver-zipstreamer\obj\Debug\netstandard2.0\nextcloud-deepdiver-zipstreamer.dll
-C:\Users\igice\Documents\Visual Studio 2017\Projects\nextcloud\nextcloud-deepdiver-zipstreamer\obj\Debug\netstandard2.0\nextcloud-deepdiver-zipstreamer.pdb

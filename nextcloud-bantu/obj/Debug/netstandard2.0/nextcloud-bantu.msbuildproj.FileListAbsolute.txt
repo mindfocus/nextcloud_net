@@ -1,7 +1,0 @@
-C:\Users\igice\Documents\Visual Studio 2017\Projects\nextcloud\nextcloud-bantu\bin\Debug\netstandard2.0\nextcloud-bantu.deps.json
-C:\Users\igice\Documents\Visual Studio 2017\Projects\nextcloud\nextcloud-bantu\bin\Debug\netstandard2.0\nextcloud-bantu.dll
-C:\Users\igice\Documents\Visual Studio 2017\Projects\nextcloud\nextcloud-bantu\bin\Debug\netstandard2.0\nextcloud-bantu.pdb
-C:\Users\igice\Documents\Visual Studio 2017\Projects\nextcloud\nextcloud-bantu\obj\Debug\netstandard2.0\nextcloud-bantu.msbuildprojAssemblyReference.cache
-C:\Users\igice\Documents\Visual Studio 2017\Projects\nextcloud\nextcloud-bantu\obj\Debug\netstandard2.0\nextcloud-bantu.msbuildproj.CoreCompileInputs.cache
-C:\Users\igice\Documents\Visual Studio 2017\Projects\nextcloud\nextcloud-bantu\obj\Debug\netstandard2.0\nextcloud-bantu.dll
-C:\Users\igice\Documents\Visual Studio 2017\Projects\nextcloud\nextcloud-bantu\obj\Debug\netstandard2.0\nextcloud-bantu.pdb

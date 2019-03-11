@@ -1,6 +1,0 @@
-C:\Users\igice\Documents\Visual Studio 2017\Projects\nextcloud\nextcloud-react-promise\bin\Debug\netstandard2.0\nextcloud-react-promise.deps.json
-C:\Users\igice\Documents\Visual Studio 2017\Projects\nextcloud\nextcloud-react-promise\bin\Debug\netstandard2.0\nextcloud-react-promise.dll
-C:\Users\igice\Documents\Visual Studio 2017\Projects\nextcloud\nextcloud-react-promise\bin\Debug\netstandard2.0\nextcloud-react-promise.pdb
-C:\Users\igice\Documents\Visual Studio 2017\Projects\nextcloud\nextcloud-react-promise\obj\Debug\netstandard2.0\nextcloud-react-promise.msbuildproj.CoreCompileInputs.cache
-C:\Users\igice\Documents\Visual Studio 2017\Projects\nextcloud\nextcloud-react-promise\obj\Debug\netstandard2.0\nextcloud-react-promise.dll
-C:\Users\igice\Documents\Visual Studio 2017\Projects\nextcloud\nextcloud-react-promise\obj\Debug\netstandard2.0\nextcloud-react-promise.pdb

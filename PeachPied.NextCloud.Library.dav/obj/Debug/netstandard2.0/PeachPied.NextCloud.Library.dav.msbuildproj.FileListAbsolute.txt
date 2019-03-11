@@ -1,7 +1,0 @@
-C:\Users\igice\Documents\Visual Studio 2017\Projects\nextcloud\PeachPied.NextCloud.Library.dav\obj\Debug\netstandard2.0\PeachPied.NextCloud.Library.dav.msbuildprojAssemblyReference.cache
-C:\Users\igice\Documents\Visual Studio 2017\Projects\nextcloud\PeachPied.NextCloud.Library.dav\obj\Debug\netstandard2.0\PeachPied.NextCloud.Library.dav.msbuildproj.CoreCompileInputs.cache
-C:\Users\igice\Documents\Visual Studio 2017\Projects\nextcloud\PeachPied.NextCloud.Library.dav\bin\Debug\netstandard2.0\PeachPied.NextCloud.Library.dav.deps.json
-C:\Users\igice\Documents\Visual Studio 2017\Projects\nextcloud\PeachPied.NextCloud.Library.dav\bin\Debug\netstandard2.0\PeachPied.NextCloud.Library.dav.dll
-C:\Users\igice\Documents\Visual Studio 2017\Projects\nextcloud\PeachPied.NextCloud.Library.dav\bin\Debug\netstandard2.0\PeachPied.NextCloud.Library.dav.pdb
-C:\Users\igice\Documents\Visual Studio 2017\Projects\nextcloud\PeachPied.NextCloud.Library.dav\obj\Debug\netstandard2.0\PeachPied.NextCloud.Library.dav.dll
-C:\Users\igice\Documents\Visual Studio 2017\Projects\nextcloud\PeachPied.NextCloud.Library.dav\obj\Debug\netstandard2.0\PeachPied.NextCloud.Library.dav.pdb
