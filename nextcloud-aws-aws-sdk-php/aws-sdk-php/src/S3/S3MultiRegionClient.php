@@ -223,7 +223,7 @@ class S3MultiRegionClient extends BaseClient implements S3ClientInterface
                     $cacheKey
                 ) {
                     try {
-                        yield $handler($command);
+                        $handler($command);
                     } catch (PermanentRedirectException $e) {
                         if (empty($command['Bucket'])) {
                             throw $e;
@@ -234,13 +234,13 @@ class S3MultiRegionClient extends BaseClient implements S3ClientInterface
                             $region = $result['@metadata']['headers']['x-amz-bucket-region'];
                             $this->cache->set($cacheKey, $region);
                         } else {
-                            $region = (yield $this->determineBucketRegionAsync(
+                            $region = ( $this->determineBucketRegionAsync(
                                 $command['Bucket']
                             ));
                         }
 
                         $command['@region'] = $region;
-                        yield $handler($command);
+                        $handler($command);
                     } catch (AwsException $e) {
                         if ($e->getAwsErrorCode() === 'AuthorizationHeaderMalformed') {
                             $region = $this->determineBucketRegionFromExceptionBody(
@@ -250,7 +250,7 @@ class S3MultiRegionClient extends BaseClient implements S3ClientInterface
                                 $this->cache->set($cacheKey, $region);
 
                                 $command['@region'] = $region;
-                                yield $handler($command);
+                                 $handler($command);
                             } else {
                                 throw $e;
                             }

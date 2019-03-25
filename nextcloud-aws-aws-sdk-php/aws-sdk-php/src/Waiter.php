@@ -98,7 +98,7 @@ class Waiter implements PromisorInterface
                     if ($this->config['before']) {
                         $this->config['before']($command, $attempt);
                     }
-                    $result = (yield $this->client->executeAsync($command));
+                    $result = ( $this->client->executeAsync($command));
                 } catch (AwsException $e) {
                     $result = $e;
                 }

@@ -2595,5 +2595,6 @@
     <ProjectReference Include="..\nextcloud-guzzlehttp-promises\nextcloud-guzzlehttp-promises.msbuildproj" />
     <ProjectReference Include="..\nextcloud-guzzlehttp-psr7\nextcloud-guzzlehttp-psr7.msbuildproj" />
     <ProjectReference Include="..\nextcloud-psr-http-message\nextcloud-psr-http-message.msbuildproj" />
+    <ProjectReference Include="..\doctrine\doctrine.msbuildproj" />
   </ItemGroup>
 </Project>

@@ -51,8 +51,6 @@ Project("{13B669BE-BB05-4DDF-9536-439F39A36129}") = "nextcloud-psr-http-message"
 EndProject
 Project("{13B669BE-BB05-4DDF-9536-439F39A36129}") = "doctrine", "doctrine\doctrine.msbuildproj", "{D88CAB76-E082-4371-8442-15D28B12DBA5}"
 EndProject
-Project("{13B669BE-BB05-4DDF-9536-439F39A36129}") = "Symfony", "Symfony\Symfony.msbuildproj", "{3C56157E-66D5-4D79-AFBA-F2882B2EE67F}"
-EndProject
 Project("{13B669BE-BB05-4DDF-9536-439F39A36129}") = "nextcloud-psr-log", "nextcloud-psr-log\nextcloud-psr-log.msbuildproj", "{4736E5D0-44B5-4DE2-B708-6090D5C93440}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "nextcloud-icewind-streams", "nextcloud-icewind-streams\nextcloud-icewind-streams.msbuildproj", "{DD2E57DD-2A9E-4952-98ED-83EA020A6DD1}"
@@ -92,6 +90,14 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "nextcloud-php-opencloud-openstack", "nextcloud-php-opencloud-openstack\nextcloud-php-opencloud-openstack.msbuildproj", "{1C8930A6-A372-4B67-8D59-B58D6B7C1B97}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "nextcloud-patchwork", "nextcloud-patchwork\nextcloud-patchwork.msbuildproj", "{BBC0AA4C-5AD0-4304-AA0E-4B08813D3F8D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "symfony-3rdparty", "symfony-3rdparty", "{3786EF00-41EE-4DDA-9B8F-AC8B5CCD2F68}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "symfony-lock", "symfony-lock\symfony-lock.msbuildproj", "{7FCDBF85-0F12-4398-8A46-30A075F8F8A0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ASP.NETCoreWebApplication", "ASP.NETCoreWebApplication\ASP.NETCoreWebApplication.csproj", "{CA887323-91DF-4C7B-8316-0324BDD0755A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "publicApi", "publicApi\publicApi.csproj", "{CACD2556-FE35-4843-BBB2-335F38345E75}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -271,6 +277,18 @@ Global
 		{BBC0AA4C-5AD0-4304-AA0E-4B08813D3F8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BBC0AA4C-5AD0-4304-AA0E-4B08813D3F8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BBC0AA4C-5AD0-4304-AA0E-4B08813D3F8D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7FCDBF85-0F12-4398-8A46-30A075F8F8A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7FCDBF85-0F12-4398-8A46-30A075F8F8A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7FCDBF85-0F12-4398-8A46-30A075F8F8A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7FCDBF85-0F12-4398-8A46-30A075F8F8A0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CA887323-91DF-4C7B-8316-0324BDD0755A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CA887323-91DF-4C7B-8316-0324BDD0755A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CA887323-91DF-4C7B-8316-0324BDD0755A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CA887323-91DF-4C7B-8316-0324BDD0755A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CACD2556-FE35-4843-BBB2-335F38345E75}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CACD2556-FE35-4843-BBB2-335F38345E75}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CACD2556-FE35-4843-BBB2-335F38345E75}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CACD2556-FE35-4843-BBB2-335F38345E75}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -315,6 +333,7 @@ Global
 		{81FF594B-BB15-4213-AF92-37ED09F43615} = {FADA6A78-A04F-4EA9-9BF0-EFF989E4C10F}
 		{1C8930A6-A372-4B67-8D59-B58D6B7C1B97} = {FADA6A78-A04F-4EA9-9BF0-EFF989E4C10F}
 		{BBC0AA4C-5AD0-4304-AA0E-4B08813D3F8D} = {FADA6A78-A04F-4EA9-9BF0-EFF989E4C10F}
+		{7FCDBF85-0F12-4398-8A46-30A075F8F8A0} = {3786EF00-41EE-4DDA-9B8F-AC8B5CCD2F68}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0F851AAA-350E-4E33-A035-9973A8476173}

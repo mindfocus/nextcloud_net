@@ -1,0 +1,49 @@
+﻿<Project Sdk="Peachpie.NET.Sdk/0.9.36">
+
+  <PropertyGroup>
+    <OutputType>Library</OutputType>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <Description>.NET class library in PHP</Description>
+    <AssemblyName>PhpLib1</AssemblyName>
+    <PackageId>PhpLib1</PackageId>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="**/*.php" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="lock\.git\config" />
+    <Content Include="lock\.git\description" />
+    <Content Include="lock\.git\HEAD" />
+    <Content Include="lock\.git\hooks\applypatch-msg.sample" />
+    <Content Include="lock\.git\hooks\commit-msg.sample" />
+    <Content Include="lock\.git\hooks\fsmonitor-watchman.sample" />
+    <Content Include="lock\.git\hooks\post-update.sample" />
+    <Content Include="lock\.git\hooks\pre-applypatch.sample" />
+    <Content Include="lock\.git\hooks\pre-commit.sample" />
+    <Content Include="lock\.git\hooks\pre-push.sample" />
+    <Content Include="lock\.git\hooks\pre-rebase.sample" />
+    <Content Include="lock\.git\hooks\pre-receive.sample" />
+    <Content Include="lock\.git\hooks\prepare-commit-msg.sample" />
+    <Content Include="lock\.git\hooks\update.sample" />
+    <Content Include="lock\.git\index" />
+    <Content Include="lock\.git\info\exclude" />
+    <Content Include="lock\.git\info\refs" />
+    <Content Include="lock\.git\logs\HEAD" />
+    <Content Include="lock\.git\logs\refs\heads\master" />
+    <Content Include="lock\.git\logs\refs\remotes\origin\HEAD" />
+    <Content Include="lock\.git\objects\info\packs" />
+    <Content Include="lock\.git\objects\pack\pack-f524c9a518f87f91b3a5fcf429fa2184b5fd983a.idx" />
+    <Content Include="lock\.git\objects\pack\pack-f524c9a518f87f91b3a5fcf429fa2184b5fd983a.pack" />
+    <Content Include="lock\.git\ORIG_HEAD" />
+    <Content Include="lock\.git\packed-refs" />
+    <Content Include="lock\.git\refs\heads\master" />
+    <Content Include="lock\.git\refs\remotes\origin\HEAD" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="lock\.git\refs\tags" />
+  </ItemGroup>
+</Project>

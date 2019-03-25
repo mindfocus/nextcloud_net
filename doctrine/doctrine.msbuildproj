@@ -1596,6 +1596,5 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Symfony\Symfony.msbuildproj" />
   </ItemGroup>
 </Project>
