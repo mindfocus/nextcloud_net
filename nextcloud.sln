@@ -5,8 +5,6 @@ VisualStudioVersion = 15.0.28307.438
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{13B669BE-BB05-4DDF-9536-439F39A36129}") = "nextcloud", "nextcloud\nextcloud.msbuildproj", "{DBCAA63A-F633-4213-AB35-04A81CD43202}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Server", "Server\Server.csproj", "{3AC61FD4-180E-44F4-80C2-112BCA858667}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PeachPied.NextCloud.AspNetcore", "PeachPied.NextCloud.AspNetcore\PeachPied.NextCloud.AspNetcore.csproj", "{F00BFD83-C38A-45B0-AB71-A56D5ABFEF56}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PeachPied.NextCloud.Sdk", "PeachPied.NextCloud.Sdk\PeachPied.NextCloud.Sdk.csproj", "{556BF278-40CD-4244-8490-3A6280B4ED9F}"
@@ -95,8 +93,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "symfony-3rdparty", "symfony
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "symfony-lock", "symfony-lock\symfony-lock.msbuildproj", "{7FCDBF85-0F12-4398-8A46-30A075F8F8A0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ASP.NETCoreWebApplication", "ASP.NETCoreWebApplication\ASP.NETCoreWebApplication.csproj", "{CA887323-91DF-4C7B-8316-0324BDD0755A}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "publicApi", "publicApi\publicApi.csproj", "{CACD2556-FE35-4843-BBB2-335F38345E75}"
 EndProject
 Global
@@ -109,10 +105,6 @@ Global
 		{DBCAA63A-F633-4213-AB35-04A81CD43202}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DBCAA63A-F633-4213-AB35-04A81CD43202}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DBCAA63A-F633-4213-AB35-04A81CD43202}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3AC61FD4-180E-44F4-80C2-112BCA858667}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3AC61FD4-180E-44F4-80C2-112BCA858667}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3AC61FD4-180E-44F4-80C2-112BCA858667}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3AC61FD4-180E-44F4-80C2-112BCA858667}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F00BFD83-C38A-45B0-AB71-A56D5ABFEF56}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F00BFD83-C38A-45B0-AB71-A56D5ABFEF56}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F00BFD83-C38A-45B0-AB71-A56D5ABFEF56}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -281,10 +273,6 @@ Global
 		{7FCDBF85-0F12-4398-8A46-30A075F8F8A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7FCDBF85-0F12-4398-8A46-30A075F8F8A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7FCDBF85-0F12-4398-8A46-30A075F8F8A0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{CA887323-91DF-4C7B-8316-0324BDD0755A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CA887323-91DF-4C7B-8316-0324BDD0755A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CA887323-91DF-4C7B-8316-0324BDD0755A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CA887323-91DF-4C7B-8316-0324BDD0755A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{CACD2556-FE35-4843-BBB2-335F38345E75}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{CACD2556-FE35-4843-BBB2-335F38345E75}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CACD2556-FE35-4843-BBB2-335F38345E75}.Release|Any CPU.ActiveCfg = Release|Any CPU
