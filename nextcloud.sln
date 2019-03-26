@@ -5,12 +5,6 @@ VisualStudioVersion = 15.0.28307.438
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{13B669BE-BB05-4DDF-9536-439F39A36129}") = "nextcloud", "nextcloud\nextcloud.msbuildproj", "{DBCAA63A-F633-4213-AB35-04A81CD43202}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PeachPied.NextCloud.AspNetcore", "PeachPied.NextCloud.AspNetcore\PeachPied.NextCloud.AspNetcore.csproj", "{F00BFD83-C38A-45B0-AB71-A56D5ABFEF56}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PeachPied.NextCloud.Sdk", "PeachPied.NextCloud.Sdk\PeachPied.NextCloud.Sdk.csproj", "{556BF278-40CD-4244-8490-3A6280B4ED9F}"
-EndProject
-Project("{13B669BE-BB05-4DDF-9536-439F39A36129}") = "PeachPied.NextCloud.Library.dav", "PeachPied.NextCloud.Library.dav\PeachPied.NextCloud.Library.dav.msbuildproj", "{11ED7252-353C-4C43-9C47-613A94A5DA9A}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "nextcloud-3rdparty", "nextcloud-3rdparty", "{FADA6A78-A04F-4EA9-9BF0-EFF989E4C10F}"
 EndProject
 Project("{13B669BE-BB05-4DDF-9536-439F39A36129}") = "nextcloud-bantu", "nextcloud-bantu\nextcloud-bantu.msbuildproj", "{579DC3E2-FE2E-473C-975B-1B31EF6F6A8C}"
@@ -107,18 +101,6 @@ Global
 		{DBCAA63A-F633-4213-AB35-04A81CD43202}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DBCAA63A-F633-4213-AB35-04A81CD43202}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DBCAA63A-F633-4213-AB35-04A81CD43202}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F00BFD83-C38A-45B0-AB71-A56D5ABFEF56}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F00BFD83-C38A-45B0-AB71-A56D5ABFEF56}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F00BFD83-C38A-45B0-AB71-A56D5ABFEF56}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F00BFD83-C38A-45B0-AB71-A56D5ABFEF56}.Release|Any CPU.Build.0 = Release|Any CPU
-		{556BF278-40CD-4244-8490-3A6280B4ED9F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{556BF278-40CD-4244-8490-3A6280B4ED9F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{556BF278-40CD-4244-8490-3A6280B4ED9F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{556BF278-40CD-4244-8490-3A6280B4ED9F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{11ED7252-353C-4C43-9C47-613A94A5DA9A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{11ED7252-353C-4C43-9C47-613A94A5DA9A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{11ED7252-353C-4C43-9C47-613A94A5DA9A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{11ED7252-353C-4C43-9C47-613A94A5DA9A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{579DC3E2-FE2E-473C-975B-1B31EF6F6A8C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{579DC3E2-FE2E-473C-975B-1B31EF6F6A8C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{579DC3E2-FE2E-473C-975B-1B31EF6F6A8C}.Release|Any CPU.ActiveCfg = Release|Any CPU
