@@ -1,6 +1,9 @@
 language: csharp
 mono: none
-dotnet: 3.0.100-preview3-010431
+dist: xenial
+sudo: required
+services:
+ - docker
 script:
  - dotnet restore
  - dotnet build
