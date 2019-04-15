@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.438
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28809.33
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{13B669BE-BB05-4DDF-9536-439F39A36129}") = "nextcloud", "nextcloud\nextcloud.msbuildproj", "{DBCAA63A-F633-4213-AB35-04A81CD43202}"
 EndProject
@@ -87,9 +87,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "symfony-3rdparty", "symfony
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "symfony-lock", "symfony-lock\symfony-lock.msbuildproj", "{7FCDBF85-0F12-4398-8A46-30A075F8F8A0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "publicApi", "publicApi\publicApi.csproj", "{CACD2556-FE35-4843-BBB2-335F38345E75}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "publicApi", "publicApi\publicApi.csproj", "{CACD2556-FE35-4843-BBB2-335F38345E75}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "publicApiTest", "publicApiTest\publicApiTest.csproj", "{24A52374-8508-44AE-B3AC-0EC487717688}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "publicApiTest", "publicApiTest\publicApiTest.csproj", "{24A52374-8508-44AE-B3AC-0EC487717688}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
