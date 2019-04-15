@@ -2,6 +2,7 @@ language: csharp
 mono: none
 dist: xenial
 sudo: required
+dotnet: 2.1.403
 services:
  - docker
 script:
