@@ -1,4 +1,4 @@
-<?php
+ <?php
 /**
  * @copyright Copyright (c) 2018 Arthur Schiwon <blizzz@arthur-schiwon.de>
  *

@@ -5,12 +5,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Compile Include="public\Accounts\IAccountManager.php" />
-      <Compile Include="public\Activity\IConsumer.php" />
-      <Compile Include="public\Activity\IEvent.php" />
-      <Compile Include="public\Activity\IEventMerger.php" />
-      <Compile Include="public\Activity\IExtension.php" />
-      <Compile Include="public\Activity\IFilter.php" />
       <Compile Include="public\Activity\IManager.php" />
       <Compile Include="public\Activity\IProvider.php" />
       <Compile Include="public\Activity\ISetting.php" />
@@ -293,11 +287,9 @@
       <Compile Include="public\IEventSource.php" />
       <Compile Include="public\IGroup.php" />
       <Compile Include="public\IGroupManager.php" />
-      <Compile Include="public\IImage.php" />
       <Compile Include="public\IInitialStateService.php" />
       <Compile Include="public\IL10N.php" />
       <Compile Include="public\ILogger.php" />
-      <Compile Include="public\Image.php" />
       <Compile Include="public\IMemcache.php" />
       <Compile Include="public\IMemcacheTTL.php" />
       <Compile Include="public\INavigationManager.php" />
@@ -310,7 +302,6 @@
       <Compile Include="public\ITags.php" />
       <Compile Include="public\ITempManager.php" />
       <Compile Include="public\IURLGenerator.php" />
-      <Compile Include="public\IUser.php" />
       <Compile Include="public\IUserBackend.php" />
       <Compile Include="public\IUserManager.php" />
       <Compile Include="public\IUserSession.php" />

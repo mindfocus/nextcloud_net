@@ -294,7 +294,7 @@ namespace publicApi.Activity
 	 * @return string
 	 * @since 8.2.0
 	 */
-	string getLink(;
+	string getLink();
 
 	/**
 	 * @param string icon
