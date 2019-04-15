@@ -6,8 +6,6 @@
 
     <ItemGroup>
       <Compile Include="public\Activity\IManager.php" />
-      <Compile Include="public\Activity\IProvider.php" />
-      <Compile Include="public\Activity\ISetting.php" />
       <Compile Include="public\API.php" />
       <Compile Include="public\App.php" />
       <Compile Include="public\AppFramework\ApiController.php" />
@@ -59,8 +57,6 @@
       <Compile Include="public\AppFramework\QueryException.php" />
       <Compile Include="public\AppFramework\Utility\IControllerMethodReflector.php" />
       <Compile Include="public\AppFramework\Utility\ITimeFactory.php" />
-      <Compile Include="public\App\AppPathNotFoundException.php" />
-      <Compile Include="public\App\IAppManager.php" />
       <Compile Include="public\App\ManagerEvent.php" />
       <Compile Include="public\Authentication\Exceptions\CredentialsUnavailableException.php" />
       <Compile Include="public\Authentication\Exceptions\PasswordUnavailableException.php" />
@@ -289,7 +285,6 @@
       <Compile Include="public\IGroupManager.php" />
       <Compile Include="public\IInitialStateService.php" />
       <Compile Include="public\IL10N.php" />
-      <Compile Include="public\ILogger.php" />
       <Compile Include="public\IMemcache.php" />
       <Compile Include="public\IMemcacheTTL.php" />
       <Compile Include="public\INavigationManager.php" />
@@ -313,9 +308,7 @@
       <Compile Include="public\Lockdown\ILockdownManager.php" />
       <Compile Include="public\Lock\ILockingProvider.php" />
       <Compile Include="public\Lock\LockedException.php" />
-      <Compile Include="public\Log\IFileBased.php" />
       <Compile Include="public\Log\ILogFactory.php" />
-      <Compile Include="public\Log\IWriter.php" />
       <Compile Include="public\Log\RotationTrait.php" />
       <Compile Include="public\Mail\IAttachment.php" />
       <Compile Include="public\Mail\IEMailTemplate.php" />
