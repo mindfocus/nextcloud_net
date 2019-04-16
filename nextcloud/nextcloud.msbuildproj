@@ -1,22 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   
   <PropertyGroup>
-    <OutputType>Library</OutputType>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>PeachPied.NextCloud</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>
     <Compile Include="**/*.php" />
   </ItemGroup>
-
-  <ItemGroup>
-    <Content Include="**" Exclude="obj/**;bin/**;PublishProfiles/**;@(Compile);$(MsBuildThisFile)">
-      <PackagePath>contentFiles/any/netcoreapp2.0/wwwroot/</PackagePath>
-      <PackageCopyToOutput>true</PackageCopyToOutput>
-      <CopyToOutputDirectory>true</CopyToOutputDirectory>
-      <CopyToPublishDirectory>true</CopyToPublishDirectory>
-    </Content>
-  </ItemGroup>
-
 </Project>

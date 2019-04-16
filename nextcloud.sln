@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.28809.33
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{13B669BE-BB05-4DDF-9536-439F39A36129}") = "nextcloud", "nextcloud\nextcloud.msbuildproj", "{DBCAA63A-F633-4213-AB35-04A81CD43202}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "nextcloud-3rdparty", "nextcloud-3rdparty", "{FADA6A78-A04F-4EA9-9BF0-EFF989E4C10F}"
 EndProject
 Project("{13B669BE-BB05-4DDF-9536-439F39A36129}") = "nextcloud-bantu", "nextcloud-bantu\nextcloud-bantu.msbuildproj", "{579DC3E2-FE2E-473C-975B-1B31EF6F6A8C}"
@@ -91,16 +89,14 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "publicApi", "publicApi\publ
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "publicApiTest", "publicApiTest\publicApiTest.csproj", "{24A52374-8508-44AE-B3AC-0EC487717688}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "privateApi", "privateApi\privateApi.csproj", "{E78AEB25-5D74-4E0D-8EBE-9DB1A9791819}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{DBCAA63A-F633-4213-AB35-04A81CD43202}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DBCAA63A-F633-4213-AB35-04A81CD43202}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DBCAA63A-F633-4213-AB35-04A81CD43202}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DBCAA63A-F633-4213-AB35-04A81CD43202}.Release|Any CPU.Build.0 = Release|Any CPU
 		{579DC3E2-FE2E-473C-975B-1B31EF6F6A8C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{579DC3E2-FE2E-473C-975B-1B31EF6F6A8C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{579DC3E2-FE2E-473C-975B-1B31EF6F6A8C}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -261,6 +257,10 @@ Global
 		{24A52374-8508-44AE-B3AC-0EC487717688}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{24A52374-8508-44AE-B3AC-0EC487717688}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{24A52374-8508-44AE-B3AC-0EC487717688}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E78AEB25-5D74-4E0D-8EBE-9DB1A9791819}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E78AEB25-5D74-4E0D-8EBE-9DB1A9791819}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E78AEB25-5D74-4E0D-8EBE-9DB1A9791819}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E78AEB25-5D74-4E0D-8EBE-9DB1A9791819}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

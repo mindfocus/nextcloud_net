@@ -1,3 +1,7 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+
 namespace publicApi
 {
 /**
@@ -138,6 +142,6 @@ interface ILogger {
 	 * @return void
 	 * @since 8.2.0
 	 */
-	void logException(Exception exception, array context = []);
+	void logException(Exception exception, Dictionary<string,object> context);
 }
 }
