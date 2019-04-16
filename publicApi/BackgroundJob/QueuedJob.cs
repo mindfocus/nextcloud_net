@@ -25,10 +25,10 @@ namespace publicApi.BackgroundJob
          * @since 15.0.0
          */
         public void execute(IJobList jobList, ILogger logger = null)
-    {
-		jobList.remove(this, this.argument);
-        execute(jobList, logger);
+        {
+            jobList.remove(this, this.argument);
+            execute(jobList, logger);
+        }
     }
-}
 
 }

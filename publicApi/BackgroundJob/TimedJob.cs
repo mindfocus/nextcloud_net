@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using publicApi.AppFramework.Utility;
 using Quartz;
 
 namespace publicApi.BackgroundJob
@@ -17,12 +18,16 @@ namespace publicApi.BackgroundJob
     /** @var int */
     protected int interval = 0;
 
-	/**
-	 * set the interval for the job
-	 *
-	 * @since 15.0.0
-	 */
-	void setInterval(int interval)
+        public TimedJob(ITimeFactory time) : base(time)
+        {
+        }
+
+        /**
+         * set the interval for the job
+         *
+         * @since 15.0.0
+         */
+        void setInterval(int interval)
     {
             this.interval = interval;
     }

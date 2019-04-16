@@ -5,7 +5,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Compile Include="public\Activity\IManager.php" />
       <Compile Include="public\API.php" />
       <Compile Include="public\App.php" />
       <Compile Include="public\AppFramework\ApiController.php" />
@@ -56,7 +55,6 @@
       <Compile Include="public\AppFramework\PublicShareController.php" />
       <Compile Include="public\AppFramework\QueryException.php" />
       <Compile Include="public\AppFramework\Utility\IControllerMethodReflector.php" />
-      <Compile Include="public\AppFramework\Utility\ITimeFactory.php" />
       <Compile Include="public\App\ManagerEvent.php" />
       <Compile Include="public\Authentication\Exceptions\CredentialsUnavailableException.php" />
       <Compile Include="public\Authentication\Exceptions\PasswordUnavailableException.php" />
@@ -75,22 +73,6 @@
       <Compile Include="public\Authentication\TwoFactorAuth\TwoFactorException.php" />
       <Compile Include="public\AutoloadNotAllowedException.php" />
       <Compile Include="public\BackgroundJob.php" />
-      <Compile Include="public\BackgroundJob\IJob.php" />
-      <Compile Include="public\BackgroundJob\IJobList.php" />
-      <Compile Include="public\BackgroundJob\Job.php" />
-      <Compile Include="public\BackgroundJob\QueuedJob.php" />
-      <Compile Include="public\BackgroundJob\TimedJob.php" />
-      <Compile Include="public\Calendar\BackendTemporarilyUnavailableException.php" />
-      <Compile Include="public\Calendar\ICalendar.php" />
-      <Compile Include="public\Calendar\IManager.php" />
-      <Compile Include="public\Calendar\Resource\IBackend.php" />
-      <Compile Include="public\Calendar\Resource\IManager.php" />
-      <Compile Include="public\Calendar\Resource\IResource.php" />
-      <Compile Include="public\Calendar\Room\IBackend.php" />
-      <Compile Include="public\Calendar\Room\IManager.php" />
-      <Compile Include="public\Calendar\Room\IRoom.php" />
-      <Compile Include="public\Capabilities\ICapability.php" />
-      <Compile Include="public\Capabilities\IPublicCapability.php" />
       <Compile Include="public\Collaboration\AutoComplete\AutoCompleteEvent.php" />
       <Compile Include="public\Collaboration\AutoComplete\IManager.php" />
       <Compile Include="public\Collaboration\AutoComplete\ISorter.php" />
@@ -281,7 +263,6 @@
       <Compile Include="public\IDateTimeZone.php" />
       <Compile Include="public\IDBConnection.php" />
       <Compile Include="public\IEventSource.php" />
-      <Compile Include="public\IGroup.php" />
       <Compile Include="public\IGroupManager.php" />
       <Compile Include="public\IInitialStateService.php" />
       <Compile Include="public\IL10N.php" />
@@ -382,7 +363,6 @@
       <Compile Include="public\SystemTag\TagNotFoundException.php" />
       <Compile Include="public\Template.php" />
       <Compile Include="public\User.php" />
-      <Compile Include="public\UserInterface.php" />
       <Compile Include="public\User\Backend\ABackend.php" />
       <Compile Include="public\User\Backend\ICheckPasswordBackend.php" />
       <Compile Include="public\User\Backend\ICountUsersBackend.php" />
@@ -397,6 +377,11 @@
       <Compile Include="public\WorkflowEngine\ICheck.php" />
       <Compile Include="public\WorkflowEngine\IManager.php" />
       <Compile Include="public\WorkflowEngine\IOperation.php" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.2.4" />
+      <PackageReference Include="Quartz" Version="3.0.7" />
     </ItemGroup>
 
 </Project>
