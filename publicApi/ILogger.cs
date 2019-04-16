@@ -42,7 +42,7 @@ interface ILogger {
 	 * @return null
 	 * @since 7.0.0
 	 */
-	void emergency(string message, Array context = []);
+	void emergency(string message, Array context);
 
 	/**
 	 * Action must be taken immediately.
@@ -52,7 +52,7 @@ interface ILogger {
 	 * @return null
 	 * @since 7.0.0
 	 */
-	void alert(string message, List<string> context = []);
+	void alert(string message, List<string> context);
 
 	/**
 	 * Critical conditions.
@@ -62,7 +62,7 @@ interface ILogger {
 	 * @return null
 	 * @since 7.0.0
 	 */
-	void critical(string message, array context = []);
+	void critical(string message, Array context);
 
 	/**
 	 * Runtime errors that do not require immediate action but should typically
@@ -73,7 +73,7 @@ interface ILogger {
 	 * @return null
 	 * @since 7.0.0
 	 */
-	void error(string message, array context = []);
+	void error(string message, Array context);
 
 	/**
 	 * Exceptional occurrences that are not errors.
@@ -83,7 +83,7 @@ interface ILogger {
 	 * @return null
 	 * @since 7.0.0
 	 */
-	void warning(string message, array context = []);
+	void warning(string message, Array context);
 
 	/**
 	 * Normal but significant events.
@@ -93,7 +93,7 @@ interface ILogger {
 	 * @return null
 	 * @since 7.0.0
 	 */
-	void notice(string message, array context = []);
+	void notice(string message, Array context);
 
 	/**
 	 * Interesting events.
@@ -103,7 +103,7 @@ interface ILogger {
 	 * @return null
 	 * @since 7.0.0
 	 */
-	void info(string message, array context = []);
+	void info(string message, Array context);
 
 	/**
 	 * Detailed debug information.
@@ -113,7 +113,7 @@ interface ILogger {
 	 * @return null
 	 * @since 7.0.0
 	 */
-	void debug(string message, array context = []);
+	void debug(string message, Array context);
 
 	/**
 	 * Logs with an arbitrary level.
@@ -124,7 +124,7 @@ interface ILogger {
 	 * @return mixed
 	 * @since 7.0.0
 	 */
-	void log(int level, string message, array context = []);
+	void log(int level, string message, Array context);
 
 	/**
 	 * Logs an exception very detailed
