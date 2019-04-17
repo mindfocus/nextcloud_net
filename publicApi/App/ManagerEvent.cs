@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using publicApi.ext;
 
 namespace publicApi.App
 {
@@ -13,21 +14,21 @@ namespace publicApi.App
     class ManagerEvent : Event
     {
 
-	string EVENT_APP_ENABLE = @"OCP\App\IAppManager::enableApp";
-	const EVENT_APP_ENABLE_FOR_GROUPS = 'OCP\App\IAppManager::enableAppForGroups';
-	const EVENT_APP_DISABLE = 'OCP\App\IAppManager::disableApp';
+	// string EVENT_APP_ENABLE = @"OCP\App\IAppManager::enableApp";
+	// const EVENT_APP_ENABLE_FOR_GROUPS = 'OCP\App\IAppManager::enableAppForGroups';
+	// const EVENT_APP_DISABLE = 'OCP\App\IAppManager::disableApp';
 
 	/**
 	 * @since 9.1.0
 	 */
-	const EVENT_APP_UPDATE = 'OCP\App\IAppManager::updateApp';
+	// const EVENT_APP_UPDATE = 'OCP\App\IAppManager::updateApp';
 
     /** @var string */
-    protected $event;
+    protected string @event;
     /** @var string */
-    protected $appID;
+    protected string appID;
 	/** @var \OCP\IGroup[]|null */
-	protected $groups;
+	protected IList<IGroup> groups;
 
 	/**
 	 * DispatcherEvent constructor.
@@ -37,29 +38,29 @@ namespace publicApi.App
 	 * @param \OCP\IGroup[]|null $groups
 	 * @since 9.0.0
 	 */
-	public function __construct($event, $appID, array $groups = null)
+	public ManagerEvent(string @event, string appID, IList<IGroup> groups = null)
     {
-		$this->event = $event;
-		$this->appID = $appID;
-		$this->groups = $groups;
+        this.@event = @event;
+        this.appID = appID;
+        this.groups = groups;
     }
 
     /**
 	 * @return string
 	 * @since 9.0.0
 	 */
-    public function getEvent()
+    public string getEvent()
     {
-        return $this->event;
+        return this.@event;
     }
 
     /**
 	 * @return string
 	 * @since 9.0.0
 	 */
-    public function getAppID()
+    public string getAppID()
     {
-        return $this->appID;
+        return this.appID;
     }
 
     /**
@@ -67,12 +68,14 @@ namespace publicApi.App
 	 * @return string[]
 	 * @since 9.0.0
 	 */
-    public function getGroups()
+    public IList<string> getGroups()
     {
-        return array_map(function($group) {
-            /** @var \OCP\IGroup $group */
-            return $group->getGID();
-        }, $this->groups);
+        var result = new List<string>();
+        foreach (var item in this.groups)
+        {
+            result.Add(item.getGID());
+        }
+        return result;
     }
 }
 

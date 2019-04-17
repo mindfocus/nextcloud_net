@@ -18,7 +18,7 @@ namespace publicApi
  * @since 6.0.0
  */
 
-interface ITags
+public interface ITags
     {
 
         /**
@@ -37,7 +37,7 @@ interface ITags
          * @return array|false
          * @since 8.0.0
          */
-        public bool getTag(string id);
+        // public bool getTag(string id);
         public IDictionary getTag(string id);
 
         /**
@@ -69,8 +69,8 @@ interface ITags
          * of tag names as value or false if an error occurred
          * @since 8.0.0
          */
-        public bool getTagsForObjects(IList<string> objIds);
-        public IDictionary getTagsForObjects(IList<string>  $objIds);
+        // public bool getTagsForObjects(IList<string> objIds);
+        public IDictionary getTagsForObjects(IList<string> objIds);
         /**
          * Get a list of items tagged with $tag.
          *
@@ -140,7 +140,7 @@ interface ITags
          * @return boolean Returns false on error.
          * @since 6.0.0
          */
-        public bool purgeObjects(IList<string> $ids);
+        public bool purgeObjects(IList<string> ids);
 
         /**
          * Get favorites for an object type

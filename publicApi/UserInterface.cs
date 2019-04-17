@@ -9,7 +9,7 @@ namespace publicApi
      * @package OCP
      * @since 4.5.0
      */
-    interface UserInterface
+    public interface UserInterface
     {
 
         /**

@@ -12,7 +12,7 @@ namespace publicApi
  * This logger interface follows the design guidelines of PSR-3
  * https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-3-logger-interface.md#3-psrlogloggerinterface
  */
-interface ILogger {
+public interface ILogger {
 //	/**
 //	 * @since 14.0.0
 //	 */

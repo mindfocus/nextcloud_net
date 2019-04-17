@@ -1,7 +1,7 @@
 ﻿using System;
 namespace publicApi.Authentication.Exception
 {
-    public interface CredentialsUnavailableException : Exception
+    public class CredentialsUnavailableException : Exception
     {
     }
 }

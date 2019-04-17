@@ -4,7 +4,7 @@ using System.Text;
 
 namespace publicApi.BackgroundJob
 {
-    interface IJob : Quartz.IJob
+    public interface IJob : Quartz.IJob
     {
         /**
 	 * Run the background job with the registered argument

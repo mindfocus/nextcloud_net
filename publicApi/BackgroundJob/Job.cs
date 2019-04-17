@@ -56,6 +56,11 @@ namespace publicApi.BackgroundJob
             }
             }
 
+        public Task Execute(IJobExecutionContext context)
+        {
+            throw new NotImplementedException();
+        }
+
         public object getArgument()
         {
             return this.argument;

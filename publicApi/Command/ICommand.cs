@@ -7,7 +7,7 @@ namespace publicApi.Command
      * @package OCP\Command
      * @since 8.1.0
      */
-    interface ICommand
+    public interface ICommand
     {
         /**
          * Run the command

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace publicApi
 {
-    interface IUser
+    public interface IUser
     {
         /**
  * get the user id
