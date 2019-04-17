@@ -1,37 +1,13 @@
-<?php
-/**
- * @copyright Copyright (c) 2016, ownCloud, Inc.
- *
- * @author Björn Schießle <bjoern@schiessle.org>
- * @author Joas Schilling <coding@schilljs.com>
- * @author Morris Jobke <hey@morrisjobke.de>
- * @author Robin McCorkell <robin@mccorkell.me.uk>
- *
- * @license AGPL-3.0
- *
- * This code is free software: you can redistribute it and/or modify
- * it under the terms of the GNU Affero General Public License, version 3,
- * as published by the Free Software Foundation.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
- * GNU Affero General Public License for more details.
- *
- * You should have received a copy of the GNU Affero General Public License, version 3,
- * along with this program.  If not, see <http://www.gnu.org/licenses/>
- *
- */
-
-// use OCP namespace for all classes that are considered public.
-// This means that they should be used by apps instead of the internal ownCloud classes
-namespace OCP;
-
-/**
+using System;
+using System.Collections;
+using System.Collections.Generic;
+namespace publicApi
+{
+    /**
  * Interface that apps must implement to share content.
  * @since 5.0.0
  */
-interface Share_Backend {
+public interface Share_Backend {
 
 	/**
 	 * Check if this $itemSource exist for the user
@@ -42,7 +18,7 @@ interface Share_Backend {
 	 * Return false if the item does not exist for the user
 	 * @since 5.0.0
 	 */
-	public function isValidSource($itemSource, $uidOwner);
+	bool isValidSource(string itemSource, string uidOwner);
 
 	/**
 	 * Get a unique name of the item for the specified user
@@ -55,7 +31,7 @@ interface Share_Backend {
 	 * If it does generate a new name e.g. name_#
 	 * @since 5.0.0
 	 */
-	public function generateTarget($itemSource, $shareWith, $exclude = null);
+	string generateTarget(string itemSource, string shareWith, IList<string> exclude = null);
 
 	/**
 	 * Converts the shared item sources back into the item in the specified format
@@ -92,6 +68,8 @@ interface Share_Backend {
 	 * all share types defined by the share API
 	 * @since 8.0.0
 	 */
-	public function isShareTypeAllowed($shareType);
+	void isShareTypeAllowed(string shareType);
+
+}
 
 }
