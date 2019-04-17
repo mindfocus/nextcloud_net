@@ -257,7 +257,6 @@
       <Compile Include="public\IServerContainer.php" />
       <Compile Include="public\ISession.php" />
       <Compile Include="public\ITagManager.php" />
-      <Compile Include="public\ITags.php" />
       <Compile Include="public\ITempManager.php" />
       <Compile Include="public\IURLGenerator.php" />
       <Compile Include="public\IUserBackend.php" />
@@ -355,7 +354,6 @@
       <Compile Include="public\User\Backend\IProvideAvatarBackend.php" />
       <Compile Include="public\User\Backend\ISetDisplayNameBackend.php" />
       <Compile Include="public\User\Backend\ISetPasswordBackend.php" />
-      <Compile Include="public\Util.php" />
       <Compile Include="public\WorkflowEngine\ICheck.php" />
       <Compile Include="public\WorkflowEngine\IManager.php" />
       <Compile Include="public\WorkflowEngine\IOperation.php" />
