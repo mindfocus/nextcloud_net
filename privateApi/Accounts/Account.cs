@@ -4,46 +4,46 @@ using System.Text;
 
 namespace privateApi.Accounts
 {
-    class Account : IAccount
+    public class Account : IAccount
     {
 
     /** @var IAccountProperty[] */
-    private $properties = [];
+    private IList<IAccountProperty> properties = new List<IAccountProperty>();
 
 	/** @var IUser */
-	private $user;
+	private IUser user;
 
-	public function __construct(IUser $user)
+	public Account(IUser user)
     {
-		$this->user = $user;
+            this.user = user;
     }
 
-    public function setProperty(string $property, string $value, string $scope, string $verified): IAccount {
-		$this->properties[$property] = new AccountProperty($property, $value, $scope, $verified);
-		return $this;
+    public IAccount setProperty(string property, string value, string scope, string verified) {
+		this.properties[property] = new AccountProperty(property, value, scope, verified);
+		return this;
 
     }
 
-    public function getProperty(string $property): IAccountProperty {
-		if (!array_key_exists($property, $this->properties)) {
-			throw new PropertyDoesNotExistException($property);
+    public IAccountProperty getProperty(string property)  {
+		if (!array_key_exists(property, this.properties)) {
+			throw new PropertyDoesNotExistException(property);
 }
-		return $this->properties[$property];
+		return this.properties[property];
 
     }
 
-public function getProperties(): array {
-		return $this->properties;
+public IList<IAccountProperty> getProperties() {
+		return this.properties;
 
     }
 
-public function getFilteredProperties(string $scope = null, string $verified = null): array {
-		return \array_filter($this->properties, function(IAccountProperty $obj) use($scope, $verified)
+public function getFilteredProperties(string scope = null, string verified = null): array {
+		return \array_filter(this.properties, function(IAccountProperty obj) use(scope, verified)
 {
-    if ($scope !== null && $scope !== $obj->getScope()) {
+    if (scope !== null && scope !== obj.getScope()) {
         return false;
     }
-    if ($verified !== null && $verified !== $obj->getVerified()) {
+    if (verified !== null && verified !== obj.getVerified()) {
         return false;
     }
     return true;
@@ -52,11 +52,11 @@ public function getFilteredProperties(string $scope = null, string $verified = n
 
 	public function jsonSerialize()
 {
-    return $this->properties;
+    return this.properties;
 }
 
 public function getUser(): IUser {
-		return $this->user;
+		return this.user;
 
     }
 }

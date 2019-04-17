@@ -4,16 +4,16 @@ using System.Text;
 
 namespace publicApi.Accounts
 {
-    interface IAccountManager
+    public interface IAccountManager
     {
-        /**
- * Get the account data for a given user
- *
- * @since 15.0.0
- *
- * @param IUser $user
- * @return IAccount
- */
+        /*
+         * Get the account data for a given user
+         *
+         * @since 15.0.0
+         *
+         * @param IUser $user
+         * @return IAccount
+         */
         IAccount getAccount(IUser user);
 
         ///** nobody can see my account details */

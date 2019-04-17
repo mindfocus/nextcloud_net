@@ -56,21 +56,6 @@
       <Compile Include="public\AppFramework\QueryException.php" />
       <Compile Include="public\AppFramework\Utility\IControllerMethodReflector.php" />
       <Compile Include="public\App\ManagerEvent.php" />
-      <Compile Include="public\Authentication\Exceptions\CredentialsUnavailableException.php" />
-      <Compile Include="public\Authentication\Exceptions\PasswordUnavailableException.php" />
-      <Compile Include="public\Authentication\IApacheBackend.php" />
-      <Compile Include="public\Authentication\LoginCredentials\ICredentials.php" />
-      <Compile Include="public\Authentication\LoginCredentials\IStore.php" />
-      <Compile Include="public\Authentication\TwoFactorAuth\IActivatableByAdmin.php" />
-      <Compile Include="public\Authentication\TwoFactorAuth\IDeactivatableByAdmin.php" />
-      <Compile Include="public\Authentication\TwoFactorAuth\IPersonalProviderSettings.php" />
-      <Compile Include="public\Authentication\TwoFactorAuth\IProvider.php" />
-      <Compile Include="public\Authentication\TwoFactorAuth\IProvidesCustomCSP.php" />
-      <Compile Include="public\Authentication\TwoFactorAuth\IProvidesIcons.php" />
-      <Compile Include="public\Authentication\TwoFactorAuth\IProvidesPersonalSettings.php" />
-      <Compile Include="public\Authentication\TwoFactorAuth\IRegistry.php" />
-      <Compile Include="public\Authentication\TwoFactorAuth\RegistryEvent.php" />
-      <Compile Include="public\Authentication\TwoFactorAuth\TwoFactorException.php" />
       <Compile Include="public\AutoloadNotAllowedException.php" />
       <Compile Include="public\BackgroundJob.php" />
       <Compile Include="public\Collaboration\AutoComplete\AutoCompleteEvent.php" />
@@ -86,8 +71,6 @@
       <Compile Include="public\Collaboration\Resources\IProvider.php" />
       <Compile Include="public\Collaboration\Resources\IResource.php" />
       <Compile Include="public\Collaboration\Resources\ResourceException.php" />
-      <Compile Include="public\Command\IBus.php" />
-      <Compile Include="public\Command\ICommand.php" />
       <Compile Include="public\Comments\CommentsEntityEvent.php" />
       <Compile Include="public\Comments\CommentsEvent.php" />
       <Compile Include="public\Comments\IComment.php" />
@@ -257,7 +240,6 @@
       <Compile Include="public\ICacheFactory.php" />
       <Compile Include="public\ICertificate.php" />
       <Compile Include="public\ICertificateManager.php" />
-      <Compile Include="public\IConfig.php" />
       <Compile Include="public\IContainer.php" />
       <Compile Include="public\IDateTimeFormatter.php" />
       <Compile Include="public\IDateTimeZone.php" />
@@ -384,4 +366,12 @@
       <PackageReference Include="Quartz" Version="3.0.7" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="ext\" />
+      <Folder Include="Command\" />
+      <Folder Include="Authentication\" />
+      <Folder Include="Authentication\TwoFactorAuth\" />
+      <Folder Include="Authentication\LoginCredentials\" />
+      <Folder Include="Authentication\Exception\" />
+    </ItemGroup>
 </Project>

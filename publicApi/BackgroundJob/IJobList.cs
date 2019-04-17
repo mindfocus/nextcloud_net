@@ -23,7 +23,7 @@ namespace publicApi.BackgroundJob
      * @package OCP\BackgroundJob
      * @since 7.0.0
      */
-    interface IJobList
+    public interface IJobList
     {
         /**
          * Add a job to the list
