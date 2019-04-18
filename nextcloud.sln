@@ -91,7 +91,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "publicApiTest", "publicApiT
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "privateApi", "privateApi\privateApi.csproj", "{E78AEB25-5D74-4E0D-8EBE-9DB1A9791819}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "web", "web\web.csproj", "{73F220FA-DA2B-4326-8C81-EBD926E4B2A4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "web", "web\web.csproj", "{73F220FA-DA2B-4326-8C81-EBD926E4B2A4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{5E468711-B702-4B82-8947-8B4C9A055BDF}"
+	ProjectSection(SolutionItems) = preProject
+		.filenesting.json = .filenesting.json
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -7,13 +7,13 @@ namespace OCP.Files.Cache
     /**
      * @since 16.0.0
      */
-    interface ICacheEvent
+    public interface ICacheEvent
     {
         /**
          * @return IStorage
          * @since 16.0.0
          */
-        IStorage getStorage();
+        Storage.IStorage getStorage();
 
         /**
          * @return string

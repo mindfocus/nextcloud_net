@@ -1,5 +1,5 @@
 ﻿using System;
-namespace publicApi.ext
+namespace ext
 {
     public interface Event
     {

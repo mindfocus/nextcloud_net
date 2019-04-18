@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>netcoreapp3.0</TargetFramework>
+        <TargetFramework>netcoreapp2.2</TargetFramework>
         <LangVersion>8.0</LangVersion>
         <NullableContextOptions>enable</NullableContextOptions>
         <RootNamespace />
@@ -13,18 +13,30 @@
       <Compile Remove="ext\**" />
       <Compile Remove="public\App\**" />
       <Compile Remove="public\Contacts\**" />
+      <Compile Remove="public\Encryption\Keys\**" />
+      <Compile Remove="public\Files\Cache\**" />
+      <Compile Remove="public\Files\Search\**" />
+      <Compile Remove="public\Files\Storage\**" />
       <Compile Remove="public\Log\**" />
       <EmbeddedResource Remove="Authentication\**" />
       <EmbeddedResource Remove="Command\**" />
       <EmbeddedResource Remove="ext\**" />
       <EmbeddedResource Remove="public\App\**" />
       <EmbeddedResource Remove="public\Contacts\**" />
+      <EmbeddedResource Remove="public\Encryption\Keys\**" />
+      <EmbeddedResource Remove="public\Files\Cache\**" />
+      <EmbeddedResource Remove="public\Files\Search\**" />
+      <EmbeddedResource Remove="public\Files\Storage\**" />
       <EmbeddedResource Remove="public\Log\**" />
       <None Remove="Authentication\**" />
       <None Remove="Command\**" />
       <None Remove="ext\**" />
       <None Remove="public\App\**" />
       <None Remove="public\Contacts\**" />
+      <None Remove="public\Encryption\Keys\**" />
+      <None Remove="public\Files\Cache\**" />
+      <None Remove="public\Files\Search\**" />
+      <None Remove="public\Files\Storage\**" />
       <None Remove="public\Log\**" />
     </ItemGroup>
     <ItemGroup>
@@ -131,7 +143,6 @@
       <Compile Include="public\Encryption\IEncryptionModule.php" />
       <Compile Include="public\Encryption\IFile.php" />
       <Compile Include="public\Encryption\IManager.php" />
-      <Compile Include="public\Encryption\Keys\IStorage.php" />
       <Compile Include="public\Federation\Exceptions\ActionNotSupportedException.php" />
       <Compile Include="public\Federation\Exceptions\AuthenticationFailedException.php" />
       <Compile Include="public\Federation\Exceptions\BadRequestException.php" />
@@ -147,15 +158,6 @@
       <Compile Include="public\Federation\ICloudIdManager.php" />
       <Compile Include="public\Files.php" />
       <Compile Include="public\Files\AlreadyExistsException.php" />
-      <Compile Include="public\Files\Cache\CacheInsertEvent.php" />
-      <Compile Include="public\Files\Cache\CacheUpdateEvent.php" />
-      <Compile Include="public\Files\Cache\ICache.php" />
-      <Compile Include="public\Files\Cache\ICacheEntry.php" />
-      <Compile Include="public\Files\Cache\ICacheEvent.php" />
-      <Compile Include="public\Files\Cache\IPropagator.php" />
-      <Compile Include="public\Files\Cache\IScanner.php" />
-      <Compile Include="public\Files\Cache\IUpdater.php" />
-      <Compile Include="public\Files\Cache\IWatcher.php" />
       <Compile Include="public\Files\Config\ICachedMountFileInfo.php" />
       <Compile Include="public\Files\Config\ICachedMountInfo.php" />
       <Compile Include="public\Files\Config\IHomeMountProvider.php" />
@@ -187,25 +189,12 @@
       <Compile Include="public\Files\NotPermittedException.php" />
       <Compile Include="public\Files\ObjectStore\IObjectStore.php" />
       <Compile Include="public\Files\ReservedWordException.php" />
-      <Compile Include="public\Files\Search\ISearchBinaryOperator.php" />
-      <Compile Include="public\Files\Search\ISearchComparison.php" />
-      <Compile Include="public\Files\Search\ISearchOperator.php" />
-      <Compile Include="public\Files\Search\ISearchOrder.php" />
-      <Compile Include="public\Files\Search\ISearchQuery.php" />
-      <Compile Include="public\Files\SimpleFS\InMemoryFile.php" />
-      <Compile Include="public\Files\SimpleFS\ISimpleFolder.php" />
-      <Compile Include="public\Files\SimpleFS\ISimpleRoot.php" />
       <Compile Include="public\Files\StorageAuthException.php" />
       <Compile Include="public\Files\StorageBadConfigException.php" />
       <Compile Include="public\Files\StorageConnectionException.php" />
       <Compile Include="public\Files\StorageInvalidException.php" />
       <Compile Include="public\Files\StorageNotAvailableException.php" />
       <Compile Include="public\Files\StorageTimeoutException.php" />
-      <Compile Include="public\Files\Storage\IDisableEncryptionStorage.php" />
-      <Compile Include="public\Files\Storage\ILockingStorage.php" />
-      <Compile Include="public\Files\Storage\INotifyStorage.php" />
-      <Compile Include="public\Files\Storage\IStorageFactory.php" />
-      <Compile Include="public\Files\Storage\IWriteStreamStorage.php" />
       <Compile Include="public\Files\UnseekableException.php" />
       <Compile Include="public\Files_FullTextSearch\Model\AFilesDocument.php" />
       <Compile Include="public\FullTextSearch\Exceptions\FullTextSearchAppNotAvailableException.php" />

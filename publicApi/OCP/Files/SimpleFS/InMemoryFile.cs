@@ -109,9 +109,9 @@ namespace OCP.Files.SimpleFS
 	 */
     public string getMimeType()
     {
-		//$fileInfo = new \finfo(FILEINFO_MIME_TYPE);
-  //      return $fileInfo->buffer($this->contents);
-  return ""
+            //$fileInfo = new \finfo(FILEINFO_MIME_TYPE);
+            //      return $fileInfo->buffer($this->contents);
+            return "";
     }
 
     /**
