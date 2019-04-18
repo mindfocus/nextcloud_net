@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace publicApi.Calendar
+namespace OCP.Calendar
 {
     /**
      * This class provides access to the Nextcloud CalDAV backend.

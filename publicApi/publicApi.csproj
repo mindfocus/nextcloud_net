@@ -88,7 +88,6 @@
       <Compile Include="public\AppFramework\QueryException.php" />
       <Compile Include="public\AppFramework\Utility\IControllerMethodReflector.php" />
       <Compile Include="public\AutoloadNotAllowedException.php" />
-      <Compile Include="public\BackgroundJob.php" />
       <Compile Include="public\Collaboration\AutoComplete\AutoCompleteEvent.php" />
       <Compile Include="public\Collaboration\AutoComplete\IManager.php" />
       <Compile Include="public\Collaboration\AutoComplete\ISorter.php" />
@@ -153,7 +152,6 @@
       <Compile Include="public\Federation\ICloudFederationShare.php" />
       <Compile Include="public\Federation\ICloudId.php" />
       <Compile Include="public\Federation\ICloudIdManager.php" />
-      <Compile Include="public\Files.php" />
       <Compile Include="public\Files\AlreadyExistsException.php" />
       <Compile Include="public\Files\Config\ICachedMountFileInfo.php" />
       <Compile Include="public\Files\Config\ICachedMountInfo.php" />
@@ -210,7 +208,6 @@
       <Compile Include="public\FullTextSearch\Service\IIndexService.php" />
       <Compile Include="public\FullTextSearch\Service\IProviderService.php" />
       <Compile Include="public\FullTextSearch\Service\ISearchService.php" />
-      <Compile Include="public\GlobalScale\IConfig.php" />
       <Compile Include="public\Group\Backend\ABackend.php" />
       <Compile Include="public\Group\Backend\IAddToGroupBackend.php" />
       <Compile Include="public\Group\Backend\ICountDisabledInGroup.php" />
@@ -225,29 +222,19 @@
       <Compile Include="public\Http\Client\IClient.php" />
       <Compile Include="public\Http\Client\IClientService.php" />
       <Compile Include="public\Http\Client\IResponse.php" />
-      <Compile Include="public\IAppConfig.php" />
       <Compile Include="public\ICertificate.php" />
       <Compile Include="public\ICertificateManager.php" />
       <Compile Include="public\IDateTimeFormatter.php" />
       <Compile Include="public\IDateTimeZone.php" />
       <Compile Include="public\IDBConnection.php" />
       <Compile Include="public\IEventSource.php" />
-      <Compile Include="public\IGroupManager.php" />
       <Compile Include="public\IInitialStateService.php" />
-      <Compile Include="public\IL10N.php" />
-      <Compile Include="public\IPreview.php" />
-      <Compile Include="public\ISearch.php" />
-      <Compile Include="public\IServerContainer.php" />
       <Compile Include="public\L10N\IFactory.php" />
       <Compile Include="public\L10N\ILanguageIterator.php" />
       <Compile Include="public\LDAP\IDeletionFlagSupport.php" />
       <Compile Include="public\LDAP\ILDAPProvider.php" />
       <Compile Include="public\LDAP\ILDAPProviderFactory.php" />
       <Compile Include="public\Lockdown\ILockdownManager.php" />
-      <Compile Include="public\Mail\IAttachment.php" />
-      <Compile Include="public\Mail\IEMailTemplate.php" />
-      <Compile Include="public\Mail\IMailer.php" />
-      <Compile Include="public\Mail\IMessage.php" />
       <Compile Include="public\Migration\BigIntMigration.php" />
       <Compile Include="public\Migration\IMigrationStep.php" />
       <Compile Include="public\Migration\IOutput.php" />
@@ -261,14 +248,6 @@
       <Compile Include="public\OCS\IDiscoveryService.php" />
       <Compile Include="public\PreConditionNotMetException.php" />
       <Compile Include="public\Preview\IProvider.php" />
-      <Compile Include="public\Remote\Api\IApiCollection.php" />
-      <Compile Include="public\Remote\Api\IApiFactory.php" />
-      <Compile Include="public\Remote\Api\ICapabilitiesApi.php" />
-      <Compile Include="public\Remote\Api\IUserApi.php" />
-      <Compile Include="public\Remote\ICredentials.php" />
-      <Compile Include="public\Remote\IInstance.php" />
-      <Compile Include="public\Remote\IInstanceFactory.php" />
-      <Compile Include="public\Remote\IUser.php" />
       <Compile Include="public\RichObjectStrings\Definitions.php" />
       <Compile Include="public\RichObjectStrings\InvalidObjectExeption.php" />
       <Compile Include="public\RichObjectStrings\IValidator.php" />
@@ -276,14 +255,6 @@
       <Compile Include="public\Route\IRouter.php" />
       <Compile Include="public\SabrePluginEvent.php" />
       <Compile Include="public\SabrePluginException.php" />
-      <Compile Include="public\Search\PagedProvider.php" />
-      <Compile Include="public\Search\Provider.php" />
-      <Compile Include="public\Security\IContentSecurityPolicyManager.php" />
-      <Compile Include="public\Security\ICredentialsManager.php" />
-      <Compile Include="public\Security\ICrypto.php" />
-      <Compile Include="public\Security\IHasher.php" />
-      <Compile Include="public\Security\ISecureRandom.php" />
-      <Compile Include="public\Security\StringUtils.php" />
       <Compile Include="public\Session\Exceptions\SessionNotAvailableException.php" />
       <Compile Include="public\Settings\IIconSection.php" />
       <Compile Include="public\Settings\IManager.php" />
@@ -313,7 +284,6 @@
       <Compile Include="public\SystemTag\TagAlreadyExistsException.php" />
       <Compile Include="public\SystemTag\TagNotFoundException.php" />
       <Compile Include="public\Template.php" />
-      <Compile Include="public\User.php" />
       <Compile Include="public\User\Backend\ABackend.php" />
       <Compile Include="public\User\Backend\ICheckPasswordBackend.php" />
       <Compile Include="public\User\Backend\ICountUsersBackend.php" />
@@ -331,6 +301,7 @@
 
     <ItemGroup>
       <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.2.4" />
+      <PackageReference Include="Peachpie.Library" Version="0.9.36" />
       <PackageReference Include="Quartz" Version="3.0.7" />
     </ItemGroup>
 </Project>
