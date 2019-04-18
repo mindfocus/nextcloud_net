@@ -27,7 +27,7 @@ namespace OCP\Files\Cache;
  *
  * @since 9.0.0
  */
-interface IPropagator {
+public interface IPropagator {
 	/**
 	 * Mark the beginning of a propagation batch
 	 *

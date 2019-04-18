@@ -1,46 +1,18 @@
-<?php
-/**
- * @copyright Copyright (c) 2016, ownCloud, Inc.
- *
- * @author Bernhard Posselt <dev@bernhard-posselt.com>
- * @author Joas Schilling <coding@schilljs.com>
- * @author Jörn Friedrich Dreyer <jfd@butonic.de>
- * @author Morris Jobke <hey@morrisjobke.de>
- * @author Robin Appelman <robin@icewind.nl>
- *
- * @license AGPL-3.0
- *
- * This code is free software: you can redistribute it and/or modify
- * it under the terms of the GNU Affero General Public License, version 3,
- * as published by the Free Software Foundation.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
- * GNU Affero General Public License for more details.
- *
- * You should have received a copy of the GNU Affero General Public License, version 3,
- * along with this program.  If not, see <http://www.gnu.org/licenses/>
- *
- */
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
 
-/**
- * Public interface of ownCloud for apps to use.
- * Files/Node interface
- */
-
-// use OCP namespace for all classes that are considered public.
-// This means that they should be used by apps instead of the internal ownCloud classes
-namespace OCP\Files;
-
-/**
- * Interface Node
- *
- * @package OCP\Files
- * @since 6.0.0 - extends FileInfo was added in 8.0.0
- */
-interface Node extends FileInfo {
-	/**
+namespace publicApi.OCP.Files
+{
+    /**
+     * Interface Node
+     *
+     * @package OCP\Files
+     * @since 6.0.0 - extends FileInfo was added in 8.0.0
+     */
+    interface Node : FileInfo
+    {
+    /**
 	 * Move the file or folder to a new location
 	 *
 	 * @param string $targetPath the absolute target path
@@ -48,25 +20,25 @@ interface Node extends FileInfo {
 	 * @return \OCP\Files\Node
 	 * @since 6.0.0
 	 */
-	public function move($targetPath);
+    Node move(string targetPath);
 
-	/**
+    /**
 	 * Delete the file or folder
 	 * @return void
 	 * @since 6.0.0
 	 */
-	public function delete();
+    void delete();
 
-	/**
+    /**
 	 * Cope the file or folder to a new location
 	 *
 	 * @param string $targetPath the absolute target path
 	 * @return \OCP\Files\Node
 	 * @since 6.0.0
 	 */
-	public function copy($targetPath);
+    Node copy(string targetPath);
 
-	/**
+    /**
 	 * Change the modified date of the file or folder
 	 * If $mtime is omitted the current time will be used
 	 *
@@ -75,34 +47,34 @@ interface Node extends FileInfo {
 	 * @return void
 	 * @since 6.0.0
 	 */
-	public function touch($mtime = null);
+    void touch(int? mtime = null);
 
-	/**
+    /**
 	 * Get the storage backend the file or folder is stored on
 	 *
 	 * @return \OCP\Files\Storage
 	 * @throws \OCP\Files\NotFoundException
 	 * @since 6.0.0
 	 */
-	public function getStorage();
+    Storage getStorage();
 
-	/**
+    /**
 	 * Get the full path of the file or folder
 	 *
 	 * @return string
 	 * @since 6.0.0
 	 */
-	public function getPath();
+    string getPath();
 
-	/**
+    /**
 	 * Get the path of the file or folder relative to the mountpoint of it's storage
 	 *
 	 * @return string
 	 * @since 6.0.0
 	 */
-	public function getInternalPath();
+    string getInternalPath();
 
-	/**
+    /**
 	 * Get the internal file id for the file or folder
 	 *
 	 * @return int
@@ -110,9 +82,9 @@ interface Node extends FileInfo {
 	 * @throws NotFoundException
 	 * @since 6.0.0
 	 */
-	public function getId();
+    int getId();
 
-	/**
+    /**
 	 * Get metadata of the file or folder
 	 * The returned array contains the following values:
 	 *  - mtime
@@ -121,9 +93,9 @@ interface Node extends FileInfo {
 	 * @return array
 	 * @since 6.0.0
 	 */
-	public function stat();
+    IList<string> stat();
 
-	/**
+    /**
 	 * Get the modified date of the file or folder as unix timestamp
 	 *
 	 * @return int
@@ -131,9 +103,9 @@ interface Node extends FileInfo {
 	 * @throws NotFoundException
 	 * @since 6.0.0
 	 */
-	public function getMTime();
+    int getMTime();
 
-	/**
+    /**
 	 * Get the size of the file or folder in bytes
 	 *
 	 * @param bool $includeMounts
@@ -142,9 +114,9 @@ interface Node extends FileInfo {
 	 * @throws NotFoundException
 	 * @since 6.0.0
 	 */
-	public function getSize($includeMounts = true);
+    int getSize(bool includeMounts = true);
 
-	/**
+    /**
 	 * Get the Etag of the file or folder
 	 * The Etag is an string id used to detect changes to a file or folder,
 	 * every time the file or folder is changed the Etag will change to
@@ -154,10 +126,10 @@ interface Node extends FileInfo {
 	 * @throws NotFoundException
 	 * @since 6.0.0
 	 */
-	public function getEtag();
+    string getEtag();
 
 
-	/**
+    /**
 	 * Get the permissions of the file or folder as a combination of one or more of the following constants:
 	 *  - \OCP\Constants::PERMISSION_READ
 	 *  - \OCP\Constants::PERMISSION_UPDATE
@@ -170,9 +142,9 @@ interface Node extends FileInfo {
 	 * @throws NotFoundException
 	 * @since 6.0.0 - namespace of constants has changed in 8.0.0
 	 */
-	public function getPermissions();
+    int getPermissions();
 
-	/**
+    /**
 	 * Check if the file or folder is readable
 	 *
 	 * @return bool
@@ -180,9 +152,9 @@ interface Node extends FileInfo {
 	 * @throws NotFoundException
 	 * @since 6.0.0
 	 */
-	public function isReadable();
+    bool isReadable();
 
-	/**
+    /**
 	 * Check if the file or folder is writable
 	 *
 	 * @return bool
@@ -190,9 +162,9 @@ interface Node extends FileInfo {
 	 * @throws NotFoundException
 	 * @since 6.0.0
 	 */
-	public function isUpdateable();
+    bool isUpdateable();
 
-	/**
+    /**
 	 * Check if the file or folder is deletable
 	 *
 	 * @return bool
@@ -200,9 +172,9 @@ interface Node extends FileInfo {
 	 * @throws NotFoundException
 	 * @since 6.0.0
 	 */
-	public function isDeletable();
+    bool isDeletable();
 
-	/**
+    /**
 	 * Check if the file or folder is shareable
 	 *
 	 * @return bool
@@ -210,25 +182,25 @@ interface Node extends FileInfo {
 	 * @throws NotFoundException
 	 * @since 6.0.0
 	 */
-	public function isShareable();
+    bool isShareable();
 
-	/**
+    /**
 	 * Get the parent folder of the file or folder
 	 *
 	 * @return Folder
 	 * @since 6.0.0
 	 */
-	public function getParent();
+    Folder getParent();
 
-	/**
+    /**
 	 * Get the filename of the file or folder
 	 *
 	 * @return string
 	 * @since 6.0.0
 	 */
-	public function getName();
+    string getName();
 
-	/**
+    /**
 	 * Acquire a lock on this file or folder.
 	 *
 	 * A shared (read) lock will prevent any exclusive (write) locks from being created but any number of shared locks
@@ -249,7 +221,8 @@ interface Node extends FileInfo {
 	 * @throws \OCP\Lock\LockedException
 	 * @since 9.1.0
 	 */
-	public function lock($type);
+    void lockC(int type);
+    //void lock(int type);
 
 	/**
 	 * Check the type of an existing lock.
@@ -264,9 +237,9 @@ interface Node extends FileInfo {
 	 * @throws \OCP\Lock\LockedException
 	 * @since 9.1.0
 	 */
-	public function changeLock($targetType);
+	void changeLock(int targetType);
 
-	/**
+    /**
 	 * Release an existing lock.
 	 *
 	 * This will also free up the shared locks on any parent folder that were automatically acquired when locking the file.
@@ -277,5 +250,7 @@ interface Node extends FileInfo {
 	 * @throws \OCP\Lock\LockedException
 	 * @since 9.1.0
 	 */
-	public function unlock($type);
+    void unlock(int type);
+}
+
 }

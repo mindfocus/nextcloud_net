@@ -4,12 +4,28 @@
         <TargetFramework>netcoreapp3.0</TargetFramework>
         <LangVersion>8.0</LangVersion>
         <NullableContextOptions>enable</NullableContextOptions>
+        <RootNamespace />
     </PropertyGroup>
 
     <ItemGroup>
+      <Compile Remove="Authentication\**" />
+      <Compile Remove="Command\**" />
+      <Compile Remove="ext\**" />
       <Compile Remove="public\App\**" />
+      <Compile Remove="public\Contacts\**" />
+      <Compile Remove="public\Log\**" />
+      <EmbeddedResource Remove="Authentication\**" />
+      <EmbeddedResource Remove="Command\**" />
+      <EmbeddedResource Remove="ext\**" />
       <EmbeddedResource Remove="public\App\**" />
+      <EmbeddedResource Remove="public\Contacts\**" />
+      <EmbeddedResource Remove="public\Log\**" />
+      <None Remove="Authentication\**" />
+      <None Remove="Command\**" />
+      <None Remove="ext\**" />
       <None Remove="public\App\**" />
+      <None Remove="public\Contacts\**" />
+      <None Remove="public\Log\**" />
     </ItemGroup>
     <ItemGroup>
       <Compile Include="public\API.php" />
@@ -88,13 +104,6 @@
       <Compile Include="public\Comments\NotFoundException.php" />
       <Compile Include="public\Console\ConsoleEvent.php" />
       <Compile Include="public\Constants.php" />
-      <Compile Include="public\Contacts\ContactsMenu\IAction.php" />
-      <Compile Include="public\Contacts\ContactsMenu\IActionFactory.php" />
-      <Compile Include="public\Contacts\ContactsMenu\IContactsStore.php" />
-      <Compile Include="public\Contacts\ContactsMenu\IEntry.php" />
-      <Compile Include="public\Contacts\ContactsMenu\ILinkAction.php" />
-      <Compile Include="public\Contacts\ContactsMenu\IProvider.php" />
-      <Compile Include="public\Contacts\IManager.php" />
       <Compile Include="public\Dashboard\Exceptions\DashboardAppNotAvailableException.php" />
       <Compile Include="public\Dashboard\IDashboardManager.php" />
       <Compile Include="public\Dashboard\IDashboardWidget.php" />
@@ -156,7 +165,6 @@
       <Compile Include="public\Files\EmptyFileNameException.php" />
       <Compile Include="public\Files\EntityTooLargeException.php" />
       <Compile Include="public\Files\File.php" />
-      <Compile Include="public\Files\FileInfo.php" />
       <Compile Include="public\Files\FileNameTooLongException.php" />
       <Compile Include="public\Files\Folder.php" />
       <Compile Include="public\Files\ForbiddenException.php" />
@@ -171,9 +179,6 @@
       <Compile Include="public\Files\InvalidPathException.php" />
       <Compile Include="public\Files\IRootFolder.php" />
       <Compile Include="public\Files\LockNotAcquiredException.php" />
-      <Compile Include="public\Files\Mount\IMountManager.php" />
-      <Compile Include="public\Files\Mount\IMountPoint.php" />
-      <Compile Include="public\Files\Node.php" />
       <Compile Include="public\Files\NotEnoughSpaceException.php" />
       <Compile Include="public\Files\NotFoundException.php" />
       <Compile Include="public\Files\Notify\IChange.php" />
@@ -188,10 +193,8 @@
       <Compile Include="public\Files\Search\ISearchOrder.php" />
       <Compile Include="public\Files\Search\ISearchQuery.php" />
       <Compile Include="public\Files\SimpleFS\InMemoryFile.php" />
-      <Compile Include="public\Files\SimpleFS\ISimpleFile.php" />
       <Compile Include="public\Files\SimpleFS\ISimpleFolder.php" />
       <Compile Include="public\Files\SimpleFS\ISimpleRoot.php" />
-      <Compile Include="public\Files\Storage.php" />
       <Compile Include="public\Files\StorageAuthException.php" />
       <Compile Include="public\Files\StorageBadConfigException.php" />
       <Compile Include="public\Files\StorageConnectionException.php" />
@@ -201,7 +204,6 @@
       <Compile Include="public\Files\Storage\IDisableEncryptionStorage.php" />
       <Compile Include="public\Files\Storage\ILockingStorage.php" />
       <Compile Include="public\Files\Storage\INotifyStorage.php" />
-      <Compile Include="public\Files\Storage\IStorage.php" />
       <Compile Include="public\Files\Storage\IStorageFactory.php" />
       <Compile Include="public\Files\Storage\IWriteStreamStorage.php" />
       <Compile Include="public\Files\UnseekableException.php" />
@@ -223,7 +225,6 @@
       <Compile Include="public\FullTextSearch\Service\IProviderService.php" />
       <Compile Include="public\FullTextSearch\Service\ISearchService.php" />
       <Compile Include="public\GlobalScale\IConfig.php" />
-      <Compile Include="public\GroupInterface.php" />
       <Compile Include="public\Group\Backend\ABackend.php" />
       <Compile Include="public\Group\Backend\IAddToGroupBackend.php" />
       <Compile Include="public\Group\Backend\ICountDisabledInGroup.php" />
@@ -238,11 +239,7 @@
       <Compile Include="public\Http\Client\IClient.php" />
       <Compile Include="public\Http\Client\IClientService.php" />
       <Compile Include="public\Http\Client\IResponse.php" />
-      <Compile Include="public\IAddressBook.php" />
       <Compile Include="public\IAppConfig.php" />
-      <Compile Include="public\IAvatar.php" />
-      <Compile Include="public\IAvatarManager.php" />
-      <Compile Include="public\ICacheFactory.php" />
       <Compile Include="public\ICertificate.php" />
       <Compile Include="public\ICertificateManager.php" />
       <Compile Include="public\IDateTimeFormatter.php" />
@@ -252,27 +249,15 @@
       <Compile Include="public\IGroupManager.php" />
       <Compile Include="public\IInitialStateService.php" />
       <Compile Include="public\IL10N.php" />
-      <Compile Include="public\IMemcache.php" />
-      <Compile Include="public\IMemcacheTTL.php" />
-      <Compile Include="public\INavigationManager.php" />
       <Compile Include="public\IPreview.php" />
-      <Compile Include="public\IRequest.php" />
       <Compile Include="public\ISearch.php" />
       <Compile Include="public\IServerContainer.php" />
-      <Compile Include="public\ISession.php" />
-      <Compile Include="public\ITempManager.php" />
-      <Compile Include="public\IURLGenerator.php" />
-      <Compile Include="public\IUserManager.php" />
       <Compile Include="public\L10N\IFactory.php" />
       <Compile Include="public\L10N\ILanguageIterator.php" />
       <Compile Include="public\LDAP\IDeletionFlagSupport.php" />
       <Compile Include="public\LDAP\ILDAPProvider.php" />
       <Compile Include="public\LDAP\ILDAPProviderFactory.php" />
       <Compile Include="public\Lockdown\ILockdownManager.php" />
-      <Compile Include="public\Lock\ILockingProvider.php" />
-      <Compile Include="public\Lock\LockedException.php" />
-      <Compile Include="public\Log\ILogFactory.php" />
-      <Compile Include="public\Log\RotationTrait.php" />
       <Compile Include="public\Mail\IAttachment.php" />
       <Compile Include="public\Mail\IEMailTemplate.php" />
       <Compile Include="public\Mail\IMailer.php" />
@@ -362,14 +347,5 @@
     <ItemGroup>
       <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.2.4" />
       <PackageReference Include="Quartz" Version="3.0.7" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <Folder Include="ext\" />
-      <Folder Include="Command\" />
-      <Folder Include="Authentication\" />
-      <Folder Include="Authentication\TwoFactorAuth\" />
-      <Folder Include="Authentication\LoginCredentials\" />
-      <Folder Include="Authentication\Exception\" />
     </ItemGroup>
 </Project>
