@@ -407,7 +407,7 @@ namespace OCP
 	 * @return \OCP\Mail\IMailer
 	 * @since 8.1.0
 	 */
-    public Mail.IMailer getMailer();
+    Mail.IMailer getMailer();
 
     /**
 	 * Get the locking provider
