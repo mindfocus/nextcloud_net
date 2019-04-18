@@ -14,6 +14,8 @@
       <Compile Remove="public\Contacts\**" />
       <Compile Remove="public\Encryption\**" />
       <Compile Remove="public\Files\Cache\**" />
+      <Compile Remove="public\Files\Notify\**" />
+      <Compile Remove="public\Files\ObjectStore\**" />
       <Compile Remove="public\Files\Search\**" />
       <Compile Remove="public\Files\Storage\**" />
       <Compile Remove="public\L10N\**" />
@@ -24,6 +26,8 @@
       <EmbeddedResource Remove="public\Contacts\**" />
       <EmbeddedResource Remove="public\Encryption\**" />
       <EmbeddedResource Remove="public\Files\Cache\**" />
+      <EmbeddedResource Remove="public\Files\Notify\**" />
+      <EmbeddedResource Remove="public\Files\ObjectStore\**" />
       <EmbeddedResource Remove="public\Files\Search\**" />
       <EmbeddedResource Remove="public\Files\Storage\**" />
       <EmbeddedResource Remove="public\L10N\**" />
@@ -34,6 +38,8 @@
       <None Remove="public\Contacts\**" />
       <None Remove="public\Encryption\**" />
       <None Remove="public\Files\Cache\**" />
+      <None Remove="public\Files\Notify\**" />
+      <None Remove="public\Files\ObjectStore\**" />
       <None Remove="public\Files\Search\**" />
       <None Remove="public\Files\Storage\**" />
       <None Remove="public\L10N\**" />
@@ -150,17 +156,9 @@
       <Compile Include="public\Federation\ICloudId.php" />
       <Compile Include="public\Federation\ICloudIdManager.php" />
       <Compile Include="public\Files\AlreadyExistsException.php" />
-      <Compile Include="public\Files\Config\ICachedMountFileInfo.php" />
-      <Compile Include="public\Files\Config\ICachedMountInfo.php" />
-      <Compile Include="public\Files\Config\IHomeMountProvider.php" />
-      <Compile Include="public\Files\Config\IMountProvider.php" />
-      <Compile Include="public\Files\Config\IMountProviderCollection.php" />
-      <Compile Include="public\Files\Config\IUserMountCache.php" />
       <Compile Include="public\Files\EmptyFileNameException.php" />
       <Compile Include="public\Files\EntityTooLargeException.php" />
-      <Compile Include="public\Files\File.php" />
       <Compile Include="public\Files\FileNameTooLongException.php" />
-      <Compile Include="public\Files\Folder.php" />
       <Compile Include="public\Files\ForbiddenException.php" />
       <Compile Include="public\Files\GenericFileException.php" />
       <Compile Include="public\Files\IAppData.php" />
@@ -175,11 +173,7 @@
       <Compile Include="public\Files\LockNotAcquiredException.php" />
       <Compile Include="public\Files\NotEnoughSpaceException.php" />
       <Compile Include="public\Files\NotFoundException.php" />
-      <Compile Include="public\Files\Notify\IChange.php" />
-      <Compile Include="public\Files\Notify\INotifyHandler.php" />
-      <Compile Include="public\Files\Notify\IRenameChange.php" />
       <Compile Include="public\Files\NotPermittedException.php" />
-      <Compile Include="public\Files\ObjectStore\IObjectStore.php" />
       <Compile Include="public\Files\ReservedWordException.php" />
       <Compile Include="public\Files\StorageAuthException.php" />
       <Compile Include="public\Files\StorageBadConfigException.php" />
@@ -187,7 +181,6 @@
       <Compile Include="public\Files\StorageInvalidException.php" />
       <Compile Include="public\Files\StorageNotAvailableException.php" />
       <Compile Include="public\Files\StorageTimeoutException.php" />
-      <Compile Include="public\Files\UnseekableException.php" />
       <Compile Include="public\Files_FullTextSearch\Model\AFilesDocument.php" />
       <Compile Include="public\FullTextSearch\Exceptions\FullTextSearchAppNotAvailableException.php" />
       <Compile Include="public\FullTextSearch\IFullTextSearchManager.php" />
@@ -243,8 +236,6 @@
       <Compile Include="public\RichObjectStrings\Definitions.php" />
       <Compile Include="public\RichObjectStrings\InvalidObjectExeption.php" />
       <Compile Include="public\RichObjectStrings\IValidator.php" />
-      <Compile Include="public\Route\IRoute.php" />
-      <Compile Include="public\Route\IRouter.php" />
       <Compile Include="public\SabrePluginEvent.php" />
       <Compile Include="public\SabrePluginException.php" />
       <Compile Include="public\Session\Exceptions\SessionNotAvailableException.php" />
