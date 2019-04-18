@@ -12,28 +12,31 @@
       <Compile Remove="Command\**" />
       <Compile Remove="public\App\**" />
       <Compile Remove="public\Contacts\**" />
-      <Compile Remove="public\Encryption\Keys\**" />
+      <Compile Remove="public\Encryption\**" />
       <Compile Remove="public\Files\Cache\**" />
       <Compile Remove="public\Files\Search\**" />
       <Compile Remove="public\Files\Storage\**" />
+      <Compile Remove="public\L10N\**" />
       <Compile Remove="public\Log\**" />
       <EmbeddedResource Remove="Authentication\**" />
       <EmbeddedResource Remove="Command\**" />
       <EmbeddedResource Remove="public\App\**" />
       <EmbeddedResource Remove="public\Contacts\**" />
-      <EmbeddedResource Remove="public\Encryption\Keys\**" />
+      <EmbeddedResource Remove="public\Encryption\**" />
       <EmbeddedResource Remove="public\Files\Cache\**" />
       <EmbeddedResource Remove="public\Files\Search\**" />
       <EmbeddedResource Remove="public\Files\Storage\**" />
+      <EmbeddedResource Remove="public\L10N\**" />
       <EmbeddedResource Remove="public\Log\**" />
       <None Remove="Authentication\**" />
       <None Remove="Command\**" />
       <None Remove="public\App\**" />
       <None Remove="public\Contacts\**" />
-      <None Remove="public\Encryption\Keys\**" />
+      <None Remove="public\Encryption\**" />
       <None Remove="public\Files\Cache\**" />
       <None Remove="public\Files\Search\**" />
       <None Remove="public\Files\Storage\**" />
+      <None Remove="public\L10N\**" />
       <None Remove="public\Log\**" />
     </ItemGroup>
     <ItemGroup>
@@ -133,10 +136,6 @@
       <Compile Include="public\Diagnostics\IEventLogger.php" />
       <Compile Include="public\Diagnostics\IQuery.php" />
       <Compile Include="public\Diagnostics\IQueryLogger.php" />
-      <Compile Include="public\Encryption\Exceptions\GenericEncryptionException.php" />
-      <Compile Include="public\Encryption\IEncryptionModule.php" />
-      <Compile Include="public\Encryption\IFile.php" />
-      <Compile Include="public\Encryption\IManager.php" />
       <Compile Include="public\Federation\Exceptions\ActionNotSupportedException.php" />
       <Compile Include="public\Federation\Exceptions\AuthenticationFailedException.php" />
       <Compile Include="public\Federation\Exceptions\BadRequestException.php" />
@@ -224,8 +223,6 @@
       <Compile Include="public\IDateTimeZone.php" />
       <Compile Include="public\IDBConnection.php" />
       <Compile Include="public\IInitialStateService.php" />
-      <Compile Include="public\L10N\IFactory.php" />
-      <Compile Include="public\L10N\ILanguageIterator.php" />
       <Compile Include="public\LDAP\IDeletionFlagSupport.php" />
       <Compile Include="public\LDAP\ILDAPProvider.php" />
       <Compile Include="public\LDAP\ILDAPProviderFactory.php" />

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace OCP.OCP.Files
+namespace OC.Files
 {
     /**
      * Class to provide access to ownCloud filesystem via a "view", and methods for
@@ -28,23 +28,23 @@ namespace OCP.OCP.Files
 	/**
 	 * @var \OCP\Lock\ILockingProvider
 	 */
-	protected $lockingProvider;
+	protected OCP.Lock.ILockingProvider lockingProvider;
 
-	private $lockingEnabled;
+	private bool lockingEnabled;
 
-	private $updaterEnabled = true;
+	private bool updaterEnabled = true;
 
 	/** @var \OC\User\Manager */
-	private $userManager;
+	private OC.User.Manager userManager;
 
 	/** @var \OCP\ILogger */
-	private $logger;
+	private OCP.ILogger logger;
 
 	/**
 	 * @param string $root
 	 * @throws \Exception If $root contains an invalid path
 	 */
-	public function __construct($root = '')
+	public View(string root = "")
         {
             if (is_null($root))
             {
@@ -83,14 +83,14 @@ namespace OCP.OCP.Files
          * @param string $fakeRoot
          * @return boolean|null
          */
-        public function chroot($fakeRoot)
+        public bool chroot(string fakeRoot)
         {
-            if (!$fakeRoot == '') {
-                if ($fakeRoot[0] !== '/') {
-				$fakeRoot = '/'. $fakeRoot;
+            if (!fakeRoot == "") {
+                if (fakeRoot[0] != '/') {
+				fakeRoot = '/' + fakeRoot;
                 }
             }
-		$this->fakeRoot = $fakeRoot;
+            this.fakeRoot = fakeRoot;
         }
 
         /**
@@ -98,9 +98,9 @@ namespace OCP.OCP.Files
          *
          * @return string
          */
-        public function getRoot()
+        public string getRoot()
         {
-            return $this->fakeRoot;
+            return this.fakeRoot;
         }
 
         /**
