@@ -387,13 +387,14 @@ namespace OCP
 	 */
     public function getMountProviderCollection();
 
-    /**
-	 * Get the IniWrapper
-	 *
-	 * @return \bantu\IniGetWrapper\IniGetWrapper
-	 * @since 8.0.0
-	 */
-    public function getIniWrapper();
+        /**
+         * Get the IniWrapper
+         *
+         * @return \bantu\IniGetWrapper\IniGetWrapper
+         * @since 8.0.0
+         */
+
+        IniParser.Parser.IniDataParser getIniWrapper();
     /**
 	 * @return \OCP\Command\IBus
 	 * @since 8.1.0

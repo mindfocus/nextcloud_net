@@ -5,8 +5,6 @@ VisualStudioVersion = 16.0.28809.33
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "nextcloud-3rdparty", "nextcloud-3rdparty", "{FADA6A78-A04F-4EA9-9BF0-EFF989E4C10F}"
 EndProject
-Project("{13B669BE-BB05-4DDF-9536-439F39A36129}") = "nextcloud-bantu", "nextcloud-bantu\nextcloud-bantu.msbuildproj", "{579DC3E2-FE2E-473C-975B-1B31EF6F6A8C}"
-EndProject
 Project("{13B669BE-BB05-4DDF-9536-439F39A36129}") = "nextcloud-nikic-php-parser", "nextcloud-nikic-php-parser\nextcloud-nikic-php-parser.msbuildproj", "{7C644FE9-BE92-48C1-9F1D-947C61D879D8}"
 EndProject
 Project("{13B669BE-BB05-4DDF-9536-439F39A36129}") = "nextcloud-microsoft-azure-storage-blob", "nextcloud-microsoft-azure-storage-blob\nextcloud-microsoft-azure-storage-blob.msbuildproj", "{895D958C-8314-481D-A2C3-04E89732F1BE}"
@@ -104,10 +102,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{579DC3E2-FE2E-473C-975B-1B31EF6F6A8C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{579DC3E2-FE2E-473C-975B-1B31EF6F6A8C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{579DC3E2-FE2E-473C-975B-1B31EF6F6A8C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{579DC3E2-FE2E-473C-975B-1B31EF6F6A8C}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7C644FE9-BE92-48C1-9F1D-947C61D879D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{7C644FE9-BE92-48C1-9F1D-947C61D879D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7C644FE9-BE92-48C1-9F1D-947C61D879D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -277,7 +271,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{579DC3E2-FE2E-473C-975B-1B31EF6F6A8C} = {FADA6A78-A04F-4EA9-9BF0-EFF989E4C10F}
 		{7C644FE9-BE92-48C1-9F1D-947C61D879D8} = {FADA6A78-A04F-4EA9-9BF0-EFF989E4C10F}
 		{895D958C-8314-481D-A2C3-04E89732F1BE} = {FADA6A78-A04F-4EA9-9BF0-EFF989E4C10F}
 		{6AE791BF-F65B-410F-B5D5-49F75054AA51} = {FADA6A78-A04F-4EA9-9BF0-EFF989E4C10F}
