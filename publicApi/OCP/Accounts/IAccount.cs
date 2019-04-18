@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
 
-namespace publicApi.Accounts
+namespace OCP.Accounts
 {
     public interface IAccount : ISerializable
     {

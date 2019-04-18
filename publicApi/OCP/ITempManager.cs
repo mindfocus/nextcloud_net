@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace publicApi
+namespace OCP
 {
     /**
      * Interface ITempManager
@@ -10,7 +10,7 @@ namespace publicApi
      * @package OCP
      * @since 8.0.0
      */
-    interface ITempManager
+    public interface ITempManager
     {
         /**
          * Create a temporary file and return the path

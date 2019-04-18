@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using publicApi.ext;
 
-namespace publicApi.App
+namespace OCP.App
 {
     /**
      * Class ManagerEvent

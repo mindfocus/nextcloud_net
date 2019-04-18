@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace publicApiTest
+namespace OCPTest
 {
     public class Class1
     {

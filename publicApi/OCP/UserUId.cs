@@ -1,4 +1,4 @@
-namespace publicApi
+namespace OCP
 {
     public class UserUId
     {

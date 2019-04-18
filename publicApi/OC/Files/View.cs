@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace publicApi.OCP.Files
+namespace OCP.OCP.Files
 {
     /**
      * Class to provide access to ownCloud filesystem via a "view", and methods for

@@ -1,5 +1,5 @@
 ﻿using System;
-namespace publicApi.Authentication.TwoFactorAuth
+namespace OCP.Authentication.TwoFactorAuth
 {
     /**
      * Interface IPersonalProviderSettings

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace publicApi
+namespace OCP
 {
     public interface IUser
     {

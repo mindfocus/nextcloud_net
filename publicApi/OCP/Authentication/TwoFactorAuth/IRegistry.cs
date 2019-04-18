@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace publicApi.Authentication.TwoFactorAuth
+namespace OCP.Authentication.TwoFactorAuth
 {
     /**
      * Nextcloud 2FA provider registry for stateful 2FA providers

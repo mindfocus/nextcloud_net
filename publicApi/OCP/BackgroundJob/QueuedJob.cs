@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using publicApi.AppFramework.Utility;
 
-namespace publicApi.BackgroundJob
+namespace OCP.BackgroundJob
 {
     /**
      * Simple base class for a one time background job

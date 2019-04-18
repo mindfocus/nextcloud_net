@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-namespace publicApi
+namespace OCP
 {
 // FIXME: Where should I put this? Or should it be implemented as a Listener?
 //\OC_Hook::connect('OC_User', 'post_deleteUser', Tags::class, 'post_deleteUser');

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace publicApi.AppFramework.Utility
+namespace OCP.AppFramework.Utility
 {
     /**
      * Needed to mock calls to time()

@@ -1,8 +1,9 @@
-﻿using System;
+﻿using OCP.Files;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace publicApi
+namespace OCP
 {
     /**
      * This class provides functions to render and show thumbnails and previews of files
@@ -75,7 +76,9 @@ namespace publicApi
          * @throws \InvalidArgumentException if the preview would be invalid (in case the original image is invalid)
          * @since 11.0.0 - \InvalidArgumentException was added in 12.0.0
          */
-        public function getPreview(File $file, $width = -1, $height = -1, $crop = false, $mode = IPreview::MODE_FILL, $mimeType = null);
+        OCP.Files.SimpleFS.ISimpleFile getPreview(File file, int width = -1, int height = -1, bool crop = false, string mode = "fill", string mimeType = null);
+        //public ISimpleFile getPreview(File file, int width = -1, int height = -1, bool crop = false, string mode = IPreview::MODE_FILL, string mimeType = null);
+
 
         /**
          * Returns true if the passed mime type is supported
@@ -83,7 +86,7 @@ namespace publicApi
          * @return boolean
          * @since 6.0.0
          */
-        public function isMimeSupported($mimeType = '*');
+        bool isMimeSupported(string mimeType = "*");
 
         /**
          * Check if a preview can be generated for a file
@@ -92,7 +95,7 @@ namespace publicApi
          * @return bool
          * @since 8.0.0
          */
-        public function isAvailable(\OCP\Files\FileInfo $file);
+        bool isAvailable(FileInfo file);
     }
 
 }

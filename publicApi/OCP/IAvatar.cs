@@ -4,7 +4,7 @@ using System.Drawing;
 using System.IO;
 using System.Text;
 
-namespace publicApi
+namespace OCP
 {
     /**
      * This class provides avatar functionality

@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using publicApi.AppFramework.Utility;
 using Quartz;
 
-namespace publicApi.BackgroundJob
+namespace OCP.BackgroundJob
 {
     abstract class Job : IJob
     {

@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace publicApi
+namespace OCP
 {
 /**
  * Class to generate URLs

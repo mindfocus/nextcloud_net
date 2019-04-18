@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace publicApi.OCP.Files
+namespace OCP.Files
 {
     /**
      * Interface FileInfo
@@ -10,7 +10,7 @@ namespace publicApi.OCP.Files
      * @package OCP\Files
      * @since 7.0.0
      */
-    interface FileInfo
+    public interface FileInfo
     {
         /**
          * @since 7.0.0

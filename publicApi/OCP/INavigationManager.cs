@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace publicApi
+namespace OCP
 {
     /**
      * Manages the ownCloud navigation
      * @since 6.0.0
      */
-    interface INavigationManager
+    public interface INavigationManager
     {
 
         /**

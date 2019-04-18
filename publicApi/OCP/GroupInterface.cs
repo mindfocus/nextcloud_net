@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace publicApi.OCP
+namespace OCP
 {
     /**
      * TODO actually this is a IGroupBackend
@@ -10,7 +10,7 @@ namespace publicApi.OCP
      * @package OCP
      * @since 4.5.0
      */
-    interface GroupInterface
+    public interface GroupInterface
     {
 
         /**

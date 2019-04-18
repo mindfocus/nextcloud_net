@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace publicApi
+namespace OCP
 {
     /**
      * TODO actually this is a IUserBackend

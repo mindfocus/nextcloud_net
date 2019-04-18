@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using publicApi.AppFramework.Utility;
 using Quartz;
 
-namespace publicApi.BackgroundJob
+namespace OCP.BackgroundJob
 {
     /**
      * Simple base class to extend to run periodic background jobs.

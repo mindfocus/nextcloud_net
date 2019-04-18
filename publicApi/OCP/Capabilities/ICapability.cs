@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace publicApi.Capabilities
+namespace OCP.Capabilities
 {
     /**
      * Minimal interface that has to be implemented for a class to be considered

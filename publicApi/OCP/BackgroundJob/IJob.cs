@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace publicApi.BackgroundJob
+namespace OCP.BackgroundJob
 {
     public interface IJob : Quartz.IJob
     {

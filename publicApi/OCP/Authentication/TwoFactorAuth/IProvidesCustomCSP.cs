@@ -1,5 +1,5 @@
 ﻿using System;
-namespace publicApi.Authentication.TwoFactorAuth
+namespace OCP.Authentication.TwoFactorAuth
 {
     /**
      * @since 13.0.0

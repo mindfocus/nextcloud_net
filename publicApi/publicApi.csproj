@@ -10,7 +10,6 @@
     <ItemGroup>
       <Compile Remove="Authentication\**" />
       <Compile Remove="Command\**" />
-      <Compile Remove="ext\**" />
       <Compile Remove="public\App\**" />
       <Compile Remove="public\Contacts\**" />
       <Compile Remove="public\Encryption\Keys\**" />
@@ -20,7 +19,6 @@
       <Compile Remove="public\Log\**" />
       <EmbeddedResource Remove="Authentication\**" />
       <EmbeddedResource Remove="Command\**" />
-      <EmbeddedResource Remove="ext\**" />
       <EmbeddedResource Remove="public\App\**" />
       <EmbeddedResource Remove="public\Contacts\**" />
       <EmbeddedResource Remove="public\Encryption\Keys\**" />
@@ -30,7 +28,6 @@
       <EmbeddedResource Remove="public\Log\**" />
       <None Remove="Authentication\**" />
       <None Remove="Command\**" />
-      <None Remove="ext\**" />
       <None Remove="public\App\**" />
       <None Remove="public\Contacts\**" />
       <None Remove="public\Encryption\Keys\**" />
@@ -281,7 +278,6 @@
       <Compile Include="public\SabrePluginException.php" />
       <Compile Include="public\Search\PagedProvider.php" />
       <Compile Include="public\Search\Provider.php" />
-      <Compile Include="public\Search\Result.php" />
       <Compile Include="public\Security\IContentSecurityPolicyManager.php" />
       <Compile Include="public\Security\ICredentialsManager.php" />
       <Compile Include="public\Security\ICrypto.php" />

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace publicApi
+namespace OCP
 {
     /**
      * Small Interface for Search
@@ -20,7 +20,7 @@ namespace publicApi
          * @return array An array of OCP\Search\Result's
          * @since 8.0.0
          */
-        public function searchPaged($query, array $inApps = array(), $page = 1, $size = 30);
+        IList<OCP.Search.Result> searchPaged(string query, IList<string> inApps , int page = 1, int size = 30);
 
         /**
          * Register a new search provider to search with
@@ -28,20 +28,20 @@ namespace publicApi
          * @param array $options optional
          * @since 7.0.0
          */
-        public function registerProvider($class, array $options = array());
+        void registerProvider(string classp, IList<string> options );
 
 	/**
 	 * Remove one existing search provider
 	 * @param string $provider class name of a OCP\Search\Provider
 	 * @since 7.0.0
 	 */
-	public function removeProvider($provider);
+	void removeProvider(OCP.Search.Provider provider);
 
         /**
          * Remove all registered search providers
          * @since 7.0.0
          */
-        public function clearProviders();
+        void clearProviders();
 
     }
 

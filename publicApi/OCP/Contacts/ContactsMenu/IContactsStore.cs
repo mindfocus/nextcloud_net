@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace publicApi.Contacts.ContactsMenu
+namespace OCP.Contacts.ContactsMenu
 {
 
     /**

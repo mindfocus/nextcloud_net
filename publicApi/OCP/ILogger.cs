@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-namespace publicApi
+namespace OCP
 {
 /**
  * Interface ILogger

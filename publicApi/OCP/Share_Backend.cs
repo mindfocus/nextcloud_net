@@ -1,7 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-namespace publicApi
+namespace OCP
 {
     /**
  * Interface that apps must implement to share content.

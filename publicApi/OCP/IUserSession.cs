@@ -1,7 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-namespace publicApi
+namespace OCP
 {
 /**
  * User session

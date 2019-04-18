@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace publicApi.Calendar.Room
+namespace OCP.Calendar.Room
 {
     /**
      * Interface IRoom

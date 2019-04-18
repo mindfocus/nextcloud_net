@@ -1,7 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-namespace publicApi
+namespace OCP
 {
     /**
  * This interface defines method for accessing the file based user cache.

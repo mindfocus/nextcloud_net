@@ -1,5 +1,5 @@
 ﻿using System;
-namespace publicApi.Authentication.Exception
+namespace OCP.Authentication.Exception
 {
     public class PasswordUnavailableException : Exception
     {

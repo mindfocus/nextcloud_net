@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-namespace publicApi
+namespace OCP
 {
     /**
      * Access to all the configuration options ownCloud offers

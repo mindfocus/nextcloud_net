@@ -1,5 +1,5 @@
 ﻿using System;
-namespace publicApi.Authentication.TwoFactorAuth
+namespace OCP.Authentication.TwoFactorAuth
 {
     /**
      * Marks a 2FA provider as activale by the administrator. This means that an

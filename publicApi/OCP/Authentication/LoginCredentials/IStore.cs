@@ -1,5 +1,5 @@
 ﻿using System;
-namespace publicApi.Authentication.LoginCredentials
+namespace OCP.Authentication.LoginCredentials
 {
     /**
      * @since 12

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace publicApi
+namespace OCP
 {
     /**
      * Class Manager
@@ -21,7 +21,7 @@ namespace publicApi
      * @package OC\User
      * @since 8.0.0
      */
-    interface IUserManager
+    public interface IUserManager
     {
         /**
 	 * register a user backend

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace publicApi.App
+namespace OCP.App
 {
     class AppPathNotFoundException : Exception
     {

@@ -1,7 +1,7 @@
 using System;
 using System.Runtime.Serialization;
 
-namespace publicApi.Accounts
+namespace OCP.Accounts
 {
     public interface IAccountProperty : ISerializable
     {

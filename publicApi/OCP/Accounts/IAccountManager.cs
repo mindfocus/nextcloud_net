@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace publicApi.Accounts
+namespace OCP.Accounts
 {
     public interface IAccountManager
     {

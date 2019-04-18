@@ -1,7 +1,7 @@
 ﻿using System;
 using publicApi.ext;
 
-namespace publicApi.Authentication.TwoFactorAuth
+namespace OCP.Authentication.TwoFactorAuth
 {
     /*
      * @since 15.0.0

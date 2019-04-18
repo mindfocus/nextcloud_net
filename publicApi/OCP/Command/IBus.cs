@@ -1,5 +1,5 @@
 ﻿using System;
-namespace publicApi.Command
+namespace OCP.Command
 {
     /**
      * Interface IBus

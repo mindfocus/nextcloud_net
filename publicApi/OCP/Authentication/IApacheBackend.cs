@@ -1,5 +1,5 @@
 ﻿using System;
-namespace publicApi.Authentication
+namespace OCP.Authentication
 {
     /**
      * Interface IApacheBackend

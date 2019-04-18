@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace publicApi
+namespace OCP
 {
     /**
      * Class IServerContainer
@@ -31,7 +31,7 @@ namespace publicApi
          * @return \OCP\Calendar\Resource\IBackend
          * @since 14.0.0
          */
-        publicApi.Calendar.Resource.IBackend getCalendarResourceBackendManager();
+        Calendar.Resource.IBackend getCalendarResourceBackendManager();
 
         /**
          * The calendar room backend manager will act as a broker between consumers
@@ -40,7 +40,7 @@ namespace publicApi
          * @return \OCP\Calendar\Room\IBackend
          * @since 14.0.0
          */
-        publicApi.Calendar.Room.IBackend getCalendarRoomBackendManager();
+        Calendar.Room.IBackend getCalendarRoomBackendManager();
 
     /**
 	 * The contacts manager will act as a broker between consumers for contacts information and
@@ -49,7 +49,7 @@ namespace publicApi
 	 * @return \OCP\Contacts\IManager
 	 * @since 6.0.0
 	 */
-    publicApi.Contacts.IManager getContactsManager();
+    Contacts.IManager getContactsManager();
 
     /**
 	 * The current request object holding all information about the request currently being processed
@@ -67,7 +67,7 @@ namespace publicApi
 	 * @return \OCP\IPreview
 	 * @since 6.0.0
 	 */
-    public function getPreviewManager();
+    IPreview getPreviewManager();
 
     /**
 	 * Returns the tag manager which can get and set tags for different object types
@@ -76,7 +76,7 @@ namespace publicApi
 	 * @return \OCP\ITagManager
 	 * @since 6.0.0
 	 */
-    public function getTagManager();
+    ITagManager getTagManager();
 
     /**
 	 * Returns the root folder of ownCloud's data directory
@@ -84,7 +84,7 @@ namespace publicApi
 	 * @return \OCP\Files\IRootFolder
 	 * @since 6.0.0 - between 6.0.0 and 8.0.0 this returned \OCP\Files\Folder
 	 */
-    public function getRootFolder();
+    IRootFolder getRootFolder();
 
     /**
 	 * Returns a view to ownCloud's files folder
@@ -94,7 +94,7 @@ namespace publicApi
 	 * @since 6.0.0 - parameter $userId was added in 8.0.0
 	 * @see getUserFolder in \OCP\Files\IRootFolder
 	 */
-    public function getUserFolder($userId = null);
+    Folder getUserFolder(string userId = null);
 
     /**
 	 * Returns an app-specific view in ownClouds data directory
@@ -103,15 +103,15 @@ namespace publicApi
 	 * @since 6.0.0
 	 * @deprecated 9.2.0 use IAppData
 	 */
-    public function getAppFolder();
+    Folder getAppFolder();
 
-    /**
-	 * Returns a user manager
-	 *
-	 * @return \OCP\IUserManager
-	 * @since 8.0.0
-	 */
-    public function getUserManager();
+        /**
+         * Returns a user manager
+         *
+         * @return \OCP\IUserManager
+         * @since 8.0.0
+         */
+        IUserManager getUserManager();
 
     /**
 	 * Returns a group manager
@@ -119,7 +119,7 @@ namespace publicApi
 	 * @return \OCP\IGroupManager
 	 * @since 8.0.0
 	 */
-    public function getGroupManager();
+    IGroupManager getGroupManager();
 
     /**
 	 * Returns the user session
@@ -127,7 +127,7 @@ namespace publicApi
 	 * @return \OCP\IUserSession
 	 * @since 6.0.0
 	 */
-    public function getUserSession();
+    IUserSession getUserSession();
 
     /**
 	 * Returns the navigation manager
@@ -135,7 +135,7 @@ namespace publicApi
 	 * @return \OCP\INavigationManager
 	 * @since 6.0.0
 	 */
-    public function getNavigationManager();
+    INavigationManager getNavigationManager();
 
     /**
 	 * Returns the config manager
@@ -143,7 +143,7 @@ namespace publicApi
 	 * @return \OCP\IConfig
 	 * @since 6.0.0
 	 */
-    public function getConfig();
+    IConfig getConfig();
 
     /**
 	 * Returns a Crypto instance
@@ -151,7 +151,7 @@ namespace publicApi
 	 * @return \OCP\Security\ICrypto
 	 * @since 8.0.0
 	 */
-    public function getCrypto();
+    Security.ICrypto getCrypto();
 
     /**
 	 * Returns a Hasher instance
@@ -159,7 +159,7 @@ namespace publicApi
 	 * @return \OCP\Security\IHasher
 	 * @since 8.0.0
 	 */
-    public function getHasher();
+    Security.IHasher getHasher();
 
     /**
 	 * Returns a SecureRandom instance
@@ -167,7 +167,7 @@ namespace publicApi
 	 * @return \OCP\Security\ISecureRandom
 	 * @since 8.1.0
 	 */
-    public function getSecureRandom();
+    Security.ISecureRandom getSecureRandom();
 
     /**
 	 * Returns a CredentialsManager instance
@@ -175,7 +175,7 @@ namespace publicApi
 	 * @return \OCP\Security\ICredentialsManager
 	 * @since 9.0.0
 	 */
-    public function getCredentialsManager();
+    Security.ICredentialsManager getCredentialsManager();
 
     /**
 	 * Returns the app config manager
@@ -183,7 +183,7 @@ namespace publicApi
 	 * @return \OCP\IAppConfig
 	 * @since 7.0.0
 	 */
-    public function getAppConfig();
+    IAppConfig getAppConfig();
 
     /**
 	 * @return \OCP\L10N\IFactory
@@ -198,7 +198,7 @@ namespace publicApi
 	 * @return \OCP\IL10N
 	 * @since 6.0.0 - parameter $lang was added in 8.0.0
 	 */
-    public function getL10N($app, $lang = null);
+    public IL10N getL10N(string app, string lang = null);
 
     /**
 	 * @return \OC\Encryption\Manager
@@ -216,7 +216,7 @@ namespace publicApi
 	 * @return \OCP\Encryption\Keys\IStorage
 	 * @since 8.1.0
 	 */
-    public function getEncryptionKeyStorage();
+    Encryption.Keys.IStorage getEncryptionKeyStorage();
 
     /**
 	 * Returns the URL generator
@@ -224,7 +224,7 @@ namespace publicApi
 	 * @return \OCP\IURLGenerator
 	 * @since 6.0.0
 	 */
-    public function getURLGenerator();
+    IURLGenerator getURLGenerator();
 
     /**
 	 * Returns an ICache instance
@@ -232,7 +232,7 @@ namespace publicApi
 	 * @return \OCP\ICache
 	 * @since 6.0.0
 	 */
-    public function getCache();
+    ICache getCache();
 
     /**
 	 * Returns an \OCP\CacheFactory instance
@@ -240,7 +240,7 @@ namespace publicApi
 	 * @return \OCP\ICacheFactory
 	 * @since 7.0.0
 	 */
-    public function getMemCacheFactory();
+    ICacheFactory getMemCacheFactory();
 
     /**
 	 * Returns the current session
@@ -248,7 +248,7 @@ namespace publicApi
 	 * @return \OCP\ISession
 	 * @since 6.0.0
 	 */
-    public function getSession();
+    ISession getSession();
 
     /**
 	 * Returns the activity manager
@@ -256,7 +256,7 @@ namespace publicApi
 	 * @return \OCP\Activity\IManager
 	 * @since 6.0.0
 	 */
-    public function getActivityManager();
+    Activity.IManager getActivityManager();
 
     /**
 	 * Returns the current session
@@ -272,7 +272,7 @@ namespace publicApi
 	 * @return \OCP\IAvatarManager
 	 * @since 6.0.0
 	 */
-    public function getAvatarManager();
+    IAvatarManager getAvatarManager();
 
     /**
 	 * Returns an job list for controlling background jobs
@@ -280,7 +280,7 @@ namespace publicApi
 	 * @return \OCP\BackgroundJob\IJobList
 	 * @since 7.0.0
 	 */
-    public function getJobList();
+    BackgroundJob.IJobList getJobList();
 
     /**
 	 * Returns a logger instance
@@ -288,7 +288,7 @@ namespace publicApi
 	 * @return \OCP\ILogger
 	 * @since 8.0.0
 	 */
-    public function getLogger();
+    ILogger getLogger();
 
     /**
 	 * returns a log factory instance
@@ -296,7 +296,7 @@ namespace publicApi
 	 * @return ILogFactory
 	 * @since 14.0.0
 	 */
-    public function getLogFactory();
+    Log.ILogFactory getLogFactory();
 
     /**
 	 * Returns a router for generating and matching urls
@@ -312,7 +312,7 @@ namespace publicApi
 	 * @return \OCP\ISearch
 	 * @since 7.0.0
 	 */
-    public function getSearch();
+    ISearch getSearch();
 
     /**
 	 * Get the certificate manager for the user
@@ -363,7 +363,7 @@ namespace publicApi
 	 * @return \OCP\ITempManager
 	 * @since 8.0.0
 	 */
-    public function getTempManager();
+    ITempManager getTempManager();
 
     /**
 	 * Get the app manager
@@ -379,7 +379,7 @@ namespace publicApi
 	 * @return string
 	 * @since 8.0.0
 	 */
-    public function getWebRoot();
+    string getWebRoot();
 
     /**
 	 * @return \OCP\Files\Config\IMountProviderCollection
@@ -414,13 +414,13 @@ namespace publicApi
 	 * @return \OCP\Lock\ILockingProvider
 	 * @since 8.1.0
 	 */
-    public function getLockingProvider();
+    Lock.ILockingProvider getLockingProvider();
 
     /**
 	 * @return \OCP\Files\Mount\IMountManager
 	 * @since 8.2.0
 	 */
-    public function getMountManager();
+    Files.Mount.IMountManager getMountManager();
 
     /**
 	 * Get the MimeTypeDetector
@@ -490,7 +490,7 @@ namespace publicApi
 	 * @return IContentSecurityPolicyManager
 	 * @since 9.0.0
 	 */
-    public function getContentSecurityPolicyManager();
+    Security.IContentSecurityPolicyManager getContentSecurityPolicyManager();
 
     /**
 	 * @return \OCP\IDateTimeZone
@@ -514,7 +514,7 @@ namespace publicApi
 	 * @return \OCP\GlobalScale\IConfig
 	 * @since 14.0.0
 	 */
-    public function getGlobalScaleConfig();
+    GlobalScale.IConfig getGlobalScaleConfig();
 
     /**
 	 * @return ICloudFederationFactory
@@ -532,19 +532,19 @@ namespace publicApi
 	 * @return \OCP\Remote\Api\IApiFactory
 	 * @since 13.0.0
 	 */
-    public function getRemoteApiFactory();
+    Remote.Api.IApiFactory getRemoteApiFactory();
 
     /**
 	 * @return \OCP\Remote\IInstanceFactory
 	 * @since 13.0.0
 	 */
-    public function getRemoteInstanceFactory();
+    Remote.IInstanceFactory getRemoteInstanceFactory();
 
     /**
 	 * @return \OCP\Files\Storage\IStorageFactory
 	 * @since 15.0.0
 	 */
-    public function getStorageFactory();
+    Files.Storage.IStorageFactory getStorageFactory();
 }
 
 }

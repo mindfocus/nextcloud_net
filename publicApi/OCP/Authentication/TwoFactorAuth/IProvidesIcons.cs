@@ -1,5 +1,5 @@
 ﻿using System;
-namespace publicApi.Authentication.TwoFactorAuth
+namespace OCP.Authentication.TwoFactorAuth
 {
     /**
      * Interface for two-factor providers that provide dark and light provider

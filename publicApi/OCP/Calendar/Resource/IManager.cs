@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace publicApi.Calendar.Resource
+namespace OCP.Calendar.Resource
 {
     /**
      * Interface IManager

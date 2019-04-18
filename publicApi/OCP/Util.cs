@@ -1,5 +1,5 @@
 ﻿using System;
-namespace publicApi
+namespace OCP
 {
     /**
      * This class provides different helper functions to make the life of a developer easier

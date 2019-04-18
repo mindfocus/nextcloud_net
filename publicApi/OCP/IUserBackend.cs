@@ -1,4 +1,4 @@
-namespace publicApi
+namespace OCP
 {
     /**
      * Interface IUserBackend

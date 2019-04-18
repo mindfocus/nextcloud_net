@@ -1,5 +1,5 @@
 ﻿using System;
-namespace publicApi.Authentication.TwoFactorAuth
+namespace OCP.Authentication.TwoFactorAuth
 {
     /**
      * Interface for admins that have personal settings. These settings will be shown in the
