@@ -189,7 +189,7 @@ namespace OCP
 	 * @return \OCP\L10N\IFactory
 	 * @since 8.2.0
 	 */
-    public function getL10NFactory();
+    L10N.IFactory getL10NFactory();
 
     /**
 	 * get an L10N instance

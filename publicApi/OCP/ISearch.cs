@@ -35,7 +35,7 @@ namespace OCP
 	 * @param string $provider class name of a OCP\Search\Provider
 	 * @since 7.0.0
 	 */
-	void removeProvider(OCP.Search.Provider provider);
+	void removeProvider(Search.Provider provider);
 
         /**
          * Remove all registered search providers

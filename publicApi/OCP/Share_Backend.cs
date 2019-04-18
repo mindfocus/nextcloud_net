@@ -55,7 +55,7 @@ public interface Share_Backend {
 	 * It is only called through calls to the public getItem(s)Shared(With) functions.
 	 * @since 5.0.0
 	 */
-	public function formatItems($items, $format, $parameters = null);
+	void formatItems(Tuple items, Tuple format, string parameters = null);
 
 	/**
 	 * Check if a given share type is allowd by the back-end

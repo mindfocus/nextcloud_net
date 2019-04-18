@@ -10,7 +10,7 @@ namespace OCP
      * @package OCP
      * @since 6.0.0
      */
-    interface IL10N
+    public interface IL10N
     {
         /**
          * Translating

@@ -1,29 +1,10 @@
-<?php
-/**
- * @copyright Copyright (c) 2016, ownCloud, Inc.
- *
- * @author Joas Schilling <coding@schilljs.com>
- *
- * @license AGPL-3.0
- *
- * This code is free software: you can redistribute it and/or modify
- * it under the terms of the GNU Affero General Public License, version 3,
- * as published by the Free Software Foundation.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
- * GNU Affero General Public License for more details.
- *
- * You should have received a copy of the GNU Affero General Public License, version 3,
- * along with this program.  If not, see <http://www.gnu.org/licenses/>
- *
- */
-namespace OCP\L10N;
+using System;
+using System.Collections.Generic;
+using System.Text;
 
-use OCP\IUser;
-
-/**
+namespace OCP.L10N
+{
+    /**
  * @since 8.2.0
  */
 interface IFactory {
@@ -36,7 +17,7 @@ interface IFactory {
 	 * @return \OCP\IL10N
 	 * @since 8.2.0
 	 */
-	public function get($app, $lang = null, $locale = null);
+	IL10N get(string app, string lang = null, string locale = null);
 
 	/**
 	 * Find the best language
@@ -45,14 +26,14 @@ interface IFactory {
 	 * @return string language If nothing works it returns 'en'
 	 * @since 9.0.0
 	 */
-	public function findLanguage($app = null);
+	string findLanguage(string app = null);
 
 	/**
 	 * @param string|null $lang user language as default locale
 	 * @return string locale If nothing works it returns 'en_US'
 	 * @since 14.0.0
 	 */
-	public function findLocale($lang = null);
+	string findLocale(string lang = null);
 
 	/**
 	 * find the matching lang from the locale
@@ -62,7 +43,7 @@ interface IFactory {
 	 * @return null|string
 	 * @since 14.0.1
 	 */
-	public function findLanguageFromLocale(string $app = 'core', string $locale = null);
+	string? findLanguageFromLocale(string app = "core", string locale = null);
 
 	/**
 	 * Find all available languages for an app
@@ -71,13 +52,13 @@ interface IFactory {
 	 * @return string[] an array of available languages
 	 * @since 9.0.0
 	 */
-	public function findAvailableLanguages($app = null);
+	IList<string> findAvailableLanguages(string app = null);
 
 	/**
 	 * @return array an array of available
 	 * @since 14.0.0
 	 */
-	public function findAvailableLocales();
+	IList<string> findAvailableLocales();
 
 	/**
 	 * @param string|null $app App id or null for core
@@ -85,14 +66,14 @@ interface IFactory {
 	 * @return bool
 	 * @since 9.0.0
 	 */
-	public function languageExists($app, $lang);
+	bool languageExists(string app, string lang);
 
 	/**
 	 * @param string $locale
 	 * @return bool
 	 * @since 14.0.0
 	 */
-	public function localeExists($locale);
+	bool localeExists(string locale);
 
 	/**
 	 * Creates a function from the plural string
@@ -101,7 +82,7 @@ interface IFactory {
 	 * @return string Unique function name
 	 * @since 14.0.0
 	 */
-	public function createPluralFunction($string);
+	string createPluralFunction(string pluralString);
 
 	/**
 	 * iterate through language settings (if provided) in this order:
@@ -117,5 +98,7 @@ interface IFactory {
 	 *
 	 * @since 14.0.0
 	 */
-	public function getLanguageIterator(IUser $user = null): ILanguageIterator;
+	ILanguageIterator getLanguageIterator(IUser user = null);
+}
+
 }

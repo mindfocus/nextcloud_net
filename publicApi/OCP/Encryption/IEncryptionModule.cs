@@ -1,46 +1,22 @@
-<?php
-/**
- * @copyright Copyright (c) 2016, ownCloud, Inc.
- *
- * @author Bjoern Schiessle <bjoern@schiessle.org>
- * @author Björn Schießle <bjoern@schiessle.org>
- * @author Lukas Reschke <lukas@statuscode.ch>
- * @author Morris Jobke <hey@morrisjobke.de>
- * @author Thomas Müller <thomas.mueller@tmit.eu>
- *
- * @license AGPL-3.0
- *
- * This code is free software: you can redistribute it and/or modify
- * it under the terms of the GNU Affero General Public License, version 3,
- * as published by the Free Software Foundation.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
- * GNU Affero General Public License for more details.
- *
- * You should have received a copy of the GNU Affero General Public License, version 3,
- * along with this program.  If not, see <http://www.gnu.org/licenses/>
- *
- */
+using System;
+using System.Collections.Generic;
+using System.Text;
 
-namespace OCP\Encryption;
-use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Output\OutputInterface;
-
-/**
+namespace OCP.Encryption
+{
+    /**
  * Interface IEncryptionModule
  *
  * @package OCP\Encryption
  * @since 8.1.0
  */
-interface IEncryptionModule {
+public interface IEncryptionModule {
 
 	/**
 	 * @return string defining the technical unique id
 	 * @since 8.1.0
 	 */
-	public function getId();
+	string getId();
 
 	/**
 	 * In comparison to getKey() this function returns a human readable (maybe translated) name
@@ -48,7 +24,7 @@ interface IEncryptionModule {
 	 * @return string
 	 * @since 8.1.0
 	 */
-	public function getDisplayName();
+	string getDisplayName();
 
 	/**
 	 * start receiving chunks from a file. This is the place where you can
@@ -66,7 +42,7 @@ interface IEncryptionModule {
 	 *                       or if no additional data is needed return a empty array
 	 * @since 8.1.0
 	 */
-	public function begin($path, $user, $mode, array $header, array $accessList);
+	IList<string> begin(string path, string user, string mode, IList<string> header, IList<string> accessList);
 
 	/**
 	 * last chunk received. This is the place where you can perform some final
@@ -82,7 +58,7 @@ interface IEncryptionModule {
 	 * @since 8.1.0
 	 * @since 9.0.0 parameter $position added
 	 */
-	public function end($path, $position);
+	string end(string path, string position);
 
 	/**
 	 * encrypt data
@@ -95,7 +71,7 @@ interface IEncryptionModule {
 	 * @since 8.1.0
 	 * @since 9.0.0 parameter $position added
 	 */
-	public function encrypt($data, $position);
+	object encrypt(string data, string position);
 
 	/**
 	 * decrypt data
@@ -108,7 +84,7 @@ interface IEncryptionModule {
 	 * @since 8.1.0
 	 * @since 9.0.0 parameter $position added
 	 */
-	public function decrypt($data, $position);
+	object decrypt(string data, string position);
 
 	/**
 	 * update encrypted file, e.g. give additional users access to the file
@@ -119,7 +95,7 @@ interface IEncryptionModule {
 	 * @return boolean
 	 * @since 8.1.0
 	 */
-	public function update($path, $uid, array $accessList);
+	bool update(string path, string uid, IList<string> accessList);
 
 	/**
 	 * should the file be encrypted or not
@@ -128,7 +104,7 @@ interface IEncryptionModule {
 	 * @return boolean
 	 * @since 8.1.0
 	 */
-	public function shouldEncrypt($path);
+	bool shouldEncrypt(string path);
 
 	/**
 	 * get size of the unencrypted payload per block.
@@ -138,7 +114,7 @@ interface IEncryptionModule {
 	 * @return int
 	 * @since 8.1.0 optional parameter $signed was added in 9.0.0
 	 */
-	public function getUnencryptedBlockSize($signed = false);
+	int getUnencryptedBlockSize(bool signed = false);
 
 	/**
 	 * check if the encryption module is able to read the file,
@@ -149,7 +125,7 @@ interface IEncryptionModule {
 	 * @return boolean
 	 * @since 8.1.0
 	 */
-	public function isReadable($path, $uid);
+	bool isReadable(string path, string uid);
 
 	/**
 	 * Initial encryption of all files
@@ -158,7 +134,7 @@ interface IEncryptionModule {
 	 * @param OutputInterface $output write some status information to the terminal during encryption
 	 * @since 8.2.0
 	 */
-	public function encryptAll(InputInterface $input, OutputInterface $output);
+	void encryptAll(InputInterface input, OutputInterface output);
 
 	/**
 	 * prepare encryption module to decrypt all files
@@ -169,7 +145,7 @@ interface IEncryptionModule {
 	 * @return bool return false on failure or if it isn't supported by the module
 	 * @since 8.2.0
 	 */
-	public function prepareDecryptAll(InputInterface $input, OutputInterface $output, $user = '');
+	bool prepareDecryptAll(InputInterface input, OutputInterface output,string user = "");
 
 	/**
 	 * Check if the module is ready to be used by that specific user.
@@ -181,7 +157,7 @@ interface IEncryptionModule {
 	 * @return boolean
 	 * @since 9.1.0
 	 */
-	public function isReadyForUser($user);
+	bool isReadyForUser(string user);
 
 	/**
 	 * Does the encryption module needs a detailed list of users with access to the file?
@@ -191,6 +167,8 @@ interface IEncryptionModule {
 	 * @since 13.0.0
 	 * @return bool
 	 */
-	public function needDetailedAccessList();
+	bool needDetailedAccessList();
+
+}
 
 }

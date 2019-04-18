@@ -1,41 +1,13 @@
-<?php
-/**
- * @copyright Copyright (c) 2016, ownCloud, Inc.
- *
- * @author Morris Jobke <hey@morrisjobke.de>
- * @author Robin Appelman <robin@icewind.nl>
- * @author Vincent Petry <pvince81@owncloud.com>
- *
- * @license AGPL-3.0
- *
- * This code is free software: you can redistribute it and/or modify
- * it under the terms of the GNU Affero General Public License, version 3,
- * as published by the Free Software Foundation.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
- * GNU Affero General Public License for more details.
- *
- * You should have received a copy of the GNU Affero General Public License, version 3,
- * along with this program.  If not, see <http://www.gnu.org/licenses/>
- *
- */
+using System;
+using System.Collections.Generic;
+using System.Text;
 
-/**
- * Public interface of ownCloud for apps to use.
- * Files/Folder interface
- */
-
-// use OCP namespace for all classes that are considered public.
-// This means that they should be used by apps instead of the internal ownCloud classes
-namespace OCP\Files;
-use OCP\Files\Search\ISearchQuery;
-
-/**
+namespace OCP.Files
+{
+    /**
  * @since 6.0.0
  */
-interface Folder extends Node {
+public interface Folder : Node {
 	/**
 	 * Get the full path of an item in the folder within owncloud's filesystem
 	 *
@@ -44,7 +16,7 @@ interface Folder extends Node {
 	 * @throws \OCP\Files\NotPermittedException
 	 * @since 6.0.0
 	 */
-	public function getFullPath($path);
+	string  getFullPath(string path);
 
 	/**
 	 * Get the path of an item in the folder relative to the folder
@@ -54,7 +26,7 @@ interface Folder extends Node {
 	 * @return string
 	 * @since 6.0.0
 	 */
-	public function getRelativePath($path);
+	string  getRelativePath(string path);
 
 	/**
 	 * check if a node is a (grand-)child of the folder
@@ -63,7 +35,7 @@ interface Folder extends Node {
 	 * @return bool
 	 * @since 6.0.0
 	 */
-	public function isSubNode($node);
+	bool isSubNode(Node node);
 
 	/**
 	 * get the content of this directory
@@ -72,7 +44,7 @@ interface Folder extends Node {
 	 * @return \OCP\Files\Node[]
 	 * @since 6.0.0
 	 */
-	public function getDirectoryListing();
+	IList<Node> getDirectoryListing();
 
 	/**
 	 * Get the node at $path
@@ -82,7 +54,7 @@ interface Folder extends Node {
 	 * @throws \OCP\Files\NotFoundException
 	 * @since 6.0.0
 	 */
-	public function get($path);
+	Node get(string path);
 
 	/**
 	 * Check if a file or folder exists in the folder
@@ -91,7 +63,7 @@ interface Folder extends Node {
 	 * @return bool
 	 * @since 6.0.0
 	 */
-	public function nodeExists($path);
+	bool nodeExists(string path);
 
 	/**
 	 * Create a new folder
@@ -101,7 +73,7 @@ interface Folder extends Node {
 	 * @throws \OCP\Files\NotPermittedException
 	 * @since 6.0.0
 	 */
-	public function newFolder($path);
+	Folder newFolder(string path);
 
 	/**
 	 * Create a new file
@@ -111,7 +83,7 @@ interface Folder extends Node {
 	 * @throws \OCP\Files\NotPermittedException
 	 * @since 6.0.0
 	 */
-	public function newFile($path);
+	File newFile(string path);
 
 	/**
 	 * search for files with the name matching $query
@@ -120,8 +92,8 @@ interface Folder extends Node {
 	 * @return \OCP\Files\Node[]
 	 * @since 6.0.0
 	 */
-	public function search($query);
-
+	IList<Node> search(string query);
+	IList<Node> search(Search.ISearchQuery query);
 	/**
 	 * search for files by mimetype
 	 * $mimetype can either be a full mimetype (image/png) or a wildcard mimetype (image)
@@ -130,7 +102,7 @@ interface Folder extends Node {
 	 * @return \OCP\Files\Node[]
 	 * @since 6.0.0
 	 */
-	public function searchByMime($mimetype);
+	IList<Node> searchByMime(string mimetype);
 
 	/**
 	 * search for files by tag
@@ -140,7 +112,7 @@ interface Folder extends Node {
 	 * @return \OCP\Files\Node[]
 	 * @since 8.0.0
 	 */
-	public function searchByTag($tag, $userId);
+	IList<Node> searchByTag(string tag, string userId);
 
 	/**
 	 * get a file or folder inside the folder by it's internal id
@@ -152,7 +124,7 @@ interface Folder extends Node {
 	 * @return \OCP\Files\Node[]
 	 * @since 6.0.0
 	 */
-	public function getById($id);
+	IList<Node> getById(int id);
 
 	/**
 	 * Get the amount of free space inside the folder
@@ -160,7 +132,7 @@ interface Folder extends Node {
 	 * @return int
 	 * @since 6.0.0
 	 */
-	public function getFreeSpace();
+	int getFreeSpace();
 
 	/**
 	 * Check if new files or folders can be created within the folder
@@ -168,7 +140,7 @@ interface Folder extends Node {
 	 * @return bool
 	 * @since 6.0.0
 	 */
-	public function isCreatable();
+	bool isCreatable();
 
 	/**
 	 * Add a suffix to the name in case the file exists
@@ -178,7 +150,7 @@ interface Folder extends Node {
 	 * @throws NotPermittedException
 	 * @since 8.1.0
 	 */
-	public function getNonExistingName($name);
+	string getNonExistingName(string name);
 
 	/**
 	 * @param int $limit
@@ -186,5 +158,7 @@ interface Folder extends Node {
 	 * @return \OCP\Files\Node[]
 	 * @since 9.1.0
 	 */
-	public function getRecent($limit, $offset = 0);
+	IList<Node> getRecent(int limit, int offset = 0);
+}
+
 }
