@@ -405,25 +405,25 @@ namespace OCP.Files.Storage
          * @return IPropagator
          * @since 9.0.0
          */
-        IPropagator getPropagator();
+        Cache.IPropagator getPropagator();
 
         /**
          * @return IScanner
          * @since 9.0.0
          */
-        IScanner getScanner();
+        Cache.IScanner getScanner();
 
         /**
          * @return IUpdater
          * @since 9.0.0
          */
-        IUpdater getUpdater();
+        Cache.IUpdater getUpdater();
 
         /**
          * @return IWatcher
          * @since 9.0.0
          */
-        IWatcher getWatcher();
+        Cache.IWatcher getWatcher();
     }
 
 }

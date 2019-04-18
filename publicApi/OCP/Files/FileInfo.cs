@@ -119,7 +119,7 @@ namespace OCP.Files
          * @return \OCP\Files\Storage
          * @since 7.0.0
          */
-        Storage getStorage();
+        Storage.IStorage getStorage();
 
         /**
          * Get the file id of the file or folder
@@ -221,7 +221,7 @@ namespace OCP.Files
          * @return \OCP\Files\Mount\IMountPoint
          * @since 8.0.0
          */
-        IMountPoint getMountPoint();
+        Mount.IMountPoint getMountPoint();
 
         /**
          * Get the owner of the file

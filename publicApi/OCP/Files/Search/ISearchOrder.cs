@@ -7,7 +7,7 @@ namespace OCP.Files.Search
     /**
      * @since 12.0.0
      */
-    interface ISearchOrder
+    public interface ISearchOrder
     {
         //const DIRECTION_ASCENDING = 'asc';
         //const DIRECTION_DESCENDING = 'desc';

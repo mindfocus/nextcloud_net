@@ -20,7 +20,7 @@ namespace OCP
          * @return array An array of OCP\Search\Result's
          * @since 8.0.0
          */
-        IList<OCP.Search.Result> searchPaged(string query, IList<string> inApps , int page = 1, int size = 30);
+        IList<Search.Result> searchPaged(string query, IList<string> inApps , int page = 1, int size = 30);
 
         /**
          * Register a new search provider to search with

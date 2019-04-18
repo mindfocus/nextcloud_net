@@ -204,7 +204,7 @@ namespace OCP.Files.Cache
          * @throw \InvalidArgumentException if the cache is unable to perform the query
          * @since 12.0.0
          */
-        IList<ICacheEntry> searchQuery(OCP.Files.Search.ISearchQuery query);
+        IList<ICacheEntry> searchQuery(Search.ISearchQuery query);
 
         /**
          * Search for files by tag of a given users.

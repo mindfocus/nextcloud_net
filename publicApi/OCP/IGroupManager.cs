@@ -61,7 +61,7 @@ namespace OCP
          * @return bool
          * @since 8.0.0
          */
-        public function groupExists($gid);
+        bool groupExists(string gid);
 
         /**
          * @param string $gid

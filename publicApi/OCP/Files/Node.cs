@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace OCP.OCP.Files
+namespace OCP.Files
 {
     /**
      * Interface Node
@@ -56,7 +56,7 @@ namespace OCP.OCP.Files
 	 * @throws \OCP\Files\NotFoundException
 	 * @since 6.0.0
 	 */
-    Storage getStorage();
+    Storage.IStorage getStorage();
 
     /**
 	 * Get the full path of the file or folder

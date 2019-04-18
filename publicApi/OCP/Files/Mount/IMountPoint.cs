@@ -33,7 +33,7 @@ namespace OCP.Files.Mount
          * @return \OC\Files\Storage\Storage
          * @since 8.0.0
          */
-        OCP.Files.Storage.IStorage getStorage();
+        Storage.IStorage getStorage();
 
         /**
          * Get the id of the storages

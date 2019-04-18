@@ -42,7 +42,7 @@ namespace OCP.Files.Storage
          *
          * @since 12.0.0
          */
-        INotifyHandler notify(string path);
+        Notify.INotifyHandler notify(string path);
     }
 
 }

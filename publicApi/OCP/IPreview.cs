@@ -76,7 +76,7 @@ namespace OCP
          * @throws \InvalidArgumentException if the preview would be invalid (in case the original image is invalid)
          * @since 11.0.0 - \InvalidArgumentException was added in 12.0.0
          */
-        OCP.Files.SimpleFS.ISimpleFile getPreview(File file, int width = -1, int height = -1, bool crop = false, string mode = "fill", string mimeType = null);
+        Files.SimpleFS.ISimpleFile getPreview(File file, int width = -1, int height = -1, bool crop = false, string mode = "fill", string mimeType = null);
         //public ISimpleFile getPreview(File file, int width = -1, int height = -1, bool crop = false, string mode = IPreview::MODE_FILL, string mimeType = null);
 
 
