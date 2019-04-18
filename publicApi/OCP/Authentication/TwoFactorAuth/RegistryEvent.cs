@@ -1,5 +1,5 @@
 ﻿using System;
-using publicApi.ext;
+using ext;
 
 namespace OCP.Authentication.TwoFactorAuth
 {

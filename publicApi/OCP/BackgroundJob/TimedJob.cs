@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
-using publicApi.AppFramework.Utility;
+using OCP.AppFramework.Utility;
 using Quartz;
 
 namespace OCP.BackgroundJob

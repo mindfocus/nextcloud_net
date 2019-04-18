@@ -1,6 +1,6 @@
 ﻿using System;
-using publicApi.Accounts;
-using publicApi.BackgroundJob;
+using OCP.Accounts;
+using OCP.BackgroundJob;
 
 namespace privateApi.Accounts
 {
@@ -19,7 +19,7 @@ namespace privateApi.Accounts
     private IDBConnection connection;
 
     /** @var string table name */
-    private string table = 'accounts';
+    private string table = "accounts";
 
     /** @var EventDispatcherInterface */
     private EventDispatcherInterface eventDispatcher;
@@ -49,7 +49,7 @@ namespace privateApi.Accounts
      * @param IUser user
      * @param data
      */
-    public void updateUser(IUser user, data)
+    public void updateUser(OCP.IUser user, data)
     {
         userData = this.getUser(user);
         updated = true;

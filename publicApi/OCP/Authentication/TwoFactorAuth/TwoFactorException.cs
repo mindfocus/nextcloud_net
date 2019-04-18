@@ -10,7 +10,7 @@ namespace OCP.Authentication.TwoFactorAuth
      *
      * @since 12
      */
-    class TwoFactorException : Exception
+    class TwoFactorException : System.Exception
     {
 
     }
