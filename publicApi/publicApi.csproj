@@ -37,8 +37,6 @@
       <None Remove="public\Log\**" />
     </ItemGroup>
     <ItemGroup>
-      <Compile Include="public\API.php" />
-      <Compile Include="public\App.php" />
       <Compile Include="public\AppFramework\ApiController.php" />
       <Compile Include="public\AppFramework\App.php" />
       <Compile Include="public\AppFramework\AuthPublicShareController.php" />
@@ -222,12 +220,9 @@
       <Compile Include="public\Http\Client\IClient.php" />
       <Compile Include="public\Http\Client\IClientService.php" />
       <Compile Include="public\Http\Client\IResponse.php" />
-      <Compile Include="public\ICertificate.php" />
-      <Compile Include="public\ICertificateManager.php" />
       <Compile Include="public\IDateTimeFormatter.php" />
       <Compile Include="public\IDateTimeZone.php" />
       <Compile Include="public\IDBConnection.php" />
-      <Compile Include="public\IEventSource.php" />
       <Compile Include="public\IInitialStateService.php" />
       <Compile Include="public\L10N\IFactory.php" />
       <Compile Include="public\L10N\ILanguageIterator.php" />

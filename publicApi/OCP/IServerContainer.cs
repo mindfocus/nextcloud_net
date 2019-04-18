@@ -321,7 +321,7 @@ namespace OCP
 	 * @return \OCP\ICertificateManager | null if $userId is null and no user is logged in
 	 * @since 8.0.0
 	 */
-    public function getCertificateManager($userId = null);
+    ICertificateManager getCertificateManager(string userId = null);
 
     /**
 	 * Create a new event source
@@ -329,7 +329,7 @@ namespace OCP
 	 * @return \OCP\IEventSource
 	 * @since 8.0.0
 	 */
-    public function createEventSource();
+    IEventSource createEventSource();
 
     /**
 	 * Returns an instance of the HTTP client service
@@ -406,7 +406,7 @@ namespace OCP
 	 * @return \OCP\Mail\IMailer
 	 * @since 8.1.0
 	 */
-    public function getMailer();
+    public Mail.IMailer getMailer();
 
     /**
 	 * Get the locking provider
