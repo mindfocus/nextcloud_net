@@ -5,6 +5,12 @@
         <LangVersion>8.0</LangVersion>
         <NullableContextOptions>enable</NullableContextOptions>
     </PropertyGroup>
+
+    <ItemGroup>
+      <Compile Remove="public\App\**" />
+      <EmbeddedResource Remove="public\App\**" />
+      <None Remove="public\App\**" />
+    </ItemGroup>
     <ItemGroup>
       <Compile Include="public\API.php" />
       <Compile Include="public\App.php" />
@@ -56,7 +62,6 @@
       <Compile Include="public\AppFramework\PublicShareController.php" />
       <Compile Include="public\AppFramework\QueryException.php" />
       <Compile Include="public\AppFramework\Utility\IControllerMethodReflector.php" />
-      <Compile Include="public\App\ManagerEvent.php" />
       <Compile Include="public\AutoloadNotAllowedException.php" />
       <Compile Include="public\BackgroundJob.php" />
       <Compile Include="public\Collaboration\AutoComplete\AutoCompleteEvent.php" />
@@ -237,11 +242,9 @@
       <Compile Include="public\IAppConfig.php" />
       <Compile Include="public\IAvatar.php" />
       <Compile Include="public\IAvatarManager.php" />
-      <Compile Include="public\ICache.php" />
       <Compile Include="public\ICacheFactory.php" />
       <Compile Include="public\ICertificate.php" />
       <Compile Include="public\ICertificateManager.php" />
-      <Compile Include="public\IContainer.php" />
       <Compile Include="public\IDateTimeFormatter.php" />
       <Compile Include="public\IDateTimeZone.php" />
       <Compile Include="public\IDBConnection.php" />
@@ -257,12 +260,9 @@
       <Compile Include="public\ISearch.php" />
       <Compile Include="public\IServerContainer.php" />
       <Compile Include="public\ISession.php" />
-      <Compile Include="public\ITagManager.php" />
       <Compile Include="public\ITempManager.php" />
       <Compile Include="public\IURLGenerator.php" />
-      <Compile Include="public\IUserBackend.php" />
       <Compile Include="public\IUserManager.php" />
-      <Compile Include="public\IUserSession.php" />
       <Compile Include="public\L10N\IFactory.php" />
       <Compile Include="public\L10N\ILanguageIterator.php" />
       <Compile Include="public\LDAP\IDeletionFlagSupport.php" />
@@ -328,7 +328,6 @@
       <Compile Include="public\Share\IShare.php" />
       <Compile Include="public\Share\IShareHelper.php" />
       <Compile Include="public\Share\IShareProvider.php" />
-      <Compile Include="public\Share_Backend.php" />
       <Compile Include="public\Share_Backend_Collection.php" />
       <Compile Include="public\Share_Backend_File_Dependent.php" />
       <Compile Include="public\Support\CrashReport\ICollectBreadcrumbs.php" />
