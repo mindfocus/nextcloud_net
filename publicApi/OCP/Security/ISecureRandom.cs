@@ -15,7 +15,7 @@ namespace OCP.Security
      * @package OCP\Security
      * @since 8.0.0
      */
-    interface ISecureRandom
+    public interface ISecureRandom
     {
 
         ///**

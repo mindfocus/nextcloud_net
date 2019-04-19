@@ -1,8 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>netcoreapp2.2</TargetFramework>
-        <LangVersion>8.0</LangVersion>
+        <TargetFramework>netstandard2.0</TargetFramework>
         <NullableContextOptions>enable</NullableContextOptions>
         <RootNamespace />
     </PropertyGroup>
@@ -129,19 +128,11 @@
       <Compile Include="public\Dashboard\Model\WidgetTemplate.php" />
       <Compile Include="public\Dashboard\Service\IEventsService.php" />
       <Compile Include="public\Dashboard\Service\IWidgetsService.php" />
-      <Compile Include="public\DB\ISchemaWrapper.php" />
-      <Compile Include="public\DB\QueryBuilder\ICompositeExpression.php" />
-      <Compile Include="public\DB\QueryBuilder\IExpressionBuilder.php" />
-      <Compile Include="public\DB\QueryBuilder\IFunctionBuilder.php" />
       <Compile Include="public\DB\QueryBuilder\ILiteral.php" />
       <Compile Include="public\DB\QueryBuilder\IParameter.php" />
       <Compile Include="public\DB\QueryBuilder\IQueryBuilder.php" />
       <Compile Include="public\DB\QueryBuilder\IQueryFunction.php" />
       <Compile Include="public\Defaults.php" />
-      <Compile Include="public\Diagnostics\IEvent.php" />
-      <Compile Include="public\Diagnostics\IEventLogger.php" />
-      <Compile Include="public\Diagnostics\IQuery.php" />
-      <Compile Include="public\Diagnostics\IQueryLogger.php" />
       <Compile Include="public\Federation\Exceptions\ActionNotSupportedException.php" />
       <Compile Include="public\Federation\Exceptions\AuthenticationFailedException.php" />
       <Compile Include="public\Federation\Exceptions\BadRequestException.php" />

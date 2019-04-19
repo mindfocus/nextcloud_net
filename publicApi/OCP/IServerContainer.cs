@@ -12,7 +12,7 @@ namespace OCP
      * This container holds all ownCloud services
      * @since 6.0.0
      */
-    interface IServerContainer : IContainer
+    public interface IServerContainer : IContainer
     {
 
     /**
@@ -22,7 +22,7 @@ namespace OCP
 	 * @return \OCP\Calendar\IManager
 	 * @since 13.0.0
 	 */
-    IManager getCalendarManager();
+    Calendar.IManager getCalendarManager();
 
         /**
          * The calendar resource backend manager will act as a broker between consumers
@@ -94,16 +94,16 @@ namespace OCP
 	 * @since 6.0.0 - parameter $userId was added in 8.0.0
 	 * @see getUserFolder in \OCP\Files\IRootFolder
 	 */
-    Folder getUserFolder(string userId = null);
+    Files.Folder getUserFolder(string userId = null);
 
-    /**
-	 * Returns an app-specific view in ownClouds data directory
-	 *
-	 * @return \OCP\Files\Folder
-	 * @since 6.0.0
-	 * @deprecated 9.2.0 use IAppData
-	 */
-    Folder getAppFolder();
+        /**
+         * Returns an app-specific view in ownClouds data directory
+         *
+         * @return \OCP\Files\Folder
+         * @since 6.0.0
+         * @deprecated 9.2.0 use IAppData
+         */
+        Files.Folder getAppFolder();
 
         /**
          * Returns a user manager
@@ -198,19 +198,19 @@ namespace OCP
 	 * @return \OCP\IL10N
 	 * @since 6.0.0 - parameter $lang was added in 8.0.0
 	 */
-    public IL10N getL10N(string app, string lang = null);
+    IL10N getL10N(string app, string lang = null);
 
     /**
 	 * @return \OC\Encryption\Manager
 	 * @since 8.1.0
 	 */
-    public function getEncryptionManager();
+    Encryption.IManager getEncryptionManager();
 
     /**
 	 * @return \OC\Encryption\File
 	 * @since 8.1.0
 	 */
-    public function getEncryptionFilesHelper();
+    Encryption.IFile getEncryptionFilesHelper();
 
     /**
 	 * @return \OCP\Encryption\Keys\IStorage
@@ -264,7 +264,8 @@ namespace OCP
 	 * @return \OCP\IDBConnection
 	 * @since 6.0.0
 	 */
-    public function getDatabaseConnection();
+      
+    IDBConnection getDatabaseConnection();
 
     /**
 	 * Returns an avatar manager, used for avatar functionality
@@ -298,13 +299,13 @@ namespace OCP
 	 */
     Log.ILogFactory getLogFactory();
 
-    /**
-	 * Returns a router for generating and matching urls
-	 *
-	 * @return \OCP\Route\IRouter
-	 * @since 7.0.0
-	 */
-    public function getRouter();
+  //  /**
+	 //* Returns a router for generating and matching urls
+	 //*
+	 //* @return \OCP\Route\IRouter
+	 //* @since 7.0.0
+	 //*/
+  //  public function getRouter();
 
     /**
 	 * Returns a search instance
@@ -345,7 +346,7 @@ namespace OCP
 	 * @return \OCP\Diagnostics\IEventLogger
 	 * @since 8.0.0
 	 */
-    public function getEventLogger();
+    Diagnostics.IEventLogger getEventLogger();
 
     /**
 	 * Get the active query logger
@@ -355,7 +356,7 @@ namespace OCP
 	 * @return \OCP\Diagnostics\IQueryLogger
 	 * @since 8.0.0
 	 */
-    public function getQueryLogger();
+    Diagnostics.IQueryLogger getQueryLogger();
 
     /**
 	 * Get the manager for temporary files and folders
@@ -385,7 +386,7 @@ namespace OCP
 	 * @return \OCP\Files\Config\IMountProviderCollection
 	 * @since 8.0.0
 	 */
-    public function getMountProviderCollection();
+    Files.Config.IMountProviderCollection getMountProviderCollection();
 
         /**
          * Get the IniWrapper

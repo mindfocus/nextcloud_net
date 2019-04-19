@@ -21,7 +21,7 @@ namespace OCP.Contacts
      *
      * @since 6.0.0
      */
-    interface IManager
+    public interface IManager
     {
 
         /**

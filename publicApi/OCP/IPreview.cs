@@ -9,7 +9,7 @@ namespace OCP
      * This class provides functions to render and show thumbnails and previews of files
      * @since 6.0.0
      */
-    interface IPreview
+    public interface IPreview
     {
 
         /**

@@ -34,7 +34,7 @@ namespace OCP.Calendar
      *
      * @since 13.0.0
      */
-    interface IManager
+    public interface IManager
     {
 
         /**

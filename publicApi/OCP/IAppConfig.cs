@@ -9,7 +9,7 @@ namespace OCP
      * database.
      * @since 7.0.0
      */
-    interface IAppConfig
+    public interface IAppConfig
     {
         /**
          * check if a key is set in the appconfig

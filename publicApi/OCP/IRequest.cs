@@ -30,7 +30,7 @@ namespace OCP
      * @property-read string[] $urlParams
      * @since 6.0.0
      */
-    interface IRequest
+    public interface IRequest
     {
         /**
          * @since 9.1.0

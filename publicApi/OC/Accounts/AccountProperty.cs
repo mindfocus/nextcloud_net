@@ -1,7 +1,9 @@
-﻿using System;
-using publicApi.Accounts;
+﻿using OCP.Accounts;
+using Pchp.Core;
+using System;
+using System.Runtime.Serialization;
 
-namespace privateApi.Accounts
+namespace OC.Accounts
 {
     class AccountProperty : IAccountProperty
     {
@@ -23,15 +25,15 @@ namespace privateApi.Accounts
             this.verified = verified;
     }
 
-        //public function jsonSerialize()
-        //{
-        //    return [
-        //        'name' => $this->getName(),
-        //        'value' => $this->getValue(),
-        //        'scope' => $this->getScope(),
-        //        'verified' => $this->getVerified()
-        //    ];
-        //}
+        public PhpValue jsonSerialize()
+        {
+            var list = PhpArray.NewEmpty();
+            list.Add(new IntStringKey("name"), this.getName());
+            list.Add(new IntStringKey("value"), this.getValue());
+            list.Add(new IntStringKey("scope"), this.getScope());
+            list.Add(new IntStringKey("verified"), this.getVerified());
+            return PhpValue.Create(list);
+        }
 
         /*
          * Set the value of a property
@@ -80,7 +82,7 @@ namespace privateApi.Accounts
      * @return string
      */
     public string getName(){
-            return this;
+            return this.name;
     }
 
     /*
@@ -115,5 +117,10 @@ namespace privateApi.Accounts
     public string getVerified() {
             return this.verified;
     }
-}
+
+        public void GetObjectData(SerializationInfo info, StreamingContext context)
+        {
+            throw new NotImplementedException();
+        }
+    }
 }

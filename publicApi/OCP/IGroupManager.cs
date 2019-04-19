@@ -20,7 +20,7 @@ namespace OCP
      * @package OC\Group
      * @since 8.0.0
      */
-    interface IGroupManager
+    public interface IGroupManager
     {
         /**
          * Checks whether a given backend is used

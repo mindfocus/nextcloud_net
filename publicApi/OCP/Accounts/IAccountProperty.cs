@@ -3,7 +3,9 @@ using System.Runtime.Serialization;
 
 namespace OCP.Accounts
 {
-    public interface IAccountProperty : ISerializable
+    //public interface IAccountProperty : JsonSerializable
+    public interface IAccountProperty 
+
     {
         /// <summary>
         /// Set the value of a property

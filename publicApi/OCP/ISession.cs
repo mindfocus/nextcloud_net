@@ -10,7 +10,7 @@ namespace OCP
      * wrap PHP's internal session handling into the ISession interface
      * @since 6.0.0
      */
-    interface ISession
+    public interface ISession
     {
 
         /**

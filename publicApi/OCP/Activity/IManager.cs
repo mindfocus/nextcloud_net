@@ -10,7 +10,7 @@ namespace OCP.Activity
      * @package OCP\Activity
      * @since 6.0.0
      */
-    interface IManager
+    public interface IManager
     {
         /**
          * Generates a new IEvent object

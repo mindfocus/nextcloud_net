@@ -4,7 +4,8 @@ using System.Runtime.Serialization;
 
 namespace OCP.Accounts
 {
-    public interface IAccount : ISerializable
+    //public interface IAccount : ISerializable
+    public interface IAccount 
     {
         /// <summary>
         /// Set a property with data
@@ -28,7 +29,7 @@ namespace OCP.Accounts
         /// Get all properties of an account
         /// </summary>
         /// <returns></returns>
-        List<IAccountProperty> getProperties();
+        IDictionary<string, IAccountProperty> getProperties();
 
         /// <summary>
         /// Get all properties that match the provided filters for scope and verification status
@@ -36,7 +37,7 @@ namespace OCP.Accounts
         /// <param name="scope"></param>
         /// <param name="verified"></param>
         /// <returns></returns>
-        List<IAccountProperty> getFilteredProperties(string scope = "", string verified = "");
+        IDictionary<string, IAccountProperty> getFilteredProperties(string scope = "", string verified = "");
 
         /// <summary>
         /// Get the related user for the account data

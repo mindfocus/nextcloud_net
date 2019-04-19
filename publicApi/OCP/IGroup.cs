@@ -10,7 +10,7 @@ namespace OCP
      * @package OCP
      * @since 8.0.0
      */
-    interface IGroup
+    public interface IGroup
     {
         /**
          * @return string

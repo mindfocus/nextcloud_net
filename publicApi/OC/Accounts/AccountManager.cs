@@ -1,8 +1,11 @@
 ﻿using System;
+
+using OCP;
 using OCP.Accounts;
 using OCP.BackgroundJob;
+using Pchp.Core;
 
-namespace privateApi.Accounts
+namespace OC.Accounts
 {
     /*
      * Class AccountManager
@@ -15,122 +18,124 @@ namespace privateApi.Accounts
     public class AccountManager : IAccountManager
     {
 
-    /** @var  IDBConnection database connection */
-    private IDBConnection connection;
+        /** @var  IDBConnection database connection */
+        private OCP.IDBConnection connection;
 
-    /** @var string table name */
-    private string table = "accounts";
+        /** @var string table name */
+        private string table = "accounts";
 
-    /** @var EventDispatcherInterface */
-    private EventDispatcherInterface eventDispatcher;
+        /** @var EventDispatcherInterface */
+        private OCP.Sym.EventDispatcherInterface eventDispatcher;
 
-    /** @var IJobList */
-    private IJobList jobList;
+        /** @var IJobList */
+        private IJobList jobList;
 
-    /**
-     * AccountManager constructor.
-     *
-     * @param IDBConnection connection
-     * @param EventDispatcherInterface eventDispatcher
-     * @param IJobList jobList
-     */
-    public AccountManager(IDBConnection connection,
-                                EventDispatcherInterface eventDispatcher,
-                                IJobList jobList)
-    {
-        this.connection = connection;
-        this.eventDispatcher = eventDispatcher;
-        this.jobList = jobList;
-    }
-
-    /**
-     * update user record
-     *
-     * @param IUser user
-     * @param data
-     */
-    public void updateUser(OCP.IUser user, data)
-    {
-        userData = this.getUser(user);
-        updated = true;
-        if (empty(userData))
+        /**
+         * AccountManager constructor.
+         *
+         * @param IDBConnection connection
+         * @param EventDispatcherInterface eventDispatcher
+         * @param IJobList jobList
+         */
+        public AccountManager(IDBConnection connection,
+                                    OCP.Sym.EventDispatcherInterface eventDispatcher,
+                                    IJobList jobList)
         {
-            this.insertNewUser(user, data);
+            this.connection = connection;
+            this.eventDispatcher = eventDispatcher;
+            this.jobList = jobList;
         }
-        elseif(userData !== data) {
-            data = this.checkEmailVerification(userData, data, user);
-            data = this.updateVerifyStatus(userData, data);
-            this.updateExistingUser(user, data);
-        } else
+
+        /**
+         * update user record
+         *
+         * @param IUser user
+         * @param data
+         */
+        public void updateUser(OCP.IUser user, data)
         {
-            // nothing needs to be done if new and old data set are the same
-            updated = false;
+            var userData = this.getUser(user);
+            var updated = true;
+            if (empty(userData))
+            {
+                this.insertNewUser(user, data);
+            }
+            elseif(userData !== data) {
+                data = this.checkEmailVerification(userData, data, user);
+                data = this.updateVerifyStatus(userData, data);
+                this.updateExistingUser(user, data);
+            } else
+            {
+                // nothing needs to be done if new and old data set are the same
+                updated = false;
+            }
+
+            if (updated)
+            {
+                this.eventDispatcher.dispatch(
+                    'OC\AccountManager::userUpdated',
+                    new GenericEvent(user, data)
+                );
+            }
         }
 
-        if (updated) {
-            this.eventDispatcher.dispatch(
-                'OC\AccountManager::userUpdated',
-                new GenericEvent(user, data)
-            );
-        }
-    }
-
-    /**
-     * delete user from accounts table
-     *
-     * @param IUser user
-     */
-    public function deleteUser(IUser user)
-    {
-        uid = user.getUID();
-        query = this.connection.getQueryBuilder();
-        query.delete(this.table)
-            .where(query.expr().eq('uid', query.createNamedParameter(uid)))
-            .execute();
-    }
-
-    /**
-     * get stored data from a given user
-     *
-     * @param IUser user
-     * @return array
-     */
-    public function getUser(IUser user)
-    {
-        uid = user.getUID();
-        query = this.connection.getQueryBuilder();
-        query.select('data').from(this.table)
-            .where(query.expr().eq('uid', query.createParameter('uid')))
-            .setParameter('uid', uid);
-        query.execute();
-        result = query.execute().fetchAll();
-
-        if (empty(result))
+        /**
+         * delete user from accounts table
+         *
+         * @param IUser user
+         */
+        public function deleteUser(IUser user)
         {
-            userData = this.buildDefaultUserRecord(user);
-            this.insertNewUser(user, userData);
-            return userData;
+            uid = user.getUID();
+            query = this.connection.getQueryBuilder();
+            query.delete(this.table)
+                .where(query.expr().eq('uid', query.createNamedParameter(uid)))
+                .execute();
         }
 
-        userDataArray = json_decode(result[0]['data'], true);
+        /**
+         * get stored data from a given user
+         *
+         * @param IUser user
+         * @return array
+         */
+        public PhpArray getUser(IUser user)
+        {
+            uid = user.getUID();
+            query = this.connection.getQueryBuilder();
+            query.select('data').from(this.table)
+                .where(query.expr().eq('uid', query.createParameter('uid')))
+                .setParameter('uid', uid);
+            query.execute();
+            result = query.execute().fetchAll();
 
-        userDataArray = this.addMissingDefaultValues(userDataArray);
+            if (empty(result))
+            {
+                userData = this.buildDefaultUserRecord(user);
+                this.insertNewUser(user, userData);
+                return userData;
+            }
 
-        return userDataArray;
-    }
+            userDataArray = json_decode(result[0]['data'], true);
 
-    /**
-     * check if we need to ask the server for email verification, if yes we create a cronjob
-     *
-     * @param oldData
-     * @param newData
-     * @param IUser user
-     * @return array
-     */
-    protected function checkEmailVerification(oldData, newData, IUser user)
-    {
-        if (oldData[self::PROPERTY_EMAIL]['value'] !== newData[self::PROPERTY_EMAIL]['value']) {
-            this.jobList.add(VerifyUserData::class,
+            userDataArray = this.addMissingDefaultValues(userDataArray);
+
+            return userDataArray;
+        }
+
+        /**
+         * check if we need to ask the server for email verification, if yes we create a cronjob
+         *
+         * @param oldData
+         * @param newData
+         * @param IUser user
+         * @return array
+         */
+        protected function checkEmailVerification(oldData, newData, IUser user)
+        {
+            if (oldData[self::PROPERTY_EMAIL]['value'] !== newData[self::PROPERTY_EMAIL]['value'])
+            {
+                this.jobList.add(VerifyUserData::class,
                 [
                     'verificationCode' => '',
                     'data' => newData[self::PROPERTY_EMAIL] ['value'],
@@ -146,19 +151,19 @@ namespace privateApi.Accounts
         return newData;
     }
 
-    /*
-     * make sure that all expected data are set
-     *
-     * @param array userData
-     * @return array
-     */
-    protected function addMissingDefaultValues(array userData)
+/*
+ * make sure that all expected data are set
+ *
+ * @param array userData
+ * @return array
+ */
+protected function addMissingDefaultValues(array userData)
 {
 
     foreach (userData as key => value) {
         if (!isset(userData[key]['verified']))
         {
-                userData[key]['verified'] = self::NOT_VERIFIED;
+            userData[key]['verified'] = self::NOT_VERIFIED;
         }
     }
 
@@ -175,50 +180,53 @@ namespace privateApi.Accounts
 protected function updateVerifyStatus(oldData, newData)
 {
 
-        // which account was already verified successfully?
-        twitterVerified = isset(oldData[self::PROPERTY_TWITTER]['verified']) && oldData[self::PROPERTY_TWITTER]['verified'] === self::VERIFIED;
-        websiteVerified = isset(oldData[self::PROPERTY_WEBSITE]['verified']) && oldData[self::PROPERTY_WEBSITE]['verified'] === self::VERIFIED;
-        emailVerified = isset(oldData[self::PROPERTY_EMAIL]['verified']) && oldData[self::PROPERTY_EMAIL]['verified'] === self::VERIFIED;
+    // which account was already verified successfully?
+    twitterVerified = isset(oldData[self::PROPERTY_TWITTER]['verified']) && oldData[self::PROPERTY_TWITTER]['verified'] === self::VERIFIED;
+    websiteVerified = isset(oldData[self::PROPERTY_WEBSITE]['verified']) && oldData[self::PROPERTY_WEBSITE]['verified'] === self::VERIFIED;
+    emailVerified = isset(oldData[self::PROPERTY_EMAIL]['verified']) && oldData[self::PROPERTY_EMAIL]['verified'] === self::VERIFIED;
 
     // keep old verification status if we don't have a new one
     if (!isset(newData[self::PROPERTY_TWITTER]['verified']))
     {
-            // keep old verification status if value didn't changed and an old value exists
-            keepOldStatus = newData[self::PROPERTY_TWITTER]['value'] === oldData[self::PROPERTY_TWITTER]['value'] && isset(oldData[self::PROPERTY_TWITTER]['verified']);
-            newData[self::PROPERTY_TWITTER]['verified'] = keepOldStatus ? oldData[self::PROPERTY_TWITTER]['verified'] : self::NOT_VERIFIED;
+        // keep old verification status if value didn't changed and an old value exists
+        keepOldStatus = newData[self::PROPERTY_TWITTER]['value'] === oldData[self::PROPERTY_TWITTER]['value'] && isset(oldData[self::PROPERTY_TWITTER]['verified']);
+        newData[self::PROPERTY_TWITTER]['verified'] = keepOldStatus ? oldData[self::PROPERTY_TWITTER]['verified'] : self::NOT_VERIFIED;
     }
 
     if (!isset(newData[self::PROPERTY_WEBSITE]['verified']))
     {
-            // keep old verification status if value didn't changed and an old value exists
-            keepOldStatus = newData[self::PROPERTY_WEBSITE]['value'] === oldData[self::PROPERTY_WEBSITE]['value'] && isset(oldData[self::PROPERTY_WEBSITE]['verified']);
-            newData[self::PROPERTY_WEBSITE]['verified'] = keepOldStatus ? oldData[self::PROPERTY_WEBSITE]['verified'] : self::NOT_VERIFIED;
+        // keep old verification status if value didn't changed and an old value exists
+        keepOldStatus = newData[self::PROPERTY_WEBSITE]['value'] === oldData[self::PROPERTY_WEBSITE]['value'] && isset(oldData[self::PROPERTY_WEBSITE]['verified']);
+        newData[self::PROPERTY_WEBSITE]['verified'] = keepOldStatus ? oldData[self::PROPERTY_WEBSITE]['verified'] : self::NOT_VERIFIED;
     }
 
     if (!isset(newData[self::PROPERTY_EMAIL]['verified']))
     {
-            // keep old verification status if value didn't changed and an old value exists
-            keepOldStatus = newData[self::PROPERTY_EMAIL]['value'] === oldData[self::PROPERTY_EMAIL]['value'] && isset(oldData[self::PROPERTY_EMAIL]['verified']);
-            newData[self::PROPERTY_EMAIL]['verified'] = keepOldStatus ? oldData[self::PROPERTY_EMAIL]['verified'] : self::VERIFICATION_IN_PROGRESS;
+        // keep old verification status if value didn't changed and an old value exists
+        keepOldStatus = newData[self::PROPERTY_EMAIL]['value'] === oldData[self::PROPERTY_EMAIL]['value'] && isset(oldData[self::PROPERTY_EMAIL]['verified']);
+        newData[self::PROPERTY_EMAIL]['verified'] = keepOldStatus ? oldData[self::PROPERTY_EMAIL]['verified'] : self::VERIFICATION_IN_PROGRESS;
     }
 
     // reset verification status if a value from a previously verified data was changed
     if (twitterVerified &&
             oldData[self::PROPERTY_TWITTER]['value'] !== newData[self::PROPERTY_TWITTER]['value']
-        ) {
-            newData[self::PROPERTY_TWITTER]['verified'] = self::NOT_VERIFIED;
+        )
+    {
+        newData[self::PROPERTY_TWITTER]['verified'] = self::NOT_VERIFIED;
     }
 
     if (websiteVerified &&
             oldData[self::PROPERTY_WEBSITE]['value'] !== newData[self::PROPERTY_WEBSITE]['value']
-        ) {
-            newData[self::PROPERTY_WEBSITE]['verified'] = self::NOT_VERIFIED;
+        )
+    {
+        newData[self::PROPERTY_WEBSITE]['verified'] = self::NOT_VERIFIED;
     }
 
     if (emailVerified &&
             oldData[self::PROPERTY_EMAIL]['value'] !== newData[self::PROPERTY_EMAIL]['value']
-        ) {
-            newData[self::PROPERTY_EMAIL]['verified'] = self::NOT_VERIFIED;
+        )
+    {
+        newData[self::PROPERTY_EMAIL]['verified'] = self::NOT_VERIFIED;
     }
 
     return newData;
@@ -231,19 +239,21 @@ protected function updateVerifyStatus(oldData, newData)
  * @param IUser user
  * @param array data
  */
-protected function insertNewUser(IUser user, data)
+protected void insertNewUser(IUser user, object data)
 {
-        uid = user.getUID();
-        jsonEncodedData = json_encode(data);
-        query = this.connection.getQueryBuilder();
-        query.insert(this.table)
-            .values(
-                [
-                    'uid' => query.createNamedParameter(uid),
-                    'data' => query.createNamedParameter(jsonEncodedData),
-                ]
-            )
-            .execute();
+    //var uid = user.getUID();
+    //jsonEncodedData = json_encode(data);
+    //query = this.connection.getQueryBuilder();
+    //query.insert(this.table)
+    //    .values(
+
+    //        [
+    //            'uid' => query.createNamedParameter(uid),
+    //            'data' => query.createNamedParameter(jsonEncodedData),
+
+    //        ]
+    //        )
+    //        .execute();
 }
 
 /**
@@ -254,13 +264,13 @@ protected function insertNewUser(IUser user, data)
  */
 protected function updateExistingUser(IUser user, data)
 {
-        uid = user.getUID();
-        jsonEncodedData = json_encode(data);
-        query = this.connection.getQueryBuilder();
-        query.update(this.table)
-            .set('data', query.createNamedParameter(jsonEncodedData))
-            .where(query.expr().eq('uid', query.createNamedParameter(uid)))
-            .execute();
+    uid = user.getUID();
+    jsonEncodedData = json_encode(data);
+    query = this.connection.getQueryBuilder();
+    query.update(this.table)
+        .set('data', query.createNamedParameter(jsonEncodedData))
+        .where(query.expr().eq('uid', query.createNamedParameter(uid)))
+        .execute();
 }
 
 /**
@@ -325,9 +335,10 @@ protected function buildDefaultUserRecord(IUser user)
         return account;
     }
 
-    public function getAccount(IUser user): IAccount {
-        return this.parseAccountData(user, this.getUser(user));
-    }
+    public IAccount getAccount(OCP.IUser user)
+{
+    return this.parseAccountData(user, this.getUser(user));
+}
 
 }
 

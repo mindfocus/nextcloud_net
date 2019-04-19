@@ -10,7 +10,7 @@ namespace OCP
      * @package OCP
      * @since 7.0.0
      */
-    interface ICacheFactory
+    public interface ICacheFactory
     {
         /**
          * Get a distributed memory cache instance
