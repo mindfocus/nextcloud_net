@@ -1,9 +1,10 @@
 ﻿using System;
-
+using System.Linq;
+using model;
+using Newtonsoft.Json.Linq;
 using OCP;
 using OCP.Accounts;
 using OCP.BackgroundJob;
-using Pchp.Core;
 
 namespace OC.Accounts
 {
@@ -46,21 +47,21 @@ namespace OC.Accounts
             this.jobList = jobList;
         }
 
-        /**
-         * update user record
-         *
-         * @param IUser user
-         * @param data
-         */
-        public void updateUser(OCP.IUser user, data)
+
+        /// <summary>
+        /// update user record
+        /// </summary>
+        /// <param name="user">user</param>
+        /// <param name="data"></param>
+        public void updateUser(OCP.IUser user, JObject data)
         {
             var userData = this.getUser(user);
             var updated = true;
-            if (empty(userData))
+            if (userData == "")
             {
                 this.insertNewUser(user, data);
             }
-            elseif(userData !== data) {
+            else if(userData !== data) {
                 data = this.checkEmailVerification(userData, data, user);
                 data = this.updateVerifyStatus(userData, data);
                 this.updateExistingUser(user, data);
@@ -72,10 +73,10 @@ namespace OC.Accounts
 
             if (updated)
             {
-                this.eventDispatcher.dispatch(
-                    'OC\AccountManager::userUpdated',
-                    new GenericEvent(user, data)
-                );
+                //this.eventDispatcher.dispatch(
+                //    'OC\AccountManager::userUpdated',
+                //    new GenericEvent(user, data)
+                //);
             }
         }
 
@@ -84,13 +85,19 @@ namespace OC.Accounts
          *
          * @param IUser user
          */
-        public function deleteUser(IUser user)
+        public void deleteUser(IUser user)
         {
-            uid = user.getUID();
-            query = this.connection.getQueryBuilder();
-            query.delete(this.table)
-                .where(query.expr().eq('uid', query.createNamedParameter(uid)))
-                .execute();
+            var uid = user.getUID();
+            AccountTable account = null;
+            using (var context = new NCContext())
+            {
+                account = context.Accounts.Find(uid);
+                if(account != null)
+                {
+                    context.Accounts.Remove(account);
+                    context.SaveChanges();
+                }
+            }
         }
 
         /**
@@ -99,28 +106,26 @@ namespace OC.Accounts
          * @param IUser user
          * @return array
          */
-        public PhpArray getUser(IUser user)
+        public JObject getUser(IUser user)
         {
-            uid = user.getUID();
-            query = this.connection.getQueryBuilder();
-            query.select('data').from(this.table)
-                .where(query.expr().eq('uid', query.createParameter('uid')))
-                .setParameter('uid', uid);
-            query.execute();
-            result = query.execute().fetchAll();
-
-            if (empty(result))
+            var uid = user.getUID();
+            AccountTable account = null;
+            using (var context = new NCContext())
             {
-                userData = this.buildDefaultUserRecord(user);
+                account = context.Accounts.Find(uid);
+            }
+            if(account == null)
+            {
+                var userData = this.buildDefaultUserRecord(user);
                 this.insertNewUser(user, userData);
-                return userData;
+                return JObject.Parse(userData);
             }
 
-            userDataArray = json_decode(result[0]['data'], true);
+            //userDataArray = json_decode(result[0]['data'], true);
 
-            userDataArray = this.addMissingDefaultValues(userDataArray);
+            //userDataArray = this.addMissingDefaultValues(userDataArray);
 
-            return userDataArray;
+            return JObject.Parse(account.data);
         }
 
         /**
@@ -131,23 +136,23 @@ namespace OC.Accounts
          * @param IUser user
          * @return array
          */
-        protected function checkEmailVerification(oldData, newData, IUser user)
+        protected JObject checkEmailVerification(JObject oldData, JObject newData, IUser user)
         {
-            if (oldData[self::PROPERTY_EMAIL]['value'] !== newData[self::PROPERTY_EMAIL]['value'])
+            if (oldData.Root.Value<string>(AccountCommonProperty.EMAIL.Value) != newData.Root.Value<string>(AccountCommonProperty.EMAIL.Value))
             {
-                this.jobList.add(VerifyUserData::class,
-                [
-                    'verificationCode' => '',
-                    'data' => newData[self::PROPERTY_EMAIL] ['value'],
-                    'type' => self::PROPERTY_EMAIL,
-                    'uid' => user.getUID(),
-                    'try' => 0,
-                    'lastRun' => time()
-                ]
-            );
-            newData[AccountManager::PROPERTY_EMAIL]['verified'] = AccountManager::VERIFICATION_IN_PROGRESS;
+                // @focus
+                //this.jobList.add(VerifyUserData::class,
+                //[
+                //    'verificationCode' => '',
+                //    'data' => newData[self::PROPERTY_EMAIL] ['value'],
+                //    'type' => self::PROPERTY_EMAIL,
+                //    'uid' => user.getUID(),
+                //    'try' => 0,
+                //    'lastRun' => time()
+                //]
+                //);
+            newData[AccountCommonProperty.EMAIL.Value]["verified"] =AccountVerified.VERIFICATION_IN_PROGRESS.Value;
         }
-
         return newData;
     }
 
@@ -157,7 +162,7 @@ namespace OC.Accounts
  * @param array userData
  * @return array
  */
-protected function addMissingDefaultValues(array userData)
+protected JObject addMissingDefaultValues(JObject userData)
 {
 
     foreach (userData as key => value) {
