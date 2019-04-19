@@ -94,6 +94,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.filenesting.json = .filenesting.json
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "model", "model\model.csproj", "{132AFD6B-0079-4C46-9734-1E238E14BE2D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -260,6 +262,10 @@ Global
 		{73F220FA-DA2B-4326-8C81-EBD926E4B2A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{73F220FA-DA2B-4326-8C81-EBD926E4B2A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{73F220FA-DA2B-4326-8C81-EBD926E4B2A4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{132AFD6B-0079-4C46-9734-1E238E14BE2D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{132AFD6B-0079-4C46-9734-1E238E14BE2D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{132AFD6B-0079-4C46-9734-1E238E14BE2D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{132AFD6B-0079-4C46-9734-1E238E14BE2D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
