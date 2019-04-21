@@ -22,22 +22,19 @@ namespace OC.Accounts
         /** @var  IDBConnection database connection */
         private OCP.IDBConnection connection;
 
-        /** @var string table name */
-        private string table = "accounts";
-
         /** @var EventDispatcherInterface */
         private OCP.Sym.EventDispatcherInterface eventDispatcher;
 
         /** @var IJobList */
         private IJobList jobList;
 
-        /**
-         * AccountManager constructor.
-         *
-         * @param IDBConnection connection
-         * @param EventDispatcherInterface eventDispatcher
-         * @param IJobList jobList
-         */
+
+            /// <summary>
+            /// Initializes a new instance of the <see cref="T:OC.Accounts.AccountManager"/> class.
+            /// </summary>
+            /// <param name="connection">Connection.</param>
+            /// <param name="eventDispatcher">Event dispatcher.</param>
+            /// <param name="jobList">Job list.</param>
         public AccountManager(IDBConnection connection,
                                     OCP.Sym.EventDispatcherInterface eventDispatcher,
                                     IJobList jobList)
@@ -47,7 +44,10 @@ namespace OC.Accounts
             this.jobList = jobList;
         }
 
-
+        public IAccount getAccount(OCP.IUser user)
+        {
+            return this.parseAccountData(user, this.getUser(user));
+        }
         /// <summary>
         /// update user record
         /// </summary>
@@ -57,11 +57,11 @@ namespace OC.Accounts
         {
             var userData = this.getUser(user);
             var updated = true;
-            if (userData == "")
+            if (userData == null)
             {
                 this.insertNewUser(user, data);
             }
-            else if(userData !== data) {
+            else if(userData != data) {
                 data = this.checkEmailVerification(userData, data, user);
                 data = this.updateVerifyStatus(userData, data);
                 this.updateExistingUser(user, data);
@@ -164,13 +164,18 @@ namespace OC.Accounts
  */
 protected JObject addMissingDefaultValues(JObject userData)
 {
+            userData.Children;
+            foreach (var child in userData.Children)
+            {
 
-    foreach (userData as key => value) {
+            }
+            foreach (userData as key => value) {
         if (!isset(userData[key]['verified']))
         {
             userData[key]['verified'] = self::NOT_VERIFIED;
         }
     }
+
 
     return userData;
 }
@@ -182,7 +187,7 @@ protected JObject addMissingDefaultValues(JObject userData)
  * @param array newData
  * @return array
  */
-protected function updateVerifyStatus(oldData, newData)
+protected JObject updateVerifyStatus(JObject oldData, JObject newData)
 {
 
     // which account was already verified successfully?
@@ -267,9 +272,9 @@ protected void insertNewUser(IUser user, object data)
  * @param IUser user
  * @param array data
  */
-protected function updateExistingUser(IUser user, data)
+protected void updateExistingUser(IUser user, JObject data)
 {
-    uid = user.getUID();
+    val uid = user.getUID();
     jsonEncodedData = json_encode(data);
     query = this.connection.getQueryBuilder();
     query.update(this.table)
@@ -284,7 +289,7 @@ protected function updateExistingUser(IUser user, data)
  * @param IUser user
  * @return array
  */
-protected function buildDefaultUserRecord(IUser user)
+protected JObject buildDefaultUserRecord(IUser user)
 {
     return [
         self::PROPERTY_DISPLAYNAME =>
@@ -332,18 +337,16 @@ protected function buildDefaultUserRecord(IUser user)
         ];
     }
 
-    private function parseAccountData(IUser user, data): Account {
-        account = new Account(user);
+    private Account parseAccountData(IUser user, JObject data){
+        var account = new Account(user);
+
         foreach(data as property => accountData) {
             account.setProperty(property, accountData['value'] ?? '', accountData['scope'] ?? self::VISIBILITY_PRIVATE, accountData['verified'] ?? self::NOT_VERIFIED);
         }
         return account;
     }
 
-    public IAccount getAccount(OCP.IUser user)
-{
-    return this.parseAccountData(user, this.getUser(user));
-}
+
 
 }
 
