@@ -9,7 +9,7 @@ namespace OCP.Files
  * Storage is temporarily not available
  * @since 6.0.0 - since 8.2.1 based on HintException
  */
-    class StorageNotAvailableException : HintException
+    public class StorageNotAvailableException : HintException
     {
         const int STATUS_SUCCESS = 0;
         const int STATUS_ERROR = 1;
@@ -27,7 +27,7 @@ namespace OCP.Files
          * @param \Exception|null previous
          * @since 6.0.0
          */
-        StorageNotAvailableException(string message = "", int code = STATUS_ERROR, Exception previous = null)
+        public StorageNotAvailableException(string message = "", int code = STATUS_ERROR, Exception previous = null)
         {
 		    var l = \OC::server->getL10N('core');
             parent::__construct(message, l->t('Storage is temporarily not available'), code, previous);

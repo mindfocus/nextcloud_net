@@ -142,25 +142,6 @@
       <Compile Include="public\Federation\ICloudFederationShare.php" />
       <Compile Include="public\Federation\ICloudId.php" />
       <Compile Include="public\Federation\ICloudIdManager.php" />
-      <Compile Include="public\Files\EmptyFileNameException.php" />
-      <Compile Include="public\Files\EntityTooLargeException.php" />
-      <Compile Include="public\Files\FileNameTooLongException.php" />
-      <Compile Include="public\Files\ForbiddenException.php" />
-      <Compile Include="public\Files\GenericFileException.php" />
-      <Compile Include="public\Files\InvalidCharacterInPathException.php" />
-      <Compile Include="public\Files\InvalidContentException.php" />
-      <Compile Include="public\Files\InvalidDirectoryException.php" />
-      <Compile Include="public\Files\InvalidPathException.php" />
-      <Compile Include="public\Files\LockNotAcquiredException.php" />
-      <Compile Include="public\Files\NotEnoughSpaceException.php" />
-      <Compile Include="public\Files\NotFoundException.php" />
-      <Compile Include="public\Files\NotPermittedException.php" />
-      <Compile Include="public\Files\ReservedWordException.php" />
-      <Compile Include="public\Files\StorageAuthException.php" />
-      <Compile Include="public\Files\StorageBadConfigException.php" />
-      <Compile Include="public\Files\StorageConnectionException.php" />
-      <Compile Include="public\Files\StorageInvalidException.php" />
-      <Compile Include="public\Files\StorageTimeoutException.php" />
       <Compile Include="public\Files_FullTextSearch\Model\AFilesDocument.php" />
       <Compile Include="public\FullTextSearch\Exceptions\FullTextSearchAppNotAvailableException.php" />
       <Compile Include="public\FullTextSearch\IFullTextSearchManager.php" />
@@ -178,17 +159,6 @@
       <Compile Include="public\FullTextSearch\Service\IIndexService.php" />
       <Compile Include="public\FullTextSearch\Service\IProviderService.php" />
       <Compile Include="public\FullTextSearch\Service\ISearchService.php" />
-      <Compile Include="public\Group\Backend\ABackend.php" />
-      <Compile Include="public\Group\Backend\IAddToGroupBackend.php" />
-      <Compile Include="public\Group\Backend\ICountDisabledInGroup.php" />
-      <Compile Include="public\Group\Backend\ICountUsersBackend.php" />
-      <Compile Include="public\Group\Backend\ICreateGroupBackend.php" />
-      <Compile Include="public\Group\Backend\IDeleteGroupBackend.php" />
-      <Compile Include="public\Group\Backend\IGroupDetailsBackend.php" />
-      <Compile Include="public\Group\Backend\IHideFromCollaborationBackend.php" />
-      <Compile Include="public\Group\Backend\IIsAdminBackend.php" />
-      <Compile Include="public\Group\Backend\IRemoveFromGroupBackend.php" />
-      <Compile Include="public\Group\ISubAdmin.php" />
       <Compile Include="public\Migration\BigIntMigration.php" />
       <Compile Include="public\Migration\IMigrationStep.php" />
       <Compile Include="public\Migration\IOutput.php" />
@@ -244,5 +214,7 @@
       <Folder Include="OC\Authentication\" />
       <Folder Include="OC\Authentication\Token\" />
       <Folder Include="OCP\LDAP\" />
+      <Folder Include="OCP\Group\" />
+      <Folder Include="OCP\Group\Backend\" />
     </ItemGroup>
 </Project>
