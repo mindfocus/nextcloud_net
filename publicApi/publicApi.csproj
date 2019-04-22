@@ -224,9 +224,6 @@
       <Compile Include="public\Share\IShareProvider.php" />
       <Compile Include="public\Share_Backend_Collection.php" />
       <Compile Include="public\Share_Backend_File_Dependent.php" />
-      <Compile Include="public\Support\CrashReport\ICollectBreadcrumbs.php" />
-      <Compile Include="public\Support\CrashReport\IRegistry.php" />
-      <Compile Include="public\Support\CrashReport\IReporter.php" />
       <Compile Include="public\Template.php" />
     </ItemGroup>
 
@@ -245,5 +242,7 @@
       <Folder Include="OCP\User\" />
       <Folder Include="OCP\User\Backend\" />
       <Folder Include="OCP\SystemTag\" />
+      <Folder Include="OCP\Support\" />
+      <Folder Include="OCP\Support\CrashReport\" />
     </ItemGroup>
 </Project>
