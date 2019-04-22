@@ -48,7 +48,7 @@ interface ISearchService {
 	/**
 	 * generate a search request, based on an array:
 	 *
-	 * $request =
+	 * request =
 	 *   [
 	 *        'providers' =>    (string/array) 'all'
 	 *        'author' =>       (string) owner of the document.
@@ -66,11 +66,11 @@ interface ISearchService {
 	 *
 	 * @since 15.0.0
 	 *
-	 * @param array $request
+	 * @param array request
 	 *
 	 * @return ISearchRequest
 	 */
-	public function generateSearchRequest(array $request): ISearchRequest;
+	public function generateSearchRequest(array request): ISearchRequest;
 
 
 	/**
@@ -78,12 +78,12 @@ interface ISearchService {
 	 *
 	 * @since 15.0.0
 	 *
-	 * @param string $userId
-	 * @param ISearchRequest $searchRequest
+	 * @param string userId
+	 * @param ISearchRequest searchRequest
 	 *
 	 * @return ISearchResult[]
 	 */
-	public function search(string $userId, ISearchRequest $searchRequest): array;
+	public function search(string userId, ISearchRequest searchRequest): array;
 
 }
 

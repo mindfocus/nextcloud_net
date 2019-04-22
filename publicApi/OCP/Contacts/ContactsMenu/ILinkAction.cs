@@ -12,7 +12,7 @@ namespace OCP.Contacts.ContactsMenu
 
     /**
 	 * @since 12.0
-	 * @param string $href the target URL of the action
+	 * @param string href the target URL of the action
 	 */
     void setHref(string href);
 

@@ -68,10 +68,10 @@ interface IRunner {
 	 *
 	 * @since 15.0.0
 	 *
-	 * @param string $info
-	 * @param string $value
+	 * @param string info
+	 * @param string value
 	 */
-	public function setInfo(string $info, string $value);
+	public function setInfo(string info, string value);
 
 
 	/**
@@ -80,9 +80,9 @@ interface IRunner {
 	 *
 	 * @since 15.0.0
 	 *
-	 * @param array $data
+	 * @param array data
 	 */
-	public function setInfoArray(array $data);
+	public function setInfoArray(array data);
 
 
 	/**
@@ -92,19 +92,19 @@ interface IRunner {
 	 * setInfo()/setInfoArray() as it is also used to keep the process alive,
 	 * manage the input, and some statistics of the load of the process.
 	 *
-	 * $action is a string with no space
-	 * $force should be set to true if the action is heavy while being executed
+	 * action is a string with no space
+	 * force should be set to true if the action is heavy while being executed
 	 * multiple times
 	 *
 	 * @since 15.0.0
 	 *
-	 * @param string $action
-	 * @param bool $force
+	 * @param string action
+	 * @param bool force
 	 *
 	 * @return string
 	 * @throws \Exception
 	 */
-	public function updateAction(string $action = '', bool $force = false): string;
+	public function updateAction(string action = '', bool force = false): string;
 
 
 	/**
@@ -115,12 +115,12 @@ interface IRunner {
 	 *
 	 * @since 15.0.0
 	 *
-	 * @param IIndex $index
-	 * @param string $message
-	 * @param string $class
-	 * @param int $sev
+	 * @param IIndex index
+	 * @param string message
+	 * @param string class
+	 * @param int sev
 	 */
-	public function newIndexError(IIndex $index, string $message, string $class = '', int $sev = 3);
+	public function newIndexError(IIndex index, string message, string class = '', int sev = 3);
 
 
 	/**
@@ -130,12 +130,12 @@ interface IRunner {
 	 *
 	 * @since 15.0.0
 	 *
-	 * @param IIndex $index
-	 * @param string $message
-	 * @param string $status
-	 * @param int $type
+	 * @param IIndex index
+	 * @param string message
+	 * @param string status
+	 * @param int type
 	 */
-	public function newIndexResult(IIndex $index, string $message, string $status, int $type);
+	public function newIndexResult(IIndex index, string message, string status, int type);
 
 
 }

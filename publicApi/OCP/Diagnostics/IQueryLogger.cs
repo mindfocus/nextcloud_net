@@ -18,12 +18,12 @@ namespace OCP.Diagnostics
 //	 * This method should be called as close to the DB as possible and after 
 //	 * query is finished finalized with stopQuery() method. 
 //	 * 
-//	 * @param string $sql
-//	 * @param array|null $params
-//	 * @param array|null $types
+//	 * @param string sql
+//	 * @param array|null params
+//	 * @param array|null types
 //	 * @since 8.0.0
 //	 */
-//    public function startQuery($sql, array $params = null, array $types = null);
+//    public function startQuery(sql, array params = null, array types = null);
 
 //    /**
 //	 * Mark the end of the current active query. Ending query should store \OCP\Diagnostics\IQuery to

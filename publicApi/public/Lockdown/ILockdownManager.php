@@ -39,10 +39,10 @@ interface ILockdownManager {
 	/**
 	 * Set the active token to get the restrictions from and enable the lockdown
 	 *
-	 * @param IToken $token
+	 * @param IToken token
 	 * @since 9.2
 	 */
-	public function setToken(IToken $token);
+	public function setToken(IToken token);
 
 	/**
 	 * Check whether or not filesystem access is allowed

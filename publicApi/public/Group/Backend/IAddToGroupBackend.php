@@ -32,5 +32,5 @@ interface IAddToGroupBackend {
 	/**
 	 * @since 14.0.0
 	 */
-	public function addToGroup(string $uid, string $gid): bool;
+	public function addToGroup(string uid, string gid): bool;
 }

@@ -10,9 +10,9 @@ namespace OCP
 public interface Share_Backend {
 
 	/**
-	 * Check if this $itemSource exist for the user
-	 * @param string $itemSource
-	 * @param string $uidOwner Owner of the item
+	 * Check if this itemSource exist for the user
+	 * @param string itemSource
+	 * @param string uidOwner Owner of the item
 	 * @return boolean|null Source
 	 *
 	 * Return false if the item does not exist for the user
@@ -22,9 +22,9 @@ public interface Share_Backend {
 
 	/**
 	 * Get a unique name of the item for the specified user
-	 * @param string $itemSource
-	 * @param string|false $shareWith User the item is being shared with
-	 * @param array|null $exclude List of similar item names already existing as shared items @deprecated since version OC7
+	 * @param string itemSource
+	 * @param string|false shareWith User the item is being shared with
+	 * @param array|null exclude List of similar item names already existing as shared items @deprecated since version OC7
 	 * @return string Target name
 	 *
 	 * This function needs to verify that the user does not already have an item with this name.
@@ -35,8 +35,8 @@ public interface Share_Backend {
 
 	/**
 	 * Converts the shared item sources back into the item in the specified format
-	 * @param array $items Shared items
-	 * @param int $format
+	 * @param array items Shared items
+	 * @param int format
 	 * @return array
 	 *
 	 * The items array is a 3-dimensional array with the item_source as the
@@ -60,7 +60,7 @@ public interface Share_Backend {
 	/**
 	 * Check if a given share type is allowd by the back-end
 	 *
-	 * @param int $shareType share type
+	 * @param int shareType share type
 	 * @return boolean
 	 *
 	 * The back-end can enable/disable specific share types. Just return true if

@@ -9,26 +9,26 @@ namespace OCP.BackgroundJob
         /**
 	 * Run the background job with the registered argument
 	 *
-	 * @param \OCP\BackgroundJob\IJobList $jobList The job list that manages the state of this job
-	 * @param ILogger|null $logger
+	 * @param \OCP\BackgroundJob\IJobList jobList The job list that manages the state of this job
+	 * @param ILogger|null logger
 	 * @since 7.0.0
 	 */
         void execute(IJobList jobList, ILogger logger = null);
 
         /**
-         * @param int $id
+         * @param int id
          * @since 7.0.0
          */
         void setId(int id);
 
         /**
-         * @param int $lastRun
+         * @param int lastRun
          * @since 7.0.0
          */
         void setLastRun(int lastRun);
 
         /**
-         * @param mixed $argument
+         * @param mixed argument
          * @since 7.0.0
          */
         void setArgument(object argument);

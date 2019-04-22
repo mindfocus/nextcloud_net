@@ -10,8 +10,8 @@ namespace OCP
 public interface IUserSession {
 	/**
 	 * Do a user login
-	 * @param string $user the username
-	 * @param string $password the password
+	 * @param string user the username
+	 * @param string password the password
 	 * @return bool true if successful
 	 * @since 6.0.0
 	 */
@@ -28,7 +28,7 @@ public interface IUserSession {
 	/**
 	 * set the currently active user
 	 *
-	 * @param \OCP\IUser|null $user
+	 * @param \OCP\IUser|null user
 	 * @since 8.0.0
 	 */
 	void setUser(IUser user);

@@ -31,12 +31,12 @@ namespace OCP\Notification;
  */
 interface INotification {
 	/**
-	 * @param string $app
-	 * @return $this
+	 * @param string app
+	 * @return this
 	 * @throws \InvalidArgumentException if the app id is invalid
 	 * @since 9.0.0
 	 */
-	public function setApp($app);
+	public function setApp(app);
 
 	/**
 	 * @return string
@@ -45,12 +45,12 @@ interface INotification {
 	public function getApp();
 
 	/**
-	 * @param string $user
-	 * @return $this
+	 * @param string user
+	 * @return this
 	 * @throws \InvalidArgumentException if the user id is invalid
 	 * @since 9.0.0
 	 */
-	public function setUser($user);
+	public function setUser(user);
 
 	/**
 	 * @return string
@@ -59,12 +59,12 @@ interface INotification {
 	public function getUser();
 
 	/**
-	 * @param \DateTime $dateTime
-	 * @return $this
-	 * @throws \InvalidArgumentException if the $dateTime is invalid
+	 * @param \DateTime dateTime
+	 * @return this
+	 * @throws \InvalidArgumentException if the dateTime is invalid
 	 * @since 9.0.0
 	 */
-	public function setDateTime(\DateTime $dateTime);
+	public function setDateTime(\DateTime dateTime);
 
 	/**
 	 * @return \DateTime
@@ -73,13 +73,13 @@ interface INotification {
 	public function getDateTime();
 
 	/**
-	 * @param string $type
-	 * @param string $id
-	 * @return $this
+	 * @param string type
+	 * @param string id
+	 * @return this
 	 * @throws \InvalidArgumentException if the object type or id is invalid
 	 * @since 9.0.0
 	 */
-	public function setObject($type, $id);
+	public function setObject(type, id);
 
 	/**
 	 * @return string
@@ -94,13 +94,13 @@ interface INotification {
 	public function getObjectId();
 
 	/**
-	 * @param string $subject
-	 * @param array $parameters
-	 * @return $this
+	 * @param string subject
+	 * @param array parameters
+	 * @return this
 	 * @throws \InvalidArgumentException if the subject or parameters are invalid
 	 * @since 9.0.0
 	 */
-	public function setSubject($subject, array $parameters = []);
+	public function setSubject(subject, array parameters = []);
 
 	/**
 	 * @return string
@@ -126,12 +126,12 @@ interface INotification {
 	 *
 	 * See https://github.com/nextcloud/server/issues/1706 for more information.
 	 *
-	 * @param string $subject
-	 * @return $this
+	 * @param string subject
+	 * @return this
 	 * @throws \InvalidArgumentException if the subject is invalid
 	 * @since 9.0.0
 	 */
-	public function setParsedSubject($subject);
+	public function setParsedSubject(subject);
 
 	/**
 	 * @return string
@@ -150,13 +150,13 @@ interface INotification {
 	 *
 	 * See https://github.com/nextcloud/server/issues/1706 for more information.
 	 *
-	 * @param string $subject
-	 * @param array $parameters
-	 * @return $this
+	 * @param string subject
+	 * @param array parameters
+	 * @return this
 	 * @throws \InvalidArgumentException if the subject or parameters are invalid
 	 * @since 11.0.0
 	 */
-	public function setRichSubject($subject, array $parameters = []);
+	public function setRichSubject(subject, array parameters = []);
 
 	/**
 	 * @return string
@@ -171,13 +171,13 @@ interface INotification {
 	public function getRichSubjectParameters();
 
 	/**
-	 * @param string $message
-	 * @param array $parameters
-	 * @return $this
+	 * @param string message
+	 * @param array parameters
+	 * @return this
 	 * @throws \InvalidArgumentException if the message or parameters are invalid
 	 * @since 9.0.0
 	 */
-	public function setMessage($message, array $parameters = []);
+	public function setMessage(message, array parameters = []);
 
 	/**
 	 * @return string
@@ -203,12 +203,12 @@ interface INotification {
 	 *
 	 * See https://github.com/nextcloud/server/issues/1706 for more information.
 	 *
-	 * @param string $message
-	 * @return $this
+	 * @param string message
+	 * @return this
 	 * @throws \InvalidArgumentException if the message is invalid
 	 * @since 9.0.0
 	 */
-	public function setParsedMessage($message);
+	public function setParsedMessage(message);
 
 	/**
 	 * @return string
@@ -227,13 +227,13 @@ interface INotification {
 	 *
 	 * See https://github.com/nextcloud/server/issues/1706 for more information.
 	 *
-	 * @param string $message
-	 * @param array $parameters
-	 * @return $this
+	 * @param string message
+	 * @param array parameters
+	 * @return this
 	 * @throws \InvalidArgumentException if the message or parameters are invalid
 	 * @since 11.0.0
 	 */
-	public function setRichMessage($message, array $parameters = []);
+	public function setRichMessage(message, array parameters = []);
 
 	/**
 	 * @return string
@@ -248,12 +248,12 @@ interface INotification {
 	public function getRichMessageParameters();
 
 	/**
-	 * @param string $link
-	 * @return $this
+	 * @param string link
+	 * @return this
 	 * @throws \InvalidArgumentException if the link is invalid
 	 * @since 9.0.0
 	 */
-	public function setLink($link);
+	public function setLink(link);
 
 	/**
 	 * @return string
@@ -262,12 +262,12 @@ interface INotification {
 	public function getLink();
 
 	/**
-	 * @param string $icon
-	 * @return $this
+	 * @param string icon
+	 * @return this
 	 * @throws \InvalidArgumentException if the icon is invalid
 	 * @since 11.0.0
 	 */
-	public function setIcon($icon);
+	public function setIcon(icon);
 
 	/**
 	 * @return string
@@ -282,12 +282,12 @@ interface INotification {
 	public function createAction();
 
 	/**
-	 * @param IAction $action
-	 * @return $this
+	 * @param IAction action
+	 * @return this
 	 * @throws \InvalidArgumentException if the action is invalid
 	 * @since 9.0.0
 	 */
-	public function addAction(IAction $action);
+	public function addAction(IAction action);
 
 	/**
 	 * @return IAction[]
@@ -296,12 +296,12 @@ interface INotification {
 	public function getActions();
 
 	/**
-	 * @param IAction $action
-	 * @return $this
+	 * @param IAction action
+	 * @return this
 	 * @throws \InvalidArgumentException if the action is invalid
 	 * @since 9.0.0
 	 */
-	public function addParsedAction(IAction $action);
+	public function addParsedAction(IAction action);
 
 	/**
 	 * @return IAction[]

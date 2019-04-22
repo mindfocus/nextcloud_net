@@ -26,45 +26,45 @@ namespace OCP.Contacts
 
         /**
          * This function is used to search and find contacts within the users address books.
-         * In case $pattern is empty all contacts will be returned.
+         * In case pattern is empty all contacts will be returned.
          *
          * Example:
          *  Following function shows how to search for contacts for the name and the email address.
          *
-         *		public static function getMatchingRecipient($term) {
-         *			$cm = \OC::$server->getContactsManager();
+         *		public static function getMatchingRecipient(term) {
+         *			cm = \OC::server->getContactsManager();
          *			// The API is not active -> nothing to do
-         *			if (!$cm->isEnabled()) {
+         *			if (!cm->isEnabled()) {
          *				return array();
          *			}
          *
-         *			$result = $cm->search($term, array('FN', 'EMAIL'));
-         *			$receivers = array();
-         *			foreach ($result as $r) {
-         *				$id = $r['id'];
-         *				$fn = $r['FN'];
-         *				$email = $r['EMAIL'];
-         *				if (!is_array($email)) {
-         *					$email = array($email);
+         *			result = cm->search(term, array('FN', 'EMAIL'));
+         *			receivers = array();
+         *			foreach (result as r) {
+         *				id = r['id'];
+         *				fn = r['FN'];
+         *				email = r['EMAIL'];
+         *				if (!is_array(email)) {
+         *					email = array(email);
          *				}
          *
          *				// loop through all email addresses of this contact
-         *				foreach ($email as $e) {
-         *				$displayName = $fn . " <$e>";
-         *				$receivers[] = array(
-         *					'id'    => $id,
-         *					'label' => $displayName,
-         *					'value' => $displayName);
+         *				foreach (email as e) {
+         *				displayName = fn . " <e>";
+         *				receivers[] = array(
+         *					'id'    => id,
+         *					'label' => displayName,
+         *					'value' => displayName);
          *				}
          *			}
          *
-         *			return $receivers;
+         *			return receivers;
          *		}
          *
          *
-         * @param string $pattern which should match within the $searchProperties
-         * @param array $searchProperties defines the properties within the query pattern should match
-         * @param array $options - for future use. One should always have options!
+         * @param string pattern which should match within the searchProperties
+         * @param array searchProperties defines the properties within the query pattern should match
+         * @param array options - for future use. One should always have options!
          * @return array an array of contacts which are arrays of key-value-pairs
          * @since 6.0.0
          */
@@ -73,8 +73,8 @@ namespace OCP.Contacts
         /**
          * This function can be used to delete the contact identified by the given id
          *
-         * @param object $id the unique identifier to a contact
-         * @param string $address_book_key identifier of the address book in which the contact shall be deleted
+         * @param object id the unique identifier to a contact
+         * @param string address_book_key identifier of the address book in which the contact shall be deleted
          * @return bool successful or not
          * @since 6.0.0
          */
@@ -84,8 +84,8 @@ namespace OCP.Contacts
          * This function is used to create a new contact if 'id' is not given or not present.
          * Otherwise the contact will be updated by replacing the entire data set.
          *
-         * @param array $properties this array if key-value-pairs defines a contact
-         * @param string $address_book_key identifier of the address book in which the contact shall be created or updated
+         * @param array properties this array if key-value-pairs defines a contact
+         * @param string address_book_key identifier of the address book in which the contact shall be created or updated
          * @return array an array representing the contact just created or updated
          * @since 6.0.0
          */
@@ -102,7 +102,7 @@ namespace OCP.Contacts
         /**
          * Registers an address book
          *
-         * @param \OCP\IAddressBook $address_book
+         * @param \OCP\IAddressBook address_book
          * @return void
          * @since 6.0.0
          */
@@ -111,7 +111,7 @@ namespace OCP.Contacts
         /**
          * Unregisters an address book
          *
-         * @param \OCP\IAddressBook $address_book
+         * @param \OCP\IAddressBook address_book
          * @return void
          * @since 6.0.0
          */
@@ -121,7 +121,7 @@ namespace OCP.Contacts
          * In order to improve lazy loading a closure can be registered which will be called in case
          * address books are actually requested
          *
-         * @param \Closure $callable
+         * @param \Closure callable
          * @return void
          * @since 6.0.0
          */
@@ -132,7 +132,7 @@ namespace OCP.Contacts
          * 
          * @return array
          * @since 6.0.0
-         * @deprecated 16.0.0 - Use `$this->getUserAddressBooks()` instead
+         * @deprecated 16.0.0 - Use `this->getUserAddressBooks()` instead
          */
         IList<IAddressBook> getAddressBooks();
 

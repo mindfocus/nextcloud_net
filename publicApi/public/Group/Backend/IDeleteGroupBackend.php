@@ -32,5 +32,5 @@ interface IDeleteGroupBackend {
 	/**
 	 * @since 14.0.0
 	 */
-	public function deleteGroup(string $gid): bool;
+	public function deleteGroup(string gid): bool;
 }

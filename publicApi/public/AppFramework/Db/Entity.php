@@ -26,53 +26,53 @@ namespace OCP\AppFramework\Db;
 
 /**
  * @method integer getId()
- * @method void setId(integer $id)
+ * @method void setId(integer id)
  * @since 7.0.0
  */
 abstract class Entity {
 
-	public $id;
+	public id;
 
-	private $_updatedFields = array();
-	private $_fieldTypes = array('id' => 'integer');
+	private _updatedFields = array();
+	private _fieldTypes = array('id' => 'integer');
 
 
 	/**
 	 * Simple alternative constructor for building entities from a request
-	 * @param array $params the array which was obtained via $this->params('key')
+	 * @param array params the array which was obtained via this->params('key')
 	 * in the controller
 	 * @return Entity
 	 * @since 7.0.0
 	 */
-	public static function fromParams(array $params) {
-		$instance = new static();
+	public static function fromParams(array params) {
+		instance = new static();
 
-		foreach($params as $key => $value) {
-			$method = 'set' . ucfirst($key);
-			$instance->$method($value);
+		foreach(params as key => value) {
+			method = 'set' . ucfirst(key);
+			instance->method(value);
 		}
 
-		return $instance;
+		return instance;
 	}
 
 
 	/**
 	 * Maps the keys of the row array to the attributes
-	 * @param array $row the row to map onto the entity
+	 * @param array row the row to map onto the entity
 	 * @since 7.0.0
 	 */
-	public static function fromRow(array $row){
-		$instance = new static();
+	public static function fromRow(array row){
+		instance = new static();
 
-		foreach($row as $key => $value){
-			$prop = ucfirst($instance->columnToProperty($key));
-			$setter = 'set' . $prop;
-			$instance->$setter($value);
+		foreach(row as key => value){
+			prop = ucfirst(instance->columnToProperty(key));
+			setter = 'set' . prop;
+			instance->setter(value);
 		}
 
-		$instance->resetUpdatedFields();
+		instance->resetUpdatedFields();
 
-		return $instance;
+		return instance;
 	}
 
 
@@ -81,7 +81,7 @@ abstract class Entity {
 	 * @since 7.0.0
 	 */
 	public function getFieldTypes() {
-		return $this->_fieldTypes;
+		return this->_fieldTypes;
 	}
 
 	
@@ -90,29 +90,29 @@ abstract class Entity {
 	 * @since 7.0.0
 	 */
 	public function resetUpdatedFields(){
-		$this->_updatedFields = array();
+		this->_updatedFields = array();
 	}
 
 	/**
 	 * Generic setter for properties
 	 * @since 7.0.0
 	 */
-	protected function setter($name, $args) {
+	protected function setter(name, args) {
 		// setters should only work for existing attributes
-		if(property_exists($this, $name)){
-			if($this->$name === $args[0]) {
+		if(property_exists(this, name)){
+			if(this->name === args[0]) {
 				return;
 			}
-			$this->markFieldUpdated($name);
+			this->markFieldUpdated(name);
 
 			// if type definition exists, cast to correct type
-			if($args[0] !== null && array_key_exists($name, $this->_fieldTypes)) {
-				settype($args[0], $this->_fieldTypes[$name]);
+			if(args[0] !== null && array_key_exists(name, this->_fieldTypes)) {
+				settype(args[0], this->_fieldTypes[name]);
 			}
-			$this->$name = $args[0];
+			this->name = args[0];
 
 		} else {
-			throw new \BadFunctionCallException($name . 
+			throw new \BadFunctionCallException(name . 
 				' is not a valid attribute');
 		}
 	}
@@ -121,12 +121,12 @@ abstract class Entity {
 	 * Generic getter for properties
 	 * @since 7.0.0
 	 */
-	protected function getter($name) {
+	protected function getter(name) {
 		// getters should only work for existing attributes
-		if(property_exists($this, $name)){
-			return $this->$name;
+		if(property_exists(this, name)){
+			return this->name;
 		} else {
-			throw new \BadFunctionCallException($name . 
+			throw new \BadFunctionCallException(name . 
 				' is not a valid attribute');
 		}
 	}
@@ -139,15 +139,15 @@ abstract class Entity {
 	 * getter method
 	 * @since 7.0.0
 	 */
-	public function __call($methodName, $args){
-		$attr = lcfirst( substr($methodName, 3) );
+	public function __call(methodName, args){
+		attr = lcfirst( substr(methodName, 3) );
 
-		if(strpos($methodName, 'set') === 0){
-			$this->setter($attr, $args);
-		} elseif(strpos($methodName, 'get') === 0) {
-			return $this->getter($attr);
+		if(strpos(methodName, 'set') === 0){
+			this->setter(attr, args);
+		} elseif(strpos(methodName, 'get') === 0) {
+			return this->getter(attr);
 		} else {
-			throw new \BadFunctionCallException($methodName . 
+			throw new \BadFunctionCallException(methodName . 
 					' does not exist');
 		}
 
@@ -156,55 +156,55 @@ abstract class Entity {
 
 	/**
 	 * Mark am attribute as updated
-	 * @param string $attribute the name of the attribute
+	 * @param string attribute the name of the attribute
 	 * @since 7.0.0
 	 */
-	protected function markFieldUpdated($attribute){
-		$this->_updatedFields[$attribute] = true;
+	protected function markFieldUpdated(attribute){
+		this->_updatedFields[attribute] = true;
 	}
 
 
 	/**
 	 * Transform a database columnname to a property 
-	 * @param string $columnName the name of the column
+	 * @param string columnName the name of the column
 	 * @return string the property name
 	 * @since 7.0.0
 	 */
-	public function columnToProperty($columnName){
-		$parts = explode('_', $columnName);
-		$property = null;
+	public function columnToProperty(columnName){
+		parts = explode('_', columnName);
+		property = null;
 
-		foreach($parts as $part){
-			if($property === null){
-				$property = $part;
+		foreach(parts as part){
+			if(property === null){
+				property = part;
 			} else {
-				$property .= ucfirst($part);
+				property .= ucfirst(part);
 			}
 		}
 
-		return $property;
+		return property;
 	}
 
 
 	/**
 	 * Transform a property to a database column name
-	 * @param string $property the name of the property
+	 * @param string property the name of the property
 	 * @return string the column name
 	 * @since 7.0.0
 	 */
-	public function propertyToColumn($property){
-		$parts = preg_split('/(?=[A-Z])/', $property);
-		$column = null;
+	public function propertyToColumn(property){
+		parts = preg_split('/(?=[A-Z])/', property);
+		column = null;
 
-		foreach($parts as $part){
-			if($column === null){
-				$column = $part;
+		foreach(parts as part){
+			if(column === null){
+				column = part;
 			} else {
-				$column .= '_' . lcfirst($part);
+				column .= '_' . lcfirst(part);
 			}
 		}
 
-		return $column;
+		return column;
 	}
 
 
@@ -213,40 +213,40 @@ abstract class Entity {
 	 * @since 7.0.0
 	 */
 	public function getUpdatedFields(){
-		return $this->_updatedFields;
+		return this->_updatedFields;
 	}
 
 
 	/**
 	 * Adds type information for a field so that its automatically casted to
 	 * that value once its being returned from the database
-	 * @param string $fieldName the name of the attribute
-	 * @param string $type the type which will be used to call settype()
+	 * @param string fieldName the name of the attribute
+	 * @param string type the type which will be used to call settype()
 	 * @since 7.0.0
 	 */
-	protected function addType($fieldName, $type){
-		$this->_fieldTypes[$fieldName] = $type;
+	protected function addType(fieldName, type){
+		this->_fieldTypes[fieldName] = type;
 	}
 
 
 	/**
 	 * Slugify the value of a given attribute
 	 * Warning: This doesn't result in a unique value
-	 * @param string $attributeName the name of the attribute, which value should be slugified
+	 * @param string attributeName the name of the attribute, which value should be slugified
 	 * @return string slugified value
 	 * @since 7.0.0
 	 */
-	public function slugify($attributeName){
+	public function slugify(attributeName){
 		// toSlug should only work for existing attributes
-		if(property_exists($this, $attributeName)){
-			$value = $this->$attributeName;
+		if(property_exists(this, attributeName)){
+			value = this->attributeName;
 			// replace everything except alphanumeric with a single '-'
-			$value = preg_replace('/[^A-Za-z0-9]+/', '-', $value);
-			$value = strtolower($value);
+			value = preg_replace('/[^A-Za-z0-9]+/', '-', value);
+			value = strtolower(value);
 			// trim '-'
-			return trim($value, '-');
+			return trim(value, '-');
 		} else {
-			throw new \BadFunctionCallException($attributeName .
+			throw new \BadFunctionCallException(attributeName .
 				' is not a valid attribute');
 		}
 	}

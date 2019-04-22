@@ -24,7 +24,7 @@ public interface File : Node {
 	/**
 	 * Write to the file from string data
 	 *
-	 * @param string|resource $data
+	 * @param string|resource data
 	 * @throws \OCP\Files\NotPermittedException
 	 * @throws \OCP\Files\GenericFileException
 	 * @since 6.0.0
@@ -42,7 +42,7 @@ public interface File : Node {
 	/**
 	 * Open the file as stream, resulting resource can be operated as stream like the result from php's own fopen
 	 *
-	 * @param string $mode
+	 * @param string mode
 	 * @return resource
 	 * @throws \OCP\Files\NotPermittedException
 	 * @since 6.0.0
@@ -51,10 +51,10 @@ public interface File : Node {
 
 	/**
 	 * Compute the hash of the file
-	 * Type of hash is set with $type and can be anything supported by php's hash_file
+	 * Type of hash is set with type and can be anything supported by php's hash_file
 	 *
-	 * @param string $type
-	 * @param bool $raw
+	 * @param string type
+	 * @param bool raw
 	 * @return string
 	 * @since 6.0.0
 	 */

@@ -10,7 +10,7 @@ namespace OCP.Remote.Api
     interface ICapabilitiesApi
     {
         /**
-         * @return array The capabilities in the form of [$appId => [$capability => $value]]
+         * @return array The capabilities in the form of [appId => [capability => value]]
          *
          * @since 13.0.0
          */

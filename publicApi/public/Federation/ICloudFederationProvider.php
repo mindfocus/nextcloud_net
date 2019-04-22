@@ -51,22 +51,22 @@ interface ICloudFederationProvider {
 	/**
 	 * share received from another server
 	 *
-	 * @param ICloudFederationShare $share
+	 * @param ICloudFederationShare share
 	 * @return string provider specific unique ID of the share
 	 *
 	 * @throws ProviderCouldNotAddShareException
 	 *
 	 * @since 14.0.0
 	 */
-	public function shareReceived(ICloudFederationShare $share);
+	public function shareReceived(ICloudFederationShare share);
 
 	/**
 	 * notification received from another server
 	 *
-	 * @param string $notificationType (e.g SHARE_ACCEPTED)
-	 * @param string $providerId share ID
-	 * @param array $notification provider specific notification
-	 * @return array $data send back to sender
+	 * @param string notificationType (e.g SHARE_ACCEPTED)
+	 * @param string providerId share ID
+	 * @param array notification provider specific notification
+	 * @return array data send back to sender
 	 *
 	 * @throws ShareNotFound
 	 * @throws ActionNotSupportedException
@@ -75,7 +75,7 @@ interface ICloudFederationProvider {
 	 *
 	 * @since 14.0.0
 	 */
-	public function notificationReceived($notificationType, $providerId, array $notification);
+	public function notificationReceived(notificationType, providerId, array notification);
 
 	/**
 	 * get the supported share types, e.g. "user", "group", etc.

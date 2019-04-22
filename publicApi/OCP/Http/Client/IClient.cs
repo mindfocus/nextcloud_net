@@ -16,8 +16,8 @@ namespace OCP.Http.Client
 
         /**
          * Sends a GET request
-         * @param string $uri
-         * @param array $options Array such as
+         * @param string uri
+         * @param array options Array such as
          *              'query' => [
          *                  'field' => 'abc',
          *                  'other_field' => '123',
@@ -46,8 +46,8 @@ namespace OCP.Http.Client
 
         /**
          * Sends a HEAD request
-         * @param string $uri
-         * @param array $options Array such as
+         * @param string uri
+         * @param array options Array such as
          *              'headers' => [
          *                  'foo' => 'bar',
          *              ],
@@ -71,8 +71,8 @@ namespace OCP.Http.Client
 
         /**
          * Sends a POST request
-         * @param string $uri
-         * @param array $options Array such as
+         * @param string uri
+         * @param array options Array such as
          *              'body' => [
          *                  'field' => 'abc',
          *                  'other_field' => '123',
@@ -101,8 +101,8 @@ namespace OCP.Http.Client
 
         /**
          * Sends a PUT request
-         * @param string $uri
-         * @param array $options Array such as
+         * @param string uri
+         * @param array options Array such as
          *              'body' => [
          *                  'field' => 'abc',
          *                  'other_field' => '123',
@@ -131,8 +131,8 @@ namespace OCP.Http.Client
 
         /**
          * Sends a DELETE request
-         * @param string $uri
-         * @param array $options Array such as
+         * @param string uri
+         * @param array options Array such as
          *              'body' => [
          *                  'field' => 'abc',
          *                  'other_field' => '123',
@@ -161,8 +161,8 @@ namespace OCP.Http.Client
 
         /**
          * Sends a options request
-         * @param string $uri
-         * @param array $options Array such as
+         * @param string uri
+         * @param array options Array such as
          *              'body' => [
          *                  'field' => 'abc',
          *                  'other_field' => '123',

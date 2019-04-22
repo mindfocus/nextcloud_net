@@ -15,7 +15,7 @@ namespace OCP.Mail
     {
 
         /**
-         * @param IAttachment $attachment
+         * @param IAttachment attachment
          * @return IMessage
          * @since 13.0.0
          */
@@ -26,7 +26,7 @@ namespace OCP.Mail
          *
          * If no "From" address is used \OC\Mail\Mailer will use mail_from_address and mail_domain from config.php
          *
-         * @param array $addresses Example: array('sender@domain.org', 'other@domain.org' => 'A name')
+         * @param array addresses Example: array('sender@domain.org', 'other@domain.org' => 'A name')
          * @return IMessage
          * @since 13.0.0
          */
@@ -35,7 +35,7 @@ namespace OCP.Mail
         /**
          * Set the Reply-To address of this message
          *
-         * @param array $addresses
+         * @param array addresses
          * @return IMessage
          * @since 13.0.0
          */
@@ -44,7 +44,7 @@ namespace OCP.Mail
         /**
          * Set the to addresses of this message.
          *
-         * @param array $recipients Example: array('recipient@domain.org', 'other@domain.org' => 'A name')
+         * @param array recipients Example: array('recipient@domain.org', 'other@domain.org' => 'A name')
          * @return IMessage
          * @since 13.0.0
          */
@@ -53,7 +53,7 @@ namespace OCP.Mail
         /**
          * Set the CC recipients of this message.
          *
-         * @param array $recipients Example: array('recipient@domain.org', 'other@domain.org' => 'A name')
+         * @param array recipients Example: array('recipient@domain.org', 'other@domain.org' => 'A name')
          * @return IMessage
          * @since 13.0.0
          */
@@ -62,14 +62,14 @@ namespace OCP.Mail
         /**
          * Set the BCC recipients of this message.
          *
-         * @param array $recipients Example: array('recipient@domain.org', 'other@domain.org' => 'A name')
+         * @param array recipients Example: array('recipient@domain.org', 'other@domain.org' => 'A name')
          * @return IMessage
          * @since 13.0.0
          */
         IMessage setBcc(IList<string> recipients);
 
         /**
-         * @param IEMailTemplate $emailTemplate
+         * @param IEMailTemplate emailTemplate
          * @return IMessage
          * @since 13.0.0
          */

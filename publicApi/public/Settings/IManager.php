@@ -49,18 +49,18 @@ interface IManager {
 	const KEY_PERSONAL_SECTION  = 'personal-section';
 
 	/**
-	 * @param string $type 'admin' or 'personal'
-	 * @param string $section Class must implement OCP\Settings\ISection
+	 * @param string type 'admin' or 'personal'
+	 * @param string section Class must implement OCP\Settings\ISection
 	 * @since 14.0.0
 	 */
-	public function registerSection(string $type, string $section);
+	public function registerSection(string type, string section);
 
 	/**
-	 * @param string $type 'admin' or 'personal'
-	 * @param string $setting Class must implement OCP\Settings\ISetting
+	 * @param string type 'admin' or 'personal'
+	 * @param string setting Class must implement OCP\Settings\ISetting
 	 * @since 14.0.0
 	 */
-	public function registerSetting(string $type, string $setting);
+	public function registerSetting(string type, string setting);
 
 	/**
 	 * returns a list of the admin sections
@@ -81,18 +81,18 @@ interface IManager {
 	/**
 	 * returns a list of the admin settings
 	 *
-	 * @param string $section the section id for which to load the settings
+	 * @param string section the section id for which to load the settings
 	 * @return array array of IAdmin[] where key is the priority
 	 * @since 9.1.0
 	 */
-	public function getAdminSettings($section): array;
+	public function getAdminSettings(section): array;
 
 	/**
 	 * returns a list of the personal  settings
 	 *
-	 * @param string $section the section id for which to load the settings
+	 * @param string section the section id for which to load the settings
 	 * @return array array of IPersonal[] where key is the priority
 	 * @since 13.0.0
 	 */
-	public function getPersonalSettings($section): array;
+	public function getPersonalSettings(section): array;
 }

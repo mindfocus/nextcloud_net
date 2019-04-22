@@ -10,8 +10,8 @@ namespace OCP.Remote.Api
     public interface IApiFactory
     {
         /**
-         * @param IInstance $instance
-         * @param ICredentials $credentials
+         * @param IInstance instance
+         * @param ICredentials credentials
          * @return IApiCollection
          *
          * @since 13.0.0

@@ -44,20 +44,20 @@ use OCP\ISession;
 abstract class PublicShareController extends Controller {
 
 	/** @var ISession */
-	protected $session;
+	protected session;
 
 	/** @var string */
-	private $token;
+	private token;
 
 	/**
 	 * @since 14.0.0
 	 */
-	public function __construct(string $appName,
-								IRequest $request,
-								ISession $session) {
-		parent::__construct($appName, $request);
+	public function __construct(string appName,
+								IRequest request,
+								ISession session) {
+		parent::__construct(appName, request);
 
-		$this->session = $session;
+		this->session = session;
 	}
 
 	/**
@@ -65,8 +65,8 @@ abstract class PublicShareController extends Controller {
 	 *
 	 * @since 14.0.0
 	 */
-	final public function setToken(string $token) {
-		$this->token = $token;
+	final public function setToken(string token) {
+		this->token = token;
 	}
 
 	/**
@@ -75,7 +75,7 @@ abstract class PublicShareController extends Controller {
 	 * @since 14.0.0
 	 */
 	final public function getToken(): string {
-		return $this->token;
+		return this->token;
 	}
 
 	/**
@@ -111,13 +111,13 @@ abstract class PublicShareController extends Controller {
 	 */
 	final public function isAuthenticated(): bool {
 		// Always authenticated against non password protected shares
-		if (!$this->isPasswordProtected()) {
+		if (!this->isPasswordProtected()) {
 			return true;
 		}
 
 		// If we are authenticated properly
-		if ($this->session->get('public_link_authenticated_token') === $this->getToken() &&
-			$this->session->get('public_link_authenticated_password_hash') === $this->getPasswordHash()) {
+		if (this->session->get('public_link_authenticated_token') === this->getToken() &&
+			this->session->get('public_link_authenticated_password_hash') === this->getPasswordHash()) {
 			return true;
 		}
 

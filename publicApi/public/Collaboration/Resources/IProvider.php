@@ -40,38 +40,38 @@ interface IProvider {
 	/**
 	 * Get the display name of a resource
 	 *
-	 * @param IResource $resource
+	 * @param IResource resource
 	 * @return string
 	 * @since 16.0.0
 	 */
-	public function getName(IResource $resource): string;
+	public function getName(IResource resource): string;
 
 	/**
 	 * Get the icon class of a resource
 	 *
-	 * @param IResource $resource
+	 * @param IResource resource
 	 * @return string
 	 * @since 16.0.0
 	 */
-	public function getIconClass(IResource $resource): string;
+	public function getIconClass(IResource resource): string;
 
 	/**
 	 * Get the link to a resource
 	 *
-	 * @param IResource $resource
+	 * @param IResource resource
 	 * @return string
 	 * @since 16.0.0
 	 */
-	public function getLink(IResource $resource): string;
+	public function getLink(IResource resource): string;
 
 	/**
 	 * Can a user/guest access the collection
 	 *
-	 * @param IResource $resource
-	 * @param IUser|null $user
+	 * @param IResource resource
+	 * @param IUser|null user
 	 * @return bool
 	 * @since 16.0.0
 	 */
-	public function canAccessResource(IResource $resource, ?IUser $user): bool;
+	public function canAccessResource(IResource resource, ?IUser user): bool;
 
 }

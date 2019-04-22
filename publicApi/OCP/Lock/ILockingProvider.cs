@@ -22,24 +22,24 @@ namespace OCP.Lock
         //const LOCK_EXCLUSIVE = 2;
 
         /**
-         * @param string $path
-         * @param int $type self::LOCK_SHARED or self::LOCK_EXCLUSIVE
+         * @param string path
+         * @param int type self::LOCK_SHARED or self::LOCK_EXCLUSIVE
          * @return bool
          * @since 8.1.0
          */
         bool isLocked(string path, int type);
 
 	/**
-	 * @param string $path
-	 * @param int $type self::LOCK_SHARED or self::LOCK_EXCLUSIVE
+	 * @param string path
+	 * @param int type self::LOCK_SHARED or self::LOCK_EXCLUSIVE
 	 * @throws \OCP\Lock\LockedException
 	 * @since 8.1.0
 	 */
 	void acquireLock(string path, int type);
 
         /**
-         * @param string $path
-         * @param int $type self::LOCK_SHARED or self::LOCK_EXCLUSIVE
+         * @param string path
+         * @param int type self::LOCK_SHARED or self::LOCK_EXCLUSIVE
          * @since 8.1.0
          */
         void releaseLock(string path, int type);
@@ -47,8 +47,8 @@ namespace OCP.Lock
         /**
          * Change the type of an existing lock
          *
-         * @param string $path
-         * @param int $targetType self::LOCK_SHARED or self::LOCK_EXCLUSIVE
+         * @param string path
+         * @param int targetType self::LOCK_SHARED or self::LOCK_EXCLUSIVE
          * @throws \OCP\Lock\LockedException
          * @since 8.1.0
          */

@@ -147,9 +147,9 @@ interface IFullTextSearchProvider {
 	 *
 	 * @since 15.0.0
 	 *
-	 * @param IRunner $runner
+	 * @param IRunner runner
 	 */
-	public function setRunner(IRunner $runner);
+	public function setRunner(IRunner runner);
 
 
 	/**
@@ -158,9 +158,9 @@ interface IFullTextSearchProvider {
 	 *
 	 * @since 15.0.0
 	 *
-	 * @param IIndexOptions $options
+	 * @param IIndexOptions options
 	 */
-	public function setIndexOptions(IIndexOptions $options);
+	public function setIndexOptions(IIndexOptions options);
 
 
 	/**
@@ -174,11 +174,11 @@ interface IFullTextSearchProvider {
 	 *
 	 * @since 16.0.0
 	 *
-	 * @param string $userId
+	 * @param string userId
 	 *
 	 * @return string[]
 	 */
-	public function generateChunks(string $userId): array;
+	public function generateChunks(string userId): array;
 
 
 	/**
@@ -197,14 +197,14 @@ interface IFullTextSearchProvider {
 	 * @see IIndexDocument
 	 *
 	 * @since 15.0.0
-	 *  -> 16.0.0: the parameter "$chunk" was added
+	 *  -> 16.0.0: the parameter "chunk" was added
 	 *
-	 * @param string $userId
-	 * @param string $chunk
+	 * @param string userId
+	 * @param string chunk
 	 *
 	 * @return IIndexDocument[]
 	 */
-	public function generateIndexableDocuments(string $userId, string $chunk): array;
+	public function generateIndexableDocuments(string userId, string chunk): array;
 
 
 	/**
@@ -218,11 +218,11 @@ interface IFullTextSearchProvider {
 	 *
 	 * @since 15.0.0
 	 *
-	 * @param IIndexDocument $document
+	 * @param IIndexDocument document
 	 *
 	 * @return bool
 	 */
-	public function isDocumentUpToDate(IIndexDocument $document): bool;
+	public function isDocumentUpToDate(IIndexDocument document): bool;
 
 
 	/**
@@ -236,9 +236,9 @@ interface IFullTextSearchProvider {
 	 *
 	 * @since 15.0.0
 	 *
-	 * @param IIndexDocument $document
+	 * @param IIndexDocument document
 	 */
-	public function fillIndexDocument(IIndexDocument $document);
+	public function fillIndexDocument(IIndexDocument document);
 
 
 	/**
@@ -251,11 +251,11 @@ interface IFullTextSearchProvider {
 	 *
 	 * @since 15.0.0
 	 *
-	 * @param IIndex $index
+	 * @param IIndex index
 	 *
 	 * @return IIndexDocument
 	 */
-	public function updateDocument(IIndex $index): IIndexDocument;
+	public function updateDocument(IIndex index): IIndexDocument;
 
 
 	/**
@@ -265,9 +265,9 @@ interface IFullTextSearchProvider {
 	 *
 	 * @since 15.0.0
 	 *
-	 * @param IFullTextSearchPlatform $platform
+	 * @param IFullTextSearchPlatform platform
 	 */
-	public function onInitializingIndex(IFullTextSearchPlatform $platform);
+	public function onInitializingIndex(IFullTextSearchPlatform platform);
 
 
 	/**
@@ -277,9 +277,9 @@ interface IFullTextSearchProvider {
 	 *
 	 * @since 15.0.0
 	 *
-	 * @param IFullTextSearchPlatform $platform
+	 * @param IFullTextSearchPlatform platform
 	 */
-	public function onResettingIndex(IFullTextSearchPlatform $platform);
+	public function onResettingIndex(IFullTextSearchPlatform platform);
 
 
 	/**
@@ -293,9 +293,9 @@ interface IFullTextSearchProvider {
 	 *
 	 * @since 15.0.0
 	 *
-	 * @param ISearchRequest $searchRequest
+	 * @param ISearchRequest searchRequest
 	 */
-	public function improveSearchRequest(ISearchRequest $searchRequest);
+	public function improveSearchRequest(ISearchRequest searchRequest);
 
 
 	/**
@@ -309,9 +309,9 @@ interface IFullTextSearchProvider {
 	 *
 	 * @since 15.0.0
 	 *
-	 * @param ISearchResult $searchResult
+	 * @param ISearchResult searchResult
 	 */
-	public function improveSearchResult(ISearchResult $searchResult);
+	public function improveSearchResult(ISearchResult searchResult);
 
 
 	/**

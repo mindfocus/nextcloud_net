@@ -17,7 +17,7 @@ namespace OCP
         /**
          * Sets and deletes system wide values
          *
-         * @param array $configs Associative array with `key => value` pairs
+         * @param array configs Associative array with `key => value` pairs
          *                       If value is null, the config key will be deleted
          * @since 8.0.0
          */
@@ -26,8 +26,8 @@ namespace OCP
         /**
          * Sets a new system wide value
          *
-         * @param string $key the key of the value, under which will be saved
-         * @param mixed $value the value that should be stored
+         * @param string key the key of the value, under which will be saved
+         * @param mixed value the value that should be stored
          * @since 8.0.0
          */
          void setSystemValue(string key, object value);
@@ -35,19 +35,19 @@ namespace OCP
         /**
          * Looks up a system wide defined value
          *
-         * @param string $key the key of the value, under which it was saved
-         * @param mixed $default the default value to be returned if the value isn't set
-         * @return mixed the value or $default
-         * @since 6.0.0 - parameter $default was added in 7.0.0
+         * @param string key the key of the value, under which it was saved
+         * @param mixed default the default value to be returned if the value isn't set
+         * @return mixed the value or default
+         * @since 6.0.0 - parameter default was added in 7.0.0
          */
          object getSystemValue(string key, object @default);
 
         /**
          * Looks up a boolean system wide defined value
          *
-         * @param string $key the key of the value, under which it was saved
-         * @param bool $default the default value to be returned if the value isn't set
-         * @return bool the value or $default
+         * @param string key the key of the value, under which it was saved
+         * @param bool default the default value to be returned if the value isn't set
+         * @return bool the value or default
          * @since 16.0.0
          */
          bool getSystemValueBool(string key, bool @default = false);
@@ -55,9 +55,9 @@ namespace OCP
     /**
      * Looks up an integer system wide defined value
      *
-     * @param string $key the key of the value, under which it was saved
-     * @param int $default the default value to be returned if the value isn't set
-     * @return int the value or $default
+     * @param string key the key of the value, under which it was saved
+     * @param int default the default value to be returned if the value isn't set
+     * @return int the value or default
      * @since 16.0.0
      */
      int getSystemValueInt(string key, int @default = 0);
@@ -65,9 +65,9 @@ namespace OCP
     /**
      * Looks up a string system wide defined value
      *
-     * @param string $key the key of the value, under which it was saved
-     * @param string $default the default value to be returned if the value isn't set
-     * @return string the value or $default
+     * @param string key the key of the value, under which it was saved
+     * @param string default the default value to be returned if the value isn't set
+     * @return string the value or default
      * @since 16.0.0
      */
      string getSystemValueString(string key, string @default = "");
@@ -75,9 +75,9 @@ namespace OCP
     /**
      * Looks up a system wide defined value and filters out sensitive data
      *
-     * @param string $key the key of the value, under which it was saved
-     * @param mixed $default the default value to be returned if the value isn't set
-     * @return mixed the value or $default
+     * @param string key the key of the value, under which it was saved
+     * @param mixed default the default value to be returned if the value isn't set
+     * @return mixed the value or default
      * @since 8.2.0
      */
      object getFilteredSystemValue(string key, object @default);
@@ -85,7 +85,7 @@ namespace OCP
         /**
          * Delete a system wide defined value
          *
-         * @param string $key the key of the value, under which it was saved
+         * @param string key the key of the value, under which it was saved
          * @since 8.0.0
          */
          void deleteSystemValue(string key);
@@ -93,7 +93,7 @@ namespace OCP
         /**
          * Get all keys stored for an app
          *
-         * @param string $appName the appName that we stored the value under
+         * @param string appName the appName that we stored the value under
          * @return string[] the keys stored for the app
          * @since 8.0.0
          */
@@ -102,9 +102,9 @@ namespace OCP
         /**
          * Writes a new app wide value
          *
-         * @param string $appName the appName that we want to store the value under
-         * @param string|float|int $key the key of the value, under which will be saved
-         * @param string $value the value that should be stored
+         * @param string appName the appName that we want to store the value under
+         * @param string|float|int key the key of the value, under which will be saved
+         * @param string value the value that should be stored
          * @return void
          * @since 6.0.0
          */
@@ -113,19 +113,19 @@ namespace OCP
         /**
          * Looks up an app wide defined value
          *
-         * @param string $appName the appName that we stored the value under
-         * @param string $key the key of the value, under which it was saved
-         * @param string $default the default value to be returned if the value isn't set
+         * @param string appName the appName that we stored the value under
+         * @param string key the key of the value, under which it was saved
+         * @param string default the default value to be returned if the value isn't set
          * @return string the saved value
-         * @since 6.0.0 - parameter $default was added in 7.0.0
+         * @since 6.0.0 - parameter default was added in 7.0.0
          */
          string getAppValue(string appName, string key, object @default);
 
         /**
          * Delete an app wide defined value
          *
-         * @param string $appName the appName that we stored the value under
-         * @param string $key the key of the value, under which it was saved
+         * @param string appName the appName that we stored the value under
+         * @param string key the key of the value, under which it was saved
          * @since 8.0.0
          */
          void deleteAppValue(string appName, string key);
@@ -133,7 +133,7 @@ namespace OCP
         /**
          * Removes all keys in appconfig belonging to the app
          *
-         * @param string $appName the appName the configs are stored under
+         * @param string appName the appName the configs are stored under
          * @since 8.0.0
          */
          void deleteAppValues(string appName);
@@ -142,35 +142,35 @@ namespace OCP
         /**
          * Set a user defined value
          *
-         * @param string $userId the userId of the user that we want to store the value under
-         * @param string $appName the appName that we want to store the value under
-         * @param string $key the key under which the value is being stored
-         * @param string $value the value that you want to store
-         * @param string $preCondition only update if the config value was previously the value passed as $preCondition
+         * @param string userId the userId of the user that we want to store the value under
+         * @param string appName the appName that we want to store the value under
+         * @param string key the key under which the value is being stored
+         * @param string value the value that you want to store
+         * @param string preCondition only update if the config value was previously the value passed as preCondition
          * @throws \OCP\PreConditionNotMetException if a precondition is specified and is not met
          * @throws \UnexpectedValueException when trying to store an unexpected value
-         * @since 6.0.0 - parameter $precondition was added in 8.0.0
+         * @since 6.0.0 - parameter precondition was added in 8.0.0
          */
          void setUserValue(string userId, string appName, string key, string value, string? preCondition = null);
 
         /**
          * Shortcut for getting a user defined value
          *
-         * @param string $userId the userId of the user that we want to store the value under
-         * @param string $appName the appName that we stored the value under
-         * @param string $key the key under which the value is being stored
-         * @param mixed $default the default value to be returned if the value isn't set
+         * @param string userId the userId of the user that we want to store the value under
+         * @param string appName the appName that we stored the value under
+         * @param string key the key under which the value is being stored
+         * @param mixed default the default value to be returned if the value isn't set
          * @return string
-         * @since 6.0.0 - parameter $default was added in 7.0.0
+         * @since 6.0.0 - parameter default was added in 7.0.0
          */
          string getUserValue(string userId, string appName, string key, object @default);
 
         /**
          * Fetches a mapped list of userId -> value, for a specified app and key and a list of user IDs.
          *
-         * @param string $appName app to get the value for
-         * @param string $key the key to get the value for
-         * @param array $userIds the user IDs to fetch the values for
+         * @param string appName app to get the value for
+         * @param string key the key to get the value for
+         * @param array userIds the user IDs to fetch the values for
          * @return array Mapped values: userId => value
          * @since 8.0.0
          */
@@ -179,8 +179,8 @@ namespace OCP
         /**
          * Get the keys of all stored by an app for the user
          *
-         * @param string $userId the userId of the user that we want to store the value under
-         * @param string $appName the appName that we stored the value under
+         * @param string userId the userId of the user that we want to store the value under
+         * @param string appName the appName that we stored the value under
          * @return string[]
          * @since 8.0.0
          */
@@ -189,9 +189,9 @@ namespace OCP
         /**
          * Delete a user value
          *
-         * @param string $userId the userId of the user that we want to store the value under
-         * @param string $appName the appName that we stored the value under
-         * @param string $key the key under which the value is being stored
+         * @param string userId the userId of the user that we want to store the value under
+         * @param string appName the appName that we stored the value under
+         * @param string key the key under which the value is being stored
          * @since 8.0.0
          */
          void deleteUserValue(string userId, string appName, string key);
@@ -199,7 +199,7 @@ namespace OCP
         /**
          * Delete all user values
          *
-         * @param string $userId the userId of the user that we want to remove all values from
+         * @param string userId the userId of the user that we want to remove all values from
          * @since 8.0.0
          */
          void deleteAllUserValues(string userId);
@@ -207,7 +207,7 @@ namespace OCP
         /**
          * Delete all user related values of one app
          *
-         * @param string $appName the appName of the app that we want to remove all values from
+         * @param string appName the appName of the app that we want to remove all values from
          * @since 8.0.0
          */
          void deleteAppFromAllUsers(string appName);
@@ -215,9 +215,9 @@ namespace OCP
         /**
          * Determines the users that have the given value set for a specific app-key-pair
          *
-         * @param string $appName the app to get the user for
-         * @param string $key the key to get the user for
-         * @param string $value the value to get the user for
+         * @param string appName the app to get the user for
+         * @param string key the key to get the user for
+         * @param string value the value to get the user for
          * @return array of user IDs
          * @since 8.0.0
          */

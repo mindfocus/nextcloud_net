@@ -32,22 +32,22 @@ use OC\HintException;
  */
 class BadRequestException extends HintException {
 
-	private $parameterList;
+	private parameterList;
 
 	/**
 	 * BadRequestException constructor.
 	 *
 	 * @since 14.0.0
 	 *
-	 * @param array $missingParameters
+	 * @param array missingParameters
 	 */
-	public function __construct(array $missingParameters) {
-		$l = \OC::$server->getL10N('federation');
-		$this->parameterList = $missingParameters;
-		$parameterList = implode(',', $missingParameters);
-		$message = 'Parameters missing in order to complete the request. Missing Parameters: ' . $parameterList;
-		$hint = $l->t('Parameters missing in order to complete the request. Missing Parameters: "%s"', [$parameterList]);
-		parent::__construct($message, $hint);
+	public function __construct(array missingParameters) {
+		l = \OC::server->getL10N('federation');
+		this->parameterList = missingParameters;
+		parameterList = implode(',', missingParameters);
+		message = 'Parameters missing in order to complete the request. Missing Parameters: ' . parameterList;
+		hint = l->t('Parameters missing in order to complete the request. Missing Parameters: "%s"', [parameterList]);
+		parent::__construct(message, hint);
 	}
 
 	/**
@@ -58,20 +58,20 @@ class BadRequestException extends HintException {
 	 * @return array
 	 */
 	public function getReturnMessage() {
-		$result = [
+		result = [
 			'message' => 'RESOURCE_NOT_FOUND',
 			'validationErrors' =>[
 			]
 		];
 
-		foreach ($this->parameterList as $missingParameter) {
-			$result['validationErrors'] = [
-				'name' => $missingParameter,
+		foreach (this->parameterList as missingParameter) {
+			result['validationErrors'] = [
+				'name' => missingParameter,
 				'message' => 'NOT_FOUND'
 			];
 		}
 
-		return $result;
+		return result;
 	}
 
 }

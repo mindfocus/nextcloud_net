@@ -54,12 +54,12 @@ interface IComment {
 	 * the concrete implementation does), or vice versa. Changing a given ID is
 	 * not permitted and must result in an IllegalIDChangeException.
 	 *
-	 * @param string $id
+	 * @param string id
 	 * @return IComment
 	 * @throws IllegalIDChangeException
 	 * @since 9.0.0
 	 */
-	public function setId($id);
+	public function setId(id);
 
 	/**
 	 * returns the parent ID of the comment
@@ -71,11 +71,11 @@ interface IComment {
 
 	/**
 	 * sets the parent ID and returns itself
-	 * @param string $parentId
+	 * @param string parentId
 	 * @return IComment
 	 * @since 9.0.0
 	 */
-	public function setParentId($parentId);
+	public function setParentId(parentId);
 
 	/**
 	 * returns the topmost parent ID of the comment
@@ -89,11 +89,11 @@ interface IComment {
 	/**
 	 * sets the topmost parent ID and returns itself
 	 *
-	 * @param string $id
+	 * @param string id
 	 * @return IComment
 	 * @since 9.0.0
 	 */
-	public function setTopmostParentId($id);
+	public function setTopmostParentId(id);
 
 	/**
 	 * returns the number of children
@@ -106,11 +106,11 @@ interface IComment {
 	/**
 	 * sets the number of children
 	 *
-	 * @param int $count
+	 * @param int count
 	 * @return IComment
 	 * @since 9.0.0
 	 */
-	public function setChildrenCount($count);
+	public function setChildrenCount(count);
 
 	/**
 	 * returns the message of the comment
@@ -126,12 +126,12 @@ interface IComment {
 	 * When the given message length exceeds MAX_MESSAGE_LENGTH an
 	 * MessageTooLongException shall be thrown.
 	 *
-	 * @param string $message
+	 * @param string message
 	 * @return IComment
 	 * @throws MessageTooLongException
 	 * @since 9.0.0
 	 */
-	public function setMessage($message);
+	public function setMessage(message);
 
 	/**
 	 * returns an array containing mentions that are included in the comment
@@ -166,11 +166,11 @@ interface IComment {
 	/**
 	 * sets the verb of the comment, e.g. 'comment' or 'like'
 	 *
-	 * @param string $verb
+	 * @param string verb
 	 * @return IComment
 	 * @since 9.0.0
 	 */
-	public function setVerb($verb);
+	public function setVerb(verb);
 
 	/**
 	 * returns the actor type
@@ -191,12 +191,12 @@ interface IComment {
 	/**
 	 * sets (overwrites) the actor type and id
 	 *
-	 * @param string $actorType e.g. 'users'
-	 * @param string $actorId e.g. 'zombie234'
+	 * @param string actorType e.g. 'users'
+	 * @param string actorId e.g. 'zombie234'
 	 * @return IComment
 	 * @since 9.0.0
 	 */
-	public function setActor($actorType, $actorId);
+	public function setActor(actorType, actorId);
 
 	/**
 	 * returns the creation date of the comment.
@@ -211,11 +211,11 @@ interface IComment {
 	/**
 	 * sets the creation date of the comment and returns itself
 	 *
-	 * @param \DateTime $dateTime
+	 * @param \DateTime dateTime
 	 * @return IComment
 	 * @since 9.0.0
 	 */
-	public function setCreationDateTime(\DateTime $dateTime);
+	public function setCreationDateTime(\DateTime dateTime);
 
 	/**
 	 * returns the date of the most recent child
@@ -228,11 +228,11 @@ interface IComment {
 	/**
 	 * sets the date of the most recent child
 	 *
-	 * @param \DateTime $dateTime
+	 * @param \DateTime dateTime
 	 * @return IComment
 	 * @since 9.0.0
 	 */
-	public function setLatestChildDateTime(\DateTime $dateTime);
+	public function setLatestChildDateTime(\DateTime dateTime);
 
 	/**
 	 * returns the object type the comment is attached to
@@ -253,12 +253,12 @@ interface IComment {
 	/**
 	 * sets (overwrites) the object of the comment
 	 *
-	 * @param string $objectType e.g. 'files'
-	 * @param string $objectId e.g. '16435'
+	 * @param string objectType e.g. 'files'
+	 * @param string objectId e.g. '16435'
 	 * @return IComment
 	 * @since 9.0.0
 	 */
-	public function setObject($objectType, $objectId);
+	public function setObject(objectType, objectId);
 
 }
 

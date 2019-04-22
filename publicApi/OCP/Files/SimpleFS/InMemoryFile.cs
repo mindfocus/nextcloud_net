@@ -29,8 +29,8 @@ namespace OCP.Files.SimpleFS
 	/**
 	 * InMemoryFile constructor.
 	 *
-	 * @param string $name The file name
-	 * @param string $contents The file contents
+	 * @param string name The file name
+	 * @param string contents The file contents
 	 * @since 16.0.0
 	 */
 	public InMemoryFile(string name, string contents)
@@ -109,8 +109,8 @@ namespace OCP.Files.SimpleFS
 	 */
     public string getMimeType()
     {
-            //$fileInfo = new \finfo(FILEINFO_MIME_TYPE);
-            //      return $fileInfo->buffer($this->contents);
+            //fileInfo = new \finfo(FILEINFO_MIME_TYPE);
+            //      return fileInfo->buffer(this->contents);
             return "";
     }
 

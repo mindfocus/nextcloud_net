@@ -28,7 +28,7 @@ namespace OCP.AppFramework
     IServerContainer getServer();
 
     /**
-	 * @param string $middleWare
+	 * @param string middleWare
 	 * @return boolean
 	 * @since 6.0.0
 	 */
@@ -37,7 +37,7 @@ namespace OCP.AppFramework
     /**
 	 * Register a capability
 	 *
-	 * @param string $serviceName e.g. 'OCA\Files\Capabilities'
+	 * @param string serviceName e.g. 'OCA\Files\Capabilities'
 	 * @since 8.2.0
 	 */
     void registerCapability(string serviceName);

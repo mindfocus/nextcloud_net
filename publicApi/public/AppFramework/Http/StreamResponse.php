@@ -35,30 +35,30 @@ use OCP\AppFramework\Http;
  */
 class StreamResponse extends Response implements ICallbackResponse {
 	/** @var string */
-	private $filePath;
+	private filePath;
 
 	/**
-	 * @param string|resource $filePath the path to the file or a file handle which should be streamed
+	 * @param string|resource filePath the path to the file or a file handle which should be streamed
 	 * @since 8.1.0
 	 */
-	public function __construct ($filePath) {
-		$this->filePath = $filePath;
+	public function __construct (filePath) {
+		this->filePath = filePath;
 	}
 
 
 	/**
 	 * Streams the file using readfile
 	 *
-	 * @param IOutput $output a small wrapper that handles output
+	 * @param IOutput output a small wrapper that handles output
 	 * @since 8.1.0
 	 */
-	public function callback (IOutput $output) {
+	public function callback (IOutput output) {
 		// handle caching
-		if ($output->getHttpResponseCode() !== Http::STATUS_NOT_MODIFIED) {
-			if (!(is_resource($this->filePath) || file_exists($this->filePath))) {
-				$output->setHttpResponseCode(Http::STATUS_NOT_FOUND);
-			} elseif ($output->setReadfile($this->filePath) === false) {
-				$output->setHttpResponseCode(Http::STATUS_BAD_REQUEST);
+		if (output->getHttpResponseCode() !== Http::STATUS_NOT_MODIFIED) {
+			if (!(is_resource(this->filePath) || file_exists(this->filePath))) {
+				output->setHttpResponseCode(Http::STATUS_NOT_FOUND);
+			} elseif (output->setReadfile(this->filePath) === false) {
+				output->setHttpResponseCode(Http::STATUS_BAD_REQUEST);
 			}
 		}
 	}

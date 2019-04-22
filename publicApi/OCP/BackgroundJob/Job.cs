@@ -9,13 +9,13 @@ namespace OCP.BackgroundJob
 {
     abstract class Job : IJob
     {
-        /** @var int $id */
+        /** @var int id */
         protected int id;
 
-	/** @var int $lastRun */
+	/** @var int lastRun */
 	protected int lastRun;
 
-	/** @var mixed $argument */
+	/** @var mixed argument */
 	protected object argument;
 
 	/** @var ITimeFactory */
@@ -33,24 +33,24 @@ namespace OCP.BackgroundJob
         {
             jobList.setLastRun(this);
             if (logger == null) {
-			    //logger = \OC::$server->getLogger();
+			    //logger = \OC::server->getLogger();
             }
 
             try
             {
 			 var jobStartTime = this.time.getTime();
-			//logger.debug('Run '.get_class($this). ' job with ID '. $this->getId(), ['app' => 'cron']);
+			//logger.debug('Run '.get_class(this). ' job with ID '. this->getId(), ['app' => 'cron']);
 			this.run(this.argument);
 			var timeTaken = this.time.getTime() - jobStartTime;
 
-			//$logger->debug('Finished '.get_class($this). ' job with ID '. $this->getId(). ' in '. $timeTaken. ' seconds', ['app' => 'cron']);
+			//logger->debug('Finished '.get_class(this). ' job with ID '. this->getId(). ' in '. timeTaken. ' seconds', ['app' => 'cron']);
 			jobList.setExecutionTime(this, timeTaken);
             }
             catch (Exception e) {
                 if (logger != null) {
 				//logger.logException(e, [
     //                'app' => 'core',
-    //                'message' => 'Error while running background job (class: '.get_class($this). ', arguments: '.print_r($this->argument, true). ')'
+    //                'message' => 'Error while running background job (class: '.get_class(this). ', arguments: '.print_r(this->argument, true). ')'
     //            ]);
                 }
             }
@@ -93,7 +93,7 @@ namespace OCP.BackgroundJob
         /**
  * The actual function that is called to run the job
  *
- * @param $argument
+ * @param argument
  * @return mixed
  *
  * @since 15.0.0

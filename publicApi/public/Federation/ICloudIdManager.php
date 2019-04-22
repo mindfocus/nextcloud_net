@@ -32,32 +32,32 @@ namespace OCP\Federation;
  */
 interface ICloudIdManager {
 	/**
-	 * @param string $cloudId
+	 * @param string cloudId
 	 * @return ICloudId
 	 * @throws \InvalidArgumentException
 	 *
 	 * @since 12.0.0
 	 */
-	public function resolveCloudId(string $cloudId): ICloudId;
+	public function resolveCloudId(string cloudId): ICloudId;
 
 	/**
 	 * Get the cloud id for a remote user
 	 *
-	 * @param string $user
-	 * @param string $remote
+	 * @param string user
+	 * @param string remote
 	 * @return ICloudId
 	 *
 	 * @since 12.0.0
 	 */
-	public function getCloudId(string $user, string $remote): ICloudId;
+	public function getCloudId(string user, string remote): ICloudId;
 
 	/**
 	 * Check if the input is a correctly formatted cloud id
 	 *
-	 * @param string $cloudId
+	 * @param string cloudId
 	 * @return bool
 	 *
 	 * @since 12.0.0
 	 */
-	public function isValidCloudId(string $cloudId): bool;
+	public function isValidCloudId(string cloudId): bool;
 }

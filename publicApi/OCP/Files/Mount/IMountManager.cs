@@ -16,7 +16,7 @@ namespace OCP.Files.Mount
         /**
          * Add a new mount
          *
-         * @param \OCP\Files\Mount\IMountPoint $mount
+         * @param \OCP\Files\Mount\IMountPoint mount
          * @since 8.2.0
          */
         void addMount(IMountPoint mount);
@@ -24,7 +24,7 @@ namespace OCP.Files.Mount
         /**
          * Remove a mount
          *
-         * @param string $mountPoint
+         * @param string mountPoint
          * @since 8.2.0
          */
         void removeMount(string mountPoint);
@@ -32,25 +32,25 @@ namespace OCP.Files.Mount
         /**
          * Change the location of a mount
          *
-         * @param string $mountPoint
-         * @param string $target
+         * @param string mountPoint
+         * @param string target
          * @since 8.2.0
          */
         void moveMount(string mountPoint, string target);
 
         /**
-         * Find the mount for $path
+         * Find the mount for path
          *
-         * @param string $path
+         * @param string path
          * @return \OCP\Files\Mount\IMountPoint|null
          * @since 8.2.0
          */
         IMountPoint? find(string path);
 
         /**
-         * Find all mounts in $path
+         * Find all mounts in path
          *
-         * @param string $path
+         * @param string path
          * @return \OCP\Files\Mount\IMountPoint[]
          * @since 8.2.0
          */
@@ -66,7 +66,7 @@ namespace OCP.Files.Mount
         /**
          * Find mounts by storage id
          *
-         * @param string $id
+         * @param string id
          * @return \OCP\Files\Mount\IMountPoint[]
          * @since 8.2.0
          */
@@ -81,7 +81,7 @@ namespace OCP.Files.Mount
 	/**
 	 * Find mounts by numeric storage id
 	 *
-	 * @param int $id
+	 * @param int id
 	 * @return \OCP\Files\Mount\IMountPoint[]
 	 * @since 8.2.0
 	 */

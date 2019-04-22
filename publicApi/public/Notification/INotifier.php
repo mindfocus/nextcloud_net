@@ -30,11 +30,11 @@ namespace OCP\Notification;
  */
 interface INotifier {
 	/**
-	 * @param INotification $notification
-	 * @param string $languageCode The code of the language that should be used to prepare the notification
+	 * @param INotification notification
+	 * @param string languageCode The code of the language that should be used to prepare the notification
 	 * @return INotification
 	 * @throws \InvalidArgumentException When the notification was not prepared by a notifier
 	 * @since 9.0.0
 	 */
-	public function prepare(INotification $notification, $languageCode);
+	public function prepare(INotification notification, languageCode);
 }

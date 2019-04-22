@@ -31,12 +31,12 @@ namespace OCP\Collaboration\Collaborators;
  */
 interface ISearchPlugin {
 	/**
-	 * @param string $search
-	 * @param int $limit
-	 * @param int $offset
-	 * @param ISearchResult $searchResult
+	 * @param string search
+	 * @param int limit
+	 * @param int offset
+	 * @param ISearchResult searchResult
 	 * @return bool whether the plugin has more results
 	 * @since 13.0.0
 	 */
-	public function search($search, $limit, $offset, ISearchResult $searchResult);
+	public function search(search, limit, offset, ISearchResult searchResult);
 }

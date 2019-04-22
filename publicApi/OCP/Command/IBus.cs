@@ -12,7 +12,7 @@ namespace OCP.Command
         /*
          * Schedule a command to be fired
          *
-         * @param \OCP\Command\ICommand | callable $command
+         * @param \OCP\Command\ICommand | callable command
          * @since 8.1.0
          */
         void push(ICommand command);
@@ -20,10 +20,10 @@ namespace OCP.Command
         /*
          * Require all commands using a trait to be run synchronous
          *
-         * @param string $trait
+         * @param string trait
          * @since 8.1.0
          */
-        //void requireSync($trait);
+        //void requireSync(trait);
     }
 
 }

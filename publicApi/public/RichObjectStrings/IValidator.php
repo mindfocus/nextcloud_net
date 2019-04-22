@@ -33,10 +33,10 @@ namespace OCP\RichObjectStrings;
 interface IValidator {
 
 	/**
-	 * @param string $subject
-	 * @param array[] $parameters
+	 * @param string subject
+	 * @param array[] parameters
 	 * @throws InvalidObjectExeption
 	 * @since 11.0.0
 	 */
-	public function validate($subject, array $parameters);
+	public function validate(subject, array parameters);
 }

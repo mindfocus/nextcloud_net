@@ -11,9 +11,9 @@ namespace OC.Files.Cache
 	protected int fileId;
 
         /**
-         * @param IStorage $storage
-         * @param string $path
-         * @param int $fileId
+         * @param IStorage storage
+         * @param string path
+         * @param int fileId
          * @since 16.0.0
          */
         public AbstractCacheEvent(OCP.Files.Storage.IStorage storage, string path, int fileId)

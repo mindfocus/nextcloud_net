@@ -14,21 +14,21 @@ namespace OCP.Mail
     {
 
         /**
-         * @param string $filename
+         * @param string filename
          * @return IAttachment
          * @since 13.0.0
          */
         IAttachment setFilename(string filename);
 
         /**
-         * @param string $contentType
+         * @param string contentType
          * @return IAttachment
          * @since 13.0.0
          */
         IAttachment setContentType(string contentType);
 
         /**
-         * @param string $body
+         * @param string body
          * @return IAttachment
          * @since 13.0.0
          */

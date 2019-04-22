@@ -35,8 +35,8 @@ namespace OCP.BackgroundJob
     /**
 	 * run the job if the last run is is more than the interval ago
 	 *
-	 * @param JobList $jobList
-	 * @param ILogger|null $logger
+	 * @param JobList jobList
+	 * @param ILogger|null logger
 	 *
 	 * @since 15.0.0
 	 */

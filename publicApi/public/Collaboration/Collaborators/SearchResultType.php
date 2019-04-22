@@ -31,16 +31,16 @@ namespace OCP\Collaboration\Collaborators;
  */
 class SearchResultType {
 	/** @var string  */
-	protected $label;
+	protected label;
 
 	/**
 	 * SearchResultType constructor.
 	 *
-	 * @param string $label
+	 * @param string label
 	 * @since 13.0.0
 	 */
-	public function __construct($label) {
-		$this->label = $this->getValidatedType($label);
+	public function __construct(label) {
+		this->label = this->getValidatedType(label);
 	}
 
 	/**
@@ -48,26 +48,26 @@ class SearchResultType {
 	 * @since 13.0.0
 	 */
 	public function getLabel() {
-		return $this->label;
+		return this->label;
 	}
 
 	/**
-	 * @param $type
+	 * @param type
 	 * @return string
 	 * @throws \InvalidArgumentException
 	 * @since 13.0.0
 	 */
-	protected function getValidatedType($type) {
-		$type = trim((string)$type);
+	protected function getValidatedType(type) {
+		type = trim((string)type);
 
-		if($type === '') {
+		if(type === '') {
 			throw new \InvalidArgumentException('Type must not be empty');
 		}
 
-		if($type === 'exact') {
+		if(type === 'exact') {
 			throw new \InvalidArgumentException('Provided type is a reserved word');
 		}
 
-		return $type;
+		return type;
 	}
 }

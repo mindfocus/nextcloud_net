@@ -26,7 +26,7 @@ namespace OCP.Http.Client
         int getStatusCode();
 
         /**
-         * @param string $key
+         * @param string key
          * @return string
          * @since 8.1.0
          */

@@ -36,26 +36,26 @@ interface IProviderFactory {
 
 	/**
 	 * IProviderFactory constructor.
-	 * @param IServerContainer $serverContainer
+	 * @param IServerContainer serverContainer
 	 * @since 9.0.0
 	 */
-	public function __construct(IServerContainer $serverContainer);
+	public function __construct(IServerContainer serverContainer);
 
 	/**
-	 * @param string $id
+	 * @param string id
 	 * @return IShareProvider
 	 * @throws ProviderException
 	 * @since 9.0.0
 	 */
-	public function getProvider($id);
+	public function getProvider(id);
 
 	/**
-	 * @param int $shareType
+	 * @param int shareType
 	 * @return IShareProvider
 	 * @throws ProviderException
 	 * @since 9.0.0
 	 */
-	public function getProviderForType($shareType);
+	public function getProviderForType(shareType);
 
 	/**
 	 * @return IShareProvider[]

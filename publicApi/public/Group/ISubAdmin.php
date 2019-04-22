@@ -34,66 +34,66 @@ interface ISubAdmin {
 
 	/**
 	 * add a SubAdmin
-	 * @param IUser $user user to be SubAdmin
-	 * @param IGroup $group group $user becomes subadmin of
+	 * @param IUser user user to be SubAdmin
+	 * @param IGroup group group user becomes subadmin of
 	 *
 	 * @since 16.0.0
 	 */
-	public function createSubAdmin(IUser $user, IGroup $group): void;
+	public function createSubAdmin(IUser user, IGroup group): void;
 
 	/**
 	 * delete a SubAdmin
-	 * @param IUser $user the user that is the SubAdmin
-	 * @param IGroup $group the group
+	 * @param IUser user the user that is the SubAdmin
+	 * @param IGroup group the group
 	 *
 	 * @since 16.0.0
 	 */
-	public function deleteSubAdmin(IUser $user, IGroup $group): void;
+	public function deleteSubAdmin(IUser user, IGroup group): void;
 
 	/**
 	 * get groups of a SubAdmin
-	 * @param IUser $user the SubAdmin
+	 * @param IUser user the SubAdmin
 	 * @return IGroup[]
 	 *
 	 * @since 16.0.0
 	 */
-	public function getSubAdminsGroups(IUser $user): array;
+	public function getSubAdminsGroups(IUser user): array;
 
 	/**
 	 * get SubAdmins of a group
-	 * @param IGroup $group the group
+	 * @param IGroup group the group
 	 * @return IUser[]
 	 *
 	 * @since 16.0.0
 	 */
-	public function getGroupsSubAdmins(IGroup $group): array;
+	public function getGroupsSubAdmins(IGroup group): array;
 
 	/**
 	 * checks if a user is a SubAdmin of a group
-	 * @param IUser $user
-	 * @param IGroup $group
+	 * @param IUser user
+	 * @param IGroup group
 	 * @return bool
 	 *
 	 * @since 16.0.0
 	 */
-	public function isSubAdminOfGroup(IUser $user, IGroup $group): bool;
+	public function isSubAdminOfGroup(IUser user, IGroup group): bool;
 
 	/**
 	 * checks if a user is a SubAdmin
-	 * @param IUser $user
+	 * @param IUser user
 	 * @return bool
 	 *
 	 * @since 16.0.0
 	 */
-	public function isSubAdmin(IUser $user): bool;
+	public function isSubAdmin(IUser user): bool;
 
 	/**
 	 * checks if a user is a accessible by a subadmin
-	 * @param IUser $subadmin
-	 * @param IUser $user
+	 * @param IUser subadmin
+	 * @param IUser user
 	 * @return bool
 	 *
 	 * @since 16.0.0
 	 */
-	public function isUserAccessible(IUser $subadmin, IUser $user): bool;
+	public function isUserAccessible(IUser subadmin, IUser user): bool;
 }

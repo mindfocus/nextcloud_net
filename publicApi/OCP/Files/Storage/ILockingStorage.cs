@@ -15,27 +15,27 @@ namespace OCP.Files.Storage
     public interface ILockingStorage
     {
         /**
-         * @param string $path The path of the file to acquire the lock for
-         * @param int $type \OCP\Lock\ILockingProvider::LOCK_SHARED or \OCP\Lock\ILockingProvider::LOCK_EXCLUSIVE
-         * @param \OCP\Lock\ILockingProvider $provider
+         * @param string path The path of the file to acquire the lock for
+         * @param int type \OCP\Lock\ILockingProvider::LOCK_SHARED or \OCP\Lock\ILockingProvider::LOCK_EXCLUSIVE
+         * @param \OCP\Lock\ILockingProvider provider
          * @throws \OCP\Lock\LockedException
          * @since 9.0.0
          */
         void acquireLock(string path, string type, Lock.ILockingProvider provider);
 
         /**
-         * @param string $path The path of the file to acquire the lock for
-         * @param int $type \OCP\Lock\ILockingProvider::LOCK_SHARED or \OCP\Lock\ILockingProvider::LOCK_EXCLUSIVE
-         * @param \OCP\Lock\ILockingProvider $provider
+         * @param string path The path of the file to acquire the lock for
+         * @param int type \OCP\Lock\ILockingProvider::LOCK_SHARED or \OCP\Lock\ILockingProvider::LOCK_EXCLUSIVE
+         * @param \OCP\Lock\ILockingProvider provider
          * @throws \OCP\Lock\LockedException
          * @since 9.0.0
          */
         void releaseLock(string path, string type, Lock.ILockingProvider provider);
 
         /**
-         * @param string $path The path of the file to change the lock for
-         * @param int $type \OCP\Lock\ILockingProvider::LOCK_SHARED or \OCP\Lock\ILockingProvider::LOCK_EXCLUSIVE
-         * @param \OCP\Lock\ILockingProvider $provider
+         * @param string path The path of the file to change the lock for
+         * @param int type \OCP\Lock\ILockingProvider::LOCK_SHARED or \OCP\Lock\ILockingProvider::LOCK_EXCLUSIVE
+         * @param \OCP\Lock\ILockingProvider provider
          * @throws \OCP\Lock\LockedException
          * @since 9.0.0
          */

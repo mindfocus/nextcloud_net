@@ -17,7 +17,7 @@ namespace OCP.Files
 	/**
 	 * Returns a view to user's files folder
 	 *
-	 * @param string $userId user ID
+	 * @param string userId user ID
 	 * @return \OCP\Files\Folder
 	 * @since 8.2.0
 	 */

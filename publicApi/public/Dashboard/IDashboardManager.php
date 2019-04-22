@@ -54,9 +54,9 @@ interface IDashboardManager {
 	 *
 	 * @since 15.0.0
 	 *
-	 * @param IWidgetsService $widgetsService
+	 * @param IWidgetsService widgetsService
 	 */
-	public function registerWidgetsService(IWidgetsService $widgetsService);
+	public function registerWidgetsService(IWidgetsService widgetsService);
 
 
 	/**
@@ -64,9 +64,9 @@ interface IDashboardManager {
 	 *
 	 * @since 15.0.0
 	 *
-	 * @param IEventsService $eventsService
+	 * @param IEventsService eventsService
 	 */
-	public function registerEventsService(IEventsService $eventsService);
+	public function registerEventsService(IEventsService eventsService);
 
 
 	/**
@@ -76,20 +76,20 @@ interface IDashboardManager {
 	 *
 	 * @since 15.0.0
 	 *
-	 * @param string $widgetId
-	 * @param string $userId
+	 * @param string widgetId
+	 * @param string userId
 	 *
 	 * @throws DashboardAppNotAvailableException
 	 * @return IWidgetConfig
 	 */
-	public function getWidgetConfig(string $widgetId, string $userId): IWidgetConfig;
+	public function getWidgetConfig(string widgetId, string userId): IWidgetConfig;
 
 
 	/**
 	 * Create push notifications for users.
-	 * $payload is an array that will be send to the Javascript method
+	 * payload is an array that will be send to the Javascript method
 	 * called on push.
-	 * $uniqueId needs to be used if you send the push to multiples users
+	 * uniqueId needs to be used if you send the push to multiples users
 	 * and multiples groups so that one user does not have duplicate
 	 * notifications.
 	 *
@@ -98,13 +98,13 @@ interface IDashboardManager {
 	 *
 	 * @since 15.0.0
 	 *
-	 * @param string $widgetId
-	 * @param array $users
-	 * @param array $payload
-	 * @param string $uniqueId
+	 * @param string widgetId
+	 * @param array users
+	 * @param array payload
+	 * @param string uniqueId
 	 * @throws DashboardAppNotAvailableException
 	 */
-	public function createUsersEvent(string $widgetId, array $users, array $payload, string $uniqueId = '');
+	public function createUsersEvent(string widgetId, array users, array payload, string uniqueId = '');
 
 
 	/**
@@ -112,13 +112,13 @@ interface IDashboardManager {
 	 *
 	 * @since 15.0.0
 	 *
-	 * @param string $widgetId
-	 * @param array $groups
-	 * @param array $payload
-	 * @param string $uniqueId
+	 * @param string widgetId
+	 * @param array groups
+	 * @param array payload
+	 * @param string uniqueId
 	 * @throws DashboardAppNotAvailableException
 	 */
-	public function createGroupsEvent(string $widgetId, array $groups, array $payload, string $uniqueId = '');
+	public function createGroupsEvent(string widgetId, array groups, array payload, string uniqueId = '');
 
 
 	/**
@@ -126,12 +126,12 @@ interface IDashboardManager {
 	 *
 	 * @since 15.0.0
 	 *
-	 * @param string $widgetId
-	 * @param array $payload
-	 * @param string $uniqueId
+	 * @param string widgetId
+	 * @param array payload
+	 * @param string uniqueId
 	 * @throws DashboardAppNotAvailableException
 	 */
-	public function createGlobalEvent(string $widgetId, array $payload, string $uniqueId = '');
+	public function createGlobalEvent(string widgetId, array payload, string uniqueId = '');
 
 }
 

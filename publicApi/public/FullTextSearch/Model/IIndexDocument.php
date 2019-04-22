@@ -82,11 +82,11 @@ interface IIndexDocument {
 	 *
 	 * @since 15.0.0
 	 *
-	 * @param IIndex $index
+	 * @param IIndex index
 	 *
 	 * @return IIndexDocument
 	 */
-	 public function setIndex(IIndex $index): IIndexDocument;
+	 public function setIndex(IIndex index): IIndexDocument;
 
 	/**
 	 * Get the Index.
@@ -112,11 +112,11 @@ interface IIndexDocument {
 	 *
 	 * @since 15.0.0
 	 *
-	 * @param int $modifiedTime
+	 * @param int modifiedTime
 	 *
 	 * @return IIndexDocument
 	 */
-	 public function setModifiedTime(int $modifiedTime): IIndexDocument;
+	 public function setModifiedTime(int modifiedTime): IIndexDocument;
 
 	/**
 	 * Get the modified time of the original document.
@@ -128,15 +128,15 @@ interface IIndexDocument {
 	 public function getModifiedTime(): int;
 
 	/**
-	 * Check if the original document of the IIndexDocument is older than $time.
+	 * Check if the original document of the IIndexDocument is older than time.
 	 *
 	 * @since 15.0.0
 	 *
-	 * @param int $time
+	 * @param int time
 	 *
 	 * @return bool
 	 */
-	 public function isOlderThan(int $time): bool;
+	 public function isOlderThan(int time): bool;
 
 
 	/**
@@ -146,11 +146,11 @@ interface IIndexDocument {
 	 *
 	 * @since 15.0.0
 	 *
-	 * @param IDocumentAccess $access
+	 * @param IDocumentAccess access
 	 *
-	 * @return $this
+	 * @return this
 	 */
-	 public function setAccess(IDocumentAccess $access): IIndexDocument;
+	 public function setAccess(IDocumentAccess access): IIndexDocument;
 
 	/**
 	 * Get the IDocumentAccess related to the original document.
@@ -167,22 +167,22 @@ interface IIndexDocument {
 	 *
 	 * @since 15.0.0
 	 *
-	 * @param string $tag
+	 * @param string tag
 	 *
 	 * @return IIndexDocument
 	 */
-	 public function addTag(string $tag): IIndexDocument;
+	 public function addTag(string tag): IIndexDocument;
 
 	/**
 	 * Set the list of tags assigned to the original document.
 	 *
 	 * @since 15.0.0
 	 *
-	 * @param array $tags
+	 * @param array tags
 	 *
 	 * @return IIndexDocument
 	 */
-	 public function setTags(array $tags): IIndexDocument;
+	 public function setTags(array tags): IIndexDocument;
 
 	/**
 	 * Get the list of tags assigned to the original document.
@@ -199,22 +199,22 @@ interface IIndexDocument {
 	 *
 	 * @since 15.0.0
 	 *
-	 * @param string $tag
+	 * @param string tag
 	 *
 	 * @return IIndexDocument
 	 */
-	 public function addMetaTag(string $tag): IIndexDocument;
+	 public function addMetaTag(string tag): IIndexDocument;
 
 	/**
 	 * Set the list of meta tags assigned to the original document.
 	 *
 	 * @since 15.0.0
 	 *
-	 * @param array $tags
+	 * @param array tags
 	 *
 	 * @return IIndexDocument
 	 */
-	 public function setMetaTags(array $tags): IIndexDocument;
+	 public function setMetaTags(array tags): IIndexDocument;
 
 	/**
 	 * Get the list of meta tags assigned to the original document.
@@ -231,36 +231,36 @@ interface IIndexDocument {
 	 *
 	 * @since 15.0.0
 	 *
-	 * @param string $sub
-	 * @param string $tag
+	 * @param string sub
+	 * @param string tag
 	 *
 	 * @return IIndexDocument
 	 */
-	 public function addSubTag(string $sub, string $tag): IIndexDocument;
+	 public function addSubTag(string sub, string tag): IIndexDocument;
 
 	/**
 	 * Set the list of sub tags assigned to the original document.
 	 *
 	 * @since 15.0.0
 	 *
-	 * @param array $tags
+	 * @param array tags
 	 *
 	 * @return IIndexDocument
 	 */
-	 public function setSubTags(array $tags): IIndexDocument;
+	 public function setSubTags(array tags): IIndexDocument;
 
 	/**
 	 * Get the list of sub tags assigned to the original document.
-	 * If $formatted is true, the result will be formatted in a one
+	 * If formatted is true, the result will be formatted in a one
 	 * dimensional array.
 	 *
 	 * @since 15.0.0
 	 *
-	 * @param bool $formatted
+	 * @param bool formatted
 	 *
 	 * @return array
 	 */
-	 public function getSubTags(bool $formatted = false): array;
+	 public function getSubTags(bool formatted = false): array;
 
 
 	/**
@@ -268,11 +268,11 @@ interface IIndexDocument {
 	 *
 	 * @since 15.0.0
 	 *
-	 * @param string $source
+	 * @param string source
 	 *
 	 * @return IIndexDocument
 	 */
-	 public function setSource(string $source): IIndexDocument;
+	 public function setSource(string source): IIndexDocument;
 
 	/**
 	 * Get the source of the original document.
@@ -289,11 +289,11 @@ interface IIndexDocument {
 	 *
 	 * @since 15.0.0
 	 *
-	 * @param string $title
+	 * @param string title
 	 *
 	 * @return IIndexDocument
 	 */
-	 public function setTitle(string $title): IIndexDocument;
+	 public function setTitle(string title): IIndexDocument;
 
 	/**
 	 * Get the title of the original document.
@@ -307,17 +307,17 @@ interface IIndexDocument {
 
 	/**
 	 * Set the content of the document.
-	 * $encoded can be NOT_ENCODED or ENCODED_BASE64 if the content is raw or
+	 * encoded can be NOT_ENCODED or ENCODED_BASE64 if the content is raw or
 	 * encoded in base64.
 	 *
 	 * @since 15.0.0
 	 *
-	 * @param string $content
-	 * @param int $encoded
+	 * @param string content
+	 * @param int encoded
 	 *
 	 * @return IIndexDocument
 	 */
-	 public function setContent(string $content, int $encoded = 0): IIndexDocument;
+	 public function setContent(string content, int encoded = 0): IIndexDocument;
 
 	/**
 	 * Get the content of the original document.
@@ -361,11 +361,11 @@ interface IIndexDocument {
 	 *
 	 * @since 15.0.0
 	 *
-	 * @param string $hash
+	 * @param string hash
 	 *
 	 * @return IIndexDocument
 	 */
-	 public function setHash(string $hash): IIndexDocument;
+	 public function setHash(string hash): IIndexDocument;
 
 	/**
 	 * Get the hash of the original document.
@@ -381,27 +381,27 @@ interface IIndexDocument {
 	 * Add a part, identified by a string, and its content.
 	 *
 	 * It is strongly advised to use alphanumerical chars with no space in the
-	 * $part string.
+	 * part string.
 	 *
 	 * @since 15.0.0
 	 *
-	 * @param string $part
-	 * @param string $content
+	 * @param string part
+	 * @param string content
 	 *
 	 * @return IIndexDocument
 	 */
-	 public function addPart(string $part, string $content): IIndexDocument;
+	 public function addPart(string part, string content): IIndexDocument;
 
 	/**
 	 * Set all parts and their content.
 	 *
 	 * @since 15.0.0
 	 *
-	 * @param array $parts
+	 * @param array parts
 	 *
 	 * @return IIndexDocument
 	 */
-	 public function setParts(array $parts): IIndexDocument;
+	 public function setParts(array parts): IIndexDocument;
 
 	/**
 	 * Get all parts of the IIndexDocument.
@@ -418,11 +418,11 @@ interface IIndexDocument {
 	 *
 	 * @since 15.0.0
 	 *
-	 * @param string $link
+	 * @param string link
 	 *
 	 * @return IIndexDocument
 	 */
-	 public function setLink(string $link): IIndexDocument;
+	 public function setLink(string link): IIndexDocument;
 
 	/**
 	 * Get the link.
@@ -439,11 +439,11 @@ interface IIndexDocument {
 	 *
 	 * @since 15.0.0
 	 *
-	 * @param array $more
+	 * @param array more
 	 *
 	 * @return IIndexDocument
 	 */
-	 public function setMore(array $more): IIndexDocument;
+	 public function setMore(array more): IIndexDocument;
 
 	/**
 	 * Get more information.
@@ -461,23 +461,23 @@ interface IIndexDocument {
 	 *
 	 * @since 16.0.0
 	 *
-	 * @param string $source
-	 * @param string $excerpt
+	 * @param string source
+	 * @param string excerpt
 	 *
 	 * @return IIndexDocument
 	 */
-	 public function addExcerpt(string $source, string $excerpt): IIndexDocument;
+	 public function addExcerpt(string source, string excerpt): IIndexDocument;
 
 	/**
 	 * Set all excerpts of the content of the original document.
 	 *
 	 * @since 16.0.0
 	 *
-	 * @param array $excerpts
+	 * @param array excerpts
 	 *
 	 * @return IIndexDocument
 	 */
-	 public function setExcerpts(array $excerpts): IIndexDocument;
+	 public function setExcerpts(array excerpts): IIndexDocument;
 
 	/**
 	 * Get all excerpts of the content of the original document.
@@ -495,11 +495,11 @@ interface IIndexDocument {
 	 *
 	 * @since 15.0.0
 	 *
-	 * @param string $score
+	 * @param string score
 	 *
 	 * @return IIndexDocument
 	 */
-	 public function setScore(string $score): IIndexDocument;
+	 public function setScore(string score): IIndexDocument;
 
 	/**
 	 * Get the score.
@@ -520,24 +520,24 @@ interface IIndexDocument {
 	 *
 	 * @since 15.0.0
 	 *
-	 * @param string $info
-	 * @param string $value
+	 * @param string info
+	 * @param string value
 	 *
 	 * @return IIndexDocument
 	 */
-	 public function setInfo(string $info, string $value): IIndexDocument;
+	 public function setInfo(string info, string value): IIndexDocument;
 
 	/**
 	 * Get an information about a document. (string)
 	 *
 	 * @since 15.0.0
 	 *
-	 * @param string $info
-	 * @param string $default
+	 * @param string info
+	 * @param string default
 	 *
 	 * @return string
 	 */
-	 public function getInfo(string $info, string $default = ''): string;
+	 public function getInfo(string info, string default = ''): string;
 
 	/**
 	 * Set some information about the original document that will be available
@@ -548,24 +548,24 @@ interface IIndexDocument {
 	 *
 	 * @since 15.0.0
 	 *
-	 * @param string $info
-	 * @param array $value
+	 * @param string info
+	 * @param array value
 	 *
 	 * @return IIndexDocument
 	 */
-	 public function setInfoArray(string $info, array $value): IIndexDocument;
+	 public function setInfoArray(string info, array value): IIndexDocument;
 
 	/**
 	 * Get an information about a document. (array)
 	 *
 	 * @since 15.0.0
 	 *
-	 * @param string $info
-	 * @param array $default
+	 * @param string info
+	 * @param array default
 	 *
 	 * @return array
 	 */
-	 public function getInfoArray(string $info, array $default = []): array;
+	 public function getInfoArray(string info, array default = []): array;
 
 	/**
 	 * Set some information about the original document that will be available
@@ -576,24 +576,24 @@ interface IIndexDocument {
 	 *
 	 * @since 15.0.0
 	 *
-	 * @param string $info
-	 * @param int $value
+	 * @param string info
+	 * @param int value
 	 *
 	 * @return IIndexDocument
 	 */
-	 public function setInfoInt(string $info, int $value): IIndexDocument;
+	 public function setInfoInt(string info, int value): IIndexDocument;
 
 	/**
 	 * Get an information about a document. (int)
 	 *
 	 * @since 15.0.0
 	 *
-	 * @param string $info
-	 * @param int $default
+	 * @param string info
+	 * @param int default
 	 *
 	 * @return int
 	 */
-	 public function getInfoInt(string $info, int $default = 0): int;
+	 public function getInfoInt(string info, int default = 0): int;
 
 	/**
 	 * Set some information about the original document that will be available
@@ -604,24 +604,24 @@ interface IIndexDocument {
 	 *
 	 * @since 15.0.0
 	 *
-	 * @param string $info
-	 * @param bool $value
+	 * @param string info
+	 * @param bool value
 	 *
 	 * @return IIndexDocument
 	 */
-	 public function setInfoBool(string $info, bool $value): IIndexDocument;
+	 public function setInfoBool(string info, bool value): IIndexDocument;
 
 	/**
 	 * Get an information about a document. (bool)
 	 *
 	 * @since 15.0.0
 	 *
-	 * @param string $info
-	 * @param bool $default
+	 * @param string info
+	 * @param bool default
 	 *
 	 * @return bool
 	 */
-	 public function getInfoBool(string $info, bool $default = false): bool;
+	 public function getInfoBool(string info, bool default = false): bool;
 
 	/**
 	 * Get all info.

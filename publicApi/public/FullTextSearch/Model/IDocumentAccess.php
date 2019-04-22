@@ -61,9 +61,9 @@ interface IDocumentAccess {
 	 *
 	 * IDocumentAccess constructor.
 	 *
-	 * @param string $ownerId
+	 * @param string ownerId
 	 */
-	public function __construct(string $ownerId = '');
+	public function __construct(string ownerId = '');
 
 
 	/**
@@ -71,11 +71,11 @@ interface IDocumentAccess {
 	 *
 	 * @since 16.0.0
 	 *
-	 * @param string $ownerId
+	 * @param string ownerId
 	 *
 	 * @return IDocumentAccess
 	 */
-	public function setOwnerId(string $ownerId): IDocumentAccess;
+	public function setOwnerId(string ownerId): IDocumentAccess;
 
 	/**
 	 * Get the Owner of the document.
@@ -92,11 +92,11 @@ interface IDocumentAccess {
 	 *
 	 * @since 16.0.0
 	 *
-	 * @param string $viewerId
+	 * @param string viewerId
 	 *
 	 * @return IDocumentAccess
 	 */
-	public function setViewerId(string $viewerId): IDocumentAccess;
+	public function setViewerId(string viewerId): IDocumentAccess;
 
 	/**
 	 * Get the viewer of the document.
@@ -113,22 +113,22 @@ interface IDocumentAccess {
 	 *
 	 * @since 16.0.0
 	 *
-	 * @param array $users
+	 * @param array users
 	 *
 	 * @return IDocumentAccess
 	 */
-	public function setUsers(array $users): IDocumentAccess;
+	public function setUsers(array users): IDocumentAccess;
 
 	/**
 	 * Add an entry to the list of users that have read access to the document.
 	 *
 	 * @since 16.0.0
 	 *
-	 * @param string $user
+	 * @param string user
 	 *
 	 * @return IDocumentAccess
 	 */
-	public function addUser(string $user): IDocumentAccess;
+	public function addUser(string user): IDocumentAccess;
 
 	/**
 	 * Add multiple entries to the list of users that have read access to the
@@ -136,11 +136,11 @@ interface IDocumentAccess {
 	 *
 	 * @since 16.0.0
 	 *
-	 * @param array $users
+	 * @param array users
 	 *
 	 * @return IDocumentAccess
 	 */
-	public function addUsers($users): IDocumentAccess;
+	public function addUsers(users): IDocumentAccess;
 
 	/**
 	 * Get the complete list of users that have read access to the document.
@@ -157,22 +157,22 @@ interface IDocumentAccess {
 	 *
 	 * @since 16.0.0
 	 *
-	 * @param array $groups
+	 * @param array groups
 	 *
 	 * @return IDocumentAccess
 	 */
-	public function setGroups(array $groups): IDocumentAccess;
+	public function setGroups(array groups): IDocumentAccess;
 
 	/**
 	 * Add an entry to the list of groups that have read access to the document.
 	 *
 	 * @since 16.0.0
 	 *
-	 * @param string $group
+	 * @param string group
 	 *
 	 * @return IDocumentAccess
 	 */
-	public function addGroup(string $group): IDocumentAccess;
+	public function addGroup(string group): IDocumentAccess;
 
 	/**
 	 * Add multiple entries to the list of groups that have read access to the
@@ -180,11 +180,11 @@ interface IDocumentAccess {
 	 *
 	 * @since 16.0.0
 	 *
-	 * @param array $groups
+	 * @param array groups
 	 *
 	 * @return IDocumentAccess
 	 */
-	public function addGroups(array $groups);
+	public function addGroups(array groups);
 
 	/**
 	 * Get the complete list of groups that have read access to the document.
@@ -201,22 +201,22 @@ interface IDocumentAccess {
 	 *
 	 * @since 16.0.0
 	 *
-	 * @param array $circles
+	 * @param array circles
 	 *
 	 * @return IDocumentAccess
 	 */
-	public function setCircles(array $circles): IDocumentAccess;
+	public function setCircles(array circles): IDocumentAccess;
 
 	/**
 	 * Add an entry to the list of circles that have read access to the document.
 	 *
 	 * @since 16.0.0
 	 *
-	 * @param string $circle
+	 * @param string circle
 	 *
 	 * @return IDocumentAccess
 	 */
-	public function addCircle(string $circle): IDocumentAccess;
+	public function addCircle(string circle): IDocumentAccess;
 
 	/**
 	 * Add multiple entries to the list of groups that have read access to the
@@ -224,11 +224,11 @@ interface IDocumentAccess {
 	 *
 	 * @since 16.0.0
 	 *
-	 * @param array $circles
+	 * @param array circles
 	 *
 	 * @return IDocumentAccess
 	 */
-	public function addCircles(array $circles): IDocumentAccess;
+	public function addCircles(array circles): IDocumentAccess;
 
 	/**
 	 * Get the complete list of circles that have read access to the document.
@@ -245,11 +245,11 @@ interface IDocumentAccess {
 	 *
 	 * @since 16.0.0
 	 *
-	 * @param array $links
+	 * @param array links
 	 *
 	 * @return IDocumentAccess
 	 */
-	public function setLinks(array $links): IDocumentAccess;
+	public function setLinks(array links): IDocumentAccess;
 
 	/**
 	 * Get the list of links that have read access to the document.

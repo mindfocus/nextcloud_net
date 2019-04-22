@@ -127,9 +127,9 @@ interface IFullTextSearchPlatform {
 	 *
 	 * @since 15.0.0
 	 *
-	 * @param IRunner $runner
+	 * @param IRunner runner
 	 */
-	public function setRunner(IRunner $runner);
+	public function setRunner(IRunner runner);
 
 
 	/**
@@ -162,13 +162,13 @@ interface IFullTextSearchPlatform {
 
 	/**
 	 * Reset the indexes for a specific providerId.
-	 * $providerId can be 'all' if it is a global reset.
+	 * providerId can be 'all' if it is a global reset.
 	 *
 	 * @since 15.0.0
 	 *
-	 * @param string $providerId
+	 * @param string providerId
 	 */
-	public function resetIndex(string $providerId);
+	public function resetIndex(string providerId);
 
 
 	/**
@@ -178,9 +178,9 @@ interface IFullTextSearchPlatform {
 	 *
 	 * @since 15.0.0
 	 *
-	 * @param IIndex[] $indexes
+	 * @param IIndex[] indexes
 	 */
-	public function deleteIndexes(array $indexes);
+	public function deleteIndexes(array indexes);
 
 
 	/**
@@ -190,11 +190,11 @@ interface IFullTextSearchPlatform {
 	 *
 	 * @since 15.0.0
 	 *
-	 * @param IIndexDocument $document
+	 * @param IIndexDocument document
 	 *
 	 * @return IIndex
 	 */
-	public function indexDocument(IIndexDocument $document): IIndex;
+	public function indexDocument(IIndexDocument document): IIndex;
 
 
 	/**
@@ -203,10 +203,10 @@ interface IFullTextSearchPlatform {
 	 *
 	 * @since 15.0.0
 	 *
-	 * @param ISearchResult $result
-	 * @param IDocumentAccess $access
+	 * @param ISearchResult result
+	 * @param IDocumentAccess access
 	 */
-	public function searchRequest(ISearchResult $result, IDocumentAccess $access);
+	public function searchRequest(ISearchResult result, IDocumentAccess access);
 
 
 	/**
@@ -215,12 +215,12 @@ interface IFullTextSearchPlatform {
 	 *
 	 * @since 15.0.0
 	 *
-	 * @param string $providerId
-	 * @param string $documentId
+	 * @param string providerId
+	 * @param string documentId
 	 *
 	 * @return IIndexDocument
 	 */
-	public function getDocument(string $providerId, string $documentId): IIndexDocument;
+	public function getDocument(string providerId, string documentId): IIndexDocument;
 
 
 }

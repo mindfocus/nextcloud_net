@@ -32,12 +32,12 @@ interface ICollectBreadcrumbs extends IReporter {
 	/**
 	 * Collect breadcrumbs for crash reports
 	 *
-	 * @param string $message
-	 * @param string $category
-	 * @param array $context
+	 * @param string message
+	 * @param string category
+	 * @param array context
 	 *
 	 * @since 15.0.0
 	 */
-	public function collect(string $message, string $category, array $context = []);
+	public function collect(string message, string category, array context = []);
 
 }

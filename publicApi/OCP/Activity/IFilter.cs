@@ -41,7 +41,7 @@ namespace OCP.Activity
         string  getIcon();
 
         /**
-         * @param string[] $types
+         * @param string[] types
          * @return string[] An array of allowed apps from which activities should be displayed
          * @since 11.0.0
          */

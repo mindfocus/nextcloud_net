@@ -30,9 +30,9 @@ interface IHideFromCollaborationBackend {
 	/**
 	 * Check if a group should be hidden from search dialogs
 	 *
-	 * @param string $groupId
+	 * @param string groupId
 	 * @return bool
 	 * @since 16.0.0
 	 */
-	public function hideGroup(string $groupId): bool;
+	public function hideGroup(string groupId): bool;
 }

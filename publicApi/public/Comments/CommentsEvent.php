@@ -39,20 +39,20 @@ class CommentsEvent extends Event {
 	const EVENT_DELETE     = 'OCP\Comments\ICommentsManager::deleteComment';
 
 	/** @var string */
-	protected $event;
+	protected event;
 	/** @var IComment */
-	protected $comment;
+	protected comment;
 
 	/**
 	 * DispatcherEvent constructor.
 	 *
-	 * @param string $event
-	 * @param IComment $comment
+	 * @param string event
+	 * @param IComment comment
 	 * @since 9.0.0
 	 */
-	public function __construct($event, IComment $comment) {
-		$this->event = $event;
-		$this->comment = $comment;
+	public function __construct(event, IComment comment) {
+		this->event = event;
+		this->comment = comment;
 	}
 
 	/**
@@ -60,7 +60,7 @@ class CommentsEvent extends Event {
 	 * @since 9.0.0
 	 */
 	public function getEvent() {
-		return $this->event;
+		return this->event;
 	}
 
 	/**
@@ -68,6 +68,6 @@ class CommentsEvent extends Event {
 	 * @since 9.0.0
 	 */
 	public function getComment() {
-		return $this->comment;
+		return this->comment;
 	}
 }

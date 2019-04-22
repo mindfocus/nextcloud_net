@@ -33,8 +33,8 @@ namespace OCP\Comments;
 interface ICommentsEventHandler {
 
 	/**
-	 * @param CommentsEvent $event
+	 * @param CommentsEvent event
 	 * @since 11.0.0
 	 */
-	public function handle(CommentsEvent $event);
+	public function handle(CommentsEvent event);
 }

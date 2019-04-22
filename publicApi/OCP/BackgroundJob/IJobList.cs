@@ -11,14 +11,14 @@ namespace OCP.BackgroundJob
      *
      * To create a new background job create a new class that inherits from either
      * \OC\BackgroundJob\Job, \OC\BackgroundJob\QueuedJob or
-     * \OC\BackgroundJob\TimedJob and register it using ->add($job, $argument),
-     * $argument will be passed to the run() function of the job when the job is
+     * \OC\BackgroundJob\TimedJob and register it using ->add(job, argument),
+     * argument will be passed to the run() function of the job when the job is
      * executed.
      *
      * A regular job will be executed every time cron.php is run, a QueuedJob will
      * only run once and a TimedJob will only run at a specific interval which is to
      * be specified in the constructor of the job by calling
-     * $this->setInterval($interval) with $interval in seconds.
+     * this->setInterval(interval) with interval in seconds.
      *
      * @package OCP\BackgroundJob
      * @since 7.0.0
@@ -28,8 +28,8 @@ namespace OCP.BackgroundJob
         /**
          * Add a job to the list
          *
-         * @param \OCP\BackgroundJob\IJob|string $job
-         * @param mixed $argument The argument to be passed to $job->run() when the job is exectured
+         * @param \OCP\BackgroundJob\IJob|string job
+         * @param mixed argument The argument to be passed to job->run() when the job is exectured
          * @since 7.0.0
          */
         void add(IJob job, object argument = null);
@@ -37,8 +37,8 @@ namespace OCP.BackgroundJob
         /**
          * Remove a job from the list
          *
-         * @param \OCP\BackgroundJob\IJob|string $job
-         * @param mixed $argument
+         * @param \OCP\BackgroundJob\IJob|string job
+         * @param mixed argument
          * @since 7.0.0
          */
         void remove(IJob job, object argument = null);
@@ -46,8 +46,8 @@ namespace OCP.BackgroundJob
         /**
          * check if a job is in the list
          *
-         * @param \OCP\BackgroundJob\IJob|string $job
-         * @param mixed $argument
+         * @param \OCP\BackgroundJob\IJob|string job
+         * @param mixed argument
          * @return bool
          * @since 7.0.0
          */
@@ -73,7 +73,7 @@ namespace OCP.BackgroundJob
         IJob? getNext();
 
         /**
-         * @param int $id
+         * @param int id
          * @return \OCP\BackgroundJob\IJob|null
          * @since 7.0.0
          */
@@ -82,7 +82,7 @@ namespace OCP.BackgroundJob
         /**
          * set the job that was last ran to the current time
          *
-         * @param \OCP\BackgroundJob\IJob $job
+         * @param \OCP\BackgroundJob\IJob job
          * @since 7.0.0
          */
         void setLastJob(IJob job);
@@ -90,7 +90,7 @@ namespace OCP.BackgroundJob
         /**
          * Remove the reservation for a job
          *
-         * @param IJob $job
+         * @param IJob job
          * @since 9.1.0
          */
         void unlockJob(IJob job);
@@ -107,18 +107,18 @@ namespace OCP.BackgroundJob
         IJob getLastJob();
 
         /**
-         * set the lastRun of $job to now
+         * set the lastRun of job to now
          *
-         * @param IJob $job
+         * @param IJob job
          * @since 7.0.0
          */
         void setLastRun(IJob job);
 
         /**
-         * set the run duration of $job
+         * set the run duration of job
          *
-         * @param IJob $job
-         * @param $timeTaken
+         * @param IJob job
+         * @param timeTaken
          * @since 12.0.0
          */
         void setExecutionTime(IJob job, int timeTaken);

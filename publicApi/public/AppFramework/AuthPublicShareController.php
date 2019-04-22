@@ -44,18 +44,18 @@ use OCP\IURLGenerator;
 abstract class AuthPublicShareController extends PublicShareController {
 
 	/** @var IURLGenerator */
-	protected $urlGenerator;
+	protected urlGenerator;
 
 	/**
 	 * @since 14.0.0
 	 */
-	public function __construct(string $appName,
-								IRequest $request,
-								ISession $session,
-								IURLGenerator $urlGenerator) {
-		parent::__construct($appName, $request, $session);
+	public function __construct(string appName,
+								IRequest request,
+								ISession session,
+								IURLGenerator urlGenerator) {
+		parent::__construct(appName, request, session);
 
-		$this->urlGenerator = $urlGenerator;
+		this->urlGenerator = urlGenerator;
 	}
 
 	/**
@@ -85,7 +85,7 @@ abstract class AuthPublicShareController extends PublicShareController {
 	 *
 	 * @since 14.0.0
 	 */
-	abstract protected function verifyPassword(string $password): bool;
+	abstract protected function verifyPassword(string password): bool;
 
 	/**
 	 * Function called after failed authentication
@@ -116,28 +116,28 @@ abstract class AuthPublicShareController extends PublicShareController {
 	 *
 	 * @since 14.0.0
 	 */
-	final public function authenticate(string $password = '') {
+	final public function authenticate(string password = '') {
 		// Already authenticated
-		if ($this->isAuthenticated()) {
-			return $this->getRedirect();
+		if (this->isAuthenticated()) {
+			return this->getRedirect();
 		}
 
-		if (!$this->verifyPassword($password)) {
-			$this->authFailed();
-			$response = $this->showAuthFailed();
-			$response->throttle();
-			return $response;
+		if (!this->verifyPassword(password)) {
+			this->authFailed();
+			response = this->showAuthFailed();
+			response->throttle();
+			return response;
 		}
 
-		$this->session->regenerateId(true, true);
-		$response = $this->getRedirect();
+		this->session->regenerateId(true, true);
+		response = this->getRedirect();
 
-		$this->session->set('public_link_authenticated_token', $this->getToken());
-		$this->session->set('public_link_authenticated_password_hash', $this->getPasswordHash());
+		this->session->set('public_link_authenticated_token', this->getToken());
+		this->session->set('public_link_authenticated_password_hash', this->getPasswordHash());
 
-		$this->authSucceeded();
+		this->authSucceeded();
 
-		return $response;
+		return response;
 	}
 
 	/**
@@ -150,20 +150,20 @@ abstract class AuthPublicShareController extends PublicShareController {
 	/**
 	 * @since 14.0.0
 	 */
-	final public function getAuthenticationRedirect(string $redirect): RedirectResponse {
+	final public function getAuthenticationRedirect(string redirect): RedirectResponse {
 		return new RedirectResponse(
-			$this->urlGenerator->linkToRoute($this->getRoute('showAuthenticate'), ['token' => $this->getToken(), 'redirect' => $redirect])
+			this->urlGenerator->linkToRoute(this->getRoute('showAuthenticate'), ['token' => this->getToken(), 'redirect' => redirect])
 		);
 	}
 
 	/**
 	 * @since 14.0.0
 	 */
-	private function getRoute(string $function): string {
-		$app = strtolower($this->appName);
-		$class = strtolower((new \ReflectionClass($this))->getShortName());
+	private function getRoute(string function): string {
+		app = strtolower(this->appName);
+		class = strtolower((new \ReflectionClass(this))->getShortName());
 
-		return $app . '.' . $class . '.' . $function;
+		return app . '.' . class . '.' . function;
 	}
 
 	/**
@@ -171,22 +171,22 @@ abstract class AuthPublicShareController extends PublicShareController {
 	 */
 	private function getRedirect(): RedirectResponse {
 		//Get all the stored redirect parameters:
-		$params = $this->session->get('public_link_authenticate_redirect');
+		params = this->session->get('public_link_authenticate_redirect');
 
-		$route = $this->getRoute('showShare');
+		route = this->getRoute('showShare');
 
-		if ($params === null) {
-			$params = [
-				'token' => $this->getToken(),
+		if (params === null) {
+			params = [
+				'token' => this->getToken(),
 			];
 		} else {
-			$params = json_decode($params, true);
-			if (isset($params['_route'])) {
-				$route = $params['_route'];
-				unset($params['_route']);
+			params = json_decode(params, true);
+			if (isset(params['_route'])) {
+				route = params['_route'];
+				unset(params['_route']);
 			}
 		}
 
-		return new RedirectResponse($this->urlGenerator->linkToRoute($route, $params));
+		return new RedirectResponse(this->urlGenerator->linkToRoute(route, params));
 	}
 }

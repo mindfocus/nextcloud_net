@@ -13,8 +13,8 @@ namespace OCP
     {
         /**
          * check if a key is set in the appconfig
-         * @param string $app
-         * @param string $key
+         * @param string app
+         * @param string key
          * @return bool
          * @since 7.0.0
          */
@@ -23,8 +23,8 @@ namespace OCP
         /**
          * get multiply values, either the app or key can be used as wildcard by setting it to false
          *
-         * @param string|false $key
-         * @param string|false $app
+         * @param string|false key
+         * @param string|false app
          * @return array|false
          * @since 7.0.0
          */
@@ -33,7 +33,7 @@ namespace OCP
         /**
          * get all values of the app or and filters out sensitive data
          *
-         * @param string $app
+         * @param string app
          * @return array
          * @since 12.0.0
          */

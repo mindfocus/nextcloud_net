@@ -11,15 +11,15 @@ namespace OCP.WorkflowEngine
  */
 public interface IManager {
 	/**
-	 * @param IStorage $storage
-	 * @param string $path
+	 * @param IStorage storage
+	 * @param string path
 	 * @since 9.1
 	 */
 	void setFileInfo(IStorage storage, string path);
 
 	/**
-	 * @param string $class
-	 * @param bool $returnFirstMatchingOperationOnly
+	 * @param string class
+	 * @param bool returnFirstMatchingOperationOnly
 	 * @return array
 	 * @since 9.1
 	 */

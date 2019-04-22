@@ -18,8 +18,8 @@ namespace OCP.AppFramework.Utility
         int getTime();
 
 	/**
-	 * @param string $time
-	 * @param \DateTimeZone $timezone
+	 * @param string time
+	 * @param \DateTimeZone timezone
 	 * @return \DateTime
 	 * @since 15.0.0
 	 */

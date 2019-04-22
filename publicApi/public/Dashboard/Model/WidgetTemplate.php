@@ -49,22 +49,22 @@ final class WidgetTemplate implements JsonSerializable {
 
 
 	/** @var string */
-	private $icon = '';
+	private icon = '';
 
 	/** @var array */
-	private $css = [];
+	private css = [];
 
 	/** @var array */
-	private $js = [];
+	private js = [];
 
 	/** @var string */
-	private $content = '';
+	private content = '';
 
 	/** @var string */
-	private $function = '';
+	private function = '';
 
 	/** @var WidgetSetting[] */
-	private $settings = [];
+	private settings = [];
 
 
 	/**
@@ -75,7 +75,7 @@ final class WidgetTemplate implements JsonSerializable {
 	 * @return string
 	 */
 	public function getIcon(): string {
-		return $this->icon;
+		return this->icon;
 	}
 
 	/**
@@ -86,14 +86,14 @@ final class WidgetTemplate implements JsonSerializable {
 	 *
 	 * @since 15.0.0
 	 *
-	 * @param string $icon
+	 * @param string icon
 	 *
 	 * @return WidgetTemplate
 	 */
-	public function setIcon(string $icon): WidgetTemplate {
-		$this->icon = $icon;
+	public function setIcon(string icon): WidgetTemplate {
+		this->icon = icon;
 
-		return $this;
+		return this;
 	}
 
 	/**
@@ -104,7 +104,7 @@ final class WidgetTemplate implements JsonSerializable {
 	 * @return array
 	 */
 	public function getCss(): array {
-		return $this->css;
+		return this->css;
 	}
 
 	/**
@@ -112,14 +112,14 @@ final class WidgetTemplate implements JsonSerializable {
 	 *
 	 * @since 15.0.0
 	 *
-	 * @param array $css
+	 * @param array css
 	 *
 	 * @return WidgetTemplate
 	 */
-	public function setCss(array $css): WidgetTemplate {
-		$this->css = $css;
+	public function setCss(array css): WidgetTemplate {
+		this->css = css;
 
-		return $this;
+		return this;
 	}
 
 	/**
@@ -127,14 +127,14 @@ final class WidgetTemplate implements JsonSerializable {
 	 *
 	 * @since 15.0.0
 	 *
-	 * @param string $css
+	 * @param string css
 	 *
 	 * @return WidgetTemplate
 	 */
-	public function addCss(string $css): WidgetTemplate {
-		$this->css[] = $css;
+	public function addCss(string css): WidgetTemplate {
+		this->css[] = css;
 
-		return $this;
+		return this;
 	}
 
 	/**
@@ -145,7 +145,7 @@ final class WidgetTemplate implements JsonSerializable {
 	 * @return array
 	 */
 	public function getJs(): array {
-		return $this->js;
+		return this->js;
 	}
 
 	/**
@@ -153,14 +153,14 @@ final class WidgetTemplate implements JsonSerializable {
 	 *
 	 * @since 15.0.0
 	 *
-	 * @param array $js
+	 * @param array js
 	 *
 	 * @return WidgetTemplate
 	 */
-	public function setJs(array $js): WidgetTemplate {
-		$this->js = $js;
+	public function setJs(array js): WidgetTemplate {
+		this->js = js;
 
-		return $this;
+		return this;
 	}
 
 	/**
@@ -168,14 +168,14 @@ final class WidgetTemplate implements JsonSerializable {
 	 *
 	 * @since 15.0.0
 	 *
-	 * @param string $js
+	 * @param string js
 	 *
 	 * @return WidgetTemplate
 	 */
-	public function addJs(string $js): WidgetTemplate {
-		$this->js[] = $js;
+	public function addJs(string js): WidgetTemplate {
+		this->js[] = js;
 
-		return $this;
+		return this;
 	}
 
 	/**
@@ -186,7 +186,7 @@ final class WidgetTemplate implements JsonSerializable {
 	 * @return string
 	 */
 	public function getContent(): string {
-		return $this->content;
+		return this->content;
 	}
 
 	/**
@@ -194,14 +194,14 @@ final class WidgetTemplate implements JsonSerializable {
 	 *
 	 * @since 15.0.0
 	 *
-	 * @param string $content
+	 * @param string content
 	 *
 	 * @return WidgetTemplate
 	 */
-	public function setContent(string $content): WidgetTemplate {
-		$this->content = $content;
+	public function setContent(string content): WidgetTemplate {
+		this->content = content;
 
-		return $this;
+		return this;
 	}
 
 	/**
@@ -212,7 +212,7 @@ final class WidgetTemplate implements JsonSerializable {
 	 * @return string
 	 */
 	public function getInitFunction(): string {
-		return $this->function;
+		return this->function;
 	}
 
 	/**
@@ -221,14 +221,14 @@ final class WidgetTemplate implements JsonSerializable {
 	 *
 	 * @since 15.0.0
 	 *
-	 * @param string $function
+	 * @param string function
 	 *
 	 * @return WidgetTemplate
 	 */
-	public function setInitFunction(string $function): WidgetTemplate {
-		$this->function = $function;
+	public function setInitFunction(string function): WidgetTemplate {
+		this->function = function;
 
-		return $this;
+		return this;
 	}
 
 	/**
@@ -241,7 +241,7 @@ final class WidgetTemplate implements JsonSerializable {
 	 * @return WidgetSetting[]
 	 */
 	public function getSettings(): array {
-		return $this->settings;
+		return this->settings;
 	}
 
 	/**
@@ -251,14 +251,14 @@ final class WidgetTemplate implements JsonSerializable {
 	 *
 	 * @see WidgetSetting
 	 *
-	 * @param WidgetSetting[] $settings
+	 * @param WidgetSetting[] settings
 	 *
 	 * @return WidgetTemplate
 	 */
-	public function setSettings(array $settings): WidgetTemplate {
-		$this->settings = $settings;
+	public function setSettings(array settings): WidgetTemplate {
+		this->settings = settings;
 
-		return $this;
+		return this;
 	}
 
 	/**
@@ -268,14 +268,14 @@ final class WidgetTemplate implements JsonSerializable {
 	 *
 	 * @since 15.0.0
 	 *
-	 * @param WidgetSetting $setting
+	 * @param WidgetSetting setting
 	 *
 	 * @return WidgetTemplate
 	 */
-	public function addSetting(WidgetSetting $setting): WidgetTemplate {
-		$this->settings[] = $setting;
+	public function addSetting(WidgetSetting setting): WidgetTemplate {
+		this->settings[] = setting;
 
-		return $this;
+		return this;
 	}
 
 	/**
@@ -285,16 +285,16 @@ final class WidgetTemplate implements JsonSerializable {
 	 *
 	 * @since 15.0.0
 	 *
-	 * @param string $key
+	 * @param string key
 	 *
 	 * @return WidgetSetting
 	 */
-	public function getSetting(string $key): WidgetSetting {
-		if (!array_key_exists($key, $this->settings)) {
+	public function getSetting(string key): WidgetSetting {
+		if (!array_key_exists(key, this->settings)) {
 			return null;
 		}
 
-		return $this->settings[$key];
+		return this->settings[key];
 	}
 
 
@@ -305,12 +305,12 @@ final class WidgetTemplate implements JsonSerializable {
 	 */
 	public function jsonSerialize() {
 		return [
-			'icon' => $this->getIcon(),
-			'css' => $this->getCss(),
-			'js' => $this->getJs(),
-			'content' => $this->getContent(),
-			'function' => $this->getInitFunction(),
-			'settings' => $this->getSettings()
+			'icon' => this->getIcon(),
+			'css' => this->getCss(),
+			'js' => this->getJs(),
+			'content' => this->getContent(),
+			'function' => this->getInitFunction(),
+			'settings' => this->getSettings()
 		];
 	}
 

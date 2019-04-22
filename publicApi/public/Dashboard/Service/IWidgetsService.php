@@ -51,12 +51,12 @@ interface IWidgetsService {
 	 *
 	 * @since 15.0.0
 	 *
-	 * @param string $widgetId
-	 * @param string $userId
+	 * @param string widgetId
+	 * @param string userId
 	 *
 	 * @return IWidgetConfig
 	 */
-	public function getWidgetConfig(string $widgetId, string $userId): IWidgetConfig;
+	public function getWidgetConfig(string widgetId, string userId): IWidgetConfig;
 
 }
 

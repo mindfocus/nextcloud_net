@@ -31,13 +31,13 @@ public interface IEncryptionModule {
 	 * perform some initial step before starting encrypting/decrypting the
 	 * chunks
 	 *
-	 * @param string $path to the file
-	 * @param string $user who read/write the file (null for public access)
-	 * @param string $mode php stream open mode
-	 * @param array $header contains the header data read from the file
-	 * @param array $accessList who has access to the file contains the key 'users' and 'public'
+	 * @param string path to the file
+	 * @param string user who read/write the file (null for public access)
+	 * @param string mode php stream open mode
+	 * @param array header contains the header data read from the file
+	 * @param array accessList who has access to the file contains the key 'users' and 'public'
 	 *
-	 * $return array $header contain data as key-value pairs which should be
+	 * return array header contain data as key-value pairs which should be
 	 *                       written to the header, in case of a write operation
 	 *                       or if no additional data is needed return a empty array
 	 * @since 8.1.0
@@ -49,49 +49,49 @@ public interface IEncryptionModule {
 	 * operation and return some remaining data if something is left in your
 	 * buffer.
 	 *
-	 * @param string $path to the file
-	 * @param string $position id of the last block (looks like "<Number>end")
+	 * @param string path to the file
+	 * @param string position id of the last block (looks like "<Number>end")
 	 *
 	 * @return string remained data which should be written to the file in case
 	 *                of a write operation
 	 *
 	 * @since 8.1.0
-	 * @since 9.0.0 parameter $position added
+	 * @since 9.0.0 parameter position added
 	 */
 	string end(string path, string position);
 
 	/**
 	 * encrypt data
 	 *
-	 * @param string $data you want to encrypt
-	 * @param string $position position of the block we want to encrypt (starts with '0')
+	 * @param string data you want to encrypt
+	 * @param string position position of the block we want to encrypt (starts with '0')
 	 *
 	 * @return mixed encrypted data
 	 *
 	 * @since 8.1.0
-	 * @since 9.0.0 parameter $position added
+	 * @since 9.0.0 parameter position added
 	 */
 	object encrypt(string data, string position);
 
 	/**
 	 * decrypt data
 	 *
-	 * @param string $data you want to decrypt
-	 * @param string $position position of the block we want to decrypt
+	 * @param string data you want to decrypt
+	 * @param string position position of the block we want to decrypt
 	 *
 	 * @return mixed decrypted data
 	 *
 	 * @since 8.1.0
-	 * @since 9.0.0 parameter $position added
+	 * @since 9.0.0 parameter position added
 	 */
 	object decrypt(string data, string position);
 
 	/**
 	 * update encrypted file, e.g. give additional users access to the file
 	 *
-	 * @param string $path path to the file which should be updated
-	 * @param string $uid of the user who performs the operation
-	 * @param array $accessList who has access to the file contains the key 'users' and 'public'
+	 * @param string path path to the file which should be updated
+	 * @param string uid of the user who performs the operation
+	 * @param array accessList who has access to the file contains the key 'users' and 'public'
 	 * @return boolean
 	 * @since 8.1.0
 	 */
@@ -100,7 +100,7 @@ public interface IEncryptionModule {
 	/**
 	 * should the file be encrypted or not
 	 *
-	 * @param string $path
+	 * @param string path
 	 * @return boolean
 	 * @since 8.1.0
 	 */
@@ -110,9 +110,9 @@ public interface IEncryptionModule {
 	 * get size of the unencrypted payload per block.
 	 * ownCloud read/write files with a block size of 8192 byte
 	 *
-	 * @param bool $signed
+	 * @param bool signed
 	 * @return int
-	 * @since 8.1.0 optional parameter $signed was added in 9.0.0
+	 * @since 8.1.0 optional parameter signed was added in 9.0.0
 	 */
 	int getUnencryptedBlockSize(bool signed = false);
 
@@ -120,8 +120,8 @@ public interface IEncryptionModule {
 	 * check if the encryption module is able to read the file,
 	 * e.g. if all encryption keys exists
 	 *
-	 * @param string $path
-	 * @param string $uid user for whom we want to check if he can read the file
+	 * @param string path
+	 * @param string uid user for whom we want to check if he can read the file
 	 * @return boolean
 	 * @since 8.1.0
 	 */
@@ -130,8 +130,8 @@ public interface IEncryptionModule {
 	/**
 	 * Initial encryption of all files
 	 *
-	 * @param InputInterface $input
-	 * @param OutputInterface $output write some status information to the terminal during encryption
+	 * @param InputInterface input
+	 * @param OutputInterface output write some status information to the terminal during encryption
 	 * @since 8.2.0
 	 */
 	void encryptAll(InputInterface input, OutputInterface output);
@@ -139,9 +139,9 @@ public interface IEncryptionModule {
 	/**
 	 * prepare encryption module to decrypt all files
 	 *
-	 * @param InputInterface $input
-	 * @param OutputInterface $output write some status information to the terminal during encryption
-	 * @param $user (optional) for which the files should be decrypted, default = all users
+	 * @param InputInterface input
+	 * @param OutputInterface output write some status information to the terminal during encryption
+	 * @param user (optional) for which the files should be decrypted, default = all users
 	 * @return bool return false on failure or if it isn't supported by the module
 	 * @since 8.2.0
 	 */
@@ -153,7 +153,7 @@ public interface IEncryptionModule {
 	 * upon login this method can return false before any operation starts and might
 	 * cause issues during operations.
 	 *
-	 * @param string $user
+	 * @param string user
 	 * @return boolean
 	 * @since 9.1.0
 	 */

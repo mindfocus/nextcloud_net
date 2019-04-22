@@ -12,7 +12,7 @@ namespace OCP.Authentication.TwoFactorAuth
     {
 
     /**
-     * @param IUser $user
+     * @param IUser user
      *
      * @return IPersonalProviderSettings
      *

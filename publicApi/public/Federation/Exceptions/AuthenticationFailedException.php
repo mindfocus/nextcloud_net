@@ -39,10 +39,10 @@ class AuthenticationFailedException extends HintException {
 	 *
 	 */
 	public function __construct() {
-		$l = \OC::$server->getL10N('federation');
-		$message = 'Authentication failed, wrong token or provider ID given';
-		$hint = $l->t('Authentication failed, wrong token or provider ID given');
-		parent::__construct($message, $hint);
+		l = \OC::server->getL10N('federation');
+		message = 'Authentication failed, wrong token or provider ID given';
+		hint = l->t('Authentication failed, wrong token or provider ID given');
+		parent::__construct(message, hint);
 	}
 
 }

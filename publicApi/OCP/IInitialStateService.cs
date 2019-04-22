@@ -18,9 +18,9 @@ namespace OCP
          *
          * @since 16.0.0
          *
-         * @param string $appName
-         * @param string $key
-         * @param bool|int|float|string|array|\JsonSerializable $data
+         * @param string appName
+         * @param string key
+         * @param bool|int|float|string|array|\JsonSerializable data
          */
         void provideInitialState(string appName, string key, JObject data);
 
@@ -33,9 +33,9 @@ namespace OCP
 	 *
 	 * @since 16.0.0
 	 *
-	 * @param string $appName
-	 * @param string $key
-	 * @param Closure $closure returns a primitive or an object that implements JsonSerializable
+	 * @param string appName
+	 * @param string key
+	 * @param Closure closure returns a primitive or an object that implements JsonSerializable
 	 */
 	void provideLazyInitialState(string appName, string key, Action closure);
 }

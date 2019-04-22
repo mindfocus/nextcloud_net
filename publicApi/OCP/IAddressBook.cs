@@ -34,9 +34,9 @@ namespace OCP
 		object getDisplayName();
 
         /**
-		 * @param string $pattern which should match within the $searchProperties
-		 * @param array $searchProperties defines the properties within the query pattern should match
-		 * @param array $options Options to define the output format
+		 * @param string pattern which should match within the searchProperties
+		 * @param array searchProperties defines the properties within the query pattern should match
+		 * @param array options Options to define the output format
 		 * 	- types boolean (since 15.0.0) If set to true, fields that come with a TYPE property will be an array
 		 *    example: ['id' => 5, 'FN' => 'Thomas Tanghus', 'EMAIL' => ['type => 'HOME', 'value' => 'g@h.i']]
 		 * @return array an array of contacts which are arrays of key-value-pairs
@@ -50,7 +50,7 @@ namespace OCP
         IDictionary<string,object> search(string pattern, IDictionary<string,object> searchProperties, IDictionary<string,object> options);
 
         /**
-		 * @param array $properties this array if key-value-pairs defines a contact
+		 * @param array properties this array if key-value-pairs defines a contact
 		 * @return array an array representing the contact just created or updated
 		 * @since 5.0.0
 		 */
@@ -68,7 +68,7 @@ namespace OCP
         object getPermissions();
 
         /**
-		 * @param object $id the unique identifier to a contact
+		 * @param object id the unique identifier to a contact
 		 * @return bool successful or not
 		 * @since 5.0.0
 		 */

@@ -34,17 +34,17 @@ namespace OCP\Files;
 class ForbiddenException extends \Exception {
 
 	/** @var bool */
-	private $retry;
+	private retry;
 
 	/**
-	 * @param string $message
-	 * @param bool $retry
-	 * @param \Exception|null $previous previous exception for cascading
+	 * @param string message
+	 * @param bool retry
+	 * @param \Exception|null previous previous exception for cascading
 	 * @since 9.0.0
 	 */
-	public function __construct($message, $retry, \Exception $previous = null) {
-		parent::__construct($message, 0, $previous);
-		$this->retry = $retry;
+	public function __construct(message, retry, \Exception previous = null) {
+		parent::__construct(message, 0, previous);
+		this->retry = retry;
 	}
 
 	/**
@@ -52,6 +52,6 @@ class ForbiddenException extends \Exception {
 	 * @since 9.0.0
 	 */
 	public function getRetry() {
-		return (bool) $this->retry;
+		return (bool) this->retry;
 	}
 }

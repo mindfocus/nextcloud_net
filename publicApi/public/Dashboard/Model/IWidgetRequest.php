@@ -114,24 +114,24 @@ interface IWidgetRequest {
 	 *
 	 * @since 15.0.0
 	 *
-	 * @param string $key
-	 * @param string $result
+	 * @param string key
+	 * @param string result
 	 *
-	 * @return $this
+	 * @return this
 	 */
-	public function addResult(string $key, string $result): IWidgetRequest;
+	public function addResult(string key, string result): IWidgetRequest;
 
 	/**
 	 * add a result (as array)
 	 *
 	 * @since 15.0.0
 	 *
-	 * @param string $key
-	 * @param array $result
+	 * @param string key
+	 * @param array result
 	 *
-	 * @return $this
+	 * @return this
 	 */
-	public function addResultArray(string $key, array $result): IWidgetRequest;
+	public function addResultArray(string key, array result): IWidgetRequest;
 
 }
 

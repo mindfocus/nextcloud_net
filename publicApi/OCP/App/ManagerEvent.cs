@@ -33,9 +33,9 @@ namespace OCP.App
 	/**
 	 * DispatcherEvent constructor.
 	 *
-	 * @param string $event
-	 * @param $appID
-	 * @param \OCP\IGroup[]|null $groups
+	 * @param string event
+	 * @param appID
+	 * @param \OCP\IGroup[]|null groups
 	 * @since 9.0.0
 	 */
 	public ManagerEvent(string @event, string appID, IList<IGroup> groups = null)

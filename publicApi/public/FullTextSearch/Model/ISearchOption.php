@@ -66,11 +66,11 @@ interface ISearchOption {
 	 *
 	 * @since 16.0.0
 	 *
-	 * @param string $name
+	 * @param string name
 	 *
 	 * @return ISearchOption
 	 */
-	public function setName(string $name): ISearchOption;
+	public function setName(string name): ISearchOption;
 
 	/**
 	 * Get the name/key of the option.
@@ -87,11 +87,11 @@ interface ISearchOption {
 	 *
 	 * @since 16.0.0
 	 *
-	 * @param string $title
+	 * @param string title
 	 *
 	 * @return ISearchOption
 	 */
-	public function setTitle(string $title): ISearchOption;
+	public function setTitle(string title): ISearchOption;
 
 	/**
 	 * Get the title of the option.
@@ -105,15 +105,15 @@ interface ISearchOption {
 
 	/**
 	 * Set the type of the option.
-	 * $type can be ISearchOption::CHECKBOX or ISearchOption::INPUT
+	 * type can be ISearchOption::CHECKBOX or ISearchOption::INPUT
 	 *
 	 * @since 16.0.0
 	 *
-	 * @param string $type
+	 * @param string type
 	 *
 	 * @return ISearchOption
 	 */
-	public function setType(string $type): ISearchOption;
+	public function setType(string type): ISearchOption;
 
 	/**
 	 * Get the type of the option.
@@ -131,11 +131,11 @@ interface ISearchOption {
 	 *
 	 * @since 16.0.0
 	 *
-	 * @param string $size
+	 * @param string size
 	 *
 	 * @return ISearchOption
 	 */
-	public function setSize(string $size): ISearchOption;
+	public function setSize(string size): ISearchOption;
 
 	/**
 	 * Get the size of the INPUT.
@@ -153,11 +153,11 @@ interface ISearchOption {
 	 *
 	 * @since 16.0.0
 	 *
-	 * @param string $placeholder
+	 * @param string placeholder
 	 *
 	 * @return ISearchOption
 	 */
-	public function setPlaceholder(string $placeholder): ISearchOption;
+	public function setPlaceholder(string placeholder): ISearchOption;
 
 	/**
 	 * Get the placeholder.

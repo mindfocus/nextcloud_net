@@ -25,8 +25,8 @@ namespace OCP.Search
 
 	/**
 	 * Constructor
-	 * @param array $options as key => value
-	 * @since 7.0.0 - default value for $options was added in 8.0.0
+	 * @param array options as key => value
+	 * @since 7.0.0 - default value for options was added in 8.0.0
 	 */
 	public Provider(IDictionary<string, object>  options)
         {
@@ -35,7 +35,7 @@ namespace OCP.Search
 
         /**
          * get a value from the options array or null
-         * @param string $key
+         * @param string key
          * @return mixed
          * @since 8.0.0
          */
@@ -53,7 +53,7 @@ namespace OCP.Search
          * returns true if the given array is empty (all apps)
          * or if this provider does not have a list of apps it provides results for (legacy search providers)
          * or if the two above arrays have elements in common (intersect)
-         * @param string[] $apps
+         * @param string[] apps
          * @return bool
          * @since 8.0.0
          */
@@ -61,12 +61,12 @@ namespace OCP.Search
         {
             var forApps = this.getOption(this.OPTION_APPS);
             return forApps == null || apps.Contains((string)forApps);
-            //return empty($apps) || empty($forApps) || array_intersect($forApps, $apps);
+            //return empty(apps) || empty(forApps) || array_intersect(forApps, apps);
         }
 
         /**
-         * Search for $query
-         * @param string $query
+         * Search for query
+         * @param string query
          * @return array An array of OCP\Search\Result's
          * @since 7.0.0
          */

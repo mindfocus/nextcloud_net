@@ -13,18 +13,18 @@ namespace OCP.Contacts.ContactsMenu
 
 
         /**
-         * @param IUser $user
-         * @param $filter
+         * @param IUser user
+         * @param filter
          * @return IEntry[]
          * @since 13.0.0
          */
         IList<IEntry> getContacts(IUser user, string filter);
 
         /**
-         * @brief finds a contact by specifying the property to search on ($shareType) and the value ($shareWith)
-         * @param IUser $user
-         * @param integer $shareType
-         * @param string $shareWith
+         * @brief finds a contact by specifying the property to search on (shareType) and the value (shareWith)
+         * @param IUser user
+         * @param integer shareType
+         * @param string shareWith
          * @return IEntry|null
          * @since 13.0.0
          */

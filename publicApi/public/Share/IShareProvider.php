@@ -48,51 +48,51 @@ interface IShareProvider {
 	/**
 	 * Create a share
 	 *
-	 * @param \OCP\Share\IShare $share
+	 * @param \OCP\Share\IShare share
 	 * @return \OCP\Share\IShare The share object
 	 * @since 9.0.0
 	 */
-	public function create(\OCP\Share\IShare $share);
+	public function create(\OCP\Share\IShare share);
 
 	/**
 	 * Update a share
 	 *
-	 * @param \OCP\Share\IShare $share
+	 * @param \OCP\Share\IShare share
 	 * @return \OCP\Share\IShare The share object
 	 * @since 9.0.0
 	 */
-	public function update(\OCP\Share\IShare $share);
+	public function update(\OCP\Share\IShare share);
 
 	/**
 	 * Delete a share
 	 *
-	 * @param \OCP\Share\IShare $share
+	 * @param \OCP\Share\IShare share
 	 * @since 9.0.0
 	 */
-	public function delete(\OCP\Share\IShare $share);
+	public function delete(\OCP\Share\IShare share);
 
 	/**
 	 * Unshare a file from self as recipient.
 	 * This may require special handling. If a user unshares a group
 	 * share from their self then the original group share should still exist.
 	 *
-	 * @param \OCP\Share\IShare $share
-	 * @param string $recipient UserId of the recipient
+	 * @param \OCP\Share\IShare share
+	 * @param string recipient UserId of the recipient
 	 * @since 9.0.0
 	 */
-	public function deleteFromSelf(\OCP\Share\IShare $share, $recipient);
+	public function deleteFromSelf(\OCP\Share\IShare share, recipient);
 
 	/**
 	 * Restore a share for a given recipient. The implementation could be provider independant.
 	 *
-	 * @param IShare $share
-	 * @param string $recipient
+	 * @param IShare share
+	 * @param string recipient
 	 * @return IShare The restored share object
 	 *
 	 * @since 14.0.0
 	 * @throws GenericShareException In case the share could not be restored
 	 */
-	public function restore(IShare $share, string $recipient): IShare;
+	public function restore(IShare share, string recipient): IShare;
 
 	/**
 	 * Move a share as a recipient.
@@ -100,121 +100,121 @@ interface IShareProvider {
 	 * This may require special handling. If a user moves a group share
 	 * the target should only be changed for them.
 	 *
-	 * @param \OCP\Share\IShare $share
-	 * @param string $recipient userId of recipient
+	 * @param \OCP\Share\IShare share
+	 * @param string recipient userId of recipient
 	 * @return \OCP\Share\IShare
 	 * @since 9.0.0
 	 */
-	public function move(\OCP\Share\IShare $share, $recipient);
+	public function move(\OCP\Share\IShare share, recipient);
 
 	/**
 	 * Get all shares by the given user in a folder
 	 *
-	 * @param string $userId
-	 * @param Folder $node
-	 * @param bool $reshares Also get the shares where $user is the owner instead of just the shares where $user is the initiator
+	 * @param string userId
+	 * @param Folder node
+	 * @param bool reshares Also get the shares where user is the owner instead of just the shares where user is the initiator
 	 * @return \OCP\Share\IShare[]
 	 * @since 11.0.0
 	 */
-	public function getSharesInFolder($userId, Folder $node, $reshares);
+	public function getSharesInFolder(userId, Folder node, reshares);
 
 	/**
 	 * Get all shares by the given user
 	 *
-	 * @param string $userId
-	 * @param int $shareType
-	 * @param Node|null $node
-	 * @param bool $reshares Also get the shares where $user is the owner instead of just the shares where $user is the initiator
-	 * @param int $limit The maximum number of shares to be returned, -1 for all shares
-	 * @param int $offset
+	 * @param string userId
+	 * @param int shareType
+	 * @param Node|null node
+	 * @param bool reshares Also get the shares where user is the owner instead of just the shares where user is the initiator
+	 * @param int limit The maximum number of shares to be returned, -1 for all shares
+	 * @param int offset
 	 * @return \OCP\Share\IShare[]
 	 * @since 9.0.0
 	 */
-	public function getSharesBy($userId, $shareType, $node, $reshares, $limit, $offset);
+	public function getSharesBy(userId, shareType, node, reshares, limit, offset);
 
 	/**
 	 * Get share by id
 	 *
-	 * @param int $id
-	 * @param string|null $recipientId
+	 * @param int id
+	 * @param string|null recipientId
 	 * @return \OCP\Share\IShare
 	 * @throws ShareNotFound
 	 * @since 9.0.0
 	 */
-	public function getShareById($id, $recipientId = null);
+	public function getShareById(id, recipientId = null);
 
 	/**
 	 * Get shares for a given path
 	 *
-	 * @param Node $path
+	 * @param Node path
 	 * @return \OCP\Share\IShare[]
 	 * @since 9.0.0
 	 */
-	public function getSharesByPath(Node $path);
+	public function getSharesByPath(Node path);
 
 	/**
 	 * Get shared with the given user
 	 *
-	 * @param string $userId get shares where this user is the recipient
-	 * @param int $shareType
-	 * @param Node|null $node
-	 * @param int $limit The max number of entries returned, -1 for all
-	 * @param int $offset
+	 * @param string userId get shares where this user is the recipient
+	 * @param int shareType
+	 * @param Node|null node
+	 * @param int limit The max number of entries returned, -1 for all
+	 * @param int offset
 	 * @return \OCP\Share\IShare[]
 	 * @since 9.0.0
 	 */
-	public function getSharedWith($userId, $shareType, $node, $limit, $offset);
+	public function getSharedWith(userId, shareType, node, limit, offset);
 
 	/**
 	 * Get a share by token
 	 *
-	 * @param string $token
+	 * @param string token
 	 * @return \OCP\Share\IShare
 	 * @throws ShareNotFound
 	 * @since 9.0.0
 	 */
-	public function getShareByToken($token);
+	public function getShareByToken(token);
 
 	/**
 	 * A user is deleted from the system
 	 * So clean up the relevant shares.
 	 *
-	 * @param string $uid
-	 * @param int $shareType
+	 * @param string uid
+	 * @param int shareType
 	 * @since 9.1.0
 	 */
-	public function userDeleted($uid, $shareType);
+	public function userDeleted(uid, shareType);
 
 	/**
 	 * A group is deleted from the system.
 	 * We have to clean up all shares to this group.
 	 * Providers not handling group shares should just return
 	 *
-	 * @param string $gid
+	 * @param string gid
 	 * @since 9.1.0
 	 */
-	public function groupDeleted($gid);
+	public function groupDeleted(gid);
 
 	/**
 	 * A user is deleted from a group
 	 * We have to clean up all the related user specific group shares
 	 * Providers not handling group shares should just return
 	 *
-	 * @param string $uid
-	 * @param string $gid
+	 * @param string uid
+	 * @param string gid
 	 * @since 9.1.0
 	 */
-	public function userDeletedFromGroup($uid, $gid);
+	public function userDeletedFromGroup(uid, gid);
 
 	/**
 	 * Get the access list to the array of provided nodes.
 	 *
 	 * @see IManager::getAccessList() for sample docs
 	 *
-	 * @param Node[] $nodes The list of nodes to get access for
-	 * @param bool $currentAccess If current access is required (like for removed shares that might get revived later)
+	 * @param Node[] nodes The list of nodes to get access for
+	 * @param bool currentAccess If current access is required (like for removed shares that might get revived later)
 	 * @return array
 	 * @since 12
 	 */
-	public function getAccessList($nodes, $currentAccess);
+	public function getAccessList(nodes, currentAccess);
 }

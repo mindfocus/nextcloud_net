@@ -35,21 +35,21 @@ class ConsoleEvent extends Event {
 	const EVENT_RUN = 'OC\Console\Application::run';
 
 	/** @var string */
-	protected $event;
+	protected event;
 
 	/** @var string[] */
-	protected $arguments;
+	protected arguments;
 
 	/**
 	 * DispatcherEvent constructor.
 	 *
-	 * @param string $event
-	 * @param string[] $arguments
+	 * @param string event
+	 * @param string[] arguments
 	 * @since 9.0.0
 	 */
-	public function __construct($event, array $arguments) {
-		$this->event = $event;
-		$this->arguments = $arguments;
+	public function __construct(event, array arguments) {
+		this->event = event;
+		this->arguments = arguments;
 	}
 
 	/**
@@ -57,7 +57,7 @@ class ConsoleEvent extends Event {
 	 * @since 9.0.0
 	 */
 	public function getEvent() {
-		return $this->event;
+		return this->event;
 	}
 
 	/**
@@ -65,6 +65,6 @@ class ConsoleEvent extends Event {
 	 * @since 9.0.0
 	 */
 	public function getArguments() {
-		return $this->arguments;
+		return this->arguments;
 	}
 }

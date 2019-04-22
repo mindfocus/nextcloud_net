@@ -46,7 +46,7 @@ namespace OCP.Files
          * @const \OCP\Files\FileInfo::BLACKLIST_FILES_REGEX Return regular expression to test filenames against (blacklisting)
          * @since 12.0.0
          */
-        //const BLACKLIST_FILES_REGEX = '\.(part|filepart)$';
+        //const BLACKLIST_FILES_REGEX = '\.(part|filepart)';
 
         /**
          * Get the Etag of the file or folder
@@ -59,7 +59,7 @@ namespace OCP.Files
         /**
          * Get the size in bytes for the file or folder
          *
-         * @param bool $includeMounts whether or not to include the size of any sub mounts, since 16.0.0
+         * @param bool includeMounts whether or not to include the size of any sub mounts, since 16.0.0
          * @return int
          * @since 7.0.0
          */

@@ -17,7 +17,7 @@ namespace OCP.Files
 
         /**
          * detect mimetype only based on filename, content of file is not used
-         * @param string $path
+         * @param string path
          * @return string
          * @since 8.2.0
          **/
@@ -26,7 +26,7 @@ namespace OCP.Files
         /**
          * detect mimetype based on both filename and content
          *
-         * @param string $path
+         * @param string path
          * @return string
          * @since 8.2.0
          */
@@ -35,7 +35,7 @@ namespace OCP.Files
         /**
          * Get a secure mimetype that won't expose potential XSS.
          *
-         * @param string $mimeType
+         * @param string mimeType
          * @return string
          * @since 8.2.0
          */
@@ -44,7 +44,7 @@ namespace OCP.Files
         /**
          * detect mimetype based on the content of a string
          *
-         * @param string $data
+         * @param string data
          * @return string
          * @since 8.2.0
          */
@@ -52,7 +52,7 @@ namespace OCP.Files
 
         /**
          * Get path to the icon of a file type
-         * @param string $mimeType the MIME type
+         * @param string mimeType the MIME type
          * @return string the url
          * @since 8.2.0
          */

@@ -227,26 +227,7 @@
       <Compile Include="public\Support\CrashReport\ICollectBreadcrumbs.php" />
       <Compile Include="public\Support\CrashReport\IRegistry.php" />
       <Compile Include="public\Support\CrashReport\IReporter.php" />
-      <Compile Include="public\SystemTag\ISystemTag.php" />
-      <Compile Include="public\SystemTag\ISystemTagManager.php" />
-      <Compile Include="public\SystemTag\ISystemTagManagerFactory.php" />
-      <Compile Include="public\SystemTag\ISystemTagObjectMapper.php" />
-      <Compile Include="public\SystemTag\ManagerEvent.php" />
-      <Compile Include="public\SystemTag\MapperEvent.php" />
-      <Compile Include="public\SystemTag\SystemTagsEntityEvent.php" />
-      <Compile Include="public\SystemTag\TagAlreadyExistsException.php" />
-      <Compile Include="public\SystemTag\TagNotFoundException.php" />
       <Compile Include="public\Template.php" />
-      <Compile Include="public\User\Backend\ABackend.php" />
-      <Compile Include="public\User\Backend\ICheckPasswordBackend.php" />
-      <Compile Include="public\User\Backend\ICountUsersBackend.php" />
-      <Compile Include="public\User\Backend\ICreateUserBackend.php" />
-      <Compile Include="public\User\Backend\IGetDisplayNameBackend.php" />
-      <Compile Include="public\User\Backend\IGetHomeBackend.php" />
-      <Compile Include="public\User\Backend\IPasswordConfirmationBackend.php" />
-      <Compile Include="public\User\Backend\IProvideAvatarBackend.php" />
-      <Compile Include="public\User\Backend\ISetDisplayNameBackend.php" />
-      <Compile Include="public\User\Backend\ISetPasswordBackend.php" />
     </ItemGroup>
 
     <ItemGroup>
@@ -259,5 +240,10 @@
 
     <ItemGroup>
       <ProjectReference Include="..\model\model.csproj" />
+    </ItemGroup>
+    <ItemGroup>
+      <Folder Include="OCP\User\" />
+      <Folder Include="OCP\User\Backend\" />
+      <Folder Include="OCP\SystemTag\" />
     </ItemGroup>
 </Project>

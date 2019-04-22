@@ -42,44 +42,44 @@ namespace OCP\AppFramework\Http;
  */
 class StrictContentSecurityPolicy extends EmptyContentSecurityPolicy {
 	/** @var bool Whether inline JS snippets are allowed */
-	protected $inlineScriptAllowed = false;
+	protected inlineScriptAllowed = false;
 	/** @var bool Whether eval in JS scripts is allowed */
-	protected $evalScriptAllowed = false;
+	protected evalScriptAllowed = false;
 	/** @var array Domains from which scripts can get loaded */
-	protected $allowedScriptDomains = [
+	protected allowedScriptDomains = [
 		'\'self\'',
 	];
 	/** @var bool Whether inline CSS is allowed */
-	protected $inlineStyleAllowed = false;
+	protected inlineStyleAllowed = false;
 	/** @var array Domains from which CSS can get loaded */
-	protected $allowedStyleDomains = [
+	protected allowedStyleDomains = [
 		'\'self\'',
 	];
 	/** @var array Domains from which images can get loaded */
-	protected $allowedImageDomains = [
+	protected allowedImageDomains = [
 		'\'self\'',
 		'data:',
 		'blob:',
 	];
 	/** @var array Domains to which connections can be done */
-	protected $allowedConnectDomains = [
+	protected allowedConnectDomains = [
 		'\'self\'',
 	];
 	/** @var array Domains from which media elements can be loaded */
-	protected $allowedMediaDomains = [
+	protected allowedMediaDomains = [
 		'\'self\'',
 	];
 	/** @var array Domains from which object elements can be loaded */
-	protected $allowedObjectDomains = [];
+	protected allowedObjectDomains = [];
 	/** @var array Domains from which iframes can be loaded */
-	protected $allowedFrameDomains = [];
+	protected allowedFrameDomains = [];
 	/** @var array Domains from which fonts can be loaded */
-	protected $allowedFontDomains = [
+	protected allowedFontDomains = [
 		'\'self\'',
 	];
 	/** @var array Domains from which web-workers and nested browsing content can load elements */
-	protected $allowedChildSrcDomains = [];
+	protected allowedChildSrcDomains = [];
 
 	/** @var array Domains which can embed this Nextcloud instance */
-	protected $allowedFrameAncestors = [];
+	protected allowedFrameAncestors = [];
 }

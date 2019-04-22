@@ -42,9 +42,9 @@ namespace OCP.DB.QueryBuilder
          *
          *     [php]
          *     // (u.type = ?) AND (u.role = ?)
-         *     $expr->andX('u.type = ?', 'u.role = ?'));
+         *     expr->andX('u.type = ?', 'u.role = ?'));
          *
-         * @param mixed ...$x Optional clause. Defaults = null, but requires
+         * @param mixed ...x Optional clause. Defaults = null, but requires
          *                 at least one defined when converting to string.
          *
          * @return \OCP\DB\QueryBuilder\ICompositeExpression
@@ -59,9 +59,9 @@ namespace OCP.DB.QueryBuilder
          *
          *     [php]
          *     // (u.type = ?) OR (u.role = ?)
-         *     $qb->where($qb->expr()->orX('u.type = ?', 'u.role = ?'));
+         *     qb->where(qb->expr()->orX('u.type = ?', 'u.role = ?'));
          *
-         * @param mixed ...$x Optional clause. Defaults = null, but requires
+         * @param mixed ...x Optional clause. Defaults = null, but requires
          *                 at least one defined when converting to string.
          *
          * @return \OCP\DB\QueryBuilder\ICompositeExpression
@@ -72,14 +72,14 @@ namespace OCP.DB.QueryBuilder
         /**
          * Creates a comparison expression.
          *
-         * @param mixed $x The left expression.
-         * @param string $operator One of the IExpressionBuilder::* constants.
-         * @param mixed $y The right expression.
-         * @param mixed|null $type one of the IQueryBuilder::PARAM_* constants
+         * @param mixed x The left expression.
+         * @param string operator One of the IExpressionBuilder::* constants.
+         * @param mixed y The right expression.
+         * @param mixed|null type one of the IQueryBuilder::PARAM_* constants
          *                  required when comparing text fields for oci compatibility
          *
          * @return string
-         * @since 8.2.0 - Parameter $type was added in 9.0.0
+         * @since 8.2.0 - Parameter type was added in 9.0.0
          */
         string comparison(object x, int operatorValue, object y, object type = null);
 
@@ -91,15 +91,15 @@ namespace OCP.DB.QueryBuilder
          *
          *     [php]
          *     // u.id = ?
-         *     $expr->eq('u.id', '?');
+         *     expr->eq('u.id', '?');
          *
-         * @param mixed $x The left expression.
-         * @param mixed $y The right expression.
-         * @param mixed|null $type one of the IQueryBuilder::PARAM_* constants
+         * @param mixed x The left expression.
+         * @param mixed y The right expression.
+         * @param mixed|null type one of the IQueryBuilder::PARAM_* constants
          *                  required when comparing text fields for oci compatibility
          *
          * @return string
-         * @since 8.2.0 - Parameter $type was added in 9.0.0
+         * @since 8.2.0 - Parameter type was added in 9.0.0
          */
         string eq(object x, object y, object type = null);
 
@@ -110,15 +110,15 @@ namespace OCP.DB.QueryBuilder
          *
          *     [php]
          *     // u.id <> 1
-         *     $q->where($q->expr()->neq('u.id', '1'));
+         *     q->where(q->expr()->neq('u.id', '1'));
          *
-         * @param mixed $x The left expression.
-         * @param mixed $y The right expression.
-         * @param mixed|null $type one of the IQueryBuilder::PARAM_* constants
+         * @param mixed x The left expression.
+         * @param mixed y The right expression.
+         * @param mixed|null type one of the IQueryBuilder::PARAM_* constants
          *                  required when comparing text fields for oci compatibility
          *
          * @return string
-         * @since 8.2.0 - Parameter $type was added in 9.0.0
+         * @since 8.2.0 - Parameter type was added in 9.0.0
          */
         string neq(object x, object y, object type = null);
 
@@ -129,15 +129,15 @@ namespace OCP.DB.QueryBuilder
          *
          *     [php]
          *     // u.id < ?
-         *     $q->where($q->expr()->lt('u.id', '?'));
+         *     q->where(q->expr()->lt('u.id', '?'));
          *
-         * @param mixed $x The left expression.
-         * @param mixed $y The right expression.
-         * @param mixed|null $type one of the IQueryBuilder::PARAM_* constants
+         * @param mixed x The left expression.
+         * @param mixed y The right expression.
+         * @param mixed|null type one of the IQueryBuilder::PARAM_* constants
          *                  required when comparing text fields for oci compatibility
          *
          * @return string
-         * @since 8.2.0 - Parameter $type was added in 9.0.0
+         * @since 8.2.0 - Parameter type was added in 9.0.0
          */
         string lt(object x, object y, object type = null);
 
@@ -148,15 +148,15 @@ namespace OCP.DB.QueryBuilder
          *
          *     [php]
          *     // u.id <= ?
-         *     $q->where($q->expr()->lte('u.id', '?'));
+         *     q->where(q->expr()->lte('u.id', '?'));
          *
-         * @param mixed $x The left expression.
-         * @param mixed $y The right expression.
-         * @param mixed|null $type one of the IQueryBuilder::PARAM_* constants
+         * @param mixed x The left expression.
+         * @param mixed y The right expression.
+         * @param mixed|null type one of the IQueryBuilder::PARAM_* constants
          *                  required when comparing text fields for oci compatibility
          *
          * @return string
-         * @since 8.2.0 - Parameter $type was added in 9.0.0
+         * @since 8.2.0 - Parameter type was added in 9.0.0
          */
         string lte(object x, object y, object type = null);
 
@@ -167,15 +167,15 @@ namespace OCP.DB.QueryBuilder
          *
          *     [php]
          *     // u.id > ?
-         *     $q->where($q->expr()->gt('u.id', '?'));
+         *     q->where(q->expr()->gt('u.id', '?'));
          *
-         * @param mixed $x The left expression.
-         * @param mixed $y The right expression.
-         * @param mixed|null $type one of the IQueryBuilder::PARAM_* constants
+         * @param mixed x The left expression.
+         * @param mixed y The right expression.
+         * @param mixed|null type one of the IQueryBuilder::PARAM_* constants
          *                  required when comparing text fields for oci compatibility
          *
          * @return string
-         * @since 8.2.0 - Parameter $type was added in 9.0.0
+         * @since 8.2.0 - Parameter type was added in 9.0.0
          */
         string gt(object x, object y, object type = null);
 
@@ -186,22 +186,22 @@ namespace OCP.DB.QueryBuilder
          *
          *     [php]
          *     // u.id >= ?
-         *     $q->where($q->expr()->gte('u.id', '?'));
+         *     q->where(q->expr()->gte('u.id', '?'));
          *
-         * @param mixed $x The left expression.
-         * @param mixed $y The right expression.
-         * @param mixed|null $type one of the IQueryBuilder::PARAM_* constants
+         * @param mixed x The left expression.
+         * @param mixed y The right expression.
+         * @param mixed|null type one of the IQueryBuilder::PARAM_* constants
          *                  required when comparing text fields for oci compatibility
          *
          * @return string
-         * @since 8.2.0 - Parameter $type was added in 9.0.0
+         * @since 8.2.0 - Parameter type was added in 9.0.0
          */
         string gte(object x, object y, object type = null);
 
         /**
          * Creates an IS NULL expression with the given arguments.
          *
-         * @param string $x The field in string format to be restricted by IS NULL.
+         * @param string x The field in string format to be restricted by IS NULL.
          *
          * @return string
          * @since 8.2.0
@@ -211,7 +211,7 @@ namespace OCP.DB.QueryBuilder
         /**
          * Creates an IS NOT NULL expression with the given arguments.
          *
-         * @param string $x The field in string format to be restricted by IS NOT NULL.
+         * @param string x The field in string format to be restricted by IS NOT NULL.
          *
          * @return string
          * @since 8.2.0
@@ -221,35 +221,35 @@ namespace OCP.DB.QueryBuilder
         /**
          * Creates a LIKE() comparison expression with the given arguments.
          *
-         * @param string $x Field in string format to be inspected by LIKE() comparison.
-         * @param mixed $y Argument to be used in LIKE() comparison.
-         * @param mixed|null $type one of the IQueryBuilder::PARAM_* constants
+         * @param string x Field in string format to be inspected by LIKE() comparison.
+         * @param mixed y Argument to be used in LIKE() comparison.
+         * @param mixed|null type one of the IQueryBuilder::PARAM_* constants
          *                  required when comparing text fields for oci compatibility
          *
          * @return string
-         * @since 8.2.0 - Parameter $type was added in 9.0.0
+         * @since 8.2.0 - Parameter type was added in 9.0.0
          */
         string like(string x, object y, object type = null);
 
         /**
          * Creates a NOT LIKE() comparison expression with the given arguments.
          *
-         * @param string $x Field in string format to be inspected by NOT LIKE() comparison.
-         * @param mixed $y Argument to be used in NOT LIKE() comparison.
-         * @param mixed|null $type one of the IQueryBuilder::PARAM_* constants
+         * @param string x Field in string format to be inspected by NOT LIKE() comparison.
+         * @param mixed y Argument to be used in NOT LIKE() comparison.
+         * @param mixed|null type one of the IQueryBuilder::PARAM_* constants
          *                  required when comparing text fields for oci compatibility
          *
          * @return string
-         * @since 8.2.0 - Parameter $type was added in 9.0.0
+         * @since 8.2.0 - Parameter type was added in 9.0.0
          */
         string notLike(string x, object y, object type = null);
 
         /**
          * Creates a ILIKE() comparison expression with the given arguments.
          *
-         * @param string $x Field in string format to be inspected by ILIKE() comparison.
-         * @param mixed $y Argument to be used in ILIKE() comparison.
-         * @param mixed|null $type one of the IQueryBuilder::PARAM_* constants
+         * @param string x Field in string format to be inspected by ILIKE() comparison.
+         * @param mixed y Argument to be used in ILIKE() comparison.
+         * @param mixed|null type one of the IQueryBuilder::PARAM_* constants
          *                  required when comparing text fields for oci compatibility
          *
          * @return string
@@ -260,42 +260,42 @@ namespace OCP.DB.QueryBuilder
         /**
          * Creates a IN () comparison expression with the given arguments.
          *
-         * @param string $x The field in string format to be inspected by IN() comparison.
-         * @param string|array $y The placeholder or the array of values to be used by IN() comparison.
-         * @param mixed|null $type one of the IQueryBuilder::PARAM_* constants
+         * @param string x The field in string format to be inspected by IN() comparison.
+         * @param string|array y The placeholder or the array of values to be used by IN() comparison.
+         * @param mixed|null type one of the IQueryBuilder::PARAM_* constants
          *                  required when comparing text fields for oci compatibility
          *
          * @return string
-         * @since 8.2.0 - Parameter $type was added in 9.0.0
+         * @since 8.2.0 - Parameter type was added in 9.0.0
          */
         string @in(string x, string y, object type = null);
 
 	/**
 	 * Creates a NOT IN () comparison expression with the given arguments.
 	 *
-	 * @param string $x The field in string format to be inspected by NOT IN() comparison.
-	 * @param string|array $y The placeholder or the array of values to be used by NOT IN() comparison.
-	 * @param mixed|null $type one of the IQueryBuilder::PARAM_* constants
+	 * @param string x The field in string format to be inspected by NOT IN() comparison.
+	 * @param string|array y The placeholder or the array of values to be used by NOT IN() comparison.
+	 * @param mixed|null type one of the IQueryBuilder::PARAM_* constants
 	 *                  required when comparing text fields for oci compatibility
 	 *
 	 * @return string
-	 * @since 8.2.0 - Parameter $type was added in 9.0.0
+	 * @since 8.2.0 - Parameter type was added in 9.0.0
 	 */
 	string notIn(string x, string y, object type = null);
 
         /**
-         * Creates a $x = '' statement, because Oracle needs a different check
+         * Creates a x = '' statement, because Oracle needs a different check
          *
-         * @param string $x The field in string format to be inspected by the comparison.
+         * @param string x The field in string format to be inspected by the comparison.
          * @return string
          * @since 13.0.0
          */
         string emptyString(string x);
 
         /**
-         * Creates a `$x <> ''` statement, because Oracle needs a different check
+         * Creates a `x <> ''` statement, because Oracle needs a different check
          *
-         * @param string $x The field in string format to be inspected by the comparison.
+         * @param string x The field in string format to be inspected by the comparison.
          * @return string
          * @since 13.0.0
          */
@@ -305,8 +305,8 @@ namespace OCP.DB.QueryBuilder
         /**
          * Creates a bitwise AND comparison
          *
-         * @param string|ILiteral $x The field or value to check
-         * @param int $y Bitmap that must be set
+         * @param string|ILiteral x The field or value to check
+         * @param int y Bitmap that must be set
          * @return IQueryFunction
          * @since 12.0.0
          */
@@ -315,8 +315,8 @@ namespace OCP.DB.QueryBuilder
         /**
          * Creates a bitwise OR comparison
          *
-         * @param string|ILiteral $x The field or value to check
-         * @param int $y Bitmap that must be set
+         * @param string|ILiteral x The field or value to check
+         * @param int y Bitmap that must be set
          * @return IQueryFunction
          * @since 12.0.0
          */
@@ -325,8 +325,8 @@ namespace OCP.DB.QueryBuilder
         /**
          * Quotes a given input parameter.
          *
-         * @param mixed $input The parameter to be quoted.
-         * @param mixed|null $type One of the IQueryBuilder::PARAM_* constants
+         * @param mixed input The parameter to be quoted.
+         * @param mixed|null type One of the IQueryBuilder::PARAM_* constants
          *
          * @return string
          * @since 8.2.0
@@ -336,8 +336,8 @@ namespace OCP.DB.QueryBuilder
         /**
          * Returns a IQueryFunction that casts the column to the given type
          *
-         * @param string $column
-         * @param mixed $type One of IQueryBuilder::PARAM_*
+         * @param string column
+         * @param mixed type One of IQueryBuilder::PARAM_*
          * @return string
          * @since 9.0.0
          */

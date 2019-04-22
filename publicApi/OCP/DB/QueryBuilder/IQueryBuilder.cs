@@ -50,7 +50,7 @@ namespace OCP.DB.QueryBuilder
         /**
          * Enable/disable automatic prefixing of table names with the oc_ prefix
          *
-         * @param bool $enabled If set to true table names will be prefixed with the
+         * @param bool enabled If set to true table names will be prefixed with the
          * owncloud database prefix automatically.
          * @since 8.2.0
          */
@@ -61,10 +61,10 @@ namespace OCP.DB.QueryBuilder
          * This producer method is intended for convenient inline usage. Example:
          *
          * <code>
-         *     $qb = $conn->getQueryBuilder()
+         *     qb = conn->getQueryBuilder()
          *         ->select('u')
          *         ->from('users', 'u')
-         *         ->where($qb->expr()->eq('u.id', 1));
+         *         ->where(qb->expr()->eq('u.id', 1));
          * </code>
          *
          * For more complex expression construction, consider storing the expression
@@ -80,10 +80,10 @@ namespace OCP.DB.QueryBuilder
          * This producer method is intended for convenient inline usage. Example:
          *
          * <code>
-         *     $qb = $conn->getQueryBuilder()
+         *     qb = conn->getQueryBuilder()
          *         ->select('u')
          *         ->from('users', 'u')
-         *         ->where($qb->fun()->md5('u.id'));
+         *         ->where(qb->fun()->md5('u.id'));
          * </code>
          *
          * For more complex function construction, consider storing the function
@@ -133,10 +133,10 @@ namespace OCP.DB.QueryBuilder
          * Gets the complete SQL string formed by the current specifications of this QueryBuilder.
          *
          * <code>
-         *     $qb = $conn->getQueryBuilder()
+         *     qb = conn->getQueryBuilder()
          *         ->select('u')
          *         ->from('User', 'u')
-         *     echo $qb->getSQL(); // SELECT u FROM User u
+         *     echo qb->getSQL(); // SELECT u FROM User u
          * </code>
          *
          * @return string The SQL query string.
@@ -148,16 +148,16 @@ namespace OCP.DB.QueryBuilder
          * Sets a query parameter for the query being constructed.
          *
          * <code>
-         *     $qb = $conn->getQueryBuilder()
+         *     qb = conn->getQueryBuilder()
          *         ->select('u')
          *         ->from('users', 'u')
          *         ->where('u.id = :user_id')
          *         ->setParameter(':user_id', 1);
          * </code>
          *
-         * @param string|integer $key The parameter position or name.
-         * @param mixed $value The parameter value.
-         * @param string|null|int $type One of the IQueryBuilder::PARAM_* constants.
+         * @param string|integer key The parameter position or name.
+         * @param mixed value The parameter value.
+         * @param string|null|int type One of the IQueryBuilder::PARAM_* constants.
          *
          * @return \OCP\DB\QueryBuilder\IQueryBuilder This QueryBuilder instance.
          * @since 8.2.0
@@ -168,7 +168,7 @@ namespace OCP.DB.QueryBuilder
          * Sets a collection of query parameters for the query being constructed.
          *
          * <code>
-         *     $qb = $conn->getQueryBuilder()
+         *     qb = conn->getQueryBuilder()
          *         ->select('u')
          *         ->from('users', 'u')
          *         ->where('u.id = :user_id1 OR u.id = :user_id2')
@@ -178,8 +178,8 @@ namespace OCP.DB.QueryBuilder
          *         ));
          * </code>
          *
-         * @param array $params The query parameters to set.
-         * @param array $types The query parameters types to set.
+         * @param array params The query parameters to set.
+         * @param array types The query parameters types to set.
          *
          * @return \OCP\DB\QueryBuilder\IQueryBuilder This QueryBuilder instance.
          * @since 8.2.0
@@ -197,7 +197,7 @@ namespace OCP.DB.QueryBuilder
         /**
          * Gets a (previously set) query parameter of the query being constructed.
          *
-         * @param mixed $key The key (index or name) of the bound parameter.
+         * @param mixed key The key (index or name) of the bound parameter.
          *
          * @return mixed The value of the bound parameter.
          * @since 8.2.0
@@ -215,7 +215,7 @@ namespace OCP.DB.QueryBuilder
         /**
          * Gets a (previously set) query parameter type of the query being constructed.
          *
-         * @param mixed $key The key (index or name) of the bound parameter type.
+         * @param mixed key The key (index or name) of the bound parameter type.
          *
          * @return mixed The value of the bound parameter type.
          * @since 8.2.0
@@ -225,7 +225,7 @@ namespace OCP.DB.QueryBuilder
         /**
          * Sets the position of the first result to retrieve (the "offset").
          *
-         * @param integer $firstResult The first result to return.
+         * @param integer firstResult The first result to return.
          *
          * @return \OCP\DB\QueryBuilder\IQueryBuilder This QueryBuilder instance.
          * @since 8.2.0
@@ -244,7 +244,7 @@ namespace OCP.DB.QueryBuilder
         /**
          * Sets the maximum number of results to retrieve (the "limit").
          *
-         * @param integer $maxResults The maximum number of results to retrieve.
+         * @param integer maxResults The maximum number of results to retrieve.
          *
          * @return \OCP\DB\QueryBuilder\IQueryBuilder This QueryBuilder instance.
          * @since 8.2.0
@@ -265,13 +265,13 @@ namespace OCP.DB.QueryBuilder
          * Replaces any previously specified selections, if any.
          *
          * <code>
-         *     $qb = $conn->getQueryBuilder()
+         *     qb = conn->getQueryBuilder()
          *         ->select('u.id', 'p.id')
          *         ->from('users', 'u')
          *         ->leftJoin('u', 'phonenumbers', 'p', 'u.id = p.user_id');
          * </code>
          *
-         * @param mixed ...$selects The selection expressions.
+         * @param mixed ...selects The selection expressions.
          *
          * @return \OCP\DB\QueryBuilder\IQueryBuilder This QueryBuilder instance.
          * @since 8.2.0
@@ -282,14 +282,14 @@ namespace OCP.DB.QueryBuilder
          * Specifies an item that is to be returned with a different name in the query result.
          *
          * <code>
-         *     $qb = $conn->getQueryBuilder()
+         *     qb = conn->getQueryBuilder()
          *         ->selectAlias('u.id', 'user_id')
          *         ->from('users', 'u')
          *         ->leftJoin('u', 'phonenumbers', 'p', 'u.id = p.user_id');
          * </code>
          *
-         * @param mixed $select The selection expressions.
-         * @param string $alias The column alias used in the constructed query.
+         * @param mixed select The selection expressions.
+         * @param string alias The column alias used in the constructed query.
          *
          * @return \OCP\DB\QueryBuilder\IQueryBuilder This QueryBuilder instance.
          * @since 8.2.1
@@ -300,12 +300,12 @@ namespace OCP.DB.QueryBuilder
          * Specifies an item that is to be returned uniquely in the query result.
          *
          * <code>
-         *     $qb = $conn->getQueryBuilder()
+         *     qb = conn->getQueryBuilder()
          *         ->selectDistinct('type')
          *         ->from('users');
          * </code>
          *
-         * @param mixed $select The selection expressions.
+         * @param mixed select The selection expressions.
          *
          * @return \OCP\DB\QueryBuilder\IQueryBuilder This QueryBuilder instance.
          * @since 9.0.0
@@ -316,14 +316,14 @@ namespace OCP.DB.QueryBuilder
          * Adds an item that is to be returned in the query result.
          *
          * <code>
-         *     $qb = $conn->getQueryBuilder()
+         *     qb = conn->getQueryBuilder()
          *         ->select('u.id')
          *         ->addSelect('p.id')
          *         ->from('users', 'u')
          *         ->leftJoin('u', 'phonenumbers', 'u.id = p.user_id');
          * </code>
          *
-         * @param mixed ...$select The selection expression.
+         * @param mixed ...select The selection expression.
          *
          * @return \OCP\DB\QueryBuilder\IQueryBuilder This QueryBuilder instance.
          * @since 8.2.0
@@ -335,14 +335,14 @@ namespace OCP.DB.QueryBuilder
          * a certain table.
          *
          * <code>
-         *     $qb = $conn->getQueryBuilder()
+         *     qb = conn->getQueryBuilder()
          *         ->delete('users', 'u')
          *         ->where('u.id = :user_id');
          *         ->setParameter(':user_id', 1);
          * </code>
          *
-         * @param string $delete The table whose rows are subject to the deletion.
-         * @param string $alias The table alias used in the constructed query.
+         * @param string delete The table whose rows are subject to the deletion.
+         * @param string alias The table alias used in the constructed query.
          *
          * @return \OCP\DB\QueryBuilder\IQueryBuilder This QueryBuilder instance.
          * @since 8.2.0
@@ -354,14 +354,14 @@ namespace OCP.DB.QueryBuilder
          * a certain table
          *
          * <code>
-         *     $qb = $conn->getQueryBuilder()
+         *     qb = conn->getQueryBuilder()
          *         ->update('users', 'u')
          *         ->set('u.password', md5('password'))
          *         ->where('u.id = ?');
          * </code>
          *
-         * @param string $update The table whose rows are subject to the update.
-         * @param string $alias The table alias used in the constructed query.
+         * @param string update The table whose rows are subject to the update.
+         * @param string alias The table alias used in the constructed query.
          *
          * @return \OCP\DB\QueryBuilder\IQueryBuilder This QueryBuilder instance.
          * @since 8.2.0
@@ -373,7 +373,7 @@ namespace OCP.DB.QueryBuilder
          * a certain table
          *
          * <code>
-         *     $qb = $conn->getQueryBuilder()
+         *     qb = conn->getQueryBuilder()
          *         ->insert('users')
          *         ->values(
          *             array(
@@ -383,241 +383,241 @@ namespace OCP.DB.QueryBuilder
          *         );
          * </code>
          *
-         * @param string $insert The table into which the rows should be inserted.
+         * @param string insert The table into which the rows should be inserted.
          *
          * @return \OCP\DB\QueryBuilder\IQueryBuilder This QueryBuilder instance.
          * @since 8.2.0
          */
-        public function insert($insert = null);
+        public function insert(insert = null);
 
         /**
          * Creates and adds a query root corresponding to the table identified by the
          * given alias, forming a cartesian product with any existing query roots.
          *
          * <code>
-         *     $qb = $conn->getQueryBuilder()
+         *     qb = conn->getQueryBuilder()
          *         ->select('u.id')
          *         ->from('users', 'u')
          * </code>
          *
-         * @param string $from The table.
-         * @param string|null $alias The alias of the table.
+         * @param string from The table.
+         * @param string|null alias The alias of the table.
          *
          * @return \OCP\DB\QueryBuilder\IQueryBuilder This QueryBuilder instance.
          * @since 8.2.0
          */
-        public function from($from, $alias = null);
+        public function from(from, alias = null);
 
         /**
          * Creates and adds a join to the query.
          *
          * <code>
-         *     $qb = $conn->getQueryBuilder()
+         *     qb = conn->getQueryBuilder()
          *         ->select('u.name')
          *         ->from('users', 'u')
          *         ->join('u', 'phonenumbers', 'p', 'p.is_primary = 1');
          * </code>
          *
-         * @param string $fromAlias The alias that points to a from clause.
-         * @param string $join The table name to join.
-         * @param string $alias The alias of the join table.
-         * @param string $condition The condition for the join.
+         * @param string fromAlias The alias that points to a from clause.
+         * @param string join The table name to join.
+         * @param string alias The alias of the join table.
+         * @param string condition The condition for the join.
          *
          * @return \OCP\DB\QueryBuilder\IQueryBuilder This QueryBuilder instance.
          * @since 8.2.0
          */
-        public function join($fromAlias, $join, $alias, $condition = null);
+        public function join(fromAlias, join, alias, condition = null);
 
         /**
          * Creates and adds a join to the query.
          *
          * <code>
-         *     $qb = $conn->getQueryBuilder()
+         *     qb = conn->getQueryBuilder()
          *         ->select('u.name')
          *         ->from('users', 'u')
          *         ->innerJoin('u', 'phonenumbers', 'p', 'p.is_primary = 1');
          * </code>
          *
-         * @param string $fromAlias The alias that points to a from clause.
-         * @param string $join The table name to join.
-         * @param string $alias The alias of the join table.
-         * @param string $condition The condition for the join.
+         * @param string fromAlias The alias that points to a from clause.
+         * @param string join The table name to join.
+         * @param string alias The alias of the join table.
+         * @param string condition The condition for the join.
          *
          * @return \OCP\DB\QueryBuilder\IQueryBuilder This QueryBuilder instance.
          * @since 8.2.0
          */
-        public function innerJoin($fromAlias, $join, $alias, $condition = null);
+        public function innerJoin(fromAlias, join, alias, condition = null);
 
         /**
          * Creates and adds a left join to the query.
          *
          * <code>
-         *     $qb = $conn->getQueryBuilder()
+         *     qb = conn->getQueryBuilder()
          *         ->select('u.name')
          *         ->from('users', 'u')
          *         ->leftJoin('u', 'phonenumbers', 'p', 'p.is_primary = 1');
          * </code>
          *
-         * @param string $fromAlias The alias that points to a from clause.
-         * @param string $join The table name to join.
-         * @param string $alias The alias of the join table.
-         * @param string $condition The condition for the join.
+         * @param string fromAlias The alias that points to a from clause.
+         * @param string join The table name to join.
+         * @param string alias The alias of the join table.
+         * @param string condition The condition for the join.
          *
          * @return \OCP\DB\QueryBuilder\IQueryBuilder This QueryBuilder instance.
          * @since 8.2.0
          */
-        public function leftJoin($fromAlias, $join, $alias, $condition = null);
+        public function leftJoin(fromAlias, join, alias, condition = null);
 
         /**
          * Creates and adds a right join to the query.
          *
          * <code>
-         *     $qb = $conn->getQueryBuilder()
+         *     qb = conn->getQueryBuilder()
          *         ->select('u.name')
          *         ->from('users', 'u')
          *         ->rightJoin('u', 'phonenumbers', 'p', 'p.is_primary = 1');
          * </code>
          *
-         * @param string $fromAlias The alias that points to a from clause.
-         * @param string $join The table name to join.
-         * @param string $alias The alias of the join table.
-         * @param string $condition The condition for the join.
+         * @param string fromAlias The alias that points to a from clause.
+         * @param string join The table name to join.
+         * @param string alias The alias of the join table.
+         * @param string condition The condition for the join.
          *
          * @return \OCP\DB\QueryBuilder\IQueryBuilder This QueryBuilder instance.
          * @since 8.2.0
          */
-        public function rightJoin($fromAlias, $join, $alias, $condition = null);
+        public function rightJoin(fromAlias, join, alias, condition = null);
 
         /**
          * Sets a new value for a column in a bulk update query.
          *
          * <code>
-         *     $qb = $conn->getQueryBuilder()
+         *     qb = conn->getQueryBuilder()
          *         ->update('users', 'u')
          *         ->set('u.password', md5('password'))
          *         ->where('u.id = ?');
          * </code>
          *
-         * @param string $key The column to set.
-         * @param string $value The value, expression, placeholder, etc.
+         * @param string key The column to set.
+         * @param string value The value, expression, placeholder, etc.
          *
          * @return \OCP\DB\QueryBuilder\IQueryBuilder This QueryBuilder instance.
          * @since 8.2.0
          */
-        public function set($key, $value);
+        public function set(key, value);
 
         /**
          * Specifies one or more restrictions to the query result.
          * Replaces any previously specified restrictions, if any.
          *
          * <code>
-         *     $qb = $conn->getQueryBuilder()
+         *     qb = conn->getQueryBuilder()
          *         ->select('u.name')
          *         ->from('users', 'u')
          *         ->where('u.id = ?');
          *
          *     // You can optionally programatically build and/or expressions
-         *     $qb = $conn->getQueryBuilder();
+         *     qb = conn->getQueryBuilder();
          *
-         *     $or = $qb->expr()->orx();
-         *     $or->add($qb->expr()->eq('u.id', 1));
-         *     $or->add($qb->expr()->eq('u.id', 2));
+         *     or = qb->expr()->orx();
+         *     or->add(qb->expr()->eq('u.id', 1));
+         *     or->add(qb->expr()->eq('u.id', 2));
          *
-         *     $qb->update('users', 'u')
+         *     qb->update('users', 'u')
          *         ->set('u.password', md5('password'))
-         *         ->where($or);
+         *         ->where(or);
          * </code>
          *
-         * @param mixed $predicates The restriction predicates.
+         * @param mixed predicates The restriction predicates.
          *
          * @return \OCP\DB\QueryBuilder\IQueryBuilder This QueryBuilder instance.
          * @since 8.2.0
          */
-        public function where(...$predicates);
+        public function where(...predicates);
 
         /**
          * Adds one or more restrictions to the query results, forming a logical
          * conjunction with any previously specified restrictions.
          *
          * <code>
-         *     $qb = $conn->getQueryBuilder()
+         *     qb = conn->getQueryBuilder()
          *         ->select('u')
          *         ->from('users', 'u')
          *         ->where('u.username LIKE ?')
          *         ->andWhere('u.is_active = 1');
          * </code>
          *
-         * @param mixed ...$where The query restrictions.
+         * @param mixed ...where The query restrictions.
          *
          * @return \OCP\DB\QueryBuilder\IQueryBuilder This QueryBuilder instance.
          *
          * @see where()
          * @since 8.2.0
          */
-        public function andWhere(...$where);
+        public function andWhere(...where);
 
         /**
          * Adds one or more restrictions to the query results, forming a logical
          * disjunction with any previously specified restrictions.
          *
          * <code>
-         *     $qb = $conn->getQueryBuilder()
+         *     qb = conn->getQueryBuilder()
          *         ->select('u.name')
          *         ->from('users', 'u')
          *         ->where('u.id = 1')
          *         ->orWhere('u.id = 2');
          * </code>
          *
-         * @param mixed ...$where The WHERE statement.
+         * @param mixed ...where The WHERE statement.
          *
          * @return \OCP\DB\QueryBuilder\IQueryBuilder This QueryBuilder instance.
          *
          * @see where()
          * @since 8.2.0
          */
-        public function orWhere(...$where);
+        public function orWhere(...where);
 
         /**
          * Specifies a grouping over the results of the query.
          * Replaces any previously specified groupings, if any.
          *
          * <code>
-         *     $qb = $conn->getQueryBuilder()
+         *     qb = conn->getQueryBuilder()
          *         ->select('u.name')
          *         ->from('users', 'u')
          *         ->groupBy('u.id');
          * </code>
          *
-         * @param mixed ...$groupBys The grouping expression.
+         * @param mixed ...groupBys The grouping expression.
          *
          * @return \OCP\DB\QueryBuilder\IQueryBuilder This QueryBuilder instance.
          * @since 8.2.0
          */
-        public function groupBy(...$groupBys);
+        public function groupBy(...groupBys);
 
         /**
          * Adds a grouping expression to the query.
          *
          * <code>
-         *     $qb = $conn->getQueryBuilder()
+         *     qb = conn->getQueryBuilder()
          *         ->select('u.name')
          *         ->from('users', 'u')
          *         ->groupBy('u.lastLogin');
          *         ->addGroupBy('u.createdAt')
          * </code>
          *
-         * @param mixed ...$groupBy The grouping expression.
+         * @param mixed ...groupBy The grouping expression.
          *
          * @return \OCP\DB\QueryBuilder\IQueryBuilder This QueryBuilder instance.
          * @since 8.2.0
          */
-        public function addGroupBy(...$groupBy);
+        public function addGroupBy(...groupBy);
 
         /**
          * Sets a value for a column in an insert query.
          *
          * <code>
-         *     $qb = $conn->getQueryBuilder()
+         *     qb = conn->getQueryBuilder()
          *         ->insert('users')
          *         ->values(
          *             array(
@@ -627,20 +627,20 @@ namespace OCP.DB.QueryBuilder
          *         ->setValue('password', '?');
          * </code>
          *
-         * @param string $column The column into which the value should be inserted.
-         * @param string $value The value that should be inserted into the column.
+         * @param string column The column into which the value should be inserted.
+         * @param string value The value that should be inserted into the column.
          *
          * @return \OCP\DB\QueryBuilder\IQueryBuilder This QueryBuilder instance.
          * @since 8.2.0
          */
-        public function setValue($column, $value);
+        public function setValue(column, value);
 
         /**
          * Specifies values for an insert query indexed by column names.
          * Replaces any previous values, if any.
          *
          * <code>
-         *     $qb = $conn->getQueryBuilder()
+         *     qb = conn->getQueryBuilder()
          *         ->insert('users')
          *         ->values(
          *             array(
@@ -650,78 +650,78 @@ namespace OCP.DB.QueryBuilder
          *         );
          * </code>
          *
-         * @param array $values The values to specify for the insert query indexed by column names.
+         * @param array values The values to specify for the insert query indexed by column names.
          *
          * @return \OCP\DB\QueryBuilder\IQueryBuilder This QueryBuilder instance.
          * @since 8.2.0
          */
-        public function values(array $values);
+        public function values(array values);
 
         /**
          * Specifies a restriction over the groups of the query.
          * Replaces any previous having restrictions, if any.
          *
-         * @param mixed ...$having The restriction over the groups.
+         * @param mixed ...having The restriction over the groups.
          *
          * @return \OCP\DB\QueryBuilder\IQueryBuilder This QueryBuilder instance.
          * @since 8.2.0
          */
-        public function having(...$having);
+        public function having(...having);
 
         /**
          * Adds a restriction over the groups of the query, forming a logical
          * conjunction with any existing having restrictions.
          *
-         * @param mixed ...$having The restriction to append.
+         * @param mixed ...having The restriction to append.
          *
          * @return \OCP\DB\QueryBuilder\IQueryBuilder This QueryBuilder instance.
          * @since 8.2.0
          */
-        public function andHaving(...$having);
+        public function andHaving(...having);
 
         /**
          * Adds a restriction over the groups of the query, forming a logical
          * disjunction with any existing having restrictions.
          *
-         * @param mixed ...$having The restriction to add.
+         * @param mixed ...having The restriction to add.
          *
          * @return \OCP\DB\QueryBuilder\IQueryBuilder This QueryBuilder instance.
          * @since 8.2.0
          */
-        public function orHaving(...$having);
+        public function orHaving(...having);
 
         /**
          * Specifies an ordering for the query results.
          * Replaces any previously specified orderings, if any.
          *
-         * @param string $sort The ordering expression.
-         * @param string $order The ordering direction.
+         * @param string sort The ordering expression.
+         * @param string order The ordering direction.
          *
          * @return \OCP\DB\QueryBuilder\IQueryBuilder This QueryBuilder instance.
          * @since 8.2.0
          */
-        public function orderBy($sort, $order = null);
+        public function orderBy(sort, order = null);
 
         /**
          * Adds an ordering to the query results.
          *
-         * @param string $sort The ordering expression.
-         * @param string $order The ordering direction.
+         * @param string sort The ordering expression.
+         * @param string order The ordering direction.
          *
          * @return \OCP\DB\QueryBuilder\IQueryBuilder This QueryBuilder instance.
          * @since 8.2.0
          */
-        public function addOrderBy($sort, $order = null);
+        public function addOrderBy(sort, order = null);
 
         /**
          * Gets a query part by its name.
          *
-         * @param string $queryPartName
+         * @param string queryPartName
          *
          * @return mixed
          * @since 8.2.0
          */
-        public function getQueryPart($queryPartName);
+        public function getQueryPart(queryPartName);
 
         /**
          * Gets all query parts.
@@ -734,31 +734,31 @@ namespace OCP.DB.QueryBuilder
         /**
          * Resets SQL parts.
          *
-         * @param array|null $queryPartNames
+         * @param array|null queryPartNames
          *
          * @return \OCP\DB\QueryBuilder\IQueryBuilder This QueryBuilder instance.
          * @since 8.2.0
          */
-        public function resetQueryParts($queryPartNames = null);
+        public function resetQueryParts(queryPartNames = null);
 
         /**
          * Resets a single SQL part.
          *
-         * @param string $queryPartName
+         * @param string queryPartName
          *
          * @return \OCP\DB\QueryBuilder\IQueryBuilder This QueryBuilder instance.
          * @since 8.2.0
          */
-        public function resetQueryPart($queryPartName);
+        public function resetQueryPart(queryPartName);
 
         /**
-         * Creates a new named parameter and bind the value $value to it.
+         * Creates a new named parameter and bind the value value to it.
          *
          * This method provides a shortcut for PDOStatement::bindValue
          * when using prepared statements.
          *
-         * The parameter $value specifies the value that you want to bind. If
-         * $placeholder is not provided bindValue() will automatically create a
+         * The parameter value specifies the value that you want to bind. If
+         * placeholder is not provided bindValue() will automatically create a
          * placeholder for you. An automatic placeholder will be of the name
          * ':dcValue1', ':dcValue2' etc.
          *
@@ -766,22 +766,22 @@ namespace OCP.DB.QueryBuilder
          *
          * Example:
          * <code>
-         * $value = 2;
-         * $q->eq( 'id', $q->bindValue( $value ) );
-         * $stmt = $q->executeQuery(); // executed with 'id = 2'
+         * value = 2;
+         * q->eq( 'id', q->bindValue( value ) );
+         * stmt = q->executeQuery(); // executed with 'id = 2'
          * </code>
          *
          * @license New BSD License
          * @link http://www.zetacomponents.org
          *
-         * @param mixed $value
-         * @param mixed $type
-         * @param string $placeHolder The name to bind with. The string must start with a colon ':'.
+         * @param mixed value
+         * @param mixed type
+         * @param string placeHolder The name to bind with. The string must start with a colon ':'.
          *
          * @return IParameter
          * @since 8.2.0
          */
-        public function createNamedParameter($value, $type = self::PARAM_STR, $placeHolder = null);
+        public function createNamedParameter(value, type = self::PARAM_STR, placeHolder = null);
 
         /**
          * Creates a new positional parameter and bind the given value to it.
@@ -793,39 +793,39 @@ namespace OCP.DB.QueryBuilder
          *
          * Example:
          * <code>
-         *  $qb = $conn->getQueryBuilder();
-         *  $qb->select('u.*')
+         *  qb = conn->getQueryBuilder();
+         *  qb->select('u.*')
          *     ->from('users', 'u')
-         *     ->where('u.username = ' . $qb->createPositionalParameter('Foo', IQueryBuilder::PARAM_STR))
-         *     ->orWhere('u.username = ' . $qb->createPositionalParameter('Bar', IQueryBuilder::PARAM_STR))
+         *     ->where('u.username = ' . qb->createPositionalParameter('Foo', IQueryBuilder::PARAM_STR))
+         *     ->orWhere('u.username = ' . qb->createPositionalParameter('Bar', IQueryBuilder::PARAM_STR))
          * </code>
          *
-         * @param mixed $value
-         * @param integer $type
+         * @param mixed value
+         * @param integer type
          *
          * @return IParameter
          * @since 8.2.0
          */
-        public function createPositionalParameter($value, $type = self::PARAM_STR);
+        public function createPositionalParameter(value, type = self::PARAM_STR);
 
         /**
          * Creates a new parameter
          *
          * Example:
          * <code>
-         *  $qb = $conn->getQueryBuilder();
-         *  $qb->select('u.*')
+         *  qb = conn->getQueryBuilder();
+         *  qb->select('u.*')
          *     ->from('users', 'u')
-         *     ->where('u.username = ' . $qb->createParameter('name'))
+         *     ->where('u.username = ' . qb->createParameter('name'))
          *     ->setParameter('name', 'Bar', IQueryBuilder::PARAM_STR))
          * </code>
          *
-         * @param string $name
+         * @param string name
          *
          * @return IParameter
          * @since 8.2.0
          */
-        public function createParameter($name);
+        public function createParameter(name);
 
         /**
          * Creates a new function
@@ -834,24 +834,24 @@ namespace OCP.DB.QueryBuilder
          *
          * Example:
          * <code>
-         *  $qb = $conn->getQueryBuilder();
-         *  $qb->select($qb->createFunction('COUNT(*)'))
+         *  qb = conn->getQueryBuilder();
+         *  qb->select(qb->createFunction('COUNT(*)'))
          *     ->from('users', 'u')
-         *  echo $qb->getSQL(); // SELECT COUNT(*) FROM `users` u
+         *  echo qb->getSQL(); // SELECT COUNT(*) FROM `users` u
          * </code>
          * <code>
-         *  $qb = $conn->getQueryBuilder();
-         *  $qb->select($qb->createFunction('COUNT(`column`)'))
+         *  qb = conn->getQueryBuilder();
+         *  qb->select(qb->createFunction('COUNT(`column`)'))
          *     ->from('users', 'u')
-         *  echo $qb->getSQL(); // SELECT COUNT(`column`) FROM `users` u
+         *  echo qb->getSQL(); // SELECT COUNT(`column`) FROM `users` u
          * </code>
          *
-         * @param string $call
+         * @param string call
          *
          * @return IQueryFunction
          * @since 8.2.0
          */
-        IQueryFunction createFunction($call);
+        IQueryFunction createFunction(call);
 
         /**
          * Used to get the id of the last inserted element
@@ -864,21 +864,21 @@ namespace OCP.DB.QueryBuilder
         /**
          * Returns the table name quoted and with database prefix as needed by the implementation
          *
-         * @param string $table
+         * @param string table
          * @return string
          * @since 9.0.0
          */
-        public function getTableName($table);
+        public function getTableName(table);
 
         /**
          * Returns the column name quoted and with table alias prefix as needed by the implementation
          *
-         * @param string $column
-         * @param string $tableAlias
+         * @param string column
+         * @param string tableAlias
          * @return string
          * @since 9.0.0
          */
-        public function getColumnName($column, $tableAlias = '');
+        public function getColumnName(column, tableAlias = '');
     }
 
 }

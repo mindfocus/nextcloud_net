@@ -14,9 +14,9 @@ namespace OCP.Files.Storage
     /**
 	 * Write the data from a stream to a file
 	 *
-	 * @param string $path
-	 * @param resource $stream
-	 * @param int|null $size the size of the stream if known in advance
+	 * @param string path
+	 * @param resource stream
+	 * @param int|null size the size of the stream if known in advance
 	 * @return int the number of bytes written
 	 * @since 15.0.0
 	 */

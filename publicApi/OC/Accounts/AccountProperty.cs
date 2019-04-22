@@ -28,7 +28,7 @@ namespace OC.Accounts
          *
          * @since 15.0.0
          *
-         * @param string $value
+         * @param string value
          * @return IAccountProperty
          */
         public IAccountProperty setValue(string value)
@@ -42,7 +42,7 @@ namespace OC.Accounts
          *
          * @since 15.0.0
          *
-         * @param string $scope
+         * @param string scope
          * @return IAccountProperty
          */
         public IAccountProperty setScope(string scope)
@@ -56,7 +56,7 @@ namespace OC.Accounts
          *
          * @since 15.0.0
          *
-         * @param string $verified
+         * @param string verified
          * @return IAccountProperty
          */
         public IAccountProperty setVerified(string verified)

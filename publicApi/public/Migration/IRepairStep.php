@@ -40,10 +40,10 @@ interface IRepairStep {
 	 * Run repair step.
 	 * Must throw exception on error.
 	 *
-	 * @param IOutput $output
+	 * @param IOutput output
 	 * @throws \Exception in case of failure
 	 * @since 9.1.0
 	 */
-	public function run(IOutput $output);
+	public function run(IOutput output);
 
 }

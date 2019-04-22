@@ -15,11 +15,11 @@ namespace OCP.Security
      *
      * Usage:
      * // Hashing a message
-     * $hash = \OC::$server->getHasher()->hash('MessageToHash');
-     * // Verifying a message - $newHash will contain the newly calculated hash
-     * $newHash = null;
-     * var_dump(\OC::$server->getHasher()->verify('a', '86f7e437faa5a7fce15d1ddcb9eaeaea377667b8', $newHash));
-     * var_dump($newHash);
+     * hash = \OC::server->getHasher()->hash('MessageToHash');
+     * // Verifying a message - newHash will contain the newly calculated hash
+     * newHash = null;
+     * var_dump(\OC::server->getHasher()->verify('a', '86f7e437faa5a7fce15d1ddcb9eaeaea377667b8', newHash));
+     * var_dump(newHash);
      *
      * @package OCP\Security
      * @since 8.0.0
@@ -31,17 +31,17 @@ namespace OCP.Security
          * Please note that the size of the returned string is not guaranteed
          * and can be up to 255 characters.
          *
-         * @param string $message Message to generate hash from
+         * @param string message Message to generate hash from
          * @return string Hash of the message with appended version parameter
          * @since 8.0.0
          */
         string hash(string message);
 
         /**
-         * @param string $message Message to verify
-         * @param string $hash Assumed hash of the message
-         * @param null|string &$newHash Reference will contain the updated hash if necessary. Update the existing hash with this one.
-         * @return bool Whether $hash is a valid hash of $message
+         * @param string message Message to verify
+         * @param string hash Assumed hash of the message
+         * @param null|string &newHash Reference will contain the updated hash if necessary. Update the existing hash with this one.
+         * @return bool Whether hash is a valid hash of message
          * @since 8.0.0
          */
         bool verify(string message, string hash, out string newHash);

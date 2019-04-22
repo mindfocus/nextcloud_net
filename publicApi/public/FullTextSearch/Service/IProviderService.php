@@ -42,15 +42,15 @@ interface IProviderService {
 
 
 	/**
-	 * Check if the provider $providerId is already indexed.
+	 * Check if the provider providerId is already indexed.
 	 *
 	 * @since 15.0.0
 	 *
-	 * @param string $providerId
+	 * @param string providerId
 	 *
 	 * @return bool
 	 */
-	public function isProviderIndexed(string $providerId);
+	public function isProviderIndexed(string providerId);
 
 
 	/**

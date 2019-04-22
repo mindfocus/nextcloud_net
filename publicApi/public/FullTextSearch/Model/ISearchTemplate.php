@@ -68,11 +68,11 @@ interface ISearchTemplate {
 	 *
 	 * @since 16.0.0
 	 *
-	 * @param string $class
+	 * @param string class
 	 *
 	 * @return ISearchTemplate
 	 */
-	public function setIcon(string $class): ISearchTemplate;
+	public function setIcon(string class): ISearchTemplate;
 
 	/**
 	 * Get the class of the icon.
@@ -89,11 +89,11 @@ interface ISearchTemplate {
 	 *
 	 * @since 16.0.0
 	 *
-	 * @param string $css
+	 * @param string css
 	 *
 	 * @return ISearchTemplate
 	 */
-	public function setCss(string $css): ISearchTemplate;
+	public function setCss(string css): ISearchTemplate;
 
 	/**
 	 * Get the path of the CSS file.
@@ -113,11 +113,11 @@ interface ISearchTemplate {
 	 *
 	 * @since 16.0.0
 	 *
-	 * @param string $template
+	 * @param string template
 	 *
 	 * @return ISearchTemplate
 	 */
-	public function setTemplate(string $template): ISearchTemplate;
+	public function setTemplate(string template): ISearchTemplate;
 
 	/**
 	 * Get the path of the template file.
@@ -137,11 +137,11 @@ interface ISearchTemplate {
 	 *
 	 * @since 16.0.0
 	 *
-	 * @param ISearchOption $option
+	 * @param ISearchOption option
 	 *
 	 * @return ISearchTemplate
 	 */
-	public function addPanelOption(ISearchOption $option): ISearchTemplate;
+	public function addPanelOption(ISearchOption option): ISearchTemplate;
 
 	/**
 	 * Get all options to be displayed in the Panel.
@@ -160,11 +160,11 @@ interface ISearchTemplate {
 	 *
 	 * @since 16.0.0
 	 *
-	 * @param ISearchOption $option
+	 * @param ISearchOption option
 	 *
 	 * @return ISearchTemplate
 	 */
-	public function addNavigationOption(ISearchOption $option): ISearchTemplate;
+	public function addNavigationOption(ISearchOption option): ISearchTemplate;
 
 	/**
 	 * Get all options to be displayed in the FullTextSearch navigation page.

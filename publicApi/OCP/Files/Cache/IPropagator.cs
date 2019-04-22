@@ -31,8 +31,8 @@ namespace OCP.Files.Cache
         void commitBatch();
 
         /**
-         * @param string $internalPath
-         * @param int $time
+         * @param string internalPath
+         * @param int time
          * @since 9.0.0
          */
         void propagateChange(string internalPath, long time);

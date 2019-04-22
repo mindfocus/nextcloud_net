@@ -53,12 +53,12 @@ interface IEventsService {
 	 *
 	 * @since 15.0.0
 	 *
-	 * @param string $widgetId
-	 * @param array $users
-	 * @param array $payload
-	 * @param string $uniqueId
+	 * @param string widgetId
+	 * @param array users
+	 * @param array payload
+	 * @param string uniqueId
 	 */
-	public function createUsersEvent(string $widgetId, array $users, array $payload, string $uniqueId);
+	public function createUsersEvent(string widgetId, array users, array payload, string uniqueId);
 
 
 	/**
@@ -68,12 +68,12 @@ interface IEventsService {
 	 *
 	 * @since 15.0.0
 	 *
-	 * @param string $widgetId
-	 * @param array $groups
-	 * @param array $payload
-	 * @param string $uniqueId
+	 * @param string widgetId
+	 * @param array groups
+	 * @param array payload
+	 * @param string uniqueId
 	 */
-	public function createGroupsEvent(string $widgetId, array $groups, array $payload, string $uniqueId);
+	public function createGroupsEvent(string widgetId, array groups, array payload, string uniqueId);
 
 
 	/**
@@ -83,11 +83,11 @@ interface IEventsService {
 	 *
 	 * @since 15.0.0
 	 *
-	 * @param string $widgetId
-	 * @param array $payload
-	 * @param string $uniqueId
+	 * @param string widgetId
+	 * @param array payload
+	 * @param string uniqueId
 	 */
-	public function createGlobalEvent(string $widgetId, array $payload, string $uniqueId);
+	public function createGlobalEvent(string widgetId, array payload, string uniqueId);
 
 
 }

@@ -44,18 +44,18 @@ class Defaults {
 	 * \OC_Defaults instance to retrieve the defaults
 	 * @since 6.0.0
 	 */
-	private $defaults;
+	private defaults;
 
 	/**
 	 * creates a \OC_Defaults instance which is used in all methods to retrieve the
 	 * actual defaults
 	 * @since 6.0.0
 	 */
-	public function __construct(\OC_Defaults $defaults = null) {
-		if ($defaults === null) {
-			$defaults = \OC::$server->getThemingDefaults();
+	public function __construct(\OC_Defaults defaults = null) {
+		if (defaults === null) {
+			defaults = \OC::server->getThemingDefaults();
 		}
-		$this->defaults = $defaults;
+		this->defaults = defaults;
 	}
 
 	/**
@@ -64,7 +64,7 @@ class Defaults {
 	 * @since 6.0.0
 	 */
 	public function getBaseUrl() {
-		return $this->defaults->getBaseUrl();
+		return this->defaults->getBaseUrl();
 	}
 
 	/**
@@ -73,7 +73,7 @@ class Defaults {
 	 * @since 6.0.0
 	 */
 	public function getSyncClientUrl() {
-		return $this->defaults->getSyncClientUrl();
+		return this->defaults->getSyncClientUrl();
 	}
 
 	/**
@@ -82,7 +82,7 @@ class Defaults {
 	 * @since 8.0.0
 	 */
 	public function getiOSClientUrl() {
-		return $this->defaults->getiOSClientUrl();
+		return this->defaults->getiOSClientUrl();
 	}
 
 	/**
@@ -91,7 +91,7 @@ class Defaults {
 	 * @since 8.0.0
 	 */
 	public function getAndroidClientUrl() {
-		return $this->defaults->getAndroidClientUrl();
+		return this->defaults->getAndroidClientUrl();
 	}
 
 	/**
@@ -100,7 +100,7 @@ class Defaults {
 	 * @since 6.0.0
 	 */
 	public function getDocBaseUrl() {
-		return $this->defaults->getDocBaseUrl();
+		return this->defaults->getDocBaseUrl();
 	}
 
 	/**
@@ -109,7 +109,7 @@ class Defaults {
 	 * @since 6.0.0
 	 */
 	public function getName() {
-		return $this->defaults->getName();
+		return this->defaults->getName();
 	}
 
 	/**
@@ -118,7 +118,7 @@ class Defaults {
 	 * @since 8.0.0
 	 */
 	public function getHTMLName() {
-		return $this->defaults->getHTMLName();
+		return this->defaults->getHTMLName();
 	}
 
 	/**
@@ -127,7 +127,7 @@ class Defaults {
 	 * @since 6.0.0
 	 */
 	public function getEntity() {
-		return $this->defaults->getEntity();
+		return this->defaults->getEntity();
 	}
 
 	/**
@@ -136,7 +136,7 @@ class Defaults {
 	 * @since 6.0.0
 	 */
 	public function getSlogan() {
-		return $this->defaults->getSlogan();
+		return this->defaults->getSlogan();
 	}
 
 	/**
@@ -155,7 +155,7 @@ class Defaults {
 	 * @since 6.0.0
 	 */
 	public function getShortFooter() {
-		return $this->defaults->getShortFooter();
+		return this->defaults->getShortFooter();
 	}
 
 	/**
@@ -164,7 +164,7 @@ class Defaults {
 	 * @since 6.0.0
 	 */
 	public function getLongFooter() {
-		return $this->defaults->getLongFooter();
+		return this->defaults->getLongFooter();
 	}
 
 	/**
@@ -173,18 +173,18 @@ class Defaults {
 	 * @since 8.0.0
 	 */
 	public function getiTunesAppId() {
-		return $this->defaults->getiTunesAppId();
+		return this->defaults->getiTunesAppId();
 	}
 
 	/**
 	 * Themed logo url
 	 *
-	 * @param bool $useSvg Whether to point to the SVG image or a fallback
+	 * @param bool useSvg Whether to point to the SVG image or a fallback
 	 * @return string
 	 * @since 12.0.0
 	 */
-	public function getLogo($useSvg = true) {
-		return $this->defaults->getLogo($useSvg);
+	public function getLogo(useSvg = true) {
+		return this->defaults->getLogo(useSvg);
 	}
 
 	/**
@@ -193,16 +193,16 @@ class Defaults {
 	 * @since 12.0.0
 	 */
 	public function getColorPrimary() {
-		return $this->defaults->getColorPrimary();
+		return this->defaults->getColorPrimary();
 	}
 
 	/**
-	 * @param string $key
+	 * @param string key
 	 * @return string URL to doc with key
 	 * @since 12.0.0
 	 */
-	public function buildDocLinkToKey($key) {
-		return $this->defaults->buildDocLinkToKey($key);
+	public function buildDocLinkToKey(key) {
+		return this->defaults->buildDocLinkToKey(key);
 	}
 
 	/**
@@ -211,7 +211,7 @@ class Defaults {
 	 * @since 12.0.0
 	 */
 	public function getTitle() {
-		return $this->defaults->getTitle();
+		return this->defaults->getTitle();
 	}
 
 	/**
@@ -220,6 +220,6 @@ class Defaults {
 	 * @since 13.0.0
 	 */
 	public function getTextColorPrimary() {
-		return $this->defaults->getTextColorPrimary();
+		return this->defaults->getTextColorPrimary();
 	}
 }

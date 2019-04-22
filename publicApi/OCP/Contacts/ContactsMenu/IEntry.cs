@@ -27,7 +27,7 @@ namespace OCP.Contacts.ContactsMenu
 
         /**
          * @since 12.0
-         * @param IAction $action an action to show in the contacts menu
+         * @param IAction action an action to show in the contacts menu
          */
         void addAction(IAction action);
 
@@ -35,7 +35,7 @@ namespace OCP.Contacts.ContactsMenu
          * Get an arbitrary property from the contact
          *
          * @since 12.0
-         * @param string $key
+         * @param string key
          * @return mixed the value of the property or null
          */
         object getProperty(string key);

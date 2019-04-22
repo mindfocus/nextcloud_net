@@ -30,20 +30,20 @@ namespace OCP\Notification;
  */
 interface IManager extends IApp, INotifier {
 	/**
-	 * @param \Closure $service The service must implement IApp, otherwise a
+	 * @param \Closure service The service must implement IApp, otherwise a
 	 *                          \InvalidArgumentException is thrown later
 	 * @since 9.0.0
 	 */
-	public function registerApp(\Closure $service);
+	public function registerApp(\Closure service);
 
 	/**
-	 * @param \Closure $service The service must implement INotifier, otherwise a
+	 * @param \Closure service The service must implement INotifier, otherwise a
 	 *                          \InvalidArgumentException is thrown later
-	 * @param \Closure $info    An array with the keys 'id' and 'name' containing
+	 * @param \Closure info    An array with the keys 'id' and 'name' containing
 	 *                          the app id and the app name
 	 * @since 9.0.0
 	 */
-	public function registerNotifier(\Closure $service, \Closure $info);
+	public function registerNotifier(\Closure service, \Closure info);
 
 	/**
 	 * @return array App ID => App Name
@@ -64,10 +64,10 @@ interface IManager extends IApp, INotifier {
 	public function hasNotifiers();
 
 	/**
-	 * @param bool $preparingPushNotification
+	 * @param bool preparingPushNotification
 	 * @since 14.0.0
 	 */
-	public function setPreparingPushNotification($preparingPushNotification);
+	public function setPreparingPushNotification(preparingPushNotification);
 
 	/**
 	 * @return bool

@@ -34,15 +34,15 @@ namespace OCP\LDAP;
 interface IDeletionFlagSupport {
 	/**
 	 * Flag record for deletion.
-	 * @param string $uid user id
+	 * @param string uid user id
 	 * @since 11.0.0
 	 */
-	public function flagRecord($uid);
+	public function flagRecord(uid);
 	
 	/**
 	 * Unflag record for deletion.
-	 * @param string $uid user id
+	 * @param string uid user id
 	 * @since 11.0.0
 	 */
-	public function unflagRecord($uid);
+	public function unflagRecord(uid);
 }

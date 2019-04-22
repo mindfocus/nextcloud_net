@@ -11,9 +11,9 @@ public interface IFactory {
 	/**
 	 * Get a language instance
 	 *
-	 * @param string $app
-	 * @param string|null $lang
-	 * @param string|null $locale
+	 * @param string app
+	 * @param string|null lang
+	 * @param string|null locale
 	 * @return \OCP\IL10N
 	 * @since 8.2.0
 	 */
@@ -22,14 +22,14 @@ public interface IFactory {
 	/**
 	 * Find the best language
 	 *
-	 * @param string|null $app App id or null for core
+	 * @param string|null app App id or null for core
 	 * @return string language If nothing works it returns 'en'
 	 * @since 9.0.0
 	 */
 	string findLanguage(string app = null);
 
 	/**
-	 * @param string|null $lang user language as default locale
+	 * @param string|null lang user language as default locale
 	 * @return string locale If nothing works it returns 'en_US'
 	 * @since 14.0.0
 	 */
@@ -38,8 +38,8 @@ public interface IFactory {
 	/**
 	 * find the matching lang from the locale
 	 *
-	 * @param string $app
-	 * @param string $locale
+	 * @param string app
+	 * @param string locale
 	 * @return null|string
 	 * @since 14.0.1
 	 */
@@ -48,7 +48,7 @@ public interface IFactory {
 	/**
 	 * Find all available languages for an app
 	 *
-	 * @param string|null $app App id or null for core
+	 * @param string|null app App id or null for core
 	 * @return string[] an array of available languages
 	 * @since 9.0.0
 	 */
@@ -61,15 +61,15 @@ public interface IFactory {
 	IList<string> findAvailableLocales();
 
 	/**
-	 * @param string|null $app App id or null for core
-	 * @param string $lang
+	 * @param string|null app App id or null for core
+	 * @param string lang
 	 * @return bool
 	 * @since 9.0.0
 	 */
 	bool languageExists(string app, string lang);
 
 	/**
-	 * @param string $locale
+	 * @param string locale
 	 * @return bool
 	 * @since 14.0.0
 	 */
@@ -78,7 +78,7 @@ public interface IFactory {
 	/**
 	 * Creates a function from the plural string
 	 *
-	 * @param string $string
+	 * @param string string
 	 * @return string Unique function name
 	 * @since 14.0.0
 	 */

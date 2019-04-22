@@ -51,36 +51,36 @@ interface IIndexOptions {
 	 *
 	 * @since 15.0.0
 	 *
-	 * @param string $option
-	 * @param string $default
+	 * @param string option
+	 * @param string default
 	 *
 	 * @return string
 	 */
-	public function getOption(string $option, string $default = ''): string;
+	public function getOption(string option, string default = ''): string;
 
 	/**
 	 * Get the value (as an array) for an option.
 	 *
 	 * @since 15.0.0
 	 *
-	 * @param string $option
-	 * @param array $default
+	 * @param string option
+	 * @param array default
 	 *
 	 * @return array
 	 */
-	public function getOptionArray(string $option, array $default = []): array;
+	public function getOptionArray(string option, array default = []): array;
 
 	/**
 	 * Get the value (as an boolean) for an option.
 	 *
 	 * @since 15.0.0
 	 *
-	 * @param string $option
-	 * @param bool $default
+	 * @param string option
+	 * @param bool default
 	 *
 	 * @return bool
 	 */
-	public function getOptionBool(string $option, bool $default): bool;
+	public function getOptionBool(string option, bool default): bool;
 
 }
 

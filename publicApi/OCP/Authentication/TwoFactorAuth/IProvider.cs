@@ -49,7 +49,7 @@ namespace OCP.Authentication.TwoFactorAuth
      *
      * @since 9.1.0
      *
-     * @param IUser $user
+     * @param IUser user
      * @return Template
      */
     public Template getTemplate(IUser user);
@@ -59,8 +59,8 @@ namespace OCP.Authentication.TwoFactorAuth
      *
      * @since 9.1.0
      *
-     * @param IUser $user
-     * @param string $challenge
+     * @param IUser user
+     * @param string challenge
      * @return bool
      */
     public bool verifyChallenge(IUser user, string challenge);
@@ -70,7 +70,7 @@ namespace OCP.Authentication.TwoFactorAuth
      *
      * @since 9.1.0
      *
-     * @param IUser $user
+     * @param IUser user
      * @return bool
      */
     public bool isTwoFactorAuthEnabledForUser(IUser user);

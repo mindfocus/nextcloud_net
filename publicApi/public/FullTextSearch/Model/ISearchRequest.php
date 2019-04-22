@@ -97,24 +97,24 @@ interface ISearchRequest {
 	 *
 	 * @since 15.0.0
 	 *
-	 * @param string $option
-	 * @param string $default
+	 * @param string option
+	 * @param string default
 	 *
 	 * @return string
 	 */
-	public function getOption(string $option, string $default = ''): string;
+	public function getOption(string option, string default = ''): string;
 
 	/**
 	 * Get the value of an option (as array).
 	 *
 	 * @since 15.0.0
 	 *
-	 * @param string $option
-	 * @param array $default
+	 * @param string option
+	 * @param array default
 	 *
 	 * @return array
 	 */
-	public function getOptionArray(string $option, array $default = []): array;
+	public function getOptionArray(string option, array default = []): array;
 
 
 	/**
@@ -122,22 +122,22 @@ interface ISearchRequest {
 	 *
 	 * @since 15.0.0
 	 *
-	 * @param string $part
+	 * @param string part
 	 *
 	 * @return ISearchRequest
 	 */
-	public function addPart(string $part): ISearchRequest;
+	public function addPart(string part): ISearchRequest;
 
 	/**
 	 * Limit the search to an array of parts of the document.
 	 *
 	 * @since 15.0.0
 	 *
-	 * @param array $parts
+	 * @param array parts
 	 *
 	 * @return ISearchRequest
 	 */
-	public function setParts(array $parts): ISearchRequest;
+	public function setParts(array parts): ISearchRequest;
 
 	/**
 	 * Get the parts the search is limited to.
@@ -154,11 +154,11 @@ interface ISearchRequest {
 	 *
 	 * @since 15.0.0
 	 *
-	 * @param string $tag
+	 * @param string tag
 	 *
 	 * @return ISearchRequest
 	 */
-	public function addMetaTag(string $tag): ISearchRequest;
+	public function addMetaTag(string tag): ISearchRequest;
 
 	/**
 	 * Get the meta tags the search is limited to.
@@ -174,11 +174,11 @@ interface ISearchRequest {
 	 *
 	 * @since 15.0.0
 	 *
-	 * @param array $tags
+	 * @param array tags
 	 *
 	 * @return ISearchRequest
 	 */
-	public function setMetaTags(array $tags): IsearchRequest;
+	public function setMetaTags(array tags): IsearchRequest;
 
 
 	/**
@@ -186,34 +186,34 @@ interface ISearchRequest {
 	 *
 	 * @since 15.0.0
 	 *
-	 * @param string $source
-	 * @param string $tag
+	 * @param string source
+	 * @param string tag
 	 *
 	 * @return ISearchRequest
 	 */
-	public function addSubTag(string $source, string $tag): ISearchRequest;
+	public function addSubTag(string source, string tag): ISearchRequest;
 
 	/**
 	 * Get the sub tags the search is limited to.
 	 *
 	 * @since 15.0.0
 	 *
-	 * @param bool $formatted
+	 * @param bool formatted
 	 *
 	 * @return array
 	 */
-	public function getSubTags(bool $formatted): array;
+	public function getSubTags(bool formatted): array;
 
 	/**
 	 * Limit the search to an array of sub tags.
 	 *
 	 * @since 15.0.0
 	 *
-	 * @param array $tags
+	 * @param array tags
 	 *
 	 * @return ISearchRequest
 	 */
-	public function setSubTags(array $tags): ISearchRequest;
+	public function setSubTags(array tags): ISearchRequest;
 
 
 	/**
@@ -221,11 +221,11 @@ interface ISearchRequest {
 	 *
 	 * @since 15.0.0
 	 *
-	 * @param string $field
+	 * @param string field
 	 *
 	 * @return ISearchRequest
 	 */
-	public function addLimitField(string $field): ISearchRequest;
+	public function addLimitField(string field): ISearchRequest;
 
 	/**
 	 * Get the fields the search is limited to.
@@ -243,11 +243,11 @@ interface ISearchRequest {
 	 *
 	 * @since 15.0.0
 	 *
-	 * @param string $field
+	 * @param string field
 	 *
 	 * @return ISearchRequest
 	 */
-	public function addWildcardField(string $field): ISearchRequest;
+	public function addWildcardField(string field): ISearchRequest;
 
 	/**
 	 * Get the limit to field of the mapping.
@@ -264,11 +264,11 @@ interface ISearchRequest {
 	 *
 	 * @since 15.0.0
 	 *
-	 * @param array $filters
+	 * @param array filters
 	 *
 	 * @return ISearchRequest
 	 */
-	public function addRegexFilters(array $filters): ISearchRequest;
+	public function addRegexFilters(array filters): ISearchRequest;
 
 	/**
 	 * Get the regex filters the search is limit to.
@@ -285,11 +285,11 @@ interface ISearchRequest {
 	 *
 	 * @since 15.0.0
 	 *
-	 * @param array $filter
+	 * @param array filter
 	 *
 	 * @return ISearchRequest
 	 */
-	public function addWildcardFilter(array $filter): ISearchRequest;
+	public function addWildcardFilter(array filter): ISearchRequest;
 
 	/**
 	 * Get the wildcard filters the search is limit to.
@@ -306,11 +306,11 @@ interface ISearchRequest {
 	 *
 	 * @since 15.0.0
 	 *
-	 * @param string $field
+	 * @param string field
 	 *
 	 * @return ISearchRequest
 	 */
-	public function addField(string $field): ISearchRequest;
+	public function addField(string field): ISearchRequest;
 
 	/**
 	 * Get the list of extra field to search into.

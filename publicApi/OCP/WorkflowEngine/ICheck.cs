@@ -11,23 +11,23 @@ namespace OCP.WorkflowEngine
  */
 public interface ICheck {
 	/**
-	 * @param IStorage $storage
-	 * @param string $path
+	 * @param IStorage storage
+	 * @param string path
 	 * @since 9.1
 	 */
 	void setFileInfo(IStorage storage, string path);
 
 	/**
-	 * @param string $operator
-	 * @param string $value
+	 * @param string operator
+	 * @param string value
 	 * @return bool
 	 * @since 9.1
 	 */
 	bool executeCheck(string @operator, string value);
 
 	/**
-	 * @param string $operator
-	 * @param string $value
+	 * @param string operator
+	 * @param string value
 	 * @throws \UnexpectedValueException
 	 * @since 9.1
 	 */

@@ -35,7 +35,7 @@ class NotFoundResponse extends Response {
 	 * @since 8.1.0
 	 */
 	public function __construct() {
-		$this->setStatus(404);
+		this->setStatus(404);
 	}
 
 	/**
@@ -43,7 +43,7 @@ class NotFoundResponse extends Response {
 	 * @since 8.1.0
 	 */
 	public function render() {
-		$template = new Template('core', '404', 'guest');
-		return $template->fetchPage();
+		template = new Template('core', '404', 'guest');
+		return template->fetchPage();
 	}
 }

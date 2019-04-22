@@ -37,13 +37,13 @@ class LinkMenuAction extends SimpleMenuAction {
 	/**
 	 * LinkMenuAction constructor.
 	 *
-	 * @param string $label
-	 * @param string $icon
-	 * @param string $link
+	 * @param string label
+	 * @param string icon
+	 * @param string link
 	 * @since 14.0.0
 	 */
-	public function __construct(string $label, string $icon, string $link) {
-		parent::__construct('directLink-container', $label, $icon, $link);
+	public function __construct(string label, string icon, string link) {
+		parent::__construct('directLink-container', label, icon, link);
 	}
 
 	/**
@@ -53,13 +53,13 @@ class LinkMenuAction extends SimpleMenuAction {
 	public function render(): string {
 		return '<li>' .
 			'<a id="directLink-container">' .
-			'<span class="icon ' . Util::sanitizeHTML($this->getIcon()) . '"></span>' .
-			'<label for="directLink">' . Util::sanitizeHTML($this->getLabel()) . '</label>' .
+			'<span class="icon ' . Util::sanitizeHTML(this->getIcon()) . '"></span>' .
+			'<label for="directLink">' . Util::sanitizeHTML(this->getLabel()) . '</label>' .
 			'</a>' .
 			'</li>' .
 			'<li>' .
 			'<span class="menuitem">' .
-			'<input id="directLink" type="text" readonly="" value="' . Util::sanitizeHTML($this->getLink()) . '">' .
+			'<input id="directLink" type="text" readonly="" value="' . Util::sanitizeHTML(this->getLink()) . '">' .
 			'</span>' .
 			'</li>';
 	}

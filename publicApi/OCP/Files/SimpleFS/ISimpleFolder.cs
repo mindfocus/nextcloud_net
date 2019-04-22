@@ -21,18 +21,18 @@ namespace OCP.Files.SimpleFS
         IList<ISimpleFile> getDirectoryListing();
 
         /**
-         * Check if a file with $name exists
+         * Check if a file with name exists
          *
-         * @param string $name
+         * @param string name
          * @return bool
          * @since 11.0.0
          */
         bool fileExists(string name);
 
         /**
-         * Get the file named $name from the folder
+         * Get the file named name from the folder
          *
-         * @param string $name
+         * @param string name
          * @return ISimpleFile
          * @throws NotFoundException
          * @since 11.0.0
@@ -40,9 +40,9 @@ namespace OCP.Files.SimpleFS
         ISimpleFile getFile(string name);
 
         /**
-         * Creates a new file with $name in the folder
+         * Creates a new file with name in the folder
          *
-         * @param string $name
+         * @param string name
          * @return ISimpleFile
          * @throws NotPermittedException
          * @since 11.0.0

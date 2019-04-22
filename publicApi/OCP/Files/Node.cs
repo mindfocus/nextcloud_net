@@ -15,7 +15,7 @@ namespace OCP.Files
     /**
 	 * Move the file or folder to a new location
 	 *
-	 * @param string $targetPath the absolute target path
+	 * @param string targetPath the absolute target path
 	 * @throws \OCP\Files\NotPermittedException
 	 * @return \OCP\Files\Node
 	 * @since 6.0.0
@@ -32,7 +32,7 @@ namespace OCP.Files
     /**
 	 * Cope the file or folder to a new location
 	 *
-	 * @param string $targetPath the absolute target path
+	 * @param string targetPath the absolute target path
 	 * @return \OCP\Files\Node
 	 * @since 6.0.0
 	 */
@@ -40,9 +40,9 @@ namespace OCP.Files
 
     /**
 	 * Change the modified date of the file or folder
-	 * If $mtime is omitted the current time will be used
+	 * If mtime is omitted the current time will be used
 	 *
-	 * @param int $mtime (optional) modified date as unix timestamp
+	 * @param int mtime (optional) modified date as unix timestamp
 	 * @throws \OCP\Files\NotPermittedException
 	 * @return void
 	 * @since 6.0.0
@@ -108,7 +108,7 @@ namespace OCP.Files
     /**
 	 * Get the size of the file or folder in bytes
 	 *
-	 * @param bool $includeMounts
+	 * @param bool includeMounts
 	 * @return int
 	 * @throws InvalidPathException
 	 * @throws NotFoundException
@@ -217,7 +217,7 @@ namespace OCP.Files
 	 * Note that in most cases you won't need to manually manage the locks for any files you're working with,
 	 * any filesystem operation will automatically acquire the relevant locks for that operation.
 	 *
-	 * @param int $type \OCP\Lock\ILockingProvider::LOCK_SHARED or \OCP\Lock\ILockingProvider::LOCK_EXCLUSIVE
+	 * @param int type \OCP\Lock\ILockingProvider::LOCK_SHARED or \OCP\Lock\ILockingProvider::LOCK_EXCLUSIVE
 	 * @throws \OCP\Lock\LockedException
 	 * @since 9.1.0
 	 */
@@ -233,7 +233,7 @@ namespace OCP.Files
 	 * A locked exception will be thrown when these preconditions are not met.
 	 * Note that this is also the case if no existing lock exists for the file.
 	 *
-	 * @param int $targetType \OCP\Lock\ILockingProvider::LOCK_SHARED or \OCP\Lock\ILockingProvider::LOCK_EXCLUSIVE
+	 * @param int targetType \OCP\Lock\ILockingProvider::LOCK_SHARED or \OCP\Lock\ILockingProvider::LOCK_EXCLUSIVE
 	 * @throws \OCP\Lock\LockedException
 	 * @since 9.1.0
 	 */
@@ -246,7 +246,7 @@ namespace OCP.Files
 	 *
 	 * Note that this method will not give any sort of error when trying to free a lock that doesn't exist.
 	 *
-	 * @param int $type \OCP\Lock\ILockingProvider::LOCK_SHARED or \OCP\Lock\ILockingProvider::LOCK_EXCLUSIVE
+	 * @param int type \OCP\Lock\ILockingProvider::LOCK_SHARED or \OCP\Lock\ILockingProvider::LOCK_EXCLUSIVE
 	 * @throws \OCP\Lock\LockedException
 	 * @since 9.1.0
 	 */

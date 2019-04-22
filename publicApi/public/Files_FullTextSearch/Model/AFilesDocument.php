@@ -41,14 +41,14 @@ use OCP\FullTextSearch\Model\IIndexDocument;
  * This is mostly used by 3rd party apps that want to complete the IIndexDocument
  * with more information about a file before its index:
  *
- *    \OC::$server->getEventDispatcher()->addListener(
+ *    \OC::server->getEventDispatcher()->addListener(
  *        '\OCA\Files_FullTextSearch::onFileIndexing',
- *        function(GenericEvent $e) {
- *            //@var \OCP\Files\Node $file
- *            $file = $e->getArgument('file');
+ *        function(GenericEvent e) {
+ *            //@var \OCP\Files\Node file
+ *            file = e->getArgument('file');
  *
- *            // @var \OCP\Files_FullTextSearch\Model\AFilesDocument $document
- *            $document = $e->getArgument('document');
+ *            // @var \OCP\Files_FullTextSearch\Model\AFilesDocument document
+ *            document = e->getArgument('document');
  *        }
  *    );
  *

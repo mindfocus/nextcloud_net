@@ -17,15 +17,15 @@ namespace OCP.Security
          * length this is done by comparing two hashes against each other and afterwards
          * a comparison of the real string to prevent against the unlikely chance of
          * collisions.
-         * @param string $expected The expected value
-         * @param string $input The input to compare against
+         * @param string expected The expected value
+         * @param string input The input to compare against
          * @return bool True if the two strings are equal, otherwise false.
          * @since 8.0.0
          * @deprecated 9.0.0 Use hash_equals
          */
         public static bool equals(string expected, string input){
             return Equals(expected, input);
-		    //return hash_equals($expected, $input);
+		    //return hash_equals(expected, input);
     }
 }
 

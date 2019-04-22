@@ -13,9 +13,9 @@ namespace OCP.Files.SimpleFS
     public interface ISimpleRoot
     {
         /**
-         * Get the folder with name $name
+         * Get the folder with name name
          *
-         * @param string $name
+         * @param string name
          * @return ISimpleFolder
          * @throws NotFoundException
          * @throws \RuntimeException
@@ -34,9 +34,9 @@ namespace OCP.Files.SimpleFS
 	IList<ISimpleFolder> getDirectoryListing();
 
         /**
-         * Create a new folder named $name
+         * Create a new folder named name
          *
-         * @param string $name
+         * @param string name
          * @return ISimpleFolder
          * @throws NotPermittedException
          * @throws \RuntimeException

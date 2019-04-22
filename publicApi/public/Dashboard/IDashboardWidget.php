@@ -124,9 +124,9 @@ interface IDashboardWidget {
 	 *
 	 * @since 15.0.0
 	 *
-	 * @param IWidgetConfig $settings
+	 * @param IWidgetConfig settings
 	 */
-	public function loadWidget(IWidgetConfig $settings);
+	public function loadWidget(IWidgetConfig settings);
 
 
 	/**
@@ -139,9 +139,9 @@ interface IDashboardWidget {
 	 *
 	 * @since 15.0.0
 	 *
-	 * @param IWidgetRequest $request
+	 * @param IWidgetRequest request
 	 */
-	public function requestWidget(IWidgetRequest $request);
+	public function requestWidget(IWidgetRequest request);
 
 }
 

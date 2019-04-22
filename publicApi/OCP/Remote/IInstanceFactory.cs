@@ -10,7 +10,7 @@ namespace OCP.Remote
     public interface IInstanceFactory
     {
         /**
-         * @param string $url
+         * @param string url
          * @return IInstance
          *
          * @since 13.0.0

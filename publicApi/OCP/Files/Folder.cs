@@ -11,7 +11,7 @@ public interface Folder : Node {
 	/**
 	 * Get the full path of an item in the folder within owncloud's filesystem
 	 *
-	 * @param string $path relative path of an item in the folder
+	 * @param string path relative path of an item in the folder
 	 * @return string
 	 * @throws \OCP\Files\NotPermittedException
 	 * @since 6.0.0
@@ -21,7 +21,7 @@ public interface Folder : Node {
 	/**
 	 * Get the path of an item in the folder relative to the folder
 	 *
-	 * @param string $path absolute path of an item in the folder
+	 * @param string path absolute path of an item in the folder
 	 * @throws \OCP\Files\NotFoundException
 	 * @return string
 	 * @since 6.0.0
@@ -31,7 +31,7 @@ public interface Folder : Node {
 	/**
 	 * check if a node is a (grand-)child of the folder
 	 *
-	 * @param \OCP\Files\Node $node
+	 * @param \OCP\Files\Node node
 	 * @return bool
 	 * @since 6.0.0
 	 */
@@ -47,9 +47,9 @@ public interface Folder : Node {
 	IList<Node> getDirectoryListing();
 
 	/**
-	 * Get the node at $path
+	 * Get the node at path
 	 *
-	 * @param string $path relative path of the file or folder
+	 * @param string path relative path of the file or folder
 	 * @return \OCP\Files\Node
 	 * @throws \OCP\Files\NotFoundException
 	 * @since 6.0.0
@@ -59,7 +59,7 @@ public interface Folder : Node {
 	/**
 	 * Check if a file or folder exists in the folder
 	 *
-	 * @param string $path relative path of the file or folder
+	 * @param string path relative path of the file or folder
 	 * @return bool
 	 * @since 6.0.0
 	 */
@@ -68,7 +68,7 @@ public interface Folder : Node {
 	/**
 	 * Create a new folder
 	 *
-	 * @param string $path relative path of the new folder
+	 * @param string path relative path of the new folder
 	 * @return \OCP\Files\Folder
 	 * @throws \OCP\Files\NotPermittedException
 	 * @since 6.0.0
@@ -78,7 +78,7 @@ public interface Folder : Node {
 	/**
 	 * Create a new file
 	 *
-	 * @param string $path relative path of the new file
+	 * @param string path relative path of the new file
 	 * @return \OCP\Files\File
 	 * @throws \OCP\Files\NotPermittedException
 	 * @since 6.0.0
@@ -86,9 +86,9 @@ public interface Folder : Node {
 	File newFile(string path);
 
 	/**
-	 * search for files with the name matching $query
+	 * search for files with the name matching query
 	 *
-	 * @param string|ISearchQuery $query
+	 * @param string|ISearchQuery query
 	 * @return \OCP\Files\Node[]
 	 * @since 6.0.0
 	 */
@@ -96,9 +96,9 @@ public interface Folder : Node {
 	IList<Node> search(Search.ISearchQuery query);
 	/**
 	 * search for files by mimetype
-	 * $mimetype can either be a full mimetype (image/png) or a wildcard mimetype (image)
+	 * mimetype can either be a full mimetype (image/png) or a wildcard mimetype (image)
 	 *
-	 * @param string $mimetype
+	 * @param string mimetype
 	 * @return \OCP\Files\Node[]
 	 * @since 6.0.0
 	 */
@@ -107,8 +107,8 @@ public interface Folder : Node {
 	/**
 	 * search for files by tag
 	 *
-	 * @param string|int $tag tag name or tag id
-	 * @param string $userId owner of the tags
+	 * @param string|int tag tag name or tag id
+	 * @param string userId owner of the tags
 	 * @return \OCP\Files\Node[]
 	 * @since 8.0.0
 	 */
@@ -120,7 +120,7 @@ public interface Folder : Node {
 	 * This method could return multiple entries. For example once the file/folder
 	 * is shared or mounted (files_external) to the user multiple times.
 	 *
-	 * @param int $id
+	 * @param int id
 	 * @return \OCP\Files\Node[]
 	 * @since 6.0.0
 	 */
@@ -145,7 +145,7 @@ public interface Folder : Node {
 	/**
 	 * Add a suffix to the name in case the file exists
 	 *
-	 * @param string $name
+	 * @param string name
 	 * @return string
 	 * @throws NotPermittedException
 	 * @since 8.1.0
@@ -153,8 +153,8 @@ public interface Folder : Node {
 	string getNonExistingName(string name);
 
 	/**
-	 * @param int $limit
-	 * @param int $offset
+	 * @param int limit
+	 * @param int offset
 	 * @return \OCP\Files\Node[]
 	 * @since 9.1.0
 	 */

@@ -14,7 +14,7 @@ namespace OCP.Contacts.ContactsMenu
     {
 
     /**
-	 * @param string $icon absolute URI to an icon
+	 * @param string icon absolute URI to an icon
 	 * @since 12.0
 	 */
     void setIcon(string icon);
@@ -26,13 +26,13 @@ namespace OCP.Contacts.ContactsMenu
     string getName();
 
     /**
-	 * @param string $name localized action name, e.g. 'Call'
+	 * @param string name localized action name, e.g. 'Call'
 	 * @since 12.0
 	 */
     void setName(string name);
 
     /**
-	 * @param int $priority priorize actions, high order ones are shown on top
+	 * @param int priority priorize actions, high order ones are shown on top
 	 * @since 12.0
 	 */
     void setPriority(int priority);

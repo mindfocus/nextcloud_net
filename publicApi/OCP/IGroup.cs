@@ -37,7 +37,7 @@ namespace OCP
         /**
          * check if a user is in the group
          *
-         * @param \OCP\IUser $user
+         * @param \OCP\IUser user
          * @return bool
          * @since 8.0.0
          */
@@ -46,7 +46,7 @@ namespace OCP
         /**
          * add a user to the group
          *
-         * @param \OCP\IUser $user
+         * @param \OCP\IUser user
          * @since 8.0.0
          */
         bool addUser(IUser user);
@@ -54,7 +54,7 @@ namespace OCP
         /**
          * remove a user from the group
          *
-         * @param \OCP\IUser $user
+         * @param \OCP\IUser user
          * @since 8.0.0
          */
         bool removeUser(IUser user);
@@ -62,9 +62,9 @@ namespace OCP
         /**
          * search for users in the group by userid
          *
-         * @param string $search
-         * @param int $limit
-         * @param int $offset
+         * @param string search
+         * @param int limit
+         * @param int offset
          * @return \OCP\IUser[]
          * @since 8.0.0
          */
@@ -73,7 +73,7 @@ namespace OCP
         /**
          * returns the number of users matching the search string
          *
-         * @param string $search
+         * @param string search
          * @return int|bool
          * @since 8.0.0
          */
@@ -90,9 +90,9 @@ namespace OCP
         /**
          * search for users in the group by displayname
          *
-         * @param string $search
-         * @param int $limit
-         * @param int $offset
+         * @param string search
+         * @param int limit
+         * @param int offset
          * @return \OCP\IUser[]
          * @since 8.0.0
          */

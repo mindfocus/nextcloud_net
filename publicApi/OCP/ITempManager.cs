@@ -15,7 +15,7 @@ namespace OCP
         /**
          * Create a temporary file and return the path
          *
-         * @param string $postFix
+         * @param string postFix
          * @return string
          * @since 8.0.0
          */
@@ -24,7 +24,7 @@ namespace OCP
         /**
          * Create a temporary folder and return the path
          *
-         * @param string $postFix
+         * @param string postFix
          * @return string
          * @since 8.0.0
          */

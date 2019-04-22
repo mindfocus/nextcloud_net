@@ -30,22 +30,22 @@ namespace OCP\Notification;
  */
 interface IApp {
 	/**
-	 * @param INotification $notification
+	 * @param INotification notification
 	 * @throws \InvalidArgumentException When the notification is not valid
 	 * @since 9.0.0
 	 */
-	public function notify(INotification $notification);
+	public function notify(INotification notification);
 
 	/**
-	 * @param INotification $notification
+	 * @param INotification notification
 	 * @since 9.0.0
 	 */
-	public function markProcessed(INotification $notification);
+	public function markProcessed(INotification notification);
 
 	/**
-	 * @param INotification $notification
+	 * @param INotification notification
 	 * @return int
 	 * @since 9.0.0
 	 */
-	public function getCount(INotification $notification);
+	public function getCount(INotification notification);
 }

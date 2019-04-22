@@ -16,7 +16,7 @@ namespace OCP.Calendar.Room
         /**
          * Registers a room backend
          *
-         * @param string $backendClass
+         * @param string backendClass
          * @return void
          * @since 14.0.0
          */
@@ -25,7 +25,7 @@ namespace OCP.Calendar.Room
         /**
          * Unregisters a room backend
          *
-         * @param string $backendClass
+         * @param string backendClass
          * @return void
          * @since 14.0.0
          */
@@ -38,7 +38,7 @@ namespace OCP.Calendar.Room
         IList<IBackend> getBackends();
 
 	/**
-	 * @param string $backendId
+	 * @param string backendId
 	 * @return IBackend|null
 	 * @since 14.0.0
 	 */

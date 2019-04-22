@@ -33,101 +33,101 @@ interface ICloudFederationShare {
 	/**
 	 * set uid of the recipient
 	 *
-	 * @param string $user
+	 * @param string user
 	 *
 	 * @since 14.0.0
 	 */
-	public function setShareWith($user);
+	public function setShareWith(user);
 
 	/**
 	 * set resource name (e.g. file, calendar, contact,...)
 	 *
-	 * @param string $name
+	 * @param string name
 	 *
 	 * @since 14.0.0
 	 */
-	public function setResourceName($name);
+	public function setResourceName(name);
 
 	/**
 	 * set resource type (e.g. file, calendar, contact,...)
 	 *
-	 * @param string $resourceType
+	 * @param string resourceType
 	 *
 	 * @since 14.0.0
 	 */
-	public function setResourceType($resourceType);
+	public function setResourceType(resourceType);
 
 	/**
 	 * set resource description (optional)
 	 *
-	 * @param string $description
+	 * @param string description
 	 *
 	 * @since 14.0.0
 	 */
-	public function setDescription($description);
+	public function setDescription(description);
 
 	/**
 	 * set provider ID (e.g. file ID)
 	 *
-	 * @param string $providerId
+	 * @param string providerId
 	 *
 	 * @since 14.0.0
 	 */
-	public function setProviderId($providerId);
+	public function setProviderId(providerId);
 
 	/**
 	 * set owner UID
 	 *
-	 * @param string $owner
+	 * @param string owner
 	 *
 	 * @since 14.0.0
 	 */
-	public function setOwner($owner);
+	public function setOwner(owner);
 
 	/**
 	 * set owner display name
 	 *
-	 * @param string $ownerDisplayName
+	 * @param string ownerDisplayName
 	 *
 	 * @since 14.0.0
 	 */
-	public function setOwnerDisplayName($ownerDisplayName);
+	public function setOwnerDisplayName(ownerDisplayName);
 
 	/**
 	 * set UID of the user who sends the share
 	 *
-	 * @param string $sharedBy
+	 * @param string sharedBy
 	 *
 	 * @since 14.0.0
 	 */
-	public function setSharedBy($sharedBy);
+	public function setSharedBy(sharedBy);
 
 	/**
 	 * set display name of the user who sends the share
 	 *
-	 * @param $sharedByDisplayName
+	 * @param sharedByDisplayName
 	 *
 	 * @since 14.0.0
 	 */
-	public function setSharedByDisplayName($sharedByDisplayName);
+	public function setSharedByDisplayName(sharedByDisplayName);
 
 	/**
 	 * set protocol specification
 	 *
-	 * @param array $protocol
+	 * @param array protocol
 	 *
 	 * @since 14.0.0
 	 */
-	public function setProtocol(array $protocol);
+	public function setProtocol(array protocol);
 
 	/**
 	 * share type (group or user)
 	 *
-	 * @param string $shareType
+	 * @param string shareType
 	 *
 	 * @since 14.0.0
 	 */
-	public function setShareType($shareType);
+	public function setShareType(shareType);
 
 	/**
 	 * get the whole share, ready to send out

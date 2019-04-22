@@ -14,7 +14,7 @@ namespace OCP.Files.Config
         /**
          * Get all configured mount points for the user
          *
-         * @param \OCP\IUser $user
+         * @param \OCP\IUser user
          * @return \OCP\Files\Mount\IMountPoint[]
          * @since 8.0.0
          */
@@ -23,7 +23,7 @@ namespace OCP.Files.Config
         /**
          * Get the configured home mount for this user
          *
-         * @param \OCP\IUser $user
+         * @param \OCP\IUser user
          * @return \OCP\Files\Mount\IMountPoint
          * @since 9.1.0
          */
@@ -32,7 +32,7 @@ namespace OCP.Files.Config
         /**
          * Add a provider for mount points
          *
-         * @param \OCP\Files\Config\IMountProvider $provider
+         * @param \OCP\Files\Config\IMountProvider provider
          * @since 8.0.0
          */
         void registerProvider(IMountProvider provider);
@@ -40,7 +40,7 @@ namespace OCP.Files.Config
         /**
          * Add a filter for mounts
          *
-         * @param callable $filter (IMountPoint $mountPoint, IUser $user) => boolean
+         * @param callable filter (IMountPoint mountPoint, IUser user) => boolean
          * @since 14.0.0
          */
         void registerMountFilter(Action filter);
@@ -48,7 +48,7 @@ namespace OCP.Files.Config
         /**
          * Add a provider for home mount points
          *
-         * @param \OCP\Files\Config\IHomeMountProvider $provider
+         * @param \OCP\Files\Config\IHomeMountProvider provider
          * @since 9.1.0
          */
         void registerHomeProvider(IHomeMountProvider provider);

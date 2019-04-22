@@ -14,7 +14,7 @@ namespace OCP.Authentication.TwoFactorAuth
     /**
      * Disable this provider for the given user.
      *
-     * @param IUser $user the user to deactivate this provider for
+     * @param IUser user the user to deactivate this provider for
      *
      * @return void
      *

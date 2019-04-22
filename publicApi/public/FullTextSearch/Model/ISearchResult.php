@@ -82,11 +82,11 @@ interface ISearchResult {
 	 *
 	 * @since 15.0.0
 	 *
-	 * @param IIndexDocument $document
+	 * @param IIndexDocument document
 	 *
 	 * @return ISearchResult
 	 */
-	public function addDocument(IIndexDocument $document): ISearchResult;
+	public function addDocument(IIndexDocument document): ISearchResult;
 
 	/**
 	 * Returns all result of the search request, in an array of IIndexDocument.
@@ -102,11 +102,11 @@ interface ISearchResult {
 	 *
 	 * @since 15.0.0
 	 *
-	 * @param IIndexDocument[] $documents
+	 * @param IIndexDocument[] documents
 	 *
 	 * @return ISearchResult
 	 */
-	public function setDocuments(array $documents): ISearchResult;
+	public function setDocuments(array documents): ISearchResult;
 
 
 	/**
@@ -114,24 +114,24 @@ interface ISearchResult {
 	 *
 	 * @since 15.0.0
 	 *
-	 * @param string $category
-	 * @param string $value
-	 * @param int $count
+	 * @param string category
+	 * @param string value
+	 * @param int count
 	 *
 	 * @return ISearchResult
 	 */
-	public function addAggregation(string $category, string $value, int $count): ISearchResult;
+	public function addAggregation(string category, string value, int count): ISearchResult;
 
 	/**
 	 * Get all aggregations.
 	 *
 	 * @since 15.0.0
 	 *
-	 * @param string $category
+	 * @param string category
 	 *
 	 * @return array
 	 */
-	public function getAggregations(string $category): array;
+	public function getAggregations(string category): array;
 
 
 	/**
@@ -139,11 +139,11 @@ interface ISearchResult {
 	 *
 	 * @since 15.0.0
 	 *
-	 * @param string $result
+	 * @param string result
 	 *
 	 * @return ISearchResult
 	 */
-	public function setRawResult(string $result): ISearchResult;
+	public function setRawResult(string result): ISearchResult;
 
 
 	/**
@@ -152,11 +152,11 @@ interface ISearchResult {
 	 *
 	 * @since 15.0.0
 	 *
-	 * @param int $total
+	 * @param int total
 	 *
 	 * @return ISearchResult
 	 */
-	public function setTotal(int $total): ISearchResult;
+	public function setTotal(int total): ISearchResult;
 
 
 	/**
@@ -164,11 +164,11 @@ interface ISearchResult {
 	 *
 	 * @since 15.0.0
 	 *
-	 * @param int $score
+	 * @param int score
 	 *
 	 * @return ISearchResult
 	 */
-	public function setMaxScore(int $score): ISearchResult;
+	public function setMaxScore(int score): ISearchResult;
 
 
 	/**
@@ -176,11 +176,11 @@ interface ISearchResult {
 	 *
 	 * @since 15.0.0
 	 *
-	 * @param int $time
+	 * @param int time
 	 *
 	 * @return ISearchResult
 	 */
-	public function setTime(int $time): ISearchResult;
+	public function setTime(int time): ISearchResult;
 
 
 	/**
@@ -188,11 +188,11 @@ interface ISearchResult {
 	 *
 	 * @since 15.0.0
 	 *
-	 * @param bool $timedOut
+	 * @param bool timedOut
 	 *
 	 * @return ISearchResult
 	 */
-	public function setTimedOut(bool $timedOut): ISearchResult;
+	public function setTimedOut(bool timedOut): ISearchResult;
 
 }
 

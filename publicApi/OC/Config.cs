@@ -15,7 +15,7 @@ namespace OC
 
         const string ENV_PREFIX = "NC_";
 
-        /** @var array Associative array ($key => $value) */
+        /** @var array Associative array (key => value) */
         protected IDictionary<string,string> cache = new Dictionary<string,string>();
         /** @var string */
         protected string configDir;
@@ -25,8 +25,8 @@ namespace OC
 	protected string configFileName;
 
         /**
-         * @param string $configDir Path to the config dir, needs to end with '/'
-         * @param string $fileName (Optional) Name of the config file. Defaults to config.php
+         * @param string configDir Path to the config dir, needs to end with '/'
+         * @param string fileName (Optional) Name of the config file. Defaults to config.php
          */
         Config(string configDir, string fileName = "config.php")
         {
@@ -46,7 +46,7 @@ namespace OC
         IList<string> getKeys()
         {
             return this.cache.Keys.ToList();
-            //return array_keys($this->cache);
+            //return array_keys(this->cache);
         }
 
         /**
@@ -54,11 +54,11 @@ namespace OC
          *
          * gets its value from an `NC_` prefixed environment variable
          * if it doesn't exist from config.php
-         * if this doesn't exist either, it will return the given `$default`
+         * if this doesn't exist either, it will return the given `default`
          *
-         * @param string $key key
-         * @param mixed $default = null default value
-         * @return mixed the value or $default
+         * @param string key key
+         * @param mixed default = null default value
+         * @return mixed the value or default
          */
         string getValue(string key, string @default = null)
         {
@@ -78,7 +78,7 @@ namespace OC
         /**
          * Sets and deletes values and writes the config.php
          *
-         * @param array $configs Associative array with `key => value` pairs
+         * @param array configs Associative array with `key => value` pairs
          *                       If value is null, the config key will be deleted
          */
         void setValues(IDictionary<string,string> configs)
@@ -104,8 +104,8 @@ namespace OC
         /**
          * Sets the value and writes it to config.php if required
          *
-         * @param string $key key
-         * @param mixed $value value
+         * @param string key key
+         * @param mixed value value
          */
         public void setValue(string key, string value)
         {
@@ -118,8 +118,8 @@ namespace OC
         /**
          * This function sets the value
          *
-         * @param string $key key
-         * @param mixed $value value
+         * @param string key key
+         * @param mixed value value
          * @return bool True if the file needs to be updated, false otherwise
          */
         protected bool set(string key, string value)
@@ -135,7 +135,7 @@ namespace OC
 
         /**
          * Removes a key from the config and removes it from config.php if required
-         * @param string $key
+         * @param string key
          */
         public void deleteKey(string key)
         {
@@ -148,7 +148,7 @@ namespace OC
         /**
          * This function removes a key from the config
          *
-         * @param string $key
+         * @param string key
          * @return bool True if the file needs to be updated, false otherwise
          */
         protected bool delete(string key)
@@ -166,43 +166,43 @@ namespace OC
         private void readData()
         {
 		// Default config should always get loaded
-		var configFiles = array($this->configFilePath);
+		var configFiles = array(this->configFilePath);
 
 		// Add all files in the config dir ending with the same file name
-		$extra = glob($this->configDir.'*.'.$this->configFileName);
-            if (is_array($extra))
+		extra = glob(this->configDir.'*.'.this->configFileName);
+            if (is_array(extra))
             {
-                natsort($extra);
-			$configFiles = array_merge($configFiles, $extra);
+                natsort(extra);
+			configFiles = array_merge(configFiles, extra);
             }
 
             // Include file and merge config
-            foreach ($configFiles as $file) {
-			$fileExistsAndIsReadable = file_exists($file) && is_readable($file);
-			$filePointer = $fileExistsAndIsReadable? fopen($file, 'r') : false;
-                if ($file === $this->configFilePath &&
-    				$filePointer === false) {
+            foreach (configFiles as file) {
+			fileExistsAndIsReadable = file_exists(file) && is_readable(file);
+			filePointer = fileExistsAndIsReadable? fopen(file, 'r') : false;
+                if (file === this->configFilePath &&
+    				filePointer === false) {
                     // Opening the main config might not be possible, e.g. if the wrong
                     // permissions are set (likely on a new installation)
                     continue;
                 }
 
                 // Try to acquire a file lock
-                if (!flock($filePointer, LOCK_SH))
+                if (!flock(filePointer, LOCK_SH))
                 {
-                    throw new \Exception(sprintf('Could not acquire a shared lock on the config file %s', $file));
+                    throw new \Exception(sprintf('Could not acquire a shared lock on the config file %s', file));
                 }
 
-                unset($CONFIG);
-                include $file;
-                if (isset($CONFIG) && is_array($CONFIG))
+                unset(CONFIG);
+                include file;
+                if (isset(CONFIG) && is_array(CONFIG))
                 {
-				$this->cache = array_merge($this->cache, $CONFIG);
+				this->cache = array_merge(this->cache, CONFIG);
                 }
 
                 // Close the file pointer and release the lock
-                flock($filePointer, LOCK_UN);
-                fclose($filePointer);
+                flock(filePointer, LOCK_UN);
+                fclose(filePointer);
             }
         }
 
@@ -217,44 +217,44 @@ namespace OC
         private void writeData()
         {
 		// Create a php file ...
-		$content = "<?php\n";
-		$content.= '$CONFIG = ';
-		$content.= var_export($this->cache, true);
-		$content.= ";\n";
+		content = "<?php\n";
+		content.= 'CONFIG = ';
+		content.= var_export(this->cache, true);
+		content.= ";\n";
 
-            touch($this->configFilePath);
-		$filePointer = fopen($this->configFilePath, 'r+');
+            touch(this->configFilePath);
+		filePointer = fopen(this->configFilePath, 'r+');
 
             // Prevent others not to read the config
-            chmod($this->configFilePath, 0640);
+            chmod(this->configFilePath, 0640);
 
             // File does not exist, this can happen when doing a fresh install
-            if (!is_resource($filePointer))
+            if (!is_resource(filePointer))
             {
 			// TODO fix this via DI once it is very clear that this doesn't cause side effects due to initialization order
 			// currently this breaks app routes but also could have other side effects especially during setup and exception handling
-			$url = \OC::$server->getURLGenerator()->linkToDocs('admin-dir_permissions');
+			url = \OC::server->getURLGenerator()->linkToDocs('admin-dir_permissions');
                 throw new HintException(
                     "Can't write into config directory!",
-                    'This can usually be fixed by giving the webserver write access to the config directory. See '. $url);
+                    'This can usually be fixed by giving the webserver write access to the config directory. See '. url);
             }
 
             // Try to acquire a file lock
-            if (!flock($filePointer, LOCK_EX))
+            if (!flock(filePointer, LOCK_EX))
             {
-                throw new \Exception(sprintf('Could not acquire an exclusive lock on the config file %s', $this->configFilePath));
+                throw new \Exception(sprintf('Could not acquire an exclusive lock on the config file %s', this->configFilePath));
             }
 
             // Write the config and release the lock
-            ftruncate($filePointer, 0);
-            fwrite($filePointer, $content);
-            fflush($filePointer);
-            flock($filePointer, LOCK_UN);
-            fclose($filePointer);
+            ftruncate(filePointer, 0);
+            fwrite(filePointer, content);
+            fflush(filePointer);
+            flock(filePointer, LOCK_UN);
+            fclose(filePointer);
 
             if (function_exists('opcache_invalidate'))
             {
-                @opcache_invalidate($this->configFilePath, true);
+                @opcache_invalidate(this->configFilePath, true);
             }
         }
     }

@@ -15,7 +15,7 @@ public interface IFile {
 	/**
 	 * get list of users with access to the file
 	 *
-	 * @param string $path to the file
+	 * @param string path to the file
 	 * @return array
 	 * @since 8.1.0
 	 */

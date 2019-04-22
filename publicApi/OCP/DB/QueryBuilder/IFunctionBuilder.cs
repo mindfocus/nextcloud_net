@@ -14,7 +14,7 @@ namespace OCP.DB.QueryBuilder
         /**
          * Calculates the MD5 hash of a given input
          *
-         * @param mixed $input The input to be hashed
+         * @param mixed input The input to be hashed
          *
          * @return IQueryFunction
          * @since 12.0.0
@@ -24,8 +24,8 @@ namespace OCP.DB.QueryBuilder
         /**
          * Combines two input strings
          *
-         * @param mixed $x The first input string
-         * @param mixed $y The seccond input string
+         * @param mixed x The first input string
+         * @param mixed y The seccond input string
          *
          * @return IQueryFunction
          * @since 12.0.0
@@ -35,9 +35,9 @@ namespace OCP.DB.QueryBuilder
         /**
          * Takes a substring from the input string
          *
-         * @param mixed $input The input string
-         * @param mixed $start The start of the substring, note that counting starts at 1
-         * @param mixed $length The length of the substring
+         * @param mixed input The input string
+         * @param mixed start The start of the substring, note that counting starts at 1
+         * @param mixed length The length of the substring
          *
          * @return IQueryFunction
          * @since 12.0.0
@@ -47,7 +47,7 @@ namespace OCP.DB.QueryBuilder
         /**
          * Takes the sum of all rows in a column
          *
-         * @param mixed $field the column to sum
+         * @param mixed field the column to sum
          *
          * @return IQueryFunction
          * @since 12.0.0
@@ -57,31 +57,31 @@ namespace OCP.DB.QueryBuilder
         /**
          * Transforms a string field or value to lower case
          *
-         * @param mixed $field
+         * @param mixed field
          * @return IQueryFunction
          * @since 14.0.0
          */
         IQueryFunction lower(object field);
 
         /**
-         * @param mixed $x The first input field or number
-         * @param mixed $y The second input field or number
+         * @param mixed x The first input field or number
+         * @param mixed y The second input field or number
          * @return IQueryFunction
          * @since 14.0.0
          */
         IQueryFunction add(object x, object y);
 
         /**
-         * @param mixed $x The first input field or number
-         * @param mixed $y The second input field or number
+         * @param mixed x The first input field or number
+         * @param mixed y The second input field or number
          * @return IQueryFunction
          * @since 14.0.0
          */
         IQueryFunction subtract(object x, object y);
 
         /**
-         * @param mixed $count The input to be counted
-         * @param string $alias Alias for the counter
+         * @param mixed count The input to be counted
+         * @param string alias Alias for the counter
          *
          * @return IQueryFunction
          * @since 14.0.0

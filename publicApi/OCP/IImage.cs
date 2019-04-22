@@ -51,7 +51,7 @@ namespace OCP
         /**
  * Outputs the image.
  *
- * @param string $mimeType
+ * @param string mimeType
  * @return bool
  * @since 8.1.0
  */
@@ -60,8 +60,8 @@ namespace OCP
         /**
          * Saves the image.
          *
-         * @param string $filePath
-         * @param string $mimeType
+         * @param string filePath
+         * @param string mimeType
          * @return bool
          * @since 8.1.0
          */
@@ -106,15 +106,15 @@ namespace OCP
         /**
          * Resizes the image preserving ratio.
          *
-         * @param integer $maxSize The maximum size of either the width or height.
+         * @param integer maxSize The maximum size of either the width or height.
          * @return bool
          * @since 8.1.0
          */
         bool resize(int maxSize);
 
         /**
-         * @param int $width
-         * @param int $height
+         * @param int width
+         * @param int height
          * @return bool
          * @since 8.1.0
          */
@@ -123,19 +123,19 @@ namespace OCP
 	/**
 	 * Crops the image to the middle square. If the image is already square it just returns.
 	 *
-	 * @param int $size maximum size for the result (optional)
+	 * @param int size maximum size for the result (optional)
 	 * @return bool for success or failure
 	 * @since 8.1.0
 	 */
 	bool centerCrop(int size = 0);
 
         /**
-         * Crops the image from point $x$y with dimension $wx$h.
+         * Crops the image from point xy with dimension wxh.
          *
-         * @param int $x Horizontal position
-         * @param int $y Vertical position
-         * @param int $w Width
-         * @param int $h Height
+         * @param int x Horizontal position
+         * @param int y Vertical position
+         * @param int w Width
+         * @param int h Height
          * @return bool for success or failure
          * @since 8.1.0
          */
@@ -144,8 +144,8 @@ namespace OCP
 	/**
 	 * Resizes the image to fit within a boundary while preserving ratio.
 	 *
-	 * @param integer $maxWidth
-	 * @param integer $maxHeight
+	 * @param integer maxWidth
+	 * @param integer maxHeight
 	 * @return bool
 	 * @since 8.1.0
 	 */
@@ -154,8 +154,8 @@ namespace OCP
         /**
          * Shrinks the image to fit within a boundary while preserving ratio.
          *
-         * @param integer $maxWidth
-         * @param integer $maxHeight
+         * @param integer maxWidth
+         * @param integer maxHeight
          * @return bool
          * @since 8.1.0
          */

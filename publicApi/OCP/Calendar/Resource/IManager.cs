@@ -16,7 +16,7 @@ namespace OCP.Calendar.Resource
         /**
          * Registers a resource backend
          *
-         * @param string $backendClass
+         * @param string backendClass
          * @return void
          * @since 14.0.0
          */
@@ -25,7 +25,7 @@ namespace OCP.Calendar.Resource
         /**
          * Unregisters a resource backend
          *
-         * @param string $backendClass
+         * @param string backendClass
          * @return void
          * @since 14.0.0
          */
@@ -38,7 +38,7 @@ namespace OCP.Calendar.Resource
         IList<IBackend> getBackends();
 
 	/**
-	 * @param string $backendId
+	 * @param string backendId
 	 * @return IBackend|null
 	 * @since 14.0.0
 	 */

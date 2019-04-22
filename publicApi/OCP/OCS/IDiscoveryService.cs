@@ -23,9 +23,9 @@ namespace OCP.OCS
          *
          * @since 12.0.0
          *
-         * @param string $remote
-         * @param string $service the service you want to discover
-         * @param bool $skipCache We won't check if the data is in the cache. This is useful if a background job is updating the status - Added in 14.0.0
+         * @param string remote
+         * @param string service the service you want to discover
+         * @param bool skipCache We won't check if the data is in the cache. This is useful if a background job is updating the status - Added in 14.0.0
          * @return array
          */
         PhpArray discover(string remote, string service, bool skipCache = false);

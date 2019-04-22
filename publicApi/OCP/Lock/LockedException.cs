@@ -22,19 +22,19 @@ namespace OCP.Lock
 	/**
 	 * LockedException constructor.
 	 *
-	 * @param string $path locked path
-	 * @param \Exception|null $previous previous exception for cascading
-	 * @param string $existingLock since 14.0.0
+	 * @param string path locked path
+	 * @param \Exception|null previous previous exception for cascading
+	 * @param string existingLock since 14.0.0
 	 * @since 8.1.0
 	 */
 	LockedException(string path, Exception previous = null, string? existingLock = null)
     {
-            var message = $"{path} is locked";
+            var message = "{path} is locked";
         if (existingLock != null) {
-			message += $", existing lock on file: {existingLock}";
+			message += ", existing lock on file: {existingLock}";
         }
-            //parent::__construct($message, 0, $previous);
-            //$this->path = $path;
+            //parent::__construct(message, 0, previous);
+            //this->path = path;
             this.path = path;
     }
 

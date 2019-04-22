@@ -31,32 +31,32 @@ namespace OCP\Migration;
 interface IOutput {
 
 	/**
-	 * @param string $message
+	 * @param string message
 	 * @since 9.1.0
 	 */
-	public function info($message);
+	public function info(message);
 
 	/**
-	 * @param string $message
+	 * @param string message
 	 * @since 9.1.0
 	 */
-	public function warning($message);
+	public function warning(message);
 
 	/**
-	 * @param int $max
+	 * @param int max
 	 * @since 9.1.0
 	 */
-	public function startProgress($max = 0);
+	public function startProgress(max = 0);
 
 	/**
-	 * @param int $step
-	 * @param string $description
+	 * @param int step
+	 * @param string description
 	 * @since 9.1.0
 	 */
-	public function advance($step = 1, $description = '');
+	public function advance(step = 1, description = '');
 
 	/**
-	 * @param int $max
+	 * @param int max
 	 * @since 9.1.0
 	 */
 	public function finishProgress();

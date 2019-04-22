@@ -20,13 +20,13 @@ public interface ITagManager {
 	 * Create a new \OCP\ITags instance and load tags from db for the current user.
 	 *
 	 * @see \OCP\ITags
-	 * @param string $type The type identifier e.g. 'contact' or 'event'.
-	 * @param array $defaultTags An array of default tags to be used if none are stored.
-	 * @param boolean $includeShared Whether to include tags for items shared with this user by others.
-	 * @param string $userId user for which to retrieve the tags, defaults to the currently
+	 * @param string type The type identifier e.g. 'contact' or 'event'.
+	 * @param array defaultTags An array of default tags to be used if none are stored.
+	 * @param boolean includeShared Whether to include tags for items shared with this user by others.
+	 * @param string userId user for which to retrieve the tags, defaults to the currently
 	 * logged in user
 	 * @return \OCP\ITags
-	 * @since 6.0.0 - parameter $includeShared and $userId were added in 8.0.0
+	 * @since 6.0.0 - parameter includeShared and userId were added in 8.0.0
 	*/
 	ITags load(string type, IList<ITags> defaultTags, bool includeShared = false, string userId = null);
 }

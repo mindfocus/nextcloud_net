@@ -34,41 +34,41 @@ use Symfony\Component\EventDispatcher\Event;
 class SabrePluginEvent extends Event {
 
 	/** @var int */
-	protected $statusCode;
+	protected statusCode;
 
 	/** @var string */
-	protected $message;
+	protected message;
 
 	/** @var Server */
-	protected $server;
+	protected server;
 
 	/**
 	 * @since 8.2.0
 	 */
-	public function __construct($server = null) {
-		$this->message = '';
-		$this->statusCode = Http::STATUS_OK;
-		$this->server = $server;
+	public function __construct(server = null) {
+		this->message = '';
+		this->statusCode = Http::STATUS_OK;
+		this->server = server;
 	}
 
 	/**
-	 * @param int $statusCode
+	 * @param int statusCode
 	 * @return self
 	 * @since 8.2.0
 	 */
-	public function setStatusCode($statusCode) {
-		$this->statusCode = (int) $statusCode;
-		return $this;
+	public function setStatusCode(statusCode) {
+		this->statusCode = (int) statusCode;
+		return this;
 	}
 
 	/**
-	 * @param string $message
+	 * @param string message
 	 * @return self
 	 * @since 8.2.0
 	 */
-	public function setMessage($message) {
-		$this->message = (string) $message;
-		return $this;
+	public function setMessage(message) {
+		this->message = (string) message;
+		return this;
 	}
 
 	/**
@@ -76,7 +76,7 @@ class SabrePluginEvent extends Event {
 	 * @since 8.2.0
 	 */
 	public function getStatusCode() {
-		return $this->statusCode;
+		return this->statusCode;
 	}
 
 	/**
@@ -84,7 +84,7 @@ class SabrePluginEvent extends Event {
 	 * @since 8.2.0
 	 */
 	public function getMessage() {
-		return $this->message;
+		return this->message;
 	}
 
 	/**
@@ -92,6 +92,6 @@ class SabrePluginEvent extends Event {
 	 * @since 9.0.0
 	 */
 	public function getServer() {
-		return $this->server;
+		return this->server;
 	}
 }

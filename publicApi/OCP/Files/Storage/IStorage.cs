@@ -14,12 +14,12 @@ namespace OCP.Files.Storage
     public interface IStorage
     {
         /**
-         * $parameters is a free form array with the configuration options needed to construct the storage
+         * parameters is a free form array with the configuration options needed to construct the storage
          *
-         * @param array $parameters
+         * @param array parameters
          * @since 9.0.0
          */
-        //public function __construct($parameters);
+        //public function __construct(parameters);
 
         /**
          * Get the identifier for the storage,
@@ -35,7 +35,7 @@ namespace OCP.Files.Storage
          * see http://php.net/manual/en/function.mkdir.php
          * implementations need to implement a recursive mkdir
          *
-         * @param string $path
+         * @param string path
          * @return bool
          * @since 9.0.0
          */
@@ -44,7 +44,7 @@ namespace OCP.Files.Storage
         /**
          * see http://php.net/manual/en/function.rmdir.php
          *
-         * @param string $path
+         * @param string path
          * @return bool
          * @since 9.0.0
          */
@@ -53,7 +53,7 @@ namespace OCP.Files.Storage
         /**
          * see http://php.net/manual/en/function.opendir.php
          *
-         * @param string $path
+         * @param string path
          * @return resource|false
          * @since 9.0.0
          */
@@ -62,7 +62,7 @@ namespace OCP.Files.Storage
         /**
          * see http://php.net/manual/en/function.is-dir.php
          *
-         * @param string $path
+         * @param string path
          * @return bool
          * @since 9.0.0
          */
@@ -71,7 +71,7 @@ namespace OCP.Files.Storage
         /**
          * see http://php.net/manual/en/function.is-file.php
          *
-         * @param string $path
+         * @param string path
          * @return bool
          * @since 9.0.0
          */
@@ -81,7 +81,7 @@ namespace OCP.Files.Storage
          * see http://php.net/manual/en/function.stat.php
          * only the following keys are required in the result: size and mtime
          *
-         * @param string $path
+         * @param string path
          * @return array|false
          * @since 9.0.0
          */
@@ -90,7 +90,7 @@ namespace OCP.Files.Storage
         /**
          * see http://php.net/manual/en/function.filetype.php
          *
-         * @param string $path
+         * @param string path
          * @return string|false
          * @since 9.0.0
          */
@@ -100,16 +100,16 @@ namespace OCP.Files.Storage
          * see http://php.net/manual/en/function.filesize.php
          * The result for filesize when called on a folder is required to be 0
          *
-         * @param string $path
+         * @param string path
          * @return int|false
          * @since 9.0.0
          */
         int filesize(string path);
 
         /**
-         * check if a file can be created in $path
+         * check if a file can be created in path
          *
-         * @param string $path
+         * @param string path
          * @return bool
          * @since 9.0.0
          */
@@ -118,7 +118,7 @@ namespace OCP.Files.Storage
         /**
          * check if a file can be read
          *
-         * @param string $path
+         * @param string path
          * @return bool
          * @since 9.0.0
          */
@@ -127,7 +127,7 @@ namespace OCP.Files.Storage
         /**
          * check if a file can be written to
          *
-         * @param string $path
+         * @param string path
          * @return bool
          * @since 9.0.0
          */
@@ -136,7 +136,7 @@ namespace OCP.Files.Storage
         /**
          * check if a file can be deleted
          *
-         * @param string $path
+         * @param string path
          * @return bool
          * @since 9.0.0
          */
@@ -145,7 +145,7 @@ namespace OCP.Files.Storage
         /**
          * check if a file can be shared
          *
-         * @param string $path
+         * @param string path
          * @return bool
          * @since 9.0.0
          */
@@ -155,7 +155,7 @@ namespace OCP.Files.Storage
          * get the full permissions of a path.
          * Should return a combination of the PERMISSION_ constants defined in lib/public/constants.php
          *
-         * @param string $path
+         * @param string path
          * @return int
          * @since 9.0.0
          */
@@ -164,7 +164,7 @@ namespace OCP.Files.Storage
         /**
          * see http://php.net/manual/en/function.file_exists.php
          *
-         * @param string $path
+         * @param string path
          * @return bool
          * @since 9.0.0
          */
@@ -173,7 +173,7 @@ namespace OCP.Files.Storage
         /**
          * see http://php.net/manual/en/function.filemtime.php
          *
-         * @param string $path
+         * @param string path
          * @return int|false
          * @since 9.0.0
          */
@@ -182,7 +182,7 @@ namespace OCP.Files.Storage
         /**
          * see http://php.net/manual/en/function.file_get_contents.php
          *
-         * @param string $path
+         * @param string path
          * @return string|false
          * @since 9.0.0
          */
@@ -191,8 +191,8 @@ namespace OCP.Files.Storage
         /**
          * see http://php.net/manual/en/function.file_put_contents.php
          *
-         * @param string $path
-         * @param string $data
+         * @param string path
+         * @param string data
          * @return bool
          * @since 9.0.0
          */
@@ -201,7 +201,7 @@ namespace OCP.Files.Storage
         /**
          * see http://php.net/manual/en/function.unlink.php
          *
-         * @param string $path
+         * @param string path
          * @return bool
          * @since 9.0.0
          */
@@ -210,8 +210,8 @@ namespace OCP.Files.Storage
         /**
          * see http://php.net/manual/en/function.rename.php
          *
-         * @param string $path1
-         * @param string $path2
+         * @param string path1
+         * @param string path2
          * @return bool
          * @since 9.0.0
          */
@@ -220,8 +220,8 @@ namespace OCP.Files.Storage
         /**
          * see http://php.net/manual/en/function.copy.php
          *
-         * @param string $path1
-         * @param string $path2
+         * @param string path1
+         * @param string path2
          * @return bool
          * @since 9.0.0
          */
@@ -230,8 +230,8 @@ namespace OCP.Files.Storage
         /**
          * see http://php.net/manual/en/function.fopen.php
          *
-         * @param string $path
-         * @param string $mode
+         * @param string path
+         * @param string mode
          * @return resource|false
          * @since 9.0.0
          */
@@ -241,7 +241,7 @@ namespace OCP.Files.Storage
          * get the mimetype for a file or folder
          * The mimetype for a folder is required to be "httpd/unix-directory"
          *
-         * @param string $path
+         * @param string path
          * @return string|false
          * @since 9.0.0
          */
@@ -250,9 +250,9 @@ namespace OCP.Files.Storage
         /**
          * see http://php.net/manual/en/function.hash-file.php
          *
-         * @param string $type
-         * @param string $path
-         * @param bool $raw
+         * @param string type
+         * @param string path
+         * @param bool raw
          * @return string|false
          * @since 9.0.0
          */
@@ -261,7 +261,7 @@ namespace OCP.Files.Storage
         /**
          * see http://php.net/manual/en/function.free_space.php
          *
-         * @param string $path
+         * @param string path
          * @return int|false
          * @since 9.0.0
          */
@@ -271,8 +271,8 @@ namespace OCP.Files.Storage
          * see http://php.net/manual/en/function.touch.php
          * If the backend does not support the operation, false should be returned
          *
-         * @param string $path
-         * @param int $mtime
+         * @param string path
+         * @param int mtime
          * @return bool
          * @since 9.0.0
          */
@@ -282,17 +282,17 @@ namespace OCP.Files.Storage
          * get the path to a local version of the file.
          * The local version of the file can be temporary and doesn't have to be persistent across requests
          *
-         * @param string $path
+         * @param string path
          * @return string|false
          * @since 9.0.0
          */
         string? getLocalFile(string path);
 
         /**
-         * check if a file or folder has been updated since $time
+         * check if a file or folder has been updated since time
          *
-         * @param string $path
-         * @param int $time
+         * @param string path
+         * @param int time
          * @return bool
          * @since 9.0.0
          *
@@ -304,7 +304,7 @@ namespace OCP.Files.Storage
         /**
          * get the ETag for a file or folder
          *
-         * @param string $path
+         * @param string path
          * @return string|false
          * @since 9.0.0
          */
@@ -323,9 +323,9 @@ namespace OCP.Files.Storage
         bool isLocal();
 
         /**
-         * Check if the storage is an instance of $class or is a wrapper for a storage that is an instance of $class
+         * Check if the storage is an instance of class or is a wrapper for a storage that is an instance of class
          *
-         * @param string $class
+         * @param string class
          * @return bool
          * @since 9.0.0
          */
@@ -336,15 +336,15 @@ namespace OCP.Files.Storage
 	 *
 	 * For now the returned array can hold the parameter url - in future more attributes might follow.
 	 *
-	 * @param string $path
+	 * @param string path
 	 * @return array|false
 	 * @since 9.0.0
 	 */
 	IList<string> getDirectDownload(string path);
 
         /**
-         * @param string $path the path of the target folder
-         * @param string $fileName the name of the file itself
+         * @param string path the path of the target folder
+         * @param string fileName the name of the file itself
          * @return void
          * @throws InvalidPathException
          * @since 9.0.0
@@ -352,18 +352,18 @@ namespace OCP.Files.Storage
         void verifyPath(string path, string fileName);
 
         /**
-         * @param IStorage $sourceStorage
-         * @param string $sourceInternalPath
-         * @param string $targetInternalPath
+         * @param IStorage sourceStorage
+         * @param string sourceInternalPath
+         * @param string targetInternalPath
          * @return bool
          * @since 9.0.0
          */
         bool copyFromStorage(IStorage sourceStorage, string sourceInternalPath, string targetInternalPath);
 
         /**
-         * @param IStorage $sourceStorage
-         * @param string $sourceInternalPath
-         * @param string $targetInternalPath
+         * @param IStorage sourceStorage
+         * @param string sourceInternalPath
+         * @param string targetInternalPath
          * @return bool
          * @since 9.0.0
          */
@@ -385,12 +385,12 @@ namespace OCP.Files.Storage
 
         /**
          * @since 9.0.0
-         * @param bool $isAvailable
+         * @param bool isAvailable
          */
         void setAvailability(bool isAvailable);
 
         /**
-         * @param string $path path for which to retrieve the owner
+         * @param string path path for which to retrieve the owner
          * @since 9.0.0
          */
         string getOwner(string path);

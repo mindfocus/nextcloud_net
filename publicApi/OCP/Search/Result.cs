@@ -45,9 +45,9 @@ namespace OCP.Search
 
 	/**
 	 * Create a new search result
-	 * @param string $id unique identifier from application: '[app_name]/[item_identifier_in_app]'
-	 * @param string $name displayed text of result
-	 * @param string $link URL to the result within its app
+	 * @param string id unique identifier from application: '[app_name]/[item_identifier_in_app]'
+	 * @param string name displayed text of result
+	 * @param string link URL to the result within its app
 	 * @since 7.0.0
 	 */
 	public Result(string id = null, string name = null, string link = null)

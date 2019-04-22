@@ -12,8 +12,8 @@ namespace OCP
      *
      * Examples:
      *
-     * $request->post['myvar']; // Only look for POST variables
-     * $request->myvar; or $request->{'myvar'}; or $request->{$myvar}
+     * request->post['myvar']; // Only look for POST variables
+     * request->myvar; or request->{'myvar'}; or request->{myvar}
      * Looks in the combined GET, POST and urlParams array.
      *
      * If you access e.g. ->post but the current HTTP request method
@@ -26,8 +26,8 @@ namespace OCP
      *   or application/x-www-form-urlencoded (most cases) it will act like ->get
      *   and ->post and return an array. Otherwise the raw data will be returned.
      *
-     * @property-read string[] $server
-     * @property-read string[] $urlParams
+     * @property-read string[] server
+     * @property-read string[] urlParams
      * @since 6.0.0
      */
     public interface IRequest
@@ -35,40 +35,40 @@ namespace OCP
         /**
          * @since 9.1.0
          */
-        //const USER_AGENT_CLIENT_ANDROID = '/^Mozilla\/5\.0 \(Android\) (ownCloud|Nextcloud)\-android.*$/';
+        //const USER_AGENT_CLIENT_ANDROID = '/^Mozilla\/5\.0 \(Android\) (ownCloud|Nextcloud)\-android.*/';
 
         /**
          * @since 13.0.0
          */
-        //const USER_AGENT_TALK_ANDROID = '/^Mozilla\/5\.0 \(Android\) Nextcloud\-Talk v.*$/';
+        //const USER_AGENT_TALK_ANDROID = '/^Mozilla\/5\.0 \(Android\) Nextcloud\-Talk v.*/';
 
         /**
          * @since 9.1.0
          */
-        //const USER_AGENT_CLIENT_DESKTOP = '/^Mozilla\/5\.0 \([A-Za-z ]+\) (mirall|csyncoC)\/.*$/';
+        //const USER_AGENT_CLIENT_DESKTOP = '/^Mozilla\/5\.0 \([A-Za-z ]+\) (mirall|csyncoC)\/.*/';
 
         /**
          * @since 9.1.0
          */
-        //const USER_AGENT_CLIENT_IOS = '/^Mozilla\/5\.0 \(iOS\) (ownCloud|Nextcloud)\-iOS.*$/';
+        //const USER_AGENT_CLIENT_IOS = '/^Mozilla\/5\.0 \(iOS\) (ownCloud|Nextcloud)\-iOS.*/';
 
         /**
          * @since 13.0.0
          */
-        //const USER_AGENT_TALK_IOS = '/^Mozilla\/5\.0 \(iOS\) Nextcloud\-Talk v.*$/';
+        //const USER_AGENT_TALK_IOS = '/^Mozilla\/5\.0 \(iOS\) Nextcloud\-Talk v.*/';
 
         /**
          * @since 13.0.1
          */
-        //const USER_AGENT_OUTLOOK_ADDON = '/^Mozilla\/5\.0 \([A-Za-z ]+\) Nextcloud\-Outlook v.*$/';
+        //const USER_AGENT_OUTLOOK_ADDON = '/^Mozilla\/5\.0 \([A-Za-z ]+\) Nextcloud\-Outlook v.*/';
 
         /**
          * @since 13.0.1
          */
-        //const USER_AGENT_THUNDERBIRD_ADDON = '/^Mozilla\/5\.0 \([A-Za-z ]+\) Nextcloud\-Thunderbird v.*$/';
+        //const USER_AGENT_THUNDERBIRD_ADDON = '/^Mozilla\/5\.0 \([A-Za-z ]+\) Nextcloud\-Thunderbird v.*/';
 
         /**
-         * @param string $name
+         * @param string name
          *
          * @return string
          * @since 6.0.0
@@ -79,13 +79,13 @@ namespace OCP
 	 * Lets you access post and get parameters by the index
 	 * In case of json requests the encoded json body is accessed
 	 *
-	 * @param string $key the key which you want to access in the URL Parameter
-	 *                     placeholder, $_POST or $_GET array.
+	 * @param string key the key which you want to access in the URL Parameter
+	 *                     placeholder, _POST or _GET array.
 	 *                     The priority how they're returned is the following:
 	 *                     1. URL parameters
 	 *                     2. POST parameters
 	 *                     3. GET parameters
-	 * @param mixed $default If the key is not found, this value will be returned
+	 * @param mixed default If the key is not found, this value will be returned
 	 * @return mixed the content of the array
 	 * @since 6.0.0
 	 */
@@ -111,10 +111,10 @@ namespace OCP
 	string getMethod();
 
 	/**
-	 * Shortcut for accessing an uploaded file through the $_FILES array
+	 * Shortcut for accessing an uploaded file through the _FILES array
 	 *
-	 * @param string $key the key that will be taken from the $_FILES array
-	 * @return array the file in the $_FILES element
+	 * @param string key the key that will be taken from the _FILES array
+	 * @return array the file in the _FILES element
 	 * @since 6.0.0
 	 */
 	IList<string> getUploadedFile(string key);
@@ -123,8 +123,8 @@ namespace OCP
         /**
          * Shortcut for getting env variables
          *
-         * @param string $key the key that will be taken from the $_ENV array
-         * @return array the value in the $_ENV element
+         * @param string key the key that will be taken from the _ENV array
+         * @return array the value in the _ENV element
          * @since 6.0.0
          */
         IList<string> getEnv(string key);
@@ -133,8 +133,8 @@ namespace OCP
         /**
          * Shortcut for getting cookie variables
          *
-         * @param string $key the key that will be taken from the $_COOKIE array
-         * @return string|null the value in the $_COOKIE element
+         * @param string key the key that will be taken from the _COOKIE array
+         * @return string|null the value in the _COOKIE element
          * @since 6.0.0
          */
         string? getCookie(string key);
@@ -179,7 +179,7 @@ namespace OCP
 	 * Returns the remote address, if the connection came from a trusted proxy
 	 * and `forwarded_for_headers` has been configured then the IP address
 	 * specified in this header will be returned instead.
-	 * Do always use this instead of $_SERVER['REMOTE_ADDR']
+	 * Do always use this instead of _SERVER['REMOTE_ADDR']
 	 *
 	 * @return string IP address
 	 * @since 8.1.0
@@ -242,7 +242,7 @@ namespace OCP
 	/**
 	 * Checks whether the user agent matches a given regex
 	 *
-	 * @param array $agent array of agent names
+	 * @param array agent array of agent names
 	 * @return bool true if at least one of the given agent matches, false otherwise
 	 * @since 8.1.0
 	 */

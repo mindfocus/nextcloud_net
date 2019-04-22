@@ -32,5 +32,5 @@ interface IRemoveFromGroupBackend {
 	/**
 	 * @since 14.0.0
 	 */
-	public function removeFromGroup(string $uid, string $gid);
+	public function removeFromGroup(string uid, string gid);
 }

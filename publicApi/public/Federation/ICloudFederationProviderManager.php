@@ -35,28 +35,28 @@ interface ICloudFederationProviderManager {
 	/**
 	 * Registers an callback function which must return an cloud federation provider
 	 *
-	 * @param string $resourceType which resource type does the provider handles
-	 * @param string $displayName user facing name of the federated share provider
-	 * @param callable $callback
+	 * @param string resourceType which resource type does the provider handles
+	 * @param string displayName user facing name of the federated share provider
+	 * @param callable callback
 	 * @throws Exceptions\ProviderAlreadyExistsException
 	 *
 	 * @since 14.0.0
 	 */
-	public function addCloudFederationProvider($resourceType, $displayName, callable $callback);
+	public function addCloudFederationProvider(resourceType, displayName, callable callback);
 
 	/**
 	 * remove cloud federation provider
 	 *
-	 * @param string $resourceType
+	 * @param string resourceType
 	 *
 	 * @since 14.0.0
 	 */
-	public function removeCloudFederationProvider($resourceType);
+	public function removeCloudFederationProvider(resourceType);
 
 	/**
 	 * get a list of all cloudFederationProviders
 	 *
-	 * @return array [resourceType => ['resourceType' => $resourceType, 'displayName' => $displayName, 'callback' => callback]]
+	 * @return array [resourceType => ['resourceType' => resourceType, 'displayName' => displayName, 'callback' => callback]]
 	 *
 	 * @since 14.0.0
 	 */
@@ -65,34 +65,34 @@ interface ICloudFederationProviderManager {
 	/**
 	 * get a specific cloud federation provider
 	 *
-	 * @param string $resourceType
+	 * @param string resourceType
 	 * @return ICloudFederationProvider
 	 * @throws Exceptions\ProviderDoesNotExistsException
 	 *
 	 * @since 14.0.0
 	 */
-	public function getCloudFederationProvider($resourceType);
+	public function getCloudFederationProvider(resourceType);
 
 	/**
 	 * send federated share
 	 *
-	 * @param ICloudFederationShare $share
+	 * @param ICloudFederationShare share
 	 * @return mixed
 	 *
 	 * @since 14.0.0
 	 */
-	public function sendShare(ICloudFederationShare $share);
+	public function sendShare(ICloudFederationShare share);
 
 	/**
 	 * send notification about existing share
 	 *
-	 * @param string $url
-	 * @param ICloudFederationNotification $notification
+	 * @param string url
+	 * @param ICloudFederationNotification notification
 	 * @return mixed
 	 *
 	 * @since 14.0.0
 	 */
-	public function sendNotification($url, ICloudFederationNotification $notification);
+	public function sendNotification(url, ICloudFederationNotification notification);
 
 	/**
 	 * check if the new cloud federation API is ready to be used

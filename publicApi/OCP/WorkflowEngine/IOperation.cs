@@ -17,9 +17,9 @@ namespace OCP.WorkflowEngine
  */
 public interface IOperation {
 	/**
-	 * @param string $name
-	 * @param array[] $checks
-	 * @param string $operation
+	 * @param string name
+	 * @param array[] checks
+	 * @param string operation
 	 * @throws \UnexpectedValueException
 	 * @since 9.1
 	 */

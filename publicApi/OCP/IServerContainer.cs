@@ -89,9 +89,9 @@ namespace OCP
     /**
 	 * Returns a view to ownCloud's files folder
 	 *
-	 * @param string $userId user ID
+	 * @param string userId user ID
 	 * @return \OCP\Files\Folder
-	 * @since 6.0.0 - parameter $userId was added in 8.0.0
+	 * @since 6.0.0 - parameter userId was added in 8.0.0
 	 * @see getUserFolder in \OCP\Files\IRootFolder
 	 */
     Files.Folder getUserFolder(string userId = null);
@@ -193,10 +193,10 @@ namespace OCP
 
     /**
 	 * get an L10N instance
-	 * @param string $app appid
-	 * @param string $lang
+	 * @param string app appid
+	 * @param string lang
 	 * @return \OCP\IL10N
-	 * @since 6.0.0 - parameter $lang was added in 8.0.0
+	 * @since 6.0.0 - parameter lang was added in 8.0.0
 	 */
     IL10N getL10N(string app, string lang = null);
 
@@ -318,8 +318,8 @@ namespace OCP
     /**
 	 * Get the certificate manager for the user
 	 *
-	 * @param string $userId (optional) if not specified the current loggedin user is used, use null to get the system certificate manager
-	 * @return \OCP\ICertificateManager | null if $userId is null and no user is logged in
+	 * @param string userId (optional) if not specified the current loggedin user is used, use null to get the system certificate manager
+	 * @return \OCP\ICertificateManager | null if userId is null and no user is logged in
 	 * @since 8.0.0
 	 */
     ICertificateManager getCertificateManager(string userId = null);

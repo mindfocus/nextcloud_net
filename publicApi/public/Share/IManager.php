@@ -43,34 +43,34 @@ interface IManager {
 	/**
 	 * Create a Share
 	 *
-	 * @param IShare $share
+	 * @param IShare share
 	 * @return IShare The share object
 	 * @throws \Exception
 	 * @since 9.0.0
 	 */
-	public function createShare(IShare $share);
+	public function createShare(IShare share);
 
 	/**
 	 * Update a share.
 	 * The target of the share can't be changed this way: use moveShare
 	 * The share can't be removed this way (permission 0): use deleteShare
 	 *
-	 * @param IShare $share
+	 * @param IShare share
 	 * @return IShare The share object
 	 * @throws \InvalidArgumentException
 	 * @since 9.0.0
 	 */
-	public function updateShare(IShare $share);
+	public function updateShare(IShare share);
 
 	/**
 	 * Delete a share
 	 *
-	 * @param IShare $share
+	 * @param IShare share
 	 * @throws ShareNotFound
 	 * @throws \InvalidArgumentException
 	 * @since 9.0.0
 	 */
-	public function deleteShare(IShare $share);
+	public function deleteShare(IShare share);
 
 	/**
 	 * Unshare a file as the recipient.
@@ -78,90 +78,90 @@ interface IManager {
 	 * the users in a groups deletes that share. But the provider should
 	 * handle this.
 	 *
-	 * @param IShare $share
-	 * @param string $recipientId
+	 * @param IShare share
+	 * @param string recipientId
 	 * @since 9.0.0
 	 */
-	public function deleteFromSelf(IShare $share, $recipientId);
+	public function deleteFromSelf(IShare share, recipientId);
 
 	/**
 	 * Restore the share when it has been deleted
 	 * Certain share types can be restored when they have been deleted
 	 * but the provider should properly handle this\
 	 *
-	 * @param IShare $share The share to restore
-	 * @param string $recipientId The user to restore the share for
+	 * @param IShare share The share to restore
+	 * @param string recipientId The user to restore the share for
 	 * @return IShare The restored share object
 	 * @throws GenericShareException In case restoring the share failed
 	 *
 	 * @since 14.0.0
 	 */
-	public function restoreShare(IShare $share, string $recipientId): IShare;
+	public function restoreShare(IShare share, string recipientId): IShare;
 
 	/**
 	 * Move the share as a recipient of the share.
 	 * This is updating the share target. So where the recipient has the share mounted.
 	 *
-	 * @param IShare $share
-	 * @param string $recipientId
+	 * @param IShare share
+	 * @param string recipientId
 	 * @return IShare
-	 * @throws \InvalidArgumentException If $share is a link share or the $recipient does not match
+	 * @throws \InvalidArgumentException If share is a link share or the recipient does not match
 	 * @since 9.0.0
 	 */
-	public function moveShare(IShare $share, $recipientId);
+	public function moveShare(IShare share, recipientId);
 
 	/**
 	 * Get all shares shared by (initiated) by the provided user in a folder.
 	 *
-	 * @param string $userId
-	 * @param Folder $node
-	 * @param bool $reshares
-	 * @return IShare[][] [$fileId => IShare[], ...]
+	 * @param string userId
+	 * @param Folder node
+	 * @param bool reshares
+	 * @return IShare[][] [fileId => IShare[], ...]
 	 * @since 11.0.0
 	 */
-	public function getSharesInFolder($userId, Folder $node, $reshares = false);
+	public function getSharesInFolder(userId, Folder node, reshares = false);
 
 	/**
 	 * Get shares shared by (initiated) by the provided user.
 	 *
-	 * @param string $userId
-	 * @param int $shareType
-	 * @param Node|null $path
-	 * @param bool $reshares
-	 * @param int $limit The maximum number of returned results, -1 for all results
-	 * @param int $offset
+	 * @param string userId
+	 * @param int shareType
+	 * @param Node|null path
+	 * @param bool reshares
+	 * @param int limit The maximum number of returned results, -1 for all results
+	 * @param int offset
 	 * @return IShare[]
 	 * @since 9.0.0
 	 */
-	public function getSharesBy($userId, $shareType, $path = null, $reshares = false, $limit = 50, $offset = 0);
+	public function getSharesBy(userId, shareType, path = null, reshares = false, limit = 50, offset = 0);
 
 	/**
-	 * Get shares shared with $user.
-	 * Filter by $node if provided
+	 * Get shares shared with user.
+	 * Filter by node if provided
 	 *
-	 * @param string $userId
-	 * @param int $shareType
-	 * @param Node|null $node
-	 * @param int $limit The maximum number of shares returned, -1 for all
-	 * @param int $offset
+	 * @param string userId
+	 * @param int shareType
+	 * @param Node|null node
+	 * @param int limit The maximum number of shares returned, -1 for all
+	 * @param int offset
 	 * @return IShare[]
 	 * @since 9.0.0
 	 */
-	public function getSharedWith($userId, $shareType, $node = null, $limit = 50, $offset = 0);
+	public function getSharedWith(userId, shareType, node = null, limit = 50, offset = 0);
 
 	/**
-	 * Get deleted shares shared with $user.
-	 * Filter by $node if provided
+	 * Get deleted shares shared with user.
+	 * Filter by node if provided
 	 *
-	 * @param string $userId
-	 * @param int $shareType
-	 * @param Node|null $node
-	 * @param int $limit The maximum number of shares returned, -1 for all
-	 * @param int $offset
+	 * @param string userId
+	 * @param int shareType
+	 * @param Node|null node
+	 * @param int limit The maximum number of shares returned, -1 for all
+	 * @param int offset
 	 * @return IShare[]
 	 * @since 14.0.0
 	 */
-	public function getDeletedSharedWith($userId, $shareType, $node = null, $limit = 50, $offset = 0);
+	public function getDeletedSharedWith(userId, shareType, node = null, limit = 50, offset = 0);
 
 	/**
 	 * Retrieve a share by the share id.
@@ -169,33 +169,33 @@ interface IManager {
 	 * This makes sure that if a user has moved/deleted a group share this
 	 * is reflected.
 	 *
-	 * @param string $id
-	 * @param string|null $recipient userID of the recipient
+	 * @param string id
+	 * @param string|null recipient userID of the recipient
 	 * @return IShare
 	 * @throws ShareNotFound
 	 * @since 9.0.0
 	 */
-	public function getShareById($id, $recipient = null);
+	public function getShareById(id, recipient = null);
 
 	/**
 	 * Get the share by token possible with password
 	 *
-	 * @param string $token
+	 * @param string token
 	 * @return IShare
 	 * @throws ShareNotFound
 	 * @since 9.0.0
 	 */
-	public function getShareByToken($token);
+	public function getShareByToken(token);
 
 	/**
 	 * Verify the password of a public share
 	 *
-	 * @param IShare $share
-	 * @param string $password
+	 * @param IShare share
+	 * @param string password
 	 * @return bool
 	 * @since 9.0.0
 	 */
-	public function checkPassword(IShare $share, $password);
+	public function checkPassword(IShare share, password);
 
 	/**
 	 * The user with UID is deleted.
@@ -203,29 +203,29 @@ interface IManager {
 	 * as shares owned by this user.
 	 * Shares only initiated by this user are fine.
 	 *
-	 * @param string $uid
+	 * @param string uid
 	 * @since 9.1.0
 	 */
-	public function userDeleted($uid);
+	public function userDeleted(uid);
 
 	/**
-	 * The group with $gid is deleted
+	 * The group with gid is deleted
 	 * We need to clear up all shares to this group
 	 *
-	 * @param string $gid
+	 * @param string gid
 	 * @since 9.1.0
 	 */
-	public function groupDeleted($gid);
+	public function groupDeleted(gid);
 
 	/**
-	 * The user $uid is deleted from the group $gid
+	 * The user uid is deleted from the group gid
 	 * All user specific group shares have to be removed
 	 *
-	 * @param string $uid
-	 * @param string $gid
+	 * @param string uid
+	 * @param string gid
 	 * @since 9.1.0
 	 */
-	public function userDeletedFromGroup($uid, $gid);
+	public function userDeletedFromGroup(uid, gid);
 
 	/**
 	 * Get access list to a path. This means
@@ -241,7 +241,7 @@ interface IManager {
 	 * folder2 is shared with group2 (user4 is a member of group2)
 	 * folder1 is shared with user2 (renamed to "folder (1)") and user2@server2
 	 *
-	 * Then the access list to '/folder1/folder2/fileA' with $currentAccess is:
+	 * Then the access list to '/folder1/folder2/fileA' with currentAccess is:
 	 * [
 	 *  users  => [
 	 *      'user1' => ['node_id' => 42, 'node_path' => '/fileA'],
@@ -256,7 +256,7 @@ interface IManager {
 	 *  mail => bool
 	 * ]
 	 *
-	 * The access list to '/folder1/folder2/fileA' **without** $currentAccess is:
+	 * The access list to '/folder1/folder2/fileA' **without** currentAccess is:
 	 * [
 	 *  users  => ['user1', 'user2', 'user4'],
 	 *  remote => bool,
@@ -266,13 +266,13 @@ interface IManager {
 	 *
 	 * This is required for encryption/activity
 	 *
-	 * @param \OCP\Files\Node $path
-	 * @param bool $recursive Should we check all parent folders as well
-	 * @param bool $currentAccess Should the user have currently access to the file
+	 * @param \OCP\Files\Node path
+	 * @param bool recursive Should we check all parent folders as well
+	 * @param bool currentAccess Should the user have currently access to the file
 	 * @return array
 	 * @since 12
 	 */
-	public function getAccessList(\OCP\Files\Node $path, $recursive = true, $currentAccess = false);
+	public function getAccessList(\OCP\Files\Node path, recursive = true, currentAccess = false);
 
 	/**
 	 * Instantiates a new share object. This is to be passed to
@@ -356,11 +356,11 @@ interface IManager {
 	/**
 	 * Check if sharing is disabled for the given user
 	 *
-	 * @param string $userId
+	 * @param string userId
 	 * @return bool
 	 * @since 9.0.0
 	 */
-	public function sharingDisabledForUser($userId);
+	public function sharingDisabledForUser(userId);
 
 	/**
 	 * Check if outgoing server2server shares are allowed
@@ -379,10 +379,10 @@ interface IManager {
 
 	/**
 	 * Check if a given share provider exists
-	 * @param int $shareType
+	 * @param int shareType
 	 * @return bool
 	 * @since 11.0.0
 	 */
-	public function shareProviderExists($shareType);
+	public function shareProviderExists(shareType);
 
 }

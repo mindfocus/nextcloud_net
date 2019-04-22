@@ -22,21 +22,21 @@ namespace OCP.Files
         /**
          * StorageNotAvailableException constructor.
          *
-         * @param string $message
-         * @param int $code
-         * @param \Exception|null $previous
+         * @param string message
+         * @param int code
+         * @param \Exception|null previous
          * @since 6.0.0
          */
         StorageNotAvailableException(string message = "", int code = STATUS_ERROR, Exception previous = null)
         {
-		    var l = \OC::$server->getL10N('core');
-            parent::__construct($message, $l->t('Storage is temporarily not available'), $code, $previous);
+		    var l = \OC::server->getL10N('core');
+            parent::__construct(message, l->t('Storage is temporarily not available'), code, previous);
         }
 
         /**
          * Get the name for a status code
          *
-         * @param int $code
+         * @param int code
          * @return string
          * @since 9.0.0
          */

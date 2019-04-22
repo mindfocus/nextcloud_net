@@ -58,7 +58,7 @@ namespace OCP.Files.SimpleFS
         /**
          * Overwrite the file
          *
-         * @param string|resource $data
+         * @param string|resource data
          * @throws NotPermittedException
          * @since 11.0.0
          */

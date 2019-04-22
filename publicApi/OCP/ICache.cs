@@ -11,7 +11,7 @@ public interface ICache {
 
 	/**
 	 * Get a value from the user cache
-	 * @param string $key
+	 * @param string key
 	 * @return mixed
 	 * @since 6.0.0
 	 */
@@ -19,9 +19,9 @@ public interface ICache {
 
 	/**
 	 * Set a value in the user cache
-	 * @param string $key
-	 * @param mixed $value
-	 * @param int $ttl Time To Live in seconds. Defaults to 60*60*24
+	 * @param string key
+	 * @param mixed value
+	 * @param int ttl Time To Live in seconds. Defaults to 60*60*24
 	 * @return bool
 	 * @since 6.0.0
 	 */
@@ -29,7 +29,7 @@ public interface ICache {
 
 	/**
 	 * Check if a value is set in the user cache
-	 * @param string $key
+	 * @param string key
 	 * @return bool
 	 * @since 6.0.0
 	 * @deprecated 9.1.0 Directly read from GET to prevent race conditions
@@ -38,7 +38,7 @@ public interface ICache {
 
 	/**
 	 * Remove an item from the user cache
-	 * @param string $key
+	 * @param string key
 	 * @return bool
 	 * @since 6.0.0
 	 */
@@ -46,7 +46,7 @@ public interface ICache {
 
 	/**
 	 * Clear the user cache of all entries starting with a prefix
-	 * @param string $prefix (optional)
+	 * @param string prefix (optional)
 	 * @return bool
 	 * @since 6.0.0
 	 */

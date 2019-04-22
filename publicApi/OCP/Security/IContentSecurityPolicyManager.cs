@@ -19,14 +19,14 @@ namespace OCP.Security
          * Note that the adjustment is only applied to applications that use AppFramework
          * controllers.
          *
-         * To use this from your `app.php` use `\OC::$server->getContentSecurityPolicyManager()->addDefaultPolicy($policy)`,
-         * $policy has to be of type `\OCP\AppFramework\Http\ContentSecurityPolicy`.
+         * To use this from your `app.php` use `\OC::server->getContentSecurityPolicyManager()->addDefaultPolicy(policy)`,
+         * policy has to be of type `\OCP\AppFramework\Http\ContentSecurityPolicy`.
          *
          * WARNING: Using this API incorrectly may make the instance more insecure.
          * Do think twice before adding whitelisting resources. Please do also note
          * that it is not possible to use the `disallowXYZ` functions.
          *
-         * @param EmptyContentSecurityPolicy $policy
+         * @param EmptyContentSecurityPolicy policy
          * @since 9.0.0
          */
         void addDefaultPolicy(EmptyContentSecurityPolicy policy);

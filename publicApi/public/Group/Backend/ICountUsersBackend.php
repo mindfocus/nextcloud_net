@@ -32,5 +32,5 @@ interface ICountUsersBackend {
 	/**
 	 * @since 14.0.0
 	 */
-	public function countUsersInGroup(string $gid, string $search = ''): int;
+	public function countUsersInGroup(string gid, string search = ''): int;
 }

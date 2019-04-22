@@ -13,7 +13,7 @@ namespace OCP.DB.QueryBuilder
         /**
          * Adds multiple parts to composite expression.
          *
-         * @param array $parts
+         * @param array parts
          *
          * @return ICompositeExpression
          * @since 8.2.0
@@ -23,7 +23,7 @@ namespace OCP.DB.QueryBuilder
         /**
          * Adds an expression to composite expression.
          *
-         * @param mixed $part
+         * @param mixed part
          *
          * @return ICompositeExpression
          * @since 8.2.0

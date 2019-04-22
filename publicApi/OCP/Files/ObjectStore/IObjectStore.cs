@@ -19,7 +19,7 @@ public interface IObjectStore {
 	string getStorageId();
 
 	/**
-	 * @param string $urn the unified resource name used to identify the object
+	 * @param string urn the unified resource name used to identify the object
 	 * @return resource stream with the read data
 	 * @throws \Exception when something goes wrong, message will be logged
 	 * @throws NotFoundException if file does not exist
@@ -28,15 +28,15 @@ public interface IObjectStore {
 	int readObject(string urn);
 
 	/**
-	 * @param string $urn the unified resource name used to identify the object
-	 * @param resource $stream stream with the data to write
+	 * @param string urn the unified resource name used to identify the object
+	 * @param resource stream stream with the data to write
 	 * @throws \Exception when something goes wrong, message will be logged
 	 * @since 7.0.0
 	 */
 	void writeObject(string urn, int stream);
 
 	/**
-	 * @param string $urn the unified resource name used to identify the object
+	 * @param string urn the unified resource name used to identify the object
 	 * @return void
 	 * @throws \Exception when something goes wrong, message will be logged
 	 * @since 7.0.0
@@ -46,7 +46,7 @@ public interface IObjectStore {
 	/**
 	 * Check if an object exists in the object store
 	 *
-	 * @param string $urn
+	 * @param string urn
 	 * @return bool
 	 * @since 16.0.0
 	 */

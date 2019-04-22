@@ -15,9 +15,9 @@ namespace OCP
         /**
          * Get a distributed memory cache instance
          *
-         * All entries added trough the cache instance will be namespaced by $prefix to prevent collisions between apps
+         * All entries added trough the cache instance will be namespaced by prefix to prevent collisions between apps
          *
-         * @param string $prefix
+         * @param string prefix
          * @return ICache
          * @since 7.0.0
          * @deprecated 13.0.0 Use either createLocking, createDistributed or createLocal
@@ -43,7 +43,7 @@ namespace OCP
 	/**
 	 * create a cache instance for storing locks
 	 *
-	 * @param string $prefix
+	 * @param string prefix
 	 * @return IMemcache
 	 * @since 13.0.0
 	 */
@@ -52,7 +52,7 @@ namespace OCP
 	/**
 	 * create a distributed cache instance
 	 *
-	 * @param string $prefix
+	 * @param string prefix
 	 * @return ICache
 	 * @since 13.0.0
 	 */
@@ -61,7 +61,7 @@ namespace OCP
 	/**
 	 * create a local cache instance
 	 *
-	 * @param string $prefix
+	 * @param string prefix
 	 * @return ICache
 	 * @since 13.0.0
 	 */

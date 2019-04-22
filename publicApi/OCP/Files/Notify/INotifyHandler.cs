@@ -15,11 +15,11 @@ public interface INotifyHandler {
 	 * Start listening for update notifications
 	 *
 	 * The provided callback will be called for every incoming notification with the following parameters
-	 *  - IChange|IRenameChange $change
+	 *  - IChange|IRenameChange change
 	 *
 	 * Note that this call is blocking and will not exit on it's own, to stop listening for notifications return `false` from the callback
 	 *
-	 * @param callable $callback
+	 * @param callable callback
 	 *
 	 * @since 12.0.0
 	 */

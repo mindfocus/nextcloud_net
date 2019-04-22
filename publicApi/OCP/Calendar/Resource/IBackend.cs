@@ -34,7 +34,7 @@ namespace OCP.Calendar.Resource
 	/**
 	 * get a resource by it's id
 	 *
-	 * @param string $id
+	 * @param string id
 	 * @throws BackendTemporarilyUnavailableException
 	 * @return IResource|null
 	 * @since 14.0.0

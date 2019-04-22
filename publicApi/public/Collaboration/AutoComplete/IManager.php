@@ -31,16 +31,16 @@ namespace OCP\Collaboration\AutoComplete;
  */
 interface IManager {
 	/**
-	 * @param string $className – class name of the ISorter implementation
+	 * @param string className – class name of the ISorter implementation
 	 * @since 13.0.0
 	 */
-	public function registerSorter($className);
+	public function registerSorter(className);
 
 	/**
-	 * @param array $sorters	list of sorter IDs, seperated by "|"
-	 * @param array $sortArray	array representation of OCP\Collaboration\Collaborators\ISearchResult
-	 * @param array $context	context info of the search, keys: itemType, itemId
+	 * @param array sorters	list of sorter IDs, seperated by "|"
+	 * @param array sortArray	array representation of OCP\Collaboration\Collaborators\ISearchResult
+	 * @param array context	context info of the search, keys: itemType, itemId
 	 * @since 13.0.0
 	 */
-	public function runSorters(array $sorters, array &$sortArray, array $context);
+	public function runSorters(array sorters, array &sortArray, array context);
 }

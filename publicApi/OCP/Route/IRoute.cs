@@ -23,7 +23,7 @@ namespace OCP.Route
         /**
          * Specify the method when this route is to be used
          *
-         * @param string $method HTTP method (uppercase)
+         * @param string method HTTP method (uppercase)
          * @return \OCP\Route\IRoute
          * @since 7.0.0
          */
@@ -33,7 +33,7 @@ namespace OCP.Route
          * The action to execute when this route matches, includes a file like
          * it is called directly
          *
-         * @param string $file
+         * @param string file
          * @return void
          * @since 7.0.0
          */
@@ -63,12 +63,12 @@ namespace OCP.Route
         /**
          * The action to execute when this route matches
          *
-         * @param string|callable $class the class or a callable
-         * @param string $function the function to use with the class
+         * @param string|callable class the class or a callable
+         * @param string function the function to use with the class
          * @return \OCP\Route\IRoute
          *
-         * This function is called with $class set to a callable or
-         * to the class with $function
+         * This function is called with class set to a callable or
+         * to the class with function
          * @since 7.0.0
          */
         void action(string classp, string function = null);
@@ -76,7 +76,7 @@ namespace OCP.Route
 	/**
 	 * Defaults to use for this route
 	 *
-	 * @param array $defaults The defaults
+	 * @param array defaults The defaults
 	 * @return \OCP\Route\IRoute
 	 * @since 7.0.0
 	 */
@@ -85,7 +85,7 @@ namespace OCP.Route
         /**
          * Requirements for this route
          *
-         * @param array $requirements The requirements
+         * @param array requirements The requirements
          * @return \OCP\Route\IRoute
          * @since 7.0.0
          */

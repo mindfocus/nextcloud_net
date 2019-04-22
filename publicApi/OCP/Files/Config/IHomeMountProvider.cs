@@ -14,8 +14,8 @@ namespace OCP.Files.Config
         /**
          * Get all mountpoints applicable for the user
          *
-         * @param \OCP\IUser $user
-         * @param \OCP\Files\Storage\IStorageFactory $loader
+         * @param \OCP\IUser user
+         * @param \OCP\Files\Storage\IStorageFactory loader
          * @return \OCP\Files\Mount\IMountPoint|null
          * @since 9.1.0
          */

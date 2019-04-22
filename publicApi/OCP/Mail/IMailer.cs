@@ -11,14 +11,14 @@ namespace OCP.Mail
      *
      * Example usage:
      *
-     * 	$mailer = \OC::$server->getMailer();
-     * 	$message = $mailer->createMessage();
-     * 	$message->setSubject('Your Subject');
-     * 	$message->setFrom(['cloud@domain.org' => 'Nextcloud Notifier']);
-     * 	$message->setTo(['recipient@domain.org' => 'Recipient']);
-     * 	$message->setPlainBody('The message text');
-     * 	$message->setHtmlBody('The <strong>message</strong> text');
-     * 	$mailer->send($message);
+     * 	mailer = \OC::server->getMailer();
+     * 	message = mailer->createMessage();
+     * 	message->setSubject('Your Subject');
+     * 	message->setFrom(['cloud@domain.org' => 'Nextcloud Notifier']);
+     * 	message->setTo(['recipient@domain.org' => 'Recipient']);
+     * 	message->setPlainBody('The message text');
+     * 	message->setHtmlBody('The <strong>message</strong> text');
+     * 	mailer->send(message);
      *
      * This message can then be passed to send() of \OC\Mail\Mailer
      *
@@ -36,17 +36,17 @@ namespace OCP.Mail
         IMessage createMessage();
 
         /**
-         * @param string|null $data
-         * @param string|null $filename
-         * @param string|null $contentType
+         * @param string|null data
+         * @param string|null filename
+         * @param string|null contentType
          * @return IAttachment
          * @since 13.0.0
          */
         IAttachment createAttachment(string data = null, string filename = null, string contentType = null);
 
         /**
-         * @param string $path
-         * @param string|null $contentType
+         * @param string path
+         * @param string|null contentType
          * @return IAttachment
          * @since 13.0.0
          */
@@ -55,8 +55,8 @@ namespace OCP.Mail
         /**
          * Creates a new email template object
          *
-         * @param string $emailId
-         * @param array $data
+         * @param string emailId
+         * @param array data
          * @return IEMailTemplate
          * @since 12.0.0 Parameters added in 12.0.3
          */
@@ -66,7 +66,7 @@ namespace OCP.Mail
          * Send the specified message. Also sets the from address to the value defined in config.php
          * if no-one has been passed.
          *
-         * @param IMessage $message Message to send
+         * @param IMessage message Message to send
          * @return string[] Array with failed recipients. Be aware that this depends on the used mail backend and
          * therefore should be considered
          * @throws \Exception In case it was not possible to send the message. (for example if an invalid mail address
@@ -78,7 +78,7 @@ namespace OCP.Mail
         /**
          * Checks if an e-mail address is valid
          *
-         * @param string $email Email address to be validated
+         * @param string email Email address to be validated
          * @return bool True if the mail address is valid, false otherwise
          * @since 8.1.0
          */

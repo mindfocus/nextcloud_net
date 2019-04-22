@@ -56,27 +56,27 @@ interface IFullTextSearchManager {
 	 *
 	 * @since 15.0.0
 	 *
-	 * @param IProviderService $providerService
+	 * @param IProviderService providerService
 	 */
-	public function registerProviderService(IProviderService $providerService);
+	public function registerProviderService(IProviderService providerService);
 
 	/**
 	 * Register a IIndexService.
 	 *
 	 * @since 15.0.0
 	 *
-	 * @param IIndexService $indexService
+	 * @param IIndexService indexService
 	 */
-	public function registerIndexService(IIndexService $indexService);
+	public function registerIndexService(IIndexService indexService);
 
 	/**
 	 * Register a ISearchService.
 	 *
 	 * @since 15.0.0
 	 *
-	 * @param ISearchService $searchService
+	 * @param ISearchService searchService
 	 */
-	public function registerSearchService(ISearchService $searchService);
+	public function registerSearchService(ISearchService searchService);
 
 
 	/**
@@ -89,15 +89,15 @@ interface IFullTextSearchManager {
 
 
 	/**
-	 * Check if the provider $providerId is already indexed.
+	 * Check if the provider providerId is already indexed.
 	 *
 	 * @since 15.0.0
 	 *
-	 * @param string $providerId
+	 * @param string providerId
 	 *
 	 * @return bool
 	 */
-	public function isProviderIndexed(string $providerId): bool;
+	public function isProviderIndexed(string providerId): bool;
 
 
 	/**
@@ -106,12 +106,12 @@ interface IFullTextSearchManager {
 	 *
 	 * @since 15.0.0
 	 *
-	 * @param string $providerId
-	 * @param string $documentId
+	 * @param string providerId
+	 * @param string documentId
 	 *
 	 * @return IIndex
 	 */
-	public function getIndex(string $providerId, string $documentId): IIndex;
+	public function getIndex(string providerId, string documentId): IIndex;
 
 
 	/**
@@ -121,65 +121,65 @@ interface IFullTextSearchManager {
 	 *
 	 * @since 15.0.0
 	 *
-	 * @param string $providerId
-	 * @param string $documentId
-	 * @param string $userId
-	 * @param int $status
+	 * @param string providerId
+	 * @param string documentId
+	 * @param string userId
+	 * @param int status
 	 *
 	 * @return IIndex
 	 */
-	public function createIndex(string $providerId, string $documentId, string $userId, int $status = 0): IIndex;
+	public function createIndex(string providerId, string documentId, string userId, int status = 0): IIndex;
 
 
 	/**
-	 * Update the status of an Index. status is a bitflag, setting $reset to
+	 * Update the status of an Index. status is a bitflag, setting reset to
 	 * true will reset the status to the value defined in the parameter.
 	 *
 	 * @since 15.0.0
 	 *
-	 * @param string $providerId
-	 * @param string $documentId
-	 * @param int $status
-	 * @param bool $reset
+	 * @param string providerId
+	 * @param string documentId
+	 * @param int status
+	 * @param bool reset
 	 */
-	public function updateIndexStatus(string $providerId, string $documentId, int $status, bool $reset = false);
+	public function updateIndexStatus(string providerId, string documentId, int status, bool reset = false);
 
 
 	/**
-	 * Update the status of an array of Index. status is a bit flag, setting $reset to
+	 * Update the status of an array of Index. status is a bit flag, setting reset to
 	 * true will reset the status to the value defined in the parameter.
 	 *
 	 * @since 15.0.0
 	 *
-	 * @param string $providerId
-	 * @param array $documentIds
-	 * @param int $status
-	 * @param bool $reset
+	 * @param string providerId
+	 * @param array documentIds
+	 * @param int status
+	 * @param bool reset
 	 */
-	public function updateIndexesStatus(string $providerId, array $documentIds, int $status, bool $reset = false);
+	public function updateIndexesStatus(string providerId, array documentIds, int status, bool reset = false);
 
 	/**
 	 * Update an array of Index.
 	 *
 	 * @since 15.0.0
 	 *
-	 * @param IIndex[] $indexes
+	 * @param IIndex[] indexes
 	 */
-	public function updateIndexes(array $indexes);
+	public function updateIndexes(array indexes);
 
 	/**
-	 * Search using an array as request. If $userId is empty, will use the
+	 * Search using an array as request. If userId is empty, will use the
 	 * current session.
 	 *
 	 * @see ISearchService::generateSearchRequest
 	 *
 	 * @since 15.0.0
 	 *
-	 * @param array $request
-	 * @param string $userId
+	 * @param array request
+	 * @param string userId
 	 * @return ISearchResult[]
 	 */
-	public function search(array $request, string $userId = ''): array;
+	public function search(array request, string userId = ''): array;
 
 
 }

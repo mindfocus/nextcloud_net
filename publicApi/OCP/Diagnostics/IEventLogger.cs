@@ -13,34 +13,34 @@ namespace OCP.Diagnostics
     public interface IEventLogger
     {
         /**
-         * Mark the start of an event setting its ID $id and providing event description $description.
+         * Mark the start of an event setting its ID id and providing event description description.
          *
-         * @param string $id
-         * @param string $description
+         * @param string id
+         * @param string description
          * @since 8.0.0
          */
         void start(string id, string description);
 
         /**
-         * Mark the end of an event with specific ID $id, marked by start() method.
+         * Mark the end of an event with specific ID id, marked by start() method.
          * Ending event should store \OCP\Diagnostics\IEvent to
          * be returned with getEvents() method.
          *
-         * @param string $id
+         * @param string id
          * @since 8.0.0
          */
         void end(string id);
 
         /**
-         * Mark the start and the end of an event with specific ID $id and description $description,
-         * explicitly marking start and end of the event, represented by $start and $end timestamps.
+         * Mark the start and the end of an event with specific ID id and description description,
+         * explicitly marking start and end of the event, represented by start and end timestamps.
          * Logging event should store \OCP\Diagnostics\IEvent to
          * be returned with getEvents() method.
          *
-         * @param string $id
-         * @param string $description
-         * @param float $start
-         * @param float $end
+         * @param string id
+         * @param string description
+         * @param float start
+         * @param float end
          * @since 8.0.0
          */
         void log(string id, string description, float start, float end);

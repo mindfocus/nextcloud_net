@@ -17,7 +17,7 @@ namespace OCP.Files
         /**
          * Get a mimetype from its ID
          *
-         * @param int $id
+         * @param int id
          * @return string|null
          * @since 8.2.0
          */
@@ -26,7 +26,7 @@ namespace OCP.Files
         /**
          * Get a mimetype ID, adding the mimetype to the DB if it does not exist
          *
-         * @param string $mimetype
+         * @param string mimetype
          * @return int
          * @since 8.2.0
          */
@@ -35,7 +35,7 @@ namespace OCP.Files
         /**
          * Test if a mimetype exists in the database
          *
-         * @param string $mimetype
+         * @param string mimetype
          * @return bool
          * @since 8.2.0
          */

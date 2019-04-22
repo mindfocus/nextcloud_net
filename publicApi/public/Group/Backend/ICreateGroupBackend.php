@@ -32,5 +32,5 @@ interface ICreateGroupBackend {
 	/**
 	 * @since 14.0.0
 	 */
-	public function createGroup(string $gid): bool;
+	public function createGroup(string gid): bool;
 }

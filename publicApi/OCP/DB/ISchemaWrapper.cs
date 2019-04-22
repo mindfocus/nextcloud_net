@@ -14,7 +14,7 @@ namespace OCP.DB
     {
 
         /**
-         * @param string $tableName
+         * @param string tableName
          *
          * @return \Doctrine\DBAL\Schema\Table
          * @throws \Doctrine\DBAL\Schema\SchemaException
@@ -26,7 +26,7 @@ namespace OCP.DB
         /**
          * Does this schema have a table with the given name?
          *
-         * @param string $tableName Prefix is automatically prepended
+         * @param string tableName Prefix is automatically prepended
          *
          * @return boolean
          * @since 13.0.0
@@ -36,7 +36,7 @@ namespace OCP.DB
         /**
          * Creates a new table.
          *
-         * @param string $tableName Prefix is automatically prepended
+         * @param string tableName Prefix is automatically prepended
          * @return \Doctrine\DBAL\Schema\Table
          * @since 13.0.0
          */
@@ -45,7 +45,7 @@ namespace OCP.DB
         /**
          * Drops a table from the schema.
          *
-         * @param string $tableName Prefix is automatically prepended
+         * @param string tableName Prefix is automatically prepended
          * @return \Doctrine\DBAL\Schema\Schema
          * @since 13.0.0
          */

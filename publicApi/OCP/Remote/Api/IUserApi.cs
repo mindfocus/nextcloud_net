@@ -10,7 +10,7 @@ namespace OCP.Remote.Api
     interface IUserApi
     {
         /**
-         * @param string $userId
+         * @param string userId
          * @return IUser
          *
          * @since 13.0.0

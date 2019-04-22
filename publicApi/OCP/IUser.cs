@@ -23,7 +23,7 @@ namespace OCP
         /**
  * set the display name for the user
  *
- * @param string $displayName
+ * @param string displayName
  * @return bool
  * @since 8.0.0
  */
@@ -51,8 +51,8 @@ namespace OCP
         /**
  * Set the password of the user
  *
- * @param string $password
- * @param string $recoveryPassword for the encryption app to reset encryption keys
+ * @param string password
+ * @param string recoveryPassword for the encryption app to reset encryption keys
  * @return bool
  * @since 8.0.0
  */
@@ -109,7 +109,7 @@ namespace OCP
         /**
  * set the enabled status for the user
  *
- * @param bool $enabled
+ * @param bool enabled
  * @since 8.0.0
  */
         void setEnabled(bool enabled = true);
@@ -123,7 +123,7 @@ namespace OCP
         /**
  * get the avatar image if it exists
  *
- * @param int $size
+ * @param int size
  * @return IImage|null
  * @since 9.0.0
  */
@@ -139,7 +139,7 @@ namespace OCP
         /**
          * set the email address of the user
          *
-         * @param string|null $mailAddress
+         * @param string|null mailAddress
          * @return void
          * @since 9.0.0
          */
@@ -158,7 +158,7 @@ namespace OCP
         /**
          * set the users' quota
          *
-         * @param string $quota
+         * @param string quota
          * @return void
          * @since 9.0.0
          */

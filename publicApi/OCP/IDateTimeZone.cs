@@ -14,9 +14,9 @@ namespace OCP
     public interface IDateTimeZone
     {
         /**
-         * @param bool|int $timestamp
+         * @param bool|int timestamp
          * @return \DateTimeZone
-         * @since 8.0.0 - parameter $timestamp was added in 8.1.0
+         * @since 8.0.0 - parameter timestamp was added in 8.1.0
          */
         DateTimeZone getTimeZone(int timestamp = 0);
     }

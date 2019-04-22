@@ -16,7 +16,7 @@ namespace OCP.App
         /**
          * Returns the app information from "appinfo/info.xml".
          *
-         * @param string $appId
+         * @param string appId
          * @return mixed
          * @since 14.0.0
          */
@@ -25,8 +25,8 @@ namespace OCP.App
         /**
          * Returns the app information from "appinfo/info.xml".
          *
-         * @param string $appId
-         * @param bool $useCache
+         * @param string appId
+         * @param bool useCache
          * @return string
          * @since 14.0.0
          */
@@ -35,8 +35,8 @@ namespace OCP.App
 	/**
 	 * Check if an app is enabled for user
 	 *
-	 * @param string $appId
-	 * @param \OCP\IUser $user (optional) if not defined, the currently loggedin user will be used
+	 * @param string appId
+	 * @param \OCP\IUser user (optional) if not defined, the currently loggedin user will be used
 	 * @return bool
 	 * @since 8.0.0
 	 */
@@ -47,7 +47,7 @@ namespace OCP.App
          *
          * Notice: This actually checks if the app is enabled and not only if it is installed.
          *
-         * @param string $appId
+         * @param string appId
          * @return bool
          * @since 8.0.0
          */
@@ -56,7 +56,7 @@ namespace OCP.App
         /**
          * Enable an app for every user
          *
-         * @param string $appId
+         * @param string appId
          * @throws AppPathNotFoundException
          * @since 8.0.0
          */
@@ -65,7 +65,7 @@ namespace OCP.App
         /**
          * Whether a list of types contains a protected app type
          *
-         * @param string[] $types
+         * @param string[] types
          * @return bool
          * @since 12.0.0
          */
@@ -74,8 +74,8 @@ namespace OCP.App
         /**
          * Enable an app only for specific groups
          *
-         * @param string $appId
-         * @param \OCP\IGroup[] $groups
+         * @param string appId
+         * @param \OCP\IGroup[] groups
          * @throws \Exception
          * @since 8.0.0
          */
@@ -84,7 +84,7 @@ namespace OCP.App
         /**
          * Disable an app for every user
          *
-         * @param string $appId
+         * @param string appId
          * @since 8.0.0
          */
         bool disableApp(string appId);
@@ -92,7 +92,7 @@ namespace OCP.App
         /**
          * Get the directory for the given app.
          *
-         * @param string $appId
+         * @param string appId
          * @return string
          * @since 11.0.0
          * @throws AppPathNotFoundException
@@ -102,7 +102,7 @@ namespace OCP.App
         /**
          * List all apps enabled for a user
          *
-         * @param \OCP\IUser $user
+         * @param \OCP\IUser user
          * @return string[]
          * @since 8.1.0
          */
@@ -123,7 +123,7 @@ namespace OCP.App
         void clearAppsCache();
 
         /**
-         * @param string $appId
+         * @param string appId
          * @return boolean
          * @since 9.0.0
          */

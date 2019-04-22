@@ -30,12 +30,12 @@ namespace OCP\Notification;
  */
 interface IAction {
 	/**
-	 * @param string $label
-	 * @return $this
+	 * @param string label
+	 * @return this
 	 * @throws \InvalidArgumentException if the label is invalid
 	 * @since 9.0.0
 	 */
-	public function setLabel($label);
+	public function setLabel(label);
 
 	/**
 	 * @return string
@@ -44,12 +44,12 @@ interface IAction {
 	public function getLabel();
 
 	/**
-	 * @param string $label
-	 * @return $this
+	 * @param string label
+	 * @return this
 	 * @throws \InvalidArgumentException if the label is invalid
 	 * @since 9.0.0
 	 */
-	public function setParsedLabel($label);
+	public function setParsedLabel(label);
 
 	/**
 	 * @return string
@@ -58,12 +58,12 @@ interface IAction {
 	public function getParsedLabel();
 
 	/**
-	 * @param $primary bool
-	 * @return $this
-	 * @throws \InvalidArgumentException if $primary is invalid
+	 * @param primary bool
+	 * @return this
+	 * @throws \InvalidArgumentException if primary is invalid
 	 * @since 9.0.0
 	 */
-	public function setPrimary($primary);
+	public function setPrimary(primary);
 
 	/**
 	 * @return bool
@@ -72,13 +72,13 @@ interface IAction {
 	public function isPrimary();
 
 	/**
-	 * @param string $link
-	 * @param string $requestType
-	 * @return $this
+	 * @param string link
+	 * @param string requestType
+	 * @return this
 	 * @throws \InvalidArgumentException if the link is invalid
 	 * @since 9.0.0
 	 */
-	public function setLink($link, $requestType);
+	public function setLink(link, requestType);
 
 	/**
 	 * @return string

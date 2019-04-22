@@ -35,17 +35,17 @@ use OCP\AppFramework\Http;
  */
 class RedirectResponse extends Response {
 
-	private $redirectURL;
+	private redirectURL;
 
 	/**
 	 * Creates a response that redirects to a url
-	 * @param string $redirectURL the url to redirect to
+	 * @param string redirectURL the url to redirect to
 	 * @since 7.0.0
 	 */
-	public function __construct($redirectURL) {
-		$this->redirectURL = $redirectURL;
-		$this->setStatus(Http::STATUS_SEE_OTHER);
-		$this->addHeader('Location', $redirectURL);
+	public function __construct(redirectURL) {
+		this->redirectURL = redirectURL;
+		this->setStatus(Http::STATUS_SEE_OTHER);
+		this->addHeader('Location', redirectURL);
 	}
 
 
@@ -54,7 +54,7 @@ class RedirectResponse extends Response {
 	 * @since 7.0.0
 	 */
 	public function getRedirectURL() {
-		return $this->redirectURL;
+		return this->redirectURL;
 	}
 
 

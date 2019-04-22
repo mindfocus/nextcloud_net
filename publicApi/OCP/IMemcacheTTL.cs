@@ -14,8 +14,8 @@ namespace OCP
     /**
 	 * Set the ttl for an existing value
 	 *
-	 * @param string $key
-	 * @param int $ttl time to live in seconds
+	 * @param string key
+	 * @param int ttl time to live in seconds
 	 * @since 8.2.2
 	 */
     void setTTL(string key, int ttl);

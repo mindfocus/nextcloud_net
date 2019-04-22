@@ -14,9 +14,9 @@ namespace OCP
     /**
 	 * Set a value in the cache if it's not already stored
 	 *
-	 * @param string $key
-	 * @param mixed $value
-	 * @param int $ttl Time To Live in seconds. Defaults to 60*60*24
+	 * @param string key
+	 * @param mixed value
+	 * @param int ttl Time To Live in seconds. Defaults to 60*60*24
 	 * @return bool
 	 * @since 8.1.0
 	 */
@@ -25,8 +25,8 @@ namespace OCP
     /**
 	 * Increase a stored number
 	 *
-	 * @param string $key
-	 * @param int $step
+	 * @param string key
+	 * @param int step
 	 * @return int | bool
 	 * @since 8.1.0
 	 */
@@ -35,8 +35,8 @@ namespace OCP
     /**
 	 * Decrease a stored number
 	 *
-	 * @param string $key
-	 * @param int $step
+	 * @param string key
+	 * @param int step
 	 * @return int | bool
 	 * @since 8.1.0
 	 */
@@ -45,9 +45,9 @@ namespace OCP
     /**
 	 * Compare and set
 	 *
-	 * @param string $key
-	 * @param mixed $old
-	 * @param mixed $new
+	 * @param string key
+	 * @param mixed old
+	 * @param mixed new
 	 * @return bool
 	 * @since 8.1.0
 	 */
@@ -56,8 +56,8 @@ namespace OCP
 	/**
 	 * Compare and delete
 	 *
-	 * @param string $key
-	 * @param mixed $old
+	 * @param string key
+	 * @param mixed old
 	 * @return bool
 	 * @since 8.1.0
 	 */

@@ -15,8 +15,8 @@ namespace OCP.Files.Config
         /**
          * Register mounts for a user to the cache
          *
-         * @param IUser $user
-         * @param IMountPoint[] $mounts
+         * @param IUser user
+         * @param IMountPoint[] mounts
          * @since 9.0.0
          */
         void registerMounts(IUser user, IList<Mount.IMountPoint> mounts);
@@ -24,7 +24,7 @@ namespace OCP.Files.Config
         /**
          * Get all cached mounts for a user
          *
-         * @param IUser $user
+         * @param IUser user
          * @return ICachedMountInfo[]
          * @since 9.0.0
          */
@@ -33,8 +33,8 @@ namespace OCP.Files.Config
         /**
          * Get all cached mounts by storage
          *
-         * @param int $numericStorageId
-         * @param string|null $user limit the results to a single user @since 12.0.0
+         * @param int numericStorageId
+         * @param string|null user limit the results to a single user @since 12.0.0
          * @return ICachedMountInfo[]
          * @since 9.0.0
          */
@@ -43,7 +43,7 @@ namespace OCP.Files.Config
         /**
          * Get all cached mounts by root
          *
-         * @param int $rootFileId
+         * @param int rootFileId
          * @return ICachedMountInfo[]
          * @since 9.0.0
          */
@@ -52,8 +52,8 @@ namespace OCP.Files.Config
         /**
          * Get all cached mounts that contain a file
          *
-         * @param int $fileId
-         * @param string|null $user optionally restrict the results to a single user @since 12.0.0
+         * @param int fileId
+         * @param string|null user optionally restrict the results to a single user @since 12.0.0
          * @return ICachedMountFileInfo[]
          * @since 9.0.0
          */
@@ -62,7 +62,7 @@ namespace OCP.Files.Config
         /**
          * Remove all cached mounts for a user
          *
-         * @param IUser $user
+         * @param IUser user
          * @since 9.0.0
          */
         void removeUserMounts(IUser user);
@@ -70,8 +70,8 @@ namespace OCP.Files.Config
         /**
          * Remove all mounts for a user and storage
          *
-         * @param $storageId
-         * @param string $userId
+         * @param storageId
+         * @param string userId
          * @return mixed
          * @since 9.0.0
          */
@@ -80,7 +80,7 @@ namespace OCP.Files.Config
         /**
          * Remove all cached mounts for a storage
          *
-         * @param $storageId
+         * @param storageId
          * @return mixed
          * @since 9.0.0
          */
@@ -92,8 +92,8 @@ namespace OCP.Files.Config
          * Note that this only includes the space in their home directory,
          * not any incoming shares or external storages.
          *
-         * @param IUser[] $users
-         * @return int[] [$userId => $userSpace]
+         * @param IUser[] users
+         * @return int[] [userId => userSpace]
          * @since 13.0.0
          */
         IList<int> getUsedSpaceForUsers(IList<IUser> users);

@@ -16,8 +16,8 @@ namespace OCP
         /**
          * Set a value in the session
          *
-         * @param string $key
-         * @param mixed $value
+         * @param string key
+         * @param mixed value
          * @since 6.0.0
          */
         void set(string key, object value);
@@ -25,8 +25,8 @@ namespace OCP
         /**
          * Get a value from the session
          *
-         * @param string $key
-         * @return mixed should return null if $key does not exist
+         * @param string key
+         * @return mixed should return null if key does not exist
          * @since 6.0.0
          */
         object? get(string key);
@@ -34,16 +34,16 @@ namespace OCP
         /**
          * Check if a named key exists in the session
          *
-         * @param string $key
+         * @param string key
          * @return bool
          * @since 6.0.0
          */
         bool exists(string key);
 
 	/**
-	 * Remove a $key/$value pair from the session
+	 * Remove a key/value pair from the session
 	 *
-	 * @param string $key
+	 * @param string key
 	 * @since 6.0.0
 	 */
 	void remove(string key);
@@ -63,10 +63,10 @@ namespace OCP
         /**
          * Wrapper around session_regenerate_id
          *
-         * @param bool $deleteOldSession Whether to delete the old associated session file or not.
-         * @param bool $updateToken Wheater to update the associated auth token
+         * @param bool deleteOldSession Whether to delete the old associated session file or not.
+         * @param bool updateToken Wheater to update the associated auth token
          * @return void
-         * @since 9.0.0, $updateToken added in 14.0.0
+         * @since 9.0.0, updateToken added in 14.0.0
          */
         void regenerateId(bool deleteOldSession = true, bool updateToken = false);
 

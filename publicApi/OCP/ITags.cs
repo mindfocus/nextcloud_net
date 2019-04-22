@@ -33,7 +33,7 @@ public interface ITags
          * Returns an array mapping a given tag's properties to its values:
          * ['id' => 0, 'name' = 'Tag', 'owner' = 'User', 'type' => 'tagtype']
          *
-         * @param string $id The ID of the tag that is going to be mapped
+         * @param string id The ID of the tag that is going to be mapped
          * @return array|false
          * @since 8.0.0
          */
@@ -64,7 +64,7 @@ public interface ITags
          *   3 => array('Second tag', 'Third tag'),
          * ]
          *
-         * @param array $objIds item ids
+         * @param array objIds item ids
          * @return array|boolean with object id as key and an array
          * of tag names as value or false if an error occurred
          * @since 8.0.0
@@ -72,11 +72,11 @@ public interface ITags
         // public bool getTagsForObjects(IList<string> objIds);
         public IDictionary getTagsForObjects(IList<string> objIds);
         /**
-         * Get a list of items tagged with $tag.
+         * Get a list of items tagged with tag.
          *
          * Throws an exception if the tag could not be found.
          *
-         * @param string|integer $tag Tag id or name.
+         * @param string|integer tag Tag id or name.
          * @return array|false An array of object ids or false on error.
          * @since 6.0.0
          */
@@ -85,7 +85,7 @@ public interface ITags
         /**
          * Checks whether a tag is already saved.
          *
-         * @param string $name The name to check for.
+         * @param string name The name to check for.
          * @return bool
          * @since 6.0.0
          */
@@ -95,8 +95,8 @@ public interface ITags
          * Checks whether a tag is saved for the given user,
          * disregarding the ones shared with him or her.
          *
-         * @param string $name The tag name to check for.
-         * @param string $user The user whose tags are to be checked.
+         * @param string name The tag name to check for.
+         * @param string user The user whose tags are to be checked.
          * @return bool
          * @since 8.0.0
          */
@@ -105,7 +105,7 @@ public interface ITags
         /**
          * Add a new tag.
          *
-         * @param string $name A string with a name of the tag
+         * @param string name A string with a name of the tag
          * @return int|false the id of the added tag or false if it already exists.
          * @since 6.0.0
          */
@@ -114,8 +114,8 @@ public interface ITags
         /**
          * Rename tag.
          *
-         * @param string|integer $from The name or ID of the existing tag
-         * @param string $to The new name of the tag.
+         * @param string|integer from The name or ID of the existing tag
+         * @param string to The new name of the tag.
          * @return bool
          * @since 6.0.0
          */
@@ -124,10 +124,10 @@ public interface ITags
         /**
          * Add a list of new tags.
          *
-         * @param string[] $names A string with a name or an array of strings containing
+         * @param string[] names A string with a name or an array of strings containing
          * the name(s) of the to add.
-         * @param bool $sync When true, save the tags
-         * @param int|null $id int Optional object id to add to this|these tag(s)
+         * @param bool sync When true, save the tags
+         * @param int|null id int Optional object id to add to this|these tag(s)
          * @return bool Returns false on error.
          * @since 6.0.0
          */
@@ -136,7 +136,7 @@ public interface ITags
         /**
          * Delete tag/object relations from the db
          *
-         * @param array $ids The ids of the objects
+         * @param array ids The ids of the objects
          * @return boolean Returns false on error.
          * @since 6.0.0
          */
@@ -153,7 +153,7 @@ public interface ITags
         /**
          * Add an object to favorites
          *
-         * @param int $objid The id of the object
+         * @param int objid The id of the object
          * @return boolean
          * @since 6.0.0
          */
@@ -162,7 +162,7 @@ public interface ITags
         /**
          * Remove an object from favorites
          *
-         * @param int $objid The id of the object
+         * @param int objid The id of the object
          * @return boolean
          * @since 6.0.0
          */
@@ -171,8 +171,8 @@ public interface ITags
         /**
          * Creates a tag/object relation.
          *
-         * @param int $objid The id of the object
-         * @param string $tag The id or name of the tag
+         * @param int objid The id of the object
+         * @param string tag The id or name of the tag
          * @return boolean Returns false on database error.
          * @since 6.0.0
          */
@@ -181,8 +181,8 @@ public interface ITags
         /**
          * Delete single tag/object relation from the db
          *
-         * @param int $objid The id of the object
-         * @param string $tag The id or name of the tag
+         * @param int objid The id of the object
+         * @param string tag The id or name of the tag
          * @return boolean
          * @since 6.0.0
          */
@@ -191,7 +191,7 @@ public interface ITags
         /**
          * Delete tags from the database
          *
-         * @param string[]|integer[] $names An array of tags (names or IDs) to delete
+         * @param string[]|integer[] names An array of tags (names or IDs) to delete
          * @return bool Returns false on error
          * @since 6.0.0
          */

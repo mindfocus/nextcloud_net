@@ -29,7 +29,7 @@ namespace OCP
         //const FATAL= 4;
 
         /** \OCP\Share\IManager */
-        private static $shareManager;
+        private static shareManager;
 
     /**
      * get the current installed version of Nextcloud
@@ -43,12 +43,12 @@ namespace OCP
 
         /**
          * Set current update channel
-         * @param string $channel
+         * @param string channel
          * @since 8.1.0
          */
-        public static function setChannel($channel)
+        public static function setChannel(channel)
         {
-        \OC::$server->getConfig()->setSystemValue('updater.release.channel', $channel);
+        \OC::server->getConfig()->setSystemValue('updater.release.channel', channel);
         }
 
         /**
@@ -63,16 +63,16 @@ namespace OCP
 
         /**
          * write a message in the log
-         * @param string $app
-         * @param string $message
-         * @param int $level
+         * @param string app
+         * @param string message
+         * @param int level
          * @since 4.0.0
          * @deprecated 13.0.0 use log of \OCP\ILogger
          */
-        public static function writeLog( $app, $message, $level )
+        public static function writeLog( app, message, level )
         {
-        $context = ['app' => $app];
-        \OC::$server->getLogger()->log($level, $message, $context);
+        context = ['app' => app];
+        \OC::server->getLogger()->log(level, message, context);
         }
 
         /**
@@ -80,127 +80,127 @@ namespace OCP
          *
          * @return boolean
          * @since 7.0.0
-         * @deprecated 9.1.0 Use \OC::$server->getShareManager()->sharingDisabledForUser
+         * @deprecated 9.1.0 Use \OC::server->getShareManager()->sharingDisabledForUser
          */
         public static function isSharingDisabledForUser()
         {
-            if (self::$shareManager === null) {
-                self::$shareManager = \OC::$server->getShareManager();
+            if (self::shareManager === null) {
+                self::shareManager = \OC::server->getShareManager();
             }
 
-        $user = \OC::$server->getUserSession()->getUser();
-            if ($user !== null) {
-            $user = $user->getUID();
+        user = \OC::server->getUserSession()->getUser();
+            if (user !== null) {
+            user = user->getUID();
             }
 
-            return self::$shareManager->sharingDisabledForUser($user);
+            return self::shareManager->sharingDisabledForUser(user);
         }
 
         /**
          * get l10n object
-         * @param string $application
-         * @param string|null $language
+         * @param string application
+         * @param string|null language
          * @return \OCP\IL10N
-         * @since 6.0.0 - parameter $language was added in 8.0.0
+         * @since 6.0.0 - parameter language was added in 8.0.0
          */
-        public static function getL10N($application, $language = null)
+        public static function getL10N(application, language = null)
         {
-            return \OC::$server->getL10N($application, $language);
+            return \OC::server->getL10N(application, language);
         }
 
         /**
          * add a css file
-         * @param string $application
-         * @param string $file
+         * @param string application
+         * @param string file
          * @since 4.0.0
          */
-        public static function addStyle( $application, $file = null)
+        public static function addStyle( application, file = null)
         {
-        \OC_Util::addStyle( $application, $file);
+        \OC_Util::addStyle( application, file);
         }
 
         /**
          * add a javascript file
-         * @param string $application
-         * @param string $file
+         * @param string application
+         * @param string file
          * @since 4.0.0
          */
-        public static function addScript( $application, $file = null)
+        public static function addScript( application, file = null)
         {
-        \OC_Util::addScript( $application, $file);
+        \OC_Util::addScript( application, file);
         }
 
         /**
          * Add a translation JS file
-         * @param string $application application id
-         * @param string $languageCode language code, defaults to the current locale
+         * @param string application application id
+         * @param string languageCode language code, defaults to the current locale
          * @since 8.0.0
          */
-        public static function addTranslations($application, $languageCode = null)
+        public static function addTranslations(application, languageCode = null)
         {
-        \OC_Util::addTranslations($application, $languageCode);
+        \OC_Util::addTranslations(application, languageCode);
         }
 
         /**
          * Add a custom element to the header
-         * If $text is null then the element will be written as empty element.
+         * If text is null then the element will be written as empty element.
          * So use "" to get a closing tag.
-         * @param string $tag tag name of the element
-         * @param array $attributes array of attributes for the element
-         * @param string $text the text content for the element
+         * @param string tag tag name of the element
+         * @param array attributes array of attributes for the element
+         * @param string text the text content for the element
          * @since 4.0.0
          */
-        public static function addHeader($tag, $attributes, $text= null)
+        public static function addHeader(tag, attributes, text= null)
         {
-        \OC_Util::addHeader($tag, $attributes, $text);
+        \OC_Util::addHeader(tag, attributes, text);
         }
 
         /**
          * Creates an absolute url to the given app and file.
-         * @param string $app app
-         * @param string $file file
-         * @param array $args array with param=>value, will be appended to the returned url
-         *  The value of $args will be urlencoded
+         * @param string app app
+         * @param string file file
+         * @param array args array with param=>value, will be appended to the returned url
+         *  The value of args will be urlencoded
          * @return string the url
-         * @since 4.0.0 - parameter $args was added in 4.5.0
+         * @since 4.0.0 - parameter args was added in 4.5.0
          */
-        public static function linkToAbsolute( $app, $file, $args = array())
+        public static function linkToAbsolute( app, file, args = array())
         {
-        $urlGenerator = \OC::$server->getURLGenerator();
-            return $urlGenerator->getAbsoluteURL(
-            $urlGenerator->linkTo($app, $file, $args)
+        urlGenerator = \OC::server->getURLGenerator();
+            return urlGenerator->getAbsoluteURL(
+            urlGenerator->linkTo(app, file, args)
             );
         }
 
         /**
          * Creates an absolute url for remote use.
-         * @param string $service id
+         * @param string service id
          * @return string the url
          * @since 4.0.0
          */
-        public static function linkToRemote( $service )
+        public static function linkToRemote( service )
         {
-        $urlGenerator = \OC::$server->getURLGenerator();
-        $remoteBase = $urlGenerator->linkTo('', 'remote.php'). '/'. $service;
-            return $urlGenerator->getAbsoluteURL(
-            $remoteBase. (($service[strlen($service) - 1] != '/') ? '/' : '')
+        urlGenerator = \OC::server->getURLGenerator();
+        remoteBase = urlGenerator->linkTo('', 'remote.php'). '/'. service;
+            return urlGenerator->getAbsoluteURL(
+            remoteBase. ((service[strlen(service) - 1] != '/') ? '/' : '')
             );
         }
 
         /**
          * Creates an absolute url for public use
-         * @param string $service id
+         * @param string service id
          * @return string the url
          * @since 4.5.0
          * @deprecated 15.0.0 - use OCP\IURLGenerator
          */
-        public static function linkToPublic($service)
+        public static function linkToPublic(service)
         {
-        $urlGenerator = \OC::$server->getURLGenerator();
-            if ($service === 'files') {
-                return $urlGenerator->getAbsoluteURL('/s');
+        urlGenerator = \OC::server->getURLGenerator();
+            if (service === 'files') {
+                return urlGenerator->getAbsoluteURL('/s');
             }
-            return $urlGenerator->getAbsoluteURL($urlGenerator->linkTo('', 'public.php').'?service='.$service);
+            return urlGenerator->getAbsoluteURL(urlGenerator->linkTo('', 'public.php').'?service='.service);
         }
 
         /**
@@ -210,79 +210,79 @@ namespace OCP
          */
         public static function getServerHostName()
         {
-        $host_name = \OC::$server->getRequest()->getServerHost();
+        host_name = \OC::server->getRequest()->getServerHost();
         // strip away port number (if existing)
-        $colon_pos = strpos($host_name, ':');
-            if ($colon_pos != FALSE) {
-            $host_name = substr($host_name, 0, $colon_pos);
+        colon_pos = strpos(host_name, ':');
+            if (colon_pos != FALSE) {
+            host_name = substr(host_name, 0, colon_pos);
             }
-            return $host_name;
+            return host_name;
         }
 
         /**
          * Returns the default email address
-         * @param string $user_part the user part of the address
+         * @param string user_part the user part of the address
          * @return string the default email address
          *
          * Assembles a default email address (using the server hostname
          * and the given user part, and returns it
-         * Example: when given lostpassword-noreply as $user_part param,
+         * Example: when given lostpassword-noreply as user_part param,
          *     and is currently accessed via http(s)://example.com/,
          *     it would return 'lostpassword-noreply@example.com'
          *
          * If the configuration value 'mail_from_address' is set in
-         * config.php, this value will override the $user_part that
+         * config.php, this value will override the user_part that
          * is passed to this function
          * @since 5.0.0
          */
-        public static function getDefaultEmailAddress($user_part)
+        public static function getDefaultEmailAddress(user_part)
         {
-        $config = \OC::$server->getConfig();
-        $user_part = $config->getSystemValue('mail_from_address', $user_part);
-        $host_name = self::getServerHostName();
-        $host_name = $config->getSystemValue('mail_domain', $host_name);
-        $defaultEmailAddress = $user_part.'@'.$host_name;
+        config = \OC::server->getConfig();
+        user_part = config->getSystemValue('mail_from_address', user_part);
+        host_name = self::getServerHostName();
+        host_name = config->getSystemValue('mail_domain', host_name);
+        defaultEmailAddress = user_part.'@'.host_name;
 
-        $mailer = \OC::$server->getMailer();
-            if ($mailer->validateMailAddress($defaultEmailAddress)) {
-                return $defaultEmailAddress;
+        mailer = \OC::server->getMailer();
+            if (mailer->validateMailAddress(defaultEmailAddress)) {
+                return defaultEmailAddress;
             }
 
             // in case we cannot build a valid email address from the hostname let's fallback to 'localhost.localdomain'
-            return $user_part.'@localhost.localdomain';
+            return user_part.'@localhost.localdomain';
         }
 
         /**
          * Make a human file size (2048 to 2 kB)
-         * @param int $bytes file size in bytes
+         * @param int bytes file size in bytes
          * @return string a human readable file size
          * @since 4.0.0
          */
-        public static function humanFileSize($bytes)
+        public static function humanFileSize(bytes)
         {
-            return \OC_Helper::humanFileSize($bytes);
+            return \OC_Helper::humanFileSize(bytes);
         }
 
         /**
          * Make a computer file size (2 kB to 2048)
-         * @param string $str file size in a fancy format
+         * @param string str file size in a fancy format
          * @return float a file size in bytes
          *
          * Inspired by: http://www.php.net/manual/en/function.filesize.php#92418
          * @since 4.0.0
          */
-        public static function computerFileSize($str)
+        public static function computerFileSize(str)
         {
-            return \OC_Helper::computerFileSize($str);
+            return \OC_Helper::computerFileSize(str);
         }
 
         /**
          * connects a function to a hook
          *
-         * @param string $signalClass class name of emitter
-         * @param string $signalName name of signal
-         * @param string|object $slotClass class name of slot
-         * @param string $slotName name of slot
+         * @param string signalClass class name of emitter
+         * @param string signalName name of signal
+         * @param string|object slotClass class name of slot
+         * @param string slotName name of slot
          * @return bool
          *
          * This function makes it very easy to connect to use hooks.
@@ -290,24 +290,24 @@ namespace OCP
          * TODO: write example
          * @since 4.0.0
          */
-        static public function connectHook($signalClass, $signalName, $slotClass, $slotName)
+        static public function connectHook(signalClass, signalName, slotClass, slotName)
         {
-            return \OC_Hook::connect($signalClass, $signalName, $slotClass, $slotName);
+            return \OC_Hook::connect(signalClass, signalName, slotClass, slotName);
         }
 
         /**
          * Emits a signal. To get data from the slot use references!
-         * @param string $signalclass class name of emitter
-         * @param string $signalname name of signal
-         * @param array $params default: array() array with additional data
+         * @param string signalclass class name of emitter
+         * @param string signalname name of signal
+         * @param array params default: array() array with additional data
          * @return bool true if slots exists or false if not
          *
          * TODO: write example
          * @since 4.0.0
          */
-        static public function emitHook($signalclass, $signalname, $params = array())
+        static public function emitHook(signalclass, signalname, params = array())
         {
-            return \OC_Hook::emit($signalclass, $signalname, $params);
+            return \OC_Hook::emit(signalclass, signalname, params);
         }
 
         /**
@@ -316,7 +316,7 @@ namespace OCP
          * would not be cached these unit-tests would fail.
          * @var string
          */
-        private static $token = '';
+        private static token = '';
 
     /**
      * Register an get/post call. This is important to prevent CSRF attacks
@@ -324,10 +324,10 @@ namespace OCP
      */
     public static function callRegister()
         {
-            if (self::$token === '') {
-                self::$token = \OC::$server->getCsrfTokenManager()->getToken()->getEncryptedValue();
+            if (self::token === '') {
+                self::token = \OC::server->getCsrfTokenManager()->getToken()->getEncryptedValue();
             }
-            return self::$token;
+            return self::token;
         }
 
         /**
@@ -337,12 +337,12 @@ namespace OCP
          */
         public static function callCheck()
         {
-            if (!\OC::$server->getRequest()->passesStrictCookieCheck()) {
-                header('Location: '.\OC::$WEBROOT);
+            if (!\OC::server->getRequest()->passesStrictCookieCheck()) {
+                header('Location: '.\OC::WEBROOT);
                 exit();
             }
 
-            if (!\OC::$server->getRequest()->passesCSRFCheck()) {
+            if (!\OC::server->getRequest()->passesCSRFCheck()) {
                 exit();
             }
         }
@@ -353,12 +353,12 @@ namespace OCP
          * This function is used to sanitize HTML and should be applied on any
          * string or array of strings before displaying it on a web page.
          *
-         * @param string|array $value
+         * @param string|array value
          * @return string|array an array of sanitized strings or a single sanitized string, depends on the input parameter.
          * @since 4.5.0
          */
-        public static function sanitizeHTML($value) {
-        return \OC_Util::sanitizeHTML($value);
+        public static function sanitizeHTML(value) {
+        return \OC_Util::sanitizeHTML(value);
     }
 
     /**
@@ -368,61 +368,61 @@ namespace OCP
      * Encoding is done according to RFC 3986 with one exception:
      * Character '/' is preserved as is.
      *
-     * @param string $component part of URI to encode
+     * @param string component part of URI to encode
      * @return string
      * @since 6.0.0
      */
-    public static function encodePath($component) {
-        return \OC_Util::encodePath($component);
+    public static function encodePath(component) {
+        return \OC_Util::encodePath(component);
     }
 
     /**
      * Returns an array with all keys from input lowercased or uppercased. Numbered indices are left as is.
      *
-     * @param array $input The array to work on
-     * @param int $case Either MB_CASE_UPPER or MB_CASE_LOWER (default)
-     * @param string $encoding The encoding parameter is the character encoding. Defaults to UTF-8
+     * @param array input The array to work on
+     * @param int case Either MB_CASE_UPPER or MB_CASE_LOWER (default)
+     * @param string encoding The encoding parameter is the character encoding. Defaults to UTF-8
      * @return array
      * @since 4.5.0
      */
-    public static function mb_array_change_key_case($input, $case = MB_CASE_LOWER, $encoding = 'UTF-8') {
-        return \OC_Helper::mb_array_change_key_case($input, $case, $encoding);
+    public static function mb_array_change_key_case(input, case = MB_CASE_LOWER, encoding = 'UTF-8') {
+        return \OC_Helper::mb_array_change_key_case(input, case, encoding);
     }
 
     /**
      * performs a search in a nested array
      *
-     * @param array $haystack the array to be searched
-     * @param string $needle the search string
-     * @param mixed $index optional, only search this key name
+     * @param array haystack the array to be searched
+     * @param string needle the search string
+     * @param mixed index optional, only search this key name
      * @return mixed the key of the matching field, otherwise false
      * @since 4.5.0
      * @deprecated 15.0.0
      */
-    public static function recursiveArraySearch($haystack, $needle, $index = null) {
-        return \OC_Helper::recursiveArraySearch($haystack, $needle, $index);
+    public static function recursiveArraySearch(haystack, needle, index = null) {
+        return \OC_Helper::recursiveArraySearch(haystack, needle, index);
     }
 
     /**
      * calculates the maximum upload size respecting system settings, free space and user quota
      *
-     * @param string $dir the current folder where the user currently operates
-     * @param int $free the number of bytes free on the storage holding $dir, if not set this will be received from the storage directly
+     * @param string dir the current folder where the user currently operates
+     * @param int free the number of bytes free on the storage holding dir, if not set this will be received from the storage directly
      * @return int number of bytes representing
      * @since 5.0.0
      */
-    public static function maxUploadFilesize($dir, $free = null) {
-        return \OC_Helper::maxUploadFilesize($dir, $free);
+    public static function maxUploadFilesize(dir, free = null) {
+        return \OC_Helper::maxUploadFilesize(dir, free);
     }
 
     /**
      * Calculate free space left within user quota
-     * @param string $dir the current folder where the user currently operates
+     * @param string dir the current folder where the user currently operates
      * @return int number of bytes representing
      * @since 7.0.0
      */
-    public static function freeSpace($dir) {
-        return \OC_Helper::freeSpace($dir);
+    public static function freeSpace(dir) {
+        return \OC_Helper::freeSpace(dir);
     }
 
     /**
@@ -437,26 +437,26 @@ namespace OCP
 
     /**
      * Returns whether the given file name is valid
-     * @param string $file file name to check
+     * @param string file file name to check
      * @return bool true if the file name is valid, false otherwise
      * @deprecated 8.1.0 use \OC\Files\View::verifyPath()
      * @since 7.0.0
      * @suppress PhanDeprecatedFunction
      */
-    public static function isValidFileName($file) {
-        return \OC_Util::isValidFileName($file);
+    public static function isValidFileName(file) {
+        return \OC_Util::isValidFileName(file);
     }
 
     /**
      * Compare two strings to provide a natural sort
-     * @param string $a first string to compare
-     * @param string $b second string to compare
-     * @return int -1 if $b comes before $a, 1 if $a comes before $b
+     * @param string a first string to compare
+     * @param string b second string to compare
+     * @return int -1 if b comes before a, 1 if a comes before b
      * or 0 if the strings are identical
      * @since 7.0.0
      */
-    public static function naturalSortCompare($a, $b) {
-        return \OC\NaturalSort::getInstance()->compare($a, $b);
+    public static function naturalSortCompare(a, b) {
+        return \OC\NaturalSort::getInstance()->compare(a, b);
     }
 
     /**
@@ -477,7 +477,7 @@ namespace OCP
         return \OC_Util::isDefaultExpireDateEnforced();
     }
 
-    protected static $needUpgradeCache = null;
+    protected static needUpgradeCache = null;
 
     /**
      * Checks whether the current version needs upgrade.
@@ -486,10 +486,10 @@ namespace OCP
      * @since 7.0.0
      */
     public static function needUpgrade() {
-        if (!isset(self::$needUpgradeCache)) {
-            self::$needUpgradeCache=\OC_Util::needUpgrade(\OC::$server->getSystemConfig());
+        if (!isset(self::needUpgradeCache)) {
+            self::needUpgradeCache=\OC_Util::needUpgrade(\OC::server->getSystemConfig());
         }       
-        return self::$needUpgradeCache;
+        return self::needUpgradeCache;
     }
 
     /**

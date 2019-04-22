@@ -51,7 +51,7 @@ namespace OCP.Authentication.TwoFactorAuth
          *
          * @since 15.0.0
          *
-         * @param string $providerId
+         * @param string providerId
          *
          * @return void
          */

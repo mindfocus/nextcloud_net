@@ -11,7 +11,7 @@ namespace OCP.Accounts
          *
          * @since 15.0.0
          *
-         * @param IUser $user
+         * @param IUser user
          * @return IAccount
          */
         IAccount getAccount(IUser user);

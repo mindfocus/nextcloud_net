@@ -34,41 +34,41 @@ use OCP\Util;
 class SimpleMenuAction implements IMenuAction {
 
 	/** @var string */
-	private $id;
+	private id;
 
 	/** @var string */
-	private $label;
+	private label;
 
 	/** @var string */
-	private $icon;
+	private icon;
 
 	/** @var string */
-	private $link;
+	private link;
 
 	/** @var int */
-	private $priority;
+	private priority;
 
 	/** @var string */
-	private $detail;
+	private detail;
 
 	/**
 	 * SimpleMenuAction constructor.
 	 *
-	 * @param string $id
-	 * @param string $label
-	 * @param string $icon
-	 * @param string $link
-	 * @param int $priority
-	 * @param string $detail
+	 * @param string id
+	 * @param string label
+	 * @param string icon
+	 * @param string link
+	 * @param int priority
+	 * @param string detail
 	 * @since 14.0.0
 	 */
-	public function __construct(string $id, string $label, string $icon, string $link = '', int $priority = 100, string $detail = '') {
-		$this->id = $id;
-		$this->label = $label;
-		$this->icon = $icon;
-		$this->link = $link;
-		$this->priority = $priority;
-		$this->detail = $detail;
+	public function __construct(string id, string label, string icon, string link = '', int priority = 100, string detail = '') {
+		this->id = id;
+		this->label = label;
+		this->icon = icon;
+		this->link = link;
+		this->priority = priority;
+		this->detail = detail;
 	}
 
 	/**
@@ -76,7 +76,7 @@ class SimpleMenuAction implements IMenuAction {
 	 * @since 14.0.0
 	 */
 	public function getId(): string {
-		return $this->id;
+		return this->id;
 	}
 
 	/**
@@ -84,7 +84,7 @@ class SimpleMenuAction implements IMenuAction {
 	 * @since 14.0.0
 	 */
 	public function getLabel(): string {
-		return $this->label;
+		return this->label;
 	}
 
 	/**
@@ -92,7 +92,7 @@ class SimpleMenuAction implements IMenuAction {
 	 * @since 14.0.0
 	 */
 	public function getIcon(): string {
-		return $this->icon;
+		return this->icon;
 	}
 
 	/**
@@ -100,7 +100,7 @@ class SimpleMenuAction implements IMenuAction {
 	 * @since 14.0.0
 	 */
 	public function getLink(): string {
-		return $this->link;
+		return this->link;
 	}
 
 	/**
@@ -108,7 +108,7 @@ class SimpleMenuAction implements IMenuAction {
 	 * @since 14.0.0
 	 */
 	public function getPriority(): int {
-		return $this->priority;
+		return this->priority;
 	}
 
 	/**
@@ -116,10 +116,10 @@ class SimpleMenuAction implements IMenuAction {
 	 * @since 14.0.0
 	 */
 	public function render(): string {
-		$detailContent = ($this->detail !== '') ? '&nbsp;<span class="download-size">(' . Util::sanitizeHTML($this->detail) . ')</span>' : '';
+		detailContent = (this->detail !== '') ? '&nbsp;<span class="download-size">(' . Util::sanitizeHTML(this->detail) . ')</span>' : '';
 		return sprintf(
 			'<li id="%s"><a href="%s"><span class="icon %s"></span>%s %s</a></li>',
-			Util::sanitizeHTML($this->id), Util::sanitizeHTML($this->link), Util::sanitizeHTML($this->icon), Util::sanitizeHTML($this->label), $detailContent
+			Util::sanitizeHTML(this->id), Util::sanitizeHTML(this->link), Util::sanitizeHTML(this->icon), Util::sanitizeHTML(this->label), detailContent
 		);
 	}
 

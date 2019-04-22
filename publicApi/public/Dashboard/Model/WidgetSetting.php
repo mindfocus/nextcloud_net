@@ -60,19 +60,19 @@ final class WidgetSetting implements JsonSerializable {
 
 
 	/** @var string */
-	private $name = '';
+	private name = '';
 
 	/** @var string */
-	private $title = '';
+	private title = '';
 
 	/** @var string */
-	private $type = '';
+	private type = '';
 
 	/** @var string */
-	private $placeholder = '';
+	private placeholder = '';
 
 	/** @var string */
-	private $default = '';
+	private default = '';
 
 
 	/**
@@ -80,10 +80,10 @@ final class WidgetSetting implements JsonSerializable {
 	 *
 	 * @since 15.0.0
 	 *
-	 * @param string $type
+	 * @param string type
 	 */
-	public function __construct(string $type = '') {
-		$this->type = $type;
+	public function __construct(string type = '') {
+		this->type = type;
 	}
 
 
@@ -92,14 +92,14 @@ final class WidgetSetting implements JsonSerializable {
 	 *
 	 * @since 15.0.0
 	 *
-	 * @param string $name
+	 * @param string name
 	 *
 	 * @return WidgetSetting
 	 */
-	public function setName(string $name): WidgetSetting {
-		$this->name = $name;
+	public function setName(string name): WidgetSetting {
+		this->name = name;
 
-		return $this;
+		return this;
 	}
 
 	/**
@@ -110,7 +110,7 @@ final class WidgetSetting implements JsonSerializable {
 	 * @return string
 	 */
 	public function getName(): string {
-		return $this->name;
+		return this->name;
 	}
 
 
@@ -119,14 +119,14 @@ final class WidgetSetting implements JsonSerializable {
 	 *
 	 * @since 15.0.0
 	 *
-	 * @param string $title
+	 * @param string title
 	 *
 	 * @return WidgetSetting
 	 */
-	public function setTitle(string $title): WidgetSetting {
-		$this->title = $title;
+	public function setTitle(string title): WidgetSetting {
+		this->title = title;
 
-		return $this;
+		return this;
 	}
 
 	/**
@@ -137,7 +137,7 @@ final class WidgetSetting implements JsonSerializable {
 	 * @return string
 	 */
 	public function getTitle(): string {
-		return $this->title;
+		return this->title;
 	}
 
 
@@ -146,14 +146,14 @@ final class WidgetSetting implements JsonSerializable {
 	 *
 	 * @since 15.0.0
 	 *
-	 * @param string $type
+	 * @param string type
 	 *
 	 * @return WidgetSetting
 	 */
-	public function setType(string $type): WidgetSetting {
-		$this->type = $type;
+	public function setType(string type): WidgetSetting {
+		this->type = type;
 
-		return $this;
+		return this;
 	}
 
 	/**
@@ -164,7 +164,7 @@ final class WidgetSetting implements JsonSerializable {
 	 * @return string
 	 */
 	public function getType(): string {
-		return $this->type;
+		return this->type;
 	}
 
 
@@ -173,14 +173,14 @@ final class WidgetSetting implements JsonSerializable {
 	 *
 	 * @since 15.0.0
 	 *
-	 * @param string $text
+	 * @param string text
 	 *
 	 * @return WidgetSetting
 	 */
-	public function setPlaceholder(string $text): WidgetSetting {
-		$this->placeholder = $text;
+	public function setPlaceholder(string text): WidgetSetting {
+		this->placeholder = text;
 
-		return $this;
+		return this;
 	}
 
 	/**
@@ -191,7 +191,7 @@ final class WidgetSetting implements JsonSerializable {
 	 * @return string
 	 */
 	public function getPlaceholder(): string {
-		return $this->placeholder;
+		return this->placeholder;
 	}
 
 
@@ -200,14 +200,14 @@ final class WidgetSetting implements JsonSerializable {
 	 *
 	 * @since 15.0.0
 	 *
-	 * @param string $value
+	 * @param string value
 	 *
 	 * @return WidgetSetting
 	 */
-	public function setDefault(string $value): WidgetSetting {
-		$this->default = $value;
+	public function setDefault(string value): WidgetSetting {
+		this->default = value;
 
-		return $this;
+		return this;
 	}
 
 	/**
@@ -218,7 +218,7 @@ final class WidgetSetting implements JsonSerializable {
 	 * @return string
 	 */
 	public function getDefault(): string {
-		return $this->default;
+		return this->default;
 	}
 
 
@@ -229,11 +229,11 @@ final class WidgetSetting implements JsonSerializable {
 	 */
 	public function jsonSerialize() {
 		return [
-			'name' => $this->getName(),
-			'title' => $this->getTitle(),
-			'type' => $this->getTitle(),
-			'default' => $this->getDefault(),
-			'placeholder' => $this->getPlaceholder()
+			'name' => this->getName(),
+			'title' => this->getTitle(),
+			'type' => this->getTitle(),
+			'default' => this->getDefault(),
+			'placeholder' => this->getPlaceholder()
 		];
 	}
 

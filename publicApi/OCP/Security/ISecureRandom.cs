@@ -10,7 +10,7 @@ namespace OCP.Security
      * use a fallback.
      *
      * Usage:
-     * \OC::$server->getSecureRandom()->generate(10);
+     * \OC::server->getSecureRandom()->generate(10);
      *
      * @package OCP\Security
      * @since 8.0.0
@@ -19,15 +19,15 @@ namespace OCP.Security
     {
 
         ///**
-        // * Flags for characters that can be used for <code>generate($length, $characters)</code>
+        // * Flags for characters that can be used for <code>generate(length, characters)</code>
         // */
         //const CHAR_UPPER = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
         //const CHAR_LOWER = 'abcdefghijklmnopqrstuvwxyz';
         //const CHAR_DIGITS = '0123456789';
-        //const CHAR_SYMBOLS = '!\"#$%&\\\'()* +,-./:;<=>?@[\]^_`{|}~';
+        //const CHAR_SYMBOLS = '!\"#%&\\\'()* +,-./:;<=>?@[\]^_`{|}~';
 
         ///**
-        // * Characters that can be used for <code>generate($length, $characters)</code>, to
+        // * Characters that can be used for <code>generate(length, characters)</code>, to
         // * generate human readable random strings. Lower- and upper-case characters and digits 
         // * are included. Characters which are ambiguous are excluded, such as I, l, and 1 and so on.
         // */
@@ -35,8 +35,8 @@ namespace OCP.Security
 
         /**
          * Generate a random string of specified length.
-         * @param int $length The length of the generated string
-         * @param string $characters An optional list of characters to use if no character list is
+         * @param int length The length of the generated string
+         * @param string characters An optional list of characters to use if no character list is
          * 							specified all valid base64 characters are used.
          * @return string
          * @since 8.0.0

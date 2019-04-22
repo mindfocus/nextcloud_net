@@ -44,13 +44,13 @@ interface IShare {
 	 * It is only allowed to set the internal id of a share once.
 	 * Attempts to override the internal id will result in an IllegalIDChangeException
 	 *
-	 * @param string $id
+	 * @param string id
 	 * @return \OCP\Share\IShare
 	 * @throws IllegalIDChangeException
 	 * @throws \InvalidArgumentException
 	 * @since 9.1.0
 	 */
-	public function setId($id);
+	public function setId(id);
 
 	/**
 	 * Get the internal id of the share.
@@ -75,22 +75,22 @@ interface IShare {
 	 * It is only allowed to set the provider id of a share once.
 	 * Attempts to override the provider id will result in an IllegalIDChangeException
 	 *
-	 * @param string $id
+	 * @param string id
 	 * @return \OCP\Share\IShare
 	 * @throws IllegalIDChangeException
 	 * @throws \InvalidArgumentException
 	 * @since 9.1.0
 	 */
-	public function setProviderId($id);
+	public function setProviderId(id);
 
 	/**
 	 * Set the node of the file/folder that is shared
 	 *
-	 * @param Node $node
+	 * @param Node node
 	 * @return \OCP\Share\IShare The modified object
 	 * @since 9.0.0
 	 */
-	public function setNode(Node $node);
+	public function setNode(Node node);
 
 	/**
 	 * Get the node of the file/folder that is shared
@@ -103,11 +103,11 @@ interface IShare {
 
 	/**
 	 * Set file id for lazy evaluation of the node
-	 * @param int $fileId
+	 * @param int fileId
 	 * @return \OCP\Share\IShare The modified object
 	 * @since 9.0.0
 	 */
-	public function setNodeId($fileId);
+	public function setNodeId(fileId);
 
 	/**
 	 * Get the fileid of the node of this share
@@ -120,11 +120,11 @@ interface IShare {
 	/**
 	 * Set the type of node (file/folder)
 	 *
-	 * @param string $type
+	 * @param string type
 	 * @return \OCP\Share\IShare The modified object
 	 * @since 9.0.0
 	 */
-	public function setNodeType($type);
+	public function setNodeType(type);
 
 	/**
 	 * Get the type of node (file/folder)
@@ -138,11 +138,11 @@ interface IShare {
 	/**
 	 * Set the shareType
 	 *
-	 * @param int $shareType
+	 * @param int shareType
 	 * @return \OCP\Share\IShare The modified object
 	 * @since 9.0.0
 	 */
-	public function setShareType($shareType);
+	public function setShareType(shareType);
 
 	/**
 	 * Get the shareType
@@ -155,11 +155,11 @@ interface IShare {
 	/**
 	 * Set the receiver of this share.
 	 *
-	 * @param string $sharedWith
+	 * @param string sharedWith
 	 * @return \OCP\Share\IShare The modified object
 	 * @since 9.0.0
 	 */
-	public function setSharedWith($sharedWith);
+	public function setSharedWith(sharedWith);
 
 	/**
 	 * Get the receiver of this share.
@@ -172,11 +172,11 @@ interface IShare {
 	/**
 	 * Set the display name of the receiver of this share.
 	 *
-	 * @param string $displayName
+	 * @param string displayName
 	 * @return \OCP\Share\IShare The modified object
 	 * @since 14.0.0
 	 */
-	public function setSharedWithDisplayName($displayName);
+	public function setSharedWithDisplayName(displayName);
 
 	/**
 	 * Get the display name of the receiver of this share.
@@ -189,11 +189,11 @@ interface IShare {
 	/**
 	 * Set the avatar of the receiver of this share.
 	 *
-	 * @param string $src
+	 * @param string src
 	 * @return \OCP\Share\IShare The modified object
 	 * @since 14.0.0
 	 */
-	public function setSharedWithAvatar($src);
+	public function setSharedWithAvatar(src);
 
 	/**
 	 * Get the avatar of the receiver of this share.
@@ -207,11 +207,11 @@ interface IShare {
 	 * Set the permissions.
 	 * See \OCP\Constants::PERMISSION_*
 	 *
-	 * @param int $permissions
+	 * @param int permissions
 	 * @return \OCP\Share\IShare The modified object
 	 * @since 9.0.0
 	 */
-	public function setPermissions($permissions);
+	public function setPermissions(permissions);
 
 	/**
 	 * Get the share permissions
@@ -225,11 +225,11 @@ interface IShare {
 	/**
 	 * Attach a note to a share
 	 *
-	 * @param string $note
+	 * @param string note
 	 * @return \OCP\Share\IShare The modified object
 	 * @since 14.0.0
 	 */
-	public function setNote($note);
+	public function setNote(note);
 
 	/**
 	 * Get note attached to a share
@@ -243,11 +243,11 @@ interface IShare {
 	/**
 	 * Set the expiration date
 	 *
-	 * @param null|\DateTime $expireDate
+	 * @param null|\DateTime expireDate
 	 * @return \OCP\Share\IShare The modified object
 	 * @since 9.0.0
 	 */
-	public function setExpirationDate($expireDate);
+	public function setExpirationDate(expireDate);
 
 	/**
 	 * Get the expiration date
@@ -260,11 +260,11 @@ interface IShare {
 	/**
 	 * set a label for a share, some shares, e.g. public links can have a label
 	 *
-	 * @param string $label
+	 * @param string label
 	 * @return \OCP\Share\IShare The modified object
 	 * @since 15.0.0
 	 */
-	public function setLabel($label);
+	public function setLabel(label);
 
 	/**
 	 * get label for the share, some shares, e.g. public links can have a label
@@ -277,11 +277,11 @@ interface IShare {
 	/**
 	 * Set the sharer of the path.
 	 *
-	 * @param string $sharedBy
+	 * @param string sharedBy
 	 * @return \OCP\Share\IShare The modified object
 	 * @since 9.0.0
 	 */
-	public function setSharedBy($sharedBy);
+	public function setSharedBy(sharedBy);
 
 	/**
 	 * Get share sharer
@@ -294,11 +294,11 @@ interface IShare {
 	/**
 	 * Set the original share owner (who owns the path that is shared)
 	 *
-	 * @param string $shareOwner
+	 * @param string shareOwner
 	 * @return \OCP\Share\IShare The modified object
 	 * @since 9.0.0
 	 */
-	public function setShareOwner($shareOwner);
+	public function setShareOwner(shareOwner);
 
 	/**
 	 * Get the original share owner (who owns the path that is shared)
@@ -313,11 +313,11 @@ interface IShare {
 	 * When the share is passed to the share manager to be created
 	 * or updated the password will be hashed.
 	 *
-	 * @param string $password
+	 * @param string password
 	 * @return \OCP\Share\IShare The modified object
 	 * @since 9.0.0
 	 */
-	public function setPassword($password);
+	public function setPassword(password);
 
 	/**
 	 * Get the password of this share.
@@ -334,11 +334,11 @@ interface IShare {
 	 * Set if the recipient can start a conversation with the owner to get the
 	 * password using Nextcloud Talk.
 	 *
-	 * @param bool $sendPasswordByTalk
+	 * @param bool sendPasswordByTalk
 	 * @return \OCP\Share\IShare The modified object
 	 * @since 14.0.0
 	 */
-	public function setSendPasswordByTalk(bool $sendPasswordByTalk);
+	public function setSendPasswordByTalk(bool sendPasswordByTalk);
 
 	/**
 	 * Get if the recipient can start a conversation with the owner to get the
@@ -355,11 +355,11 @@ interface IShare {
 	/**
 	 * Set the public link token.
 	 *
-	 * @param string $token
+	 * @param string token
 	 * @return \OCP\Share\IShare The modified object
 	 * @since 9.0.0
 	 */
-	public function setToken($token);
+	public function setToken(token);
 
 	/**
 	 * Get the public link token.
@@ -372,11 +372,11 @@ interface IShare {
 	/**
 	 * Set the target path of this share relative to the recipients user folder.
 	 *
-	 * @param string $target
+	 * @param string target
 	 * @return \OCP\Share\IShare The modified object
 	 * @since 9.0.0
 	 */
-	public function setTarget($target);
+	public function setTarget(target);
 
 	/**
 	 * Get the target path of this share relative to the recipients user folder.
@@ -389,11 +389,11 @@ interface IShare {
 	/**
 	 * Set the time this share was created
 	 *
-	 * @param \DateTime $shareTime
+	 * @param \DateTime shareTime
 	 * @return \OCP\Share\IShare The modified object
 	 * @since 9.0.0
 	 */
-	public function setShareTime(\DateTime $shareTime);
+	public function setShareTime(\DateTime shareTime);
 
 	/**
 	 * Get the timestamp this share was created
@@ -406,11 +406,11 @@ interface IShare {
 	/**
 	 * Set if the recipient is informed by mail about the share.
 	 *
-	 * @param bool $mailSend
+	 * @param bool mailSend
 	 * @return \OCP\Share\IShare The modified object
 	 * @since 9.0.0
 	 */
-	public function setMailSend($mailSend);
+	public function setMailSend(mailSend);
 
 	/**
 	 * Get if the recipient informed by mail about the share.
@@ -423,10 +423,10 @@ interface IShare {
 	/**
 	 * Set the cache entry for the shared node
 	 *
-	 * @param ICacheEntry $entry
+	 * @param ICacheEntry entry
 	 * @since 11.0.0
 	 */
-	public function setNodeCacheEntry(ICacheEntry $entry);
+	public function setNodeCacheEntry(ICacheEntry entry);
 
 	/**
 	 * Get the cache entry for the shared node
@@ -441,11 +441,11 @@ interface IShare {
 	 * This is mainly for public shares. It will signal that the share page should
 	 * hide download buttons etc.
 	 *
-	 * @param bool $ro
+	 * @param bool ro
 	 * @return IShare
 	 * @since 15.0.0
 	 */
-	public function setHideDownload(bool $hide): IShare;
+	public function setHideDownload(bool hide): IShare;
 
 	/**
 	 * Gets a shares hide download state

@@ -14,7 +14,7 @@ namespace OCP
 
         /**
          * Check if backend implements actions
-         * @param int $actions bitwise-or'ed actions
+         * @param int actions bitwise-or'ed actions
          * @return boolean
          *
          * Returns the supported actions as int to be
@@ -26,7 +26,7 @@ namespace OCP
 
         /**
          * delete a user
-         * @param string $uid The username of the user to delete
+         * @param string uid The username of the user to delete
          * @return bool
          * @since 4.5.0
          */
@@ -35,9 +35,9 @@ namespace OCP
         /**
          * Get a list of all users
          *
-         * @param string $search
-         * @param null|int $limit
-         * @param null|int $offset
+         * @param string search
+         * @param null|int limit
+         * @param null|int offset
          * @return string[] an array of all uids
          * @since 4.5.0
          */
@@ -45,7 +45,7 @@ namespace OCP
 
         /**
          * check if a user exists
-         * @param string $uid the username
+         * @param string uid the username
          * @return boolean
          * @since 4.5.0
          */
@@ -53,7 +53,7 @@ namespace OCP
 
         /**
          * get display name of the user
-         * @param string $uid user ID of the user
+         * @param string uid user ID of the user
          * @return string display name
          * @since 4.5.0
          */
@@ -62,9 +62,9 @@ namespace OCP
         /**
          * Get a list of all display names and user ids.
          *
-         * @param string $search
-         * @param string|null $limit
-         * @param string|null $offset
+         * @param string search
+         * @param string|null limit
+         * @param string|null offset
          * @return array an array of all displayNames (value) and the corresponding uids (key)
          * @since 4.5.0
          */

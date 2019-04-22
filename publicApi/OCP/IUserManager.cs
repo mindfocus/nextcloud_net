@@ -8,15 +8,15 @@ namespace OCP
      * Class Manager
      *
      * Hooks available in scope \OC\User:
-     * - preSetPassword(\OC\User\User $user, string $password, string $recoverPassword)
-     * - postSetPassword(\OC\User\User $user, string $password, string $recoverPassword)
-     * - preDelete(\OC\User\User $user)
-     * - postDelete(\OC\User\User $user)
-     * - preCreateUser(string $uid, string $password)
-     * - postCreateUser(\OC\User\User $user, string $password)
-     * - assignedUserId(string $uid)
-     * - preUnassignedUserId(string $uid)
-     * - postUnassignedUserId(string $uid)
+     * - preSetPassword(\OC\User\User user, string password, string recoverPassword)
+     * - postSetPassword(\OC\User\User user, string password, string recoverPassword)
+     * - preDelete(\OC\User\User user)
+     * - postDelete(\OC\User\User user)
+     * - preCreateUser(string uid, string password)
+     * - postCreateUser(\OC\User\User user, string password)
+     * - assignedUserId(string uid)
+     * - preUnassignedUserId(string uid)
+     * - postUnassignedUserId(string uid)
      *
      * @package OC\User
      * @since 8.0.0
@@ -26,7 +26,7 @@ namespace OCP
         /**
 	 * register a user backend
 	 *
-	 * @param \OCP\UserInterface $backend
+	 * @param \OCP\UserInterface backend
 	 * @since 8.0.0
 	 */
         void registerBackend(UserInterface backend);
@@ -41,7 +41,7 @@ namespace OCP
         /**
          * remove a user backend
          *
-         * @param \OCP\UserInterface $backend
+         * @param \OCP\UserInterface backend
          * @since 8.0.0
          */
         void removeBackend(UserInterface backend);
@@ -55,7 +55,7 @@ namespace OCP
         /**
          * get a user by user id
          *
-         * @param string $uid
+         * @param string uid
          * @return \OCP\IUser|null Either the user or null if the specified user does not exist
          * @since 8.0.0
          */
@@ -64,7 +64,7 @@ namespace OCP
         /**
          * check if a user exists
          *
-         * @param string $uid
+         * @param string uid
          * @return bool
          * @since 8.0.0
          */
@@ -73,8 +73,8 @@ namespace OCP
         /**
          * Check if the password is valid for the user
          *
-         * @param string $loginName
-         * @param string $password
+         * @param string loginName
+         * @param string password
          * @return mixed the User object on success, false otherwise
          * @since 8.0.0
          */
@@ -83,9 +83,9 @@ namespace OCP
         /**
          * search by user id
          *
-         * @param string $pattern
-         * @param int $limit
-         * @param int $offset
+         * @param string pattern
+         * @param int limit
+         * @param int offset
          * @return \OCP\IUser[]
          * @since 8.0.0
          */
@@ -94,17 +94,17 @@ namespace OCP
         /**
          * search by displayName
          *
-         * @param string $pattern
-         * @param int $limit
-         * @param int $offset
+         * @param string pattern
+         * @param int limit
+         * @param int offset
          * @return \OCP\IUser[]
          * @since 8.0.0
          */
         IList<IUser> searchDisplayName(string pattern, int? limit = null, int? offset = null);
 
         /**
-         * @param string $uid
-         * @param string $password
+         * @param string uid
+         * @param string password
          * @throws \InvalidArgumentException
          * @return bool|\OCP\IUser the created user or false
          * @since 8.0.0
@@ -112,9 +112,9 @@ namespace OCP
         IUser? createUser(string uid, string password);
 
         /**
-         * @param string $uid
-         * @param string $password
-         * @param UserInterface $backend
+         * @param string uid
+         * @param string password
+         * @param UserInterface backend
          * @return IUser|null
          * @throws \InvalidArgumentException
          * @since 12.0.0
@@ -130,8 +130,8 @@ namespace OCP
         IDictionary<string,int> countUsers();
 
         /**
-         * @param \Closure $callback
-         * @param string $search
+         * @param \Closure callback
+         * @param string search
          * @since 9.0.0
          */
         void callForAllUsers(Action callback, string search = "");
@@ -153,13 +153,13 @@ namespace OCP
         int countSeenUsers();
 
         /**
-         * @param \Closure $callback
+         * @param \Closure callback
          * @since 11.0.0
          */
         void callForSeenUsers(Action callback);
 
         /**
-         * @param string $email
+         * @param string email
          * @return IUser[]
          * @since 9.1.0
          */

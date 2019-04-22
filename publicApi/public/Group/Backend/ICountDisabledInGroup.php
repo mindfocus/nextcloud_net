@@ -32,5 +32,5 @@ interface ICountDisabledInGroup {
 	/**
 	 * @since 14.0.0
 	 */
-	public function countDisabledInGroup(string $gid): int;
+	public function countDisabledInGroup(string gid): int;
 }

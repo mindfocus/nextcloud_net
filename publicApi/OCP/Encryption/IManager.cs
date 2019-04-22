@@ -22,9 +22,9 @@ public interface IManager {
 	/**
 	 * Registers an callback function which must return an encryption module instance
 	 *
-	 * @param string $id
-	 * @param string $displayName
-	 * @param callable $callback
+	 * @param string id
+	 * @param string displayName
+	 * @param callable callback
 	 * @throws ModuleAlreadyExistsException
 	 * @since 8.1.0
 	 */
@@ -33,7 +33,7 @@ public interface IManager {
 	/**
 	 * Unregisters an encryption module
 	 *
-	 * @param string $moduleId
+	 * @param string moduleId
 	 * @since 8.1.0
 	 */
 	void unregisterEncryptionModule(string moduleId);
@@ -41,7 +41,7 @@ public interface IManager {
 	/**
 	 * get a list of all encryption modules
 	 *
-	 * @return array [id => ['id' => $id, 'displayName' => $displayName, 'callback' => callback]]
+	 * @return array [id => ['id' => id, 'displayName' => displayName, 'callback' => callback]]
 	 * @since 8.1.0
 	 */
 	IDictionary<string,object> getEncryptionModules();
@@ -50,7 +50,7 @@ public interface IManager {
 	/**
 	 * get a specific encryption module
 	 *
-	 * @param string $moduleId Empty to get the default module
+	 * @param string moduleId Empty to get the default module
 	 * @return IEncryptionModule
 	 * @throws ModuleDoesNotExistsException
 	 * @since 8.1.0
@@ -68,7 +68,7 @@ public interface IManager {
 	/**
 	 * set default encryption module Id
 	 *
-	 * @param string $moduleId
+	 * @param string moduleId
 	 * @return string
 	 * @since 8.1.0
 	 */

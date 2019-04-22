@@ -42,9 +42,9 @@ interface ISorter {
 	/**
 	 * executes the sort action
 	 *
-	 * @param array $sortArray the array to be sorted, provided as reference
-	 * @param array $context carries key 'itemType' and 'itemId' of the source object (e.g. a file)
+	 * @param array sortArray the array to be sorted, provided as reference
+	 * @param array context carries key 'itemType' and 'itemId' of the source object (e.g. a file)
 	 * @since 13.0.0
 	 */
-	public function sort(array &$sortArray, array $context);
+	public function sort(array &sortArray, array context);
 }

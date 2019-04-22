@@ -36,7 +36,7 @@ namespace OCP.Activity
          *  - setAffectedUser()
          *  - setSubject()
          *
-         * @param IEvent $event
+         * @param IEvent event
          * @throws \BadMethodCallException if required values have not been set
          * @since 8.2.0
          */
@@ -46,15 +46,15 @@ namespace OCP.Activity
 	 * In order to improve lazy loading a closure can be registered which will be called in case
 	 * activity consumers are actually requested
 	 *
-	 * $callable has to return an instance of \OCP\Activity\IConsumer
+	 * callable has to return an instance of \OCP\Activity\IConsumer
 	 *
-	 * @param \Closure $callable
+	 * @param \Closure callable
 	 * @since 6.0.0
 	 */
 	void registerConsumer(Action callable);
 
 	/**
-	 * @param string $filter Class must implement OCA\Activity\IFilter
+	 * @param string filter Class must implement OCA\Activity\IFilter
 	 * @since 11.0.0
 	 */
 	void registerFilter(string filter);
@@ -66,7 +66,7 @@ namespace OCP.Activity
 	IList<IFilter> getFilters();
 
 	/**
-	 * @param string $id
+	 * @param string id
 	 * @return IFilter
 	 * @throws \InvalidArgumentException when the filter was not found
 	 * @since 11.0.0
@@ -74,7 +74,7 @@ namespace OCP.Activity
 	IFilter getFilterById(string id);
 
 	/**
-	 * @param string $setting Class must implement OCA\Activity\ISetting
+	 * @param string setting Class must implement OCA\Activity\ISetting
 	 * @since 11.0.0
 	 */
 	void registerSetting(string setting);
@@ -86,7 +86,7 @@ namespace OCP.Activity
 	IList<ISetting> getSettings();
 
 	/**
-	 * @param string $provider Class must implement OCA\Activity\IProvider
+	 * @param string provider Class must implement OCA\Activity\IProvider
 	 * @since 11.0.0
 	 */
 	void registerProvider(string provider);
@@ -98,7 +98,7 @@ namespace OCP.Activity
 	IList<IProvider> getProviders();
 
 	/**
-	 * @param string $id
+	 * @param string id
 	 * @return ISetting
 	 * @throws \InvalidArgumentException when the setting was not found
 	 * @since 11.0.0
@@ -106,8 +106,8 @@ namespace OCP.Activity
 	ISetting getSettingById(string id);
 
 	/**
-	 * @param string $type
-	 * @param int $id
+	 * @param string type
+	 * @param int id
 	 * @since 8.2.0
 	 */
 	void setFormattingObject(string type, int id);
@@ -119,7 +119,7 @@ namespace OCP.Activity
 	bool isFormattingFilteredObject();
 
 	/**
-	 * @param bool $status Set to true, when parsing events should not use SVG icons
+	 * @param bool status Set to true, when parsing events should not use SVG icons
 	 * @since 12.0.1
 	 */
 	void setRequirePNG(bool status);
@@ -133,7 +133,7 @@ namespace OCP.Activity
 	/**
 	 * Set the user we need to use
 	 *
-	 * @param string|null $currentUserId
+	 * @param string|null currentUserId
 	 * @throws \UnexpectedValueException If the user is invalid
 	 * @since 9.0.1
 	 */

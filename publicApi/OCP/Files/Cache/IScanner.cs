@@ -22,11 +22,11 @@ namespace OCP.Files.Cache
         /**
          * scan a single file and store it in the cache
          *
-         * @param string $file
-         * @param int $reuseExisting
-         * @param int $parentId
-         * @param array | null $cacheData existing data in the cache for the file to be scanned
-         * @param bool $lock set to false to disable getting an additional read lock during scanning
+         * @param string file
+         * @param int reuseExisting
+         * @param int parentId
+         * @param array | null cacheData existing data in the cache for the file to be scanned
+         * @param bool lock set to false to disable getting an additional read lock during scanning
          * @return array an array of metadata of the scanned file
          * @throws \OC\ServerNotAvailableException
          * @throws \OCP\Lock\LockedException
@@ -37,10 +37,10 @@ namespace OCP.Files.Cache
         /**
          * scan a folder and all its children
          *
-         * @param string $path
-         * @param bool $recursive
-         * @param int $reuse
-         * @param bool $lock set to false to disable getting an additional read lock during scanning
+         * @param string path
+         * @param bool recursive
+         * @param int reuse
+         * @param bool lock set to false to disable getting an additional read lock during scanning
          * @return array an array of the meta data of the scanned file or folder
          * @since 9.0.0
          */
@@ -51,7 +51,7 @@ namespace OCP.Files.Cache
          * NOTE: files with a '.part' extension are ignored as well!
          *       prevents unfinished put requests to be scanned
          *
-         * @param string $file
+         * @param string file
          * @return boolean
          * @since 9.0.0
          */

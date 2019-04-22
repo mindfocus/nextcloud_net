@@ -8,14 +8,14 @@ namespace OCP
      * Class Manager
      *
      * Hooks available in scope \OC\Group:
-     * - preAddUser(\OC\Group\Group $group, \OC\User\User $user)
-     * - postAddUser(\OC\Group\Group $group, \OC\User\User $user)
-     * - preRemoveUser(\OC\Group\Group $group, \OC\User\User $user)
-     * - postRemoveUser(\OC\Group\Group $group, \OC\User\User $user)
-     * - preDelete(\OC\Group\Group $group)
-     * - postDelete(\OC\Group\Group $group)
-     * - preCreate(string $groupId)
-     * - postCreate(\OC\Group\Group $group)
+     * - preAddUser(\OC\Group\Group group, \OC\User\User user)
+     * - postAddUser(\OC\Group\Group group, \OC\User\User user)
+     * - preRemoveUser(\OC\Group\Group group, \OC\User\User user)
+     * - postRemoveUser(\OC\Group\Group group, \OC\User\User user)
+     * - preDelete(\OC\Group\Group group)
+     * - postDelete(\OC\Group\Group group)
+     * - preCreate(string groupId)
+     * - postCreate(\OC\Group\Group group)
      *
      * @package OC\Group
      * @since 8.0.0
@@ -25,14 +25,14 @@ namespace OCP
         /**
          * Checks whether a given backend is used
          *
-         * @param string $backendClass Full classname including complete namespace
+         * @param string backendClass Full classname including complete namespace
          * @return bool
          * @since 8.1.0
          */
         bool isBackendUsed(string backendClass);
 
         /**
-         * @param \OCP\GroupInterface $backend
+         * @param \OCP\GroupInterface backend
          * @since 8.0.0
          */
         void addBackend(GroupInterface backend);
@@ -50,44 +50,44 @@ namespace OCP
         IList<GroupInterface> getBackends();
 
         /**
-         * @param string $gid
+         * @param string gid
          * @return \OCP\IGroup
          * @since 8.0.0
          */
         IGroup get(string gid);
 
         /**
-         * @param string $gid
+         * @param string gid
          * @return bool
          * @since 8.0.0
          */
         bool groupExists(string gid);
 
         /**
-         * @param string $gid
+         * @param string gid
          * @return \OCP\IGroup
          * @since 8.0.0
          */
         IGroup createGroup(string gid);
 
         /**
-         * @param string $search
-         * @param int $limit
-         * @param int $offset
+         * @param string search
+         * @param int limit
+         * @param int offset
          * @return \OCP\IGroup[]
          * @since 8.0.0
          */
         IList<IGroup> search(string search, int? limit = null, int? offset = null);
 
         /**
-         * @param \OCP\IUser|null $user
+         * @param \OCP\IUser|null user
          * @return \OCP\IGroup[]
          * @since 8.0.0
          */
         IList<IGroup> getUserGroups(IUser user = null);
 
         /**
-         * @param \OCP\IUser $user
+         * @param \OCP\IUser user
          * @return array with group names
          * @since 8.0.0
          */
@@ -96,10 +96,10 @@ namespace OCP
         /**
          * get a list of all display names in a group
          *
-         * @param string $gid
-         * @param string $search
-         * @param int $limit
-         * @param int $offset
+         * @param string gid
+         * @param string search
+         * @param int limit
+         * @param int offset
          * @return array an array of display names (value) and user ids (key)
          * @since 8.0.0
          */
@@ -107,7 +107,7 @@ namespace OCP
 
         /**
          * Checks if a userId is in the admin group
-         * @param string $userId
+         * @param string userId
          * @return bool if admin
          * @since 8.0.0
          */
@@ -115,8 +115,8 @@ namespace OCP
 
         /**
          * Checks if a userId is in a group
-         * @param string $userId
-         * @param string $group
+         * @param string userId
+         * @param string group
          * @return bool if in group
          * @since 8.0.0
          */

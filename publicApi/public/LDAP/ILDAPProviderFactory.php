@@ -41,10 +41,10 @@ interface ILDAPProviderFactory {
 	/**
 	 * Constructor for the LDAP provider factory
 	 *
-	 * @param IServerContainer $serverContainer server container
+	 * @param IServerContainer serverContainer server container
 	 * @since 11.0.0
 	 */
-	public function __construct(IServerContainer $serverContainer);
+	public function __construct(IServerContainer serverContainer);
 	
 	/**
 	 * creates and returns an instance of the ILDAPProvider

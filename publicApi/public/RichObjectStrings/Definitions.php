@@ -37,7 +37,7 @@ class Definitions {
 	 * @var array
 	 * @since 11.0.0
 	 */
-	public $definitions = [
+	public definitions = [
 		'addressbook' => [
 			'author' => 'Nextcloud',
 			'app' => 'dav',
@@ -433,14 +433,14 @@ class Definitions {
 	];
 
 	/**
-	 * @param string $type
+	 * @param string type
 	 * @return array
 	 * @throws InvalidObjectExeption
 	 * @since 11.0.0
 	 */
-	public function getDefinition($type) {
-		if (isset($this->definitions[$type])) {
-			return $this->definitions[$type];
+	public function getDefinition(type) {
+		if (isset(this->definitions[type])) {
+			return this->definitions[type];
 		}
 
 		throw new InvalidObjectExeption('Object type is undefined');

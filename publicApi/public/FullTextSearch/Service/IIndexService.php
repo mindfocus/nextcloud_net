@@ -49,13 +49,13 @@ interface IIndexService {
 	 *
 	 * @since 15.0.1
 	 *
-	 * @param string $providerId
-	 * @param string $documentId
-	 * @param string $userId
-	 * @param int $status
+	 * @param string providerId
+	 * @param string documentId
+	 * @param string userId
+	 * @param int status
 	 * @return IIndex
 	 */
-	public function createIndex(string $providerId, string $documentId, string $userId, int $status): IIndex;
+	public function createIndex(string providerId, string documentId, string userId, int status): IIndex;
 
 
 	/**
@@ -64,40 +64,40 @@ interface IIndexService {
 	 *
 	 * @since 15.0.0
 	 *
-	 * @param string $providerId
-	 * @param string $documentId
+	 * @param string providerId
+	 * @param string documentId
 	 *
 	 * @return IIndex
 	 */
-	public function getIndex(string $providerId, string $documentId): IIndex;
+	public function getIndex(string providerId, string documentId): IIndex;
 
 
 	/**
-	 * Update the status of an Index. status is a bit flag, setting $reset to
+	 * Update the status of an Index. status is a bit flag, setting reset to
 	 * true will reset the status to the value defined in the parameter.
 	 *
 	 * @since 15.0.0
 	 *
-	 * @param string $providerId
-	 * @param string $documentId
-	 * @param int $status
-	 * @param bool $reset
+	 * @param string providerId
+	 * @param string documentId
+	 * @param int status
+	 * @param bool reset
 	 */
-	public function updateIndexStatus(string $providerId, string $documentId, int $status, bool $reset = false);
+	public function updateIndexStatus(string providerId, string documentId, int status, bool reset = false);
 
 
 	/**
-	 * Update the status of an array of Index. status is a bit flag, setting $reset to
+	 * Update the status of an array of Index. status is a bit flag, setting reset to
 	 * true will reset the status to the value defined in the parameter.
 	 *
 	 * @since 15.0.0
 	 *
-	 * @param string $providerId
-	 * @param array $documentIds
-	 * @param int $status
-	 * @param bool $reset
+	 * @param string providerId
+	 * @param array documentIds
+	 * @param int status
+	 * @param bool reset
 	 */
-	public function updateIndexesStatus(string $providerId, array $documentIds, int $status, bool $reset = false);
+	public function updateIndexesStatus(string providerId, array documentIds, int status, bool reset = false);
 
 
 	/**
@@ -105,9 +105,9 @@ interface IIndexService {
 	 *
 	 * @since 15.0.0
 	 *
-	 * @param array $indexes
+	 * @param array indexes
 	 */
-	public function updateIndexes(array $indexes);
+	public function updateIndexes(array indexes);
 
 }
 

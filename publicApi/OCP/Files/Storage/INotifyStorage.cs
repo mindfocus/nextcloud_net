@@ -20,14 +20,14 @@ namespace OCP.Files.Storage
          * Start listening for update notifications
          *
          * The provided callback will be called for every incoming notification with the following parameters
-         *  - int $type the type of update, one of the INotifyStorage::NOTIFY_* constants
-         *  - string $path the path of the update
-         *  - string $renameTarget the target of the rename operation, only provided for rename updates
+         *  - int type the type of update, one of the INotifyStorage::NOTIFY_* constants
+         *  - string path the path of the update
+         *  - string renameTarget the target of the rename operation, only provided for rename updates
          *
          * Note that this call is blocking and will not exit on it's own, to stop listening for notifications return `false` from the callback
          *
-         * @param string $path
-         * @param callable $callback
+         * @param string path
+         * @param callable callback
          *
          * @since 9.1.0
          * @deprecated 12.0.0 use INotifyStorage::notify()->listen() instead
@@ -37,7 +37,7 @@ namespace OCP.Files.Storage
         /**
          * Start the notification handler for this storage
          *
-         * @param $path
+         * @param path
          * @return INotifyHandler
          *
          * @since 12.0.0

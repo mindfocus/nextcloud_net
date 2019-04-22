@@ -16,9 +16,9 @@ namespace OCP.Encryption.Keys
         /**
          * get user specific key
          *
-         * @param string $uid ID if the user for whom we want the key
-         * @param string $keyId id of the key
-         * @param string $encryptionModuleId
+         * @param string uid ID if the user for whom we want the key
+         * @param string keyId id of the key
+         * @param string encryptionModuleId
          *
          * @return mixed key
          * @since 8.1.0
@@ -28,9 +28,9 @@ namespace OCP.Encryption.Keys
         /**
          * get file specific key
          *
-         * @param string $path path to file
-         * @param string $keyId id of the key
-         * @param string $encryptionModuleId
+         * @param string path path to file
+         * @param string keyId id of the key
+         * @param string encryptionModuleId
          *
          * @return mixed key
          * @since 8.1.0
@@ -41,8 +41,8 @@ namespace OCP.Encryption.Keys
          * get system-wide encryption keys not related to a specific user,
          * e.g something like a key for public link shares
          *
-         * @param string $keyId id of the key
-         * @param string $encryptionModuleId
+         * @param string keyId id of the key
+         * @param string encryptionModuleId
          *
          * @return mixed key
          * @since 8.1.0
@@ -52,10 +52,10 @@ namespace OCP.Encryption.Keys
         /**
          * set user specific key
          *
-         * @param string $uid ID if the user for whom we want the key
-         * @param string $keyId id of the key
-         * @param mixed $key
-         * @param string $encryptionModuleId
+         * @param string uid ID if the user for whom we want the key
+         * @param string keyId id of the key
+         * @param mixed key
+         * @param string encryptionModuleId
          * @since 8.1.0
          */
         void setUserKey(string uid, string keyId, object key, string encryptionModuleId);
@@ -63,10 +63,10 @@ namespace OCP.Encryption.Keys
         /**
          * set file specific key
          *
-         * @param string $path path to file
-         * @param string $keyId id of the key
-         * @param mixed $key
-         * @param string $encryptionModuleId
+         * @param string path path to file
+         * @param string keyId id of the key
+         * @param mixed key
+         * @param string encryptionModuleId
          * @since 8.1.0
          */
         void setFileKey(string path, string keyId, object key, string encryptionModuleId);
@@ -75,9 +75,9 @@ namespace OCP.Encryption.Keys
          * set system-wide encryption keys not related to a specific user,
          * e.g something like a key for public link shares
          *
-         * @param string $keyId id of the key
-         * @param mixed $key
-         * @param string $encryptionModuleId
+         * @param string keyId id of the key
+         * @param mixed key
+         * @param string encryptionModuleId
          *
          * @return mixed key
          * @since 8.1.0
@@ -87,9 +87,9 @@ namespace OCP.Encryption.Keys
         /**
          * delete user specific key
          *
-         * @param string $uid ID if the user for whom we want to delete the key
-         * @param string $keyId id of the key
-         * @param string $encryptionModuleId
+         * @param string uid ID if the user for whom we want to delete the key
+         * @param string keyId id of the key
+         * @param string encryptionModuleId
          *
          * @return boolean False when the key could not be deleted
          * @since 8.1.0
@@ -99,9 +99,9 @@ namespace OCP.Encryption.Keys
         /**
          * delete file specific key
          *
-         * @param string $path path to file
-         * @param string $keyId id of the key
-         * @param string $encryptionModuleId
+         * @param string path path to file
+         * @param string keyId id of the key
+         * @param string encryptionModuleId
          *
          * @return boolean False when the key could not be deleted
          * @since 8.1.0
@@ -111,7 +111,7 @@ namespace OCP.Encryption.Keys
         /**
          * delete all file keys for a given file
          *
-         * @param string $path to the file
+         * @param string path to the file
          *
          * @return boolean False when the keys could not be deleted
          * @since 8.1.0
@@ -122,8 +122,8 @@ namespace OCP.Encryption.Keys
          * delete system-wide encryption keys not related to a specific user,
          * e.g something like a key for public link shares
          *
-         * @param string $keyId id of the key
-         * @param string $encryptionModuleId
+         * @param string keyId id of the key
+         * @param string encryptionModuleId
          *
          * @return boolean False when the key could not be deleted
          * @since 8.1.0
@@ -133,8 +133,8 @@ namespace OCP.Encryption.Keys
         /**
          * copy keys if a file was renamed
          *
-         * @param string $source
-         * @param string $target
+         * @param string source
+         * @param string target
          * @return boolean
          * @since 8.1.0
          */
@@ -143,8 +143,8 @@ namespace OCP.Encryption.Keys
         /**
          * move keys if a file was renamed
          *
-         * @param string $source
-         * @param string $target
+         * @param string source
+         * @param string target
          * @return boolean
          * @since 8.1.0
          */
@@ -153,9 +153,9 @@ namespace OCP.Encryption.Keys
         /**
          * backup keys of a given encryption module
          *
-         * @param string $encryptionModuleId
-         * @param string $purpose
-         * @param string $uid
+         * @param string encryptionModuleId
+         * @param string purpose
+         * @param string uid
          * @return bool
          * @since 12.0.0
          */

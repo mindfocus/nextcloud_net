@@ -34,7 +34,7 @@ namespace OCP.Calendar.Room
 	/**
 	 * get a room by it's id
 	 *
-	 * @param string $id
+	 * @param string id
 	 * @throws BackendTemporarilyUnavailableException
 	 * @return IRoom|null
 	 * @since 14.0.0

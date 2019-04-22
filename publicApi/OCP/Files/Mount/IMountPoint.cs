@@ -22,7 +22,7 @@ namespace OCP.Files.Mount
         /**
          * Set the mountpoint
          *
-         * @param string $mountPoint new mount point
+         * @param string mountPoint new mount point
          * @since 8.0.0
          */
         void setMountPoint(string mountPoint);
@@ -54,7 +54,7 @@ namespace OCP.Files.Mount
         /**
          * Get the path relative to the mountpoint
          *
-         * @param string $path absolute path to a file or folder
+         * @param string path absolute path to a file or folder
          * @return string
          * @since 8.0.0
          */
@@ -63,7 +63,7 @@ namespace OCP.Files.Mount
         /**
          * Apply a storage wrapper to the mounted storage
          *
-         * @param callable $wrapper
+         * @param callable wrapper
          * @since 8.0.0
          */
         void wrapStorage(Action wrapper);
@@ -71,8 +71,8 @@ namespace OCP.Files.Mount
         /**
          * Get a mount option
          *
-         * @param string $name Name of the mount option to get
-         * @param mixed $default Default value for the mount option
+         * @param string name Name of the mount option to get
+         * @param mixed default Default value for the mount option
          * @return mixed
          * @since 8.0.0
          */

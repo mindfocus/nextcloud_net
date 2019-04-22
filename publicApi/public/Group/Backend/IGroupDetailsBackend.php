@@ -32,5 +32,5 @@ interface IGroupDetailsBackend {
 	/**
 	 * @since 14.0.0
 	 */
-	public function getGroupDetails(string $gid): array;
+	public function getGroupDetails(string gid): array;
 }

@@ -39,14 +39,14 @@ namespace OCP.Calendar
 
         /**
          * This function is used to search and find objects within the user's calendars.
-         * In case $pattern is empty all events/journals/todos will be returned.
+         * In case pattern is empty all events/journals/todos will be returned.
          *
-         * @param string $pattern which should match within the $searchProperties
-         * @param array $searchProperties defines the properties within the query pattern should match
-         * @param array $options - optional parameters:
+         * @param string pattern which should match within the searchProperties
+         * @param array searchProperties defines the properties within the query pattern should match
+         * @param array options - optional parameters:
          * 	['timerange' => ['start' => new DateTime(...), 'end' => new DateTime(...)]]
-         * @param integer|null $limit - limit number of search results
-         * @param integer|null $offset - offset for paging of search results
+         * @param integer|null limit - limit number of search results
+         * @param integer|null offset - offset for paging of search results
          * @return array an array of events/journals/todos which are arrays of arrays of key-value-pairs
          * @since 13.0.0
          */
@@ -63,7 +63,7 @@ namespace OCP.Calendar
         /**
          * Registers a calendar
          *
-         * @param ICalendar $calendar
+         * @param ICalendar calendar
          * @return void
          * @since 13.0.0
          */
@@ -72,7 +72,7 @@ namespace OCP.Calendar
         /**
          * Unregisters a calendar
          *
-         * @param ICalendar $calendar
+         * @param ICalendar calendar
          * @return void
          * @since 13.0.0
          */
@@ -82,7 +82,7 @@ namespace OCP.Calendar
          * In order to improve lazy loading a closure can be registered which will be called in case
          * calendars are actually requested
          *
-         * @param \Closure $callable
+         * @param \Closure callable
          * @return void
          * @since 13.0.0
          */

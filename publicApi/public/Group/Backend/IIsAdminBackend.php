@@ -32,5 +32,5 @@ interface IIsAdminBackend {
 	/**
 	 * @since 14.0.0
 	 */
-	public function isAdmin(string $uid): bool;
+	public function isAdmin(string uid): bool;
 }

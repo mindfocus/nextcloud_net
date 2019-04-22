@@ -39,30 +39,30 @@ abstract class BigIntMigration extends SimpleMigrationStep {
 	abstract protected function getColumnsByTable();
 
 	/**
-	 * @param IOutput $output
-	 * @param \Closure $schemaClosure The `\Closure` returns a `ISchemaWrapper`
-	 * @param array $options
+	 * @param IOutput output
+	 * @param \Closure schemaClosure The `\Closure` returns a `ISchemaWrapper`
+	 * @param array options
 	 * @return null|ISchemaWrapper
 	 * @since 13.0.0
 	 */
-	public function changeSchema(IOutput $output, \Closure $schemaClosure, array $options) {
-		/** @var ISchemaWrapper $schema */
-		$schema = $schemaClosure();
+	public function changeSchema(IOutput output, \Closure schemaClosure, array options) {
+		/** @var ISchemaWrapper schema */
+		schema = schemaClosure();
 
-		$tables = $this->getColumnsByTable();
+		tables = this->getColumnsByTable();
 
-		foreach ($tables as $tableName => $columns) {
-			$table = $schema->getTable($tableName);
+		foreach (tables as tableName => columns) {
+			table = schema->getTable(tableName);
 
-			foreach ($columns as $columnName) {
-				$column = $table->getColumn($columnName);
-				if ($column->getType()->getName() !== Type::BIGINT) {
-					$column->setType(Type::getType(Type::BIGINT));
-					$column->setOptions(['length' => 20]);
+			foreach (columns as columnName) {
+				column = table->getColumn(columnName);
+				if (column->getType()->getName() !== Type::BIGINT) {
+					column->setType(Type::getType(Type::BIGINT));
+					column->setOptions(['length' => 20]);
 				}
 			}
 		}
 
-		return $schema;
+		return schema;
 	}
 }

@@ -37,8 +37,8 @@ public interface ILogger {
 	/**
 	 * System is unusable.
 	 *
-	 * @param string $message
-	 * @param array $context
+	 * @param string message
+	 * @param array context
 	 * @return null
 	 * @since 7.0.0
 	 */
@@ -47,8 +47,8 @@ public interface ILogger {
 	/**
 	 * Action must be taken immediately.
 	 *
-	 * @param string $message
-	 * @param array $context
+	 * @param string message
+	 * @param array context
 	 * @return null
 	 * @since 7.0.0
 	 */
@@ -57,8 +57,8 @@ public interface ILogger {
 	/**
 	 * Critical conditions.
 	 *
-	 * @param string $message
-	 * @param array $context
+	 * @param string message
+	 * @param array context
 	 * @return null
 	 * @since 7.0.0
 	 */
@@ -68,8 +68,8 @@ public interface ILogger {
 	 * Runtime errors that do not require immediate action but should typically
 	 * be logged and monitored.
 	 *
-	 * @param string $message
-	 * @param array $context
+	 * @param string message
+	 * @param array context
 	 * @return null
 	 * @since 7.0.0
 	 */
@@ -78,8 +78,8 @@ public interface ILogger {
 	/**
 	 * Exceptional occurrences that are not errors.
 	 *
-	 * @param string $message
-	 * @param array $context
+	 * @param string message
+	 * @param array context
 	 * @return null
 	 * @since 7.0.0
 	 */
@@ -88,8 +88,8 @@ public interface ILogger {
 	/**
 	 * Normal but significant events.
 	 *
-	 * @param string $message
-	 * @param array $context
+	 * @param string message
+	 * @param array context
 	 * @return null
 	 * @since 7.0.0
 	 */
@@ -98,8 +98,8 @@ public interface ILogger {
 	/**
 	 * Interesting events.
 	 *
-	 * @param string $message
-	 * @param array $context
+	 * @param string message
+	 * @param array context
 	 * @return null
 	 * @since 7.0.0
 	 */
@@ -108,8 +108,8 @@ public interface ILogger {
 	/**
 	 * Detailed debug information.
 	 *
-	 * @param string $message
-	 * @param array $context
+	 * @param string message
+	 * @param array context
 	 * @return null
 	 * @since 7.0.0
 	 */
@@ -118,9 +118,9 @@ public interface ILogger {
 	/**
 	 * Logs with an arbitrary level.
 	 *
-	 * @param int $level
-	 * @param string $message
-	 * @param array $context
+	 * @param int level
+	 * @param string message
+	 * @param array context
 	 * @return mixed
 	 * @since 7.0.0
 	 */
@@ -132,13 +132,13 @@ public interface ILogger {
 	 * context.
 	 *
 	 * <code>
-	 * $logger->logException($ex, [
+	 * logger->logException(ex, [
 	 *     'message' => 'Exception during background job execution'
 	 * ]);
 	 * </code>
 	 *
-	 * @param \Exception|\Throwable $exception
-	 * @param array $context
+	 * @param \Exception|\Throwable exception
+	 * @param array context
 	 * @return void
 	 * @since 8.2.0
 	 */

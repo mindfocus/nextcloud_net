@@ -97,11 +97,11 @@ interface IIndex {
 	 *
 	 * @since 15.0.0
 	 *
-	 * @param string $source
+	 * @param string source
 	 *
 	 * @return IIndex
 	 */
-	public function setSource(string $source): IIndex;
+	public function setSource(string source): IIndex;
 
 	/**
 	 * Get the source of the original document.
@@ -118,11 +118,11 @@ interface IIndex {
 	 *
 	 * @since 15.0.0
 	 *
-	 * @param string $ownerId
+	 * @param string ownerId
 	 *
 	 * @return IIndex
 	 */
-	public function setOwnerId(string $ownerId): IIndex;
+	public function setOwnerId(string ownerId): IIndex;
 
 	/**
 	 * Get the owner of the original document.
@@ -136,16 +136,16 @@ interface IIndex {
 
 	/**
 	 * Set the current index status (bit flag) of the original document.
-	 * If $reset is true, the status is reset to the defined value.
+	 * If reset is true, the status is reset to the defined value.
 	 *
 	 * @since 15.0.0
 	 *
-	 * @param int $status
-	 * @param bool $reset
+	 * @param int status
+	 * @param bool reset
 	 *
 	 * @return IIndex
 	 */
-	public function setStatus(int $status, bool $reset = false): IIndex;
+	public function setStatus(int status, bool reset = false): IIndex;
 
 	/**
 	 * Get the current index status of the original document.
@@ -161,22 +161,22 @@ interface IIndex {
 	 *
 	 * @since 15.0.0
 	 *
-	 * @param int $status
+	 * @param int status
 	 *
 	 * @return bool
 	 */
-	public function isStatus(int $status): bool;
+	public function isStatus(int status): bool;
 
 	/**
 	 * Remove a status.
 	 *
 	 * @since 15.0.0
 	 *
-	 * @param int $status
+	 * @param int status
 	 *
 	 * @return IIndex
 	 */
-	public function unsetStatus(int $status): IIndex;
+	public function unsetStatus(int status): IIndex;
 
 
 	/**
@@ -184,48 +184,48 @@ interface IIndex {
 	 *
 	 * @since 15.0.0
 	 *
-	 * @param string $option
-	 * @param string|int $value
+	 * @param string option
+	 * @param string|int value
 	 *
 	 * @return IIndex
 	 */
-	public function addOption(string $option, string $value): IIndex;
+	public function addOption(string option, string value): IIndex;
 
 	/**
 	 * Add an option related to the original document (as integer).
 	 *
 	 * @since 15.0.0
 	 *
-	 * @param string $option
-	 * @param int $value
+	 * @param string option
+	 * @param int value
 	 *
 	 * @return IIndex
 	 */
-	public function addOptionInt(string $option, int $value): IIndex;
+	public function addOptionInt(string option, int value): IIndex;
 
 	/**
 	 * Get the option related to the original document (as string).
 	 *
 	 * @since 15.0.0
 	 *
-	 * @param string $option
-	 * @param string $default
+	 * @param string option
+	 * @param string default
 	 *
 	 * @return string
 	 */
-	public function getOption(string $option, string $default = ''): string;
+	public function getOption(string option, string default = ''): string;
 
 	/**
 	 * Get the option related to the original document (as integer).
 	 *
 	 * @since 15.0.0
 	 *
-	 * @param string $option
-	 * @param int $default
+	 * @param string option
+	 * @param int default
 	 *
 	 * @return int
 	 */
-	public function getOptionInt(string $option, int $default = 0): int;
+	public function getOptionInt(string option, int default = 0): int;
 
 	/**
 	 * Get all options related to the original document.
@@ -242,13 +242,13 @@ interface IIndex {
 	 *
 	 * @since 15.0.0
 	 *
-	 * @param string $message
-	 * @param string $exception
-	 * @param int $sev
+	 * @param string message
+	 * @param string exception
+	 * @param int sev
 	 *
 	 * @return IIndex
 	 */
-	public function addError(string $message, string $exception = '', int $sev = self::ERROR_SEV_3): IIndex;
+	public function addError(string message, string exception = '', int sev = self::ERROR_SEV_3): IIndex;
 
 	/**
 	 * Returns the number of known errors related to the Index.
@@ -272,11 +272,11 @@ interface IIndex {
 	 *
 	 * @since 15.0.0
 	 *
-	 * @param int $lastIndex
+	 * @param int lastIndex
 	 *
 	 * @return IIndex
 	 */
-	public function setLastIndex(int $lastIndex = -1): IIndex;
+	public function setLastIndex(int lastIndex = -1): IIndex;
 
 	/**
 	 * Get the date of the last index.

@@ -16,9 +16,9 @@ namespace OCP.Security
         /**
          * Store a set of credentials
          *
-         * @param string|null $userId Null for system-wide credentials
-         * @param string $identifier
-         * @param mixed $credentials
+         * @param string|null userId Null for system-wide credentials
+         * @param string identifier
+         * @param mixed credentials
          * @since 8.2.0
          */
         void store(string? userId, string identifier, object credentials);
@@ -26,8 +26,8 @@ namespace OCP.Security
         /**
          * Retrieve a set of credentials
          *
-         * @param string|null $userId Null for system-wide credentials
-         * @param string $identifier
+         * @param string|null userId Null for system-wide credentials
+         * @param string identifier
          * @return mixed
          * @since 8.2.0
          */
@@ -36,8 +36,8 @@ namespace OCP.Security
         /**
          * Delete a set of credentials
          *
-         * @param string|null $userId Null for system-wide credentials
-         * @param string $identifier
+         * @param string|null userId Null for system-wide credentials
+         * @param string identifier
          * @return int rows removed
          * @since 8.2.0
          */
@@ -46,7 +46,7 @@ namespace OCP.Security
         /**
          * Erase all credentials stored for a user
          *
-         * @param string $userId
+         * @param string userId
          * @return int rows removed
          * @since 8.2.0
          */

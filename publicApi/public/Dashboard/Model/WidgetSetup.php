@@ -54,19 +54,19 @@ final class WidgetSetup implements JsonSerializable {
 
 
 	/** @var array */
-	private $sizes = [];
+	private sizes = [];
 
 	/** @var array */
-	private $menus = [];
+	private menus = [];
 
 	/** @var array */
-	private $jobs = [];
+	private jobs = [];
 
 	/** @var string */
-	private $push = '';
+	private push = '';
 
 	/** @var array */
-	private $settings = [];
+	private settings = [];
 
 
 	/**
@@ -80,13 +80,13 @@ final class WidgetSetup implements JsonSerializable {
 	 *
 	 * @since 15.0.0
 	 *
-	 * @param string $type
+	 * @param string type
 	 *
 	 * @return array
 	 */
-	public function getSize(string $type): array {
-		if (array_key_exists($type, $this->sizes)) {
-			return $this->sizes[$type];
+	public function getSize(string type): array {
+		if (array_key_exists(type, this->sizes)) {
+			return this->sizes[type];
 		}
 
 		return [];
@@ -100,7 +100,7 @@ final class WidgetSetup implements JsonSerializable {
 	 * @return array
 	 */
 	public function getSizes(): array {
-		return $this->sizes;
+		return this->sizes;
 	}
 
 	/**
@@ -108,19 +108,19 @@ final class WidgetSetup implements JsonSerializable {
 	 *
 	 * @since 15.0.0
 	 *
-	 * @param string $type
-	 * @param int $width
-	 * @param int $height
+	 * @param string type
+	 * @param int width
+	 * @param int height
 	 *
 	 * @return WidgetSetup
 	 */
-	public function addSize(string $type, int $width, int $height): WidgetSetup {
-		$this->sizes[$type] = [
-			'width' => $width,
-			'height' => $height
+	public function addSize(string type, int width, int height): WidgetSetup {
+		this->sizes[type] = [
+			'width' => width,
+			'height' => height
 		];
 
-		return $this;
+		return this;
 	}
 
 	/**
@@ -131,55 +131,55 @@ final class WidgetSetup implements JsonSerializable {
 	 * @return array
 	 */
 	public function getMenuEntries(): array {
-		return $this->menus;
+		return this->menus;
 	}
 
 	/**
 	 * Add a menu entry to the widget.
-	 * $function is the Javascript function to be called when clicking the
+	 * function is the Javascript function to be called when clicking the
 	 *           menu entry.
-	 * $icon is the css class of the icon.
-	 * $text is the display name of the menu entry.
+	 * icon is the css class of the icon.
+	 * text is the display name of the menu entry.
 	 *
 	 * @since 15.0.0
 	 *
-	 * @param string $function
-	 * @param string $icon
-	 * @param string $text
+	 * @param string function
+	 * @param string icon
+	 * @param string text
 	 *
 	 * @return WidgetSetup
 	 */
-	public function addMenuEntry(string $function, string $icon, string $text): WidgetSetup {
-		$this->menus[] = [
-			'function' => $function,
-			'icon' => $icon,
-			'text' => $text
+	public function addMenuEntry(string function, string icon, string text): WidgetSetup {
+		this->menus[] = [
+			'function' => function,
+			'icon' => icon,
+			'text' => text
 		];
 
-		return $this;
+		return this;
 	}
 
 
 	/**
 	 * Add a delayed job to the widget.
 	 *
-	 * $function is the Javascript function to be called.
-	 * $delay is the time in seconds between each call.
+	 * function is the Javascript function to be called.
+	 * delay is the time in seconds between each call.
 	 *
 	 * @since 15.0.0
 	 *
-	 * @param string $function
-	 * @param int $delay
+	 * @param string function
+	 * @param int delay
 	 *
 	 * @return WidgetSetup
 	 */
-	public function addDelayedJob(string $function, int $delay): WidgetSetup {
-		$this->jobs[] = [
-			'function' => $function,
-			'delay' => $delay
+	public function addDelayedJob(string function, int delay): WidgetSetup {
+		this->jobs[] = [
+			'function' => function,
+			'delay' => delay
 		];
 
-		return $this;
+		return this;
 	}
 
 	/**
@@ -190,7 +190,7 @@ final class WidgetSetup implements JsonSerializable {
 	 * @return array
 	 */
 	public function getDelayedJobs(): array {
-		return $this->jobs;
+		return this->jobs;
 	}
 
 
@@ -202,7 +202,7 @@ final class WidgetSetup implements JsonSerializable {
 	 * @return string
 	 */
 	public function getPush(): string {
-		return $this->push;
+		return this->push;
 	}
 
 	/**
@@ -211,14 +211,14 @@ final class WidgetSetup implements JsonSerializable {
 	 *
 	 * @since 15.0.0
 	 *
-	 * @param string $function
+	 * @param string function
 	 *
 	 * @return WidgetSetup
 	 */
-	public function setPush(string $function): WidgetSetup {
-		$this->push = $function;
+	public function setPush(string function): WidgetSetup {
+		this->push = function;
 
-		return $this;
+		return this;
 	}
 
 
@@ -230,7 +230,7 @@ final class WidgetSetup implements JsonSerializable {
 	 * @return array
 	 */
 	public function getDefaultSettings(): array {
-		return $this->settings;
+		return this->settings;
 	}
 
 	/**
@@ -242,14 +242,14 @@ final class WidgetSetup implements JsonSerializable {
 	 *
 	 * @since 15.0.0
 	 *
-	 * @param array $settings
+	 * @param array settings
 	 *
 	 * @return WidgetSetup
 	 */
-	public function setDefaultSettings(array $settings): WidgetSetup {
-		$this->settings = $settings;
+	public function setDefaultSettings(array settings): WidgetSetup {
+		this->settings = settings;
 
-		return $this;
+		return this;
 	}
 
 
@@ -260,11 +260,11 @@ final class WidgetSetup implements JsonSerializable {
 	 */
 	public function jsonSerialize() {
 		return [
-			'size' => $this->getSizes(),
-			'menu' => $this->getMenuEntries(),
-			'jobs' => $this->getDelayedJobs(),
-			'push' => $this->getPush(),
-			'settings' => $this->getDefaultSettings()
+			'size' => this->getSizes(),
+			'menu' => this->getMenuEntries(),
+			'jobs' => this->getDelayedJobs(),
+			'push' => this->getPush(),
+			'settings' => this->getDefaultSettings()
 		];
 	}
 }

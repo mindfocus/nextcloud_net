@@ -19,8 +19,8 @@ namespace OCP.BackgroundJob
         /**
          * run the job, then remove it from the joblist
          *
-         * @param IJobList $jobList
-         * @param ILogger|null $logger
+         * @param IJobList jobList
+         * @param ILogger|null logger
          *
          * @since 15.0.0
          */
