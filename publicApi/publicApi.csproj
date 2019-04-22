@@ -189,10 +189,6 @@
       <Compile Include="public\Group\Backend\IIsAdminBackend.php" />
       <Compile Include="public\Group\Backend\IRemoveFromGroupBackend.php" />
       <Compile Include="public\Group\ISubAdmin.php" />
-      <Compile Include="public\LDAP\IDeletionFlagSupport.php" />
-      <Compile Include="public\LDAP\ILDAPProvider.php" />
-      <Compile Include="public\LDAP\ILDAPProviderFactory.php" />
-      <Compile Include="public\Lockdown\ILockdownManager.php" />
       <Compile Include="public\Migration\BigIntMigration.php" />
       <Compile Include="public\Migration\IMigrationStep.php" />
       <Compile Include="public\Migration\IOutput.php" />
@@ -244,5 +240,9 @@
       <Folder Include="OCP\SystemTag\" />
       <Folder Include="OCP\Support\" />
       <Folder Include="OCP\Support\CrashReport\" />
+      <Folder Include="OCP\Lockdown\" />
+      <Folder Include="OC\Authentication\" />
+      <Folder Include="OC\Authentication\Token\" />
+      <Folder Include="OCP\LDAP\" />
     </ItemGroup>
 </Project>
