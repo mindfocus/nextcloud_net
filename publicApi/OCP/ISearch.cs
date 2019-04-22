@@ -8,7 +8,7 @@ namespace OCP
      * Small Interface for Search
      * @since 7.0.0
      */
-    interface ISearch
+    public interface ISearch
     {
 
         /**

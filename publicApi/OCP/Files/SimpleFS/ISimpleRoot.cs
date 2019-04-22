@@ -10,7 +10,7 @@ namespace OCP.Files.SimpleFS
      * @package OCP\Files\SimpleFS
      * @since 11.0.0
      */
-    interface ISimpleRoot
+    public interface ISimpleRoot
     {
         /**
          * Get the folder with name $name

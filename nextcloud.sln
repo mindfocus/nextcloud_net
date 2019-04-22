@@ -77,8 +77,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "nextcloud-php-opencloud-ope
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "nextcloud-patchwork", "nextcloud-patchwork\nextcloud-patchwork.msbuildproj", "{BBC0AA4C-5AD0-4304-AA0E-4B08813D3F8D}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "symfony-3rdparty", "symfony-3rdparty", "{3786EF00-41EE-4DDA-9B8F-AC8B5CCD2F68}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "publicApi", "publicApi\publicApi.csproj", "{CACD2556-FE35-4843-BBB2-335F38345E75}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "publicApiTest", "publicApiTest\publicApiTest.csproj", "{24A52374-8508-44AE-B3AC-0EC487717688}"
@@ -92,9 +90,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.filenesting.json = .filenesting.json
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "model", "model\model.csproj", "{132AFD6B-0079-4C46-9734-1E238E14BE2D}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "commonTest", "commonTest\commonTest.csproj", "{6A1985EF-5E1E-4681-AE02-3C1DE35BB0E4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "model", "model\model.csproj", "{132AFD6B-0079-4C46-9734-1E238E14BE2D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -262,10 +258,6 @@ Global
 		{132AFD6B-0079-4C46-9734-1E238E14BE2D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{132AFD6B-0079-4C46-9734-1E238E14BE2D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{132AFD6B-0079-4C46-9734-1E238E14BE2D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6A1985EF-5E1E-4681-AE02-3C1DE35BB0E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6A1985EF-5E1E-4681-AE02-3C1DE35BB0E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6A1985EF-5E1E-4681-AE02-3C1DE35BB0E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6A1985EF-5E1E-4681-AE02-3C1DE35BB0E4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

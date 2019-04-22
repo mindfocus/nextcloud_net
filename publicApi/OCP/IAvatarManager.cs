@@ -9,7 +9,7 @@ namespace OCP
      * @since 6.0.0
      */
 
-    interface IAvatarManager
+    public interface IAvatarManager
     {
 
         /**

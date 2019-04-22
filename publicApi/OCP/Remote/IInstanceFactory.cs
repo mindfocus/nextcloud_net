@@ -7,7 +7,7 @@ namespace OCP.Remote
     /**
      * @since 13.0.0
      */
-    interface IInstanceFactory
+    public interface IInstanceFactory
     {
         /**
          * @param string $url

@@ -7,7 +7,7 @@ namespace OCP.Remote.Api
     /**
      * @since 13.0.0
      */
-    interface IApiFactory
+    public interface IApiFactory
     {
         /**
          * @param IInstance $instance

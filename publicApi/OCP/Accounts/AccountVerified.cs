@@ -12,13 +12,14 @@ namespace OCP.Accounts
     public class AccountVerified
     {
 
-        public int Value { get; internal set; }
-        private AccountVerified(int value)
+        public string Value { get; internal set; }
+        public static string Name => "verified";
+        private AccountVerified(string value)
         {
             this.Value = value;
         }
-        public static AccountVerified NOT_VERIFIED { get { return new AccountVerified(0); } }
-        public static AccountVerified VERIFICATION_IN_PROGRESS { get { return new AccountVerified(1); } }
-        public static AccountVerified VERIFIED { get { return new AccountVerified(2); } }
+        public static AccountVerified NOT_VERIFIED { get { return new AccountVerified("0"); } }
+        public static AccountVerified VERIFICATION_IN_PROGRESS { get { return new AccountVerified("1"); } }
+        public static AccountVerified VERIFIED { get { return new AccountVerified("2"); } }
     }
 }

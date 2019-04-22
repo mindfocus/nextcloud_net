@@ -10,7 +10,7 @@ namespace OCP.Files.Mount
      * Manages all mounted storages in the system
      * @since 8.2.0
      */
-    interface IMountManager
+    public interface IMountManager
     {
 
         /**

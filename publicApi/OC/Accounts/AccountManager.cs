@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using model;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using OCP;
 using OCP.Accounts;
@@ -29,12 +30,12 @@ namespace OC.Accounts
         private IJobList jobList;
 
 
-            /// <summary>
-            /// Initializes a new instance of the <see cref="T:OC.Accounts.AccountManager"/> class.
-            /// </summary>
-            /// <param name="connection">Connection.</param>
-            /// <param name="eventDispatcher">Event dispatcher.</param>
-            /// <param name="jobList">Job list.</param>
+        /// <summary>
+        /// Initializes a new instance of the <see cref="T:OC.Accounts.AccountManager"/> class.
+        /// </summary>
+        /// <param name="connection">Connection.</param>
+        /// <param name="eventDispatcher">Event dispatcher.</param>
+        /// <param name="jobList">Job list.</param>
         public AccountManager(IDBConnection connection,
                                     OCP.Sym.EventDispatcherInterface eventDispatcher,
                                     IJobList jobList)
@@ -42,6 +43,20 @@ namespace OC.Accounts
             this.connection = connection;
             this.eventDispatcher = eventDispatcher;
             this.jobList = jobList;
+        }
+
+        private Account parseAccountData(IUser user, JObject accountData)
+        {
+            var account = new Account(user);
+
+            foreach (var property in accountData)
+            {
+                account.setProperty(property.Key,
+                    property.Value["value"].ToObject<string>() ?? "",
+                    property.Value["scope"].ToObject<string>() ?? AccountVisibility.VISIBILITY_PRIVATE.Value,
+                    property.Value["verified"].ToObject<string>() ?? AccountVerified.NOT_VERIFIED.Value);
+            }
+            return account;
         }
 
         public IAccount getAccount(OCP.IUser user)
@@ -61,11 +76,13 @@ namespace OC.Accounts
             {
                 this.insertNewUser(user, data);
             }
-            else if(userData != data) {
+            else if (userData != data)
+            {
                 data = this.checkEmailVerification(userData, data, user);
                 data = this.updateVerifyStatus(userData, data);
                 this.updateExistingUser(user, data);
-            } else
+            }
+            else
             {
                 // nothing needs to be done if new and old data set are the same
                 updated = false;
@@ -92,7 +109,7 @@ namespace OC.Accounts
             using (var context = new NCContext())
             {
                 account = context.Accounts.Find(uid);
-                if(account != null)
+                if (account != null)
                 {
                     context.Accounts.Remove(account);
                     context.SaveChanges();
@@ -114,11 +131,11 @@ namespace OC.Accounts
             {
                 account = context.Accounts.Find(uid);
             }
-            if(account == null)
+            if (account == null)
             {
                 var userData = this.buildDefaultUserRecord(user);
                 this.insertNewUser(user, userData);
-                return JObject.Parse(userData);
+                return userData;
             }
 
             //userDataArray = json_decode(result[0]['data'], true);
@@ -151,203 +168,202 @@ namespace OC.Accounts
                 //    'lastRun' => time()
                 //]
                 //);
-            newData[AccountCommonProperty.EMAIL.Value]["verified"] =AccountVerified.VERIFICATION_IN_PROGRESS.Value;
-        }
-        return newData;
-    }
-
-/*
- * make sure that all expected data are set
- *
- * @param array userData
- * @return array
- */
-protected JObject addMissingDefaultValues(JObject userData)
-{
-            userData.Children;
-            foreach (var child in userData.Children)
-            {
-
+                newData[AccountCommonProperty.EMAIL.Value]["verified"] = AccountVerified.VERIFICATION_IN_PROGRESS.Value;
             }
-            foreach (userData as key => value) {
-        if (!isset(userData[key]['verified']))
+            return newData;
+        }
+
+        /*
+         * make sure that all expected data are set
+         *
+         * @param array userData
+         * @return array
+         */
+        protected JObject addMissingDefaultValues(JObject userData)
         {
-            userData[key]['verified'] = self::NOT_VERIFIED;
+            foreach (var child in userData)
+            {
+                var value = child.Value;
+                var dic = ((JObject)value).Properties().ToDictionary(p => p.Name, p => p.Value);
+                if (dic.ContainsKey(AccountVerified.Name))
+                {
+                    dic[AccountVerified.Name] = AccountVerified.NOT_VERIFIED.Value.ToString();
+                }
+                var dicstr = JsonConvert.SerializeObject(dic, Formatting.Indented);
+                userData[value.Path] = JObject.Parse(dicstr);
+            }
+            return userData;
         }
-    }
 
+        /**
+         * reset verification status if personal data changed
+         *
+         * @param array oldData
+         * @param array newData
+         * @return array
+         */
+        protected JObject updateVerifyStatus(JObject oldData, JObject newData)
+        {
 
-    return userData;
-}
+            // which account was already verified successfully?
+            var twitterVerified = oldData[AccountCommonProperty.TWITTER.Value]["verified"].ToObject<bool>() &&
+                oldData[AccountCommonProperty.TWITTER.Value]["verified"].ToObject<bool>();
+            var websiteVerified = oldData[AccountCommonProperty.WEBSITE.Value]["verified"].ToObject<bool>() &&
+                oldData[AccountCommonProperty.WEBSITE.Value]["verified"].ToObject<bool>();
+            var emailVerified = oldData[AccountCommonProperty.EMAIL.Value]["verified"].ToObject<bool>() &&
+                oldData[AccountCommonProperty.EMAIL.Value]["verified"].ToObject<bool>();
 
-/**
- * reset verification status if personal data changed
- *
- * @param array oldData
- * @param array newData
- * @return array
- */
-protected JObject updateVerifyStatus(JObject oldData, JObject newData)
-{
+            //// keep old verification status if we don't have a new one
+            //if (!isset(newData[self::PROPERTY_TWITTER]['verified']))
+            //{
+            //    // keep old verification status if value didn't changed and an old value exists
+            //    keepOldStatus = newData[self::PROPERTY_TWITTER]['value'] === oldData[self::PROPERTY_TWITTER]['value'] && isset(oldData[self::PROPERTY_TWITTER]['verified']);
+            //    newData[self::PROPERTY_TWITTER]['verified'] = keepOldStatus ? oldData[self::PROPERTY_TWITTER]['verified'] : self::NOT_VERIFIED;
+            //}
 
-    // which account was already verified successfully?
-    twitterVerified = isset(oldData[self::PROPERTY_TWITTER]['verified']) && oldData[self::PROPERTY_TWITTER]['verified'] === self::VERIFIED;
-    websiteVerified = isset(oldData[self::PROPERTY_WEBSITE]['verified']) && oldData[self::PROPERTY_WEBSITE]['verified'] === self::VERIFIED;
-    emailVerified = isset(oldData[self::PROPERTY_EMAIL]['verified']) && oldData[self::PROPERTY_EMAIL]['verified'] === self::VERIFIED;
+            //if (!isset(newData[self::PROPERTY_WEBSITE]['verified']))
+            //{
+            //    // keep old verification status if value didn't changed and an old value exists
+            //    keepOldStatus = newData[self::PROPERTY_WEBSITE]['value'] === oldData[self::PROPERTY_WEBSITE]['value'] && isset(oldData[self::PROPERTY_WEBSITE]['verified']);
+            //    newData[self::PROPERTY_WEBSITE]['verified'] = keepOldStatus ? oldData[self::PROPERTY_WEBSITE]['verified'] : self::NOT_VERIFIED;
+            //}
 
-    // keep old verification status if we don't have a new one
-    if (!isset(newData[self::PROPERTY_TWITTER]['verified']))
-    {
-        // keep old verification status if value didn't changed and an old value exists
-        keepOldStatus = newData[self::PROPERTY_TWITTER]['value'] === oldData[self::PROPERTY_TWITTER]['value'] && isset(oldData[self::PROPERTY_TWITTER]['verified']);
-        newData[self::PROPERTY_TWITTER]['verified'] = keepOldStatus ? oldData[self::PROPERTY_TWITTER]['verified'] : self::NOT_VERIFIED;
-    }
+            //if (!isset(newData[self::PROPERTY_EMAIL]['verified']))
+            //{
+            //    // keep old verification status if value didn't changed and an old value exists
+            //    keepOldStatus = newData[self::PROPERTY_EMAIL]['value'] === oldData[self::PROPERTY_EMAIL]['value'] && isset(oldData[self::PROPERTY_EMAIL]['verified']);
+            //    newData[self::PROPERTY_EMAIL]['verified'] = keepOldStatus ? oldData[self::PROPERTY_EMAIL]['verified'] : self::VERIFICATION_IN_PROGRESS;
+            //}
 
-    if (!isset(newData[self::PROPERTY_WEBSITE]['verified']))
-    {
-        // keep old verification status if value didn't changed and an old value exists
-        keepOldStatus = newData[self::PROPERTY_WEBSITE]['value'] === oldData[self::PROPERTY_WEBSITE]['value'] && isset(oldData[self::PROPERTY_WEBSITE]['verified']);
-        newData[self::PROPERTY_WEBSITE]['verified'] = keepOldStatus ? oldData[self::PROPERTY_WEBSITE]['verified'] : self::NOT_VERIFIED;
-    }
+            //// reset verification status if a value from a previously verified data was changed
+            //if (twitterVerified &&
+            //        oldData[self::PROPERTY_TWITTER]['value'] !== newData[self::PROPERTY_TWITTER]['value']
+            //    )
+            //{
+            //    newData[self::PROPERTY_TWITTER]['verified'] = self::NOT_VERIFIED;
+            //}
 
-    if (!isset(newData[self::PROPERTY_EMAIL]['verified']))
-    {
-        // keep old verification status if value didn't changed and an old value exists
-        keepOldStatus = newData[self::PROPERTY_EMAIL]['value'] === oldData[self::PROPERTY_EMAIL]['value'] && isset(oldData[self::PROPERTY_EMAIL]['verified']);
-        newData[self::PROPERTY_EMAIL]['verified'] = keepOldStatus ? oldData[self::PROPERTY_EMAIL]['verified'] : self::VERIFICATION_IN_PROGRESS;
-    }
+            //if (websiteVerified &&
+            //        oldData[self::PROPERTY_WEBSITE]['value'] !== newData[self::PROPERTY_WEBSITE]['value']
+            //    )
+            //{
+            //    newData[self::PROPERTY_WEBSITE]['verified'] = self::NOT_VERIFIED;
+            //}
 
-    // reset verification status if a value from a previously verified data was changed
-    if (twitterVerified &&
-            oldData[self::PROPERTY_TWITTER]['value'] !== newData[self::PROPERTY_TWITTER]['value']
-        )
-    {
-        newData[self::PROPERTY_TWITTER]['verified'] = self::NOT_VERIFIED;
-    }
+            //if (emailVerified &&
+            //        oldData[self::PROPERTY_EMAIL]['value'] !== newData[self::PROPERTY_EMAIL]['value']
+            //    )
+            //{
+            //    newData[self::PROPERTY_EMAIL]['verified'] = self::NOT_VERIFIED;
+            //}
 
-    if (websiteVerified &&
-            oldData[self::PROPERTY_WEBSITE]['value'] !== newData[self::PROPERTY_WEBSITE]['value']
-        )
-    {
-        newData[self::PROPERTY_WEBSITE]['verified'] = self::NOT_VERIFIED;
-    }
+            return newData;
 
-    if (emailVerified &&
-            oldData[self::PROPERTY_EMAIL]['value'] !== newData[self::PROPERTY_EMAIL]['value']
-        )
-    {
-        newData[self::PROPERTY_EMAIL]['verified'] = self::NOT_VERIFIED;
-    }
-
-    return newData;
-
-}
-
-/**
- * add new user to accounts table
- *
- * @param IUser user
- * @param array data
- */
-protected void insertNewUser(IUser user, object data)
-{
-    //var uid = user.getUID();
-    //jsonEncodedData = json_encode(data);
-    //query = this.connection.getQueryBuilder();
-    //query.insert(this.table)
-    //    .values(
-
-    //        [
-    //            'uid' => query.createNamedParameter(uid),
-    //            'data' => query.createNamedParameter(jsonEncodedData),
-
-    //        ]
-    //        )
-    //        .execute();
-}
-
-/**
- * update existing user in accounts table
- *
- * @param IUser user
- * @param array data
- */
-protected void updateExistingUser(IUser user, JObject data)
-{
-    val uid = user.getUID();
-    jsonEncodedData = json_encode(data);
-    query = this.connection.getQueryBuilder();
-    query.update(this.table)
-        .set('data', query.createNamedParameter(jsonEncodedData))
-        .where(query.expr().eq('uid', query.createNamedParameter(uid)))
-        .execute();
-}
-
-/**
- * build default user record in case not data set exists yet
- *
- * @param IUser user
- * @return array
- */
-protected JObject buildDefaultUserRecord(IUser user)
-{
-    return [
-        self::PROPERTY_DISPLAYNAME =>
-
-            [
-                'value' => user.getDisplayName(),
-                'scope' => self::VISIBILITY_CONTACTS_ONLY,
-                'verified' => self::NOT_VERIFIED,
-
-            ],
-            self::PROPERTY_ADDRESS =>
-                [
-                    'value' => '',
-                    'scope' => self::VISIBILITY_PRIVATE,
-                    'verified' => self::NOT_VERIFIED,
-                ],
-            self::PROPERTY_WEBSITE =>
-                [
-                    'value' => '',
-                    'scope' => self::VISIBILITY_PRIVATE,
-                    'verified' => self::NOT_VERIFIED,
-                ],
-            self::PROPERTY_EMAIL =>
-                [
-                    'value' => user.getEMailAddress(),
-                    'scope' => self::VISIBILITY_CONTACTS_ONLY,
-                    'verified' => self::NOT_VERIFIED,
-                ],
-            self::PROPERTY_AVATAR =>
-                [
-                    'scope' => self::VISIBILITY_CONTACTS_ONLY
-                ],
-            self::PROPERTY_PHONE =>
-                [
-                    'value' => '',
-                    'scope' => self::VISIBILITY_PRIVATE,
-                    'verified' => self::NOT_VERIFIED,
-                ],
-            self::PROPERTY_TWITTER =>
-                [
-                    'value' => '',
-                    'scope' => self::VISIBILITY_PRIVATE,
-                    'verified' => self::NOT_VERIFIED,
-                ],
-        ];
-    }
-
-    private Account parseAccountData(IUser user, JObject data){
-        var account = new Account(user);
-
-        foreach(data as property => accountData) {
-            account.setProperty(property, accountData['value'] ?? '', accountData['scope'] ?? self::VISIBILITY_PRIVATE, accountData['verified'] ?? self::NOT_VERIFIED);
         }
-        return account;
+
+        /**
+         * add new user to accounts table
+         *
+         * @param IUser user
+         * @param array data
+         */
+        protected void insertNewUser(IUser user, object data)
+        {
+            //var uid = user.getUID();
+            //jsonEncodedData = json_encode(data);
+            //query = this.connection.getQueryBuilder();
+            //query.insert(this.table)
+            //    .values(
+
+            //        [
+            //            'uid' => query.createNamedParameter(uid),
+            //            'data' => query.createNamedParameter(jsonEncodedData),
+
+            //        ]
+            //        )
+            //        .execute();
+        }
+
+        /**
+         * update existing user in accounts table
+         *
+         * @param IUser user
+         * @param array data
+         */
+        protected void updateExistingUser(IUser user, JObject data)
+        {
+            var uid = user.getUID();
+            AccountTable account = null;
+            using (var context = new NCContext())
+            {
+                account = context.Accounts.Find(uid);
+                if (account != null)
+                {
+                    account.data = data.ToString();
+                    context.SaveChanges();
+                }
+            }
+            //jsonEncodedData = json_encode(data);
+            //query = this.connection.getQueryBuilder();
+            //query.update(this.table)
+            //    .set('data', query.createNamedParameter(jsonEncodedData))
+            //    .where(query.expr().eq('uid', query.createNamedParameter(uid)))
+            //    .execute();
+        }
+
+        /**
+         * build default user record in case not data set exists yet
+         *
+         * @param IUser user
+         * @return array
+         */
+        protected JObject buildDefaultUserRecord(IUser user)
+        {
+            return
+    new JObject(
+        new JProperty(AccountCommonProperty.DISPLAYNAME.Value,
+            new JObject(
+                new JProperty("value", user.getDisplayName()),
+                new JProperty("scope", AccountVisibility.VISIBILITY_CONTACTS_ONLY),
+                new JProperty("verified", AccountVerified.NOT_VERIFIED)
+           )),
+                new JProperty(AccountCommonProperty.ADDRESS.Value,
+            new JObject(
+                new JProperty("value", ""),
+                new JProperty("scope", AccountVisibility.VISIBILITY_PRIVATE),
+                new JProperty("verified", AccountVerified.NOT_VERIFIED)
+           )),
+                                new JProperty(AccountCommonProperty.WEBSITE.Value,
+            new JObject(
+                new JProperty("value", ""),
+                new JProperty("scope", AccountVisibility.VISIBILITY_PRIVATE),
+                new JProperty("verified", AccountVerified.NOT_VERIFIED)
+           )), new JProperty(AccountCommonProperty.EMAIL.Value,
+            new JObject(
+                new JProperty("value", user.getEMailAddress()),
+                new JProperty("scope", AccountVisibility.VISIBILITY_PRIVATE),
+                new JProperty("verified", AccountVerified.NOT_VERIFIED)
+           )),
+                                new JProperty(AccountCommonProperty.AVATAR.Value,
+            new JObject(
+                new JProperty("scope", AccountVisibility.VISIBILITY_CONTACTS_ONLY)
+           )),
+                                new JProperty(AccountCommonProperty.PHONE.Value,
+            new JObject(
+                new JProperty("value", user.getEMailAddress()),
+                new JProperty("scope", AccountVisibility.VISIBILITY_PRIVATE),
+                new JProperty("verified", AccountVerified.NOT_VERIFIED)
+           )),
+                                new JProperty(AccountCommonProperty.TWITTER.Value,
+            new JObject(
+                new JProperty("value", ""),
+                new JProperty("scope", AccountVisibility.VISIBILITY_PRIVATE),
+                new JProperty("verified", AccountVerified.NOT_VERIFIED)
+           ))
+        );
+        }
+
+
     }
-
-
-
 }
 
-}

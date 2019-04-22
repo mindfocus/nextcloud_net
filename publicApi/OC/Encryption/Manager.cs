@@ -5,7 +5,7 @@ using OCP.Encryption;
 
 namespace OC.Encryption
 {
-    public class Manager : OCP.Encryption.IManager
+    public class Manager : IManager
     {
         public string getDefaultEncryptionModuleId()
         {

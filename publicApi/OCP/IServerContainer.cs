@@ -332,13 +332,13 @@ namespace OCP
 	 */
     IEventSource createEventSource();
 
-    /**
-	 * Returns an instance of the HTTP client service
-	 *
-	 * @return \OCP\Http\Client\IClientService
-	 * @since 8.1.0
-	 */
-    public function getHTTPClientService();
+        /**
+         * Returns an instance of the HTTP client service
+         *
+         * @return \OCP\Http\Client\IClientService
+         * @since 8.1.0
+         */
+        OCP.Http.Client.IClientService getHTTPClientService();
 
     /**
 	 * Get the active event logger
@@ -430,15 +430,15 @@ namespace OCP
 	 * @return \OCP\Files\IMimeTypeDetector
 	 * @since 8.2.0
 	 */
-    public function getMimeTypeDetector();
+    Files.IMimeTypeDetector getMimeTypeDetector();
 
-    /**
-	 * Get the MimeTypeLoader
-	 *
-	 * @return \OCP\Files\IMimeTypeLoader
-	 * @since 8.2.0
-	 */
-    public function getMimeTypeLoader();
+        /**
+         * Get the MimeTypeLoader
+         *
+         * @return \OCP\Files\IMimeTypeLoader
+         * @since 8.2.0
+         */
+        Files.IMimeTypeLoader getMimeTypeLoader();
 
     /**
 	 * Get the EventDispatcher
@@ -498,13 +498,13 @@ namespace OCP
 	 * @return \OCP\IDateTimeZone
 	 * @since 8.0.0
 	 */
-    public function getDateTimeZone();
+    IDateTimeZone getDateTimeZone();
 
     /**
 	 * @return \OCP\IDateTimeFormatter
 	 * @since 8.0.0
 	 */
-    public function getDateTimeFormatter();
+    IDateTimeFormatter getDateTimeFormatter();
 
     /**
 	 * @return \OCP\Federation\ICloudIdManager

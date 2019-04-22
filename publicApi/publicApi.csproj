@@ -20,6 +20,7 @@
       <Compile Remove="public\Files\Storage\**" />
       <Compile Remove="public\L10N\**" />
       <Compile Remove="public\Log\**" />
+      <Compile Remove="public\WorkflowEngine\**" />
       <EmbeddedResource Remove="Authentication\**" />
       <EmbeddedResource Remove="Command\**" />
       <EmbeddedResource Remove="public\App\**" />
@@ -32,6 +33,7 @@
       <EmbeddedResource Remove="public\Files\Storage\**" />
       <EmbeddedResource Remove="public\L10N\**" />
       <EmbeddedResource Remove="public\Log\**" />
+      <EmbeddedResource Remove="public\WorkflowEngine\**" />
       <None Remove="Authentication\**" />
       <None Remove="Command\**" />
       <None Remove="public\App\**" />
@@ -44,6 +46,7 @@
       <None Remove="public\Files\Storage\**" />
       <None Remove="public\L10N\**" />
       <None Remove="public\Log\**" />
+      <None Remove="public\WorkflowEngine\**" />
     </ItemGroup>
     <ItemGroup>
       <Compile Include="public\AppFramework\ApiController.php" />
@@ -84,7 +87,6 @@
       <Compile Include="public\AppFramework\Http\Template\PublicTemplateResponse.php" />
       <Compile Include="public\AppFramework\Http\Template\SimpleMenuAction.php" />
       <Compile Include="public\AppFramework\Http\ZipResponse.php" />
-      <Compile Include="public\AppFramework\IAppContainer.php" />
       <Compile Include="public\AppFramework\Middleware.php" />
       <Compile Include="public\AppFramework\OCSController.php" />
       <Compile Include="public\AppFramework\OCS\OCSBadRequestException.php" />
@@ -92,9 +94,7 @@
       <Compile Include="public\AppFramework\OCS\OCSForbiddenException.php" />
       <Compile Include="public\AppFramework\OCS\OCSNotFoundException.php" />
       <Compile Include="public\AppFramework\PublicShareController.php" />
-      <Compile Include="public\AppFramework\QueryException.php" />
       <Compile Include="public\AppFramework\Utility\IControllerMethodReflector.php" />
-      <Compile Include="public\AutoloadNotAllowedException.php" />
       <Compile Include="public\Collaboration\AutoComplete\AutoCompleteEvent.php" />
       <Compile Include="public\Collaboration\AutoComplete\IManager.php" />
       <Compile Include="public\Collaboration\AutoComplete\ISorter.php" />
@@ -118,7 +118,6 @@
       <Compile Include="public\Comments\MessageTooLongException.php" />
       <Compile Include="public\Comments\NotFoundException.php" />
       <Compile Include="public\Console\ConsoleEvent.php" />
-      <Compile Include="public\Constants.php" />
       <Compile Include="public\Dashboard\Exceptions\DashboardAppNotAvailableException.php" />
       <Compile Include="public\Dashboard\IDashboardManager.php" />
       <Compile Include="public\Dashboard\IDashboardWidget.php" />
@@ -143,21 +142,15 @@
       <Compile Include="public\Federation\ICloudFederationShare.php" />
       <Compile Include="public\Federation\ICloudId.php" />
       <Compile Include="public\Federation\ICloudIdManager.php" />
-      <Compile Include="public\Files\AlreadyExistsException.php" />
       <Compile Include="public\Files\EmptyFileNameException.php" />
       <Compile Include="public\Files\EntityTooLargeException.php" />
       <Compile Include="public\Files\FileNameTooLongException.php" />
       <Compile Include="public\Files\ForbiddenException.php" />
       <Compile Include="public\Files\GenericFileException.php" />
-      <Compile Include="public\Files\IAppData.php" />
-      <Compile Include="public\Files\IHomeStorage.php" />
-      <Compile Include="public\Files\IMimeTypeDetector.php" />
-      <Compile Include="public\Files\IMimeTypeLoader.php" />
       <Compile Include="public\Files\InvalidCharacterInPathException.php" />
       <Compile Include="public\Files\InvalidContentException.php" />
       <Compile Include="public\Files\InvalidDirectoryException.php" />
       <Compile Include="public\Files\InvalidPathException.php" />
-      <Compile Include="public\Files\IRootFolder.php" />
       <Compile Include="public\Files\LockNotAcquiredException.php" />
       <Compile Include="public\Files\NotEnoughSpaceException.php" />
       <Compile Include="public\Files\NotFoundException.php" />
@@ -167,7 +160,6 @@
       <Compile Include="public\Files\StorageBadConfigException.php" />
       <Compile Include="public\Files\StorageConnectionException.php" />
       <Compile Include="public\Files\StorageInvalidException.php" />
-      <Compile Include="public\Files\StorageNotAvailableException.php" />
       <Compile Include="public\Files\StorageTimeoutException.php" />
       <Compile Include="public\Files_FullTextSearch\Model\AFilesDocument.php" />
       <Compile Include="public\FullTextSearch\Exceptions\FullTextSearchAppNotAvailableException.php" />
@@ -197,12 +189,6 @@
       <Compile Include="public\Group\Backend\IIsAdminBackend.php" />
       <Compile Include="public\Group\Backend\IRemoveFromGroupBackend.php" />
       <Compile Include="public\Group\ISubAdmin.php" />
-      <Compile Include="public\Http\Client\IClient.php" />
-      <Compile Include="public\Http\Client\IClientService.php" />
-      <Compile Include="public\Http\Client\IResponse.php" />
-      <Compile Include="public\IDateTimeFormatter.php" />
-      <Compile Include="public\IDateTimeZone.php" />
-      <Compile Include="public\IInitialStateService.php" />
       <Compile Include="public\LDAP\IDeletionFlagSupport.php" />
       <Compile Include="public\LDAP\ILDAPProvider.php" />
       <Compile Include="public\LDAP\ILDAPProviderFactory.php" />
@@ -217,15 +203,12 @@
       <Compile Include="public\Notification\IManager.php" />
       <Compile Include="public\Notification\INotification.php" />
       <Compile Include="public\Notification\INotifier.php" />
-      <Compile Include="public\OCS\IDiscoveryService.php" />
-      <Compile Include="public\PreConditionNotMetException.php" />
       <Compile Include="public\Preview\IProvider.php" />
       <Compile Include="public\RichObjectStrings\Definitions.php" />
       <Compile Include="public\RichObjectStrings\InvalidObjectExeption.php" />
       <Compile Include="public\RichObjectStrings\IValidator.php" />
       <Compile Include="public\SabrePluginEvent.php" />
       <Compile Include="public\SabrePluginException.php" />
-      <Compile Include="public\Session\Exceptions\SessionNotAvailableException.php" />
       <Compile Include="public\Settings\IIconSection.php" />
       <Compile Include="public\Settings\IManager.php" />
       <Compile Include="public\Settings\ISection.php" />
@@ -264,9 +247,6 @@
       <Compile Include="public\User\Backend\IProvideAvatarBackend.php" />
       <Compile Include="public\User\Backend\ISetDisplayNameBackend.php" />
       <Compile Include="public\User\Backend\ISetPasswordBackend.php" />
-      <Compile Include="public\WorkflowEngine\ICheck.php" />
-      <Compile Include="public\WorkflowEngine\IManager.php" />
-      <Compile Include="public\WorkflowEngine\IOperation.php" />
     </ItemGroup>
 
     <ItemGroup>
