@@ -158,16 +158,6 @@
       <Compile Include="public\FullTextSearch\Service\IIndexService.php" />
       <Compile Include="public\FullTextSearch\Service\IProviderService.php" />
       <Compile Include="public\FullTextSearch\Service\ISearchService.php" />
-      <Compile Include="public\Migration\BigIntMigration.php" />
-      <Compile Include="public\Migration\IMigrationStep.php" />
-      <Compile Include="public\Migration\IOutput.php" />
-      <Compile Include="public\Migration\IRepairStep.php" />
-      <Compile Include="public\Migration\SimpleMigrationStep.php" />
-      <Compile Include="public\Notification\IAction.php" />
-      <Compile Include="public\Notification\IApp.php" />
-      <Compile Include="public\Notification\IManager.php" />
-      <Compile Include="public\Notification\INotification.php" />
-      <Compile Include="public\Notification\INotifier.php" />
       <Compile Include="public\SabrePluginEvent.php" />
       <Compile Include="public\SabrePluginException.php" />
       <Compile Include="public\Share.php" />
@@ -199,5 +189,7 @@
       <Folder Include="OCP\LDAP\" />
       <Folder Include="OCP\Group\" />
       <Folder Include="OCP\Group\Backend\" />
+      <Folder Include="OCP\Notification\" />
+      <Folder Include="OCP\Migration\" />
     </ItemGroup>
 </Project>

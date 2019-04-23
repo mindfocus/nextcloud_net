@@ -321,7 +321,7 @@ public bool setPassword(string password, string recoveryPassword = null)
 	 * @return bool
 	 */
 	public bool canChangeDisplayName() {
-		if (this.config.getSystemValue("allow_user_to_change_display_name") == false) {
+		if (this.config.getSystemValueBool("allow_user_to_change_display_name") == false) {
 			return false;
 		}
 		return this.backend.implementsActions(Backend.SET_DISPLAYNAME);

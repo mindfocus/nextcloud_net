@@ -1,5 +1,6 @@
 ﻿using OCP;
 using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.Text;
 
@@ -32,31 +33,30 @@ namespace OC.User
         /**
          * @var \OC\User\User[] $cachedUsers
          */
-        private IList<User> cachedUsers = new List<User>();
+        private IDictionary<string,User> cachedUsers = new Dictionary<string,User>();
 
     /** @var IConfig */
-    private $config;
+    private IConfig config;
 	/** @var EventDispatcherInterface */
-	private $dispatcher;
+	private ext.Event dispatcher;
 
-	public function __construct(IConfig $config, EventDispatcherInterface $dispatcher)
+	public Manager(IConfig config, ext.Event dispatcher)
     {
-		$this->config = $config;
-		$this->dispatcher = $dispatcher;
-		$cachedUsers = &$this->cachedUsers;
-		$this->listen('\OC\User', 'postDelete', function($user) use(&$cachedUsers) {
-            /** @var \OC\User\User $user */
-            unset($cachedUsers[$user->getUID()]);
-        });
+		this.config = config;
+		this.dispatcher = dispatcher;
+		// $this->listen('\OC\User', 'postDelete', function($user) use(&$cachedUsers) {
+        //     /** @var \OC\User\User $user */
+        //     unset($cachedUsers[$user->getUID()]);
+        // });
     }
 
     /**
 	 * Get the active backends
 	 * @return \OCP\UserInterface[]
 	 */
-    public function getBackends()
+    public IList<OCP.UserInterface> getBackends()
     {
-        return $this->backends;
+        return this.backends;
     }
 
     /**
@@ -64,9 +64,9 @@ namespace OC.User
 	 *
 	 * @param \OCP\UserInterface $backend
 	 */
-    public function registerBackend($backend)
+    public void registerBackend(OCP.UserInterface backend)
     {
-		$this->backends[] = $backend;
+		this.backends.Add(backend);
     }
 
     /**
@@ -74,21 +74,19 @@ namespace OC.User
 	 *
 	 * @param \OCP\UserInterface $backend
 	 */
-    public function removeBackend($backend)
+    public void removeBackend(OCP.UserInterface backend)
     {
-		$this->cachedUsers = array();
-        if (($i = array_search($backend, $this->backends)) !== false) {
-            unset($this->backends[$i]);
-        }
+		this.cachedUsers.Clear();
+		this.backends.Remove(backend);
     }
 
     /**
 	 * remove all user backends
 	 */
-    public function clearBackends()
+    public void clearBackends()
     {
-		$this->cachedUsers = array();
-		$this->backends = array();
+		this.cachedUsers.Clear();
+		this.backends.Clear();
     }
 
     /**
@@ -97,21 +95,20 @@ namespace OC.User
 	 * @param string $uid
 	 * @return \OC\User\User|null Either the user or null if the specified user does not exist
 	 */
-    public function get($uid)
+    public User get(string uid)
     {
-        if (is_null($uid) || $uid === '' || $uid === false) {
-            return null;
-        }
-        if (isset($this->cachedUsers[$uid]))
-        { //check the cache first to prevent having to loop over the backends
-            return $this->cachedUsers[$uid];
-        }
-        foreach ($this->backends as $backend) {
-            if ($backend->userExists($uid)) {
-                return $this->getUserObject($uid, $backend);
-            }
-        }
-        return null;
+		if(uid == null || uid == "") {
+			return null;
+		}
+		if(this.cachedUsers.ContainsKey(uid)) {
+			return this.cachedUsers[uid];
+		}
+		foreach(var backend in this.backends) {
+			if(backend.userExists(uid)){
+				return getUserObject(uid, backend);
+			}
+		}
+		return null;
     }
 
     /**
@@ -122,18 +119,14 @@ namespace OC.User
 	 * @param bool $cacheUser If false the newly created user object will not be cached
 	 * @return \OC\User\User
 	 */
-    protected function getUserObject($uid, $backend, $cacheUser = true)
+    protected User getUserObject(string uid, OCP.UserInterface backend, bool cacheUser = true)
     {
-        if (isset($this->cachedUsers[$uid]))
-        {
-            return $this->cachedUsers[$uid];
-        }
-
-		$user = new User($uid, $backend, $this->dispatcher, $this, $this->config);
-        if ($cacheUser) {
-			$this->cachedUsers[$uid] = $user;
-        }
-        return $user;
+		if(this.cachedUsers.ContainsKey(uid)){
+			return this.cachedUsers[uid];
+		}
+		var user = new User(uid,backend, this.dispatcher, this, this.config);
+		this.cachedUsers[uid] = user;
+        return user;
     }
 
     /**
@@ -142,10 +135,10 @@ namespace OC.User
 	 * @param string $uid
 	 * @return bool
 	 */
-    public function userExists($uid)
+    public bool userExists(string uid)
     {
-		$user = $this->get($uid);
-        return ($user !== null);
+		var user = this.get(uid);
+		return user != null;
     }
 
     /**
@@ -155,15 +148,14 @@ namespace OC.User
 	 * @param string $password
 	 * @return mixed the User object on success, false otherwise
 	 */
-    public function checkPassword($loginName, $password)
+    public User checkPassword(string loginName, string password)
     {
-		$result = $this->checkPasswordNoLogging($loginName, $password);
-
-        if ($result === false) {
+		var result = this.checkPasswordNoLogging(loginName, password);
+        if (result == false) {
 			\OC::$server->getLogger()->warning('Login failed: \''. $loginName.'\' (Remote IP: \''. \OC::$server->getRequest()->getRemoteAddress(). '\')', ['app' => 'core']);
         }
 
-        return $result;
+        return result;
     }
 
     /**
@@ -174,21 +166,19 @@ namespace OC.User
 	 * @param string $password
 	 * @return mixed the User object on success, false otherwise
 	 */
-    public function checkPasswordNoLogging($loginName, $password)
+    public User checkPasswordNoLogging(string loginName, string password)
     {
-		$loginName = str_replace("\0", '', $loginName);
-		$password = str_replace("\0", '', $password);
-
-        foreach ($this->backends as $backend) {
-            if ($backend->implementsActions(Backend::CHECK_PASSWORD)) {
-				$uid = $backend->checkPassword($loginName, $password);
-                if ($uid !== false) {
-                    return $this->getUserObject($uid, $backend);
-                }
-            }
-        }
-
-        return false;
+		var loginName = loginName.Replace('\0',"");
+		var password = password.Replace('\0',"");
+		foreach(var backend in this.backends) {
+			if(backend.implementsActions(Backend.CHECK_PASSWORD)) {
+				var uid = ((OCP.User.Backend.ICheckPasswordBackend)backend).checkPassword(loginName, password);
+				if(uid != null) {
+					return this.getUserObject(uid, backend);
+				}
+			}
+		}
+        return null;
     }
 
     /**
@@ -199,27 +189,27 @@ namespace OC.User
 	 * @param int $offset
 	 * @return \OC\User\User[]
 	 */
-    public function search($pattern, $limit = null, $offset = null)
+    public IDictionary<string,User> search(string pattern, int limit = null, int offset = null)
     {
-		$users = array();
-        foreach ($this->backends as $backend) {
-			$backendUsers = $backend->getUsers($pattern, $limit, $offset);
-            if (is_array($backendUsers))
-            {
-                foreach ($backendUsers as $uid) {
-					$users[$uid] = $this->getUserObject($uid, $backend);
-                }
-            }
-        }
-
-        uasort($users, function($a, $b) {
-            /**
-			 * @var \OC\User\User $a
-			 * @var \OC\User\User $b
-			 */
-            return strcasecmp($a->getUID(), $b->getUID());
-        });
-        return $users;
+		var users = new Dictionary<string,User>();
+		foreach (var backend in this.backends)
+		{
+			var backendUsers = backend.getUsers(pattern,limit,offset);
+			if(backendUsers != null) {
+				foreach (var backenduser in backendUsers)
+				{
+				users[backenduser.uid] = this.getUserObject(backenduser.uid, backend);					
+				}
+			}
+		}
+        // uasort($users, function($a, $b) {
+        //     /**
+		// 	 * @var \OC\User\User $a
+		// 	 * @var \OC\User\User $b
+		// 	 */
+        //     return strcasecmp($a->getUID(), $b->getUID());
+        // });
+        return users;
     }
 
     /**
@@ -230,27 +220,27 @@ namespace OC.User
 	 * @param int $offset
 	 * @return \OC\User\User[]
 	 */
-    public function searchDisplayName($pattern, $limit = null, $offset = null)
+    public IDictionary<string,User> searchDisplayName(string pattern, int limit = null, int offset = null)
     {
-		$users = array();
-        foreach ($this->backends as $backend) {
-			$backendUsers = $backend->getDisplayNames($pattern, $limit, $offset);
-            if (is_array($backendUsers))
-            {
-                foreach ($backendUsers as $uid => $displayName) {
-					$users[] = $this->getUserObject($uid, $backend);
-                }
-            }
-        }
-
-        usort($users, function($a, $b) {
-            /**
-			 * @var \OC\User\User $a
-			 * @var \OC\User\User $b
-			 */
-            return strcasecmp($a->getDisplayName(), $b->getDisplayName());
-        });
-        return $users;
+		var users = new Dictionary<string,User>();
+		foreach (var backend in this.backends)
+		{
+			var backendUsers = backend.getDisplayName(pattern, limit, offset);
+			if(backendUsers != null) {
+				foreach (var backendUser in backendUsers)
+				{
+					users[backendUser.key] = this.getUserObject(backendUser.key, backend);
+				}
+			}
+		}
+        // usort($users, function($a, $b) {
+        //     /**
+		// 	 * @var \OC\User\User $a
+		// 	 * @var \OC\User\User $b
+		// 	 */
+        //     return strcasecmp($a->getDisplayName(), $b->getDisplayName());
+        // });
+        return users;
     }
 
     /**
@@ -259,28 +249,26 @@ namespace OC.User
 	 * @throws \InvalidArgumentException
 	 * @return bool|IUser the created user or false
 	 */
-    public function createUser($uid, $password)
+    public OCP.IUser createUser(string uid, string password)
     {
-		$localBackends = [];
-        foreach ($this->backends as $backend) {
-            if ($backend instanceof Database) {
-				// First check if there is another user backend
-				$localBackends[] = $backend;
-                continue;
-            }
-
-            if ($backend->implementsActions(Backend::CREATE_USER)) {
-                return $this->createUserFromBackend($uid, $password, $backend);
-            }
-        }
-
-        foreach ($localBackends as $backend) {
-            if ($backend->implementsActions(Backend::CREATE_USER)) {
-                return $this->createUserFromBackend($uid, $password, $backend);
+		var localBackends = new List<OCP.UserInterface>();
+		foreach (var backend in this.backends)
+		{
+			if(backend is Database) {
+				localBackends.Add(backend);
+				continue;
+			}
+			if(backend.implementsActions(Backend.CREATE_USER)) {
+				return this.createUserFromBackend(uid, password, backend);
 			}
 		}
-
-		return false;
+		foreach (var backend in localBackends)
+		{
+			if(backend.implementsActions(Backend.CREATE_USER)) {
+				return this.createUserFromBackend(uid, password, backend);
+			}
+		}
+		return null;
 	}
 
 	/**
