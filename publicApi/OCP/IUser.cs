@@ -40,7 +40,7 @@ namespace OCP
  * updates the timestamp of the most recent login of this user
  * @since 8.0.0
  */
-        void updateLastLoginTimestamp();
+        bool updateLastLoginTimestamp();
         /**
  * Delete the user
  *

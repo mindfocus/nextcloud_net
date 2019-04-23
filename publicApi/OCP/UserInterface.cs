@@ -22,7 +22,7 @@ namespace OCP
          * @since 4.5.0
          * @deprecated 14.0.0 Switch to the interfaces from OCP\User\Backend
          */
-        bool implementsActions(Action actions);
+        bool implementsActions(int actions);
 
         /**
          * delete a user
@@ -41,7 +41,7 @@ namespace OCP
          * @return string[] an array of all uids
          * @since 4.5.0
          */
-        IList<string> getUsers(string search = "", string limit = null, string offset = null);
+        IList<string> getUsers(string search = "", int? limit = null, int? offset = null);
 
         /**
          * check if a user exists
@@ -68,7 +68,7 @@ namespace OCP
          * @return array an array of all displayNames (value) and the corresponding uids (key)
          * @since 4.5.0
          */
-        IList<string> getDisplayNames(string search = "", int? limit = null, int? offset = null);
+        IDictionary<string, string> getDisplayNames(string search = "", int? limit = null, int? offset = null);
 
         /**
          * Check if a user list is available or not

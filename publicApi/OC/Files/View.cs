@@ -35,7 +35,7 @@ namespace OC.Files
 	private bool updaterEnabled = true;
 
 	/** @var \OC\User\Manager */
-	private OC.User.Manager userManager;
+	private User.Manager userManager;
 
 	/** @var \OCP\ILogger */
 	private OCP.ILogger logger;

@@ -41,7 +41,7 @@ public interface IContainer {
 	 * @return void
 	 * @since 6.0.0
 	 */
-	public void registerParameter(string name, object value);
+	void registerParameter(string name, object value);
 
 	/**
 	 * A service is registered in the container where a closure is passed in which will actually

@@ -119,7 +119,7 @@ namespace OCP
          * @return string the saved value
          * @since 6.0.0 - parameter default was added in 7.0.0
          */
-         string getAppValue(string appName, string key, object @default);
+         T getAppValue<T>(string appName, string key, T @default);
 
         /**
          * Delete an app wide defined value
@@ -163,7 +163,7 @@ namespace OCP
          * @return string
          * @since 6.0.0 - parameter default was added in 7.0.0
          */
-         string getUserValue(string userId, string appName, string key, object @default);
+         T getUserValue<T>(string userId, string appName, string key, T @default);
 
         /**
          * Fetches a mapped list of userId -> value, for a specified app and key and a list of user IDs.
