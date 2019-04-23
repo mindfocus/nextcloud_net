@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace OCP.Share.Exceptions
+namespace OCP.ShareNS.Exceptions
 {
     /**
      * Exception for illegal attempts to modify an id of a share

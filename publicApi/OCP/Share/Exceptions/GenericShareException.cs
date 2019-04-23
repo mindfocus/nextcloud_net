@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace OCP.Share.Exceptions
+namespace OCP.ShareNS.Exceptions
 {
     /**
  * Class GenericEncryptionException

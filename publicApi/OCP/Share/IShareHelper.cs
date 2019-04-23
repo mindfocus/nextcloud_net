@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace OCP.Share
+namespace OCP.ShareNS
 {
     /**
      * Interface IShareHelper
