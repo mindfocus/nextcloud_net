@@ -84,7 +84,7 @@ namespace OCP
 	 * @return \OCP\Files\IRootFolder
 	 * @since 6.0.0 - between 6.0.0 and 8.0.0 this returned \OCP\Files\Folder
 	 */
-    IRootFolder getRootFolder();
+    Files.IRootFolder getRootFolder();
 
     /**
 	 * Returns a view to ownCloud's files folder

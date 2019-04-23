@@ -11,7 +11,7 @@ namespace OCP.Files
      * @package OCP\Files
      * @since 8.0.0
      */
-    interface IRootFolder : Folder, Emitter
+    public interface IRootFolder : Folder, Emitter
     {
 
 	/**
