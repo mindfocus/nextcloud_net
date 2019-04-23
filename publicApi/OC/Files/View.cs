@@ -20,7 +20,7 @@ namespace OC.Files
      * Filesystem functions are not called directly; they are passed to the correct
      * \OC\Files\Storage\Storage object
      */
-    class View
+    public class View
     {
         /** @var string */
         private string fakeRoot = "";

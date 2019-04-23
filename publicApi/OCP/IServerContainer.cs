@@ -469,7 +469,7 @@ namespace OCP
 	 *
 	 * @since 9.0.0
 	 */
-    public function getSystemTagManager();
+    SystemTag.ISystemTagManager getSystemTagManager();
 
     /**
 	 * Returns the system-tag object mapper
@@ -478,7 +478,7 @@ namespace OCP
 	 *
 	 * @since 9.0.0
 	 */
-    public function getSystemTagObjectMapper();
+    SystemTag.ISystemTagObjectMapper getSystemTagObjectMapper();
 
     /**
 	 * Returns the share manager
@@ -486,7 +486,7 @@ namespace OCP
 	 * @return \OCP\Share\IManager
 	 * @since 9.0.0
 	 */
-    public function getShareManager();
+    ShareNS.IManager getShareManager();
 
     /**
 	 * @return IContentSecurityPolicyManager

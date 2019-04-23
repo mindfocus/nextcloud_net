@@ -10,7 +10,7 @@ namespace OCP.Security
      * @package OCP\Security
      * @since 9.0.0
      */
-    interface IContentSecurityPolicyManager
+    public interface IContentSecurityPolicyManager
     {
         /**
          * Allows to inject something into the default content policy. This is for
