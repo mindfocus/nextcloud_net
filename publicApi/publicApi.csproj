@@ -143,18 +143,6 @@
       <Compile Include="public\Federation\ICloudIdManager.php" />
       <Compile Include="public\Files_FullTextSearch\Model\AFilesDocument.php" />
       <Compile Include="public\FullTextSearch\Exceptions\FullTextSearchAppNotAvailableException.php" />
-      <Compile Include="public\FullTextSearch\IFullTextSearchManager.php" />
-      <Compile Include="public\FullTextSearch\IFullTextSearchPlatform.php" />
-      <Compile Include="public\FullTextSearch\IFullTextSearchProvider.php" />
-      <Compile Include="public\FullTextSearch\Model\IDocumentAccess.php" />
-      <Compile Include="public\FullTextSearch\Model\IIndex.php" />
-      <Compile Include="public\FullTextSearch\Model\IIndexDocument.php" />
-      <Compile Include="public\FullTextSearch\Model\IIndexOptions.php" />
-      <Compile Include="public\FullTextSearch\Model\IRunner.php" />
-      <Compile Include="public\FullTextSearch\Model\ISearchOption.php" />
-      <Compile Include="public\FullTextSearch\Model\ISearchRequest.php" />
-      <Compile Include="public\FullTextSearch\Model\ISearchResult.php" />
-      <Compile Include="public\FullTextSearch\Model\ISearchTemplate.php" />
       <Compile Include="public\FullTextSearch\Service\IIndexService.php" />
       <Compile Include="public\FullTextSearch\Service\IProviderService.php" />
       <Compile Include="public\FullTextSearch\Service\ISearchService.php" />
@@ -191,5 +179,7 @@
       <Folder Include="OCP\Group\Backend\" />
       <Folder Include="OCP\Notification\" />
       <Folder Include="OCP\Migration\" />
+      <Folder Include="OCP\FullTextSearch\" />
+      <Folder Include="OCP\FullTextSearch\Model\" />
     </ItemGroup>
 </Project>
