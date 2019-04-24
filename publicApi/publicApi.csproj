@@ -4,7 +4,7 @@
         <TargetFramework>netstandard2.0</TargetFramework>
         <NullableContextOptions>enable</NullableContextOptions>
         <RootNamespace />
-        <LangVersion>preview</LangVersion>
+        <!--<LangVersion>preview</LangVersion>-->
     </PropertyGroup>
 
     <ItemGroup>
@@ -120,32 +120,9 @@
       <Compile Include="public\Dashboard\Exceptions\DashboardAppNotAvailableException.php" />
       <Compile Include="public\Dashboard\IDashboardManager.php" />
       <Compile Include="public\Dashboard\IDashboardWidget.php" />
-      <Compile Include="public\Dashboard\Model\IWidgetConfig.php" />
-      <Compile Include="public\Dashboard\Model\IWidgetRequest.php" />
-      <Compile Include="public\Dashboard\Model\WidgetSetting.php" />
-      <Compile Include="public\Dashboard\Model\WidgetSetup.php" />
-      <Compile Include="public\Dashboard\Model\WidgetTemplate.php" />
       <Compile Include="public\Dashboard\Service\IEventsService.php" />
       <Compile Include="public\Dashboard\Service\IWidgetsService.php" />
       <Compile Include="public\Defaults.php" />
-      <Compile Include="public\Federation\Exceptions\ActionNotSupportedException.php" />
-      <Compile Include="public\Federation\Exceptions\AuthenticationFailedException.php" />
-      <Compile Include="public\Federation\Exceptions\BadRequestException.php" />
-      <Compile Include="public\Federation\Exceptions\ProviderAlreadyExistsException.php" />
-      <Compile Include="public\Federation\Exceptions\ProviderCouldNotAddShareException.php" />
-      <Compile Include="public\Federation\Exceptions\ProviderDoesNotExistsException.php" />
-      <Compile Include="public\Federation\ICloudFederationFactory.php" />
-      <Compile Include="public\Federation\ICloudFederationNotification.php" />
-      <Compile Include="public\Federation\ICloudFederationProvider.php" />
-      <Compile Include="public\Federation\ICloudFederationProviderManager.php" />
-      <Compile Include="public\Federation\ICloudFederationShare.php" />
-      <Compile Include="public\Federation\ICloudId.php" />
-      <Compile Include="public\Federation\ICloudIdManager.php" />
-      <Compile Include="public\Files_FullTextSearch\Model\AFilesDocument.php" />
-      <Compile Include="public\FullTextSearch\Exceptions\FullTextSearchAppNotAvailableException.php" />
-      <Compile Include="public\FullTextSearch\Service\IIndexService.php" />
-      <Compile Include="public\FullTextSearch\Service\IProviderService.php" />
-      <Compile Include="public\FullTextSearch\Service\ISearchService.php" />
       <Compile Include="public\SabrePluginEvent.php" />
       <Compile Include="public\SabrePluginException.php" />
       <Compile Include="public\Share.php" />
@@ -179,7 +156,6 @@
       <Folder Include="OCP\Group\Backend\" />
       <Folder Include="OCP\Notification\" />
       <Folder Include="OCP\Migration\" />
-      <Folder Include="OCP\FullTextSearch\" />
       <Folder Include="OCP\FullTextSearch\Model\" />
     </ItemGroup>
 </Project>

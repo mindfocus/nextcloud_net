@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+
 namespace OCP.FullTextSearch.Model
 {
     /**
@@ -18,29 +20,29 @@ namespace OCP.FullTextSearch.Model
      *
      * @package OCP\FullTextSearch\Model
      */
-    interface IIndex
+    public interface IIndex
     {
 
 
-        const INDEX_OK = 1;
-        const INDEX_IGNORE = 2;
+        //const INDEX_OK = 1;
+        //const INDEX_IGNORE = 2;
 
-        const INDEX_META = 4;
-        const INDEX_CONTENT = 8;
-        const INDEX_PARTS = 16;
-        const INDEX_FULL = 28;
-        const INDEX_REMOVE = 32;
-        const INDEX_DONE = 64;
-        const INDEX_FAILED = 128;
+        //const INDEX_META = 4;
+        //const INDEX_CONTENT = 8;
+        //const INDEX_PARTS = 16;
+        //const INDEX_FULL = 28;
+        //const INDEX_REMOVE = 32;
+        //const INDEX_DONE = 64;
+        //const INDEX_FAILED = 128;
 
-        const ERROR_FAILED = 1;
-        const ERROR_FAILED2 = 2;
-        const ERROR_FAILED3 = 4;
+        //const ERROR_FAILED = 1;
+        //const ERROR_FAILED2 = 2;
+        //const ERROR_FAILED3 = 4;
 
-        const ERROR_SEV_1 = 1;
-        const ERROR_SEV_2 = 2;
-        const ERROR_SEV_3 = 3;
-        const ERROR_SEV_4 = 4;
+        //const ERROR_SEV_1 = 1;
+        //const ERROR_SEV_2 = 2;
+        //const ERROR_SEV_3 = 3;
+        //const ERROR_SEV_4 = 4;
 
 
         /**
@@ -50,7 +52,7 @@ namespace OCP.FullTextSearch.Model
          *
          * @return string
          */
-        public function getProviderId(): string;
+        string getProviderId() ;
 
 
     /**
@@ -60,7 +62,7 @@ namespace OCP.FullTextSearch.Model
      *
      * @return string
      */
-    public function getDocumentId(): string;
+    string getDocumentId();
 
 
     /**
@@ -72,7 +74,7 @@ namespace OCP.FullTextSearch.Model
      *
      * @return IIndex
      */
-    public function setSource(string source): IIndex;
+    IIndex setSource(string source);
 
     /**
      * Get the source of the original document.
@@ -81,7 +83,7 @@ namespace OCP.FullTextSearch.Model
      *
      * @return string
      */
-    public function getSource(): string;
+    string getSource();
 
 
     /**
@@ -93,7 +95,7 @@ namespace OCP.FullTextSearch.Model
      *
      * @return IIndex
      */
-    public function setOwnerId(string ownerId): IIndex;
+    IIndex setOwnerId(string ownerId);
 
     /**
      * Get the owner of the original document.
@@ -102,7 +104,7 @@ namespace OCP.FullTextSearch.Model
      *
      * @return string
      */
-    public function getOwnerId(): string;
+    string getOwnerId();
 
 
     /**
@@ -116,7 +118,7 @@ namespace OCP.FullTextSearch.Model
      *
      * @return IIndex
      */
-    public function setStatus(int status, bool reset = false): IIndex;
+    IIndex setStatus(int status, bool reset = false);
 
     /**
      * Get the current index status of the original document.
@@ -125,7 +127,7 @@ namespace OCP.FullTextSearch.Model
      *
      * @return int
      */
-    public function getStatus(): int;
+    int getStatus();
 
     /**
      * Check if the document fit a specific status.
@@ -136,7 +138,7 @@ namespace OCP.FullTextSearch.Model
      *
      * @return bool
      */
-    public function isStatus(int status): bool;
+    bool isStatus(int status);
 
     /**
      * Remove a status.
@@ -147,7 +149,7 @@ namespace OCP.FullTextSearch.Model
      *
      * @return IIndex
      */
-    public function unsetStatus(int status): IIndex;
+    IIndex unsetStatus(int status);
 
 
     /**
@@ -160,7 +162,7 @@ namespace OCP.FullTextSearch.Model
      *
      * @return IIndex
      */
-    public function addOption(string option, string value): IIndex;
+    IIndex addOption(string option, string value);
 
     /**
      * Add an option related to the original document (as integer).
@@ -172,7 +174,7 @@ namespace OCP.FullTextSearch.Model
      *
      * @return IIndex
      */
-    public function addOptionInt(string option, int value): IIndex;
+    IIndex addOptionInt(string option, int value);
 
     /**
      * Get the option related to the original document (as string).
@@ -184,7 +186,7 @@ namespace OCP.FullTextSearch.Model
      *
      * @return string
      */
-    public function getOption(string option, string default = ''): string;
+    string getOption(string option, string @default = "");
 
     /**
      * Get the option related to the original document (as integer).
@@ -196,7 +198,7 @@ namespace OCP.FullTextSearch.Model
      *
      * @return int
      */
-    public function getOptionInt(string option, int default = 0): int;
+    int getOptionInt(string option, int @default = 0);
 
     /**
      * Get all options related to the original document.
@@ -205,7 +207,7 @@ namespace OCP.FullTextSearch.Model
      *
      * @return array
      */
-    public function getOptions(): array;
+    IList<string> getOptions();
 
 
     /**
@@ -219,7 +221,8 @@ namespace OCP.FullTextSearch.Model
      *
      * @return IIndex
      */
-    public function addError(string message, string exception = '', int sev = self::ERROR_SEV_3): IIndex;
+    //IIndex addError(string message, string exception = "", int sev = self::ERROR_SEV_3): ;
+    IIndex addError(string message, string exception = "", int sev = 3);
 
     /**
      * Returns the number of known errors related to the Index.
@@ -228,14 +231,14 @@ namespace OCP.FullTextSearch.Model
      *
      * @return int
      */
-    public function getErrorCount(): int;
+    int getErrorCount();
 
     /**
      * Reset all error logs related to the Index.
      *
      * @since 15.0.0
      */
-    public function resetErrors(): IIndex;
+    IIndex resetErrors();
 
 
     /**
@@ -247,7 +250,7 @@ namespace OCP.FullTextSearch.Model
      *
      * @return IIndex
      */
-    public function setLastIndex(int lastIndex = -1): IIndex;
+    IIndex setLastIndex(int lastIndex = -1);
 
     /**
      * Get the date of the last index.
@@ -256,7 +259,7 @@ namespace OCP.FullTextSearch.Model
      *
      * @return int
      */
-    public function getLastIndex(): int;
+    int getLastIndex();
 
 
 }
