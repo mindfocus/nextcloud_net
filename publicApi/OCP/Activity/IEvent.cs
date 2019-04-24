@@ -10,7 +10,7 @@ namespace OCP.Activity
  * @package OCP\Activity
  * @since 8.2.0
  */
-    interface IEvent
+    public interface IEvent
     {
         /**
 	 * Set the app of the activity

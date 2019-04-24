@@ -95,9 +95,9 @@ namespace OC.User
 	 * @param string $uid
 	 * @return \OC\User\User|null Either the user or null if the specified user does not exist
 	 */
-    public User get(string uid)
+    public User? get(string uid)
     {
-		if(uid == null || uid == "") {
+		if(string.IsNullOrEmpty(uid)) {
 			return null;
 		}
 		if(this.cachedUsers.ContainsKey(uid)) {

@@ -1,15 +1,14 @@
 ﻿using System;
 using Pchp.Core;
-using Pchp.Library;
 namespace OC.Authentication.Token
 {
     public interface IToken : JsonSerializable
     {
 
-    const int TEMPORARY_TOKEN = 0;
-    const int PERMANENT_TOKEN = 1;
-    const int DO_NOT_REMEMBER = 0;
-    const int REMEMBER = 1;
+//    const int TEMPORARY_TOKEN = 0;
+//    const int PERMANENT_TOKEN = 1;
+//    const int DO_NOT_REMEMBER = 0;
+//    const int REMEMBER = 1;
 
         /**
          * Get the token ID

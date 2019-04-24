@@ -20,7 +20,7 @@ namespace OC
 	protected IList<string> hasNoAppContainer;
 
 	/** @var string[] */
-	protected IList<string> namespaces;
+	protected IDictionary<string,string> namespaces;
 
 	/**
 	 * ServerContainer constructor.
@@ -28,7 +28,7 @@ namespace OC
 	public ServerContainer() : base()
     {
 		this.appContainers = new List<DIContainer>();
-		this.namespaces = new List<string>();
+		this.namespaces = new Dictionary<string,string>();
 		this.hasNoAppContainer = new List<string>();
     }
 
@@ -109,7 +109,7 @@ public object query(string name)
 
     // In case the service starts with OCA\ we try to find the service in
     // the apps container first.
-    if (strpos(name, 'OCA\\') === 0 && substr_count(name, '\\') >= 2)
+    if (strpos(name, @"OCA\\") === 0 && substr_count(name, '\\') >= 2)
     {
 			segments = explode('\\', name);
         try

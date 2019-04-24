@@ -20,36 +20,36 @@ namespace OC.AppFramework.Utility
 	 * @suppress PhanUndeclaredClassInstanceof
 	 */
     private function buildClass(ReflectionClass class) {
-		constructor = class->getConstructor();
+		constructor = class.getConstructor();
 		if (constructor === null) {
-			return class->newInstance();
+			return class.newInstance();
 } else {
 			parameters = [];
-			foreach (constructor->getParameters() as parameter) {
-				parameterClass = parameter->getClass();
+			foreach (constructor.getParameters() as parameter) {
+				parameterClass = parameter.getClass();
 
 				// try to find out if it is a class or a simple parameter
 				if (parameterClass === null) {
-					resolveName = parameter->getName();
+					resolveName = parameter.getName();
 				} else {
-					resolveName = parameterClass->name;
+					resolveName = parameterClass.name;
 				}
 
 				try {
-					parameters[] = this->query(resolveName);
+					parameters[] = this.query(resolveName);
 } catch (QueryException e) {
 					// Service not found, use the default value when available
-					if (parameter->isDefaultValueAvailable()) {
-						parameters[] = parameter->getDefaultValue();
+					if (parameter.isDefaultValueAvailable()) {
+						parameters[] = parameter.getDefaultValue();
 					} else if (parameterClass !== null) {
-						resolveName = parameter->getName();
-						parameters[] = this->query(resolveName);
+						resolveName = parameter.getName();
+						parameters[] = this.query(resolveName);
 } else {
 						throw e;
 					}
 				}
 			}
-			return class->newInstanceArgs(parameters);
+			return class.newInstanceArgs(parameters);
 		}
 	}
 
@@ -67,14 +67,14 @@ namespace OC.AppFramework.Utility
     try
     {
 			class = new ReflectionClass(name);
-			if (class->isInstantiable()) {
-				return this->buildClass(class);
+			if (class.isInstantiable()) {
+				return this.buildClass(class);
 			} else {
 				throw new QueryException(baseMsg.
 					' Class can not be instantiated');
 			}
 		} catch(ReflectionException e) {
-			throw new QueryException(baseMsg. ' ' . e->getMessage());
+			throw new QueryException(baseMsg. ' ' . e.getMessage());
 		}
 	}
 
@@ -86,13 +86,13 @@ namespace OC.AppFramework.Utility
 	 */
 	public function query(name)
 {
-		name = this->sanitizeName(name);
-    if (this->offsetExists(name)) {
-        return this->offsetGet(name);
+		name = this.sanitizeName(name);
+    if (this.offsetExists(name)) {
+        return this.offsetGet(name);
     } else
     {
-			object = this->resolve(name);
-			this->registerService(name, function() use(object) {
+			object = this.resolve(name);
+			this.registerService(name, function() use(object) {
             return object;
         });
         return object;
@@ -119,7 +119,7 @@ public function registerParameter(name, value)
  */
 public function registerService(name, Closure closure, shared = true)
 {
-		name = this->sanitizeName(name);
+		name = this.sanitizeName(name);
     if (isset(this[name]))
     {
         unset(this[name]);
@@ -141,8 +141,8 @@ public function registerService(name, Closure closure, shared = true)
  */
 public function registerAlias(alias, target)
 {
-		this->registerService(alias, function(IContainer container) use(target) {
-        return container->query(target);
+		this.registerService(alias, function(IContainer container) use(target) {
+        return container.query(target);
     }, false);
 }
 
@@ -150,7 +150,7 @@ public function registerAlias(alias, target)
  * @param string name
  * @return string
  */
-protected function sanitizeName(name)
+protected string sanitizeName(string name)
 {
     if (isset(name[0]) && name[0] === '\\') {
         return ltrim(name, '\\');
