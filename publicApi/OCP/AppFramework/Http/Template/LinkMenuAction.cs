@@ -1,0 +1,41 @@
+namespace OCP.AppFramework.Http.Template
+{
+/**
+ * Class LinkMenuAction
+ *
+ * @package OCP\AppFramework\Http\Template
+ * @since 14.0.0
+ */
+    class LinkMenuAction : SimpleMenuAction {
+
+    /**
+     * LinkMenuAction constructor.
+     *
+     * @param string label
+     * @param string icon
+     * @param string link
+     * @since 14.0.0
+     */
+    public function __construct(string label, string icon, string link) {
+        parent::__construct('directLink-container', label, icon, link);
+    }
+
+    /**
+     * @return string
+     * @since 14.0.0
+     */
+    public function render(): string {
+        return '<li>' .
+        '<a id="directLink-container">' .
+        '<span class="icon ' . Util::sanitizeHTML(this->getIcon()) . '"></span>' .
+        '<label for="directLink">' . Util::sanitizeHTML(this->getLabel()) . '</label>' .
+        '</a>' .
+        '</li>' .
+        '<li>' .
+        '<span class="menuitem">' .
+        '<input id="directLink" type="text" readonly="" value="' . Util::sanitizeHTML(this->getLink()) . '">' .
+        '</span>' .
+        '</li>';
+    }
+    }
+}

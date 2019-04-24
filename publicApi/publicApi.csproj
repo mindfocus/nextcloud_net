@@ -48,54 +48,6 @@
       <None Remove="public\Log\**" />
       <None Remove="public\WorkflowEngine\**" />
     </ItemGroup>
-    <ItemGroup>
-      <Compile Include="public\AppFramework\ApiController.php" />
-      <Compile Include="public\AppFramework\App.php" />
-      <Compile Include="public\AppFramework\AuthPublicShareController.php" />
-      <Compile Include="public\AppFramework\Controller.php" />
-      <Compile Include="public\AppFramework\Db\DoesNotExistException.php" />
-      <Compile Include="public\AppFramework\Db\Entity.php" />
-      <Compile Include="public\AppFramework\Db\IMapperException.php" />
-      <Compile Include="public\AppFramework\Db\Mapper.php" />
-      <Compile Include="public\AppFramework\Db\MultipleObjectsReturnedException.php" />
-      <Compile Include="public\AppFramework\Db\QBMapper.php" />
-      <Compile Include="public\AppFramework\Http.php" />
-      <Compile Include="public\AppFramework\Http\ContentSecurityPolicy.php" />
-      <Compile Include="public\AppFramework\Http\DataDisplayResponse.php" />
-      <Compile Include="public\AppFramework\Http\DataDownloadResponse.php" />
-      <Compile Include="public\AppFramework\Http\DataResponse.php" />
-      <Compile Include="public\AppFramework\Http\DownloadResponse.php" />
-      <Compile Include="public\AppFramework\Http\EmptyContentSecurityPolicy.php" />
-      <Compile Include="public\AppFramework\Http\FileDisplayResponse.php" />
-      <Compile Include="public\AppFramework\Http\ICallbackResponse.php" />
-      <Compile Include="public\AppFramework\Http\IOutput.php" />
-      <Compile Include="public\AppFramework\Http\JSONResponse.php" />
-      <Compile Include="public\AppFramework\Http\NotFoundResponse.php" />
-      <Compile Include="public\AppFramework\Http\OCSResponse.php" />
-      <Compile Include="public\AppFramework\Http\RedirectResponse.php" />
-      <Compile Include="public\AppFramework\Http\RedirectToDefaultAppResponse.php" />
-      <Compile Include="public\AppFramework\Http\Response.php" />
-      <Compile Include="public\AppFramework\Http\StandaloneTemplateResponse.php" />
-      <Compile Include="public\AppFramework\Http\StreamResponse.php" />
-      <Compile Include="public\AppFramework\Http\StrictContentSecurityPolicy.php" />
-      <Compile Include="public\AppFramework\Http\StrictEvalContentSecurityPolicy.php" />
-      <Compile Include="public\AppFramework\Http\StrictInlineContentSecurityPolicy.php" />
-      <Compile Include="public\AppFramework\Http\TemplateResponse.php" />
-      <Compile Include="public\AppFramework\Http\Template\ExternalShareMenuAction.php" />
-      <Compile Include="public\AppFramework\Http\Template\IMenuAction.php" />
-      <Compile Include="public\AppFramework\Http\Template\LinkMenuAction.php" />
-      <Compile Include="public\AppFramework\Http\Template\PublicTemplateResponse.php" />
-      <Compile Include="public\AppFramework\Http\Template\SimpleMenuAction.php" />
-      <Compile Include="public\AppFramework\Http\ZipResponse.php" />
-      <Compile Include="public\AppFramework\Middleware.php" />
-      <Compile Include="public\AppFramework\OCSController.php" />
-      <Compile Include="public\AppFramework\OCS\OCSBadRequestException.php" />
-      <Compile Include="public\AppFramework\OCS\OCSException.php" />
-      <Compile Include="public\AppFramework\OCS\OCSForbiddenException.php" />
-      <Compile Include="public\AppFramework\OCS\OCSNotFoundException.php" />
-      <Compile Include="public\AppFramework\PublicShareController.php" />
-      <Compile Include="public\AppFramework\Utility\IControllerMethodReflector.php" />
-    </ItemGroup>
 
     <ItemGroup>
       <PackageReference Include="INIFileParserDotNetCore" Version="2.5.2" />

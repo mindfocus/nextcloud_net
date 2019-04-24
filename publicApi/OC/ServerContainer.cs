@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using OC.AppFramework.Utility;
+using OCP.AppFramework;
 
 namespace OC
 {
@@ -12,32 +14,32 @@ namespace OC
     class ServerContainer : SimpleContainer
     {
     /** @var DIContainer[] */
-    protected appContainers;
+    protected IList<DIContainer> appContainers;
 
 	/** @var string[] */
-	protected hasNoAppContainer;
+	protected IList<string> hasNoAppContainer;
 
 	/** @var string[] */
-	protected namespaces;
+	protected IList<string> namespaces;
 
 	/**
 	 * ServerContainer constructor.
 	 */
 	public ServerContainer() : base()
     {
-		this->appContainers = [];
-		this->namespaces = [];
-		this->hasNoAppContainer = [];
+		this.appContainers = new List<DIContainer>();
+		this.namespaces = new List<string>();
+		this.hasNoAppContainer = new List<string>();
     }
 
     /**
 	 * @param string appName
 	 * @param string appNamespace
 	 */
-    public function registerNamespace(string appName, string appNamespace): void {
+    public void registerNamespace(string appName, string appNamespace) {
 		// Cut of OCA\ and lowercase
 		appNamespace = strtolower(substr(appNamespace, strrpos(appNamespace, '\\') + 1));
-		this->namespaces[appNamespace] = appName;
+		this.namespaces[appNamespace] = appName;
 
     }
 
@@ -46,7 +48,7 @@ namespace OC
 	 * @param DIContainer container
 	 */
     public function registerAppContainer(string appName, DIContainer container): void {
-		this->appContainers[strtolower(App::buildAppNamespace(appName, ''))] = container;
+		this.appContainers[strtolower(App::buildAppNamespace(appName, ''))] = container;
 
     }
 
@@ -56,8 +58,8 @@ namespace OC
 	 * @throws QueryException
 	 */
     public function getRegisteredAppContainer(string appName): DIContainer {
-		if (isset(this->appContainers[strtolower(App::buildAppNamespace(appName, ''))])) {
-        return this->appContainers[strtolower(App::buildAppNamespace(appName, ''))];
+		if (isset(this.appContainers[strtolower(App::buildAppNamespace(appName, ''))])) {
+        return this.appContainers[strtolower(App::buildAppNamespace(appName, ''))];
     }
 
 		throw new QueryException();
@@ -70,23 +72,23 @@ namespace OC
  * @throws QueryException
  */
 protected function getAppContainer(string namespace, string sensitiveNamespace): DIContainer {
-		if (isset(this->appContainers[namespace])) {
-			return this->appContainers[namespace];
+		if (isset(this.appContainers[namespace])) {
+			return this.appContainers[namespace];
 		}
 
-		if (isset(this->namespaces[namespace])) {
-			if (!isset(this->hasNoAppContainer[namespace])) {
+		if (isset(this.namespaces[namespace])) {
+			if (!isset(this.hasNoAppContainer[namespace])) {
 				applicationClassName = 'OCA\\' . sensitiveNamespace . '\\AppInfo\\Application';
 				if (class_exists(applicationClassName)) {
 					new applicationClassName();
-					if (isset(this->appContainers[namespace])) {
-						return this->appContainers[namespace];
+					if (isset(this.appContainers[namespace])) {
+						return this.appContainers[namespace];
 					}
 }
-				this->hasNoAppContainer[namespace] = true;
+				this.hasNoAppContainer[namespace] = true;
 			}
 
-			return new DIContainer(this->namespaces[namespace]);
+			return new DIContainer(this.namespaces[namespace]);
 		}
 		throw new QueryException();
 }
@@ -96,9 +98,9 @@ protected function getAppContainer(string namespace, string sensitiveNamespace):
  * @return mixed registered service for the given name
  * @throws QueryException if the query could not be resolved
  */
-public function query(name)
+public object query(string name)
 {
-		name = this->sanitizeName(name);
+		name = this.sanitizeName(name);
 
     if (isset(this[name]))
     {
@@ -112,8 +114,8 @@ public function query(name)
 			segments = explode('\\', name);
         try
         {
-				appContainer = this->getAppContainer(strtolower(segments[1]), segments[1]);
-            return appContainer->queryNoFallback(name);
+				appContainer = this.getAppContainer(strtolower(segments[1]), segments[1]);
+            return appContainer.queryNoFallback(name);
         }
         catch (QueryException e) {
             // Didn't find the service or the respective app container,
@@ -124,8 +126,8 @@ public function query(name)
 			segments = explode('\\', name);
             try
             {
-				appContainer = this->getAppContainer(strtolower(segments[1]), segments[1]);
-                return appContainer->queryNoFallback(name);
+				appContainer = this.getAppContainer(strtolower(segments[1]), segments[1]);
+                return appContainer.queryNoFallback(name);
             }
             catch (QueryException e) {
                 // Didn't find the service or the respective app container,
