@@ -29,7 +29,7 @@ namespace OCP
         //const FATAL= 4;
 
         /** \OCP\Share\IManager */
-        private static shareManager;
+        private static ShareNS.IManager shareManager;
 
     /**
      * get the current installed version of Nextcloud

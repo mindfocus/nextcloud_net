@@ -95,40 +95,6 @@
       <Compile Include="public\AppFramework\OCS\OCSNotFoundException.php" />
       <Compile Include="public\AppFramework\PublicShareController.php" />
       <Compile Include="public\AppFramework\Utility\IControllerMethodReflector.php" />
-      <Compile Include="public\Collaboration\AutoComplete\AutoCompleteEvent.php" />
-      <Compile Include="public\Collaboration\AutoComplete\IManager.php" />
-      <Compile Include="public\Collaboration\AutoComplete\ISorter.php" />
-      <Compile Include="public\Collaboration\Collaborators\ISearch.php" />
-      <Compile Include="public\Collaboration\Collaborators\ISearchPlugin.php" />
-      <Compile Include="public\Collaboration\Collaborators\ISearchResult.php" />
-      <Compile Include="public\Collaboration\Collaborators\SearchResultType.php" />
-      <Compile Include="public\Collaboration\Resources\CollectionException.php" />
-      <Compile Include="public\Collaboration\Resources\ICollection.php" />
-      <Compile Include="public\Collaboration\Resources\IManager.php" />
-      <Compile Include="public\Collaboration\Resources\IProvider.php" />
-      <Compile Include="public\Collaboration\Resources\IResource.php" />
-      <Compile Include="public\Collaboration\Resources\ResourceException.php" />
-      <Compile Include="public\Comments\CommentsEntityEvent.php" />
-      <Compile Include="public\Comments\CommentsEvent.php" />
-      <Compile Include="public\Comments\IComment.php" />
-      <Compile Include="public\Comments\ICommentsEventHandler.php" />
-      <Compile Include="public\Comments\ICommentsManager.php" />
-      <Compile Include="public\Comments\ICommentsManagerFactory.php" />
-      <Compile Include="public\Comments\IllegalIDChangeException.php" />
-      <Compile Include="public\Comments\MessageTooLongException.php" />
-      <Compile Include="public\Comments\NotFoundException.php" />
-      <Compile Include="public\Dashboard\Exceptions\DashboardAppNotAvailableException.php" />
-      <Compile Include="public\Dashboard\IDashboardManager.php" />
-      <Compile Include="public\Dashboard\IDashboardWidget.php" />
-      <Compile Include="public\Dashboard\Service\IEventsService.php" />
-      <Compile Include="public\Dashboard\Service\IWidgetsService.php" />
-      <Compile Include="public\Defaults.php" />
-      <Compile Include="public\SabrePluginEvent.php" />
-      <Compile Include="public\SabrePluginException.php" />
-      <Compile Include="public\Share.php" />
-      <Compile Include="public\Share_Backend_Collection.php" />
-      <Compile Include="public\Share_Backend_File_Dependent.php" />
-      <Compile Include="public\Template.php" />
     </ItemGroup>
 
     <ItemGroup>
