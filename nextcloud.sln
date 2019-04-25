@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.28809.33
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.572
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "nextcloud-3rdparty", "nextcloud-3rdparty", "{FADA6A78-A04F-4EA9-9BF0-EFF989E4C10F}"
 EndProject
@@ -50,8 +50,6 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "nextcloud-egulias-email-validator", "nextcloud-egulias-email-validator\nextcloud-egulias-email-validator.msbuildproj", "{B61A527C-458E-42DB-AB54-4260DACF5083}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "nextcloud-interfasys-lognormalizer", "nextcloud-interfasys-lognormalizer\nextcloud-interfasys-lognormalizer.msbuildproj", "{89607B39-6314-4D4C-B219-ABFCA7EF7330}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "nextcloud-pimple", "nextcloud-pimple\nextcloud-pimple.msbuildproj", "{FE13318A-B879-4AFA-8B55-0508DE3FE060}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "nextcloud-jeremeamia-SuperClosure", "nextcloud-jeremeamia-SuperClosure\nextcloud-jeremeamia-SuperClosure.msbuildproj", "{5FFA64E7-7E5F-4DBB-B00F-4F080C60EE64}"
 EndProject
@@ -184,10 +182,6 @@ Global
 		{89607B39-6314-4D4C-B219-ABFCA7EF7330}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{89607B39-6314-4D4C-B219-ABFCA7EF7330}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{89607B39-6314-4D4C-B219-ABFCA7EF7330}.Release|Any CPU.Build.0 = Release|Any CPU
-		{FE13318A-B879-4AFA-8B55-0508DE3FE060}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FE13318A-B879-4AFA-8B55-0508DE3FE060}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FE13318A-B879-4AFA-8B55-0508DE3FE060}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FE13318A-B879-4AFA-8B55-0508DE3FE060}.Release|Any CPU.Build.0 = Release|Any CPU
 		{5FFA64E7-7E5F-4DBB-B00F-4F080C60EE64}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{5FFA64E7-7E5F-4DBB-B00F-4F080C60EE64}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5FFA64E7-7E5F-4DBB-B00F-4F080C60EE64}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -280,7 +274,6 @@ Global
 		{908063AC-5595-4F62-8B6A-207796B001CA} = {FADA6A78-A04F-4EA9-9BF0-EFF989E4C10F}
 		{B61A527C-458E-42DB-AB54-4260DACF5083} = {FADA6A78-A04F-4EA9-9BF0-EFF989E4C10F}
 		{89607B39-6314-4D4C-B219-ABFCA7EF7330} = {FADA6A78-A04F-4EA9-9BF0-EFF989E4C10F}
-		{FE13318A-B879-4AFA-8B55-0508DE3FE060} = {FADA6A78-A04F-4EA9-9BF0-EFF989E4C10F}
 		{5FFA64E7-7E5F-4DBB-B00F-4F080C60EE64} = {FADA6A78-A04F-4EA9-9BF0-EFF989E4C10F}
 		{6F6E875A-AD89-4608-BABE-76BF55236749} = {FADA6A78-A04F-4EA9-9BF0-EFF989E4C10F}
 		{CA03C906-0C53-4C7B-B758-DF47240F612C} = {FADA6A78-A04F-4EA9-9BF0-EFF989E4C10F}
