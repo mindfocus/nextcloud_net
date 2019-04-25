@@ -2,9 +2,8 @@
   "groups": {
     "default": {
       "packages": [
-        "nextcloud/server/package.json",
-	"frontend/package.json",
-	"ivy-frontend/package.json"
+		"frontend/package.json",
+		"ivy-frontend/package.json"
       ]
     }
   }
