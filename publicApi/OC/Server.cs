@@ -14,6 +14,7 @@ using OC.Files;
 using OC.User;
 using OCP.AppFramework;
 using OCP.Contacts.ContactsMenu;
+using OCP.Files;
 using Pchp.Library;
 using Pchp.Library.DateTime;
 
@@ -51,13 +52,14 @@ namespace OC
         containerBuilder.RegisterType<OC.Calendar.Room.Manager>().Named<OCP.Calendar.Room.IManager>("CalendarRoomBackendManager");
         containerBuilder.RegisterType<OC.ContactsManager>().Named<OCP.Contacts.IManager>("ContactsManager");
         containerBuilder.RegisterType<ActionFactory>().As<IActionFactory>();
-        containerBuilder.Register<PreviewManager>((c) =>
+        containerBuilder.Register<PreviewManager>(( c,p) =>
         {
-            return new PreviewManager(c.getConfig(),
-                c.getRootFolder(),
-                c.getAppDataDir("preview"),
-                c.getEventDispatcher(),
-                c.getSession().get("user_id"));
+	        var server = p.TypedAs<Server>();
+            return new PreviewManager(server.getConfig(),
+	            server.getRootFolder(),
+	            server.getAppDataDir("preview"),
+	            server.getEventDispatcher(),
+	            server.getSession().get("user_id"));
         }).Named<OCP.IPreview>("PreviewManager");
         
 		this.registerService(\OC\Preview\Watcher::class, function(Server c)
@@ -1848,7 +1850,7 @@ namespace OC
 	/**
 	 * @return \OCP\Files\IAppData
 	 */
-	public function getAppDataDir(app) {
+	public IAppData getAppDataDir(string app) {
 		/** @var \OC\Files\AppData\Factory factory */
 		factory = this.query(\OC\Files\AppData\Factory::class);
 		return factory.get(app);

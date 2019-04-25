@@ -119,7 +119,7 @@ namespace OCP
  * @return string|null
  * @since 9.0.0
  */
-        string? getEMailAddress();
+        string getEMailAddress();
         /**
  * get the avatar image if it exists
  *
@@ -127,7 +127,7 @@ namespace OCP
  * @return IImage|null
  * @since 9.0.0
  */
-        IImage? getAvatarImage(int size);
+        IImage getAvatarImage(int size);
         /**
 	 * get the federation cloud id
 	 *
@@ -143,7 +143,7 @@ namespace OCP
          * @return void
          * @since 9.0.0
          */
-        void setEMailAddress(string? mailAddress);
+        void setEMailAddress(string mailAddress);
 
         /**
          * get the users' quota in human readable form. If a specific quota is not

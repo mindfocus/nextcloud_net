@@ -32,14 +32,14 @@ public class Manager : IManager {
 	 */
 	public IList<string> search(string pattern, IList<string> searchProperties, IList<string> options, int? limit=null, int? offset=null) {
         this.loadCalendars();
-        //foreach (var calendar in this.calendars)
-        //{
-        //    var r = calendar.search(pattern, searchProperties, options, limit, offset);
-        //    foreach (var o in r)
-        //    {
+        foreach (var calendar in this.calendars)
+        {
+            var r = calendar.search(pattern, searchProperties, options, limit, offset);
+            foreach (var o in r)
+            {
                 
-        //    }
-        //}
+            }
+        }
 		$result = [];
 		foreach($this->calendars as $calendar) {
 			$r = $calendar->search($pattern, $searchProperties, $options, $limit, $offset);

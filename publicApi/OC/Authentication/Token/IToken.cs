@@ -36,7 +36,7 @@ namespace OC.Authentication.Token
      *
      * @return string|null
      */
-    string? getPassword();
+    string getPassword();
 
         /**
          * Get the timestamp of the last password check

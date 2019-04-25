@@ -24,14 +24,14 @@ namespace OCP.Calendar
          * @return null|string
          * @since 13.0.0
          */
-        string? getDisplayName();
+        string getDisplayName();
 
         /**
          * Calendar color
          * @return null|string
          * @since 13.0.0
          */
-        string? getDisplayColor();
+        string getDisplayColor();
 
         /**
          * @param string pattern which should match within the searchProperties
