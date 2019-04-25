@@ -95,7 +95,7 @@ namespace OC.User
 	 * @param string $uid
 	 * @return \OC\User\User|null Either the user or null if the specified user does not exist
 	 */
-    public User? get(string uid)
+    public IUser get(string uid)
     {
 		if(string.IsNullOrEmpty(uid)) {
 			return null;
@@ -119,7 +119,7 @@ namespace OC.User
 	 * @param bool $cacheUser If false the newly created user object will not be cached
 	 * @return \OC\User\User
 	 */
-    protected User getUserObject(string uid, OCP.UserInterface backend, bool cacheUser = true)
+    protected User getUserObject(string uid, UserInterface backend, bool cacheUser = true)
     {
 		if(this.cachedUsers.ContainsKey(uid)){
 			return this.cachedUsers[uid];
@@ -168,8 +168,10 @@ namespace OC.User
 	 */
     public User checkPasswordNoLogging(string loginName, string password)
     {
-		var loginName = loginName.Replace('\0',"");
-		var password = password.Replace('\0',"");
+        loginName = loginName.Trim();
+            //.Replace('\0','');
+		password = password.Trim();
+		    //.Replace('\0','');
 		foreach(var backend in this.backends) {
 			if(backend.implementsActions(Backend.CHECK_PASSWORD)) {
 				var uid = ((OCP.User.Backend.ICheckPasswordBackend)backend).checkPassword(loginName, password);
@@ -189,16 +191,16 @@ namespace OC.User
 	 * @param int $offset
 	 * @return \OC\User\User[]
 	 */
-    public IDictionary<string,User> search(string pattern, int limit = null, int offset = null)
+    public IDictionary<string,User> search(string pattern, int limit = -1, int offset = -1)
     {
 		var users = new Dictionary<string,User>();
 		foreach (var backend in this.backends)
 		{
-			var backendUsers = backend.getUsers(pattern,limit,offset);
-			if(backendUsers != null) {
-				foreach (var backenduser in backendUsers)
+			var backendUserIds = backend.getUsers(pattern,limit,offset);
+			if(backendUserIds != null) {
+				foreach (var backenduserId in backendUserIds)
 				{
-				users[backenduser.uid] = this.getUserObject(backenduser.uid, backend);					
+				users[backenduserId] = this.getUserObject(backenduserId, backend);					
 				}
 			}
 		}
@@ -220,16 +222,16 @@ namespace OC.User
 	 * @param int $offset
 	 * @return \OC\User\User[]
 	 */
-    public IDictionary<string,User> searchDisplayName(string pattern, int limit = null, int offset = null)
+    public IDictionary<string,User> searchDisplayName(string pattern, int limit = -1, int offset = -1)
     {
 		var users = new Dictionary<string,User>();
 		foreach (var backend in this.backends)
 		{
-			var backendUsers = backend.getDisplayName(pattern, limit, offset);
+			var backendUsers = backend.getDisplayNames(pattern, limit, offset);
 			if(backendUsers != null) {
 				foreach (var backendUser in backendUsers)
 				{
-					users[backendUser.key] = this.getUserObject(backendUser.key, backend);
+					users[backendUser.Key] = this.getUserObject(backendUser.Key, backend);
 				}
 			}
 		}
@@ -249,7 +251,7 @@ namespace OC.User
 	 * @throws \InvalidArgumentException
 	 * @return bool|IUser the created user or false
 	 */
-    public OCP.IUser createUser(string uid, string password)
+    public IUser createUser(string uid, string password)
     {
 		var localBackends = new List<OCP.UserInterface>();
 		foreach (var backend in this.backends)

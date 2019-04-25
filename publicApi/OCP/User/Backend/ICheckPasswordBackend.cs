@@ -13,7 +13,7 @@ namespace OCP.User.Backend
          * @param string password The password
          * @return string|bool The uid on success false on failure
          */
-        string? checkPassword(string loginName, string password);
+        string checkPassword(string loginName, string password);
     }
 
 }

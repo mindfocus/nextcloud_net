@@ -59,7 +59,7 @@ namespace OCP
          * @return \OCP\IUser|null Either the user or null if the specified user does not exist
          * @since 8.0.0
          */
-        IUser? get(string uid);
+        IUser get(string uid);
 
         /**
          * check if a user exists
@@ -109,7 +109,7 @@ namespace OCP
          * @return bool|\OCP\IUser the created user or false
          * @since 8.0.0
          */
-        IUser? createUser(string uid, string password);
+        IUser createUser(string uid, string password);
 
         /**
          * @param string uid
@@ -119,7 +119,7 @@ namespace OCP
          * @throws \InvalidArgumentException
          * @since 12.0.0
          */
-        IUser? createUserFromBackend(string uid, string password, UserInterface backend);
+        IUser createUserFromBackend(string uid, string password, UserInterface backend);
 
         /**
          * returns how many users per backend exist (if supported by backend)

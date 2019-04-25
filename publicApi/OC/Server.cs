@@ -1,7 +1,21 @@
 ﻿using OCP;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.Globalization;
+using System.Net;
 using System.Text;
+using Autofac;
+using Autofac.Extensions.DependencyInjection;
+using ext;
+using Microsoft.Extensions.DependencyInjection;
+using OC.AppFramework.Utility;
+using OC.Files;
+using OC.User;
+using OCP.AppFramework;
+using OCP.Contacts.ContactsMenu;
+using Pchp.Library;
+using Pchp.Library.DateTime;
 
 namespace OC
 {
@@ -26,39 +40,26 @@ namespace OC
             this.webRoot = webRoot;
 		// To find out if we are running from CLI or not
 //		this.registerParameter("isCLI", \OC::CLI);
-
-		this.registerService(\OCP\IServerContainer::class, function(IServerContainer c)
-    {
-        return c;
-    });
-
-		this.registerAlias(\OCP\Calendar\IManager::class, \OC\Calendar\Manager::class);
-		this.registerAlias("CalendarManager", \OC\Calendar\Manager::class);
-
-		this.registerAlias(\OCP\Calendar\Resource\IManager::class, \OC\Calendar\Resource\Manager::class);
-		this.registerAlias("CalendarResourceBackendManager", \OC\Calendar\Resource\Manager::class);
-
-		this.registerAlias(\OCP\Calendar\Room\IManager::class, \OC\Calendar\Room\Manager::class);
-		this.registerAlias("CalendarRoomBackendManager", \OC\Calendar\Room\Manager::class);
-
-		this.registerAlias(\OCP\Contacts\IManager::class, \OC\ContactsManager::class);
-		this.registerAlias("ContactsManager", \OCP\Contacts\IManager::class);
-
-		this.registerAlias(IActionFactory::class, ActionFactory::class);
-
-
-		this.registerService(\OCP\IPreview::class, function(Server c)
-    {
-        return new PreviewManager(
-				c.getConfig(),
-				c.getRootFolder(),
-				c.getAppDataDir("preview"),
-				c.getEventDispatcher(),
-				c.getSession().get("user_id")
-        );
-    });
-		this.registerAlias("PreviewManager", \OCP\IPreview::class);
-
+        var serviceCollection = new ServiceCollection();
+        serviceCollection.AddLogging();
+        var containerBuilder = new ContainerBuilder();
+        containerBuilder.Populate(serviceCollection);
+        containerBuilder.RegisterType<IServerContainer>();
+        containerBuilder.RegisterType<OC.Calendar.Manager>().Named<OCP.Calendar.IManager>("CalendarManager");
+        containerBuilder.RegisterType<OC.Calendar.Resource.Manager>()
+            .Named<OCP.Calendar.Resource.IManager>("CalendarResourceBackendManager");
+        containerBuilder.RegisterType<OC.Calendar.Room.Manager>().Named<OCP.Calendar.Room.IManager>("CalendarRoomBackendManager");
+        containerBuilder.RegisterType<OC.ContactsManager>().Named<OCP.Contacts.IManager>("ContactsManager");
+        containerBuilder.RegisterType<ActionFactory>().As<IActionFactory>();
+        containerBuilder.Register<PreviewManager>((c) =>
+        {
+            return new PreviewManager(c.getConfig(),
+                c.getRootFolder(),
+                c.getAppDataDir("preview"),
+                c.getEventDispatcher(),
+                c.getSession().get("user_id"));
+        }).Named<OCP.IPreview>("PreviewManager");
+        
 		this.registerService(\OC\Preview\Watcher::class, function(Server c)
     {
         return new \OC\Preview\Watcher(
@@ -494,7 +495,7 @@ namespace OC
 		this.registerAlias("DatabaseConnection", IDBConnection::class);
 
 
-		this.registerService(\OCP\Http\Client\IClientService::class, function (Server c) {
+		this.registerService(\OCP\WebRequestMethods.Http Client\IClientService::class, function (Server c) {
 			user = \OC_User::getUser();
 			uid = user ? user : null;
 			return new ClientService(
@@ -508,7 +509,7 @@ namespace OC
 				)
 			);
 		});
-		this.registerAlias("HttpClientService", \OCP\Http\Client\IClientService::class);
+		this.registerAlias("HttpClientService", \OCP\WebRequestMethods.Http Client\IClientService::class);
 		this.registerService(\OCP\Diagnostics\IEventLogger::class, function (Server c) {
 			eventLogger = new EventLogger();
 			if (c.getSystemConfig().getValue("debug", false)) {

@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+
 namespace OCP
 {
     /**
@@ -36,7 +38,7 @@ namespace OCP
      * @return array
      * @since 4.0.0
      */
-    public static function getVersion()
+    public static IList<string> getVersion()
         {
             return \OC_Util::getVersion();
         }

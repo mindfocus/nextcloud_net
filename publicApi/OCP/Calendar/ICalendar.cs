@@ -43,7 +43,7 @@ namespace OCP.Calendar
          * @return array an array of events/journals/todos which are arrays of key-value-pairs
          * @since 13.0.0
          */
-        string? search(string pattern, IList<string> searchProperties, IList<string> options, int? limit= null, int? offset= null);
+        IList<string> search(string pattern, IList<string> searchProperties, IList<string> options, int? limit= null, int? offset= null);
 
         /**
          * @return integer build up using \OCP\Constants
