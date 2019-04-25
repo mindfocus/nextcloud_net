@@ -12,13 +12,12 @@ namespace OCP.Accounts
         {
             this.Value = value;
         }
-        public static AccountCommonProperty AVATAR { get { return new AccountCommonProperty("avatar"); } }
-        public static AccountCommonProperty DISPLAYNAME { get { return new AccountCommonProperty("displayname"); } }
-        public static AccountCommonProperty PHONE { get { return new AccountCommonProperty("phone"); } }
-        public static AccountCommonProperty EMAIL { get { return new AccountCommonProperty("email"); } }
-        public static AccountCommonProperty WEBSITE { get { return new AccountCommonProperty("website"); } }
-        public static AccountCommonProperty ADDRESS { get { return new AccountCommonProperty("address"); } }
-        public static AccountCommonProperty TWITTER { get { return new AccountCommonProperty("twitter"); } }
-
+        public static AccountCommonProperty AVATAR => new AccountCommonProperty("avatar");
+        public static AccountCommonProperty DISPLAYNAME => new AccountCommonProperty("displayname");
+        public static AccountCommonProperty PHONE => new AccountCommonProperty("phone");
+        public static AccountCommonProperty EMAIL => new AccountCommonProperty("email");
+        public static AccountCommonProperty WEBSITE => new AccountCommonProperty("website");
+        public static AccountCommonProperty ADDRESS => new AccountCommonProperty("address");
+        public static AccountCommonProperty TWITTER => new AccountCommonProperty("twitter");
     }
 }

@@ -83,7 +83,7 @@ public interface ILogger {
 	 * @return null
 	 * @since 7.0.0
 	 */
-	void warning(string message, Array context);
+	void warning(string message);
 
 	/**
 	 * Normal but significant events.

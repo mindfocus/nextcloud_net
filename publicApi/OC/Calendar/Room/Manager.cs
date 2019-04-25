@@ -1,54 +1,52 @@
-﻿using OCP;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Linq;
+using System.Collections.Generic;
 using System.Text;
-using OCP.Calendar.Resource;
+using OCP;
+using OCP.Calendar.Room;
 
-namespace OC.Calendar.Resource
+namespace OC.Calendar.Room
 {
-    class Manager : IManager
-    {
+    class Manager : IManager {
 
-    /** @var IServerContainer */
-    private IServerContainer server;
+        /** @var IServerContainer */
+        private IServerContainer server;
 
-    /** @var string[] holds all registered resource backends */
-    private IList<string> backends = new List<string>();
+        /** @var string[] holds all registered resource backends */
+        private IList<string> backends = new List<string>();
 
-    /** @var IBackend[] holds all backends that have been initialized already */
-    private IDictionary<string, IBackend> initializedBackends = new Dictionary<string, IBackend>();
+        /** @var IBackend[] holds all backends that have been initialized already */
+        private IDictionary<string, IBackend> initializedBackends = new Dictionary<string, IBackend>();
 
     /**
      * Manager constructor.
      *
-     * @param IServerContainer $server
+     * @param IServerContainer server
      */
-    public Manager(IServerContainer server)
-    {
+    public Manager(IServerContainer server) {
         this.server = server;
     }
 
     /**
      * Registers a resource backend
      *
-     * @param string $backendClass
+     * @param string backendClass
      * @return void
      * @since 14.0.0
      */
     public void registerBackend(string backendClass) {
-        //$this->backends[$backendClass] = $backendClass;
+        //this.backends[backendClass] = backendClass;
     }
 
     /**
      * Unregisters a resource backend
      *
-     * @param string $backendClass
+     * @param string backendClass
      * @return void
      * @since 14.0.0
      */
     public void unregisterBackend(string backendClass) {
-        //unset($this->backends[$backendClass], $this->initializedBackends[$backendClass]);
+        //unset(this.backends[backendClass], this.initializedBackends[backendClass]);
     }
 
     /**
@@ -56,7 +54,8 @@ namespace OC.Calendar.Resource
      * @throws \OCP\AppFramework\QueryException
      * @since 14.0.0
      */
-    public IList<IBackend> getBackends(){
+    public IList<IBackend> getBackends()
+    {
         foreach (var backend in backends)
         {
             if (this.initializedBackends.ContainsKey(backend))
@@ -93,7 +92,7 @@ namespace OC.Calendar.Resource
      */
     public void clear() {
         this.initializedBackends.Clear();
-            this.backends.Clear();
+        this.backends.Clear();
     }
     }
 

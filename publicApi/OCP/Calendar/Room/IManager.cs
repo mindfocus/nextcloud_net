@@ -42,7 +42,7 @@ namespace OCP.Calendar.Room
 	 * @return IBackend|null
 	 * @since 14.0.0
 	 */
-	IBackend? getBackend(string backendId);
+	IBackend getBackend(string backendId);
 
         /**
          * removes all registered backend instances
