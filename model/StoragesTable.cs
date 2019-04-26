@@ -15,6 +15,6 @@ namespace model
         [MaxLength(11)]
         public int available = 1;
         [MaxLength(11)]
-        public int last_checked { get; set; }
+        public long last_checked { get; set; }
     }
 }

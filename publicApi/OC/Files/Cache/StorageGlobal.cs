@@ -22,7 +22,7 @@ namespace OC.Files.Cache
         private IDBConnection connection;
 
         /** @var array[] */
-        private IList<string> cache = new List<string>();
+        private IDictionary<string, StoragesTable> cache = new Dictionary<string, StoragesTable>();
 
         public StorageGlobal(IDBConnection connection) {
             this.connection = connection;
@@ -32,19 +32,17 @@ namespace OC.Files.Cache
          * @param string[] storageIds
          */
         public void loadForStorageIds(IList<string> storageIds) {
+            var result = new List<StoragesTable>();
             using (var context = new NCContext())
             {
                 // TODO @focus
-                context.Storages.Select()
-            }
-            var builder = this.connection.getQueryBuilder();
-            var query = builder.select(["id", "numeric_id", "available", "last_checked"])
-                .from("storages")
-                .where(builder.expr().in("id", builder.createNamedParameter(array_values(storageIds), IQueryBuilder::PARAM_STR_ARRAY)));
+                result = context.Storages.Where((item, index) => storageIds.Contains(item.id)).ToList();
 
-            result = query.execute();
-            while (row = result.fetch()) {
-                this.cache[row["id"]] = row;
+            }
+            foreach (var storagesTable in result)
+            {
+                this.cache[storagesTable.id] = storagesTable;
+
             }
         }
 
@@ -52,15 +50,16 @@ namespace OC.Files.Cache
          * @param string storageId
          * @return array|null
          */
-        public function getStorageInfo(storageId) {
-            if (!isset(this.cache[storageId])) {
-                this.loadForStorageIds([storageId]);
+        public StoragesTable getStorageInfo(string storageId) {
+            if (!this.cache.ContainsKey(storageId))
+            {
+                this.loadForStorageIds(new List<string>(){storageId});
             }
-            return isset(this.cache[storageId]) ? this.cache[storageId] : null;
+            return this.cache.ContainsKey(storageId) ? this.cache[storageId] : null;
         }
 
-        public function clearCache() {
-            this.cache = [];
+        public void clearCache() {
+            this.cache.Clear();
         }
     }
 
