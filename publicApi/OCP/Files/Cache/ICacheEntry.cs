@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Dynamic;
 using System.Text;
 
 namespace OCP.Files.Cache
@@ -12,6 +13,7 @@ namespace OCP.Files.Cache
     public interface ICacheEntry
     {
         //const DIRECTORY_MIMETYPE = 'httpd/unix-directory';
+        string DIRECTORY_MIMETYPE { get; }
 
         /**
          * Get the numeric id of a file
@@ -86,7 +88,7 @@ namespace OCP.Files.Cache
          * @return int
          * @since 9.0.0
          */
-        int getStorageMTime();
+        long getStorageMTime();
 
         /**
          * Get the etag for the file
@@ -116,5 +118,4 @@ namespace OCP.Files.Cache
          */
         bool isEncrypted();
     }
-
 }

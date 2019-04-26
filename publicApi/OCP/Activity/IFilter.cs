@@ -11,7 +11,7 @@ namespace OCP.Activity
      * @package OCP\Activity
      * @since 11.0.0
      */
-    interface IFilter
+    public interface IFilter
     {
 
         /**

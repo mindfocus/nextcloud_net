@@ -41,6 +41,6 @@ namespace OCP.Activity
 	 * @return IEvent
 	 * @since 11.0
 	 */
-        IEvent mergeEvents(string mergeParameter, IEvent eventp, IEvent? previousEvent = null);
+        IEvent mergeEvents(string mergeParameter, IEvent eventp, IEvent previousEvent = null);
         }
 }

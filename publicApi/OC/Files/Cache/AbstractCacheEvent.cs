@@ -7,8 +7,8 @@ namespace OC.Files.Cache
     public class AbstractCacheEvent : OCP.Files.Cache.ICacheEvent, ext.Event
     {
         protected OCP.Files.Storage.IStorage storage;
-	protected string path;
-	protected int fileId;
+        protected string path;
+        protected int fileId;
 
         /**
          * @param IStorage storage
@@ -27,26 +27,27 @@ namespace OC.Files.Cache
          * @return IStorage
          * @since 16.0.0
          */
-        public OCP.Files.Storage.IStorage getStorage() {
+        public OCP.Files.Storage.IStorage getStorage()
+        {
             return this.storage;
-	}
+        }
 
-    /**
-	 * @return string
-	 * @since 16.0.0
-	 */
-    public string getPath() {
+        /**
+         * @return string
+         * @since 16.0.0
+         */
+        public string getPath()
+        {
             return this.path;
+        }
 
-    }
-
-    /**
-	 * @return int
-	 * @since 16.0.0
-	 */
-    public int getFileId(){
+        /**
+         * @return int
+         * @since 16.0.0
+         */
+        public int getFileId()
+        {
             return this.fileId;
-
+        }
     }
-}
 }

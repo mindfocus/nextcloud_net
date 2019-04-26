@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Runtime.Serialization;
 using System.Text;
 
-namespace OCP.Contacts.ContactsMenu
+namespace OCP.ContactsNs.ContactsMenu
 {
     interface IEntry : ISerializable
     {
@@ -23,7 +23,7 @@ namespace OCP.Contacts.ContactsMenu
          * @since 12.0
          * @return string|null image URI
          */
-        string? getAvatar();
+        string getAvatar();
 
         /**
          * @since 12.0

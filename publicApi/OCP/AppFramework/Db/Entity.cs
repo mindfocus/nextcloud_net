@@ -7,7 +7,7 @@ namespace OCP.AppFramework.Db
  */
 abstract class Entity {
 
-	public id;
+	public int id;
 
 	private _updatedFields = array();
 	private _fieldTypes = array('id' => 'integer');

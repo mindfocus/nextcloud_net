@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Runtime.Serialization;
 using System.Text;
 
-namespace OCP.Contacts.ContactsMenu
+namespace OCP.ContactsNs.ContactsMenu
 {
     /**
      * Apps should use the IActionFactory to create new action objects

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using OCP.Files;
 
 namespace OC.Files
 {
@@ -1389,7 +1390,7 @@ namespace OC.Files
 	 * @param string mimetype_filter limit returned content to this mimetype or mimepart
 	 * @return FileInfo[]
 	 */
-	public function getDirectoryContent(directory, mimetype_filter = '') {
+	public IList<FileInfo> getDirectoryContent(string directory, string mimetype_filter = "") {
 		this->assertPathLength(directory);
 		if (!Filesystem::isValidPath(directory)) {
 			return [];

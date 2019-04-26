@@ -19,10 +19,10 @@ namespace OC
         protected IDictionary<string,string> cache = new Dictionary<string,string>();
         /** @var string */
         protected string configDir;
-	/** @var string */
-	protected string configFilePath;
-	/** @var string */
-	protected string configFileName;
+	    /** @var string */
+        protected string configFilePath;
+        /** @var string */
+        protected string configFileName;
 
         /**
          * @param string configDir Path to the config dir, needs to end with '/'

@@ -10,7 +10,7 @@ namespace OCP
          * @package OCP
          * @since 5.0.0
          */
-    interface IAddressBook
+    public interface IAddressBook
     {
 
         /**
@@ -31,7 +31,7 @@ namespace OCP
 		 * @return mixed
 		 * @since 5.0.0
 		 */
-		object getDisplayName();
+		string getDisplayName();
 
         /**
 		 * @param string pattern which should match within the searchProperties
@@ -47,7 +47,7 @@ namespace OCP
 		 *	]
 		 * @since 5.0.0
 		 */
-        IDictionary<string,object> search(string pattern, IDictionary<string,object> searchProperties, IDictionary<string,object> options);
+        IList<IDictionary<string,object>> search(string pattern, IDictionary<string,object> searchProperties, IDictionary<string,object> options);
 
         /**
 		 * @param array properties this array if key-value-pairs defines a contact
@@ -65,7 +65,7 @@ namespace OCP
 		 * @return mixed
 		 * @since 5.0.0
 		 */
-        object getPermissions();
+        int getPermissions();
 
         /**
 		 * @param object id the unique identifier to a contact

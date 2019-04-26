@@ -10,7 +10,7 @@ namespace OCP.Activity
      * @package OCP\Activity
      * @since 11.0.0
      */
-    interface IProvider
+    public interface IProvider
     {
         /**
          * @param string language The language which should be used for translating, e.g. "en"

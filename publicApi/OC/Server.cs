@@ -14,6 +14,7 @@ using OC.Files;
 using OC.User;
 using OCP.AppFramework;
 using OCP.Contacts.ContactsMenu;
+using OCP.ContactsNs.ContactsMenu;
 using OCP.Files;
 using Pchp.Library;
 using Pchp.Library.DateTime;
@@ -50,43 +51,32 @@ namespace OC
         containerBuilder.RegisterType<OC.Calendar.Resource.Manager>()
             .Named<OCP.Calendar.Resource.IManager>("CalendarResourceBackendManager");
         containerBuilder.RegisterType<OC.Calendar.Room.Manager>().Named<OCP.Calendar.Room.IManager>("CalendarRoomBackendManager");
-        containerBuilder.RegisterType<OC.ContactsManager>().Named<OCP.Contacts.IManager>("ContactsManager");
+        containerBuilder.RegisterType<OC.ContactsManager>().Named<OCP.ContactsNs.IManager>("ContactsManager");
         containerBuilder.RegisterType<ActionFactory>().As<IActionFactory>();
         containerBuilder.Register<PreviewManager>(( c,p) =>
         {
-	        var server = p.TypedAs<Server>();
+	        var server = c.Resolve<IServerContainer>();
             return new PreviewManager(server.getConfig(),
 	            server.getRootFolder(),
 	            server.getAppDataDir("preview"),
 	            server.getEventDispatcher(),
 	            server.getSession().get("user_id"));
         }).Named<OCP.IPreview>("PreviewManager");
-        
-		this.registerService(\OC\Preview\Watcher::class, function(Server c)
-    {
-        return new \OC\Preview\Watcher(
-				c.getAppDataDir("preview")
-        );
-    });
 
-		this.registerService(\OCP\Encryption\IManager::class, function(Server c)
-    {
-			view = new View();
-			util = new Encryption\Util(
-				view,
-				c.getUserManager(),
-				c.getGroupManager(),
-				c.getConfig()
-            );
-        return new Encryption\Manager(
-				c.getConfig(),
-				c.getLogger(),
-				c.getL10N("core"),
-            new View(),
-				util,
-            new ArrayCache()
-        );
-    });
+        containerBuilder.Register<Preview.Watcher>((c, p) =>
+        {
+	        var server = p.TypedAs<Server>();
+	        return new Preview.Watcher(server.getAppDataDir("preview"));
+        });
+        containerBuilder.Register<OCP.Encryption.IManager>((c, p) =>
+        {
+	        var server = c.Resolve<IServerContainer>();
+	        var view = new View();
+	        var util = new Encryption.Util(view, server.getUserManager(), server.getGroupManager(), server.getConfig());
+	        return new Encryption.Manager(server.getConfig(),server.getLogger(),server.getL10N("core"),
+		        new View(), util, new List<string>());
+        });
+
 		this.registerAlias("EncryptionManager", \OCP\Encryption\IManager::class);
 
 		this.registerService("EncryptionFileHelper", function (Server c) {

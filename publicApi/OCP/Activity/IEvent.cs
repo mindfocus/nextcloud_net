@@ -321,7 +321,7 @@ namespace OCP.Activity
          * @return IEvent|null
          * @since 11.0.0
          */
-        IEvent? getChildEvent();
+        IEvent getChildEvent();
 
 	/**
 	 * @return bool

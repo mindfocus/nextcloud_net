@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using OCP.DB.QueryBuilder;
 
 namespace OCP
 {
@@ -22,7 +23,7 @@ namespace OCP
 	 * @return \OCP\DB\QueryBuilder\IQueryBuilder
 	 * @since 8.2.0
 	 */
-	public function getQueryBuilder();
+	public IQueryBuilder getQueryBuilder();
 
         /**
          * Used to abstract the ownCloud database access away

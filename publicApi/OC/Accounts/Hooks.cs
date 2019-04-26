@@ -61,16 +61,16 @@ namespace OC.Accounts
 
             switch (feature) {
                 case "eMailAddress":
-                if (accountData[OCP.Accounts.AccountCommonProperty.EMAIL.Value]["value"] != newValue) {
+//                if (accountData[OCP.Accounts.AccountCommonProperty.EMAIL.Value]["value"] != newValue) {
                     accountData[OCP.Accounts.AccountCommonProperty.EMAIL.Value]["value"] = newValue;
                         accountManager.updateUser(user, accountData);
-                }
+//                }
                 break;
                 case "displayName":
-                if (accountData[OCP.Accounts.AccountCommonProperty.DISPLAYNAME.Value]["value"] != newValue) {
+//                if (accountData[OCP.Accounts.AccountCommonProperty.DISPLAYNAME.Value]["value"] != newValue) {
                     accountData[OCP.Accounts.AccountCommonProperty.DISPLAYNAME.Value]["value"] = newValue;
                         accountManager.updateUser(user, accountData);
-                }
+//                }
                 break;
             }
 

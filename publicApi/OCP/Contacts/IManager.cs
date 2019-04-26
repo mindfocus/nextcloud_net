@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace OCP.Contacts
+namespace OCP.ContactsNs
 {
 
     /**
@@ -68,7 +68,7 @@ namespace OCP.Contacts
          * @return array an array of contacts which are arrays of key-value-pairs
          * @since 6.0.0
          */
-        IDictionary<string,object> search(string pattern, IDictionary<string,object> searchProperties , IDictionary<string,object> options );
+        IList<IDictionary<string,object>> search(string pattern, IDictionary<string,object> searchProperties , IDictionary<string,object> options );
 
         /**
          * This function can be used to delete the contact identified by the given id
@@ -89,7 +89,7 @@ namespace OCP.Contacts
          * @return array an array representing the contact just created or updated
          * @since 6.0.0
          */
-        IList<object> createOrUpdate(IDictionary<string,object> properties, string address_book_key);
+        IList<object> createOrUpdate(IDictionary<string,object> properties, string addressBookKey);
 
         /**
          * Check if contacts are available (e.g. contacts app enabled)
@@ -125,7 +125,7 @@ namespace OCP.Contacts
          * @return void
          * @since 6.0.0
          */
-        void register(Action callable);
+        void register(Action<IManager> callable);
 
         /**
          * Return a list of the user's addressbooks display names
@@ -134,7 +134,7 @@ namespace OCP.Contacts
          * @since 6.0.0
          * @deprecated 16.0.0 - Use `this->getUserAddressBooks()` instead
          */
-        IList<IAddressBook> getAddressBooks();
+        IDictionary<string, string> getAddressBooks();
 
         /**
          * Return a list of the user's addressbooks
@@ -142,7 +142,7 @@ namespace OCP.Contacts
          * @return IAddressBook[]
          * @since 16.0.0
          */
-        IList<IAddressBook> getUserAddressBooks();
+        IDictionary<string, IAddressBook> getUserAddressBooks();
 
         /**
          * removes all registered address book instances
