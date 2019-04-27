@@ -4,6 +4,10 @@ namespace ext
 {
     public static class StringUtility
     {
+        public static bool IsEmpty(this string input)
+        {
+            return input == "";
+        }
         public static string MD5(string input)
         {
             // Use input string to calculate MD5 hash

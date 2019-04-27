@@ -44,8 +44,8 @@ namespace OC.Contacts.ContactsMenu
                     providers[] = this.serverContainer.query(class);
                 } catch (QueryException ex) {
                     this.logger.logException(ex, [
-                    'message' => "Could not load contacts menu action provider class",
-                    'app' => 'core',
+                    "message" => "Could not load contacts menu action provider class",
+                    "app" => "core",
                         ]);
                     throw new Exception("Could not load contacts menu action provider");
                 }
@@ -71,12 +71,12 @@ namespace OC.Contacts.ContactsMenu
             return array_reduce(this.appManager.getEnabledAppsForUser(user), function(all, appId) {
                 info = this.appManager.getAppInfo(appId);
 
-                if (!isset(info['contactsmenu']) || !isset(info['contactsmenu'])) {
+                if (!isset(info["contactsmenu"]) || !isset(info["contactsmenu"])) {
                     // Nothing to add
                     return all;
                 }
 
-                providers = array_reduce(info['contactsmenu'], function(all, provider) {
+                providers = array_reduce(info["contactsmenu"], function(all, provider) {
                     return array_merge(all, [provider]);
                 }, []);
 
