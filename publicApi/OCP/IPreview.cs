@@ -17,7 +17,7 @@ namespace OCP
          */
  //       const EVENT = self::class . ':' . 'PreviewRequested';
 
-	//const MODE_FILL = 'fill';
+//  const MODE_FILL = "fill;
  //       const MODE_COVER = 'cover';
 
         /**
@@ -38,7 +38,7 @@ namespace OCP
          * @return array
          * @since 8.1.0
          */
-        IList<string> getProviders();
+        IDictionary<string, IList<Action>> getProviders();
 
         /**
          * Does the manager have any providers

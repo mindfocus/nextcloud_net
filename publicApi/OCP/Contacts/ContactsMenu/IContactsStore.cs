@@ -28,7 +28,7 @@ namespace OCP.ContactsNs.ContactsMenu
          * @return IEntry|null
          * @since 13.0.0
          */
-        IEntry? findOne(IUser user, int shareType, string shareWith);
+        IEntry findOne(IUser user, int shareType, string shareWith);
 
     }
 

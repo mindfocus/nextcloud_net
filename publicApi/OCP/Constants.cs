@@ -28,6 +28,10 @@ namespace OCP
          * longer support windows as server platform.
          */
         public static string FILENAME_INVALID_CHARS => "\\/";
+
+
+        public const string PREVIEW_MODE_FILE = "fill";
+        public const string PREVIEW_MODE_COVER = "cover";
     }
 
 }

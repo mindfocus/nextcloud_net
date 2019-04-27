@@ -87,7 +87,7 @@ namespace OCP.Calendar
          * @since 13.0.0
          */
         //void register(Closure callable);
-        void register(Action callable);
+        void register(Action<IManager> callable);
         /**
          * @return ICalendar[]
          * @since 13.0.0

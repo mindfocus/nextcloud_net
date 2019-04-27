@@ -37,6 +37,8 @@ namespace OC.AppFramework.Utility
         {
             return typeof(string);
         }
+    }
+}
 //    /**
 //	 * @param ReflectionClass class the class to instantiate
 //	 * @return \stdClass the created class

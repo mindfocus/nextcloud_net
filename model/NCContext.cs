@@ -9,6 +9,7 @@ namespace model
     {
         public DbSet<AccountTable> Accounts { get; set; }
         public DbSet<StoragesTable> Storages { get; set; }
+        public DbSet<AppConfigTable> AppConfigs { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<AccountTable>()

@@ -2,56 +2,57 @@
 using System.Collections.Generic;
 using System.Text;
 using OCP.Activity;
+using OCP.RichObjectStrings;
 
 namespace OC
 {
 class Event : IEvent {
 
 	/** @var string */
-	protected app = '';
+	protected string app = "";
 	/** @var string */
-	protected type = '';
+	protected string type = "";
 	/** @var string */
-	protected affectedUser = '';
+	protected string affectedUser = "";
 	/** @var string */
-	protected author = '';
+	protected string author = "";
 	/** @var int */
-	protected timestamp = 0;
+	protected int timestamp = 0;
 	/** @var string */
-	protected subject = '';
+	protected string subject = "";
 	/** @var array */
-	protected subjectParameters = [];
+	protected IList<string> subjectParameters = new List<string>();
 	/** @var string */
-	protected subjectParsed = '';
+	protected string subjectParsed = "";
 	/** @var string */
-	protected subjectRich = '';
+	protected string subjectRich = "";
 	/** @var array */
-	protected subjectRichParameters = [];
+	protected IList<string> subjectRichParameters = new List<string>();
 	/** @var string */
-	protected message = '';
+	protected string message = "";
 	/** @var array */
-	protected messageParameters = [];
+	protected IList<string> messageParameters = new List<string>();
 	/** @var string */
-	protected messageParsed = '';
+	protected string messageParsed = "";
 	/** @var string */
-	protected messageRich = '';
+	protected string messageRich = "";
 	/** @var array */
-	protected messageRichParameters = [];
+	protected IList<string> messageRichParameters = new List<string>();
 	/** @var string */
-	protected objectType = '';
+	protected string objectType = "";
 	/** @var int */
-	protected objectId = 0;
+	protected int objectId = 0;
 	/** @var string */
-	protected objectName = '';
+	protected string objectName = "";
 	/** @var string */
-	protected link = '';
+	protected string link = "";
 	/** @var string */
-	protected icon = '';
+	protected string icon = "";
 
 	/** @var IEvent|null */
-	protected child;
+	protected IEvent child;
 	/** @var IValidator */
-	protected richValidator;
+	protected IValidator richValidator;
 
 	/**
 	 * @param IValidator richValidator
@@ -68,9 +69,10 @@ class Event : IEvent {
 	 * @throws \InvalidArgumentException if the app id is invalid
 	 * @since 8.2.0
 	 */
-	public function setApp(string app): IEvent {
-		if (app === '' || isset(app[32])) {
-			throw new \InvalidArgumentException('The given app is invalid');
+	public IEvent setApp(string app) {
+		if (app == "" ||  app.Length < 32) {
+//		if (app == "" ||  isset(app[32])) {
+			throw new  ArgumentException("The given app is invalid");
 		}
 		this.app = app;
 		return this;
@@ -79,7 +81,7 @@ class Event : IEvent {
 	/**
 	 * @return string
 	 */
-	public function getApp(): string {
+	public string getApp()  {
 		return this.app;
 	}
 
@@ -91,9 +93,10 @@ class Event : IEvent {
 	 * @throws \InvalidArgumentException if the type is invalid
 	 * @since 8.2.0
 	 */
-	public function setType(string type): IEvent {
-		if (type === '' || isset(type[255])) {
-			throw new \InvalidArgumentException('The given type is invalid');
+	public IEvent setType(string type){
+		if (type == "") {
+//		if (type == "" || isset(type[255])) {
+			throw new System.ArgumentException("The given type is invalid");
 		}
 		this.type = type;
 		return this;
@@ -102,7 +105,7 @@ class Event : IEvent {
 	/**
 	 * @return string
 	 */
-	public function getType(): string {
+	public string getType() {
 		return this.type;
 	}
 
@@ -114,9 +117,10 @@ class Event : IEvent {
 	 * @throws \InvalidArgumentException if the affected user is invalid
 	 * @since 8.2.0
 	 */
-	public function setAffectedUser(string affectedUser): IEvent {
-		if (affectedUser === '' || isset(affectedUser[64])) {
-			throw new \InvalidArgumentException('The given affected user is invalid');
+	public IEvent setAffectedUser(string affectedUser) {
+		if (affectedUser == "") {
+//		if (affectedUser === "" || isset(affectedUser[64])) {
+			throw new ArgumentException("The given affected user is invalid");
 		}
 		this.affectedUser = affectedUser;
 		return this;
@@ -125,7 +129,7 @@ class Event : IEvent {
 	/**
 	 * @return string
 	 */
-	public function getAffectedUser(): string {
+	public string getAffectedUser() {
 		return this.affectedUser;
 	}
 
@@ -137,9 +141,10 @@ class Event : IEvent {
 	 * @throws \InvalidArgumentException if the author is invalid
 	 * @since 8.2.0
 	 */
-	public function setAuthor(string author): IEvent {
-		if (isset(author[64])) {
-			throw new \InvalidArgumentException('The given author user is invalid');
+	public IEvent setAuthor(string author) {
+		if (author=="") {
+//		if (isset(author[64])) {
+			throw new ArgumentException("The given author user is invalid");
 		}
 		this.author = author;
 		return this;
@@ -148,7 +153,7 @@ class Event : IEvent {
 	/**
 	 * @return string
 	 */
-	public function getAuthor(): string {
+	public string getAuthor() {
 		return this.author;
 	}
 
@@ -160,7 +165,7 @@ class Event : IEvent {
 	 * @throws \InvalidArgumentException if the timestamp is invalid
 	 * @since 8.2.0
 	 */
-	public function setTimestamp(int timestamp): IEvent {
+	public IEvent setTimestamp(int timestamp) {
 		this.timestamp = timestamp;
 		return this;
 	}
@@ -168,7 +173,7 @@ class Event : IEvent {
 	/**
 	 * @return int
 	 */
-	public function getTimestamp(): int {
+	public int getTimestamp(){
 		return this.timestamp;
 	}
 
@@ -181,9 +186,9 @@ class Event : IEvent {
 	 * @throws \InvalidArgumentException if the subject or parameters are invalid
 	 * @since 8.2.0
 	 */
-	public function setSubject(string subject, array parameters = []): IEvent {
-		if (isset(subject[255])) {
-			throw new \InvalidArgumentException('The given subject is invalid');
+	public IEvent setSubject(string subject, IList<string> parameters)  {
+		if (subject.Length > 255 ) {
+			throw new ArgumentException("The given subject is invalid");
 		}
 		this.subject = subject;
 		this.subjectParameters = parameters;
@@ -193,14 +198,14 @@ class Event : IEvent {
 	/**
 	 * @return string
 	 */
-	public function getSubject(): string {
+	public string getSubject() {
 		return this.subject;
 	}
 
 	/**
 	 * @return array
 	 */
-	public function getSubjectParameters(): array {
+	public IList<string> getSubjectParameters()  {
 		return this.subjectParameters;
 	}
 
@@ -210,9 +215,9 @@ class Event : IEvent {
 	 * @throws \InvalidArgumentException if the subject is invalid
 	 * @since 11.0.0
 	 */
-	public function setParsedSubject(string subject): IEvent {
-		if (subject === '') {
-			throw new \InvalidArgumentException('The given parsed subject is invalid');
+	public IEvent setParsedSubject(string subject) {
+		if (subject == "") {
+			throw new ArgumentException ("The given parsed subject is invalid");
 		}
 		this.subjectParsed = subject;
 		return this;
@@ -222,7 +227,7 @@ class Event : IEvent {
 	 * @return string
 	 * @since 11.0.0
 	 */
-	public function getParsedSubject(): string {
+	public string getParsedSubject() {
 		return this.subjectParsed;
 	}
 
@@ -233,9 +238,9 @@ class Event : IEvent {
 	 * @throws \InvalidArgumentException if the subject or parameters are invalid
 	 * @since 11.0.0
 	 */
-	public function setRichSubject(string subject, array parameters = []): IEvent {
-		if (subject === '') {
-			throw new \InvalidArgumentException('The given parsed subject is invalid');
+	public IEvent setRichSubject(string subject, IList<string> parameters) {
+		if (subject == "") {
+			throw new ArgumentException ("The given parsed subject is invalid");
 		}
 		this.subjectRich = subject;
 		this.subjectRichParameters = parameters;
@@ -247,7 +252,7 @@ class Event : IEvent {
 	 * @return string
 	 * @since 11.0.0
 	 */
-	public function getRichSubject(): string {
+	public string getRichSubject(){
 		return this.subjectRich;
 	}
 
@@ -255,7 +260,7 @@ class Event : IEvent {
 	 * @return array[]
 	 * @since 11.0.0
 	 */
-	public function getRichSubjectParameters(): array {
+	public IList<string> getRichSubjectParameters() {
 		return this.subjectRichParameters;
 	}
 
@@ -268,9 +273,9 @@ class Event : IEvent {
 	 * @throws \InvalidArgumentException if the message or parameters are invalid
 	 * @since 8.2.0
 	 */
-	public function setMessage(string message, array parameters = []): IEvent {
-		if (isset(message[255])) {
-			throw new \InvalidArgumentException('The given message is invalid');
+	public IEvent setMessage(string message, IList<string> parameters) {
+		if (message.Length >= 255) {
+			throw new ArgumentException ("The given message is invalid");
 		}
 		this.message = message;
 		this.messageParameters = parameters;
@@ -280,14 +285,14 @@ class Event : IEvent {
 	/**
 	 * @return string
 	 */
-	public function getMessage(): string {
+	public string getMessage() {
 		return this.message;
 	}
 
 	/**
 	 * @return array
 	 */
-	public function getMessageParameters(): array {
+	public IList<string> getMessageParameters() {
 		return this.messageParameters;
 	}
 
@@ -297,7 +302,7 @@ class Event : IEvent {
 	 * @throws \InvalidArgumentException if the message is invalid
 	 * @since 11.0.0
 	 */
-	public function setParsedMessage(string message): IEvent {
+	public IEvent setParsedMessage(string message) {
 		this.messageParsed = message;
 		return this;
 	}
@@ -306,7 +311,7 @@ class Event : IEvent {
 	 * @return string
 	 * @since 11.0.0
 	 */
-	public function getParsedMessage(): string {
+	public string getParsedMessage() {
 		return this.messageParsed;
 	}
 
@@ -317,10 +322,9 @@ class Event : IEvent {
 	 * @throws \InvalidArgumentException if the subject or parameters are invalid
 	 * @since 11.0.0
 	 */
-	public function setRichMessage(string message, array parameters = []): IEvent {
+	public IEvent setRichMessage(string message, IList<string> parameters) {
 		this.messageRich = message;
 		this.messageRichParameters = parameters;
-
 		return this;
 	}
 
@@ -328,7 +332,7 @@ class Event : IEvent {
 	 * @return string
 	 * @since 11.0.0
 	 */
-	public function getRichMessage(): string {
+	public string getRichMessage() {
 		return this.messageRich;
 	}
 
@@ -336,7 +340,7 @@ class Event : IEvent {
 	 * @return array[]
 	 * @since 11.0.0
 	 */
-	public function getRichMessageParameters(): array {
+	public IList<string> getRichMessageParameters() {
 		return this.messageRichParameters;
 	}
 
@@ -350,12 +354,12 @@ class Event : IEvent {
 	 * @throws \InvalidArgumentException if the object is invalid
 	 * @since 8.2.0
 	 */
-	public function setObject(string objectType, int objectId, string objectName = ''): IEvent {
-		if (isset(objectType[255])) {
-			throw new \InvalidArgumentException('The given object type is invalid');
+	public IEvent setObject(string objectType, int objectId, string objectName = "") {
+		if ( objectType.Length >= 255) {
+			throw new ArgumentException ("The given object type is invalid");
 		}
-		if (isset(objectName[4000])) {
-			throw new \InvalidArgumentException('The given object name is invalid');
+		if ( objectName.Length >= 4000) {
+			throw new  ArgumentException ("The given object name is invalid");
 		}
 		this.objectType = objectType;
 		this.objectId = objectId;
@@ -366,21 +370,21 @@ class Event : IEvent {
 	/**
 	 * @return string
 	 */
-	public function getObjectType(): string {
+	public string getObjectType() {
 		return this.objectType;
 	}
 
 	/**
 	 * @return int
 	 */
-	public function getObjectId(): int {
+	public int getObjectId() {
 		return this.objectId;
 	}
 
 	/**
 	 * @return string
 	 */
-	public function getObjectName(): string {
+	public string getObjectName() {
 		return this.objectName;
 	}
 
@@ -392,9 +396,9 @@ class Event : IEvent {
 	 * @throws \InvalidArgumentException if the link is invalid
 	 * @since 8.2.0
 	 */
-	public function setLink(string link): IEvent {
-		if (isset(link[4000])) {
-			throw new \InvalidArgumentException('The given link is invalid');
+	public IEvent setLink(string link) {
+		if ( link.Length >= 4000) {
+			throw new ArgumentException ("The given link is invalid");
 		}
 		this.link = link;
 		return this;
@@ -403,7 +407,7 @@ class Event : IEvent {
 	/**
 	 * @return string
 	 */
-	public function getLink(): string {
+	public string getLink() {
 		return this.link;
 	}
 
@@ -413,9 +417,9 @@ class Event : IEvent {
 	 * @throws \InvalidArgumentException if the icon is invalid
 	 * @since 11.0.0
 	 */
-	public function setIcon(string icon): IEvent {
-		if (isset(icon[4000])) {
-			throw new \InvalidArgumentException('The given icon is invalid');
+	public IEvent setIcon(string icon) {
+		if ( icon.Length >= 4000) {
+			throw new ArgumentException ("The given icon is invalid");
 		}
 		this.icon = icon;
 		return this;
@@ -425,7 +429,7 @@ class Event : IEvent {
 	 * @return string
 	 * @since 11.0.0
 	 */
-	public function getIcon(): string {
+	public string getIcon() {
 		return this.icon;
 	}
 
@@ -434,7 +438,7 @@ class Event : IEvent {
 	 * @return this
 	 * @since 11.0.0 - Since 15.0.0 returns this
 	 */
-	public function setChildEvent(IEvent child): IEvent {
+	public IEvent setChildEvent(IEvent child) {
 		this.child = child;
 		return this;
 	}
@@ -443,7 +447,7 @@ class Event : IEvent {
 	 * @return IEvent|null
 	 * @since 11.0.0
 	 */
-	public function getChildEvent() {
+	public IEvent getChildEvent() {
 		return this.child;
 	}
 
@@ -451,11 +455,11 @@ class Event : IEvent {
 	 * @return bool
 	 * @since 8.2.0
 	 */
-	public function isValid(): bool {
+	public bool isValid() {
 		return
 			this.isValidCommon()
 			&&
-			this.getSubject() !== ''
+			this.getSubject() != ""
 		;
 	}
 
@@ -463,8 +467,8 @@ class Event : IEvent {
 	 * @return bool
 	 * @since 8.2.0
 	 */
-	public function isValidParsed(): bool {
-		if (this.getRichSubject() !== '' || !empty(this.getRichSubjectParameters())) {
+	public bool isValidParsed() {
+		if (this.getRichSubject() != "" || this.getRichSubjectParameters().Count != 0) {
 			try {
 				this.richValidator.validate(this.getRichSubject(), this.getRichSubjectParameters());
 			} catch (InvalidObjectExeption e) {
@@ -472,7 +476,7 @@ class Event : IEvent {
 			}
 		}
 
-		if (this.getRichMessage() !== '' || !empty(this.getRichMessageParameters())) {
+		if (this.getRichMessage() != "" || (this.getRichMessageParameters().Count != 0)) {
 			try {
 				this.richValidator.validate(this.getRichMessage(), this.getRichMessageParameters());
 			} catch (InvalidObjectExeption e) {
@@ -483,23 +487,23 @@ class Event : IEvent {
 		return
 			this.isValidCommon()
 			&&
-			this.getParsedSubject() !== ''
+			this.getParsedSubject() != ""
 		;
 	}
 
-	protected function isValidCommon(): bool {
+	protected bool isValidCommon() {
 		return
-			this.getApp() !== ''
+			this.getApp() != ""
 			&&
-			this.getType() !== ''
+			this.getType() != ""
 			&&
-			this.getAffectedUser() !== ''
+			this.getAffectedUser() != ""
 			&&
-			this.getTimestamp() !== 0
+			this.getTimestamp() != 0
 			/**
 			 * Disabled for BC with old activities
 			&&
-			this.getObjectType() !== ''
+			this.getObjectType() !== ""
 			&&
 			this.getObjectId() !== 0
 			 */

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using ext;
 using OCP;
 using OCP.ContactsNs;
 
@@ -100,7 +101,7 @@ namespace OC
          */
         public bool isEnabled()
         {
-            return this.addressBooks.Count != 0 || this.addressBookLoaders.Count != 0;
+            return this.addressBooks.IsNotEmpty() || this.addressBookLoaders.IsNotEmpty();
         }
 
         /**

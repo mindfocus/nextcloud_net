@@ -71,7 +71,7 @@ namespace OCP.Activity
          * @throws \InvalidArgumentException if the subject or parameters are invalid
          * @since 8.2.0
          */
-        IEvent setSubject(string subject, Array parameters);
+        IEvent setSubject(string subject, IList<string> parameters);
 
 	/**
 	 * Set a parsed subject
@@ -115,7 +115,7 @@ namespace OCP.Activity
          * @throws \InvalidArgumentException if the subject or parameters are invalid
          * @since 11.0.0
          */
-        IEvent setRichSubject(string subject, Array parameters);
+        IEvent setRichSubject(string subject, IList<string> parameters);
 
 	/**
 	 * @return string
@@ -127,7 +127,7 @@ namespace OCP.Activity
 	 * @return array[]
 	 * @since 11.0.0
 	 */
-	Array getRichSubjectParameters();
+	IList<string> getRichSubjectParameters();
 
         /**
          * Set the message of the activity
@@ -138,7 +138,7 @@ namespace OCP.Activity
          * @throws \InvalidArgumentException if the message or parameters are invalid
          * @since 8.2.0
          */
-        IEvent setMessage(string message, Array parameters);
+        IEvent setMessage(string message, IList<string> parameters);
 
         /**
          * Set a parsed message
@@ -182,7 +182,7 @@ namespace OCP.Activity
          * @throws \InvalidArgumentException if the message or parameters are invalid
          * @since 11.0.0
          */
-        IEvent setRichMessage(string message, Array parameters);
+        IEvent setRichMessage(string message, IList<string> parameters);
 
 	/**
 	 * @return string
@@ -194,7 +194,7 @@ namespace OCP.Activity
 	 * @return array[]
 	 * @since 11.0.0
 	 */
-	Array getRichMessageParameters();
+	IList<string> getRichMessageParameters();
 
         /**
          * Set the object of the activity
@@ -258,7 +258,7 @@ namespace OCP.Activity
 	 * @return array
 	 * @since 8.2.0
 	 */
-	Array getSubjectParameters();
+	IList<string> getSubjectParameters();
 
 	/**
 	 * @return string
@@ -270,7 +270,7 @@ namespace OCP.Activity
 	 * @return array
 	 * @since 8.2.0
 	 */
-	Array getMessageParameters();
+	IList<string> getMessageParameters();
 
 	/**
 	 * @return string
