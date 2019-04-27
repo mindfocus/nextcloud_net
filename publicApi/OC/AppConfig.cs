@@ -265,7 +265,7 @@ class AppConfig : IAppConfig {
 	 * @param string app
 	 * @return array
 	 */
-	public function getFilteredValues(app) {
+	public IList<string> getFilteredValues(string app) {
 		values = this.getValues(app, false);
 
 		if (isset(this.sensitiveValues[app])) {
