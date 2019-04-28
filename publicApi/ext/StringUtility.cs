@@ -8,6 +8,10 @@ namespace ext
         {
             return input == "";
         }
+        public static bool IsNotEmpty(this string input)
+        {
+            return !input.IsEmpty();
+        }
         public static string MD5(string input)
         {
             // Use input string to calculate MD5 hash

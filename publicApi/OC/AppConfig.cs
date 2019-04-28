@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Sockets;
 using ext;
 using model;
 using OCP;
@@ -68,7 +69,7 @@ class AppConfig : IAppConfig {
 	public IList<string> getApps() {
 		this.loadConfigValues();
 
-		return this.getSortedKeys(this.cache);
+		return this.getSortedKeys(this.cache.ToDictionary( o=> o.Item1, o =>o.Item2));
 	}
 
 	/**
@@ -82,15 +83,7 @@ class AppConfig : IAppConfig {
 	 */
 	public IList<string> getKeys(string app) {
 		this.loadConfigValues();
-		if (this.cache.ContainsKey(app))
-		{
-			return this.getSortedKeys(this.cache[app]);
-		}
-		if (isset(this.cache[app])) {
-			return this.getSortedKeys(this.cache[app]);
-		}
-
-		return [];
+		return (from tuple in this.cache where tuple.Item1 == app select tuple.Item1).ToList();
 	}
 
 	public IList<string> getSortedKeys(IDictionary<string , string> data)
@@ -200,7 +193,7 @@ class AppConfig : IAppConfig {
 	 */
 	public bool deleteKey(string app, string key) {
 		this.loadConfigValues();
-
+		
 		sql = this.conn.getQueryBuilder();
 		sql.delete("appconfig")
 			.where(sql.expr().eq("appid", sql.createParameter("app")))
@@ -221,16 +214,14 @@ class AppConfig : IAppConfig {
 	 *
 	 * Removes all keys in appconfig belonging to the app.
 	 */
-	public function deleteApp(app) {
+	public bool deleteApp(string app) {
 		this.loadConfigValues();
-
-		sql = this.conn.getQueryBuilder();
-		sql.delete("appconfig")
-			.where(sql.expr().eq("appid", sql.createParameter("app")))
-			.setParameter("app", app);
-		sql.execute();
-
-		unset(this.cache[app]);
+		using (var context = new NCContext())
+		{
+			context.AppConfigs.RemoveRange(context.AppConfigs.Where(o => o.appId == app));
+			context.SaveChanges();
+		}
+		this.cache.ToList().RemoveAll(o => o.Item1 == app);
 		return false;
 	}
 
@@ -242,12 +233,12 @@ class AppConfig : IAppConfig {
 	 * @return array|false
 	 */
 	public IList<string> getValues(string app, string key) {
-		if ((app != false) == (key != false)) {
-			return false;
+		if (app.IsEmpty() && key.IsEmpty()) {
+			return new List<string>();
 		}
 
-		if (key == false) {
-			return this.getAppValues(app);
+		if (key.IsEmpty()) {
+			return this.getAppValues(app).Values.ToList();
 		} else {
 			appIds = this.getApps();
 			values = array_map(function(appId) use (key) {
