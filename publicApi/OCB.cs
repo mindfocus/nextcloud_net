@@ -1,3 +1,7 @@
+using System.Collections;
+using System.Collections.Generic;
+using Pchp.Library.Spl;
+
 namespace DefaultNamespace
 {
 /**
@@ -9,44 +13,44 @@ class OCB {
 	/**
 	 * Associative array for autoloading. classname => filename
 	 */
-	public static CLASSPATH = array();
+	public static IList<string> CLASSPATH = new List<string>();
 	/**
 	 * The installation path for Nextcloud  on the server (e.g. /srv/http/nextcloud)
 	 */
-	public static SERVERROOT = "";
+	public static string SERVERROOT = "";
 	/**
 	 * the current request path relative to the Nextcloud root (e.g. files/index.php)
 	 */
-	private static SUBURI = "";
+	private static string SUBURI = "";
 	/**
 	 * the Nextcloud root path for http requests (e.g. nextcloud/)
 	 */
-	public static WEBROOT = "";
+	public static string WEBROOT = "";
 	/**
 	 * The installation path array of the apps folder on the server (e.g. /srv/http/nextcloud) "path" and
 	 * web path in "url"
 	 */
-	public static APPSROOTS = array();
+	public static IList<string> APPSROOTS = new List<string>();
 
 	/**
 	 * @var string
 	 */
-	public static configDir;
+	public static string configDir;
 
 	/**
 	 * requested app
 	 */
-	public static REQUESTEDAPP = "";
+	public static string REQUESTEDAPP = "";
 
 	/**
 	 * check if Nextcloud runs in cli mode
 	 */
-	public static CLI = false;
+	public static bool CLI = false;
 
 	/**
 	 * @var .OC.Autoloader loader
 	 */
-	public static loader = null;
+	public static OC.Autoloader loader = null;
 
 	/** @var .Composer.Autoload.ClassLoader composerAutoloader */
 	public static composerAutoloader = null;
@@ -54,12 +58,12 @@ class OCB {
 	/**
 	 * @var .OC.Server
 	 */
-	public static server = null;
+	public static OC.Server server = null;
 
 	/**
 	 * @var .OC.Config
 	 */
-	private static config = null;
+	private static OC.Config config = null;
 
 	/**
 	 * @throws .RuntimeException when the 3rdparty directory is missing or

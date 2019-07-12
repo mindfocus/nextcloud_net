@@ -10,7 +10,7 @@ namespace OCP.Calendar.Room
      * @package OCP\Calendar\Room
      * @since 14.0.0
      */
-    interface IRoom
+    public interface IRoom
     {
 
         /**

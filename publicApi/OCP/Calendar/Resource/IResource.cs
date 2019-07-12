@@ -10,7 +10,7 @@ namespace OCP.Calendar.Resource
      * @package OCP\Calendar\Resource
      * @since 14.0.0
      */
-    interface IResource
+    public interface IResource
     {
 
         /**
