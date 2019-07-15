@@ -32,7 +32,8 @@ abstract class Controller {
 	 * @param IRequest request an instance of the request
 	 * @since 6.0.0 - parameter appName was added in 7.0.0 - parameter app was removed in 7.0.0
 	 */
-	public function __construct(appName,
+	
+	public Controller(string appName,
 	                            IRequest request) {
 		this->appName = appName;
 		this->request = request;

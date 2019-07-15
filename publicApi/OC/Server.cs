@@ -9,17 +9,18 @@ using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using ext;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using OC.AppFramework.Utility;
+using OC.Contacts.ContactsMenu;
 using OC.Files;
 using OC.Files.Cache;
-using OC.User;
 using OCP.AppFramework;
-using OCP.Contacts.ContactsMenu;
 using OCP.ContactsNs.ContactsMenu;
 using OCP.Files;
 using OCP.Remote.Api;
 using Pchp.Library;
 using Pchp.Library.DateTime;
+using Manager = OC.User.Manager;
 
 namespace OC
 {
@@ -78,22 +79,23 @@ namespace OC
 	        return new Encryption.Manager(server.getConfig(),server.getLogger(),server.getL10N("core"),
 		        new View(), util, new List<string>());
         });
+        containerBuilder.RegisterType<OCP.Encryption.IManager>("EncryptionManager");
 
-		this.registerAlias("EncryptionManager", .OCP.Encryption.IManager::class);
-
-		this.registerService("EncryptionFileHelper", function (Server c) {
-			util = new Encryption.Util(
-                new View(),
-				c.getUserManager(),
-				c.getGroupManager(),
-				c.getConfig()
-            );
-        return new Encryption.File(
-				util,
-				c.getRootFolder(),
-				c.getShareManager()
-        );
-    });
+        containerBuilder.Register<OCP.Encryption.IFile>((c, p) =>
+        {
+	        var server = c.Resolve<IServerContainer>();
+	        var util = new Encryption.Util(
+		        new View(),
+		        server.getUserManager(),
+		        server.getGroupManager(),
+		        server.getConfig()
+	        );
+	        return new Encryption.File(
+		        util,
+		        server.getRootFolder(),
+		        server.getShareManager()
+	        );
+        });
 
 		this.registerService("EncryptionKeyStorage", function (Server c) {
 			view = new View();
@@ -1054,21 +1056,21 @@ namespace OC
 	/**
 	 * @return .OCP.Calendar.IManager
 	 */
-	public function getCalendarManager() {
+	public OCP.Calendar.IManager getCalendarManager() {
 		return this.query("CalendarManager");
 	}
 
 	/**
 	 * @return .OCP.Calendar.Resource.IManager
 	 */
-	public function getCalendarResourceBackendManager() {
+	public OCP.Calendar.Resource.IManager getCalendarResourceBackendManager() {
 		return this.query("CalendarResourceBackendManager");
 	}
 
 	/**
 	 * @return .OCP.Calendar.Room.IManager
 	 */
-	public function getCalendarRoomBackendManager() {
+	public OCP.Calendar.Room.IManager getCalendarRoomBackendManager() {
 		return this.query("CalendarRoomBackendManager");
 	}
 
@@ -1113,28 +1115,28 @@ namespace OC
 	/**
 	 * @return .OCP.Contacts.IManager
 	 */
-	public function getContactsManager() {
+	public OCP.ContactsNs.IManager getContactsManager() {
 		return this.query("ContactsManager");
 	}
 
 	/**
 	 * @return .OC.Encryption.Manager
 	 */
-	public function getEncryptionManager() {
+	public OC.Encryption.Manager getEncryptionManager() {
 		return this.query("EncryptionManager");
 	}
 
 	/**
 	 * @return .OC.Encryption.File
 	 */
-	public function getEncryptionFilesHelper() {
+	public OC.Encryption.File getEncryptionFilesHelper() {
 		return this.query("EncryptionFileHelper");
 	}
 
 	/**
 	 * @return .OCP.Encryption.Keys.IStorage
 	 */
-	public function getEncryptionKeyStorage() {
+	public OCP.Encryption.Keys.IStorage getEncryptionKeyStorage() {
 		return this.query("EncryptionKeyStorage");
 	}
 
@@ -1145,7 +1147,7 @@ namespace OC
 	 *
 	 * @return .OCP.IRequest
 	 */
-	public function getRequest() {
+	public OCP.IRequest getRequest() {
 		return this.query("Request");
 	}
 
@@ -1154,7 +1156,7 @@ namespace OC
 	 *
 	 * @return .OCP.IPreview
 	 */
-	public function getPreviewManager() {
+	public OCP.IPreview getPreviewManager() {
 		return this.query("PreviewManager");
 	}
 
@@ -1164,7 +1166,7 @@ namespace OC
 	 * @see .OCP.ITagManager::load()
 	 * @return .OCP.ITagManager
 	 */
-	public function getTagManager() {
+	public OCP.ITagManager getTagManager() {
 		return this.query("TagManager");
 	}
 
@@ -1175,7 +1177,7 @@ namespace OC
 	 *
 	 * @since 9.0.0
 	 */
-	public function getSystemTagManager() {
+	public OCP.SystemTag.ISystemTagManager getSystemTagManager() {
 		return this.query("SystemTagManager");
 	}
 
@@ -1186,7 +1188,7 @@ namespace OC
 	 *
 	 * @since 9.0.0
 	 */
-	public function getSystemTagObjectMapper() {
+	public OCP.SystemTag.ISystemTagObjectMapper getSystemTagObjectMapper() {
 		return this.query("SystemTagObjectMapper");
 	}
 
@@ -1195,7 +1197,7 @@ namespace OC
 	 *
 	 * @return .OCP.IAvatarManager
 	 */
-	public function getAvatarManager() {
+	public OCP.IAvatarManager getAvatarManager() {
 		return this.query("AvatarManager");
 	}
 
@@ -1204,7 +1206,7 @@ namespace OC
 	 *
 	 * @return .OCP.Files.IRootFolder
 	 */
-	public function getRootFolder() {
+	public OCP.Files.IRootFolder getRootFolder() {
 		return this.query("LazyRootFolder");
 	}
 
@@ -1215,7 +1217,7 @@ namespace OC
 	 *
 	 * @return .OCP.Files.IRootFolder
 	 */
-	public function getLazyRootFolder() {
+	public OCP.Files.IRootFolder getLazyRootFolder() {
 		return this.query("LazyRootFolder");
 	}
 
@@ -1225,15 +1227,15 @@ namespace OC
 	 * @param string userId user ID
 	 * @return .OCP.Files.Folder|null
 	 */
-	public function getUserFolder(userId = null) {
-		if (userId === null) {
-			user = this.getUserSession().getUser();
+	public OCP.Files.Folder? getUserFolder(string userId = null) {
+		if (userId == null) {
+			var user = this.getUserSession().getUser();
 			if (!user) {
 				return null;
 			}
 			userId = user.getUID();
 		}
-		root = this.getRootFolder();
+		var root = this.getRootFolder();
 		return root.getUserFolder(userId);
 	}
 
@@ -1243,7 +1245,7 @@ namespace OC
 	 * @return .OCP.Files.Folder
 	 * @deprecated since 9.2.0 use IAppData
 	 */
-	public function getAppFolder() {
+	public OCP.Files.Folder getAppFolder() {
 		dir = "/" . .OC_App::getCurrentApp();
 		root = this.getRootFolder();
 		if (!root.nodeExists(dir)) {
@@ -1257,35 +1259,35 @@ namespace OC
 	/**
 	 * @return .OC.User.Manager
 	 */
-	public function getUserManager() {
+	public OC.User.Manager getUserManager() {
 		return this.query("UserManager");
 	}
 
 	/**
 	 * @return .OC.Group.Manager
 	 */
-	public function getGroupManager() {
+	public OC.Group.Manager getGroupManager() {
 		return this.query("GroupManager");
 	}
 
 	/**
 	 * @return .OC.User.Session
 	 */
-	public function getUserSession() {
+	public OC.User.Session getUserSession() {
 		return this.query("UserSession");
 	}
 
 	/**
 	 * @return .OCP.ISession
 	 */
-	public function getSession() {
+	public OCP.ISession getSession() {
 		return this.query("UserSession").getSession();
 	}
 
 	/**
 	 * @param .OCP.ISession session
 	 */
-	public function setSession(.OCP.ISession session) {
+	public OCP.ISession setSession(OCP.ISession session) {
 		this.query(SessionStorage::class).setSession(session);
 		this.query("UserSession").setSession(session);
 		this.query(Store::class).setSession(session);
@@ -1294,28 +1296,28 @@ namespace OC
 	/**
 	 * @return .OC.Authentication.TwoFactorAuth.Manager
 	 */
-	public function getTwoFactorAuthManager() {
+	public OC.Authentication.TwoFactorAuth.Manager getTwoFactorAuthManager() {
 		return this.query(".OC.Authentication.TwoFactorAuth.Manager");
 	}
 
 	/**
 	 * @return .OC.NavigationManager
 	 */
-	public function getNavigationManager() {
+	public OC.NavigationManager getNavigationManager() {
 		return this.query("NavigationManager");
 	}
 
 	/**
 	 * @return .OCP.IConfig
 	 */
-	public function getConfig() {
+	public OCP.IConfig getConfig() {
 		return this.query("AllConfig");
 	}
 
 	/**
 	 * @return .OC.SystemConfig
 	 */
-	public function getSystemConfig() {
+	public OC.SystemConfig getSystemConfig() {
 		return this.query("SystemConfig");
 	}
 
@@ -1324,14 +1326,14 @@ namespace OC
 	 *
 	 * @return .OCP.IAppConfig
 	 */
-	public function getAppConfig() {
+	public OCP.IAppConfig getAppConfig() {
 		return this.query("AppConfig");
 	}
 
 	/**
 	 * @return .OCP.L10N.IFactory
 	 */
-	public function getL10NFactory() {
+	public OCP.L10N.IFactory getL10NFactory() {
 		return this.query("L10NFactory");
 	}
 
@@ -1342,21 +1344,21 @@ namespace OC
 	 * @param string lang
 	 * @return IL10N
 	 */
-	public function getL10N(app, lang = null) {
+	public IL10N getL10N(string app, string lang = null) {
 		return this.getL10NFactory().get(app, lang);
 	}
 
 	/**
 	 * @return .OCP.IURLGenerator
 	 */
-	public function getURLGenerator() {
+	public OCP.IURLGenerator getURLGenerator() {
 		return this.query("URLGenerator");
 	}
 
 	/**
 	 * @return AppFetcher
 	 */
-	public function getAppFetcher() {
+	public AppFetcher getAppFetcher() {
 		return this.query(AppFetcher::class);
 	}
 
@@ -1367,7 +1369,7 @@ namespace OC
 	 * @return .OCP.ICache
 	 * @deprecated 8.1.0 use getMemCacheFactory to obtain a proper cache
 	 */
-	public function getCache() {
+	public OCP.ICache getCache() {
 		return this.query("UserCache");
 	}
 
@@ -1376,7 +1378,7 @@ namespace OC
 	 *
 	 * @return .OCP.ICacheFactory
 	 */
-	public function getMemCacheFactory() {
+	public OCP.ICacheFactory getMemCacheFactory() {
 		return this.query("MemCacheFactory");
 	}
 
@@ -1385,7 +1387,7 @@ namespace OC
 	 *
 	 * @return .OC.RedisFactory
 	 */
-	public function getGetRedisFactory() {
+	public OC.RedisFactory getGetRedisFactory() {
 		return this.query("RedisFactory");
 	}
 
@@ -1395,7 +1397,7 @@ namespace OC
 	 *
 	 * @return .OCP.IDBConnection
 	 */
-	public function getDatabaseConnection() {
+	public OCP.IDBConnection getDatabaseConnection() {
 		return this.query("DatabaseConnection");
 	}
 
@@ -1404,7 +1406,7 @@ namespace OC
 	 *
 	 * @return .OCP.Activity.IManager
 	 */
-	public function getActivityManager() {
+	public OCP.Activity.IManager getActivityManager() {
 		return this.query("ActivityManager");
 	}
 
@@ -1413,7 +1415,7 @@ namespace OC
 	 *
 	 * @return .OCP.BackgroundJob.IJobList
 	 */
-	public function getJobList() {
+	public OCP.BackgroundJob.IJobList getJobList() {
 		return this.query("JobList");
 	}
 
@@ -1422,7 +1424,7 @@ namespace OC
 	 *
 	 * @return .OCP.ILogger
 	 */
-	public function getLogger() {
+	public OCP.ILogger getLogger() {
 		return this.query("Logger");
 	}
 
@@ -1430,7 +1432,7 @@ namespace OC
 	 * @return ILogFactory
 	 * @throws .OCP.AppFramework.QueryException
 	 */
-	public function getLogFactory() {
+	public ILoggerFactory getLogFactory() {
 		return this.query(ILogFactory::class);
 	}
 
@@ -1439,7 +1441,7 @@ namespace OC
 	 *
 	 * @return .OCP.Route.IRouter
 	 */
-	public function getRouter() {
+	public OCP.Route.IRouter getRouter() {
 		return this.query("Router");
 	}
 
@@ -1448,7 +1450,7 @@ namespace OC
 	 *
 	 * @return .OCP.ISearch
 	 */
-	public function getSearch() {
+	public OCP.ISearch getSearch() {
 		return this.query("Search");
 	}
 
@@ -1805,7 +1807,7 @@ namespace OC
 	/**
 	 * @return .OCP.Share.IManager
 	 */
-	public function getShareManager() {
+	public OCP.ShareNS.IManager getShareManager() {
 		return this.query("ShareManager");
 	}
 
@@ -1819,7 +1821,7 @@ namespace OC
 	/**
 	 * @return .OCP.Collaboration.AutoComplete.IManager
 	 */
-	public function getAutoCompleteManager(){
+	public OCP.Collaboration.AutoComplete.IManager getAutoCompleteManager(){
 		return this.query(IManager::class);
 	}
 
@@ -1828,14 +1830,14 @@ namespace OC
 	 *
 	 * @return .OCP.LDAP.ILDAPProvider
 	 */
-	public function getLDAPProvider() {
+	public OCP.LDAP.ILDAPProvider getLDAPProvider() {
 		return this.query("LDAPProvider");
 	}
 
 	/**
 	 * @return .OCP.Settings.IManager
 	 */
-	public function getSettingsManager() {
+	public OCP.Settings.IManager getSettingsManager() {
 		return this.query("SettingsManager");
 	}
 

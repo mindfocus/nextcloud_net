@@ -49,7 +49,7 @@ namespace OCP
 	 * @return \OCP\Contacts\IManager
 	 * @since 6.0.0
 	 */
-    Contacts.IManager getContactsManager();
+    ContactsNs.IManager getContactsManager();
 
     /**
 	 * The current request object holding all information about the request currently being processed

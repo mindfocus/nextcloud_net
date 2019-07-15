@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using OC;
 
 namespace OCP.Encryption
 {
@@ -19,7 +20,7 @@ class GenericEncryptionException : HintException {
 	 * @param \Exception|null previous
 	 * @since 8.1.0
 	 */
-	public GenericEncryptionException(string message = "", string hint = "", int code = 0, System.Exception previous = null)
+	public GenericEncryptionException(string message = "", string hint = "", int code = 0, System.Exception previous = null) : base(message,hint,code,previous)
      {
 		// if (message == "") {
 			// message = "Unspecified encryption exception";

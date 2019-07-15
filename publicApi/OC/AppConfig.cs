@@ -193,17 +193,18 @@ class AppConfig : IAppConfig {
 	 */
 	public bool deleteKey(string app, string key) {
 		this.loadConfigValues();
-		
-		sql = this.conn.getQueryBuilder();
-		sql.delete("appconfig")
-			.where(sql.expr().eq("appid", sql.createParameter("app")))
-			.andWhere(sql.expr().eq("configkey", sql.createParameter("configkey")))
-			.setParameter("app", app)
-			.setParameter("configkey", key);
-		sql.execute();
+		using (var context = new NCContext())
+		{
+			context.AppConfigs.RemoveRange(context.AppConfigs.Where(o => o.appId == app && o.configKey == key));
+			context.SaveChanges();
+		}
 
-		unset(this.cache[app][key]);
-		return false;
+		var result = from cacheKeys in this.cache where cacheKeys.Item1 == app && cacheKeys.Item2 == key select cacheKeys;
+		foreach (var tuple in result)
+		{
+			this.cache.Remove(tuple);
+		}
+		return true;
 	}
 
 	/**

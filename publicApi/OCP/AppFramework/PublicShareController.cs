@@ -14,21 +14,20 @@ namespace OCP.AppFramework
  *
  * @since 14.0.0
  */
-abstract class PublicShareController extends Controller {
+abstract class PublicShareController : Controller {
 
 	/** @var ISession */
-	protected session;
+	protected ISession session;
 
 	/** @var string */
-	private token;
+	private string token;
 
 	/**
 	 * @since 14.0.0
 	 */
-	public function __construct(string appName,
+	public PublicShareController(string appName,
 								IRequest request,
-								ISession session) {
-		parent::__construct(appName, request);
+								ISession session) : base(appName,request) {
 
 		this->session = session;
 	}

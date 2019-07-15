@@ -29,11 +29,11 @@ class Filesystem {
 	 */
 	private static Mount.Manager mounts;
 
-	public static loaded = false;
+	public static bool loaded = false;
 	/**
 	 * @var .OC.Files.View defaultInstance
 	 */
-	static private defaultInstance;
+	static private OC.Files.View defaultInstance;
 
 	static private usersSetup = array();
 

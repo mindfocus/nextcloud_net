@@ -26,7 +26,7 @@ namespace OCP.Support.CrashReport
          *
          * @since 15.0.0
          */
-        void delegateBreadcrumb(string message, string category, IList<string> context = []);
+        void delegateBreadcrumb(string message, string category, IList<string> context);
 
         /**
          * Delegate crash reporting to all registered reporters

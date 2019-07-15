@@ -1,6 +1,7 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
+using Pchp.Library.Spl;
+using Exception = System.Exception;
 
 namespace publicApi.OCP.SystemTag
 {
@@ -23,7 +24,7 @@ namespace publicApi.OCP.SystemTag
      * @param string[] tags
      * @since 9.0.0
      */
-    public TagNotFoundException(string message = "", int code = 0, Exception previous = null, IList<string> tags) : base(message, code, previous)
+    public TagNotFoundException(string message = "", int code = 0, Exception previous = null, IList<string> tags = null) : base(message, code, previous)
     {
         this.tags = tags;
     }

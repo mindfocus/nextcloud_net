@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using OCP.DB;
 
@@ -35,7 +36,7 @@ public string description() {
      * @param array options
      * @since 13.0.0
      */
-    public void preSchemaChange(IOutput output, \Closure schemaClosure, array options)
+    public void preSchemaChange(IOutput output, Action schemaClosure, IList<string> options)
 {
 }
 

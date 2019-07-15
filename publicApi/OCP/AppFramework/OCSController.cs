@@ -4,10 +4,10 @@ namespace OCP.AppFramework
  * Base class to inherit your controllers from that are used for RESTful APIs
  * @since 8.1.0
  */
-abstract class OCSController extends ApiController {
+abstract class OCSController : ApiController {
 
 	/** @var int */
-	private ocsVersion;
+	private int ocsVersion;
 
 	/**
 	 * constructor of the controller
@@ -23,11 +23,11 @@ abstract class OCSController extends ApiController {
 	 * request should be cached, defaults to 1728000 seconds
 	 * @since 8.1.0
 	 */
-	public function __construct(appName,
+	public OCSController(string appName,
 								IRequest request,
-								corsMethods='PUT, POST, GET, DELETE, PATCH',
-								corsAllowedHeaders='Authorization, Content-Type, Accept',
-								corsMaxAge=1728000){
+								string corsMethods='PUT, POST, GET, DELETE, PATCH',
+								string corsAllowedHeaders='Authorization, Content-Type, Accept',
+								int corsMaxAge=1728000) : base(appName, request, corsMethods,corsAllowedHeaders , corsMaxAge){
 		parent::__construct(appName, request, corsMethods,
 							corsAllowedHeaders, corsMaxAge);
 		this->registerResponder('json', function (data) {

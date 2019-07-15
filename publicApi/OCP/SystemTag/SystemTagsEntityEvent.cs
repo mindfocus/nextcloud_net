@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using Pchp.Library.Spl;
 
 namespace OCP.SystemTag
 {
@@ -28,7 +30,7 @@ namespace OCP.SystemTag
     public SystemTagsEntityEvent(string @event)
     {
         this.@event = @event;
-        this.collections = new Dictionary<Action>();
+        this.collections = new Dictionary<string, Action>();
     }
 
     /**
@@ -55,7 +57,7 @@ namespace OCP.SystemTag
      * @since 9.1.0
      */
     public IList<Action> getEntityCollections() {
-        return this.collections.Values;
+        return this.collections.Values.ToList();
     }
 }
 

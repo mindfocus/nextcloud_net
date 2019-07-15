@@ -9,7 +9,7 @@ namespace OCP.Remote
      *
      * @since 13.0.0
      */
-    interface IInstance
+    public interface IInstance
     {
         /**
          * @return string The url of the remote server without protocol

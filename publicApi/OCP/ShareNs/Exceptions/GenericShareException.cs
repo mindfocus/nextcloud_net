@@ -20,7 +20,7 @@ namespace OCP.ShareNS.Exceptions
  * @param \Exception|null previous
  * @since 9.0.0
  */
-        public GenericShareException(string message = "", string hint = "", int code = 0, Exception previous = null)
+        public GenericShareException(string message = "", string hint = "", int code = 0, Exception previous = null) : base(message,hint,code,previous)
         {
             //if (empty(message))
             //{

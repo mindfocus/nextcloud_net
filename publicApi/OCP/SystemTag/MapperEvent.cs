@@ -35,7 +35,7 @@ namespace publicApi.OCP.SystemTag
      */
     public MapperEvent(string @event, string objectType, string objectId, IList<int> tags)
     {
-            this.@@event = @event;
+            this.@event = @event;
             this.objectType = objectType;
             this.objectId = objectId;
             this.tags = tags;

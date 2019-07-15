@@ -11,7 +11,7 @@ namespace OCP.AppFramework
 class App {
 
 	/** @var IAppContainer */
-	private container;
+	private IAppContainer container;
 
 	/**
 	 * Turns an app id into a namespace by convetion. The id is split at the
@@ -23,7 +23,7 @@ class App {
 	 * @return string the starting namespace for the app
 	 * @since 8.0.0
 	 */
-	public static function buildAppNamespace(string appId, string topNamespace='OCA\\'): string {
+	public static string buildAppNamespace(string appId, string topNamespace="OCA\\")  {
 		return \OC\AppFramework\App::buildAppNamespace(appId, topNamespace);
 	}
 

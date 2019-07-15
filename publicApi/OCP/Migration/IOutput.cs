@@ -7,7 +7,7 @@ namespace OCP.Migration
      * @package OCP\Migration
      * @since 9.1.0
      */
-    interface IOutput
+    public interface IOutput
     {
 
         /**

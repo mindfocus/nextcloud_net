@@ -11,7 +11,7 @@ namespace OCP.AppFramework.Http
  * @package OCP\AppFramework\Http
  * @since 9.0.0
  */
-class EmptyContentSecurityPolicy {
+public class EmptyContentSecurityPolicy {
 	/** @var bool Whether inline JS snippets are allowed */
 	protected bool? inlineScriptAllowed = null;
 	/** @var string Whether JS nonces should be used */

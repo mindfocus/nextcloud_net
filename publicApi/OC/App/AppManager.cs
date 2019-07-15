@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using ext;
 using OCP;
 using OCP.App;
 using OCP.Sym;
@@ -36,7 +37,7 @@ namespace OC.App
 	private EventDispatcherInterface dispatcher;
 
 	/** @var string[] appId => enabled */
-	private IDictionary<string,string> installedAppsCache;
+	private IDictionary<string,string> installedAppsCache = new Dictionary<string, string>();
 
 	/** @var string[] */
 	private IList<string> shippedApps;
@@ -73,11 +74,11 @@ namespace OC.App
 	 * @return string[] appId => enabled
 	 */
 	private IDictionary<string,string> getInstalledAppsValues() {
-		if (!this.installedAppsCache) {
-			values = this.appConfig.getValues(false, "enabled");
+		if (this.installedAppsCache.IsEmpty()) {
+			var values = this.appConfig.getValues(false, "enabled");
 
-			alwaysEnabledApps = this.getAlwaysEnabledApps();
-			foreach(alwaysEnabledApps as appId) {
+			var alwaysEnabledApps = this.getAlwaysEnabledApps();
+			foreach(var appId in alwaysEnabledApps) {
 				values[appId] = "yes";
 			}
 
