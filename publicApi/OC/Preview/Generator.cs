@@ -31,11 +31,11 @@ class Generator {
 		GeneratorHelper $helper,
 		EventDispatcherInterface $eventDispatcher
 	) {
-		$this->config = $config;
-		$this->previewManager = $previewManager;
-		$this->appData = $appData;
-		$this->helper = $helper;
-		$this->eventDispatcher = $eventDispatcher;
+		$this.config = $config;
+		$this.previewManager = $previewManager;
+		$this.appData = $appData;
+		$this.helper = $helper;
+		$this.eventDispatcher = $eventDispatcher;
 	}
 
 	/**
@@ -56,12 +56,12 @@ class Generator {
 	 */
 	public function getPreview(File $file, $width = -1, $height = -1, $crop = false, $mode = IPreview::MODE_FILL, $mimeType = null) {
 		//Make sure that we can read the file
-		if (!$file->isReadable()) {
+		if (!$file.isReadable()) {
 			throw new NotFoundException('Cannot read file');
 		}
 
 
-		$this->eventDispatcher->dispatch(
+		$this.eventDispatcher.dispatch(
 			IPreview::EVENT,
 			new GenericEvent($file,[
 				'width' => $width,
@@ -72,22 +72,22 @@ class Generator {
 		);
 
 		if ($mimeType === null) {
-			$mimeType = $file->getMimeType();
+			$mimeType = $file.getMimeType();
 		}
-		if (!$this->previewManager->isMimeSupported($mimeType)) {
+		if (!$this.previewManager.isMimeSupported($mimeType)) {
 			throw new NotFoundException();
 		}
 
-		$previewFolder = $this->getPreviewFolder($file);
+		$previewFolder = $this.getPreviewFolder($file);
 
 		// Get the max preview and infer the max preview sizes from that
-		$maxPreview = $this->getMaxPreview($previewFolder, $file, $mimeType);
-		if ($maxPreview->getSize() === 0) {
-			$maxPreview->delete();
+		$maxPreview = $this.getMaxPreview($previewFolder, $file, $mimeType);
+		if ($maxPreview.getSize() === 0) {
+			$maxPreview.delete();
 			throw new NotFoundException('Max preview size 0, invalid!');
 		}
 
-		list($maxWidth, $maxHeight) = $this->getPreviewSize($maxPreview);
+		list($maxWidth, $maxHeight) = $this.getPreviewSize($maxPreview);
 
 		// If both width and heigth are -1 we just want the max preview
 		if ($width === -1 && $height === -1) {
@@ -96,7 +96,7 @@ class Generator {
 		}
 
 		// Calculate the preview size
-		list($width, $height) = $this->calculateSize($width, $height, $crop, $mode, $maxWidth, $maxHeight);
+		list($width, $height) = $this.calculateSize($width, $height, $crop, $mode, $maxWidth, $maxHeight);
 
 		// No need to generate a preview that is just the max preview
 		if ($width === $maxWidth && $height === $maxHeight) {
@@ -106,16 +106,16 @@ class Generator {
 		// Try to get a cached preview. Else generate (and store) one
 		try {
 			try {
-				$preview = $this->getCachedPreview($previewFolder, $width, $height, $crop, $maxPreview->getMimeType());
+				$preview = $this.getCachedPreview($previewFolder, $width, $height, $crop, $maxPreview.getMimeType());
 			} catch (NotFoundException $e) {
-				$preview = $this->generatePreview($previewFolder, $maxPreview, $width, $height, $crop, $maxWidth, $maxHeight);
+				$preview = $this.generatePreview($previewFolder, $maxPreview, $width, $height, $crop, $maxWidth, $maxHeight);
 			}
 		} catch (\InvalidArgumentException $e) {
 			throw new NotFoundException();
 		}
 
-		if ($preview->getSize() === 0) {
-			$preview->delete();
+		if ($preview.getSize() === 0) {
+			$preview.delete();
 			throw new NotFoundException('Cached preview size 0, invalid!');
 		}
 
@@ -130,34 +130,34 @@ class Generator {
 	 * @throws NotFoundException
 	 */
 	private function getMaxPreview(ISimpleFolder $previewFolder, File $file, $mimeType) {
-		$nodes = $previewFolder->getDirectoryListing();
+		$nodes = $previewFolder.getDirectoryListing();
 
 		foreach ($nodes as $node) {
-			if (strpos($node->getName(), 'max')) {
+			if (strpos($node.getName(), 'max')) {
 				return $node;
 			}
 		}
 
-		$previewProviders = $this->previewManager->getProviders();
+		$previewProviders = $this.previewManager.getProviders();
 		foreach ($previewProviders as $supportedMimeType => $providers) {
 			if (!preg_match($supportedMimeType, $mimeType)) {
 				continue;
 			}
 
 			foreach ($providers as $provider) {
-				$provider = $this->helper->getProvider($provider);
+				$provider = $this.helper.getProvider($provider);
 				if (!($provider instanceof IProvider)) {
 					continue;
 				}
 
-				if (!$provider->isAvailable($file)) {
+				if (!$provider.isAvailable($file)) {
 					continue;
 				}
 
-				$maxWidth = (int)$this->config->getSystemValue('preview_max_x', 4096);
-				$maxHeight = (int)$this->config->getSystemValue('preview_max_y', 4096);
+				$maxWidth = (int)$this.config.getSystemValue('preview_max_x', 4096);
+				$maxHeight = (int)$this.config.getSystemValue('preview_max_y', 4096);
 
-				$preview = $this->helper->getThumbnail($provider, $file, $maxWidth, $maxHeight);
+				$preview = $this.helper.getThumbnail($provider, $file, $maxWidth, $maxHeight);
 
 				if (!($preview instanceof IImage)) {
 					continue;
@@ -165,16 +165,16 @@ class Generator {
 
 				// Try to get the extention.
 				try {
-					$ext = $this->getExtention($preview->dataMimeType());
+					$ext = $this.getExtention($preview.dataMimeType());
 				} catch (\InvalidArgumentException $e) {
 					// Just continue to the next iteration if this preview doesn't have a valid mimetype
 					continue;
 				}
 
-				$path = (string)$preview->width() . '-' . (string)$preview->height() . '-max.' . $ext;
+				$path = (string)$preview.width() . '-' . (string)$preview.height() . '-max.' . $ext;
 				try {
-					$file = $previewFolder->newFile($path);
-					$file->putContent($preview->data());
+					$file = $previewFolder.newFile($path);
+					$file.putContent($preview.data());
 				} catch (NotPermittedException $e) {
 					throw new NotFoundException();
 				}
@@ -191,7 +191,7 @@ class Generator {
 	 * @return int[]
 	 */
 	private function getPreviewSize(ISimpleFile $file) {
-		$size = explode('-', $file->getName());
+		$size = explode('-', $file.getName());
 		return [(int)$size[0], (int)$size[1]];
 	}
 
@@ -208,7 +208,7 @@ class Generator {
 			$path .= '-crop';
 		}
 
-		$ext = $this->getExtention($mimeType);
+		$ext = $this.getExtention($mimeType);
 		$path .= '.' . $ext;
 		return $path;
 	}
@@ -316,17 +316,17 @@ class Generator {
 	 * @throws \InvalidArgumentException if the preview would be invalid (in case the original image is invalid)
 	 */
 	private function generatePreview(ISimpleFolder $previewFolder, ISimpleFile $maxPreview, $width, $height, $crop, $maxWidth, $maxHeight) {
-		$preview = $this->helper->getImage($maxPreview);
+		$preview = $this.helper.getImage($maxPreview);
 
-		if (!$preview->valid()) {
+		if (!$preview.valid()) {
 			throw new \InvalidArgumentException('Failed to generate preview, failed to load image');
 		}
 
 		if ($crop) {
-			if ($height !== $preview->height() && $width !== $preview->width()) {
+			if ($height !== $preview.height() && $width !== $preview.width()) {
 				//Resize
-				$widthR = $preview->width() / $width;
-				$heightR = $preview->height() / $height;
+				$widthR = $preview.width() / $width;
+				$heightR = $preview.height() / $height;
 
 				if ($widthR > $heightR) {
 					$scaleH = $height;
@@ -335,20 +335,20 @@ class Generator {
 					$scaleH = $maxHeight / $widthR;
 					$scaleW = $width;
 				}
-				$preview->preciseResize((int)round($scaleW), (int)round($scaleH));
+				$preview.preciseResize((int)round($scaleW), (int)round($scaleH));
 			}
-			$cropX = (int)floor(abs($width - $preview->width()) * 0.5);
+			$cropX = (int)floor(abs($width - $preview.width()) * 0.5);
 			$cropY = 0;
-			$preview->crop($cropX, $cropY, $width, $height);
+			$preview.crop($cropX, $cropY, $width, $height);
 		} else {
-			$preview->resize(max($width, $height));
+			$preview.resize(max($width, $height));
 		}
 
 
-		$path = $this->generatePath($width, $height, $crop, $preview->dataMimeType());
+		$path = $this.generatePath($width, $height, $crop, $preview.dataMimeType());
 		try {
-			$file = $previewFolder->newFile($path);
-			$file->putContent($preview->data());
+			$file = $previewFolder.newFile($path);
+			$file.putContent($preview.data());
 		} catch (NotPermittedException $e) {
 			throw new NotFoundException();
 		}
@@ -367,9 +367,9 @@ class Generator {
 	 * @throws NotFoundException
 	 */
 	private function getCachedPreview(ISimpleFolder $previewFolder, $width, $height, $crop, $mimeType) {
-		$path = $this->generatePath($width, $height, $crop, $mimeType);
+		$path = $this.generatePath($width, $height, $crop, $mimeType);
 
-		return $previewFolder->getFile($path);
+		return $previewFolder.getFile($path);
 	}
 
 	/**
@@ -380,9 +380,9 @@ class Generator {
 	 */
 	private function getPreviewFolder(File $file) {
 		try {
-			$folder = $this->appData->getFolder($file->getId());
+			$folder = $this.appData.getFolder($file.getId());
 		} catch (NotFoundException $e) {
-			$folder = $this->appData->newFolder($file->getId());
+			$folder = $this.appData.newFolder($file.getId());
 		}
 
 		return $folder;

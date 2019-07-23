@@ -16,11 +16,11 @@ namespace OCP.AppFramework.Http
      * @since 7.0.0
      */
     public function __construct(filename, contentType) {
-        this->filename = filename;
-        this->contentType = contentType;
+        this.filename = filename;
+        this.contentType = contentType;
 
-        this->addHeader('Content-Disposition', 'attachment; filename="' . filename . '"');
-        this->addHeader('Content-Type', contentType);
+        this.addHeader('Content-Disposition', 'attachment; filename="' . filename . '"');
+        this.addHeader('Content-Type', contentType);
     }
 
 

@@ -159,7 +159,7 @@ namespace OCP.FullTextSearch
      * @see IIndexDocument
      *
      * @since 15.0.0
-     *  -> 16.0.0: the parameter "chunk" was added
+     *  . 16.0.0: the parameter "chunk" was added
      *
      * @param string userId
      * @param string chunk
@@ -172,7 +172,7 @@ namespace OCP.FullTextSearch
     /**
      * Called to verify that the document is not already indexed and that the
      * old index is not up-to-date, using the IIndex from
-     * IIndexDocument->getIndex()
+     * IIndexDocument.getIndex()
      *
      * Returning true will not queue the current IIndexDocument to any further
      * operation and will continue on the next element from the list returned by

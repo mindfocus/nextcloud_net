@@ -42,7 +42,7 @@ namespace OCP.DB.QueryBuilder
          *
          *     [php]
          *     // (u.type = ?) AND (u.role = ?)
-         *     expr->andX('u.type = ?', 'u.role = ?'));
+         *     expr.andX('u.type = ?', 'u.role = ?'));
          *
          * @param mixed ...x Optional clause. Defaults = null, but requires
          *                 at least one defined when converting to string.
@@ -59,7 +59,7 @@ namespace OCP.DB.QueryBuilder
          *
          *     [php]
          *     // (u.type = ?) OR (u.role = ?)
-         *     qb->where(qb->expr()->orX('u.type = ?', 'u.role = ?'));
+         *     qb.where(qb.expr().orX('u.type = ?', 'u.role = ?'));
          *
          * @param mixed ...x Optional clause. Defaults = null, but requires
          *                 at least one defined when converting to string.
@@ -91,7 +91,7 @@ namespace OCP.DB.QueryBuilder
          *
          *     [php]
          *     // u.id = ?
-         *     expr->eq('u.id', '?');
+         *     expr.eq('u.id', '?');
          *
          * @param mixed x The left expression.
          * @param mixed y The right expression.
@@ -110,7 +110,7 @@ namespace OCP.DB.QueryBuilder
          *
          *     [php]
          *     // u.id <> 1
-         *     q->where(q->expr()->neq('u.id', '1'));
+         *     q.where(q.expr().neq('u.id', '1'));
          *
          * @param mixed x The left expression.
          * @param mixed y The right expression.
@@ -129,7 +129,7 @@ namespace OCP.DB.QueryBuilder
          *
          *     [php]
          *     // u.id < ?
-         *     q->where(q->expr()->lt('u.id', '?'));
+         *     q.where(q.expr().lt('u.id', '?'));
          *
          * @param mixed x The left expression.
          * @param mixed y The right expression.
@@ -148,7 +148,7 @@ namespace OCP.DB.QueryBuilder
          *
          *     [php]
          *     // u.id <= ?
-         *     q->where(q->expr()->lte('u.id', '?'));
+         *     q.where(q.expr().lte('u.id', '?'));
          *
          * @param mixed x The left expression.
          * @param mixed y The right expression.
@@ -167,7 +167,7 @@ namespace OCP.DB.QueryBuilder
          *
          *     [php]
          *     // u.id > ?
-         *     q->where(q->expr()->gt('u.id', '?'));
+         *     q.where(q.expr().gt('u.id', '?'));
          *
          * @param mixed x The left expression.
          * @param mixed y The right expression.
@@ -186,7 +186,7 @@ namespace OCP.DB.QueryBuilder
          *
          *     [php]
          *     // u.id >= ?
-         *     q->where(q->expr()->gte('u.id', '?'));
+         *     q.where(q.expr().gte('u.id', '?'));
          *
          * @param mixed x The left expression.
          * @param mixed y The right expression.

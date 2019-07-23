@@ -10,7 +10,7 @@ namespace OCP.AppFramework.Http
      * @since 8.1.0
      */
     public function __construct() {
-        this->setStatus(404);
+        this.setStatus(404);
     }
 
     /**
@@ -19,7 +19,7 @@ namespace OCP.AppFramework.Http
      */
     public function render() {
         template = new Template('core', '404', 'guest');
-        return template->fetchPage();
+        return template.fetchPage();
     }
     }
 

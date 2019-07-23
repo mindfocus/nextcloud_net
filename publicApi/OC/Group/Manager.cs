@@ -48,26 +48,26 @@ class Manager : PublicEmitter , IGroupManager {
 	public function __construct(\OC\User\Manager $userManager,
 								EventDispatcherInterface $dispatcher,
 								ILogger $logger) {
-		$this->userManager = $userManager;
-		$this->dispatcher = $dispatcher;
-		$this->logger = $logger;
+		$this.userManager = $userManager;
+		$this.dispatcher = $dispatcher;
+		$this.logger = $logger;
 
-		$cachedGroups = & $this->cachedGroups;
-		$cachedUserGroups = & $this->cachedUserGroups;
-		$this->listen('\OC\Group', 'postDelete', function ($group) use (&$cachedGroups, &$cachedUserGroups) {
+		$cachedGroups = & $this.cachedGroups;
+		$cachedUserGroups = & $this.cachedUserGroups;
+		$this.listen('\OC\Group', 'postDelete', function ($group) use (&$cachedGroups, &$cachedUserGroups) {
 			/**
 			 * @var \OC\Group\Group $group
 			 */
-			unset($cachedGroups[$group->getGID()]);
+			unset($cachedGroups[$group.getGID()]);
 			$cachedUserGroups = [];
 		});
-		$this->listen('\OC\Group', 'postAddUser', function ($group) use (&$cachedUserGroups) {
+		$this.listen('\OC\Group', 'postAddUser', function ($group) use (&$cachedUserGroups) {
 			/**
 			 * @var \OC\Group\Group $group
 			 */
 			$cachedUserGroups = [];
 		});
-		$this->listen('\OC\Group', 'postRemoveUser', function ($group) use (&$cachedUserGroups) {
+		$this.listen('\OC\Group', 'postRemoveUser', function ($group) use (&$cachedUserGroups) {
 			/**
 			 * @var \OC\Group\Group $group
 			 */
@@ -84,7 +84,7 @@ class Manager : PublicEmitter , IGroupManager {
 	public function isBackendUsed($backendClass) {
 		$backendClass = strtolower(ltrim($backendClass, '\\'));
 
-		foreach ($this->backends as $backend) {
+		foreach ($this.backends as $backend) {
 			if (strtolower(get_class($backend)) === $backendClass) {
 				return true;
 			}
@@ -97,13 +97,13 @@ class Manager : PublicEmitter , IGroupManager {
 	 * @param \OCP\GroupInterface $backend
 	 */
 	public function addBackend($backend) {
-		$this->backends[] = $backend;
-		$this->clearCaches();
+		$this.backends[] = $backend;
+		$this.clearCaches();
 	}
 
 	public function clearBackends() {
-		$this->backends = [];
-		$this->clearCaches();
+		$this.backends = [];
+		$this.clearCaches();
 	}
 
 	/**
@@ -111,13 +111,13 @@ class Manager : PublicEmitter , IGroupManager {
 	 * @return \OCP\GroupInterface[]
 	 */
 	public function getBackends() {
-		return $this->backends;
+		return $this.backends;
 	}
 
 
 	protected function clearCaches() {
-		$this->cachedGroups = [];
-		$this->cachedUserGroups = [];
+		$this.cachedGroups = [];
+		$this.cachedUserGroups = [];
 	}
 
 	/**
@@ -125,10 +125,10 @@ class Manager : PublicEmitter , IGroupManager {
 	 * @return \OC\Group\Group
 	 */
 	public function get($gid) {
-		if (isset($this->cachedGroups[$gid])) {
-			return $this->cachedGroups[$gid];
+		if (isset($this.cachedGroups[$gid])) {
+			return $this.cachedGroups[$gid];
 		}
-		return $this->getGroupObject($gid);
+		return $this.getGroupObject($gid);
 	}
 
 	/**
@@ -138,9 +138,9 @@ class Manager : PublicEmitter , IGroupManager {
 	 */
 	protected function getGroupObject($gid, $displayName = null) {
 		$backends = [];
-		foreach ($this->backends as $backend) {
-			if ($backend->implementsActions(\OC\Group\Backend::GROUP_DETAILS)) {
-				$groupData = $backend->getGroupDetails($gid);
+		foreach ($this.backends as $backend) {
+			if ($backend.implementsActions(\OC\Group\Backend::GROUP_DETAILS)) {
+				$groupData = $backend.getGroupDetails($gid);
 				if (is_array($groupData) && !empty($groupData)) {
 					// take the display name from the first backend that has a non-null one
 					if (is_null($displayName) && isset($groupData['displayName'])) {
@@ -148,15 +148,15 @@ class Manager : PublicEmitter , IGroupManager {
 					}
 					$backends[] = $backend;
 				}
-			} else if ($backend->groupExists($gid)) {
+			} else if ($backend.groupExists($gid)) {
 				$backends[] = $backend;
 			}
 		}
 		if (count($backends) === 0) {
 			return null;
 		}
-		$this->cachedGroups[$gid] = new Group($gid, $backends, $this->dispatcher, $this->userManager, $this, $displayName);
-		return $this->cachedGroups[$gid];
+		$this.cachedGroups[$gid] = new Group($gid, $backends, $this.dispatcher, $this.userManager, $this, $displayName);
+		return $this.cachedGroups[$gid];
 	}
 
 	/**
@@ -164,7 +164,7 @@ class Manager : PublicEmitter , IGroupManager {
 	 * @return bool
 	 */
 	public function groupExists($gid) {
-		return $this->get($gid) instanceof IGroup;
+		return $this.get($gid) instanceof IGroup;
 	}
 
 	/**
@@ -174,15 +174,15 @@ class Manager : PublicEmitter , IGroupManager {
 	public function createGroup($gid) {
 		if ($gid === '' || $gid === null) {
 			return false;
-		} else if ($group = $this->get($gid)) {
+		} else if ($group = $this.get($gid)) {
 			return $group;
 		} else {
-			$this->emit('\OC\Group', 'preCreate', array($gid));
-			foreach ($this->backends as $backend) {
-				if ($backend->implementsActions(\OC\Group\Backend::CREATE_GROUP)) {
-					$backend->createGroup($gid);
-					$group = $this->getGroupObject($gid);
-					$this->emit('\OC\Group', 'postCreate', array($group));
+			$this.emit('\OC\Group', 'preCreate', array($gid));
+			foreach ($this.backends as $backend) {
+				if ($backend.implementsActions(\OC\Group\Backend::CREATE_GROUP)) {
+					$backend.createGroup($gid);
+					$group = $this.getGroupObject($gid);
+					$this.emit('\OC\Group', 'postCreate', array($group));
 					return $group;
 				}
 			}
@@ -198,14 +198,14 @@ class Manager : PublicEmitter , IGroupManager {
 	 */
 	public function search($search, $limit = null, $offset = null) {
 		$groups = [];
-		foreach ($this->backends as $backend) {
-			$groupIds = $backend->getGroups($search, $limit, $offset);
+		foreach ($this.backends as $backend) {
+			$groupIds = $backend.getGroups($search, $limit, $offset);
 			foreach ($groupIds as $groupId) {
-				$aGroup = $this->get($groupId);
+				$aGroup = $this.get($groupId);
 				if ($aGroup instanceof IGroup) {
 					$groups[$groupId] = $aGroup;
 				} else {
-					$this->logger->debug('Group "' . $groupId . '" was returned by search but not found through direct access', ['app' => 'core']);
+					$this.logger.debug('Group "' . $groupId . '" was returned by search but not found through direct access', ['app' => 'core']);
 				}
 			}
 			if (!is_null($limit) and $limit <= 0) {
@@ -223,7 +223,7 @@ class Manager : PublicEmitter , IGroupManager {
 		if (!$user instanceof IUser) {
 			return [];
 		}
-		return $this->getUserIdGroups($user->getUID());
+		return $this.getUserIdGroups($user.getUID());
 	}
 
 	/**
@@ -231,25 +231,25 @@ class Manager : PublicEmitter , IGroupManager {
 	 * @return \OC\Group\Group[]
 	 */
 	public function getUserIdGroups($uid) {
-		if (isset($this->cachedUserGroups[$uid])) {
-			return $this->cachedUserGroups[$uid];
+		if (isset($this.cachedUserGroups[$uid])) {
+			return $this.cachedUserGroups[$uid];
 		}
 		$groups = [];
-		foreach ($this->backends as $backend) {
-			$groupIds = $backend->getUserGroups($uid);
+		foreach ($this.backends as $backend) {
+			$groupIds = $backend.getUserGroups($uid);
 			if (is_array($groupIds)) {
 				foreach ($groupIds as $groupId) {
-					$aGroup = $this->get($groupId);
+					$aGroup = $this.get($groupId);
 					if ($aGroup instanceof IGroup) {
 						$groups[$groupId] = $aGroup;
 					} else {
-						$this->logger->debug('User "' . $uid . '" belongs to deleted group: "' . $groupId . '"', ['app' => 'core']);
+						$this.logger.debug('User "' . $uid . '" belongs to deleted group: "' . $groupId . '"', ['app' => 'core']);
 					}
 				}
 			}
 		}
-		$this->cachedUserGroups[$uid] = $groups;
-		return $this->cachedUserGroups[$uid];
+		$this.cachedUserGroups[$uid] = $groups;
+		return $this.cachedUserGroups[$uid];
 	}
 
 	/**
@@ -258,12 +258,12 @@ class Manager : PublicEmitter , IGroupManager {
 	 * @return bool if admin
 	 */
 	public function isAdmin($userId) {
-		foreach ($this->backends as $backend) {
-			if ($backend->implementsActions(\OC\Group\Backend::IS_ADMIN) && $backend->isAdmin($userId)) {
+		foreach ($this.backends as $backend) {
+			if ($backend.implementsActions(\OC\Group\Backend::IS_ADMIN) && $backend.isAdmin($userId)) {
 				return true;
 			}
 		}
-		return $this->isInGroup($userId, 'admin');
+		return $this.isInGroup($userId, 'admin');
 	}
 
 	/**
@@ -273,7 +273,7 @@ class Manager : PublicEmitter , IGroupManager {
 	 * @return bool if in group
 	 */
 	public function isInGroup($userId, $group) {
-		return array_key_exists($group, $this->getUserIdGroups($userId));
+		return array_key_exists($group, $this.getUserIdGroups($userId));
 	}
 
 	/**
@@ -284,7 +284,7 @@ class Manager : PublicEmitter , IGroupManager {
 	public function getUserGroupIds(IUser $user) {
 		return array_map(function($value) {
 			return (string) $value;
-		}, array_keys($this->getUserGroups($user)));
+		}, array_keys($this.getUserGroups($user)));
 	}
 
 	/**
@@ -294,8 +294,8 @@ class Manager : PublicEmitter , IGroupManager {
 	 */
 	public function getUserGroupNames(IUser $user) {
 		return array_map(function($group) {
-			return array('displayName' => $group->getDisplayName());
-		}, $this->getUserGroups($user));
+			return array('displayName' => $group.getDisplayName());
+		}, $this.getUserGroups($user));
 	}
 
 	/**
@@ -307,7 +307,7 @@ class Manager : PublicEmitter , IGroupManager {
 	 * @return array an array of display names (value) and user ids (key)
 	 */
 	public function displayNamesInGroup($gid, $search = '', $limit = -1, $offset = 0) {
-		$group = $this->get($gid);
+		$group = $this.get($gid);
 		if(is_null($group)) {
 			return [];
 		}
@@ -324,9 +324,9 @@ class Manager : PublicEmitter , IGroupManager {
 			}
 
 			do {
-				$filteredUsers = $this->userManager->searchDisplayName($search, $searchLimit, $searchOffset);
+				$filteredUsers = $this.userManager.searchDisplayName($search, $searchLimit, $searchOffset);
 				foreach($filteredUsers as $filteredUser) {
-					if($group->inGroup($filteredUser)) {
+					if($group.inGroup($filteredUser)) {
 						$groupUsers[]= $filteredUser;
 					}
 				}
@@ -339,12 +339,12 @@ class Manager : PublicEmitter , IGroupManager {
 				$groupUsers = array_slice($groupUsers, $offset, $limit);
 			}
 		} else {
-			$groupUsers = $group->searchUsers('', $limit, $offset);
+			$groupUsers = $group.searchUsers('', $limit, $offset);
 		}
 
 		$matchingUsers = [];
 		foreach($groupUsers as $groupUser) {
-			$matchingUsers[$groupUser->getUID()] = $groupUser->getDisplayName();
+			$matchingUsers[$groupUser.getUID()] = $groupUser.getDisplayName();
 		}
 		return $matchingUsers;
 	}
@@ -353,15 +353,15 @@ class Manager : PublicEmitter , IGroupManager {
 	 * @return \OC\SubAdmin
 	 */
 	public function getSubAdmin() {
-		if (!$this->subAdmin) {
-			$this->subAdmin = new \OC\SubAdmin(
-				$this->userManager,
+		if (!$this.subAdmin) {
+			$this.subAdmin = new \OC\SubAdmin(
+				$this.userManager,
 				$this,
-				\OC::$server->getDatabaseConnection()
+				\OC::$server.getDatabaseConnection()
 			);
 		}
 
-		return $this->subAdmin;
+		return $this.subAdmin;
 	}
 }
 }

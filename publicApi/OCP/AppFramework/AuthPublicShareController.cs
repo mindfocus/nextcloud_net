@@ -11,21 +11,19 @@ namespace OCP.AppFramework
  *
  * @since 14.0.0
  */
-abstract class AuthPublicShareController extends PublicShareController {
+abstract class AuthPublicShareController : PublicShareController {
 
 	/** @var IURLGenerator */
-	protected urlGenerator;
+	protected IURLGenerator urlGenerator;
 
 	/**
 	 * @since 14.0.0
 	 */
-	public function __construct(string appName,
+	public AuthPublicShareController(string appName,
 								IRequest request,
 								ISession session,
-								IURLGenerator urlGenerator) {
-		parent::__construct(appName, request, session);
-
-		this->urlGenerator = urlGenerator;
+								IURLGenerator urlGenerator) : base(appName, request, session) {
+		this.urlGenerator = urlGenerator;
 	}
 
 	/**
@@ -37,7 +35,7 @@ abstract class AuthPublicShareController extends PublicShareController {
 	 *
 	 * @since 14.0.0
 	 */
-	public function showAuthenticate(): TemplateResponse {
+	public TemplateResponse showAuthenticate() {
 		return new TemplateResponse('core', 'publicshareauth', [], 'guest');
 	}
 
@@ -88,24 +86,24 @@ abstract class AuthPublicShareController extends PublicShareController {
 	 */
 	final public function authenticate(string password = '') {
 		// Already authenticated
-		if (this->isAuthenticated()) {
-			return this->getRedirect();
+		if (this.isAuthenticated()) {
+			return this.getRedirect();
 		}
 
-		if (!this->verifyPassword(password)) {
-			this->authFailed();
-			response = this->showAuthFailed();
-			response->throttle();
+		if (!this.verifyPassword(password)) {
+			this.authFailed();
+			response = this.showAuthFailed();
+			response.throttle();
 			return response;
 		}
 
-		this->session->regenerateId(true, true);
-		response = this->getRedirect();
+		this.session.regenerateId(true, true);
+		response = this.getRedirect();
 
-		this->session->set('public_link_authenticated_token', this->getToken());
-		this->session->set('public_link_authenticated_password_hash', this->getPasswordHash());
+		this.session.set('public_link_authenticated_token', this.getToken());
+		this.session.set('public_link_authenticated_password_hash', this.getPasswordHash());
 
-		this->authSucceeded();
+		this.authSucceeded();
 
 		return response;
 	}
@@ -122,7 +120,7 @@ abstract class AuthPublicShareController extends PublicShareController {
 	 */
 	final public function getAuthenticationRedirect(string redirect): RedirectResponse {
 		return new RedirectResponse(
-			this->urlGenerator->linkToRoute(this->getRoute('showAuthenticate'), ['token' => this->getToken(), 'redirect' => redirect])
+			this.urlGenerator.linkToRoute(this.getRoute('showAuthenticate'), ['token' => this.getToken(), 'redirect' => redirect])
 		);
 	}
 
@@ -130,8 +128,8 @@ abstract class AuthPublicShareController extends PublicShareController {
 	 * @since 14.0.0
 	 */
 	private function getRoute(string function): string {
-		app = strtolower(this->appName);
-		class = strtolower((new \ReflectionClass(this))->getShortName());
+		app = strtolower(this.appName);
+		class = strtolower((new \ReflectionClass(this)).getShortName());
 
 		return app . '.' . class . '.' . function;
 	}
@@ -141,13 +139,13 @@ abstract class AuthPublicShareController extends PublicShareController {
 	 */
 	private function getRedirect(): RedirectResponse {
 		//Get all the stored redirect parameters:
-		params = this->session->get('public_link_authenticate_redirect');
+		params = this.session.get('public_link_authenticate_redirect');
 
-		route = this->getRoute('showShare');
+		route = this.getRoute('showShare');
 
 		if (params === null) {
 			params = [
-				'token' => this->getToken(),
+				'token' => this.getToken(),
 			];
 		} else {
 			params = json_decode(params, true);
@@ -157,7 +155,7 @@ abstract class AuthPublicShareController extends PublicShareController {
 			}
 		}
 
-		return new RedirectResponse(this->urlGenerator->linkToRoute(route, params));
+		return new RedirectResponse(this.urlGenerator.linkToRoute(route, params));
 	}
 }
 

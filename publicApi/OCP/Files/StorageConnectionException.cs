@@ -17,8 +17,8 @@ namespace OCP.Files
      */
     public StorageConnectionException(string message = "", Exception previous = null)
     {
-        //l = \OC::server->getL10N('core');
-        //parent::__construct(l->t('Storage connection error. %s', [message]), self::STATUS_NETWORK_ERROR, previous);
+        //l = \OC::server.getL10N('core');
+        //parent::__construct(l.t('Storage connection error. %s', [message]), self::STATUS_NETWORK_ERROR, previous);
     }
 }
 

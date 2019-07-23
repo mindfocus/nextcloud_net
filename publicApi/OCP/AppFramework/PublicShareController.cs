@@ -29,7 +29,7 @@ abstract class PublicShareController : Controller {
 								IRequest request,
 								ISession session) : base(appName,request) {
 
-		this->session = session;
+		this.session = session;
 	}
 
 	/**
@@ -38,7 +38,7 @@ abstract class PublicShareController : Controller {
 	 * @since 14.0.0
 	 */
 	final public function setToken(string token) {
-		this->token = token;
+		this.token = token;
 	}
 
 	/**
@@ -47,7 +47,7 @@ abstract class PublicShareController : Controller {
 	 * @since 14.0.0
 	 */
 	final public function getToken(): string {
-		return this->token;
+		return this.token;
 	}
 
 	/**
@@ -83,13 +83,13 @@ abstract class PublicShareController : Controller {
 	 */
 	final public function isAuthenticated(): bool {
 		// Always authenticated against non password protected shares
-		if (!this->isPasswordProtected()) {
+		if (!this.isPasswordProtected()) {
 			return true;
 		}
 
 		// If we are authenticated properly
-		if (this->session->get('public_link_authenticated_token') === this->getToken() &&
-			this->session->get('public_link_authenticated_password_hash') === this->getPasswordHash()) {
+		if (this.session.get('public_link_authenticated_token') === this.getToken() &&
+			this.session.get('public_link_authenticated_password_hash') === this.getPasswordHash()) {
 			return true;
 		}
 

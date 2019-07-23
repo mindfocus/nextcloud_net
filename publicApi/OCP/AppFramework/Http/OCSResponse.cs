@@ -28,20 +28,20 @@ namespace OCP.AppFramework.Http
     public function __construct(format, statuscode, message,
         data=[], itemscount='',
     itemsperpage='') {
-        this->format = format;
-        this->statuscode = statuscode;
-        this->message = message;
-        this->data = data;
-        this->itemscount = itemscount;
-        this->itemsperpage = itemsperpage;
+        this.format = format;
+        this.statuscode = statuscode;
+        this.message = message;
+        this.data = data;
+        this.itemscount = itemscount;
+        this.itemsperpage = itemsperpage;
 
         // set the correct header based on the format parameter
         if (format === 'json') {
-            this->addHeader(
+            this.addHeader(
                 'Content-Type', 'application/json; charset=utf-8'
             );
         } else {
-            this->addHeader(
+            this.addHeader(
                 'Content-Type', 'application/xml; charset=utf-8'
             );
         }
@@ -54,11 +54,11 @@ namespace OCP.AppFramework.Http
      * @suppress PhanDeprecatedClass
      */
     public function render() {
-        r = new \OC\OCS\Result(this->data, this->statuscode, this->message);
-        r->setTotalItems(this->itemscount);
-        r->setItemsPerPage(this->itemsperpage);
+        r = new \OC\OCS\Result(this.data, this.statuscode, this.message);
+        r.setTotalItems(this.itemscount);
+        r.setItemsPerPage(this.itemsperpage);
 
-        return \OC_API::renderResult(this->format, r->getMeta(), r->getData());
+        return \OC_API::renderResult(this.format, r.getMeta(), r.getData());
     }
 
 

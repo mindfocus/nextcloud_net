@@ -21,9 +21,9 @@ namespace OCP.Federation.Exceptions
      *
      */
     public AuthenticationFailedException() :base("",""){
-        //l = \OC::server->getL10N('federation');
+        //l = \OC::server.getL10N('federation');
         //message = 'Authentication failed, wrong token or provider ID given';
-        //hint = l->t('Authentication failed, wrong token or provider ID given');
+        //hint = l.t('Authentication failed, wrong token or provider ID given');
         //parent::__construct(message, hint);
     }
 

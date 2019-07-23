@@ -15,10 +15,10 @@ namespace OCP.Security
      *
      * Usage:
      * // Hashing a message
-     * hash = \OC::server->getHasher()->hash('MessageToHash');
+     * hash = \OC::server.getHasher().hash('MessageToHash');
      * // Verifying a message - newHash will contain the newly calculated hash
      * newHash = null;
-     * var_dump(\OC::server->getHasher()->verify('a', '86f7e437faa5a7fce15d1ddcb9eaeaea377667b8', newHash));
+     * var_dump(\OC::server.getHasher().verify('a', '86f7e437faa5a7fce15d1ddcb9eaeaea377667b8', newHash));
      * var_dump(newHash);
      *
      * @package OCP\Security

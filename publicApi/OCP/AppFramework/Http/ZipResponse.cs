@@ -16,8 +16,8 @@ namespace OCP.AppFramework.Http
      * @since 15.0.0
      */
     public function __construct(IRequest request, string name = 'output') {
-        this->name = name;
-        this->request = request;
+        this.name = name;
+        this.request = request;
     }
 
     /**
@@ -28,7 +28,7 @@ namespace OCP.AppFramework.Http
             throw new \InvalidArgumentException('No resource provided');
         }
 
-        this->resources[] = [
+        this.resources[] = [
         'resource' => r,
         'internalName' => internalName,
         'size' => size,
@@ -41,20 +41,20 @@ namespace OCP.AppFramework.Http
      */
     public function callback(IOutput output) {
         size = 0;
-        files = count(this->resources);
+        files = count(this.resources);
 
-        foreach (this->resources as resource) {
+        foreach (this.resources as resource) {
             size += resource['size'];
         }
 
-        zip = new Streamer(this->request, size, files);
-        zip->sendHeaders(this->name);
+        zip = new Streamer(this.request, size, files);
+        zip.sendHeaders(this.name);
 
-        foreach (this->resources as resource) {
-            zip->addFileFromStream(resource['resource'], resource['internalName'], resource['size'], resource['time']);
+        foreach (this.resources as resource) {
+            zip.addFileFromStream(resource['resource'], resource['internalName'], resource['size'], resource['time']);
         }
 
-        zip->finalize();
+        zip.finalize();
     }
     }
 

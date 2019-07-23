@@ -26,18 +26,18 @@ namespace OCP.Migration
         /** @var ISchemaWrapper schema */
         schema = schemaClosure();
 
-        tables = this->getColumnsByTable();
+        tables = this.getColumnsByTable();
 
         foreach (tables as tableName => columns) {
-            table = schema->getTable(tableName);
+            table = schema.getTable(tableName);
 
             foreach (columns as columnName)
             {
-                column = table->getColumn(columnName);
-                if (column->getType()->getName() !== Type::BIGINT)
+                column = table.getColumn(columnName);
+                if (column.getType().getName() !== Type::BIGINT)
                 {
-                    column->setType(Type::getType(Type::BIGINT));
-                    column->setOptions(['length' => 20]);
+                    column.setType(Type::getType(Type::BIGINT));
+                    column.setOptions(['length' => 20]);
                 }
             }
         }

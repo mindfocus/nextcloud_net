@@ -27,13 +27,13 @@ namespace OCP.AppFramework.Http.Template
     public function render(): string {
         return '<li>' .
         '<a id="directLink-container">' .
-        '<span class="icon ' . Util::sanitizeHTML(this->getIcon()) . '"></span>' .
-        '<label for="directLink">' . Util::sanitizeHTML(this->getLabel()) . '</label>' .
+        '<span class="icon ' . Util::sanitizeHTML(this.getIcon()) . '"></span>' .
+        '<label for="directLink">' . Util::sanitizeHTML(this.getLabel()) . '</label>' .
         '</a>' .
         '</li>' .
         '<li>' .
         '<span class="menuitem">' .
-        '<input id="directLink" type="text" readonly="" value="' . Util::sanitizeHTML(this->getLink()) . '">' .
+        '<input id="directLink" type="text" readonly="" value="' . Util::sanitizeHTML(this.getLink()) . '">' .
         '</span>' .
         '</li>';
     }

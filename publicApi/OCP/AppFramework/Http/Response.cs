@@ -74,13 +74,13 @@ class Response {
 			// Set expires header
 			var expires = new DateTime();
 			/** @var ITimeFactory time */
-			var time = \OC::server->query(ITimeFactory::class);
-			expires.setTimestamp(time->getTime());
-			expires->add(new \DateInterval('PT'.cacheSeconds.'S'));
-			this->addHeader('Expires', expires->format(\DateTime::RFC2822));
+			var time = \OC::server.query(ITimeFactory::class);
+			expires.setTimestamp(time.getTime());
+			expires.add(new \DateInterval('PT'.cacheSeconds.'S'));
+			this.addHeader('Expires', expires.format(\DateTime::RFC2822));
 		} else {
-			this->addHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
-			unset(this->headers['Expires'], this->headers['Pragma']);
+			this.addHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
+			unset(this.headers['Expires'], this.headers['Pragma']);
 		}
 
 		return this;
@@ -97,7 +97,7 @@ class Response {
 	 * @since 8.0.0
 	 */
 	public function addCookie(name, value, \DateTime expireDate = null) {
-		this->cookies[name] = array('value' => value, 'expireDate' => expireDate);
+		this.cookies[name] = array('value' => value, 'expireDate' => expireDate);
 		return this;
 	}
 
@@ -109,7 +109,7 @@ class Response {
 	 * @since 8.0.0
 	 */
 	public function setCookies(array cookies) {
-		this->cookies = cookies;
+		this.cookies = cookies;
 		return this;
 	}
 
@@ -121,7 +121,7 @@ class Response {
 	 * @since 8.0.0
 	 */
 	public function invalidateCookie(name) {
-		this->addCookie(name, 'expired', new \DateTime('1971-01-01 00:00'));
+		this.addCookie(name, 'expired', new \DateTime('1971-01-01 00:00'));
 		return this;
 	}
 
@@ -133,7 +133,7 @@ class Response {
 	 */
 	public function invalidateCookies(array cookieNames) {
 		foreach(cookieNames as cookieName) {
-			this->invalidateCookie(cookieName);
+			this.invalidateCookie(cookieName);
 		}
 		return this;
 	}
@@ -144,7 +144,7 @@ class Response {
 	 * @since 8.0.0
 	 */
 	public function getCookies() {
-		return this->cookies;
+		return this.cookies;
 	}
 
 	/**
@@ -161,9 +161,9 @@ class Response {
 		                      // headers
 
 		if(is_null(value)) {
-			unset(this->headers[name]);
+			unset(this.headers[name]);
 		} else {
-			this->headers[name] = value;
+			this.headers[name] = value;
 		}
 
 		return this;
@@ -177,7 +177,7 @@ class Response {
 	 * @since 8.0.0
 	 */
 	public function setHeaders(array headers) {
-		this->headers = headers;
+		this.headers = headers;
 
 		return this;
 	}
@@ -191,22 +191,22 @@ class Response {
 	public function getHeaders() {
 		mergeWith = [];
 
-		if(this->lastModified) {
+		if(this.lastModified) {
 			mergeWith['Last-Modified'] =
-				this->lastModified->format(\DateTime::RFC2822);
+				this.lastModified.format(\DateTime::RFC2822);
 		}
 
 		// Build Content-Security-Policy and use default if none has been specified
-		if(is_null(this->contentSecurityPolicy)) {
-			this->setContentSecurityPolicy(new ContentSecurityPolicy());
+		if(is_null(this.contentSecurityPolicy)) {
+			this.setContentSecurityPolicy(new ContentSecurityPolicy());
 		}
-		this->headers['Content-Security-Policy'] = this->contentSecurityPolicy->buildPolicy();
+		this.headers['Content-Security-Policy'] = this.contentSecurityPolicy.buildPolicy();
 
-		if(this->ETag) {
-			mergeWith['ETag'] = '"' . this->ETag . '"';
+		if(this.ETag) {
+			mergeWith['ETag'] = '"' . this.ETag . '"';
 		}
 
-		return array_merge(mergeWith, this->headers);
+		return array_merge(mergeWith, this.headers);
 	}
 
 
@@ -227,7 +227,7 @@ class Response {
 	 * @since 6.0.0 - return value was added in 7.0.0
 	 */
 	public function setStatus(status) {
-		this->status = status;
+		this.status = status;
 
 		return this;
 	}
@@ -239,7 +239,7 @@ class Response {
 	 * @since 8.1.0
 	 */
 	public function setContentSecurityPolicy(EmptyContentSecurityPolicy csp) {
-		this->contentSecurityPolicy = csp;
+		this.contentSecurityPolicy = csp;
 		return this;
 	}
 
@@ -250,7 +250,7 @@ class Response {
 	 * @since 8.1.0
 	 */
 	public function getContentSecurityPolicy() {
-		return this->contentSecurityPolicy;
+		return this.contentSecurityPolicy;
 	}
 
 
@@ -259,7 +259,7 @@ class Response {
 	 * @since 6.0.0
 	 */
 	public function getStatus() {
-		return this->status;
+		return this.status;
 	}
 
 
@@ -269,7 +269,7 @@ class Response {
 	 * @since 6.0.0
 	 */
 	public function getETag() {
-		return this->ETag;
+		return this.ETag;
 	}
 
 
@@ -279,7 +279,7 @@ class Response {
 	 * @since 6.0.0
 	 */
 	public function getLastModified() {
-		return this->lastModified;
+		return this.lastModified;
 	}
 
 
@@ -290,7 +290,7 @@ class Response {
 	 * @since 6.0.0 - return value was added in 7.0.0
 	 */
 	public function setETag(ETag) {
-		this->ETag = ETag;
+		this.ETag = ETag;
 
 		return this;
 	}
@@ -303,7 +303,7 @@ class Response {
 	 * @since 6.0.0 - return value was added in 7.0.0
 	 */
 	public function setLastModified(lastModified) {
-		this->lastModified = lastModified;
+		this.lastModified = lastModified;
 
 		return this;
 	}
@@ -316,8 +316,8 @@ class Response {
 	 * @since 12.0.0
 	 */
 	public function throttle(array metadata = []) {
-		this->throttled = true;
-		this->throttleMetadata = metadata;
+		this.throttled = true;
+		this.throttleMetadata = metadata;
 	}
 
 	/**
@@ -327,7 +327,7 @@ class Response {
 	 * @since 13.0.0
 	 */
 	public function getThrottleMetadata() {
-		return this->throttleMetadata;
+		return this.throttleMetadata;
 	}
 
 	/**
@@ -336,7 +336,7 @@ class Response {
 	 * @since 12.0.0
 	 */
 	public function isThrottled() {
-		return this->throttled;
+		return this.throttled;
 	}
 }
 }

@@ -49,7 +49,7 @@ namespace OC
         IList<string> getKeys()
         {
             return this.cache.Keys.ToList();
-            //return array_keys(this->cache);
+            //return array_keys(this.cache);
         }
 
         /**
@@ -175,10 +175,10 @@ namespace OC
         private void readData()
         {
 //		// Default config should always get loaded
-//		var configFiles = array(this->configFilePath);
+//		var configFiles = array(this.configFilePath);
 //
 //		// Add all files in the config dir ending with the same file name
-//		extra = glob(this->configDir.'*.'.this->configFileName);
+//		extra = glob(this.configDir.'*.'.this.configFileName);
 //            if (is_array(extra))
 //            {
 //                natsort(extra);
@@ -189,7 +189,7 @@ namespace OC
 //            foreach (configFiles as file) {
 //			fileExistsAndIsReadable = file_exists(file) && is_readable(file);
 //			filePointer = fileExistsAndIsReadable? fopen(file, 'r') : false;
-//                if (file === this->configFilePath &&
+//                if (file === this.configFilePath &&
 //    				filePointer === false) {
 //                    // Opening the main config might not be possible, e.g. if the wrong
 //                    // permissions are set (likely on a new installation)
@@ -206,7 +206,7 @@ namespace OC
 //                include file;
 //                if (isset(CONFIG) && is_array(CONFIG))
 //                {
-//				this->cache = array_merge(this->cache, CONFIG);
+//				this.cache = array_merge(this.cache, CONFIG);
 //                }
 //
 //                // Close the file pointer and release the lock
@@ -228,21 +228,21 @@ namespace OC
 //		// Create a php file ...
 //		content = "<?php\n";
 //		content.= 'CONFIG = ';
-//		content.= var_export(this->cache, true);
+//		content.= var_export(this.cache, true);
 //		content.= ";\n";
 //
-//            touch(this->configFilePath);
-//		filePointer = fopen(this->configFilePath, 'r+');
+//            touch(this.configFilePath);
+//		filePointer = fopen(this.configFilePath, 'r+');
 //
 //            // Prevent others not to read the config
-//            chmod(this->configFilePath, 0640);
+//            chmod(this.configFilePath, 0640);
 //
 //            // File does not exist, this can happen when doing a fresh install
 //            if (!is_resource(filePointer))
 //            {
 //			// TODO fix this via DI once it is very clear that this doesn't cause side effects due to initialization order
 //			// currently this breaks app routes but also could have other side effects especially during setup and exception handling
-//			url = \OC::server->getURLGenerator()->linkToDocs('admin-dir_permissions');
+//			url = \OC::server.getURLGenerator().linkToDocs('admin-dir_permissions');
 //                throw new HintException(
 //                    "Can't write into config directory!",
 //                    'This can usually be fixed by giving the webserver write access to the config directory. See '. url);
@@ -251,7 +251,7 @@ namespace OC
 //            // Try to acquire a file lock
 //            if (!flock(filePointer, LOCK_EX))
 //            {
-//                throw new \Exception(sprintf('Could not acquire an exclusive lock on the config file %s', this->configFilePath));
+//                throw new \Exception(sprintf('Could not acquire an exclusive lock on the config file %s', this.configFilePath));
 //            }
 //
 //            // Write the config and release the lock
@@ -263,7 +263,7 @@ namespace OC
 //
 //            if (function_exists('opcache_invalidate'))
 //            {
-//                @opcache_invalidate(this->configFilePath, true);
+//                @opcache_invalidate(this.configFilePath, true);
 //            }
 //        }
         }

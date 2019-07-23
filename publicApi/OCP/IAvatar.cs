@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.IO;
 using System.Text;
+using OCP.Files;
 
 namespace OCP
 {
@@ -10,7 +10,7 @@ namespace OCP
      * This class provides avatar functionality
      * @since 6.0.0
      */
-    interface IAvatar
+    public interface IAvatar
     {
 
         /**

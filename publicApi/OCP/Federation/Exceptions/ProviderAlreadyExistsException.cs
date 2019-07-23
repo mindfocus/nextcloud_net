@@ -23,9 +23,9 @@ namespace OCP.Federation.Exceptions
      * @param string existingProviderName name of cloud federation provider which already use the same ID
      */
     public ProviderAlreadyExistsException(string newProviderId, string existingProviderName) {
-        //l = \OC::server->getL10N('federation');
+        //l = \OC::server.getL10N('federation');
         //message = 'ID "' . newProviderId . '" already used by cloud federation provider "' . existingProviderName . '"';
-        //hint = l->t('ID "%1s" already used by cloud federation provider "%2s"', [newProviderId, existingProviderName]);
+        //hint = l.t('ID "%1s" already used by cloud federation provider "%2s"', [newProviderId, existingProviderName]);
         //parent::__construct(message, hint);
     }
 

@@ -62,7 +62,7 @@ public class EmptyContentSecurityPolicy {
 	 * @deprecated 10.0 CSP tokens are now used
 	 */
 	public function allowInlineScript(state = false) {
-		this->inlineScriptAllowed = state;
+		this.inlineScriptAllowed = state;
 		return this;
 	}
 
@@ -74,7 +74,7 @@ public class EmptyContentSecurityPolicy {
 	 * @since 11.0.0
 	 */
 	public function useJsNonce(nonce) {
-		this->useJsNonce = nonce;
+		this.useJsNonce = nonce;
 		return this;
 	}
 
@@ -85,7 +85,7 @@ public class EmptyContentSecurityPolicy {
 	 * @since 8.1.0
 	 */
 	public function allowEvalScript(state = true) {
-		this->evalScriptAllowed = state;
+		this.evalScriptAllowed = state;
 		return this;
 	}
 
@@ -97,7 +97,7 @@ public class EmptyContentSecurityPolicy {
 	 * @since 8.1.0
 	 */
 	public function addAllowedScriptDomain(domain) {
-		this->allowedScriptDomains[] = domain;
+		this.allowedScriptDomains[] = domain;
 		return this;
 	}
 
@@ -109,7 +109,7 @@ public class EmptyContentSecurityPolicy {
 	 * @since 8.1.0
 	 */
 	public function disallowScriptDomain(domain) {
-		this->allowedScriptDomains = array_diff(this->allowedScriptDomains, [domain]);
+		this.allowedScriptDomains = array_diff(this.allowedScriptDomains, [domain]);
 		return this;
 	}
 
@@ -120,7 +120,7 @@ public class EmptyContentSecurityPolicy {
 	 * @since 8.1.0
 	 */
 	public function allowInlineStyle(state = true) {
-		this->inlineStyleAllowed = state;
+		this.inlineStyleAllowed = state;
 		return this;
 	}
 
@@ -132,7 +132,7 @@ public class EmptyContentSecurityPolicy {
 	 * @since 8.1.0
 	 */
 	public function addAllowedStyleDomain(domain) {
-		this->allowedStyleDomains[] = domain;
+		this.allowedStyleDomains[] = domain;
 		return this;
 	}
 
@@ -144,7 +144,7 @@ public class EmptyContentSecurityPolicy {
 	 * @since 8.1.0
 	 */
 	public function disallowStyleDomain(domain) {
-		this->allowedStyleDomains = array_diff(this->allowedStyleDomains, [domain]);
+		this.allowedStyleDomains = array_diff(this.allowedStyleDomains, [domain]);
 		return this;
 	}
 
@@ -156,7 +156,7 @@ public class EmptyContentSecurityPolicy {
 	 * @since 8.1.0
 	 */
 	public function addAllowedFontDomain(domain) {
-		this->allowedFontDomains[] = domain;
+		this.allowedFontDomains[] = domain;
 		return this;
 	}
 
@@ -168,7 +168,7 @@ public class EmptyContentSecurityPolicy {
 	 * @since 8.1.0
 	 */
 	public function disallowFontDomain(domain) {
-		this->allowedFontDomains = array_diff(this->allowedFontDomains, [domain]);
+		this.allowedFontDomains = array_diff(this.allowedFontDomains, [domain]);
 		return this;
 	}
 
@@ -180,7 +180,7 @@ public class EmptyContentSecurityPolicy {
 	 * @since 8.1.0
 	 */
 	public function addAllowedImageDomain(domain) {
-		this->allowedImageDomains[] = domain;
+		this.allowedImageDomains[] = domain;
 		return this;
 	}
 
@@ -192,7 +192,7 @@ public class EmptyContentSecurityPolicy {
 	 * @since 8.1.0
 	 */
 	public function disallowImageDomain(domain) {
-		this->allowedImageDomains = array_diff(this->allowedImageDomains, [domain]);
+		this.allowedImageDomains = array_diff(this.allowedImageDomains, [domain]);
 		return this;
 	}
 
@@ -203,7 +203,7 @@ public class EmptyContentSecurityPolicy {
 	 * @since 8.1.0
 	 */
 	public function addAllowedConnectDomain(domain) {
-		this->allowedConnectDomains[] = domain;
+		this.allowedConnectDomains[] = domain;
 		return this;
 	}
 
@@ -215,7 +215,7 @@ public class EmptyContentSecurityPolicy {
 	 * @since 8.1.0
 	 */
 	public function disallowConnectDomain(domain) {
-		this->allowedConnectDomains = array_diff(this->allowedConnectDomains, [domain]);
+		this.allowedConnectDomains = array_diff(this.allowedConnectDomains, [domain]);
 		return this;
 	}
 
@@ -226,7 +226,7 @@ public class EmptyContentSecurityPolicy {
 	 * @since 8.1.0
 	 */
 	public function addAllowedMediaDomain(domain) {
-		this->allowedMediaDomains[] = domain;
+		this.allowedMediaDomains[] = domain;
 		return this;
 	}
 
@@ -238,7 +238,7 @@ public class EmptyContentSecurityPolicy {
 	 * @since 8.1.0
 	 */
 	public function disallowMediaDomain(domain) {
-		this->allowedMediaDomains = array_diff(this->allowedMediaDomains, [domain]);
+		this.allowedMediaDomains = array_diff(this.allowedMediaDomains, [domain]);
 		return this;
 	}
 
@@ -249,7 +249,7 @@ public class EmptyContentSecurityPolicy {
 	 * @since 8.1.0
 	 */
 	public function addAllowedObjectDomain(domain) {
-		this->allowedObjectDomains[] = domain;
+		this.allowedObjectDomains[] = domain;
 		return this;
 	}
 
@@ -261,7 +261,7 @@ public class EmptyContentSecurityPolicy {
 	 * @since 8.1.0
 	 */
 	public function disallowObjectDomain(domain) {
-		this->allowedObjectDomains = array_diff(this->allowedObjectDomains, [domain]);
+		this.allowedObjectDomains = array_diff(this.allowedObjectDomains, [domain]);
 		return this;
 	}
 
@@ -272,7 +272,7 @@ public class EmptyContentSecurityPolicy {
 	 * @since 8.1.0
 	 */
 	public function addAllowedFrameDomain(domain) {
-		this->allowedFrameDomains[] = domain;
+		this.allowedFrameDomains[] = domain;
 		return this;
 	}
 
@@ -284,7 +284,7 @@ public class EmptyContentSecurityPolicy {
 	 * @since 8.1.0
 	 */
 	public function disallowFrameDomain(domain) {
-		this->allowedFrameDomains = array_diff(this->allowedFrameDomains, [domain]);
+		this.allowedFrameDomains = array_diff(this.allowedFrameDomains, [domain]);
 		return this;
 	}
 
@@ -296,7 +296,7 @@ public class EmptyContentSecurityPolicy {
 	 * @deprecated 15.0.0 use addAllowedWorkerSrcDomains or addAllowedFrameDomain
 	 */
 	public function addAllowedChildSrcDomain(domain) {
-		this->allowedChildSrcDomains[] = domain;
+		this.allowedChildSrcDomains[] = domain;
 		return this;
 	}
 
@@ -309,7 +309,7 @@ public class EmptyContentSecurityPolicy {
 	 * @deprecated 15.0.0 use the WorkerSrcDomains or FrameDomain
 	 */
 	public function disallowChildSrcDomain(domain) {
-		this->allowedChildSrcDomains = array_diff(this->allowedChildSrcDomains, [domain]);
+		this.allowedChildSrcDomains = array_diff(this.allowedChildSrcDomains, [domain]);
 		return this;
 	}
 
@@ -321,7 +321,7 @@ public class EmptyContentSecurityPolicy {
 	 * @since 13.0.0
 	 */
 	public function addAllowedFrameAncestorDomain(domain) {
-		this->allowedFrameAncestors[] = domain;
+		this.allowedFrameAncestors[] = domain;
 		return this;
 	}
 
@@ -333,7 +333,7 @@ public class EmptyContentSecurityPolicy {
 	 * @since 13.0.0
 	 */
 	public function disallowFrameAncestorDomain(domain) {
-		this->allowedFrameAncestors = array_diff(this->allowedFrameAncestors, [domain]);
+		this.allowedFrameAncestors = array_diff(this.allowedFrameAncestors, [domain]);
 		return this;
 	}
 
@@ -345,7 +345,7 @@ public class EmptyContentSecurityPolicy {
 	 * @since 15.0.0
 	 */
 	public function addAllowedWorkerSrcDomain(string domain) {
-		this->allowedWorkerSrcDomains[] = domain;
+		this.allowedWorkerSrcDomains[] = domain;
 		return this;
 	}
 
@@ -357,7 +357,7 @@ public class EmptyContentSecurityPolicy {
 	 * @since 15.0.0
 	 */
 	public function disallowWorkerSrcDomain(string domain) {
-		this->allowedWorkerSrcDomains = array_diff(this->allowedWorkerSrcDomains, [domain]);
+		this.allowedWorkerSrcDomains = array_diff(this.allowedWorkerSrcDomains, [domain]);
 		return this;
 	}
 
@@ -369,7 +369,7 @@ public class EmptyContentSecurityPolicy {
 	 * @since 15.0.0
 	 */
 	public function addReportTo(string location) {
-		this->reportTo[] = location;
+		this.reportTo[] = location;
 		return this;
 	}
 
@@ -383,87 +383,87 @@ public class EmptyContentSecurityPolicy {
 		policy .= "base-uri 'none';";
 		policy .= "manifest-src 'self';";
 
-		if(!empty(this->allowedScriptDomains) || this->inlineScriptAllowed || this->evalScriptAllowed) {
+		if(!empty(this.allowedScriptDomains) || this.inlineScriptAllowed || this.evalScriptAllowed) {
 			policy .= 'script-src ';
-			if(is_string(this->useJsNonce)) {
-				policy .= '\'nonce-'.base64_encode(this->useJsNonce).'\'';
-				allowedScriptDomains = array_flip(this->allowedScriptDomains);
+			if(is_string(this.useJsNonce)) {
+				policy .= '\'nonce-'.base64_encode(this.useJsNonce).'\'';
+				allowedScriptDomains = array_flip(this.allowedScriptDomains);
 				unset(allowedScriptDomains['\'self\'']);
-				this->allowedScriptDomains = array_flip(allowedScriptDomains);
+				this.allowedScriptDomains = array_flip(allowedScriptDomains);
 				if(count(allowedScriptDomains) !== 0) {
 					policy .= ' ';
 				}
 			}
-			if(is_array(this->allowedScriptDomains)) {
-				policy .= implode(' ', this->allowedScriptDomains);
+			if(is_array(this.allowedScriptDomains)) {
+				policy .= implode(' ', this.allowedScriptDomains);
 			}
-			if(this->inlineScriptAllowed) {
+			if(this.inlineScriptAllowed) {
 				policy .= ' \'unsafe-inline\'';
 			}
-			if(this->evalScriptAllowed) {
+			if(this.evalScriptAllowed) {
 				policy .= ' \'unsafe-eval\'';
 			}
 			policy .= ';';
 		}
 
-		if(!empty(this->allowedStyleDomains) || this->inlineStyleAllowed) {
+		if(!empty(this.allowedStyleDomains) || this.inlineStyleAllowed) {
 			policy .= 'style-src ';
-			if(is_array(this->allowedStyleDomains)) {
-				policy .= implode(' ', this->allowedStyleDomains);
+			if(is_array(this.allowedStyleDomains)) {
+				policy .= implode(' ', this.allowedStyleDomains);
 			}
-			if(this->inlineStyleAllowed) {
+			if(this.inlineStyleAllowed) {
 				policy .= ' \'unsafe-inline\'';
 			}
 			policy .= ';';
 		}
 
-		if(!empty(this->allowedImageDomains)) {
-			policy .= 'img-src ' . implode(' ', this->allowedImageDomains);
+		if(!empty(this.allowedImageDomains)) {
+			policy .= 'img-src ' . implode(' ', this.allowedImageDomains);
 			policy .= ';';
 		}
 
-		if(!empty(this->allowedFontDomains)) {
-			policy .= 'font-src ' . implode(' ', this->allowedFontDomains);
+		if(!empty(this.allowedFontDomains)) {
+			policy .= 'font-src ' . implode(' ', this.allowedFontDomains);
 			policy .= ';';
 		}
 
-		if(!empty(this->allowedConnectDomains)) {
-			policy .= 'connect-src ' . implode(' ', this->allowedConnectDomains);
+		if(!empty(this.allowedConnectDomains)) {
+			policy .= 'connect-src ' . implode(' ', this.allowedConnectDomains);
 			policy .= ';';
 		}
 
-		if(!empty(this->allowedMediaDomains)) {
-			policy .= 'media-src ' . implode(' ', this->allowedMediaDomains);
+		if(!empty(this.allowedMediaDomains)) {
+			policy .= 'media-src ' . implode(' ', this.allowedMediaDomains);
 			policy .= ';';
 		}
 
-		if(!empty(this->allowedObjectDomains)) {
-			policy .= 'object-src ' . implode(' ', this->allowedObjectDomains);
+		if(!empty(this.allowedObjectDomains)) {
+			policy .= 'object-src ' . implode(' ', this.allowedObjectDomains);
 			policy .= ';';
 		}
 
-		if(!empty(this->allowedFrameDomains)) {
-			policy .= 'frame-src ' . implode(' ', this->allowedFrameDomains);
+		if(!empty(this.allowedFrameDomains)) {
+			policy .= 'frame-src ' . implode(' ', this.allowedFrameDomains);
 			policy .= ';';
 		}
 
-		if(!empty(this->allowedChildSrcDomains)) {
-			policy .= 'child-src ' . implode(' ', this->allowedChildSrcDomains);
+		if(!empty(this.allowedChildSrcDomains)) {
+			policy .= 'child-src ' . implode(' ', this.allowedChildSrcDomains);
 			policy .= ';';
 		}
 
-		if(!empty(this->allowedFrameAncestors)) {
-			policy .= 'frame-ancestors ' . implode(' ', this->allowedFrameAncestors);
+		if(!empty(this.allowedFrameAncestors)) {
+			policy .= 'frame-ancestors ' . implode(' ', this.allowedFrameAncestors);
 			policy .= ';';
 		}
 
-		if (!empty(this->allowedWorkerSrcDomains)) {
-			policy .= 'worker-src ' . implode(' ', this->allowedWorkerSrcDomains);
+		if (!empty(this.allowedWorkerSrcDomains)) {
+			policy .= 'worker-src ' . implode(' ', this.allowedWorkerSrcDomains);
 			policy .= ';';
 		}
 
-		if (!empty(this->reportTo)) {
-			policy .= 'report-uri ' . implode(' ', this->reportTo);
+		if (!empty(this.reportTo)) {
+			policy .= 'report-uri ' . implode(' ', this.reportTo);
 			policy .= ';';
 		}
 

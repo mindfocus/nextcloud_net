@@ -20,7 +20,7 @@ namespace OCP.AppFramework.Http
      * @since 8.0.0
      */
     public function __construct(data, filename, contentType) {
-        this->data = data;
+        this.data = data;
         parent::__construct(filename, contentType);
     }
 
@@ -29,7 +29,7 @@ namespace OCP.AppFramework.Http
      * @since 8.0.0
      */
     public function setData(data) {
-        this->data = data;
+        this.data = data;
     }
 
     /**
@@ -37,7 +37,7 @@ namespace OCP.AppFramework.Http
      * @since 8.0.0
      */
     public function render() {
-        return this->data;
+        return this.data;
     }
     }
 

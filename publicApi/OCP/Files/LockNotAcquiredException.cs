@@ -17,7 +17,7 @@ namespace OCP.Files
      */
     public LockNotAcquiredException(string path, int lockType, int code = 0, Exception previous = null)
     {
-        //message = \OC::server->getL10N('core')->t('Could not obtain lock type %d on "%s".', array(lockType, path));
+        //message = \OC::server.getL10N('core').t('Could not obtain lock type %d on "%s".', array(lockType, path));
         //parent::__construct(message, code, previous);
 
     }
@@ -30,7 +30,7 @@ namespace OCP.Files
      */
     //public function __toString()
     //{
-    //    return __CLASS__. ": [{this->code}]: {this->message}\n";
+    //    return __CLASS__. ": [{this.code}]: {this.message}\n";
     //}
 }
 

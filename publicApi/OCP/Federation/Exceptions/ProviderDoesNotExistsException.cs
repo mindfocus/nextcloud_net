@@ -22,9 +22,9 @@ namespace OCP.Federation.Exceptions
      * @param string providerId cloud federation provider ID
      */
     public ProviderDoesNotExistsException(string providerId): base("","",0,null) {
-        //l = \OC::server->getL10N('federation');
+        //l = \OC::server.getL10N('federation');
         //message = 'Cloud Federation Provider with ID: "' . providerId . '" does not exist.';
-        //hint = l->t('Cloud Federation Provider with ID: "%s" does not exist.', [providerId]);
+        //hint = l.t('Cloud Federation Provider with ID: "%s" does not exist.', [providerId]);
         //parent::__construct(message, hint);
     }
 

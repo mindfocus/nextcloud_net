@@ -132,7 +132,7 @@ public interface ILogger {
 	 * context.
 	 *
 	 * <code>
-	 * logger->logException(ex, [
+	 * logger.logException(ex, [
 	 *     'message' => 'Exception during background job execution'
 	 * ]);
 	 * </code>

@@ -166,7 +166,7 @@ namespace OCP
          T getUserValue<T>(string userId, string appName, string key, T @default);
 
         /**
-         * Fetches a mapped list of userId -> value, for a specified app and key and a list of user IDs.
+         * Fetches a mapped list of userId . value, for a specified app and key and a list of user IDs.
          *
          * @param string appName app to get the value for
          * @param string key the key to get the value for

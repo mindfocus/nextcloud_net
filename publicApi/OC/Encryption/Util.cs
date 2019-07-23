@@ -7,7 +7,7 @@ using OCP.Encryption;
 namespace OC.Encryption
 {
 
-class Util {
+public class Util {
 
 	const string HEADER_START = "HBEGIN";
 	const string HEADER_END = "HEND";

@@ -22,9 +22,9 @@ namespace OCP.AppFramework.Http
      */
     public function __construct(data=array(), statusCode=Http::STATUS_OK,
     array headers=array()) {
-        this->data = data;
-        this->setStatus(statusCode);
-        this->setHeaders(array_merge(this->getHeaders(), headers));
+        this.data = data;
+        this.setStatus(statusCode);
+        this.setHeaders(array_merge(this.getHeaders(), headers));
     }
 
 
@@ -35,7 +35,7 @@ namespace OCP.AppFramework.Http
      * @since 8.0.0
      */
     public function setData(data){
-        this->data = data;
+        this.data = data;
 
         return this;
     }
@@ -47,7 +47,7 @@ namespace OCP.AppFramework.Http
      * @since 8.0.0
      */
     public function getData(){
-        return this->data;
+        return this.data;
     }
 
 

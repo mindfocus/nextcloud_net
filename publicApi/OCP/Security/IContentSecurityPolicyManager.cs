@@ -20,7 +20,7 @@ namespace OCP.Security
          * Note that the adjustment is only applied to applications that use AppFramework
          * controllers.
          *
-         * To use this from your `app.php` use `\OC::server->getContentSecurityPolicyManager()->addDefaultPolicy(policy)`,
+         * To use this from your `app.php` use `\OC::server.getContentSecurityPolicyManager().addDefaultPolicy(policy)`,
          * policy has to be of type `\OCP\AppFramework\Http\ContentSecurityPolicy`.
          *
          * WARNING: Using this API incorrectly may make the instance more insecure.

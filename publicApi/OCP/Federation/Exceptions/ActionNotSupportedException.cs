@@ -21,9 +21,9 @@ namespace OCP.Federation.Exceptions
      *
      */
     public ActionNotSupportedException(string action) {
-        //l = \OC::server->getL10N('federation');
+        //l = \OC::server.getL10N('federation');
         //message = 'Action "' . action . '" not supported or implemented.';
-        //hint = l->t('Action "%s" not supported or implemented.', [action]);
+        //hint = l.t('Action "%s" not supported or implemented.', [action]);
         //parent::__construct(message, hint);
     }
 

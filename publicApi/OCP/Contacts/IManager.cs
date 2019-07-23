@@ -32,13 +32,13 @@ namespace OCP.ContactsNs
          *  Following function shows how to search for contacts for the name and the email address.
          *
          *		public static function getMatchingRecipient(term) {
-         *			cm = \OC::server->getContactsManager();
-         *			// The API is not active -> nothing to do
-         *			if (!cm->isEnabled()) {
+         *			cm = \OC::server.getContactsManager();
+         *			// The API is not active . nothing to do
+         *			if (!cm.isEnabled()) {
          *				return array();
          *			}
          *
-         *			result = cm->search(term, array('FN', 'EMAIL'));
+         *			result = cm.search(term, array('FN', 'EMAIL'));
          *			receivers = array();
          *			foreach (result as r) {
          *				id = r['id'];
@@ -132,7 +132,7 @@ namespace OCP.ContactsNs
          * 
          * @return array
          * @since 6.0.0
-         * @deprecated 16.0.0 - Use `this->getUserAddressBooks()` instead
+         * @deprecated 16.0.0 - Use `this.getUserAddressBooks()` instead
          */
         IDictionary<string, string> getAddressBooks();
 

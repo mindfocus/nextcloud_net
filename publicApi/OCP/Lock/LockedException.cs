@@ -34,7 +34,7 @@ namespace OCP.Lock
 			message += ", existing lock on file: {existingLock}";
         }
             //parent::__construct(message, 0, previous);
-            //this->path = path;
+            //this.path = path;
             this.path = path;
     }
 

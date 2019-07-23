@@ -30,7 +30,7 @@ namespace OCP.Files.Storage
          * @param callable callback
          *
          * @since 9.1.0
-         * @deprecated 12.0.0 use INotifyStorage::notify()->listen() instead
+         * @deprecated 12.0.0 use INotifyStorage::notify().listen() instead
          */
         void listen(string path, Action callback);
 

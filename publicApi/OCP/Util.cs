@@ -50,7 +50,7 @@ namespace OCP
          */
         public static function setChannel(channel)
         {
-        \OC::server->getConfig()->setSystemValue('updater.release.channel', channel);
+        \OC::server.getConfig().setSystemValue('updater.release.channel', channel);
         }
 
         /**
@@ -74,7 +74,7 @@ namespace OCP
         public static function writeLog( app, message, level )
         {
         context = ['app' => app];
-        \OC::server->getLogger()->log(level, message, context);
+        \OC::server.getLogger().log(level, message, context);
         }
 
         /**
@@ -82,20 +82,20 @@ namespace OCP
          *
          * @return boolean
          * @since 7.0.0
-         * @deprecated 9.1.0 Use \OC::server->getShareManager()->sharingDisabledForUser
+         * @deprecated 9.1.0 Use \OC::server.getShareManager().sharingDisabledForUser
          */
         public static function isSharingDisabledForUser()
         {
             if (self::shareManager === null) {
-                self::shareManager = \OC::server->getShareManager();
+                self::shareManager = \OC::server.getShareManager();
             }
 
-        user = \OC::server->getUserSession()->getUser();
+        user = \OC::server.getUserSession().getUser();
             if (user !== null) {
-            user = user->getUID();
+            user = user.getUID();
             }
 
-            return self::shareManager->sharingDisabledForUser(user);
+            return self::shareManager.sharingDisabledForUser(user);
         }
 
         /**
@@ -107,7 +107,7 @@ namespace OCP
          */
         public static function getL10N(application, language = null)
         {
-            return \OC::server->getL10N(application, language);
+            return \OC::server.getL10N(application, language);
         }
 
         /**
@@ -168,9 +168,9 @@ namespace OCP
          */
         public static function linkToAbsolute( app, file, args = array())
         {
-        urlGenerator = \OC::server->getURLGenerator();
-            return urlGenerator->getAbsoluteURL(
-            urlGenerator->linkTo(app, file, args)
+        urlGenerator = \OC::server.getURLGenerator();
+            return urlGenerator.getAbsoluteURL(
+            urlGenerator.linkTo(app, file, args)
             );
         }
 
@@ -182,9 +182,9 @@ namespace OCP
          */
         public static function linkToRemote( service )
         {
-        urlGenerator = \OC::server->getURLGenerator();
-        remoteBase = urlGenerator->linkTo('', 'remote.php'). '/'. service;
-            return urlGenerator->getAbsoluteURL(
+        urlGenerator = \OC::server.getURLGenerator();
+        remoteBase = urlGenerator.linkTo('', 'remote.php'). '/'. service;
+            return urlGenerator.getAbsoluteURL(
             remoteBase. ((service[strlen(service) - 1] != '/') ? '/' : '')
             );
         }
@@ -198,11 +198,11 @@ namespace OCP
          */
         public static function linkToPublic(service)
         {
-        urlGenerator = \OC::server->getURLGenerator();
+        urlGenerator = \OC::server.getURLGenerator();
             if (service === 'files') {
-                return urlGenerator->getAbsoluteURL('/s');
+                return urlGenerator.getAbsoluteURL('/s');
             }
-            return urlGenerator->getAbsoluteURL(urlGenerator->linkTo('', 'public.php').'?service='.service);
+            return urlGenerator.getAbsoluteURL(urlGenerator.linkTo('', 'public.php').'?service='.service);
         }
 
         /**
@@ -212,7 +212,7 @@ namespace OCP
          */
         public static function getServerHostName()
         {
-        host_name = \OC::server->getRequest()->getServerHost();
+        host_name = \OC::server.getRequest().getServerHost();
         // strip away port number (if existing)
         colon_pos = strpos(host_name, ':');
             if (colon_pos != FALSE) {
@@ -239,14 +239,14 @@ namespace OCP
          */
         public static function getDefaultEmailAddress(user_part)
         {
-        config = \OC::server->getConfig();
-        user_part = config->getSystemValue('mail_from_address', user_part);
+        config = \OC::server.getConfig();
+        user_part = config.getSystemValue('mail_from_address', user_part);
         host_name = self::getServerHostName();
-        host_name = config->getSystemValue('mail_domain', host_name);
+        host_name = config.getSystemValue('mail_domain', host_name);
         defaultEmailAddress = user_part.'@'.host_name;
 
-        mailer = \OC::server->getMailer();
-            if (mailer->validateMailAddress(defaultEmailAddress)) {
+        mailer = \OC::server.getMailer();
+            if (mailer.validateMailAddress(defaultEmailAddress)) {
                 return defaultEmailAddress;
             }
 
@@ -327,7 +327,7 @@ namespace OCP
     public static function callRegister()
         {
             if (self::token === '') {
-                self::token = \OC::server->getCsrfTokenManager()->getToken()->getEncryptedValue();
+                self::token = \OC::server.getCsrfTokenManager().getToken().getEncryptedValue();
             }
             return self::token;
         }
@@ -339,12 +339,12 @@ namespace OCP
          */
         public static function callCheck()
         {
-            if (!\OC::server->getRequest()->passesStrictCookieCheck()) {
+            if (!\OC::server.getRequest().passesStrictCookieCheck()) {
                 header('Location: '.\OC::WEBROOT);
                 exit();
             }
 
-            if (!\OC::server->getRequest()->passesCSRFCheck()) {
+            if (!\OC::server.getRequest().passesCSRFCheck()) {
                 exit();
             }
         }
@@ -458,7 +458,7 @@ namespace OCP
      * @since 7.0.0
      */
     public static function naturalSortCompare(a, b) {
-        return \OC\NaturalSort::getInstance()->compare(a, b);
+        return \OC\NaturalSort::getInstance().compare(a, b);
     }
 
     /**
@@ -489,7 +489,7 @@ namespace OCP
      */
     public static function needUpgrade() {
         if (!isset(self::needUpgradeCache)) {
-            self::needUpgradeCache=\OC_Util::needUpgrade(\OC::server->getSystemConfig());
+            self::needUpgradeCache=\OC_Util::needUpgrade(\OC::server.getSystemConfig());
         }       
         return self::needUpgradeCache;
     }

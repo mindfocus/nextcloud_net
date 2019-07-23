@@ -27,7 +27,7 @@ public interface ITags
          * @return boolean
          * @since 6.0.0
          */
-        public bool isEmpty();
+        bool isEmpty();
 
         /**
          * Returns an array mapping a given tag's properties to its values:
@@ -38,7 +38,7 @@ public interface ITags
          * @since 8.0.0
          */
         // public bool getTag(string id);
-        public IDictionary getTag(string id);
+         IDictionary getTag(string id);
 
         /**
          * Get the tags for a specific user.
@@ -52,7 +52,7 @@ public interface ITags
          * @return array
          * @since 6.0.0
          */
-        public IDictionary getTags();
+         IDictionary getTags();
 
         /**
          * Get a list of tags for the given item ids.
@@ -70,7 +70,7 @@ public interface ITags
          * @since 8.0.0
          */
         // public bool getTagsForObjects(IList<string> objIds);
-        public IDictionary getTagsForObjects(IList<string> objIds);
+         IDictionary getTagsForObjects(IList<string> objIds);
         /**
          * Get a list of items tagged with tag.
          *
@@ -80,7 +80,7 @@ public interface ITags
          * @return array|false An array of object ids or false on error.
          * @since 6.0.0
          */
-        public IDictionary getIdsForTag(string tag);
+         IDictionary getIdsForTag(string tag);
 
         /**
          * Checks whether a tag is already saved.
@@ -89,7 +89,7 @@ public interface ITags
          * @return bool
          * @since 6.0.0
          */
-        public bool hasTag(string name);
+         bool hasTag(string name);
 
         /**
          * Checks whether a tag is saved for the given user,
@@ -100,7 +100,7 @@ public interface ITags
          * @return bool
          * @since 8.0.0
          */
-        public bool userHasTag(string name, string user);
+         bool userHasTag(string name, string user);
 
         /**
          * Add a new tag.
@@ -109,7 +109,7 @@ public interface ITags
          * @return int|false the id of the added tag or false if it already exists.
          * @since 6.0.0
          */
-        public int add(string name);
+         int add(string name);
 
         /**
          * Rename tag.
@@ -119,7 +119,7 @@ public interface ITags
          * @return bool
          * @since 6.0.0
          */
-        public bool rename(string from, string to);
+         bool rename(string from, string to);
 
         /**
          * Add a list of new tags.
@@ -131,7 +131,7 @@ public interface ITags
          * @return bool Returns false on error.
          * @since 6.0.0
          */
-        public bool addMultiple(IList<string> names, bool sync= false, int? id = null);
+         bool addMultiple(IList<string> names, bool sync= false, int? id = null);
 
         /**
          * Delete tag/object relations from the db
@@ -140,7 +140,7 @@ public interface ITags
          * @return boolean Returns false on error.
          * @since 6.0.0
          */
-        public bool purgeObjects(IList<string> ids);
+         bool purgeObjects(IList<string> ids);
 
         /**
          * Get favorites for an object type
@@ -148,7 +148,7 @@ public interface ITags
          * @return array|false An array of object ids.
          * @since 6.0.0
          */
-        public IList<string> getFavorites();
+         IList<string> getFavorites();
 
         /**
          * Add an object to favorites
@@ -157,7 +157,7 @@ public interface ITags
          * @return boolean
          * @since 6.0.0
          */
-        public bool addToFavorites(int objid);
+         bool addToFavorites(int objid);
 
         /**
          * Remove an object from favorites
@@ -166,7 +166,7 @@ public interface ITags
          * @return boolean
          * @since 6.0.0
          */
-        public bool removeFromFavorites(int objid);
+         bool removeFromFavorites(int objid);
 
         /**
          * Creates a tag/object relation.
@@ -176,7 +176,7 @@ public interface ITags
          * @return boolean Returns false on database error.
          * @since 6.0.0
          */
-        public bool tagAs(int objid, string tag);
+         bool tagAs(int objid, string tag);
 
         /**
          * Delete single tag/object relation from the db
@@ -186,7 +186,7 @@ public interface ITags
          * @return boolean
          * @since 6.0.0
          */
-        public bool unTag(int objid, string tag);
+         bool unTag(int objid, string tag);
 
         /**
          * Delete tags from the database
@@ -195,7 +195,7 @@ public interface ITags
          * @return bool Returns false on error
          * @since 6.0.0
          */
-        public bool delete(IList<string> names);
+         bool delete(IList<string> names);
 
     }
 

@@ -209,7 +209,7 @@ class OCB {
 		}
 	}
 
-	public static function checkInstalled() {
+	public static void checkInstalled() {
 		if (defined("OC_CONSOLE")) {
 			return;
 		}

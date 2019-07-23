@@ -44,10 +44,10 @@ public class TemplateResponse : Response {
 	 */
 	public function __construct(appName, templateName, array params=array(),
 	                            renderAs='user') {
-		this->templateName = templateName;
-		this->appName = appName;
-		this->params = params;
-		this->renderAs = renderAs;
+		this.templateName = templateName;
+		this.appName = appName;
+		this.params = params;
+		this.renderAs = renderAs;
 	}
 
 
@@ -59,7 +59,7 @@ public class TemplateResponse : Response {
 	 * @since 6.0.0 - return value was added in 7.0.0
 	 */
 	public function setParams(array params){
-		this->params = params;
+		this.params = params;
 
 		return this;
 	}
@@ -71,7 +71,7 @@ public class TemplateResponse : Response {
 	 * @since 6.0.0
 	 */
 	public function getParams(){
-		return this->params;
+		return this.params;
 	}
 
 
@@ -81,7 +81,7 @@ public class TemplateResponse : Response {
 	 * @since 6.0.0
 	 */
 	public function getTemplateName(){
-		return this->templateName;
+		return this.templateName;
 	}
 
 
@@ -95,7 +95,7 @@ public class TemplateResponse : Response {
 	 * @since 6.0.0 - return value was added in 7.0.0
 	 */
 	public function renderAs(renderAs){
-		this->renderAs = renderAs;
+		this.renderAs = renderAs;
 
 		return this;
 	}
@@ -107,7 +107,7 @@ public class TemplateResponse : Response {
 	 * @since 6.0.0
 	 */
 	public function getRenderAs(){
-		return this->renderAs;
+		return this.renderAs;
 	}
 
 
@@ -118,15 +118,15 @@ public class TemplateResponse : Response {
 	 */
 	public function render(){
 		// \OCP\Template needs an empty string instead of 'blank' for an unwrapped response
-		renderAs = this->renderAs === 'blank' ? '' : this->renderAs;
+		renderAs = this.renderAs === 'blank' ? '' : this.renderAs;
 
-		template = new \OCP\Template(this->appName, this->templateName, renderAs);
+		template = new \OCP\Template(this.appName, this.templateName, renderAs);
 
-		foreach(this->params as key => value){
-			template->assign(key, value);
+		foreach(this.params as key => value){
+			template.assign(key, value);
 		}
 
-		return template->fetchPage(this->params);
+		return template.fetchPage(this.params);
 	}
 
 }

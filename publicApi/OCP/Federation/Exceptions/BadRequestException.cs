@@ -24,11 +24,11 @@ namespace OCP.Federation.Exceptions
      * @param array missingParameters
      */
     public BadRequestException(IList<string> missingParameters) {
-        //l = \OC::server->getL10N('federation');
-        //this->parameterList = missingParameters;
+        //l = \OC::server.getL10N('federation');
+        //this.parameterList = missingParameters;
         //parameterList = implode(',', missingParameters);
         //message = 'Parameters missing in order to complete the request. Missing Parameters: ' . parameterList;
-        //hint = l->t('Parameters missing in order to complete the request. Missing Parameters: "%s"', [parameterList]);
+        //hint = l.t('Parameters missing in order to complete the request. Missing Parameters: "%s"', [parameterList]);
         //parent::__construct(message, hint);
     }
 
@@ -46,7 +46,7 @@ namespace OCP.Federation.Exceptions
         //    ]
         //    ];
 
-        //foreach (this->parameterList as missingParameter) {
+        //foreach (this.parameterList as missingParameter) {
         //    result['validationErrors'] = [
         //    'name' => missingParameter,
         //    'message' => 'NOT_FOUND'

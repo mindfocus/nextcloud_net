@@ -16,7 +16,7 @@ class App {
 	/**
 	 * Turns an app id into a namespace by convetion. The id is split at the
 	 * underscores, all parts are camelcased and reassembled. e.g.:
-	 * some_app_id -> OCA\SomeAppId
+	 * some_app_id . OCA\SomeAppId
 	 * @param string appId the app id
 	 * @param string topNamespace the namespace which should be prepended to
 	 * the transformed app id, defaults to OCA\
@@ -24,7 +24,7 @@ class App {
 	 * @since 8.0.0
 	 */
 	public static string buildAppNamespace(string appId, string topNamespace="OCA\\")  {
-		return \OC\AppFramework\App::buildAppNamespace(appId, topNamespace);
+		return buildAppNamespace(appId, topNamespace);
 	}
 
 
@@ -33,11 +33,11 @@ class App {
 	 * @param array urlParams an array with variables extracted from the routes
 	 * @since 6.0.0
 	 */
-	public function __construct(string appName, array urlParams = []) {
+	public App(string appName, array urlParams = []) {
 		try {
-			this->container = \OC::server->getRegisteredAppContainer(appName);
+			this.container = \OC::server.getRegisteredAppContainer(appName);
 		} catch (QueryException e) {
-			this->container = new \OC\AppFramework\DependencyInjection\DIContainer(appName, urlParams);
+			this.container = new \OC\AppFramework\DependencyInjection\DIContainer(appName, urlParams);
 		}
 	}
 
@@ -45,8 +45,8 @@ class App {
 	 * @return IAppContainer
 	 * @since 6.0.0
 	 */
-	public function getContainer(): IAppContainer {
-		return this->container;
+	public IAppContainer getContainer() {
+		return this.container;
 	}
 
 	/**
@@ -61,26 +61,26 @@ class App {
 	 *	);
 	 *
 	 * a = new TasksApp();
-	 * a->registerRoutes(this, routes);
+	 * a.registerRoutes(this, routes);
 	 *
 	 * @param \OCP\Route\IRouter router
 	 * @param array routes
 	 * @since 6.0.0
 	 * @suppress PhanAccessMethodInternal
 	 */
-	public function registerRoutes(IRouter router, array routes) {
-		routeConfig = new RouteConfig(this->container, router, routes);
-		routeConfig->register();
+	public void registerRoutes(IRouter router, array routes) {
+		routeConfig = new RouteConfig(this.container, router, routes);
+		routeConfig.register();
 	}
 
 	/**
 	 * This function is called by the routing component to fire up the frameworks dispatch mechanism.
 	 *
 	 * Example code in routes.php of the task app:
-	 * this->create('tasks_index', '/')->get()->action(
+	 * this.create('tasks_index', '/').get().action(
 	 *		function(params){
 	 *			app = new TaskApp(params);
-	 *			app->dispatch('PageController', 'index');
+	 *			app.dispatch('PageController', 'index');
 	 *		}
 	 *	);
 	 *
@@ -91,9 +91,9 @@ class App {
 	 *		public function __construct(params){
 	 *			parent::__construct('tasks', params);
 	 *
-	 *			this->getContainer()->registerService('PageController', function(IAppContainer c){
-	 *				a = c->query('API');
-	 *				r = c->query('Request');
+	 *			this.getContainer().registerService('PageController', function(IAppContainer c){
+	 *				a = c.query('API');
+	 *				r = c.query('Request');
 	 *				return new PageController(a, r);
 	 *			});
 	 *		}
@@ -105,7 +105,7 @@ class App {
 	 * @since 6.0.0
 	 */
 	public function dispatch(string controllerName, string methodName) {
-		\OC\AppFramework\App::main(controllerName, methodName, this->container);
+		\OC\AppFramework\App::main(controllerName, methodName, this.container);
 	}
 }
 }

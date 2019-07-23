@@ -10,7 +10,7 @@ namespace OCP.Security
      * use a fallback.
      *
      * Usage:
-     * \OC::server->getSecureRandom()->generate(10);
+     * \OC::server.getSecureRandom().generate(10);
      *
      * @package OCP\Security
      * @since 8.0.0

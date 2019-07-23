@@ -57,29 +57,29 @@ class MountPoint : IMountPoint {
 			arguments = array();
 		}
 		if (is_null(loader)) {
-			this->loader = new StorageFactory();
+			this.loader = new StorageFactory();
 		} else {
-			this->loader = loader;
+			this.loader = loader;
 		}
 
 		if (!is_null(mountOptions)) {
-			this->mountOptions = mountOptions;
+			this.mountOptions = mountOptions;
 		}
 
-		mountpoint = this->formatPath(mountpoint);
-		this->mountPoint = mountpoint;
+		mountpoint = this.formatPath(mountpoint);
+		this.mountPoint = mountpoint;
 		if (storage instanceof Storage) {
-			this->class = get_class(storage);
-			this->storage = this->loader->wrap(this, storage);
+			this.class = get_class(storage);
+			this.storage = this.loader.wrap(this, storage);
 		} else {
 			// Update old classes to new namespace
 			if (strpos(storage, 'OC_Filestorage_') !== false) {
 				storage = '.OC.Files.Storage..' . substr(storage, 15);
 			}
-			this->class = storage;
-			this->arguments = arguments;
+			this.class = storage;
+			this.arguments = arguments;
 		}
-		this->mountId = mountId;
+		this.mountId = mountId;
 	}
 
 	/**
@@ -88,7 +88,7 @@ class MountPoint : IMountPoint {
 	 * @return string
 	 */
 	public function getMountPoint() {
-		return this->mountPoint;
+		return this.mountPoint;
 	}
 
 	/**
@@ -97,37 +97,37 @@ class MountPoint : IMountPoint {
 	 * @param string mountPoint new mount point
 	 */
 	public function setMountPoint(mountPoint) {
-		this->mountPoint = this->formatPath(mountPoint);
+		this.mountPoint = this.formatPath(mountPoint);
 	}
 
 	/**
 	 * create the storage that is mounted
 	 */
 	private function createStorage() {
-		if (this->invalidStorage) {
+		if (this.invalidStorage) {
 			return;
 		}
 
-		if (class_exists(this->class)) {
+		if (class_exists(this.class)) {
 			try {
-				class = this->class;
+				class = this.class;
 				// prevent recursion by setting the storage before applying wrappers
-				this->storage = new class(this->arguments);
-				this->storage = this->loader->wrap(this, this->storage);
+				this.storage = new class(this.arguments);
+				this.storage = this.loader.wrap(this, this.storage);
 			} catch (.Exception exception) {
-				this->storage = null;
-				this->invalidStorage = true;
-				if (this->mountPoint === '/') {
+				this.storage = null;
+				this.invalidStorage = true;
+				if (this.mountPoint === '/') {
 					// the root storage could not be initialized, show the user!
-					throw new .Exception('The root storage could not be initialized. Please contact your local administrator.', exception->getCode(), exception);
+					throw new .Exception('The root storage could not be initialized. Please contact your local administrator.', exception.getCode(), exception);
 				} else {
-					.OC::server->getLogger()->logException(exception, ['level' => ILogger::ERROR]);
+					.OC::server.getLogger().logException(exception, ['level' => ILogger::ERROR]);
 				}
 				return;
 			}
 		} else {
-			.OCP.Util::writeLog('core', 'storage backend ' . this->class . ' not found', ILogger::ERROR);
-			this->invalidStorage = true;
+			.OCP.Util::writeLog('core', 'storage backend ' . this.class . ' not found', ILogger::ERROR);
+			this.invalidStorage = true;
 			return;
 		}
 	}
@@ -136,38 +136,38 @@ class MountPoint : IMountPoint {
 	 * @return .OC.Files.Storage.Storage
 	 */
 	public function getStorage() {
-		if (is_null(this->storage)) {
-			this->createStorage();
+		if (is_null(this.storage)) {
+			this.createStorage();
 		}
-		return this->storage;
+		return this.storage;
 	}
 
 	/**
 	 * @return string
 	 */
 	public function getStorageId() {
-		if (!this->storageId) {
-			if (is_null(this->storage)) {
-				storage = this->createStorage(); //FIXME: start using exceptions
+		if (!this.storageId) {
+			if (is_null(this.storage)) {
+				storage = this.createStorage(); //FIXME: start using exceptions
 				if (is_null(storage)) {
 					return null;
 				}
 
-				this->storage = storage;
+				this.storage = storage;
 			}
-			this->storageId = this->storage->getId();
-			if (strlen(this->storageId) > 64) {
-				this->storageId = md5(this->storageId);
+			this.storageId = this.storage.getId();
+			if (strlen(this.storageId) > 64) {
+				this.storageId = md5(this.storageId);
 			}
 		}
-		return this->storageId;
+		return this.storageId;
 	}
 
 	/**
 	 * @return int
 	 */
 	public function getNumericStorageId() {
-		return this->getStorage()->getStorageCache()->getNumericId();
+		return this.getStorage().getStorageCache().getNumericId();
 	}
 
 	/**
@@ -176,10 +176,10 @@ class MountPoint : IMountPoint {
 	 */
 	public function getInternalPath(path) {
 		path = Filesystem::normalizePath(path, true, false, true);
-		if (this->mountPoint === path or this->mountPoint . '/' === path) {
+		if (this.mountPoint === path or this.mountPoint . '/' === path) {
 			internalPath = '';
 		} else {
-			internalPath = substr(path, strlen(this->mountPoint));
+			internalPath = substr(path, strlen(this.mountPoint));
 		}
 		// substr returns false instead of an empty string, we always want a string
 		return (string)internalPath;
@@ -201,10 +201,10 @@ class MountPoint : IMountPoint {
 	 * @param callable wrapper
 	 */
 	public function wrapStorage(wrapper) {
-		storage = this->getStorage();
+		storage = this.getStorage();
 		// storage can be null if it couldn't be initialized
 		if (storage != null) {
-			this->storage = wrapper(this->mountPoint, storage, this);
+			this.storage = wrapper(this.mountPoint, storage, this);
 		}
 	}
 
@@ -216,7 +216,7 @@ class MountPoint : IMountPoint {
 	 * @return mixed
 	 */
 	public function getOption(name, default) {
-		return isset(this->mountOptions[name]) ? this->mountOptions[name] : default;
+		return isset(this.mountOptions[name]) ? this.mountOptions[name] : default;
 	}
 
 	/**
@@ -225,7 +225,7 @@ class MountPoint : IMountPoint {
 	 * @return array
 	 */
 	public function getOptions() {
-		return this->mountOptions;
+		return this.mountOptions;
 	}
 
 	/**
@@ -234,14 +234,14 @@ class MountPoint : IMountPoint {
 	 * @return int
 	 */
 	public function getStorageRootId() {
-		if (is_null(this->rootId)) {
-			this->rootId = (int)this->getStorage()->getCache()->getId('');
+		if (is_null(this.rootId)) {
+			this.rootId = (int)this.getStorage().getCache().getId('');
 		}
-		return this->rootId;
+		return this.rootId;
 	}
 
 	public function getMountId() {
-		return this->mountId;
+		return this.mountId;
 	}
 
 	public function getMountType() {

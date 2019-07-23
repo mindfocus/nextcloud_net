@@ -20,13 +20,13 @@ namespace OC.Hooks
     public void listen(string scope, string method, Action callback)
     {
 		var eventName = scope + "::" + method;
-        if (!isset($this->listeners[$eventName]))
+        if (!isset($this.listeners[$eventName]))
         {
-			$this->listeners[$eventName] = array();
+			$this.listeners[$eventName] = array();
         }
-        if (array_search($callback, $this->listeners[$eventName], true) === false)
+        if (array_search($callback, $this.listeners[$eventName], true) === false)
         {
-			$this->listeners[$eventName][] = $callback;
+			$this.listeners[$eventName][] = $callback;
         }
     }
 
@@ -38,10 +38,10 @@ namespace OC.Hooks
     public function removeListener($scope = null, $method = null, callable $callback = null)
     {
 		$names = array();
-		$allNames = array_keys($this->listeners);
+		$allNames = array_keys($this.listeners);
         if ($scope and $method) {
 			$name = $scope. '::'. $method;
-            if (isset($this->listeners[$name]))
+            if (isset($this.listeners[$name]))
             {
 				$names[] = $name;
             }
@@ -68,13 +68,13 @@ namespace OC.Hooks
 
         foreach ($names as $name) {
             if ($callback) {
-				$index = array_search($callback, $this->listeners[$name], true);
+				$index = array_search($callback, $this.listeners[$name], true);
                 if ($index !== false) {
-                    unset($this->listeners[$name][$index]);
+                    unset($this.listeners[$name][$index]);
                 }
             } else
             {
-				$this->listeners[$name] = array();
+				$this.listeners[$name] = array();
             }
         }
     }
@@ -87,9 +87,9 @@ namespace OC.Hooks
     protected void emit(string scope, string method, IList<string> arguments)
     {
 		$eventName = $scope. '::'. $method;
-        if (isset($this->listeners[$eventName]))
+        if (isset($this.listeners[$eventName]))
         {
-            foreach ($this->listeners[$eventName] as $callback) {
+            foreach ($this.listeners[$eventName] as $callback) {
                 call_user_func_array($callback, $arguments);
             }
         }

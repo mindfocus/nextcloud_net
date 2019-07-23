@@ -14,21 +14,21 @@ namespace OCP.Mail
      *
      * <?php
      *
-     * emailTemplate = new EMailTemplate(this->defaults, this->urlGenerator, this->l10n);
+     * emailTemplate = new EMailTemplate(this.defaults, this.urlGenerator, this.l10n);
      *
-     * emailTemplate->addHeader();
-     * emailTemplate->addHeading('Welcome aboard');
-     * emailTemplate->addBodyText('Welcome to your Nextcloud account, you can add, protect, and share your data.');
+     * emailTemplate.addHeader();
+     * emailTemplate.addHeading('Welcome aboard');
+     * emailTemplate.addBodyText('Welcome to your Nextcloud account, you can add, protect, and share your data.');
      *
-     * emailTemplate->addBodyButtonGroup(
+     * emailTemplate.addBodyButtonGroup(
      *     'Set your password', 'https://example.org/resetPassword/q1234567890qwertz',
      *     'Install Client', 'https://nextcloud.com/install/#install-clients'
      * );
      *
-     * emailTemplate->addFooter('Optional footer text');
+     * emailTemplate.addFooter('Optional footer text');
      *
-     * htmlContent = emailTemplate->renderHtml();
-     * plainContent = emailTemplate->renderText();
+     * htmlContent = emailTemplate.renderHtml();
+     * plainContent = emailTemplate.renderText();
      *
      * @since 12.0.0
      */

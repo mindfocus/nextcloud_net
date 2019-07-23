@@ -61,10 +61,10 @@ namespace OCP.DB.QueryBuilder
          * This producer method is intended for convenient inline usage. Example:
          *
          * <code>
-         *     qb = conn->getQueryBuilder()
-         *         ->select('u')
-         *         ->from('users', 'u')
-         *         ->where(qb->expr()->eq('u.id', 1));
+         *     qb = conn.getQueryBuilder()
+         *         .select('u')
+         *         .from('users', 'u')
+         *         .where(qb.expr().eq('u.id', 1));
          * </code>
          *
          * For more complex expression construction, consider storing the expression
@@ -80,10 +80,10 @@ namespace OCP.DB.QueryBuilder
          * This producer method is intended for convenient inline usage. Example:
          *
          * <code>
-         *     qb = conn->getQueryBuilder()
-         *         ->select('u')
-         *         ->from('users', 'u')
-         *         ->where(qb->fun()->md5('u.id'));
+         *     qb = conn.getQueryBuilder()
+         *         .select('u')
+         *         .from('users', 'u')
+         *         .where(qb.fun().md5('u.id'));
          * </code>
          *
          * For more complex function construction, consider storing the function
@@ -133,10 +133,10 @@ namespace OCP.DB.QueryBuilder
          * Gets the complete SQL string formed by the current specifications of this QueryBuilder.
          *
          * <code>
-         *     qb = conn->getQueryBuilder()
-         *         ->select('u')
-         *         ->from('User', 'u')
-         *     echo qb->getSQL(); // SELECT u FROM User u
+         *     qb = conn.getQueryBuilder()
+         *         .select('u')
+         *         .from('User', 'u')
+         *     echo qb.getSQL(); // SELECT u FROM User u
          * </code>
          *
          * @return string The SQL query string.
@@ -148,11 +148,11 @@ namespace OCP.DB.QueryBuilder
          * Sets a query parameter for the query being constructed.
          *
          * <code>
-         *     qb = conn->getQueryBuilder()
-         *         ->select('u')
-         *         ->from('users', 'u')
-         *         ->where('u.id = :user_id')
-         *         ->setParameter(':user_id', 1);
+         *     qb = conn.getQueryBuilder()
+         *         .select('u')
+         *         .from('users', 'u')
+         *         .where('u.id = :user_id')
+         *         .setParameter(':user_id', 1);
          * </code>
          *
          * @param string|integer key The parameter position or name.
@@ -168,11 +168,11 @@ namespace OCP.DB.QueryBuilder
          * Sets a collection of query parameters for the query being constructed.
          *
          * <code>
-         *     qb = conn->getQueryBuilder()
-         *         ->select('u')
-         *         ->from('users', 'u')
-         *         ->where('u.id = :user_id1 OR u.id = :user_id2')
-         *         ->setParameters(array(
+         *     qb = conn.getQueryBuilder()
+         *         .select('u')
+         *         .from('users', 'u')
+         *         .where('u.id = :user_id1 OR u.id = :user_id2')
+         *         .setParameters(array(
          *             ':user_id1' => 1,
          *             ':user_id2' => 2
          *         ));
@@ -265,10 +265,10 @@ namespace OCP.DB.QueryBuilder
          * Replaces any previously specified selections, if any.
          *
          * <code>
-         *     qb = conn->getQueryBuilder()
-         *         ->select('u.id', 'p.id')
-         *         ->from('users', 'u')
-         *         ->leftJoin('u', 'phonenumbers', 'p', 'u.id = p.user_id');
+         *     qb = conn.getQueryBuilder()
+         *         .select('u.id', 'p.id')
+         *         .from('users', 'u')
+         *         .leftJoin('u', 'phonenumbers', 'p', 'u.id = p.user_id');
          * </code>
          *
          * @param mixed ...selects The selection expressions.
@@ -282,10 +282,10 @@ namespace OCP.DB.QueryBuilder
          * Specifies an item that is to be returned with a different name in the query result.
          *
          * <code>
-         *     qb = conn->getQueryBuilder()
-         *         ->selectAlias('u.id', 'user_id')
-         *         ->from('users', 'u')
-         *         ->leftJoin('u', 'phonenumbers', 'p', 'u.id = p.user_id');
+         *     qb = conn.getQueryBuilder()
+         *         .selectAlias('u.id', 'user_id')
+         *         .from('users', 'u')
+         *         .leftJoin('u', 'phonenumbers', 'p', 'u.id = p.user_id');
          * </code>
          *
          * @param mixed select The selection expressions.
@@ -300,9 +300,9 @@ namespace OCP.DB.QueryBuilder
          * Specifies an item that is to be returned uniquely in the query result.
          *
          * <code>
-         *     qb = conn->getQueryBuilder()
-         *         ->selectDistinct('type')
-         *         ->from('users');
+         *     qb = conn.getQueryBuilder()
+         *         .selectDistinct('type')
+         *         .from('users');
          * </code>
          *
          * @param mixed select The selection expressions.
@@ -316,11 +316,11 @@ namespace OCP.DB.QueryBuilder
          * Adds an item that is to be returned in the query result.
          *
          * <code>
-         *     qb = conn->getQueryBuilder()
-         *         ->select('u.id')
-         *         ->addSelect('p.id')
-         *         ->from('users', 'u')
-         *         ->leftJoin('u', 'phonenumbers', 'u.id = p.user_id');
+         *     qb = conn.getQueryBuilder()
+         *         .select('u.id')
+         *         .addSelect('p.id')
+         *         .from('users', 'u')
+         *         .leftJoin('u', 'phonenumbers', 'u.id = p.user_id');
          * </code>
          *
          * @param mixed ...select The selection expression.
@@ -335,10 +335,10 @@ namespace OCP.DB.QueryBuilder
          * a certain table.
          *
          * <code>
-         *     qb = conn->getQueryBuilder()
-         *         ->delete('users', 'u')
-         *         ->where('u.id = :user_id');
-         *         ->setParameter(':user_id', 1);
+         *     qb = conn.getQueryBuilder()
+         *         .delete('users', 'u')
+         *         .where('u.id = :user_id');
+         *         .setParameter(':user_id', 1);
          * </code>
          *
          * @param string delete The table whose rows are subject to the deletion.
@@ -354,10 +354,10 @@ namespace OCP.DB.QueryBuilder
          * a certain table
          *
          * <code>
-         *     qb = conn->getQueryBuilder()
-         *         ->update('users', 'u')
-         *         ->set('u.password', md5('password'))
-         *         ->where('u.id = ?');
+         *     qb = conn.getQueryBuilder()
+         *         .update('users', 'u')
+         *         .set('u.password', md5('password'))
+         *         .where('u.id = ?');
          * </code>
          *
          * @param string update The table whose rows are subject to the update.
@@ -373,9 +373,9 @@ namespace OCP.DB.QueryBuilder
          * a certain table
          *
          * <code>
-         *     qb = conn->getQueryBuilder()
-         *         ->insert('users')
-         *         ->values(
+         *     qb = conn.getQueryBuilder()
+         *         .insert('users')
+         *         .values(
          *             array(
          *                 'name' => '?',
          *                 'password' => '?'
@@ -395,9 +395,9 @@ namespace OCP.DB.QueryBuilder
          * given alias, forming a cartesian product with any existing query roots.
          *
          * <code>
-         *     qb = conn->getQueryBuilder()
-         *         ->select('u.id')
-         *         ->from('users', 'u')
+         *     qb = conn.getQueryBuilder()
+         *         .select('u.id')
+         *         .from('users', 'u')
          * </code>
          *
          * @param string from The table.
@@ -412,10 +412,10 @@ namespace OCP.DB.QueryBuilder
          * Creates and adds a join to the query.
          *
          * <code>
-         *     qb = conn->getQueryBuilder()
-         *         ->select('u.name')
-         *         ->from('users', 'u')
-         *         ->join('u', 'phonenumbers', 'p', 'p.is_primary = 1');
+         *     qb = conn.getQueryBuilder()
+         *         .select('u.name')
+         *         .from('users', 'u')
+         *         .join('u', 'phonenumbers', 'p', 'p.is_primary = 1');
          * </code>
          *
          * @param string fromAlias The alias that points to a from clause.
@@ -432,10 +432,10 @@ namespace OCP.DB.QueryBuilder
          * Creates and adds a join to the query.
          *
          * <code>
-         *     qb = conn->getQueryBuilder()
-         *         ->select('u.name')
-         *         ->from('users', 'u')
-         *         ->innerJoin('u', 'phonenumbers', 'p', 'p.is_primary = 1');
+         *     qb = conn.getQueryBuilder()
+         *         .select('u.name')
+         *         .from('users', 'u')
+         *         .innerJoin('u', 'phonenumbers', 'p', 'p.is_primary = 1');
          * </code>
          *
          * @param string fromAlias The alias that points to a from clause.
@@ -452,10 +452,10 @@ namespace OCP.DB.QueryBuilder
          * Creates and adds a left join to the query.
          *
          * <code>
-         *     qb = conn->getQueryBuilder()
-         *         ->select('u.name')
-         *         ->from('users', 'u')
-         *         ->leftJoin('u', 'phonenumbers', 'p', 'p.is_primary = 1');
+         *     qb = conn.getQueryBuilder()
+         *         .select('u.name')
+         *         .from('users', 'u')
+         *         .leftJoin('u', 'phonenumbers', 'p', 'p.is_primary = 1');
          * </code>
          *
          * @param string fromAlias The alias that points to a from clause.
@@ -472,10 +472,10 @@ namespace OCP.DB.QueryBuilder
          * Creates and adds a right join to the query.
          *
          * <code>
-         *     qb = conn->getQueryBuilder()
-         *         ->select('u.name')
-         *         ->from('users', 'u')
-         *         ->rightJoin('u', 'phonenumbers', 'p', 'p.is_primary = 1');
+         *     qb = conn.getQueryBuilder()
+         *         .select('u.name')
+         *         .from('users', 'u')
+         *         .rightJoin('u', 'phonenumbers', 'p', 'p.is_primary = 1');
          * </code>
          *
          * @param string fromAlias The alias that points to a from clause.
@@ -492,10 +492,10 @@ namespace OCP.DB.QueryBuilder
          * Sets a new value for a column in a bulk update query.
          *
          * <code>
-         *     qb = conn->getQueryBuilder()
-         *         ->update('users', 'u')
-         *         ->set('u.password', md5('password'))
-         *         ->where('u.id = ?');
+         *     qb = conn.getQueryBuilder()
+         *         .update('users', 'u')
+         *         .set('u.password', md5('password'))
+         *         .where('u.id = ?');
          * </code>
          *
          * @param string key The column to set.
@@ -511,21 +511,21 @@ namespace OCP.DB.QueryBuilder
          * Replaces any previously specified restrictions, if any.
          *
          * <code>
-         *     qb = conn->getQueryBuilder()
-         *         ->select('u.name')
-         *         ->from('users', 'u')
-         *         ->where('u.id = ?');
+         *     qb = conn.getQueryBuilder()
+         *         .select('u.name')
+         *         .from('users', 'u')
+         *         .where('u.id = ?');
          *
          *     // You can optionally programatically build and/or expressions
-         *     qb = conn->getQueryBuilder();
+         *     qb = conn.getQueryBuilder();
          *
-         *     or = qb->expr()->orx();
-         *     or->add(qb->expr()->eq('u.id', 1));
-         *     or->add(qb->expr()->eq('u.id', 2));
+         *     or = qb.expr().orx();
+         *     or.add(qb.expr().eq('u.id', 1));
+         *     or.add(qb.expr().eq('u.id', 2));
          *
-         *     qb->update('users', 'u')
-         *         ->set('u.password', md5('password'))
-         *         ->where(or);
+         *     qb.update('users', 'u')
+         *         .set('u.password', md5('password'))
+         *         .where(or);
          * </code>
          *
          * @param mixed predicates The restriction predicates.
@@ -540,11 +540,11 @@ namespace OCP.DB.QueryBuilder
          * conjunction with any previously specified restrictions.
          *
          * <code>
-         *     qb = conn->getQueryBuilder()
-         *         ->select('u')
-         *         ->from('users', 'u')
-         *         ->where('u.username LIKE ?')
-         *         ->andWhere('u.is_active = 1');
+         *     qb = conn.getQueryBuilder()
+         *         .select('u')
+         *         .from('users', 'u')
+         *         .where('u.username LIKE ?')
+         *         .andWhere('u.is_active = 1');
          * </code>
          *
          * @param mixed ...where The query restrictions.
@@ -561,11 +561,11 @@ namespace OCP.DB.QueryBuilder
          * disjunction with any previously specified restrictions.
          *
          * <code>
-         *     qb = conn->getQueryBuilder()
-         *         ->select('u.name')
-         *         ->from('users', 'u')
-         *         ->where('u.id = 1')
-         *         ->orWhere('u.id = 2');
+         *     qb = conn.getQueryBuilder()
+         *         .select('u.name')
+         *         .from('users', 'u')
+         *         .where('u.id = 1')
+         *         .orWhere('u.id = 2');
          * </code>
          *
          * @param mixed ...where The WHERE statement.
@@ -582,10 +582,10 @@ namespace OCP.DB.QueryBuilder
          * Replaces any previously specified groupings, if any.
          *
          * <code>
-         *     qb = conn->getQueryBuilder()
-         *         ->select('u.name')
-         *         ->from('users', 'u')
-         *         ->groupBy('u.id');
+         *     qb = conn.getQueryBuilder()
+         *         .select('u.name')
+         *         .from('users', 'u')
+         *         .groupBy('u.id');
          * </code>
          *
          * @param mixed ...groupBys The grouping expression.
@@ -599,11 +599,11 @@ namespace OCP.DB.QueryBuilder
          * Adds a grouping expression to the query.
          *
          * <code>
-         *     qb = conn->getQueryBuilder()
-         *         ->select('u.name')
-         *         ->from('users', 'u')
-         *         ->groupBy('u.lastLogin');
-         *         ->addGroupBy('u.createdAt')
+         *     qb = conn.getQueryBuilder()
+         *         .select('u.name')
+         *         .from('users', 'u')
+         *         .groupBy('u.lastLogin');
+         *         .addGroupBy('u.createdAt')
          * </code>
          *
          * @param mixed ...groupBy The grouping expression.
@@ -617,14 +617,14 @@ namespace OCP.DB.QueryBuilder
          * Sets a value for a column in an insert query.
          *
          * <code>
-         *     qb = conn->getQueryBuilder()
-         *         ->insert('users')
-         *         ->values(
+         *     qb = conn.getQueryBuilder()
+         *         .insert('users')
+         *         .values(
          *             array(
          *                 'name' => '?'
          *             )
          *         )
-         *         ->setValue('password', '?');
+         *         .setValue('password', '?');
          * </code>
          *
          * @param string column The column into which the value should be inserted.
@@ -640,9 +640,9 @@ namespace OCP.DB.QueryBuilder
          * Replaces any previous values, if any.
          *
          * <code>
-         *     qb = conn->getQueryBuilder()
-         *         ->insert('users')
-         *         ->values(
+         *     qb = conn.getQueryBuilder()
+         *         .insert('users')
+         *         .values(
          *             array(
          *                 'name' => '?',
          *                 'password' => '?'
@@ -767,8 +767,8 @@ namespace OCP.DB.QueryBuilder
          * Example:
          * <code>
          * value = 2;
-         * q->eq( 'id', q->bindValue( value ) );
-         * stmt = q->executeQuery(); // executed with 'id = 2'
+         * q.eq( 'id', q.bindValue( value ) );
+         * stmt = q.executeQuery(); // executed with 'id = 2'
          * </code>
          *
          * @license New BSD License
@@ -793,11 +793,11 @@ namespace OCP.DB.QueryBuilder
          *
          * Example:
          * <code>
-         *  qb = conn->getQueryBuilder();
-         *  qb->select('u.*')
-         *     ->from('users', 'u')
-         *     ->where('u.username = ' . qb->createPositionalParameter('Foo', IQueryBuilder::PARAM_STR))
-         *     ->orWhere('u.username = ' . qb->createPositionalParameter('Bar', IQueryBuilder::PARAM_STR))
+         *  qb = conn.getQueryBuilder();
+         *  qb.select('u.*')
+         *     .from('users', 'u')
+         *     .where('u.username = ' . qb.createPositionalParameter('Foo', IQueryBuilder::PARAM_STR))
+         *     .orWhere('u.username = ' . qb.createPositionalParameter('Bar', IQueryBuilder::PARAM_STR))
          * </code>
          *
          * @param mixed value
@@ -813,11 +813,11 @@ namespace OCP.DB.QueryBuilder
          *
          * Example:
          * <code>
-         *  qb = conn->getQueryBuilder();
-         *  qb->select('u.*')
-         *     ->from('users', 'u')
-         *     ->where('u.username = ' . qb->createParameter('name'))
-         *     ->setParameter('name', 'Bar', IQueryBuilder::PARAM_STR))
+         *  qb = conn.getQueryBuilder();
+         *  qb.select('u.*')
+         *     .from('users', 'u')
+         *     .where('u.username = ' . qb.createParameter('name'))
+         *     .setParameter('name', 'Bar', IQueryBuilder::PARAM_STR))
          * </code>
          *
          * @param string name
@@ -834,16 +834,16 @@ namespace OCP.DB.QueryBuilder
          *
          * Example:
          * <code>
-         *  qb = conn->getQueryBuilder();
-         *  qb->select(qb->createFunction('COUNT(*)'))
-         *     ->from('users', 'u')
-         *  echo qb->getSQL(); // SELECT COUNT(*) FROM `users` u
+         *  qb = conn.getQueryBuilder();
+         *  qb.select(qb.createFunction('COUNT(*)'))
+         *     .from('users', 'u')
+         *  echo qb.getSQL(); // SELECT COUNT(*) FROM `users` u
          * </code>
          * <code>
-         *  qb = conn->getQueryBuilder();
-         *  qb->select(qb->createFunction('COUNT(`column`)'))
-         *     ->from('users', 'u')
-         *  echo qb->getSQL(); // SELECT COUNT(`column`) FROM `users` u
+         *  qb = conn.getQueryBuilder();
+         *  qb.select(qb.createFunction('COUNT(`column`)'))
+         *     .from('users', 'u')
+         *  echo qb.getSQL(); // SELECT COUNT(`column`) FROM `users` u
          * </code>
          *
          * @param string call

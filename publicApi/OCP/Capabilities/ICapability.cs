@@ -9,7 +9,7 @@ namespace OCP.Capabilities
      * a capability.
      *
      * In an application use:
-     *   this->getContainer()->registerCapability('OCA\MY_APP\Capabilities');
+     *   this.getContainer().registerCapability('OCA\MY_APP\Capabilities');
      * To register capabilities.
      *
      * The class 'OCA\MY_APP\Capabilities' must then implement ICapability

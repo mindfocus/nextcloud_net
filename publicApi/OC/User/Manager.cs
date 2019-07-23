@@ -44,9 +44,9 @@ namespace OC.User
     {
 		this.config = config;
 		this.dispatcher = dispatcher;
-		// $this->listen('\OC\User', 'postDelete', function($user) use(&$cachedUsers) {
+		// $this.listen('\OC\User', 'postDelete', function($user) use(&$cachedUsers) {
         //     /** @var \OC\User\User $user */
-        //     unset($cachedUsers[$user->getUID()]);
+        //     unset($cachedUsers[$user.getUID()]);
         // });
     }
 
@@ -152,7 +152,7 @@ namespace OC.User
     {
 		var result = this.checkPasswordNoLogging(loginName, password);
         if (result == false) {
-			\OC::$server->getLogger()->warning('Login failed: \''. $loginName.'\' (Remote IP: \''. \OC::$server->getRequest()->getRemoteAddress(). '\')', ['app' => 'core']);
+			\OC::$server.getLogger().warning('Login failed: \''. $loginName.'\' (Remote IP: \''. \OC::$server.getRequest().getRemoteAddress(). '\')', ['app' => 'core']);
         }
 
         return result;
@@ -209,7 +209,7 @@ namespace OC.User
 		// 	 * @var \OC\User\User $a
 		// 	 * @var \OC\User\User $b
 		// 	 */
-        //     return strcasecmp($a->getUID(), $b->getUID());
+        //     return strcasecmp($a.getUID(), $b.getUID());
         // });
         return users;
     }
@@ -240,7 +240,7 @@ namespace OC.User
 		// 	 * @var \OC\User\User $a
 		// 	 * @var \OC\User\User $b
 		// 	 */
-        //     return strcasecmp($a->getDisplayName(), $b->getDisplayName());
+        //     return strcasecmp($a.getDisplayName(), $b.getDisplayName());
         // });
         return users;
     }
@@ -281,44 +281,44 @@ namespace OC.User
 	 * @throws \InvalidArgumentException
 	 */
 	public function createUserFromBackend($uid, $password, UserInterface $backend) {
-		$l = \OC::$server->getL10N('lib');
+		$l = \OC::$server.getL10N('lib');
 
 		// Check the name for bad characters
 		// Allowed are: "a-z", "A-Z", "0-9" and "_.@-'"
 		if (preg_match('/[^a-zA-Z0-9 _\.@\-\']/', $uid)) {
-			throw new \InvalidArgumentException($l->t('Only the following characters are allowed in a username:'
+			throw new \InvalidArgumentException($l.t('Only the following characters are allowed in a username:'
 				. ' "a-z", "A-Z", "0-9", and "_.@-\'"'));
 		}
 		// No empty username
 		if (trim($uid) === '') {
-			throw new \InvalidArgumentException($l->t('A valid username must be provided'));
+			throw new \InvalidArgumentException($l.t('A valid username must be provided'));
 		}
 		// No whitespace at the beginning or at the end
 		if (trim($uid) !== $uid) {
-			throw new \InvalidArgumentException($l->t('Username contains whitespace at the beginning or at the end'));
+			throw new \InvalidArgumentException($l.t('Username contains whitespace at the beginning or at the end'));
 		}
 		// Username only consists of 1 or 2 dots (directory traversal)
 		if ($uid === '.' || $uid === '..') {
-			throw new \InvalidArgumentException($l->t('Username must not consist of dots only'));
+			throw new \InvalidArgumentException($l.t('Username must not consist of dots only'));
 		}
 		// No empty password
 		if (trim($password) === '') {
-			throw new \InvalidArgumentException($l->t('A valid password must be provided'));
+			throw new \InvalidArgumentException($l.t('A valid password must be provided'));
 		}
 
 		// Check if user already exists
-		if ($this->userExists($uid)) {
-			throw new \InvalidArgumentException($l->t('The username is already being used'));
+		if ($this.userExists($uid)) {
+			throw new \InvalidArgumentException($l.t('The username is already being used'));
 		}
 
-		$this->emit('\OC\User', 'preCreateUser', [$uid, $password]);
-		$state = $backend->createUser($uid, $password);
+		$this.emit('\OC\User', 'preCreateUser', [$uid, $password]);
+		$state = $backend.createUser($uid, $password);
 		if($state === false) {
-			throw new \InvalidArgumentException($l->t('Could not create user'));
+			throw new \InvalidArgumentException($l.t('Could not create user'));
 		}
-		$user = $this->getUserObject($uid, $backend);
+		$user = $this.getUserObject($uid, $backend);
 		if ($user instanceof IUser) {
-			$this->emit('\OC\User', 'postCreateUser', [$user, $password]);
+			$this.emit('\OC\User', 'postCreateUser', [$user, $password]);
 		}
 		return $user;
 	}
@@ -333,15 +333,15 @@ namespace OC.User
 	 */
 	public function countUsers($hasLoggedIn = false) {
 		if ($hasLoggedIn) {
-			return $this->countSeenUsers();
+			return $this.countSeenUsers();
 		}
 		$userCountStatistics = [];
-		foreach ($this->backends as $backend) {
-			if ($backend->implementsActions(Backend::COUNT_USERS)) {
-				$backendUsers = $backend->countUsers();
+		foreach ($this.backends as $backend) {
+			if ($backend.implementsActions(Backend::COUNT_USERS)) {
+				$backendUsers = $backend.countUsers();
 				if($backendUsers !== false) {
 					if($backend instanceof IUserBackend) {
-						$name = $backend->getBackendName();
+						$name = $backend.getBackendName();
 					} else {
 						$name = get_class($backend);
 					}
@@ -367,8 +367,8 @@ namespace OC.User
 		$users = [];
 		foreach($groups as $group) {
 			$usersIds = array_map(function($user) {
-				return $user->getUID();
-			}, $group->getUsers());
+				return $user.getUID();
+			}, $group.getUsers());
 			$users = array_merge($users, $usersIds);
 		}
 		return count(array_unique($users));
@@ -386,18 +386,18 @@ namespace OC.User
 	 */
 	public function callForAllUsers(\Closure $callback, $search = '', $onlySeen = false) {
 		if ($onlySeen) {
-			$this->callForSeenUsers($callback);
+			$this.callForSeenUsers($callback);
 		} else {
-			foreach ($this->getBackends() as $backend) {
+			foreach ($this.getBackends() as $backend) {
 				$limit = 500;
 				$offset = 0;
 				do {
-					$users = $backend->getUsers($search, $limit, $offset);
+					$users = $backend.getUsers($search, $limit, $offset);
 					foreach ($users as $uid) {
-						if (!$backend->userExists($uid)) {
+						if (!$backend.userExists($uid)) {
 							continue;
 						}
-						$user = $this->getUserObject($uid, $backend, false);
+						$user = $this.getUserObject($uid, $backend, false);
 						$return = $callback($user);
 						if ($return === false) {
 							break;
@@ -416,17 +416,17 @@ namespace OC.User
 	 * @since 12.0.0
 	 */
 	public function countDisabledUsers(): int {
-		$queryBuilder = \OC::$server->getDatabaseConnection()->getQueryBuilder();
-		$queryBuilder->select($queryBuilder->func()->count('*'))
-			->from('preferences')
-			->where($queryBuilder->expr()->eq('appid', $queryBuilder->createNamedParameter('core')))
-			->andWhere($queryBuilder->expr()->eq('configkey', $queryBuilder->createNamedParameter('enabled')))
-			->andWhere($queryBuilder->expr()->eq('configvalue', $queryBuilder->createNamedParameter('false'), IQueryBuilder::PARAM_STR));
+		$queryBuilder = \OC::$server.getDatabaseConnection().getQueryBuilder();
+		$queryBuilder.select($queryBuilder.func().count('*'))
+			.from('preferences')
+			.where($queryBuilder.expr().eq('appid', $queryBuilder.createNamedParameter('core')))
+			.andWhere($queryBuilder.expr().eq('configkey', $queryBuilder.createNamedParameter('enabled')))
+			.andWhere($queryBuilder.expr().eq('configvalue', $queryBuilder.createNamedParameter('false'), IQueryBuilder::PARAM_STR));
 
 		
-		$result = $queryBuilder->execute();
-		$count = $result->fetchColumn();
-		$result->closeCursor();
+		$result = $queryBuilder.execute();
+		$count = $result.fetchColumn();
+		$result.closeCursor();
 		
 		if ($count !== false) {
 			$count = (int)$count;
@@ -445,18 +445,18 @@ namespace OC.User
 	 * @since 14.0.0
 	 */
 	public function countDisabledUsersOfGroups(array $groups): int {
-		$queryBuilder = \OC::$server->getDatabaseConnection()->getQueryBuilder();
-		$queryBuilder->select($queryBuilder->createFunction('COUNT(DISTINCT ' . $queryBuilder->getColumnName('uid') . ')'))
-			->from('preferences', 'p')
-			->innerJoin('p', 'group_user', 'g', $queryBuilder->expr()->eq('p.userid', 'g.uid'))
-			->where($queryBuilder->expr()->eq('appid', $queryBuilder->createNamedParameter('core')))
-			->andWhere($queryBuilder->expr()->eq('configkey', $queryBuilder->createNamedParameter('enabled')))
-			->andWhere($queryBuilder->expr()->eq('configvalue', $queryBuilder->createNamedParameter('false'), IQueryBuilder::PARAM_STR))
-			->andWhere($queryBuilder->expr()->in('gid', $queryBuilder->createNamedParameter($groups, IQueryBuilder::PARAM_STR_ARRAY)));
+		$queryBuilder = \OC::$server.getDatabaseConnection().getQueryBuilder();
+		$queryBuilder.select($queryBuilder.createFunction('COUNT(DISTINCT ' . $queryBuilder.getColumnName('uid') . ')'))
+			.from('preferences', 'p')
+			.innerJoin('p', 'group_user', 'g', $queryBuilder.expr().eq('p.userid', 'g.uid'))
+			.where($queryBuilder.expr().eq('appid', $queryBuilder.createNamedParameter('core')))
+			.andWhere($queryBuilder.expr().eq('configkey', $queryBuilder.createNamedParameter('enabled')))
+			.andWhere($queryBuilder.expr().eq('configvalue', $queryBuilder.createNamedParameter('false'), IQueryBuilder::PARAM_STR))
+			.andWhere($queryBuilder.expr().in('gid', $queryBuilder.createNamedParameter($groups, IQueryBuilder::PARAM_STR_ARRAY)));
 
-		$result = $queryBuilder->execute();
-		$count = $result->fetchColumn();
-		$result->closeCursor();
+		$result = $queryBuilder.execute();
+		$count = $result.fetchColumn();
+		$result.closeCursor();
 		
 		if ($count !== false) {
 			$count = (int)$count;
@@ -474,17 +474,17 @@ namespace OC.User
 	 * @since 11.0.0
 	 */
 	public function countSeenUsers() {
-		$queryBuilder = \OC::$server->getDatabaseConnection()->getQueryBuilder();
-		$queryBuilder->select($queryBuilder->func()->count('*'))
-			->from('preferences')
-			->where($queryBuilder->expr()->eq('appid', $queryBuilder->createNamedParameter('login')))
-			->andWhere($queryBuilder->expr()->eq('configkey', $queryBuilder->createNamedParameter('lastLogin')))
-			->andWhere($queryBuilder->expr()->isNotNull('configvalue'));
+		$queryBuilder = \OC::$server.getDatabaseConnection().getQueryBuilder();
+		$queryBuilder.select($queryBuilder.func().count('*'))
+			.from('preferences')
+			.where($queryBuilder.expr().eq('appid', $queryBuilder.createNamedParameter('login')))
+			.andWhere($queryBuilder.expr().eq('configkey', $queryBuilder.createNamedParameter('lastLogin')))
+			.andWhere($queryBuilder.expr().isNotNull('configvalue'));
 
-		$query = $queryBuilder->execute();
+		$query = $queryBuilder.execute();
 
-		$result = (int)$query->fetchColumn();
-		$query->closeCursor();
+		$result = (int)$query.fetchColumn();
+		$query.closeCursor();
 
 		return $result;
 	}
@@ -497,12 +497,12 @@ namespace OC.User
 		$limit = 1000;
 		$offset = 0;
 		do {
-			$userIds = $this->getSeenUserIds($limit, $offset);
+			$userIds = $this.getSeenUserIds($limit, $offset);
 			$offset += $limit;
 			foreach ($userIds as $userId) {
-				foreach ($this->backends as $backend) {
-					if ($backend->userExists($userId)) {
-						$user = $this->getUserObject($userId, $backend, false);
+				foreach ($this.backends as $backend) {
+					if ($backend.userExists($userId)) {
+						$user = $this.getUserObject($userId, $backend, false);
 						$return = $callback($user);
 						if ($return === false) {
 							return;
@@ -524,32 +524,32 @@ namespace OC.User
 	 * @return string[] with user ids
 	 */
 	private function getSeenUserIds($limit = null, $offset = null) {
-		$queryBuilder = \OC::$server->getDatabaseConnection()->getQueryBuilder();
-		$queryBuilder->select(['userid'])
-			->from('preferences')
-			->where($queryBuilder->expr()->eq(
-				'appid', $queryBuilder->createNamedParameter('login'))
+		$queryBuilder = \OC::$server.getDatabaseConnection().getQueryBuilder();
+		$queryBuilder.select(['userid'])
+			.from('preferences')
+			.where($queryBuilder.expr().eq(
+				'appid', $queryBuilder.createNamedParameter('login'))
 			)
-			->andWhere($queryBuilder->expr()->eq(
-				'configkey', $queryBuilder->createNamedParameter('lastLogin'))
+			.andWhere($queryBuilder.expr().eq(
+				'configkey', $queryBuilder.createNamedParameter('lastLogin'))
 			)
-			->andWhere($queryBuilder->expr()->isNotNull('configvalue')
+			.andWhere($queryBuilder.expr().isNotNull('configvalue')
 			);
 
 		if ($limit !== null) {
-			$queryBuilder->setMaxResults($limit);
+			$queryBuilder.setMaxResults($limit);
 		}
 		if ($offset !== null) {
-			$queryBuilder->setFirstResult($offset);
+			$queryBuilder.setFirstResult($offset);
 		}
-		$query = $queryBuilder->execute();
+		$query = $queryBuilder.execute();
 		$result = [];
 
-		while ($row = $query->fetch()) {
+		while ($row = $query.fetch()) {
 			$result[] = $row['userid'];
 		}
 
-		$query->closeCursor();
+		$query.closeCursor();
 
 		return $result;
 	}
@@ -560,10 +560,10 @@ namespace OC.User
 	 * @since 9.1.0
 	 */
 	public function getByEmail($email) {
-		$userIds = $this->config->getUsersForUserValueCaseInsensitive('settings', 'email', $email);
+		$userIds = $this.config.getUsersForUserValueCaseInsensitive('settings', 'email', $email);
 
 		$users = array_map(function($uid) {
-			return $this->get($uid);
+			return $this.get($uid);
 		}, $userIds);
 
 		return array_values(array_filter($users, function($u) {

@@ -29,8 +29,8 @@ namespace OCP.Files
          */
         public StorageNotAvailableException(string message = "", int code = STATUS_ERROR, Exception previous = null)
         {
-		    var l = \OC::server->getL10N('core');
-            parent::__construct(message, l->t('Storage is temporarily not available'), code, previous);
+		    var l = \OC::server.getL10N('core');
+            parent::__construct(message, l.t('Storage is temporarily not available'), code, previous);
         }
 
         /**

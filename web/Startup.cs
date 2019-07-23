@@ -31,10 +31,9 @@ namespace web
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
-
-
-            services.AddMvc()
-                .AddNewtonsoftJson();
+            
+            services.AddMvc();
+//                .AddNewtonsoftJson();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -51,13 +50,13 @@ namespace web
                 app.UseHsts();
             }
 
-            app.UseHttpsRedirection();
+//            app.UseHttpsRedirection();
             app.UseStaticFiles();
 
-            app.UseRouting(routes =>
-            {
-                routes.MapRazorPages();
-            });
+//            app.UseRouting(routes =>
+//            {
+//                routes.MapRazorPages();
+//            });
 
             app.UseCookiePolicy();
 

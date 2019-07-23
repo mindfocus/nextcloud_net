@@ -15,7 +15,7 @@ abstract class Entity {
 
 	/**
 	 * Simple alternative constructor for building entities from a request
-	 * @param array params the array which was obtained via this->params('key')
+	 * @param array params the array which was obtained via this.params('key')
 	 * in the controller
 	 * @return Entity
 	 * @since 7.0.0
@@ -25,7 +25,7 @@ abstract class Entity {
 
 		foreach(params as key => value) {
 			method = 'set' . ucfirst(key);
-			instance->method(value);
+			instance.method(value);
 		}
 
 		return instance;
@@ -41,12 +41,12 @@ abstract class Entity {
 		instance = new static();
 
 		foreach(row as key => value){
-			prop = ucfirst(instance->columnToProperty(key));
+			prop = ucfirst(instance.columnToProperty(key));
 			setter = 'set' . prop;
-			instance->setter(value);
+			instance.setter(value);
 		}
 
-		instance->resetUpdatedFields();
+		instance.resetUpdatedFields();
 
 		return instance;
 	}
@@ -57,7 +57,7 @@ abstract class Entity {
 	 * @since 7.0.0
 	 */
 	public function getFieldTypes() {
-		return this->_fieldTypes;
+		return this._fieldTypes;
 	}
 
 
@@ -66,7 +66,7 @@ abstract class Entity {
 	 * @since 7.0.0
 	 */
 	public function resetUpdatedFields(){
-		this->_updatedFields = array();
+		this._updatedFields = array();
 	}
 
 	/**
@@ -76,16 +76,16 @@ abstract class Entity {
 	protected function setter(name, args) {
 		// setters should only work for existing attributes
 		if(property_exists(this, name)){
-			if(this->name === args[0]) {
+			if(this.name === args[0]) {
 				return;
 			}
-			this->markFieldUpdated(name);
+			this.markFieldUpdated(name);
 
 			// if type definition exists, cast to correct type
-			if(args[0] !== null && array_key_exists(name, this->_fieldTypes)) {
-				settype(args[0], this->_fieldTypes[name]);
+			if(args[0] !== null && array_key_exists(name, this._fieldTypes)) {
+				settype(args[0], this._fieldTypes[name]);
 			}
-			this->name = args[0];
+			this.name = args[0];
 
 		} else {
 			throw new \BadFunctionCallException(name .
@@ -100,7 +100,7 @@ abstract class Entity {
 	protected function getter(name) {
 		// getters should only work for existing attributes
 		if(property_exists(this, name)){
-			return this->name;
+			return this.name;
 		} else {
 			throw new \BadFunctionCallException(name .
 				' is not a valid attribute');
@@ -119,9 +119,9 @@ abstract class Entity {
 		attr = lcfirst( substr(methodName, 3) );
 
 		if(strpos(methodName, 'set') === 0){
-			this->setter(attr, args);
+			this.setter(attr, args);
 		} elseif(strpos(methodName, 'get') === 0) {
-			return this->getter(attr);
+			return this.getter(attr);
 		} else {
 			throw new \BadFunctionCallException(methodName .
 					' does not exist');
@@ -136,7 +136,7 @@ abstract class Entity {
 	 * @since 7.0.0
 	 */
 	protected function markFieldUpdated(attribute){
-		this->_updatedFields[attribute] = true;
+		this._updatedFields[attribute] = true;
 	}
 
 
@@ -189,7 +189,7 @@ abstract class Entity {
 	 * @since 7.0.0
 	 */
 	public function getUpdatedFields(){
-		return this->_updatedFields;
+		return this._updatedFields;
 	}
 
 
@@ -201,7 +201,7 @@ abstract class Entity {
 	 * @since 7.0.0
 	 */
 	protected function addType(fieldName, type){
-		this->_fieldTypes[fieldName] = type;
+		this._fieldTypes[fieldName] = type;
 	}
 
 
@@ -215,7 +215,7 @@ abstract class Entity {
 	public function slugify(attributeName){
 		// toSlug should only work for existing attributes
 		if(property_exists(this, attributeName)){
-			value = this->attributeName;
+			value = this.attributeName;
 			// replace everything except alphanumeric with a single '-'
 			value = preg_replace('/[^A-Za-z0-9]+/', '-', value);
 			value = strtolower(value);

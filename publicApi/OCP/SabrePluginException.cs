@@ -12,7 +12,7 @@ namespace OCP
 //     * @since 8.2.0
 //     */
 //    public function getHTTPCode() {
-//        return this->code;
+//        return this.code;
 //    }
 //    }
 

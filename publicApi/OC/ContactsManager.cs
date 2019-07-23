@@ -125,7 +125,7 @@ namespace OC
          * 
          * @return array
          * @since 6.0.0
-         * @deprecated 16.0.0 - Use `$this->getUserAddressBooks()` instead
+         * @deprecated 16.0.0 - Use `$this.getUserAddressBooks()` instead
          */
         public IDictionary<string, string> getAddressBooks()
         {

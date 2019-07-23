@@ -17,8 +17,8 @@ namespace OCP.Files
      */
     public StorageBadConfigException(string message = "", Exception previous = null)
     {
-        //l = \OC::server->getL10N('core');
-        //parent::__construct(l->t('Storage incomplete configuration. %s', [message]), self::STATUS_INCOMPLETE_CONF, previous);
+        //l = \OC::server.getL10N('core');
+        //parent::__construct(l.t('Storage incomplete configuration. %s', [message]), self::STATUS_INCOMPLETE_CONF, previous);
     }
 
 }

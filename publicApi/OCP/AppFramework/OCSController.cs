@@ -1,3 +1,5 @@
+using OCP.AppFramework.Http;
+
 namespace OCP.AppFramework
 {
 /**
@@ -30,11 +32,11 @@ abstract class OCSController : ApiController {
 								int corsMaxAge=1728000) : base(appName, request, corsMethods,corsAllowedHeaders , corsMaxAge){
 		parent::__construct(appName, request, corsMethods,
 							corsAllowedHeaders, corsMaxAge);
-		this->registerResponder('json', function (data) {
-			return this->buildOCSResponse('json', data);
+		this.registerResponder('json', function (data) {
+			return this.buildOCSResponse('json', data);
 		});
-		this->registerResponder('xml', function (data) {
-			return this->buildOCSResponse('xml', data);
+		this.registerResponder('xml', function (data) {
+			return this.buildOCSResponse('xml', data);
 		});
 	}
 
@@ -44,7 +46,7 @@ abstract class OCSController : ApiController {
 	 * @internal
 	 */
 	public function setOCSVersion(version) {
-		this->ocsVersion = version;
+		this.ocsVersion = version;
 	}
 
 	/**
@@ -57,8 +59,8 @@ abstract class OCSController : ApiController {
 	 * @return Response
 	 * @since 9.1.0
 	 */
-	public function buildResponse(response, format = 'xml') {
-		return parent::buildResponse(response, format);
+	public Response buildResponse(response, format = 'xml') {
+		return buildResponse(response, format);
 	}
 
 	/**
@@ -69,7 +71,7 @@ abstract class OCSController : ApiController {
 	 * @return \OC\AppFramework\OCS\BaseResponse
 	 */
 	private function buildOCSResponse(format, DataResponse data) {
-		if (this->ocsVersion === 1) {
+		if (this.ocsVersion === 1) {
 			return new \OC\AppFramework\OCS\V1Response(data, format);
 		}
 		return new \OC\AppFramework\OCS\V2Response(data, format);

@@ -37,7 +37,7 @@
 //     * @since 14.0.0
 //     */
 //    public void registerBackend(string backendClass) {
-//        //$this->backends[$backendClass] = $backendClass;
+//        //$this.backends[$backendClass] = $backendClass;
 //    }
 //
 //    /**
@@ -48,7 +48,7 @@
 //     * @since 14.0.0
 //     */
 //    public void unregisterBackend(string backendClass) {
-//        //unset($this->backends[$backendClass], $this->initializedBackends[$backendClass]);
+//        //unset($this.backends[$backendClass], $this.initializedBackends[$backendClass]);
 //    }
 //
 //    /**

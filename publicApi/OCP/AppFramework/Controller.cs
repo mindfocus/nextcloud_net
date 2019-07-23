@@ -1,3 +1,5 @@
+using System.Collections;
+
 namespace OCP.AppFramework
 {
 /**
@@ -11,20 +13,20 @@ abstract class Controller {
 	 * @var string
 	 * @since 7.0.0
 	 */
-	protected appName;
+	protected string appName;
 
 	/**
 	 * current request
 	 * @var \OCP\IRequest
 	 * @since 6.0.0
 	 */
-	protected request;
+	protected OCP.IRequest request;
 
 	/**
 	 * @var array
 	 * @since 7.0.0
 	 */
-	private responders;
+	private IList responders;
 
 	/**
 	 * constructor of the controller
@@ -35,24 +37,24 @@ abstract class Controller {
 	
 	public Controller(string appName,
 	                            IRequest request) {
-		this->appName = appName;
-		this->request = request;
+		this.appName = appName;
+		this.request = request;
 
 		// default responders
-		this->responders = array(
+		this.responders = array(
 			'json' => function (data) {
 				if (data instanceof DataResponse) {
 					response = new JSONResponse(
-						data->getData(),
-						data->getStatus()
+						data.getData(),
+						data.getStatus()
 					);
-					dataHeaders = data->getHeaders();
-					headers = response->getHeaders();
+					dataHeaders = data.getHeaders();
+					headers = response.getHeaders();
 					// do not overwrite Content-Type if it already exists
 					if (isset(dataHeaders['Content-Type'])) {
 						unset(headers['Content-Type']);
 					}
-					response->setHeaders(array_merge(dataHeaders, headers));
+					response.setHeaders(array_merge(dataHeaders, headers));
 					return response;
 				}
 				return new JSONResponse(data);
@@ -78,7 +80,7 @@ abstract class Controller {
 
 			responder = str_replace('application/', '', header);
 
-			if (array_key_exists(responder, this->responders)) {
+			if (array_key_exists(responder, this.responders)) {
 				return responder;
 			}
 		}
@@ -95,7 +97,7 @@ abstract class Controller {
 	 * @since 7.0.0
 	 */
 	protected function registerResponder(format, \Closure responder) {
-		this->responders[format] = responder;
+		this.responders[format] = responder;
 	}
 
 
@@ -109,9 +111,9 @@ abstract class Controller {
 	 * @since 7.0.0
 	 */
 	public function buildResponse(response, format='json') {
-		if(array_key_exists(format, this->responders)) {
+		if(array_key_exists(format, this.responders)) {
 
-			responder = this->responders[format];
+			responder = this.responders[format];
 
 			return responder(response);
 

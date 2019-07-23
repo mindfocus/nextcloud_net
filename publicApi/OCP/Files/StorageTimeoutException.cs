@@ -17,8 +17,8 @@ namespace OCP.Files
      */
     public StorageTimeoutException(string message = "", Exception previous = null)
     {
-        //l = \OC::server->getL10N('core');
-        //parent::__construct(l->t('Storage connection timeout. %s', [message]), self::STATUS_TIMEOUT, previous);
+        //l = \OC::server.getL10N('core');
+        //parent::__construct(l.t('Storage connection timeout. %s', [message]), self::STATUS_TIMEOUT, previous);
     }
 }
 }

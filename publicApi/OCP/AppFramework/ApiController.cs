@@ -30,9 +30,9 @@ abstract class ApiController : Controller {
                                 corsAllowedHeaders='Authorization, Content-Type, Accept',
                                 corsMaxAge=1728000){
         parent::__construct(appName, request);
-        this->corsMethods = corsMethods;
-        this->corsAllowedHeaders = corsAllowedHeaders;
-        this->corsMaxAge = corsMaxAge;
+        this.corsMethods = corsMethods;
+        this.corsAllowedHeaders = corsAllowedHeaders;
+        this.corsMaxAge = corsMaxAge;
     }
 
 
@@ -46,18 +46,18 @@ abstract class ApiController : Controller {
 	 * @since 7.0.0
      */
     public function preflightedCors() {
-        if(isset(this->request->server['HTTP_ORIGIN'])) {
-            origin = this->request->server['HTTP_ORIGIN'];
+        if(isset(this.request.server['HTTP_ORIGIN'])) {
+            origin = this.request.server['HTTP_ORIGIN'];
         } else {
             origin = '*';
         }
 
         response = new Response();
-        response->addHeader('Access-Control-Allow-Origin', origin);
-        response->addHeader('Access-Control-Allow-Methods', this->corsMethods);
-        response->addHeader('Access-Control-Max-Age', (string)this->corsMaxAge);
-        response->addHeader('Access-Control-Allow-Headers', this->corsAllowedHeaders);
-        response->addHeader('Access-Control-Allow-Credentials', 'false');
+        response.addHeader('Access-Control-Allow-Origin', origin);
+        response.addHeader('Access-Control-Allow-Methods', this.corsMethods);
+        response.addHeader('Access-Control-Max-Age', (string)this.corsMaxAge);
+        response.addHeader('Access-Control-Allow-Headers', this.corsAllowedHeaders);
+        response.addHeader('Access-Control-Allow-Credentials', 'false');
         return response;
     }
 

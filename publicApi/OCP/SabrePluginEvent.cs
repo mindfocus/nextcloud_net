@@ -18,9 +18,9 @@
 //     * @since 8.2.0
 //     */
 //    public function __construct(server = null) {
-//        this->message = '';
-//        this->statusCode = Http::STATUS_OK;
-//        this->server = server;
+//        this.message = '';
+//        this.statusCode = Http::STATUS_OK;
+//        this.server = server;
 //    }
 //
 //    /**
@@ -29,7 +29,7 @@
 //     * @since 8.2.0
 //     */
 //    public function setStatusCode(statusCode) {
-//        this->statusCode = (int) statusCode;
+//        this.statusCode = (int) statusCode;
 //        return this;
 //    }
 //
@@ -39,7 +39,7 @@
 //     * @since 8.2.0
 //     */
 //    public function setMessage(message) {
-//        this->message = (string) message;
+//        this.message = (string) message;
 //        return this;
 //    }
 //
@@ -48,7 +48,7 @@
 //     * @since 8.2.0
 //     */
 //    public function getStatusCode() {
-//        return this->statusCode;
+//        return this.statusCode;
 //    }
 //
 //    /**
@@ -56,7 +56,7 @@
 //     * @since 8.2.0
 //     */
 //    public function getMessage() {
-//        return this->message;
+//        return this.message;
 //    }
 //
 //    /**
@@ -64,7 +64,7 @@
 //     * @since 9.0.0
 //     */
 //    public function getServer() {
-//        return this->server;
+//        return this.server;
 //    }
 //    }
 //}

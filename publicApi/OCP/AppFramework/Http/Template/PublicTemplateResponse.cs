@@ -31,7 +31,7 @@ public class PublicTemplateResponse : TemplateResponse {
 	 * @since 14.0.0
 	 */
 	public function setHeaderTitle(string title) {
-		this->headerTitle = title;
+		this.headerTitle = title;
 	}
 
 	/**
@@ -39,7 +39,7 @@ public class PublicTemplateResponse : TemplateResponse {
 	 * @since 14.0.0
 	 */
 	public function getHeaderTitle(): string {
-		return this->headerTitle;
+		return this.headerTitle;
 	}
 
 	/**
@@ -47,7 +47,7 @@ public class PublicTemplateResponse : TemplateResponse {
 	 * @since 14.0.0
 	 */
 	public function setHeaderDetails(string details) {
-		this->headerDetails = details;
+		this.headerDetails = details;
 	}
 
 	/**
@@ -55,7 +55,7 @@ public class PublicTemplateResponse : TemplateResponse {
 	 * @since 14.0.0
 	 */
 	public function getHeaderDetails(): string {
-		return this->headerDetails;
+		return this.headerDetails;
 	}
 
 	/**
@@ -68,10 +68,10 @@ public class PublicTemplateResponse : TemplateResponse {
 			if (actions instanceof IMenuAction) {
 				throw new InvalidArgumentException('Actions must be of type IMenuAction');
 			}
-			this->headerActions[] = action;
+			this.headerActions[] = action;
 		}
-		usort(this->headerActions, function(IMenuAction a, IMenuAction b) {
-			return a->getPriority() > b->getPriority();
+		usort(this.headerActions, function(IMenuAction a, IMenuAction b) {
+			return a.getPriority() > b.getPriority();
 		});
 	}
 
@@ -81,8 +81,8 @@ public class PublicTemplateResponse : TemplateResponse {
 	 * @throws \Exception
 	 */
 	public function getPrimaryAction(): IMenuAction {
-		if (this->getActionCount() > 0) {
-			return this->headerActions[0];
+		if (this.getActionCount() > 0) {
+			return this.headerActions[0];
 		}
 		throw new \Exception('No header actions have been set');
 	}
@@ -92,7 +92,7 @@ public class PublicTemplateResponse : TemplateResponse {
 	 * @since 14.0.0
 	 */
 	public function getActionCount(): int {
-		return count(this->headerActions);
+		return count(this.headerActions);
 	}
 
 	/**
@@ -100,21 +100,21 @@ public class PublicTemplateResponse : TemplateResponse {
 	 * @since 14.0.0
 	 */
 	public function getOtherActions(): array {
-		return array_slice(this->headerActions, 1);
+		return array_slice(this.headerActions, 1);
 	}
 
 	/**
 	 * @since 14.0.0
 	 */
 	public function setFooterVisible(bool visible = false) {
-		this->footerVisible = visible;
+		this.footerVisible = visible;
 	}
 
 	/**
 	 * @since 14.0.0
 	 */
 	public function getFooterVisible(): bool {
-		return this->footerVisible;
+		return this.footerVisible;
 	}
 
 	/**
@@ -122,10 +122,10 @@ public class PublicTemplateResponse : TemplateResponse {
 	 * @since 14.0.0
 	 */
 	public function render(): string {
-		params = array_merge(this->getParams(), [
+		params = array_merge(this.getParams(), [
 			'template' => this,
 		]);
-		this->setParams(params);
+		this.setParams(params);
 		return  parent::render();
 	}
 

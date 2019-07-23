@@ -20,7 +20,7 @@ namespace OCP.Collaboration.AutoComplete
      * @since 16.0.0
      */
 //    public function getResults(): array {
-//        return this->getArgument('results');
+//        return this.getArgument('results');
 //    }
 
     /**
@@ -28,14 +28,14 @@ namespace OCP.Collaboration.AutoComplete
      * @since 16.0.0
      */
 //    public function setResults(array results): void {
-//        this->setArgument('results', results);
+//        this.setArgument('results', results);
 //    }
 
     /**
      * @since 16.0.0
      */
 //    public function getSearchTerm(): string {
-//        return this->getArgument('search');
+//        return this.getArgument('search');
 //    }
 
     /**
@@ -43,35 +43,35 @@ namespace OCP.Collaboration.AutoComplete
      * @since 16.0.0
      */
 //    public function getShareTypes(): array {
-//        return this->getArgument('shareTypes');
+//        return this.getArgument('shareTypes');
 //    }
 
     /**
      * @since 16.0.0
      */
 //    public function getItemType(): string {
-//        return this->getArgument('itemType');
+//        return this.getArgument('itemType');
 //    }
 
     /**
      * @since 16.0.0
      */
 //    public function getItemId(): string {
-//        return this->getArgument('itemId');
+//        return this.getArgument('itemId');
 //    }
 
     /**
      * @since 16.0.0
      */
 //    public function getSorter(): string {
-//        return this->getArgument('sorter');
+//        return this.getArgument('sorter');
 //    }
 
     /**
      * @since 16.0.0
      */
 //    public function getLimit(): int {
-//        return this->getArgument('limit');
+//        return this.getArgument('limit');
 //    }
 
     }

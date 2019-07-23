@@ -56,11 +56,11 @@ namespace OC.Files
                 throw new \Exception();
             }
 
-		this->fakeRoot = root;
-		this->lockingProvider = \OC::server->getLockingProvider();
-		this->lockingEnabled = !(this->lockingProvider instanceof \OC\Lock\NoopLockingProvider);
-		this->userManager = \OC::server->getUserManager();
-		this->logger = \OC::server->getLogger();
+		this.fakeRoot = root;
+		this.lockingProvider = \OC::server.getLockingProvider();
+		this.lockingEnabled = !(this.lockingProvider instanceof \OC\Lock\NoopLockingProvider);
+		this.userManager = \OC::server.getUserManager();
+		this.logger = \OC::server.getLogger();
         }
 
         public function getAbsolutePath(path = '/')
@@ -68,14 +68,14 @@ namespace OC.Files
             if (path === null) {
                 return null;
             }
-		this->assertPathLength(path);
+		this.assertPathLength(path);
             if (path === '') {
 			path = '/';
             }
             if (path[0] !== '/') {
 			path = '/'. path;
             }
-            return this->fakeRoot. path;
+            return this.fakeRoot. path;
         }
 
         /**
@@ -112,18 +112,18 @@ namespace OC.Files
          */
         public function getRelativePath(path)
         {
-		this->assertPathLength(path);
-            if (this->fakeRoot == '') {
+		this.assertPathLength(path);
+            if (this.fakeRoot == '') {
                 return path;
             }
 
-            if (rtrim(path, '/') === rtrim(this->fakeRoot, '/'))
+            if (rtrim(path, '/') === rtrim(this.fakeRoot, '/'))
             {
                 return '/';
             }
 
 		// missing slashes can cause wrong matches!
-		root = rtrim(this->fakeRoot, '/'). '/';
+		root = rtrim(this.fakeRoot, '/'). '/';
 
             if (strpos(path, root) !== 0)
             {
@@ -131,7 +131,7 @@ namespace OC.Files
             }
             else
             {
-			path = substr(path, strlen(this->fakeRoot));
+			path = substr(path, strlen(this.fakeRoot));
                 if (strlen(path) === 0)
                 {
                     return '/';
@@ -154,7 +154,7 @@ namespace OC.Files
          */
         public function getMountPoint(path)
         {
-            return Filesystem::getMountPoint(this->getAbsolutePath(path));
+            return Filesystem::getMountPoint(this.getAbsolutePath(path));
         }
 
         /**
@@ -168,7 +168,7 @@ namespace OC.Files
          */
         public function getMount(path)
         {
-            return Filesystem::getMountManager()->find(this->getAbsolutePath(path));
+            return Filesystem::getMountManager().find(this.getAbsolutePath(path));
         }
 
         /**
@@ -179,7 +179,7 @@ namespace OC.Files
          */
         public function resolvePath(path)
         {
-		a = this->getAbsolutePath(path);
+		a = this.getAbsolutePath(path);
 		p = Filesystem::normalizePath(a);
             return Filesystem::resolvePath(p);
         }
@@ -195,10 +195,10 @@ namespace OC.Files
         public function getLocalFile(path)
         {
 		parent = substr(path, 0, strrpos(path, '/'));
-		path = this->getAbsolutePath(path);
+		path = this.getAbsolutePath(path);
             list(storage, internalPath) = Filesystem::resolvePath(path);
             if (Filesystem::isValidPath(parent) and storage) {
-                return storage->getLocalFile(internalPath);
+                return storage.getLocalFile(internalPath);
             } else
             {
                 return null;
@@ -212,10 +212,10 @@ namespace OC.Files
         public function getLocalFolder(path)
         {
 		parent = substr(path, 0, strrpos(path, '/'));
-		path = this->getAbsolutePath(path);
+		path = this.getAbsolutePath(path);
             list(storage, internalPath) = Filesystem::resolvePath(path);
             if (Filesystem::isValidPath(parent) and storage) {
-                return storage->getLocalFolder(internalPath);
+                return storage.getLocalFolder(internalPath);
             } else
             {
                 return null;
@@ -229,7 +229,7 @@ namespace OC.Files
          */
         public function mkdir(path)
         {
-            return this->basicOperation('mkdir', path, array('create', 'write'));
+            return this.basicOperation('mkdir', path, array('create', 'write'));
         }
 
         /**
@@ -245,21 +245,21 @@ namespace OC.Files
 			// cut of /user/files to get the relative path to data/user/files
 			pathParts = explode('/', path, 4);
 			relPath = '/'. pathParts[3];
-			this->lockFile(relPath, ILockingProvider::LOCK_SHARED, true);
+			this.lockFile(relPath, ILockingProvider::LOCK_SHARED, true);
 			\OC_Hook::emit(
                 Filesystem::CLASSNAME, "umount",
                 array(Filesystem::signal_param_path => relPath)
             );
-			this->changeLock(relPath, ILockingProvider::LOCK_EXCLUSIVE, true);
-			result = mount->removeMount();
-			this->changeLock(relPath, ILockingProvider::LOCK_SHARED, true);
+			this.changeLock(relPath, ILockingProvider::LOCK_EXCLUSIVE, true);
+			result = mount.removeMount();
+			this.changeLock(relPath, ILockingProvider::LOCK_SHARED, true);
                 if (result) {
 				\OC_Hook::emit(
                     Filesystem::CLASSNAME, "post_umount",
                     array(Filesystem::signal_param_path => relPath)
                 );
                 }
-			this->unlockFile(relPath, ILockingProvider::LOCK_SHARED, true);
+			this.unlockFile(relPath, ILockingProvider::LOCK_SHARED, true);
                 return result;
             } else
             {
@@ -272,36 +272,36 @@ namespace OC.Files
 
         public function disableCacheUpdate()
         {
-		this->updaterEnabled = false;
+		this.updaterEnabled = false;
         }
 
         public function enableCacheUpdate()
         {
-		this->updaterEnabled = true;
+		this.updaterEnabled = true;
         }
 
         protected function writeUpdate(Storage storage, internalPath, time = null)
         {
-            if (this->updaterEnabled) {
+            if (this.updaterEnabled) {
                 if (is_null(time))
                 {
 				time = time();
                 }
-			storage->getUpdater()->update(internalPath, time);
+			storage.getUpdater().update(internalPath, time);
             }
         }
 
         protected function removeUpdate(Storage storage, internalPath)
         {
-            if (this->updaterEnabled) {
-			storage->getUpdater()->remove(internalPath);
+            if (this.updaterEnabled) {
+			storage.getUpdater().remove(internalPath);
             }
         }
 
         protected function renameUpdate(Storage sourceStorage, Storage targetStorage, sourceInternalPath, targetInternalPath)
         {
-            if (this->updaterEnabled) {
-			targetStorage->getUpdater()->renameFromStorage(sourceStorage, sourceInternalPath, targetInternalPath);
+            if (this.updaterEnabled) {
+			targetStorage.getUpdater().renameFromStorage(sourceStorage, sourceInternalPath, targetInternalPath);
             }
         }
 
@@ -311,22 +311,22 @@ namespace OC.Files
          */
         public function rmdir(path)
         {
-		absolutePath = this->getAbsolutePath(path);
-		mount = Filesystem::getMountManager()->find(absolutePath);
-            if (mount->getInternalPath(absolutePath) === '') {
-                return this->removeMount(mount, absolutePath);
+		absolutePath = this.getAbsolutePath(path);
+		mount = Filesystem::getMountManager().find(absolutePath);
+            if (mount.getInternalPath(absolutePath) === '') {
+                return this.removeMount(mount, absolutePath);
             }
-            if (this->is_dir(path)) {
-			result = this->basicOperation('rmdir', path, array('delete'));
+            if (this.is_dir(path)) {
+			result = this.basicOperation('rmdir', path, array('delete'));
             } else
             {
 			result = false;
             }
 
-            if (!result && !this->file_exists(path)) { //clear ghost files from the cache on delete
-			storage = mount->getStorage();
-			internalPath = mount->getInternalPath(absolutePath);
-			storage->getUpdater()->remove(internalPath);
+            if (!result && !this.file_exists(path)) { //clear ghost files from the cache on delete
+			storage = mount.getStorage();
+			internalPath = mount.getInternalPath(absolutePath);
+			storage.getUpdater().remove(internalPath);
 		}
 		return result;
 	}
@@ -336,7 +336,7 @@ namespace OC.Files
 	 * @return resource
 	 */
 	public function opendir(path) {
-		return this->basicOperation('opendir', path, array('read'));
+		return this.basicOperation('opendir', path, array('read'));
 	}
 
 	/**
@@ -347,7 +347,7 @@ namespace OC.Files
 		if (path == '/') {
 			return true;
 		}
-		return this->basicOperation('is_dir', path);
+		return this.basicOperation('is_dir', path);
 	}
 
 	/**
@@ -358,7 +358,7 @@ namespace OC.Files
 		if (path == '/') {
 			return false;
 		}
-		return this->basicOperation('is_file', path);
+		return this.basicOperation('is_file', path);
 	}
 
 	/**
@@ -366,7 +366,7 @@ namespace OC.Files
 	 * @return mixed
 	 */
 	public function stat(path) {
-		return this->basicOperation('stat', path);
+		return this.basicOperation('stat', path);
 	}
 
 	/**
@@ -374,7 +374,7 @@ namespace OC.Files
 	 * @return mixed
 	 */
 	public function filetype(path) {
-		return this->basicOperation('filetype', path);
+		return this.basicOperation('filetype', path);
 	}
 
 	/**
@@ -382,7 +382,7 @@ namespace OC.Files
 	 * @return mixed
 	 */
 	public function filesize(path) {
-		return this->basicOperation('filesize', path);
+		return this.basicOperation('filesize', path);
 	}
 
 	/**
@@ -391,9 +391,9 @@ namespace OC.Files
 	 * @throws \OCP\Files\InvalidPathException
 	 */
 	public function readfile(path) {
-		this->assertPathLength(path);
+		this.assertPathLength(path);
 		@ob_end_clean();
-		handle = this->fopen(path, 'rb');
+		handle = this.fopen(path, 'rb');
 		if (handle) {
 			chunkSize = 8192; // 8 kB chunks
 			while (!feof(handle)) {
@@ -401,7 +401,7 @@ namespace OC.Files
 				flush();
 			}
 			fclose(handle);
-			return this->filesize(path);
+			return this.filesize(path);
 		}
 		return false;
 	}
@@ -415,9 +415,9 @@ namespace OC.Files
 	 * @throws \OCP\Files\UnseekableException
 	 */
 	public function readfilePart(path, from, to) {
-		this->assertPathLength(path);
+		this.assertPathLength(path);
 		@ob_end_clean();
-		handle = this->fopen(path, 'rb');
+		handle = this.fopen(path, 'rb');
 		if (handle) {
 			chunkSize = 8192; // 8 kB chunks
 			startReading = true;
@@ -463,7 +463,7 @@ namespace OC.Files
 	 * @return mixed
 	 */
 	public function isCreatable(path) {
-		return this->basicOperation('isCreatable', path);
+		return this.basicOperation('isCreatable', path);
 	}
 
 	/**
@@ -471,7 +471,7 @@ namespace OC.Files
 	 * @return mixed
 	 */
 	public function isReadable(path) {
-		return this->basicOperation('isReadable', path);
+		return this.basicOperation('isReadable', path);
 	}
 
 	/**
@@ -479,7 +479,7 @@ namespace OC.Files
 	 * @return mixed
 	 */
 	public function isUpdatable(path) {
-		return this->basicOperation('isUpdatable', path);
+		return this.basicOperation('isUpdatable', path);
 	}
 
 	/**
@@ -487,12 +487,12 @@ namespace OC.Files
 	 * @return bool|mixed
 	 */
 	public function isDeletable(path) {
-		absolutePath = this->getAbsolutePath(path);
-		mount = Filesystem::getMountManager()->find(absolutePath);
-		if (mount->getInternalPath(absolutePath) === '') {
+		absolutePath = this.getAbsolutePath(path);
+		mount = Filesystem::getMountManager().find(absolutePath);
+		if (mount.getInternalPath(absolutePath) === '') {
 			return mount instanceof MoveableMount;
 		}
-		return this->basicOperation('isDeletable', path);
+		return this.basicOperation('isDeletable', path);
 	}
 
 	/**
@@ -500,7 +500,7 @@ namespace OC.Files
 	 * @return mixed
 	 */
 	public function isSharable(path) {
-		return this->basicOperation('isSharable', path);
+		return this.basicOperation('isSharable', path);
 	}
 
 	/**
@@ -511,7 +511,7 @@ namespace OC.Files
 		if (path == '/') {
 			return true;
 		}
-		return this->basicOperation('file_exists', path);
+		return this.basicOperation('file_exists', path);
 	}
 
 	/**
@@ -519,7 +519,7 @@ namespace OC.Files
 	 * @return mixed
 	 */
 	public function filemtime(path) {
-		return this->basicOperation('filemtime', path);
+		return this.basicOperation('filemtime', path);
 	}
 
 	/**
@@ -534,22 +534,22 @@ namespace OC.Files
 
 		hooks = array('touch');
 
-		if (!this->file_exists(path)) {
+		if (!this.file_exists(path)) {
 			hooks[] = 'create';
 			hooks[] = 'write';
 		}
-		result = this->basicOperation('touch', path, hooks, mtime);
+		result = this.basicOperation('touch', path, hooks, mtime);
 		if (!result) {
 			// If create file fails because of permissions on external storage like SMB folders,
 			// check file exists and return false if not.
-			if (!this->file_exists(path)) {
+			if (!this.file_exists(path)) {
 				return false;
 			}
 			if (is_null(mtime)) {
 				mtime = time();
 			}
 			//if native touch fails, we emulate it by changing the mtime in the cache
-			this->putFileInfo(path, array('mtime' => floor(mtime)));
+			this.putFileInfo(path, array('mtime' => floor(mtime)));
 		}
 		return true;
 	}
@@ -559,7 +559,7 @@ namespace OC.Files
 	 * @return mixed
 	 */
 	public function file_get_contents(path) {
-		return this->basicOperation('file_get_contents', path, array('read'));
+		return this.basicOperation('file_get_contents', path, array('read'));
 	}
 
 	/**
@@ -570,17 +570,17 @@ namespace OC.Files
 	protected function emit_file_hooks_pre(exists, path, &run) {
 		if (!exists) {
 			\OC_Hook::emit(Filesystem::CLASSNAME, Filesystem::signal_create, array(
-				Filesystem::signal_param_path => this->getHookPath(path),
+				Filesystem::signal_param_path => this.getHookPath(path),
 				Filesystem::signal_param_run => &run,
 			));
 		} else {
 			\OC_Hook::emit(Filesystem::CLASSNAME, Filesystem::signal_update, array(
-				Filesystem::signal_param_path => this->getHookPath(path),
+				Filesystem::signal_param_path => this.getHookPath(path),
 				Filesystem::signal_param_run => &run,
 			));
 		}
 		\OC_Hook::emit(Filesystem::CLASSNAME, Filesystem::signal_write, array(
-			Filesystem::signal_param_path => this->getHookPath(path),
+			Filesystem::signal_param_path => this.getHookPath(path),
 			Filesystem::signal_param_run => &run,
 		));
 	}
@@ -592,15 +592,15 @@ namespace OC.Files
 	protected function emit_file_hooks_post(exists, path) {
 		if (!exists) {
 			\OC_Hook::emit(Filesystem::CLASSNAME, Filesystem::signal_post_create, array(
-				Filesystem::signal_param_path => this->getHookPath(path),
+				Filesystem::signal_param_path => this.getHookPath(path),
 			));
 		} else {
 			\OC_Hook::emit(Filesystem::CLASSNAME, Filesystem::signal_post_update, array(
-				Filesystem::signal_param_path => this->getHookPath(path),
+				Filesystem::signal_param_path => this.getHookPath(path),
 			));
 		}
 		\OC_Hook::emit(Filesystem::CLASSNAME, Filesystem::signal_post_write, array(
-			Filesystem::signal_param_path => this->getHookPath(path),
+			Filesystem::signal_param_path => this.getHookPath(path),
 		));
 	}
 
@@ -612,53 +612,53 @@ namespace OC.Files
 	 */
 	public function file_put_contents(path, data) {
 		if (is_resource(data)) { //not having to deal with streams in file_put_contents makes life easier
-			absolutePath = Filesystem::normalizePath(this->getAbsolutePath(path));
+			absolutePath = Filesystem::normalizePath(this.getAbsolutePath(path));
 			if (Filesystem::isValidPath(path)
 				and !Filesystem::isFileBlacklisted(path)
 			) {
-				path = this->getRelativePath(absolutePath);
+				path = this.getRelativePath(absolutePath);
 
-				this->lockFile(path, ILockingProvider::LOCK_SHARED);
+				this.lockFile(path, ILockingProvider::LOCK_SHARED);
 
-				exists = this->file_exists(path);
+				exists = this.file_exists(path);
 				run = true;
-				if (this->shouldEmitHooks(path)) {
-					this->emit_file_hooks_pre(exists, path, run);
+				if (this.shouldEmitHooks(path)) {
+					this.emit_file_hooks_pre(exists, path, run);
 				}
 				if (!run) {
-					this->unlockFile(path, ILockingProvider::LOCK_SHARED);
+					this.unlockFile(path, ILockingProvider::LOCK_SHARED);
 					return false;
 				}
 
-				this->changeLock(path, ILockingProvider::LOCK_EXCLUSIVE);
+				this.changeLock(path, ILockingProvider::LOCK_EXCLUSIVE);
 
 				/** @var \OC\Files\Storage\Storage storage */
-				list(storage, internalPath) = this->resolvePath(path);
-				target = storage->fopen(internalPath, 'w');
+				list(storage, internalPath) = this.resolvePath(path);
+				target = storage.fopen(internalPath, 'w');
 				if (target) {
 					list (, result) = \OC_Helper::streamCopy(data, target);
 					fclose(target);
 					fclose(data);
 
-					this->writeUpdate(storage, internalPath);
+					this.writeUpdate(storage, internalPath);
 
-					this->changeLock(path, ILockingProvider::LOCK_SHARED);
+					this.changeLock(path, ILockingProvider::LOCK_SHARED);
 
-					if (this->shouldEmitHooks(path) && result !== false) {
-						this->emit_file_hooks_post(exists, path);
+					if (this.shouldEmitHooks(path) && result !== false) {
+						this.emit_file_hooks_post(exists, path);
 					}
-					this->unlockFile(path, ILockingProvider::LOCK_SHARED);
+					this.unlockFile(path, ILockingProvider::LOCK_SHARED);
 					return result;
 				} else {
-					this->unlockFile(path, ILockingProvider::LOCK_EXCLUSIVE);
+					this.unlockFile(path, ILockingProvider::LOCK_EXCLUSIVE);
 					return false;
 				}
 			} else {
 				return false;
 			}
 		} else {
-			hooks = this->file_exists(path) ? array('update', 'write') : array('create', 'write');
-			return this->basicOperation('file_put_contents', path, hooks, data);
+			hooks = this.file_exists(path) ? array('update', 'write') : array('create', 'write');
+			return this.basicOperation('file_put_contents', path, hooks, data);
 		}
 	}
 
@@ -672,20 +672,20 @@ namespace OC.Files
 			return false;
 		}
 		postFix = (substr(path, -1) === '/') ? '/' : '';
-		absolutePath = Filesystem::normalizePath(this->getAbsolutePath(path));
-		mount = Filesystem::getMountManager()->find(absolutePath . postFix);
-		if (mount and mount->getInternalPath(absolutePath) === '') {
-			return this->removeMount(mount, absolutePath);
+		absolutePath = Filesystem::normalizePath(this.getAbsolutePath(path));
+		mount = Filesystem::getMountManager().find(absolutePath . postFix);
+		if (mount and mount.getInternalPath(absolutePath) === '') {
+			return this.removeMount(mount, absolutePath);
 		}
-		if (this->is_dir(path)) {
-			result = this->basicOperation('rmdir', path, ['delete']);
+		if (this.is_dir(path)) {
+			result = this.basicOperation('rmdir', path, ['delete']);
 		} else {
-			result = this->basicOperation('unlink', path, ['delete']);
+			result = this.basicOperation('unlink', path, ['delete']);
 		}
-		if (!result && !this->file_exists(path)) { //clear ghost files from the cache on delete
-			storage = mount->getStorage();
-			internalPath = mount->getInternalPath(absolutePath);
-			storage->getUpdater()->remove(internalPath);
+		if (!result && !this.file_exists(path)) { //clear ghost files from the cache on delete
+			storage = mount.getStorage();
+			internalPath = mount.getInternalPath(absolutePath);
+			storage.getUpdater().remove(internalPath);
 			return true;
 		} else {
 			return result;
@@ -697,7 +697,7 @@ namespace OC.Files
 	 * @return bool|mixed
 	 */
 	public function deleteAll(directory) {
-		return this->rmdir(directory);
+		return this.rmdir(directory);
 	}
 
 	/**
@@ -709,64 +709,64 @@ namespace OC.Files
 	 * @return bool|mixed
 	 */
 	public function rename(path1, path2) {
-		absolutePath1 = Filesystem::normalizePath(this->getAbsolutePath(path1));
-		absolutePath2 = Filesystem::normalizePath(this->getAbsolutePath(path2));
+		absolutePath1 = Filesystem::normalizePath(this.getAbsolutePath(path1));
+		absolutePath2 = Filesystem::normalizePath(this.getAbsolutePath(path2));
 		result = false;
 		if (
 			Filesystem::isValidPath(path2)
 			and Filesystem::isValidPath(path1)
 			and !Filesystem::isFileBlacklisted(path2)
 		) {
-			path1 = this->getRelativePath(absolutePath1);
-			path2 = this->getRelativePath(absolutePath2);
-			exists = this->file_exists(path2);
+			path1 = this.getRelativePath(absolutePath1);
+			path2 = this.getRelativePath(absolutePath2);
+			exists = this.file_exists(path2);
 
 			if (path1 == null or path2 == null) {
 				return false;
 			}
 
-			this->lockFile(path1, ILockingProvider::LOCK_SHARED, true);
+			this.lockFile(path1, ILockingProvider::LOCK_SHARED, true);
 			try {
-				this->lockFile(path2, ILockingProvider::LOCK_SHARED, true);
+				this.lockFile(path2, ILockingProvider::LOCK_SHARED, true);
 
 				run = true;
-				if (this->shouldEmitHooks(path1) && (Cache\Scanner::isPartialFile(path1) && !Cache\Scanner::isPartialFile(path2))) {
+				if (this.shouldEmitHooks(path1) && (Cache\Scanner::isPartialFile(path1) && !Cache\Scanner::isPartialFile(path2))) {
 					// if it was a rename from a part file to a regular file it was a write and not a rename operation
-					this->emit_file_hooks_pre(exists, path2, run);
-				} elseif (this->shouldEmitHooks(path1)) {
+					this.emit_file_hooks_pre(exists, path2, run);
+				} elseif (this.shouldEmitHooks(path1)) {
 					\OC_Hook::emit(
 						Filesystem::CLASSNAME, Filesystem::signal_rename,
 						array(
-							Filesystem::signal_param_oldpath => this->getHookPath(path1),
-							Filesystem::signal_param_newpath => this->getHookPath(path2),
+							Filesystem::signal_param_oldpath => this.getHookPath(path1),
+							Filesystem::signal_param_newpath => this.getHookPath(path2),
 							Filesystem::signal_param_run => &run
 						)
 					);
 				}
 				if (run) {
-					this->verifyPath(dirname(path2), basename(path2));
+					this.verifyPath(dirname(path2), basename(path2));
 
 					manager = Filesystem::getMountManager();
-					mount1 = this->getMount(path1);
-					mount2 = this->getMount(path2);
-					storage1 = mount1->getStorage();
-					storage2 = mount2->getStorage();
-					internalPath1 = mount1->getInternalPath(absolutePath1);
-					internalPath2 = mount2->getInternalPath(absolutePath2);
+					mount1 = this.getMount(path1);
+					mount2 = this.getMount(path2);
+					storage1 = mount1.getStorage();
+					storage2 = mount2.getStorage();
+					internalPath1 = mount1.getInternalPath(absolutePath1);
+					internalPath2 = mount2.getInternalPath(absolutePath2);
 
-					this->changeLock(path1, ILockingProvider::LOCK_EXCLUSIVE, true);
+					this.changeLock(path1, ILockingProvider::LOCK_EXCLUSIVE, true);
 					try {
-						this->changeLock(path2, ILockingProvider::LOCK_EXCLUSIVE, true);
+						this.changeLock(path2, ILockingProvider::LOCK_EXCLUSIVE, true);
 
 						if (internalPath1 === '') {
 							if (mount1 instanceof MoveableMount) {
-								if (this->isTargetAllowed(absolutePath2)) {
+								if (this.isTargetAllowed(absolutePath2)) {
 									/**
 									 * @var \OC\Files\Mount\MountPoint | \OC\Files\Mount\MoveableMount mount1
 									 */
-									sourceMountPoint = mount1->getMountPoint();
-									result = mount1->moveMount(absolutePath2);
-									manager->moveMount(sourceMountPoint, mount1->getMountPoint());
+									sourceMountPoint = mount1.getMountPoint();
+									result = mount1.moveMount(absolutePath2);
+									manager.moveMount(sourceMountPoint, mount1.getMountPoint());
 								} else {
 									result = false;
 								}
@@ -776,42 +776,42 @@ namespace OC.Files
 							// moving a file/folder within the same mount point
 						} elseif (storage1 === storage2) {
 							if (storage1) {
-								result = storage1->rename(internalPath1, internalPath2);
+								result = storage1.rename(internalPath1, internalPath2);
 							} else {
 								result = false;
 							}
 							// moving a file/folder between storages (from storage1 to storage2)
 						} else {
-							result = storage2->moveFromStorage(storage1, internalPath1, internalPath2);
+							result = storage2.moveFromStorage(storage1, internalPath1, internalPath2);
 						}
 
 						if ((Cache\Scanner::isPartialFile(path1) && !Cache\Scanner::isPartialFile(path2)) && result !== false) {
 							// if it was a rename from a part file to a regular file it was a write and not a rename operation
-							this->writeUpdate(storage2, internalPath2);
+							this.writeUpdate(storage2, internalPath2);
 						} else if (result) {
 							if (internalPath1 !== '') { // don't do a cache update for moved mounts
-								this->renameUpdate(storage1, storage2, internalPath1, internalPath2);
+								this.renameUpdate(storage1, storage2, internalPath1, internalPath2);
 							}
 						}
 					} catch(\Exception e) {
 						throw e;
 					} finally {
-						this->changeLock(path1, ILockingProvider::LOCK_SHARED, true);
-						this->changeLock(path2, ILockingProvider::LOCK_SHARED, true);
+						this.changeLock(path1, ILockingProvider::LOCK_SHARED, true);
+						this.changeLock(path2, ILockingProvider::LOCK_SHARED, true);
 					}
 
 					if ((Cache\Scanner::isPartialFile(path1) && !Cache\Scanner::isPartialFile(path2)) && result !== false) {
-						if (this->shouldEmitHooks()) {
-							this->emit_file_hooks_post(exists, path2);
+						if (this.shouldEmitHooks()) {
+							this.emit_file_hooks_post(exists, path2);
 						}
 					} elseif (result) {
-						if (this->shouldEmitHooks(path1) and this->shouldEmitHooks(path2)) {
+						if (this.shouldEmitHooks(path1) and this.shouldEmitHooks(path2)) {
 							\OC_Hook::emit(
 								Filesystem::CLASSNAME,
 								Filesystem::signal_post_rename,
 								array(
-									Filesystem::signal_param_oldpath => this->getHookPath(path1),
-									Filesystem::signal_param_newpath => this->getHookPath(path2)
+									Filesystem::signal_param_oldpath => this.getHookPath(path1),
+									Filesystem::signal_param_newpath => this.getHookPath(path2)
 								)
 							);
 						}
@@ -820,8 +820,8 @@ namespace OC.Files
 			} catch(\Exception e) {
 				throw e;
 			} finally {
-				this->unlockFile(path1, ILockingProvider::LOCK_SHARED, true);
-				this->unlockFile(path2, ILockingProvider::LOCK_SHARED, true);
+				this.unlockFile(path1, ILockingProvider::LOCK_SHARED, true);
+				this.unlockFile(path2, ILockingProvider::LOCK_SHARED, true);
 			}
 		}
 		return result;
@@ -837,89 +837,89 @@ namespace OC.Files
 	 * @return bool|mixed
 	 */
 	public function copy(path1, path2, preserveMtime = false) {
-		absolutePath1 = Filesystem::normalizePath(this->getAbsolutePath(path1));
-		absolutePath2 = Filesystem::normalizePath(this->getAbsolutePath(path2));
+		absolutePath1 = Filesystem::normalizePath(this.getAbsolutePath(path1));
+		absolutePath2 = Filesystem::normalizePath(this.getAbsolutePath(path2));
 		result = false;
 		if (
 			Filesystem::isValidPath(path2)
 			and Filesystem::isValidPath(path1)
 			and !Filesystem::isFileBlacklisted(path2)
 		) {
-			path1 = this->getRelativePath(absolutePath1);
-			path2 = this->getRelativePath(absolutePath2);
+			path1 = this.getRelativePath(absolutePath1);
+			path2 = this.getRelativePath(absolutePath2);
 
 			if (path1 == null or path2 == null) {
 				return false;
 			}
 			run = true;
 
-			this->lockFile(path2, ILockingProvider::LOCK_SHARED);
-			this->lockFile(path1, ILockingProvider::LOCK_SHARED);
+			this.lockFile(path2, ILockingProvider::LOCK_SHARED);
+			this.lockFile(path1, ILockingProvider::LOCK_SHARED);
 			lockTypePath1 = ILockingProvider::LOCK_SHARED;
 			lockTypePath2 = ILockingProvider::LOCK_SHARED;
 
 			try {
 
-				exists = this->file_exists(path2);
-				if (this->shouldEmitHooks()) {
+				exists = this.file_exists(path2);
+				if (this.shouldEmitHooks()) {
 					\OC_Hook::emit(
 						Filesystem::CLASSNAME,
 						Filesystem::signal_copy,
 						array(
-							Filesystem::signal_param_oldpath => this->getHookPath(path1),
-							Filesystem::signal_param_newpath => this->getHookPath(path2),
+							Filesystem::signal_param_oldpath => this.getHookPath(path1),
+							Filesystem::signal_param_newpath => this.getHookPath(path2),
 							Filesystem::signal_param_run => &run
 						)
 					);
-					this->emit_file_hooks_pre(exists, path2, run);
+					this.emit_file_hooks_pre(exists, path2, run);
 				}
 				if (run) {
-					mount1 = this->getMount(path1);
-					mount2 = this->getMount(path2);
-					storage1 = mount1->getStorage();
-					internalPath1 = mount1->getInternalPath(absolutePath1);
-					storage2 = mount2->getStorage();
-					internalPath2 = mount2->getInternalPath(absolutePath2);
+					mount1 = this.getMount(path1);
+					mount2 = this.getMount(path2);
+					storage1 = mount1.getStorage();
+					internalPath1 = mount1.getInternalPath(absolutePath1);
+					storage2 = mount2.getStorage();
+					internalPath2 = mount2.getInternalPath(absolutePath2);
 
-					this->changeLock(path2, ILockingProvider::LOCK_EXCLUSIVE);
+					this.changeLock(path2, ILockingProvider::LOCK_EXCLUSIVE);
 					lockTypePath2 = ILockingProvider::LOCK_EXCLUSIVE;
 
-					if (mount1->getMountPoint() == mount2->getMountPoint()) {
+					if (mount1.getMountPoint() == mount2.getMountPoint()) {
 						if (storage1) {
-							result = storage1->copy(internalPath1, internalPath2);
+							result = storage1.copy(internalPath1, internalPath2);
 						} else {
 							result = false;
 						}
 					} else {
-						result = storage2->copyFromStorage(storage1, internalPath1, internalPath2);
+						result = storage2.copyFromStorage(storage1, internalPath1, internalPath2);
 					}
 
-					this->writeUpdate(storage2, internalPath2);
+					this.writeUpdate(storage2, internalPath2);
 
-					this->changeLock(path2, ILockingProvider::LOCK_SHARED);
+					this.changeLock(path2, ILockingProvider::LOCK_SHARED);
 					lockTypePath2 = ILockingProvider::LOCK_SHARED;
 
-					if (this->shouldEmitHooks() && result !== false) {
+					if (this.shouldEmitHooks() && result !== false) {
 						\OC_Hook::emit(
 							Filesystem::CLASSNAME,
 							Filesystem::signal_post_copy,
 							array(
-								Filesystem::signal_param_oldpath => this->getHookPath(path1),
-								Filesystem::signal_param_newpath => this->getHookPath(path2)
+								Filesystem::signal_param_oldpath => this.getHookPath(path1),
+								Filesystem::signal_param_newpath => this.getHookPath(path2)
 							)
 						);
-						this->emit_file_hooks_post(exists, path2);
+						this.emit_file_hooks_post(exists, path2);
 					}
 
 				}
 			} catch (\Exception e) {
-				this->unlockFile(path2, lockTypePath2);
-				this->unlockFile(path1, lockTypePath1);
+				this.unlockFile(path2, lockTypePath2);
+				this.unlockFile(path1, lockTypePath1);
 				throw e;
 			}
 
-			this->unlockFile(path2, lockTypePath2);
-			this->unlockFile(path1, lockTypePath1);
+			this.unlockFile(path2, lockTypePath2);
+			this.unlockFile(path1, lockTypePath1);
 
 		}
 		return result;
@@ -954,10 +954,10 @@ namespace OC.Files
 		}
 
 		if (mode !== 'r' && mode !== 'w') {
-			\OC::server->getLogger()->info('Trying to open a file with a mode other than "r" or "w" can cause severe performance issues with some backends');
+			\OC::server.getLogger().info('Trying to open a file with a mode other than "r" or "w" can cause severe performance issues with some backends');
 		}
 
-		return this->basicOperation('fopen', path, hooks, mode);
+		return this.basicOperation('fopen', path, hooks, mode);
 	}
 
 	/**
@@ -966,12 +966,12 @@ namespace OC.Files
 	 * @throws \OCP\Files\InvalidPathException
 	 */
 	public function toTmpFile(path) {
-		this->assertPathLength(path);
+		this.assertPathLength(path);
 		if (Filesystem::isValidPath(path)) {
-			source = this->fopen(path, 'r');
+			source = this.fopen(path, 'r');
 			if (source) {
 				extension = pathinfo(path, PATHINFO_EXTENSION);
-				tmpFile = \OC::server->getTempManager()->getTemporaryFile(extension);
+				tmpFile = \OC::server.getTempManager().getTemporaryFile(extension);
 				file_put_contents(tmpFile, source);
 				return tmpFile;
 			} else {
@@ -989,15 +989,15 @@ namespace OC.Files
 	 * @throws \OCP\Files\InvalidPathException
 	 */
 	public function fromTmpFile(tmpFile, path) {
-		this->assertPathLength(path);
+		this.assertPathLength(path);
 		if (Filesystem::isValidPath(path)) {
 
 			// Get directory that the file is going into
 			filePath = dirname(path);
 
 			// Create the directories if any
-			if (!this->file_exists(filePath)) {
-				result = this->createParentDirectories(filePath);
+			if (!this.file_exists(filePath)) {
+				result = this.createParentDirectories(filePath);
 				if (result === false) {
 					return false;
 				}
@@ -1005,8 +1005,8 @@ namespace OC.Files
 
 			source = fopen(tmpFile, 'r');
 			if (source) {
-				result = this->file_put_contents(path, source);
-				// this->file_put_contents() might have already closed
+				result = this.file_put_contents(path, source);
+				// this.file_put_contents() might have already closed
 				// the resource, so we check it, before trying to close it
 				// to avoid messages in the error log.
 				if (is_resource(source)) {
@@ -1029,8 +1029,8 @@ namespace OC.Files
 	 * @throws \OCP\Files\InvalidPathException
 	 */
 	public function getMimeType(path) {
-		this->assertPathLength(path);
-		return this->basicOperation('getMimeType', path);
+		this.assertPathLength(path);
+		return this.basicOperation('getMimeType', path);
 	}
 
 	/**
@@ -1041,22 +1041,22 @@ namespace OC.Files
 	 */
 	public function hash(type, path, raw = false) {
 		postFix = (substr(path, -1) === '/') ? '/' : '';
-		absolutePath = Filesystem::normalizePath(this->getAbsolutePath(path));
+		absolutePath = Filesystem::normalizePath(this.getAbsolutePath(path));
 		if (Filesystem::isValidPath(path)) {
-			path = this->getRelativePath(absolutePath);
+			path = this.getRelativePath(absolutePath);
 			if (path == null) {
 				return false;
 			}
-			if (this->shouldEmitHooks(path)) {
+			if (this.shouldEmitHooks(path)) {
 				\OC_Hook::emit(
 					Filesystem::CLASSNAME,
 					Filesystem::signal_read,
-					array(Filesystem::signal_param_path => this->getHookPath(path))
+					array(Filesystem::signal_param_path => this.getHookPath(path))
 				);
 			}
 			list(storage, internalPath) = Filesystem::resolvePath(absolutePath . postFix);
 			if (storage) {
-				return storage->hash(type, internalPath, raw);
+				return storage.hash(type, internalPath, raw);
 			}
 		}
 		return null;
@@ -1068,8 +1068,8 @@ namespace OC.Files
 	 * @throws \OCP\Files\InvalidPathException
 	 */
 	public function free_space(path = '/') {
-		this->assertPathLength(path);
-		result = this->basicOperation('free_space', path);
+		this.assertPathLength(path);
+		result = this.basicOperation('free_space', path);
 		if (result === null) {
 			throw new InvalidPathException();
 		}
@@ -1092,90 +1092,90 @@ namespace OC.Files
 	 */
 	private function basicOperation(operation, path, hooks = [], extraParam = null) {
 		postFix = (substr(path, -1) === '/') ? '/' : '';
-		absolutePath = Filesystem::normalizePath(this->getAbsolutePath(path));
+		absolutePath = Filesystem::normalizePath(this.getAbsolutePath(path));
 		if (Filesystem::isValidPath(path)
 			and !Filesystem::isFileBlacklisted(path)
 		) {
-			path = this->getRelativePath(absolutePath);
+			path = this.getRelativePath(absolutePath);
 			if (path == null) {
 				return false;
 			}
 
 			if (in_array('write', hooks) || in_array('delete', hooks) || in_array('read', hooks)) {
 				// always a shared lock during pre-hooks so the hook can read the file
-				this->lockFile(path, ILockingProvider::LOCK_SHARED);
+				this.lockFile(path, ILockingProvider::LOCK_SHARED);
 			}
 
-			run = this->runHooks(hooks, path);
+			run = this.runHooks(hooks, path);
 			/** @var \OC\Files\Storage\Storage storage */
 			list(storage, internalPath) = Filesystem::resolvePath(absolutePath . postFix);
 			if (run and storage) {
 				if (in_array('write', hooks) || in_array('delete', hooks)) {
 					try {
-						this->changeLock(path, ILockingProvider::LOCK_EXCLUSIVE);
+						this.changeLock(path, ILockingProvider::LOCK_EXCLUSIVE);
 					} catch (LockedException e) {
 						// release the shared lock we acquired before quiting
-						this->unlockFile(path, ILockingProvider::LOCK_SHARED);
+						this.unlockFile(path, ILockingProvider::LOCK_SHARED);
 						throw e;
 					}
 				}
 				try {
 					if (!is_null(extraParam)) {
-						result = storage->operation(internalPath, extraParam);
+						result = storage.operation(internalPath, extraParam);
 					} else {
-						result = storage->operation(internalPath);
+						result = storage.operation(internalPath);
 					}
 				} catch (\Exception e) {
 					if (in_array('write', hooks) || in_array('delete', hooks)) {
-						this->unlockFile(path, ILockingProvider::LOCK_EXCLUSIVE);
+						this.unlockFile(path, ILockingProvider::LOCK_EXCLUSIVE);
 					} else if (in_array('read', hooks)) {
-						this->unlockFile(path, ILockingProvider::LOCK_SHARED);
+						this.unlockFile(path, ILockingProvider::LOCK_SHARED);
 					}
 					throw e;
 				}
 
 				if (result && in_array('delete', hooks) and result) {
-					this->removeUpdate(storage, internalPath);
+					this.removeUpdate(storage, internalPath);
 				}
 				if (result && in_array('write', hooks,  true) && operation !== 'fopen' && operation !== 'touch') {
-					this->writeUpdate(storage, internalPath);
+					this.writeUpdate(storage, internalPath);
 				}
 				if (result && in_array('touch', hooks)) {
-					this->writeUpdate(storage, internalPath, extraParam);
+					this.writeUpdate(storage, internalPath, extraParam);
 				}
 
 				if ((in_array('write', hooks) || in_array('delete', hooks)) && (operation !== 'fopen' || result === false)) {
-					this->changeLock(path, ILockingProvider::LOCK_SHARED);
+					this.changeLock(path, ILockingProvider::LOCK_SHARED);
 				}
 
 				unlockLater = false;
-				if (this->lockingEnabled && operation === 'fopen' && is_resource(result)) {
+				if (this.lockingEnabled && operation === 'fopen' && is_resource(result)) {
 					unlockLater = true;
 					// make sure our unlocking callback will still be called if connection is aborted
 					ignore_user_abort(true);
 					result = CallbackWrapper::wrap(result, null, null, function () use (hooks, path) {
 						if (in_array('write', hooks)) {
-							this->unlockFile(path, ILockingProvider::LOCK_EXCLUSIVE);
+							this.unlockFile(path, ILockingProvider::LOCK_EXCLUSIVE);
 						} else if (in_array('read', hooks)) {
-							this->unlockFile(path, ILockingProvider::LOCK_SHARED);
+							this.unlockFile(path, ILockingProvider::LOCK_SHARED);
 						}
 					});
 				}
 
-				if (this->shouldEmitHooks(path) && result !== false) {
+				if (this.shouldEmitHooks(path) && result !== false) {
 					if (operation != 'fopen') { //no post hooks for fopen, the file stream is still open
-						this->runHooks(hooks, path, true);
+						this.runHooks(hooks, path, true);
 					}
 				}
 
 				if (!unlockLater
 					&& (in_array('write', hooks) || in_array('delete', hooks) || in_array('read', hooks))
 				) {
-					this->unlockFile(path, ILockingProvider::LOCK_SHARED);
+					this.unlockFile(path, ILockingProvider::LOCK_SHARED);
 				}
 				return result;
 			} else {
-				this->unlockFile(path, ILockingProvider::LOCK_SHARED);
+				this.unlockFile(path, ILockingProvider::LOCK_SHARED);
 			}
 		}
 		return null;
@@ -1191,7 +1191,7 @@ namespace OC.Files
 		if (!Filesystem::getView()) {
 			return path;
 		}
-		return Filesystem::getView()->getRelativePath(this->getAbsolutePath(path));
+		return Filesystem::getView().getRelativePath(this.getAbsolutePath(path));
 	}
 
 	private function shouldEmitHooks(path = '') {
@@ -1205,10 +1205,10 @@ namespace OC.Files
 		if (defaultRoot === null) {
 			return false;
 		}
-		if (this->fakeRoot === defaultRoot) {
+		if (this.fakeRoot === defaultRoot) {
 			return true;
 		}
-		fullPath = this->getAbsolutePath(path);
+		fullPath = this.getAbsolutePath(path);
 
 		if (fullPath === defaultRoot) {
 			return true;
@@ -1225,10 +1225,10 @@ namespace OC.Files
 	 */
 	private function runHooks(hooks, path, post = false) {
 		relativePath = path;
-		path = this->getHookPath(path);
+		path = this.getHookPath(path);
 		prefix = post ? 'post_' : '';
 		run = true;
-		if (this->shouldEmitHooks(relativePath)) {
+		if (this.shouldEmitHooks(relativePath)) {
 			foreach (hooks as hook) {
 				if (hook != 'read') {
 					\OC_Hook::emit(
@@ -1261,7 +1261,7 @@ namespace OC.Files
 	 * @return bool
 	 */
 	public function hasUpdated(path, time) {
-		return this->basicOperation('hasUpdated', path, array(), time);
+		return this.basicOperation('hasUpdated', path, array(), time);
 	}
 
 	/**
@@ -1269,11 +1269,11 @@ namespace OC.Files
 	 * @return \OC\User\User
 	 */
 	private function getUserObjectForOwner(ownerId) {
-		owner = this->userManager->get(ownerId);
+		owner = this.userManager.get(ownerId);
 		if (owner instanceof IUser) {
 			return owner;
 		} else {
-			return new User(ownerId, null, \OC::server->getEventDispatcher());
+			return new User(ownerId, null, \OC::server.getEventDispatcher());
 		}
 	}
 
@@ -1289,26 +1289,26 @@ namespace OC.Files
 	 * @return ICacheEntry|bool
 	 */
 	private function getCacheEntry(storage, internalPath, relativePath) {
-		cache = storage->getCache(internalPath);
-		data = cache->get(internalPath);
-		watcher = storage->getWatcher(internalPath);
+		cache = storage.getCache(internalPath);
+		data = cache.get(internalPath);
+		watcher = storage.getWatcher(internalPath);
 
 		try {
 			// if the file is not in the cache or needs to be updated, trigger the scanner and reload the data
 			if (!data || data['size'] === -1) {
-				if (!storage->file_exists(internalPath)) {
+				if (!storage.file_exists(internalPath)) {
 					return false;
 				}
 				// don't need to get a lock here since the scanner does it's own locking
-				scanner = storage->getScanner(internalPath);
-				scanner->scan(internalPath, Cache\Scanner::SCAN_SHALLOW);
-				data = cache->get(internalPath);
-			} else if (!Cache\Scanner::isPartialFile(internalPath) && watcher->needsUpdate(internalPath, data)) {
-				this->lockFile(relativePath, ILockingProvider::LOCK_SHARED);
-				watcher->update(internalPath, data);
-				storage->getPropagator()->propagateChange(internalPath, time());
-				data = cache->get(internalPath);
-				this->unlockFile(relativePath, ILockingProvider::LOCK_SHARED);
+				scanner = storage.getScanner(internalPath);
+				scanner.scan(internalPath, Cache\Scanner::SCAN_SHALLOW);
+				data = cache.get(internalPath);
+			} else if (!Cache\Scanner::isPartialFile(internalPath) && watcher.needsUpdate(internalPath, data)) {
+				this.lockFile(relativePath, ILockingProvider::LOCK_SHARED);
+				watcher.update(internalPath, data);
+				storage.getPropagator().propagateChange(internalPath, time());
+				data = cache.get(internalPath);
+				this.unlockFile(relativePath, ILockingProvider::LOCK_SHARED);
 			}
 		} catch (LockedException e) {
 			// if the file is locked we just use the old cache info
@@ -1327,39 +1327,39 @@ namespace OC.Files
 	 * @return \OC\Files\FileInfo|false False if file does not exist
 	 */
 	public function getFileInfo(path, includeMountPoints = true) {
-		this->assertPathLength(path);
+		this.assertPathLength(path);
 		if (!Filesystem::isValidPath(path)) {
 			return false;
 		}
 		if (Cache\Scanner::isPartialFile(path)) {
-			return this->getPartFileInfo(path);
+			return this.getPartFileInfo(path);
 		}
 		relativePath = path;
-		path = Filesystem::normalizePath(this->fakeRoot . '/' . path);
+		path = Filesystem::normalizePath(this.fakeRoot . '/' . path);
 
-		mount = Filesystem::getMountManager()->find(path);
+		mount = Filesystem::getMountManager().find(path);
 		if (!mount) {
-			\OC::server->getLogger()->warning('Mountpoint not found for path: ' . path);
+			\OC::server.getLogger().warning('Mountpoint not found for path: ' . path);
 			return false;
 		}
-		storage = mount->getStorage();
-		internalPath = mount->getInternalPath(path);
+		storage = mount.getStorage();
+		internalPath = mount.getInternalPath(path);
 		if (storage) {
-			data = this->getCacheEntry(storage, internalPath, relativePath);
+			data = this.getCacheEntry(storage, internalPath, relativePath);
 
 			if (!data instanceof ICacheEntry) {
-				\OC::server->getLogger()->debug('No cache entry found for ' . path . ' (storage: ' . storage->getId() . ', internalPath: ' . internalPath . ')');
+				\OC::server.getLogger().debug('No cache entry found for ' . path . ' (storage: ' . storage.getId() . ', internalPath: ' . internalPath . ')');
 				return false;
 			}
 
 			if (mount instanceof MoveableMount && internalPath === '') {
 				data['permissions'] |= \OCP\Constants::PERMISSION_DELETE;
 			}
-			ownerId = storage->getOwner(internalPath);
+			ownerId = storage.getOwner(internalPath);
 			owner = null;
 			if (ownerId !== null) {
 				// ownerId might be null if files are accessed with an access token without file system access
-				owner = this->getUserObjectForOwner(ownerId);
+				owner = this.getUserObjectForOwner(ownerId);
 			}
 			info = new FileInfo(path, storage, internalPath, data, mount, owner);
 
@@ -1367,9 +1367,9 @@ namespace OC.Files
 				if (includeMountPoints and data['mimetype'] === 'httpd/unix-directory') {
 					//add the sizes of other mount points to the folder
 					extOnly = (includeMountPoints === 'ext');
-					mounts = Filesystem::getMountManager()->findIn(path);
-					info->setSubMounts(array_filter(mounts, function (IMountPoint mount) use (extOnly) {
-						subStorage = mount->getStorage();
+					mounts = Filesystem::getMountManager().findIn(path);
+					info.setSubMounts(array_filter(mounts, function (IMountPoint mount) use (extOnly) {
+						subStorage = mount.getStorage();
 						return !(extOnly && subStorage instanceof \OCA\Files_Sharing\SharedStorage);
 					}));
 				}
@@ -1377,7 +1377,7 @@ namespace OC.Files
 
 			return info;
 		} else {
-			\OC::server->getLogger()->warning('Storage not valid for mountpoint: ' . mount->getMountPoint());
+			\OC::server.getLogger().warning('Storage not valid for mountpoint: ' . mount.getMountPoint());
 		}
 
 		return false;
@@ -1391,35 +1391,35 @@ namespace OC.Files
 	 * @return FileInfo[]
 	 */
 	public IList<FileInfo> getDirectoryContent(string directory, string mimetype_filter = "") {
-		this->assertPathLength(directory);
+		this.assertPathLength(directory);
 		if (!Filesystem::isValidPath(directory)) {
 			return [];
 		}
-		path = this->getAbsolutePath(directory);
+		path = this.getAbsolutePath(directory);
 		path = Filesystem::normalizePath(path);
-		mount = this->getMount(directory);
+		mount = this.getMount(directory);
 		if (!mount) {
 			return [];
 		}
-		storage = mount->getStorage();
-		internalPath = mount->getInternalPath(path);
+		storage = mount.getStorage();
+		internalPath = mount.getInternalPath(path);
 		if (storage) {
-			cache = storage->getCache(internalPath);
+			cache = storage.getCache(internalPath);
 			user = \OC_User::getUser();
 
-			data = this->getCacheEntry(storage, internalPath, directory);
+			data = this.getCacheEntry(storage, internalPath, directory);
 
-			if (!data instanceof ICacheEntry || !isset(data['fileid']) || !(data->getPermissions() && Constants::PERMISSION_READ)) {
+			if (!data instanceof ICacheEntry || !isset(data['fileid']) || !(data.getPermissions() && Constants::PERMISSION_READ)) {
 				return [];
 			}
 
 			folderId = data['fileid'];
-			contents = cache->getFolderContentsById(folderId); //TODO: mimetype_filter
+			contents = cache.getFolderContentsById(folderId); //TODO: mimetype_filter
 
 			sharingDisabled = \OCP\Util::isSharingDisabledForUser();
 
 			fileNames = array_map(function(ICacheEntry content) {
-				return content->getName();
+				return content.getName();
 			}, contents);
 			/**
 			 * @var \OC\Files\FileInfo[] fileInfos
@@ -1428,49 +1428,49 @@ namespace OC.Files
 				if (sharingDisabled) {
 					content['permissions'] = content['permissions'] & ~\OCP\Constants::PERMISSION_SHARE;
 				}
-				owner = this->getUserObjectForOwner(storage->getOwner(content['path']));
+				owner = this.getUserObjectForOwner(storage.getOwner(content['path']));
 				return new FileInfo(path . '/' . content['name'], storage, content['path'], content, mount, owner);
 			}, contents);
 			files = array_combine(fileNames, fileInfos);
 
 			//add a folder for any mountpoint in this directory and add the sizes of other mountpoints to the folders
-			mounts = Filesystem::getMountManager()->findIn(path);
+			mounts = Filesystem::getMountManager().findIn(path);
 			dirLength = strlen(path);
 			foreach (mounts as mount) {
-				mountPoint = mount->getMountPoint();
-				subStorage = mount->getStorage();
+				mountPoint = mount.getMountPoint();
+				subStorage = mount.getStorage();
 				if (subStorage) {
-					subCache = subStorage->getCache('');
+					subCache = subStorage.getCache('');
 
-					rootEntry = subCache->get('');
+					rootEntry = subCache.get('');
 					if (!rootEntry) {
-						subScanner = subStorage->getScanner('');
+						subScanner = subStorage.getScanner('');
 						try {
-							subScanner->scanFile('');
+							subScanner.scanFile('');
 						} catch (\OCP\Files\StorageNotAvailableException e) {
 							continue;
 						} catch (\OCP\Files\StorageInvalidException e) {
 							continue;
 						} catch (\Exception e) {
 							// sometimes when the storage is not available it can be any exception
-							\OC::server->getLogger()->logException(e, [
-								'message' => 'Exception while scanning storage "' . subStorage->getId() . '"',
+							\OC::server.getLogger().logException(e, [
+								'message' => 'Exception while scanning storage "' . subStorage.getId() . '"',
 								'level' => ILogger::ERROR,
 								'app' => 'lib',
 							]);
 							continue;
 						}
-						rootEntry = subCache->get('');
+						rootEntry = subCache.get('');
 					}
 
-					if (rootEntry && (rootEntry->getPermissions() && Constants::PERMISSION_READ)) {
+					if (rootEntry && (rootEntry.getPermissions() && Constants::PERMISSION_READ)) {
 						relativePath = trim(substr(mountPoint, dirLength), '/');
 						if (pos = strpos(relativePath, '/')) {
 							//mountpoint inside subfolder add size to the correct folder
 							entryName = substr(relativePath, 0, pos);
 							foreach (files as &entry) {
-								if (entry->getName() === entryName) {
-									entry->addSubEntry(rootEntry, mountPoint);
+								if (entry.getName() === entryName) {
+									entry.addSubEntry(rootEntry, mountPoint);
 								}
 							}
 						} else { //mountpoint in this folder, add an entry for it
@@ -1492,8 +1492,8 @@ namespace OC.Files
 								rootEntry['permissions'] = rootEntry['permissions'] & ~\OCP\Constants::PERMISSION_SHARE;
 							}
 
-							owner = this->getUserObjectForOwner(subStorage->getOwner(''));
-							files[rootEntry->getName()] = new FileInfo(path . '/' . rootEntry['name'], subStorage, '', rootEntry, mount, owner);
+							owner = this.getUserObjectForOwner(subStorage.getOwner(''));
+							files[rootEntry.getName()] = new FileInfo(path . '/' . rootEntry['name'], subStorage, '', rootEntry, mount, owner);
 						}
 					}
 				}
@@ -1502,9 +1502,9 @@ namespace OC.Files
 			if (mimetype_filter) {
 				files = array_filter(files, function (FileInfo file) use (mimetype_filter) {
 					if (strpos(mimetype_filter, '/')) {
-						return file->getMimetype() === mimetype_filter;
+						return file.getMimetype() === mimetype_filter;
 					} else {
-						return file->getMimePart() === mimetype_filter;
+						return file.getMimePart() === mimetype_filter;
 					}
 				});
 			}
@@ -1525,25 +1525,25 @@ namespace OC.Files
 	 * returns the fileid of the updated file
 	 */
 	public function putFileInfo(path, data) {
-		this->assertPathLength(path);
+		this.assertPathLength(path);
 		if (data instanceof FileInfo) {
-			data = data->getData();
+			data = data.getData();
 		}
-		path = Filesystem::normalizePath(this->fakeRoot . '/' . path);
+		path = Filesystem::normalizePath(this.fakeRoot . '/' . path);
 		/**
 		 * @var \OC\Files\Storage\Storage storage
 		 * @var string internalPath
 		 */
 		list(storage, internalPath) = Filesystem::resolvePath(path);
 		if (storage) {
-			cache = storage->getCache(path);
+			cache = storage.getCache(path);
 
-			if (!cache->inCache(internalPath)) {
-				scanner = storage->getScanner(internalPath);
-				scanner->scan(internalPath, Cache\Scanner::SCAN_SHALLOW);
+			if (!cache.inCache(internalPath)) {
+				scanner = storage.getScanner(internalPath);
+				scanner.scan(internalPath, Cache\Scanner::SCAN_SHALLOW);
 			}
 
-			return cache->put(internalPath, data);
+			return cache.put(internalPath, data);
 		} else {
 			return -1;
 		}
@@ -1556,7 +1556,7 @@ namespace OC.Files
 	 * @return FileInfo[]
 	 */
 	public function search(query) {
-		return this->searchCommon('search', array('%' . query . '%'));
+		return this.searchCommon('search', array('%' . query . '%'));
 	}
 
 	/**
@@ -1566,7 +1566,7 @@ namespace OC.Files
 	 * @return FileInfo[]
 	 */
 	public function searchRaw(query) {
-		return this->searchCommon('search', array(query));
+		return this.searchCommon('search', array(query));
 	}
 
 	/**
@@ -1576,7 +1576,7 @@ namespace OC.Files
 	 * @return FileInfo[]
 	 */
 	public function searchByMime(mimetype) {
-		return this->searchCommon('searchByMime', array(mimetype));
+		return this.searchCommon('searchByMime', array(mimetype));
 	}
 
 	/**
@@ -1587,7 +1587,7 @@ namespace OC.Files
 	 * @return FileInfo[]
 	 */
 	public function searchByTag(tag, userId) {
-		return this->searchCommon('searchByTag', array(tag, userId));
+		return this.searchCommon('searchByTag', array(tag, userId));
 	}
 
 	/**
@@ -1597,31 +1597,31 @@ namespace OC.Files
 	 */
 	private function searchCommon(method, args) {
 		files = array();
-		rootLength = strlen(this->fakeRoot);
+		rootLength = strlen(this.fakeRoot);
 
-		mount = this->getMount('');
-		mountPoint = mount->getMountPoint();
-		storage = mount->getStorage();
+		mount = this.getMount('');
+		mountPoint = mount.getMountPoint();
+		storage = mount.getStorage();
 		if (storage) {
-			cache = storage->getCache('');
+			cache = storage.getCache('');
 
 			results = call_user_func_array(array(cache, method), args);
 			foreach (results as result) {
-				if (substr(mountPoint . result['path'], 0, rootLength + 1) === this->fakeRoot . '/') {
+				if (substr(mountPoint . result['path'], 0, rootLength + 1) === this.fakeRoot . '/') {
 					internalPath = result['path'];
 					path = mountPoint . result['path'];
 					result['path'] = substr(mountPoint . result['path'], rootLength);
-					owner = \OC::server->getUserManager()->get(storage->getOwner(internalPath));
+					owner = \OC::server.getUserManager().get(storage.getOwner(internalPath));
 					files[] = new FileInfo(path, storage, internalPath, result, mount, owner);
 				}
 			}
 
-			mounts = Filesystem::getMountManager()->findIn(this->fakeRoot);
+			mounts = Filesystem::getMountManager().findIn(this.fakeRoot);
 			foreach (mounts as mount) {
-				mountPoint = mount->getMountPoint();
-				storage = mount->getStorage();
+				mountPoint = mount.getMountPoint();
+				storage = mount.getStorage();
 				if (storage) {
-					cache = storage->getCache('');
+					cache = storage.getCache('');
 
 					relativeMountPoint = substr(mountPoint, rootLength);
 					results = call_user_func_array(array(cache, method), args);
@@ -1630,7 +1630,7 @@ namespace OC.Files
 							internalPath = result['path'];
 							result['path'] = rtrim(relativeMountPoint . result['path'], '/');
 							path = rtrim(mountPoint . internalPath, '/');
-							owner = \OC::server->getUserManager()->get(storage->getOwner(internalPath));
+							owner = \OC::server.getUserManager().get(storage.getOwner(internalPath));
 							files[] = new FileInfo(path, storage, internalPath, result, mount, owner);
 						}
 					}
@@ -1648,11 +1648,11 @@ namespace OC.Files
 	 * @throws NotFoundException
 	 */
 	public function getOwner(path) {
-		info = this->getFileInfo(path);
+		info = this.getFileInfo(path);
 		if (!info) {
 			throw new NotFoundException(path . ' not found while trying to get owner');
 		}
-		return info->getOwner()->getUID();
+		return info.getOwner().getUID();
 	}
 
 	/**
@@ -1666,9 +1666,9 @@ namespace OC.Files
 		 * @var Storage\Storage storage
 		 * @var string internalPath
 		 */
-		list(storage, internalPath) = this->resolvePath(path);
+		list(storage, internalPath) = this.resolvePath(path);
 		if (storage) {
-			return storage->getETag(internalPath);
+			return storage.getETag(internalPath);
 		} else {
 			return null;
 		}
@@ -1686,8 +1686,8 @@ namespace OC.Files
 	public function getPath(id) {
 		id = (int)id;
 		manager = Filesystem::getMountManager();
-		mounts = manager->findIn(this->fakeRoot);
-		mounts[] = manager->find(this->fakeRoot);
+		mounts = manager.findIn(this.fakeRoot);
+		mounts[] = manager.find(this.fakeRoot);
 		// reverse the array so we start with the storage this view is in
 		// which is the most likely to contain the file we're looking for
 		mounts = array_reverse(mounts);
@@ -1695,12 +1695,12 @@ namespace OC.Files
 			/**
 			 * @var \OC\Files\Mount\MountPoint mount
 			 */
-			if (mount->getStorage()) {
-				cache = mount->getStorage()->getCache();
-				internalPath = cache->getPathById(id);
+			if (mount.getStorage()) {
+				cache = mount.getStorage().getCache();
+				internalPath = cache.getPathById(id);
 				if (is_string(internalPath)) {
-					fullPath = mount->getMountPoint() . internalPath;
-					if (!is_null(path = this->getRelativePath(fullPath))) {
+					fullPath = mount.getMountPoint() . internalPath;
+					if (!is_null(path = this.getRelativePath(fullPath))) {
 						return path;
 					}
 				}
@@ -1734,7 +1734,7 @@ namespace OC.Files
 	private function isTargetAllowed(target) {
 
 		list(targetStorage, targetInternalPath) = \OC\Files\Filesystem::resolvePath(target);
-		if (!targetStorage->instanceOfStorage('\OCP\Files\IHomeStorage')) {
+		if (!targetStorage.instanceOfStorage('\OCP\Files\IHomeStorage')) {
 			\OCP\Util::writeLog('files',
 				'It is not allowed to move one mount point into another one',
 				ILogger::DEBUG);
@@ -1742,10 +1742,10 @@ namespace OC.Files
 		}
 
 		// note: cannot use the view because the target is already locked
-		fileId = (int)targetStorage->getCache()->getId(targetInternalPath);
+		fileId = (int)targetStorage.getCache().getId(targetInternalPath);
 		if (fileId === -1) {
 			// target might not exist, need to check parent instead
-			fileId = (int)targetStorage->getCache()->getId(dirname(targetInternalPath));
+			fileId = (int)targetStorage.getCache().getId(dirname(targetInternalPath));
 		}
 
 		// check if any of the parents were shared by the current owner (include collections)
@@ -1774,21 +1774,21 @@ namespace OC.Files
 	 * @return \OCP\Files\FileInfo
 	 */
 	private function getPartFileInfo(path) {
-		mount = this->getMount(path);
-		storage = mount->getStorage();
-		internalPath = mount->getInternalPath(this->getAbsolutePath(path));
-		owner = \OC::server->getUserManager()->get(storage->getOwner(internalPath));
+		mount = this.getMount(path);
+		storage = mount.getStorage();
+		internalPath = mount.getInternalPath(this.getAbsolutePath(path));
+		owner = \OC::server.getUserManager().get(storage.getOwner(internalPath));
 		return new FileInfo(
-			this->getAbsolutePath(path),
+			this.getAbsolutePath(path),
 			storage,
 			internalPath,
 			[
 				'fileid' => null,
-				'mimetype' => storage->getMimeType(internalPath),
+				'mimetype' => storage.getMimeType(internalPath),
 				'name' => basename(path),
 				'etag' => null,
-				'size' => storage->filesize(internalPath),
-				'mtime' => storage->filemtime(internalPath),
+				'size' => storage.filesize(internalPath),
+				'mtime' => storage.filemtime(internalPath),
 				'encrypted' => false,
 				'permissions' => \OCP\Constants::PERMISSION_ALL
 			],
@@ -1805,23 +1805,23 @@ namespace OC.Files
 	public function verifyPath(path, fileName) {
 		try {
 			/** @type \OCP\Files\Storage storage */
-			list(storage, internalPath) = this->resolvePath(path);
-			storage->verifyPath(internalPath, fileName);
+			list(storage, internalPath) = this.resolvePath(path);
+			storage.verifyPath(internalPath, fileName);
 		} catch (ReservedWordException ex) {
-			l = \OC::server->getL10N('lib');
-			throw new InvalidPathException(l->t('File name is a reserved word'));
+			l = \OC::server.getL10N('lib');
+			throw new InvalidPathException(l.t('File name is a reserved word'));
 		} catch (InvalidCharacterInPathException ex) {
-			l = \OC::server->getL10N('lib');
-			throw new InvalidPathException(l->t('File name contains at least one invalid character'));
+			l = \OC::server.getL10N('lib');
+			throw new InvalidPathException(l.t('File name contains at least one invalid character'));
 		} catch (FileNameTooLongException ex) {
-			l = \OC::server->getL10N('lib');
-			throw new InvalidPathException(l->t('File name is too long'));
+			l = \OC::server.getL10N('lib');
+			throw new InvalidPathException(l.t('File name is too long'));
 		} catch (InvalidDirectoryException ex) {
-			l = \OC::server->getL10N('lib');
-			throw new InvalidPathException(l->t('Dot files are not allowed'));
+			l = \OC::server.getL10N('lib');
+			throw new InvalidPathException(l.t('Dot files are not allowed'));
 		} catch (EmptyFileNameException ex) {
-			l = \OC::server->getL10N('lib');
-			throw new InvalidPathException(l->t('Empty filename is not allowed'));
+			l = \OC::server.getL10N('lib');
+			throw new InvalidPathException(l.t('Empty filename is not allowed'));
 		}
 	}
 
@@ -1862,17 +1862,17 @@ namespace OC.Files
 	 */
 	private function getMountForLock(absolutePath, useParentMount = false) {
 		results = [];
-		mount = Filesystem::getMountManager()->find(absolutePath);
+		mount = Filesystem::getMountManager().find(absolutePath);
 		if (!mount) {
 			return results;
 		}
 
 		if (useParentMount) {
 			// find out if something is mounted directly on the path
-			internalPath = mount->getInternalPath(absolutePath);
+			internalPath = mount.getInternalPath(absolutePath);
 			if (internalPath === '') {
 				// resolve the parent mount instead
-				mount = Filesystem::getMountManager()->find(dirname(absolutePath));
+				mount = Filesystem::getMountManager().find(dirname(absolutePath));
 			}
 		}
 
@@ -1890,27 +1890,27 @@ namespace OC.Files
 	 * @throws \OCP\Lock\LockedException if the path is already locked
 	 */
 	private function lockPath(path, type, lockMountPoint = false) {
-		absolutePath = this->getAbsolutePath(path);
+		absolutePath = this.getAbsolutePath(path);
 		absolutePath = Filesystem::normalizePath(absolutePath);
-		if (!this->shouldLockFile(absolutePath)) {
+		if (!this.shouldLockFile(absolutePath)) {
 			return false;
 		}
 
-		mount = this->getMountForLock(absolutePath, lockMountPoint);
+		mount = this.getMountForLock(absolutePath, lockMountPoint);
 		if (mount) {
 			try {
-				storage = mount->getStorage();
-				if (storage->instanceOfStorage('\OCP\Files\Storage\ILockingStorage')) {
-					storage->acquireLock(
-						mount->getInternalPath(absolutePath),
+				storage = mount.getStorage();
+				if (storage.instanceOfStorage('\OCP\Files\Storage\ILockingStorage')) {
+					storage.acquireLock(
+						mount.getInternalPath(absolutePath),
 						type,
-						this->lockingProvider
+						this.lockingProvider
 					);
 				}
 			} catch (\OCP\Lock\LockedException e) {
 				// rethrow with the a human-readable path
 				throw new \OCP\Lock\LockedException(
-					this->getPathRelativeToFiles(absolutePath),
+					this.getPathRelativeToFiles(absolutePath),
 					e
 				);
 			}
@@ -1931,28 +1931,28 @@ namespace OC.Files
 	 */
 	public function changeLock(path, type, lockMountPoint = false) {
 		path = Filesystem::normalizePath(path);
-		absolutePath = this->getAbsolutePath(path);
+		absolutePath = this.getAbsolutePath(path);
 		absolutePath = Filesystem::normalizePath(absolutePath);
-		if (!this->shouldLockFile(absolutePath)) {
+		if (!this.shouldLockFile(absolutePath)) {
 			return false;
 		}
 
-		mount = this->getMountForLock(absolutePath, lockMountPoint);
+		mount = this.getMountForLock(absolutePath, lockMountPoint);
 		if (mount) {
 			try {
-				storage = mount->getStorage();
-				if (storage->instanceOfStorage('\OCP\Files\Storage\ILockingStorage')) {
-					storage->changeLock(
-						mount->getInternalPath(absolutePath),
+				storage = mount.getStorage();
+				if (storage.instanceOfStorage('\OCP\Files\Storage\ILockingStorage')) {
+					storage.changeLock(
+						mount.getInternalPath(absolutePath),
 						type,
-						this->lockingProvider
+						this.lockingProvider
 					);
 				}
 			} catch (\OCP\Lock\LockedException e) {
 				try {
 					// rethrow with the a human-readable path
 					throw new \OCP\Lock\LockedException(
-						this->getPathRelativeToFiles(absolutePath),
+						this.getPathRelativeToFiles(absolutePath),
 						e
 					);
 				} catch (\InvalidArgumentException e) {
@@ -1977,20 +1977,20 @@ namespace OC.Files
 	 * @return bool False if the path is excluded from locking, true otherwise
 	 */
 	private function unlockPath(path, type, lockMountPoint = false) {
-		absolutePath = this->getAbsolutePath(path);
+		absolutePath = this.getAbsolutePath(path);
 		absolutePath = Filesystem::normalizePath(absolutePath);
-		if (!this->shouldLockFile(absolutePath)) {
+		if (!this.shouldLockFile(absolutePath)) {
 			return false;
 		}
 
-		mount = this->getMountForLock(absolutePath, lockMountPoint);
+		mount = this.getMountForLock(absolutePath, lockMountPoint);
 		if (mount) {
-			storage = mount->getStorage();
-			if (storage && storage->instanceOfStorage('\OCP\Files\Storage\ILockingStorage')) {
-				storage->releaseLock(
-					mount->getInternalPath(absolutePath),
+			storage = mount.getStorage();
+			if (storage && storage.instanceOfStorage('\OCP\Files\Storage\ILockingStorage')) {
+				storage.releaseLock(
+					mount.getInternalPath(absolutePath),
 					type,
-					this->lockingProvider
+					this.lockingProvider
 				);
 			}
 		}
@@ -2008,17 +2008,17 @@ namespace OC.Files
 	 * @return bool False if the path is excluded from locking, true otherwise
 	 */
 	public function lockFile(path, type, lockMountPoint = false) {
-		absolutePath = this->getAbsolutePath(path);
+		absolutePath = this.getAbsolutePath(path);
 		absolutePath = Filesystem::normalizePath(absolutePath);
-		if (!this->shouldLockFile(absolutePath)) {
+		if (!this.shouldLockFile(absolutePath)) {
 			return false;
 		}
 
-		this->lockPath(path, type, lockMountPoint);
+		this.lockPath(path, type, lockMountPoint);
 
-		parents = this->getParents(path);
+		parents = this.getParents(path);
 		foreach (parents as parent) {
-			this->lockPath(parent, ILockingProvider::LOCK_SHARED);
+			this.lockPath(parent, ILockingProvider::LOCK_SHARED);
 		}
 
 		return true;
@@ -2034,17 +2034,17 @@ namespace OC.Files
 	 * @return bool False if the path is excluded from locking, true otherwise
 	 */
 	public function unlockFile(path, type, lockMountPoint = false) {
-		absolutePath = this->getAbsolutePath(path);
+		absolutePath = this.getAbsolutePath(path);
 		absolutePath = Filesystem::normalizePath(absolutePath);
-		if (!this->shouldLockFile(absolutePath)) {
+		if (!this.shouldLockFile(absolutePath)) {
 			return false;
 		}
 
-		this->unlockPath(path, type, lockMountPoint);
+		this.unlockPath(path, type, lockMountPoint);
 
-		parents = this->getParents(path);
+		parents = this.getParents(path);
 		foreach (parents as parent) {
-			this->unlockPath(parent, ILockingProvider::LOCK_SHARED);
+			this.unlockPath(parent, ILockingProvider::LOCK_SHARED);
 		}
 
 		return true;
@@ -2085,7 +2085,7 @@ namespace OC.Files
 		parts = explode('/', trim(path, '/'), 3);
 		// "user", "files", "path/to/dir"
 		if (!isset(parts[1]) || parts[1] !== 'files') {
-			this->logger->error(
+			this.logger.error(
 				'absolutePath must be relative to "files", value is "%s"',
 				[
 					absolutePath
@@ -2106,16 +2106,16 @@ namespace OC.Files
 	 * @throws NotFoundException
 	 */
 	public function getUidAndFilename(filename) {
-		info = this->getFileInfo(filename);
+		info = this.getFileInfo(filename);
 		if (!info instanceof \OCP\Files\FileInfo) {
-			throw new NotFoundException(this->getAbsolutePath(filename) . ' not found');
+			throw new NotFoundException(this.getAbsolutePath(filename) . ' not found');
 		}
-		uid = info->getOwner()->getUID();
+		uid = info.getOwner().getUID();
 		if (uid != \OCP\User::getUser()) {
 			Filesystem::initMountPoints(uid);
 			ownerView = new View('/' . uid . '/files');
 			try {
-				filename = ownerView->getPath(info['fileid']);
+				filename = ownerView.getPath(info['fileid']);
 			} catch (NotFoundException e) {
 				throw new NotFoundException('File with id ' . info['fileid'] . ' not found for user ' . uid);
 			}
@@ -2135,11 +2135,11 @@ namespace OC.Files
 		foreach (directoryParts as key => part) {
 			currentPathElements = array_slice(directoryParts, 0, key);
 			currentPath = '/' . implode('/', currentPathElements);
-			if (this->is_file(currentPath)) {
+			if (this.is_file(currentPath)) {
 				return false;
 			}
-			if (!this->file_exists(currentPath)) {
-				this->mkdir(currentPath);
+			if (!this.file_exists(currentPath)) {
+				this.mkdir(currentPath);
 			}
 		}
 

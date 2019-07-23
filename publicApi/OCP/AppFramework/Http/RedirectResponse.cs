@@ -14,9 +14,9 @@ namespace OCP.AppFramework.Http
      * @since 7.0.0
      */
     public function __construct(redirectURL) {
-        this->redirectURL = redirectURL;
-        this->setStatus(Http::STATUS_SEE_OTHER);
-        this->addHeader('Location', redirectURL);
+        this.redirectURL = redirectURL;
+        this.setStatus(Http::STATUS_SEE_OTHER);
+        this.addHeader('Location', redirectURL);
     }
 
 
@@ -25,7 +25,7 @@ namespace OCP.AppFramework.Http
      * @since 7.0.0
      */
     public function getRedirectURL() {
-        return this->redirectURL;
+        return this.redirectURL;
     }
 
 
