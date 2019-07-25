@@ -20,9 +20,6 @@ namespace OC.Accounts
     public class AccountManager : IAccountManager
     {
 
-        /** @var  IDBConnection database connection */
-        private OCP.IDBConnection connection;
-
         /** @var EventDispatcherInterface */
         private OCP.Sym.EventDispatcherInterface eventDispatcher;
 
@@ -30,17 +27,15 @@ namespace OC.Accounts
         private IJobList jobList;
 
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="T:OC.Accounts.AccountManager"/> class.
-        /// </summary>
-        /// <param name="connection">Connection.</param>
-        /// <param name="eventDispatcher">Event dispatcher.</param>
-        /// <param name="jobList">Job list.</param>
-        public AccountManager(IDBConnection connection,
-                                    OCP.Sym.EventDispatcherInterface eventDispatcher,
+        // <summary>
+        // Initializes a new instance of the <see cref="T:OC.Accounts.AccountManager"/> class.
+        // </summary>
+        // <param name="connection">Connection.</param>
+        // <param name="eventDispatcher">Event dispatcher.</param>
+        // <param name="jobList">Job list.</param>
+        public AccountManager(OCP.Sym.EventDispatcherInterface eventDispatcher,
                                     IJobList jobList)
         {
-            this.connection = connection;
             this.eventDispatcher = eventDispatcher;
             this.jobList = jobList;
         }
@@ -63,11 +58,11 @@ namespace OC.Accounts
         {
             return this.parseAccountData(user, this.getUser(user));
         }
-        /// <summary>
-        /// update user record
-        /// </summary>
-        /// <param name="user">user</param>
-        /// <param name="data"></param>
+        // <summary>
+        // update user record
+        // </summary>
+        // <param name="user">user</param>
+        // <param name="data"></param>
         public void updateUser(OCP.IUser user, JObject data)
         {
             var userData = this.getUser(user);

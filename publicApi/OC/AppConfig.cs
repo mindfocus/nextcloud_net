@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Sockets;
 using ext;
+using Microsoft.EntityFrameworkCore.Internal;
 using model;
 using OCP;
+using Pchp.Core.Utilities;
 
 namespace OC
 {
@@ -124,7 +126,7 @@ class AppConfig : IAppConfig {
 	 */
 	public bool hasKey(string app, string key) {
 		this.loadConfigValues();
-		return this.cache[app].ContainsKey(key);
+		return this.cache.Any(o => o.Item1 == app && o.Item2 == key);
 	}
 
 	/**
@@ -241,13 +243,15 @@ class AppConfig : IAppConfig {
 		if (key.IsEmpty()) {
 			return this.getAppValues(app).Values.ToList();
 		} else {
-			appIds = this.getApps();
-			values = array_map(function(appId) use (key) {
-				return isset(this.cache[appId][key]) ? this.cache[appId][key] : null;
-			}, appIds);
-			result = array_combine(appIds, values);
-
-			return array_filter(result);
+			var appIds = this.getApps();
+			var values = new Dictionary<string,string>();
+			foreach (var appId in appIds)
+			{
+				var result = this.cache.Where(o => o.Item1 == appId && o.Item2 == key)
+					.ToDictionary(o => o.Item1, p => p.Item3);
+				values.AddRange(result);
+			}
+			return values.Values.ToList();
 		}
 	}
 
@@ -258,11 +262,12 @@ class AppConfig : IAppConfig {
 	 * @return array
 	 */
 	public IList<string> getFilteredValues(string app) {
-		values = this.getValues(app, false);
+		var values = this.getValues(app, "");
 
-		if (isset(this.sensitiveValues[app])) {
-			foreach (this.sensitiveValues[app] as sensitiveKey) {
-				if (isset(values[sensitiveKey])) {
+		if ((this.sensitiveValues.ContainsKey(app))) {
+			foreach (var sensitiveKey in this.sensitiveValues[app] ) {
+				if (values.Contains(sensitiveKey))
+				{
 					values[sensitiveKey] = IConfig::SENSITIVE_VALUE;
 				}
 			}

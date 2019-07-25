@@ -1,6 +1,5 @@
 ﻿using OCP;
 using OCP.Accounts;
-using Pchp.Core;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -26,7 +25,6 @@ namespace OC.Accounts
         {
             this.properties[property] = new AccountProperty(property, value, scope, verified);
             return this;
-
         }
 
         public IAccountProperty getProperty(string property)
@@ -40,13 +38,11 @@ namespace OC.Accounts
             //			throw new PropertyDoesNotExistException(property);
             //}
             //		return this.properties[property];
-
         }
 
         public IDictionary<string, IAccountProperty> getProperties()
         {
             return this.properties;
-
         }
 
         public IDictionary<string, IAccountProperty> getFilteredProperties(string scope = null, string verified = null)
@@ -54,13 +50,11 @@ namespace OC.Accounts
             return this.properties.Where(o =>
                o.Value.getScope() == scope && o.Value.getVerified() == verified
            ).ToDictionary(p => p.Key, p => p.Value);
-
         }
 
         public IUser getUser()
         {
             return this.user;
-
         }
     }
 

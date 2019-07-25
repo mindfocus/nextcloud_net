@@ -6,7 +6,6 @@ namespace OC.Accounts
 {
     class AccountProperty : IAccountProperty
     {
-
         /** @var string */
         private string name;
         /** @var string */
@@ -31,9 +30,9 @@ namespace OC.Accounts
          * @param string value
          * @return IAccountProperty
          */
-        public IAccountProperty setValue(string value)
+        public IAccountProperty setValue(string _value)
         {
-            this.value = value;
+            this.value = _value;
             return this;
         }
 
@@ -45,9 +44,9 @@ namespace OC.Accounts
          * @param string scope
          * @return IAccountProperty
          */
-        public IAccountProperty setScope(string scope)
+        public IAccountProperty setScope(string _scope)
         {
-            this.scope = scope;
+            this.scope = _scope;
             return this;
         }
 
@@ -59,9 +58,9 @@ namespace OC.Accounts
          * @param string verified
          * @return IAccountProperty
          */
-        public IAccountProperty setVerified(string verified)
+        public IAccountProperty setVerified(string _verified)
         {
-            this.verified = verified;
+            this.verified = _verified;
             return this;
         }
 

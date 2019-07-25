@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using ext;
 using OCP;
 using OCP.App;
@@ -82,7 +83,7 @@ namespace OC.App
 				values[appId] = "yes";
 			}
 
-			this.installedAppsCache = array_filter(values, function (value) {
+			this.installedAppsCache = values.Where( o=> o != "no") = array_filter(values, function (value) {
 				return value !== "no";
 			});
 			ksort(this.installedAppsCache);

@@ -82,5 +82,6 @@
       <Folder Include="OCP\Notification\" />
       <Folder Include="OCP\Migration\" />
       <Folder Include="OCP\FullTextSearch\Model\" />
+      <Folder Include="OC\Tagging" />
     </ItemGroup>
 </Project>
