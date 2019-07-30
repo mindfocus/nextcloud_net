@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using CommonTypes;
 using ext;
 
 namespace OC.legacy
@@ -773,36 +774,20 @@ namespace OC.legacy
 	 *
 	 * @return boolean true if compatible, otherwise false
 	 */
-	public static function isAppCompatible(string ocVersion, array appInfo, bool ignoreMax = false): bool {
-		requireMin = "";
-		requireMax = "";
-		if (isset(appInfo["dependencies"]["nextcloud"]["@attributes"]["min-version"])) {
-			requireMin = appInfo["dependencies"]["nextcloud"]["@attributes"]["min-version"];
-		} elseif (isset(appInfo["dependencies"]["owncloud"]["@attributes"]["min-version"])) {
-			requireMin = appInfo["dependencies"]["owncloud"]["@attributes"]["min-version"];
-		} else if (isset(appInfo["requiremin"])) {
-			requireMin = appInfo["requiremin"];
-		} else if (isset(appInfo["require"])) {
-			requireMin = appInfo["require"];
-		}
+	public static bool isAppCompatible(string ocVersion, AppInfo appInfo, bool ignoreMax = false) {
+		var requireMin = appInfo.Dependencies.Owncloud.Minversion;
+		var requireMax = appInfo.Dependencies.Owncloud.Maxversion;
+		
 
-		if (isset(appInfo["dependencies"]["nextcloud"]["@attributes"]["max-version"])) {
-			requireMax = appInfo["dependencies"]["nextcloud"]["@attributes"]["max-version"];
-		} elseif (isset(appInfo["dependencies"]["owncloud"]["@attributes"]["max-version"])) {
-			requireMax = appInfo["dependencies"]["owncloud"]["@attributes"]["max-version"];
-		} else if (isset(appInfo["requiremax"])) {
-			requireMax = appInfo["requiremax"];
-		}
-
-		if (!empty(requireMin)
-			&& version_compare(self::adjustVersionParts(ocVersion, requireMin), requireMin, "<")
+		if (requireMin.IsNotEmpty()
+			&& VersionUtility.version_compare(adjustVersionParts(ocVersion, requireMin), requireMin, "<")
 		) {
 
 			return false;
 		}
 
-		if (!ignoreMax && !empty(requireMax)
-			&& version_compare(self::adjustVersionParts(ocVersion, requireMax), requireMax, ">")
+		if (!ignoreMax && requireMax.IsNotEmpty()
+			&& VersionUtility.version_compare(adjustVersionParts(ocVersion, requireMax), requireMax, ">")
 		) {
 			return false;
 		}
@@ -813,7 +798,7 @@ namespace OC.legacy
 	/**
 	 * get the installed version of all apps
 	 */
-	public static function getAppVersions() {
+	public static  getAppVersions() {
 		static versions;
 
 		if(!versions) {
@@ -829,9 +814,9 @@ namespace OC.legacy
 	 * @param string appId
 	 * @return bool
 	 */
-	public static function updateApp(string appId): bool {
-		appPath = self::getAppPath(appId);
-		if(appPath === false) {
+	public static bool updateApp(string appId) {
+		var appPath = getAppPath(appId);
+		if(appPath == false) {
 			return false;
 		}
 		self::registerAutoloading(appId, appPath);
@@ -956,81 +941,6 @@ namespace OC.legacy
 		}
 	}
 
-	protected static function findBestL10NOption(array options, string lang): string {
-		// only a single option
-		if (isset(options['@value'])) {
-			return options['@value'];
-		}
-
-		fallback = similarLangFallback = englishFallback = false;
-
-		lang = strtolower(lang);
-		similarLang = lang;
-		if (strpos(similarLang, '_')) {
-			// For "de_DE" we want to find "de" and the other way around
-			similarLang = substr(lang, 0, strpos(lang, '_'));
-		}
-
-		foreach (options as option) {
-			if (is_array(option)) {
-				if (fallback === false) {
-					fallback = option['@value'];
-				}
-
-				if (!isset(option['@attributes']['lang'])) {
-					continue;
-				}
-
-				attributeLang = strtolower(option['@attributes']['lang']);
-				if (attributeLang === lang) {
-					return option['@value'];
-				}
-
-				if (attributeLang === similarLang) {
-					similarLangFallback = option['@value'];
-				} else if (strpos(attributeLang, similarLang . '_') === 0) {
-					if (similarLangFallback === false) {
-						similarLangFallback =  option['@value'];
-					}
-				}
-			} else {
-				englishFallback = option;
-			}
-		}
-
-		if (similarLangFallback !== false) {
-			return similarLangFallback;
-		} else if (englishFallback !== false) {
-			return englishFallback;
-		}
-		return (string) fallback;
-	}
-
-	/**
-	 * parses the app data array and enhanced the 'description' value
-	 *
-	 * @param array data the app data
-	 * @param string lang
-	 * @return array improved app data
-	 */
-	public static IList parseAppInfo(IList data, string lang = null) {
-
-		if (lang && isset(data['name']) && is_array(data['name'])) {
-			data['name'] = self::findBestL10NOption(data['name'], lang);
-		}
-		if (lang && isset(data['summary']) && is_array(data['summary'])) {
-			data['summary'] = self::findBestL10NOption(data['summary'], lang);
-		}
-		if (lang && isset(data['description']) && is_array(data['description'])) {
-			data['description'] = trim(self::findBestL10NOption(data['description'], lang));
-		} else if (isset(data['description']) && is_string(data['description'])) {
-			data['description'] = trim(data['description']);
-		} else  {
-			data['description'] = '';
-		}
-
-		return data;
-	}
 
 	/**
 	 * @param \OCP\IConfig config

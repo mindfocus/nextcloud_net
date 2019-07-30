@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Text;
+using CommonTypes;
 
 namespace OCP.App
 {
@@ -20,7 +22,7 @@ namespace OCP.App
          * @return mixed
          * @since 14.0.0
          */
-        string getAppInfo(string appId, bool path = false, string lang = null);
+        AppInfo getAppInfo(string appId, bool path = false, string lang = null);
 
         /**
          * Returns the app information from "appinfo/info.xml".
@@ -32,15 +34,15 @@ namespace OCP.App
          */
         string getAppVersion(string appId, bool useCache = true);
 
-	/**
-	 * Check if an app is enabled for user
-	 *
-	 * @param string appId
-	 * @param \OCP\IUser user (optional) if not defined, the currently loggedin user will be used
-	 * @return bool
-	 * @since 8.0.0
-	 */
-	bool isEnabledForUser(string appId, IUser user = null);
+	       /**
+	        * Check if an app is enabled for user
+	        *
+	        * @param string appId
+	        * @param \OCP\IUser user (optional) if not defined, the currently loggedin user will be used
+	        * @return bool
+	        * @since 8.0.0
+	        */
+	       bool isEnabledForUser(string appId, IUser user = null);
 
         /**
          * Check if an app is enabled in the instance
@@ -69,7 +71,7 @@ namespace OCP.App
          * @return bool
          * @since 12.0.0
          */
-        bool hasProtectedAppType(string[] types);
+        bool hasProtectedAppType(IList<string> types);
 
         /**
          * Enable an app only for specific groups
@@ -79,7 +81,7 @@ namespace OCP.App
          * @throws \Exception
          * @since 8.0.0
          */
-        void enableAppForGroups(string appId, IGroup[] groups);
+        void enableAppForGroups(string appId, IList<IGroup> groups);
 
         /**
          * Disable an app for every user
@@ -87,7 +89,7 @@ namespace OCP.App
          * @param string appId
          * @since 8.0.0
          */
-        bool disableApp(string appId);
+        void disableApp(string appId);
 
         /**
          * Get the directory for the given app.

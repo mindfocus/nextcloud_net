@@ -67,6 +67,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\CommonTypes\CommonTypes.csproj" />
       <ProjectReference Include="..\model\model.csproj" />
     </ItemGroup>
     <ItemGroup>

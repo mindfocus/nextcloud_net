@@ -1,6 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using CommonTypes;
 using ext;
 using Newtonsoft.Json.Linq;
 using OC.legacy;
@@ -49,10 +52,10 @@ namespace OC.App
 	private IList<string> alwaysEnabled;
 
 	/** @var array */
-	private IDictionary<string, string> appInfos = new Dictionary<string, string>();
+	private IDictionary<string, AppInfo> appInfos = new Dictionary<string, AppInfo>();
 
 	/** @var array */
-	private IList<string> appVersions = new List<string>();
+	private IDictionary<string,string> appVersions = new Dictionary<string,string>();
 
 	/**
 	 * @param IUserSession userSession
@@ -123,15 +126,15 @@ namespace OC.App
 	 * @param \OCP\IUser user (optional) if not defined, the currently logged in user will be used
 	 * @return bool
 	 */
-	public function isEnabledForUser(appId, user = null) {
+	public bool isEnabledForUser(string appId, IUser user = null) {
 		if (this.isAlwaysEnabled(appId)) {
 			return true;
 		}
-		if (user === null) {
+		if (user == null) {
 			user = this.userSession.getUser();
 		}
-		installedApps = this.getInstalledAppsValues();
-		if (isset(installedApps[appId])) {
+		var installedApps = this.getInstalledAppsValues();
+		if (installedApps.ContainsKey(appId)) {
 			return this.checkAppForUser(installedApps[appId], user);
 		} else {
 			return false;
@@ -198,9 +201,9 @@ namespace OC.App
 
 		this.installedAppsCache[appId] = "yes";
 		this.appConfig.setValue(appId, "enabled", "yes");
-		this.dispatcher.dispatch(ManagerEvent::EVENT_APP_ENABLE, new ManagerEvent(
-			ManagerEvent::EVENT_APP_ENABLE, appId
-		));
+//		this.dispatcher.dispatch(ManagerEvent::EVENT_APP_ENABLE, new ManagerEvent(
+//			ManagerEvent::EVENT_APP_ENABLE, appId
+//		));
 		this.clearAppsCache();
 	}
 
@@ -210,13 +213,13 @@ namespace OC.App
 	 * @param string[] types
 	 * @return bool
 	 */
-	public function hasProtectedAppType(types) {
-		if (empty(types)) {
+	public bool hasProtectedAppType(IList<string> types) {
+		if (types.IsEmpty()) {
 			return false;
 		}
 
-		protectedTypes = array_intersect(this.protectedAppTypes, types);
-		return !empty(protectedTypes);
+		var protectedTypes = this.protectedAppTypes.Intersect(types);
+		return protectedTypes.Any();
 	}
 
 	/**
@@ -227,11 +230,11 @@ namespace OC.App
 	 * @throws \InvalidArgumentException if app can"t be enabled for groups
 	 * @throws AppPathNotFoundException
 	 */
-	public function enableAppForGroups(appId, groups) {
+	public void enableAppForGroups(string appId, IList<OCP.IGroup> groups) {
 		// Check if app exists
 		this.getAppPath(appId);
 
-		info = this.getAppInfo(appId);
+		var info = this.getAppInfo(appId);
 		if (!empty(info["types"]) && this.hasProtectedAppType(info["types"])) {
 			throw new \InvalidArgumentException("appId can"t be enabled for groups.");
 		}
@@ -254,7 +257,7 @@ namespace OC.App
 	 * @param string appId
 	 * @throws \Exception if app can"t be disabled
 	 */
-	public function disableApp(appId) {
+	public void disableApp(string appId) {
 		if (this.isAlwaysEnabled(appId)) {
 			throw new \Exception("appId can"t be disabled.");
 		}
@@ -305,18 +308,18 @@ namespace OC.App
 	 *
 	 * @internal
 	 */
-	public IList getAppsNeedingUpgrade(version) {
-		var appsToUpgrade = new List<string>();
+	public IList getAppsNeedingUpgrade(string version) {
+		var appsToUpgrade = new List<AppInfo>();
 		var apps = this.getInstalledApps();
 		foreach (var appId in apps) {
 			var appInfo = this.getAppInfo(appId);
-			appDbVersion = this.appConfig.getValue(appId, "installed_version");
-			if (appDbVersion
-				&& isset(appInfo["version"])
-				&& version_compare(appInfo["version"], appDbVersion, ">")
-				&& \OC_App::isAppCompatible(version, appInfo)
+			var appDbVersion = this.appConfig.getValue(appId, "installed_version");
+			if (appDbVersion.IsNotEmpty()
+				&& appInfo.Version.IsNotEmpty()
+				&& VersionUtility.version_compare(appInfo.Version, appDbVersion, ">")
+				&& OC_App.isAppCompatible(version, appInfo)
 			) {
-				appsToUpgrade[] = appInfo;
+				appsToUpgrade.Add(appInfo);
 			}
 		}
 
@@ -332,7 +335,7 @@ namespace OC.App
 	 * @param null lang
 	 * @return array|null app info
 	 */
-	public IList getAppInfo(string appId, bool path = false, string lang = null)
+	public AppInfo getAppInfo(string appId, bool path = false, string lang = null)
 	{
 		string file = "";
 		if (path) {
@@ -354,21 +357,17 @@ namespace OC.App
 		var parser = new InfoParser(this.memCacheFactory.createLocal("core.appinfo"));
 		var data = parser.parse(file);
 
-		if (data is IList) {
-			data = OC_App.parseAppInfo(data, lang);
-		}
-
-		if (lang === null) {
+		if (lang == null) {
 			this.appInfos[appId] = data;
 		}
 
 		return data;
 	}
 
-	public function getAppVersion(string appId, bool useCache = true): string {
-		if(!useCache || !isset(this.appVersions[appId])) {
-			appInfo = \OC::server.getAppManager().getAppInfo(appId);
-			this.appVersions[appId] = (appInfo !== null && isset(appInfo["version"])) ? appInfo["version"] : "0";
+	public string getAppVersion(string appId, bool useCache = true) {
+		if(!useCache || !this.appVersions.ContainsKey(appId)) {
+			var appInfo = getAppInfo(appId);
+			this.appVersions[appId] = (appInfo != null && appInfo.Version.IsNotEmpty()) ? appInfo.Version : "0";
 		}
 		return this.appVersions[appId];
 	}
@@ -382,15 +381,20 @@ namespace OC.App
 	 *
 	 * @internal
 	 */
-	public function getIncompatibleApps(string version): array {
-		apps = this.getInstalledApps();
-		incompatibleApps = array();
-		foreach (apps as appId) {
-			info = this.getAppInfo(appId);
-			if (info === null) {
-				incompatibleApps[] = ["id" => appId];
-			} else if (!\OC_App::isAppCompatible(version, info)) {
-				incompatibleApps[] = info;
+	public IList<AppInfo> getIncompatibleApps(string version) {
+		var apps = this.getInstalledApps();
+		var incompatibleApps = new List<AppInfo>();
+		foreach (var appId in apps) {
+			var info = this.getAppInfo(appId);
+			if (info == null)
+			{
+				info = new AppInfo()
+				{
+					Id = appId
+				};
+				incompatibleApps.Add(info);
+			} else if (!OC_App.isAppCompatible(version, info)) {
+				incompatibleApps.Add(info);
 			}
 		}
 		return incompatibleApps;
@@ -400,27 +404,28 @@ namespace OC.App
 	 * @inheritdoc
 	 * In case you change this method, also change \OC\App\CodeChecker\InfoChecker::isShipped()
 	 */
-	public function isShipped(appId) {
+	public bool isShipped(string appId) {
 		this.loadShippedJson();
-		return in_array(appId, this.shippedApps, true);
+		return this.shippedApps.Contains(appId);
 	}
 
-	private function isAlwaysEnabled(appId) {
-		alwaysEnabled = this.getAlwaysEnabledApps();
-		return in_array(appId, alwaysEnabled, true);
+	private bool isAlwaysEnabled(string appId) {
+		var alwaysEnabledApps = this.getAlwaysEnabledApps();
+		return alwaysEnabledApps.Contains(appId);
 	}
 
 	/**
 	 * In case you change this method, also change \OC\App\CodeChecker\InfoChecker::loadShippedJson()
 	 * @throws \Exception
 	 */
-	private function loadShippedJson() {
-		if (this.shippedApps === null) {
-			shippedJson = \OC::SERVERROOT . "/core/shipped.json";
-			if (!file_exists(shippedJson)) {
-				throw new \Exception("File not found: shippedJson");
+	private void loadShippedJson() {
+		if (this.shippedApps == null) {
+			var shippedJson = OC.SERVERROOT + "/core/shipped.json";
+			if (!File.Exists(shippedJson)) {
+				throw new Exception("File not found: shippedJson");
 			}
-			content = json_decode(file_get_contents(shippedJson), true);
+
+			var content = JToken.Parse(File.ReadAllText(shippedJson)) as JArray;
 			this.shippedApps = content["shippedApps"];
 			this.alwaysEnabled = content["alwaysEnabled"];
 		}
@@ -429,7 +434,7 @@ namespace OC.App
 	/**
 	 * @inheritdoc
 	 */
-	public function getAlwaysEnabledApps() {
+	public IList<string> getAlwaysEnabledApps() {
 		this.loadShippedJson();
 		return this.alwaysEnabled;
 	}

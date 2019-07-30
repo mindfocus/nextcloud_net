@@ -7,7 +7,7 @@ using NUnit.Framework;
 
 namespace publicApiTest
 {
-    public class JosnTest
+    public class JsonTest
     {
         [Test]
         public void jsontest()
