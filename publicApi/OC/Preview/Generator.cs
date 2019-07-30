@@ -24,7 +24,7 @@ class Generator {
 	 * @param GeneratorHelper $helper
 	 * @param EventDispatcherInterface $eventDispatcher
 	 */
-	public function __construct(
+	public Generator(
 		IConfig $config,
 		IPreview $previewManager,
 		IAppData $appData,

@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using ext;
+using Newtonsoft.Json.Linq;
+using OC.legacy;
 using OCP;
 using OCP.App;
 using OCP.Sym;
@@ -47,7 +49,7 @@ namespace OC.App
 	private IList<string> alwaysEnabled;
 
 	/** @var array */
-	private IList<string> appInfos = new List<string>();
+	private IDictionary<string, string> appInfos = new Dictionary<string, string>();
 
 	/** @var array */
 	private IList<string> appVersions = new List<string>();
@@ -76,17 +78,15 @@ namespace OC.App
 	 */
 	private IDictionary<string,string> getInstalledAppsValues() {
 		if (this.installedAppsCache.IsEmpty()) {
-			var values = this.appConfig.getValues(false, "enabled");
+			var values = this.appConfig.getValues("", "enabled");
 
 			var alwaysEnabledApps = this.getAlwaysEnabledApps();
 			foreach(var appId in alwaysEnabledApps) {
 				values[appId] = "yes";
 			}
 
-			this.installedAppsCache = values.Where( o=> o != "no") = array_filter(values, function (value) {
-				return value !== "no";
-			});
-			ksort(this.installedAppsCache);
+			this.installedAppsCache = values.Where(o => o != "no").ToDictionary(o=> o, p=> p);
+//			ksort(this.installedAppsCache);
 		}
 		return this.installedAppsCache;
 	}
@@ -96,8 +96,9 @@ namespace OC.App
 	 *
 	 * @return string[]
 	 */
-	public function getInstalledApps() {
-		return array_keys(this.getInstalledAppsValues());
+	public IList<string> getInstalledApps()
+	{
+		return this.getInstalledAppsValues().Keys.ToList();
 	}
 
 	/**
@@ -106,8 +107,9 @@ namespace OC.App
 	 * @param \OCP\IUser user
 	 * @return string[]
 	 */
-	public function getEnabledAppsForUser(IUser user) {
-		apps = this.getInstalledAppsValues();
+	public IList<string> getEnabledAppsForUser(IUser user) {
+		var apps = this.getInstalledAppsValues();
+		var appsForUser = apps.Where(o => this.checkAppForUser(o.Value, user)).ToList();
 		appsForUser = array_filter(apps, function (enabled) use (user) {
 			return this.checkAppForUser(enabled, user);
 		});
@@ -141,27 +143,29 @@ namespace OC.App
 	 * @param IUser user
 	 * @return bool
 	 */
-	private function checkAppForUser(enabled, user) {
-		if (enabled === "yes") {
+	private bool checkAppForUser(string enabled, IUser user) {
+		if (enabled == "yes") {
 			return true;
-		} elseif (user === null) {
+		} else if (user == null) {
 			return false;
 		} else {
-			if(empty(enabled)){
+			if(enabled.IsEmpty()){
 				return false;
 			}
 
-			groupIds = json_decode(enabled);
+			var groupIds = JToken.Parse(enabled);
 
-			if (!is_array(groupIds)) {
-				jsonError = json_last_error();
-				\OC::server.getLogger().warning("AppManger::checkAppForUser - can\"t decode group IDs: " . print_r(enabled, true) . " - json error code: " . jsonError, ["app" => "lib"]);
+			if (!(groupIds is JArray)) {
+//				jsonError = json_last_error();
+//				\OC::server.getLogger().warning("AppManger::checkAppForUser - can\"t decode group IDs: " . print_r(enabled, true) . " - json error code: " . jsonError, ["app" => "lib"]);
 				return false;
 			}
 
-			userGroups = this.groupManager.getUserGroupIds(user);
-			foreach (userGroups as groupId) {
-				if (in_array(groupId, groupIds, true)) {
+			var userGroups = this.groupManager.getUserGroupIds(user);
+			foreach (var groupId in userGroups)
+			{
+				if (groupIds.Contains(groupId))
+				{
 					return true;
 				}
 			}
@@ -177,9 +181,9 @@ namespace OC.App
 	 * @param string appId
 	 * @return bool
 	 */
-	public function isInstalled(appId) {
-		installedApps = this.getInstalledAppsValues();
-		return isset(installedApps[appId]);
+	public bool isInstalled(string appId) {
+		var installedApps = this.getInstalledAppsValues();
+		return installedApps.ContainsKey(appId);
 	}
 
 	/**
@@ -188,7 +192,7 @@ namespace OC.App
 	 * @param string appId
 	 * @throws AppPathNotFoundException
 	 */
-	public function enableApp(appId) {
+	public void enableApp(string appId) {
 		// Check if app exists
 		this.getAppPath(appId);
 
@@ -276,10 +280,10 @@ namespace OC.App
 	 * @return string
 	 * @throws AppPathNotFoundException if app folder can"t be found
 	 */
-	public function getAppPath(appId) {
-		appPath = \OC_App::getAppPath(appId);
-		if(appPath === false) {
-			throw new AppPathNotFoundException("Could not find path for " . appId);
+	public string getAppPath(string appId) {
+		var appPath = OC_App.getAppPath(appId);
+		if(appPath.IsEmpty()) {
+			throw new AppPathNotFoundException("Could not find path for " + appId);
 		}
 		return appPath;
 	}
@@ -287,10 +291,10 @@ namespace OC.App
 	/**
 	 * Clear the cached list of apps when enabling/disabling an app
 	 */
-	public function clearAppsCache() {
-		settingsMemCache = this.memCacheFactory.createDistributed("settings");
+	public void clearAppsCache() {
+		var settingsMemCache = this.memCacheFactory.createDistributed("settings");
 		settingsMemCache.clear("listApps");
-		this.appInfos = [];
+		this.appInfos.Clear();
 	}
 
 	/**
@@ -301,11 +305,11 @@ namespace OC.App
 	 *
 	 * @internal
 	 */
-	public function getAppsNeedingUpgrade(version) {
-		appsToUpgrade = [];
-		apps = this.getInstalledApps();
-		foreach (apps as appId) {
-			appInfo = this.getAppInfo(appId);
+	public IList getAppsNeedingUpgrade(version) {
+		var appsToUpgrade = new List<string>();
+		var apps = this.getInstalledApps();
+		foreach (var appId in apps) {
+			var appInfo = this.getAppInfo(appId);
 			appDbVersion = this.appConfig.getValue(appId, "installed_version");
 			if (appDbVersion
 				&& isset(appInfo["version"])
@@ -328,26 +332,30 @@ namespace OC.App
 	 * @param null lang
 	 * @return array|null app info
 	 */
-	public function getAppInfo(string appId, bool path = false, lang = null) {
+	public IList getAppInfo(string appId, bool path = false, string lang = null)
+	{
+		string file = "";
 		if (path) {
 			file = appId;
 		} else {
-			if (lang === null && isset(this.appInfos[appId])) {
+			if (lang == null && this.appInfos.ContainsKey(appId)) {
 				return this.appInfos[appId];
 			}
+
+			string appPath = "";
 			try {
 				appPath = this.getAppPath(appId);
 			} catch (AppPathNotFoundException e) {
 				return null;
 			}
-			file = appPath . "/appinfo/info.xml";
+			file = appPath + "/appinfo/info.xml";
 		}
 
-		parser = new InfoParser(this.memCacheFactory.createLocal("core.appinfo"));
-		data = parser.parse(file);
+		var parser = new InfoParser(this.memCacheFactory.createLocal("core.appinfo"));
+		var data = parser.parse(file);
 
-		if (is_array(data)) {
-			data = \OC_App::parseAppInfo(data, lang);
+		if (data is IList) {
+			data = OC_App.parseAppInfo(data, lang);
 		}
 
 		if (lang === null) {

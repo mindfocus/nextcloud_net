@@ -4,7 +4,7 @@ using System.Text;
 
 namespace OC.Hooks
 {
-    class PublicEmitter : BasicEmitter
+    public class PublicEmitter : BasicEmitter
     {
     /**
 	 * @param string $scope

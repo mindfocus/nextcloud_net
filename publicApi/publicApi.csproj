@@ -62,6 +62,8 @@
       <PackageReference Include="NodaTime" Version="3.0.0-alpha01" />
       <PackageReference Include="Peachpie.Library" Version="0.9.40" />
       <PackageReference Include="Quartz" Version="3.0.7" />
+      <PackageReference Include="System.Xml.XPath" Version="4.3.0" />
+      <PackageReference Include="System.Xml.XPath.XmlDocument" Version="4.3.0" />
     </ItemGroup>
 
     <ItemGroup>

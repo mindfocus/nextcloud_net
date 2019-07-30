@@ -190,7 +190,7 @@ public class Util {
 	 *
 	 * @return integer
 	 */
-	public function getHeaderSize() {
+	public int getHeaderSize() {
 		return this.headerSize;
 	}
 
@@ -199,7 +199,7 @@ public class Util {
 	 *
 	 * @return integer
 	 */
-	public function getBlockSize() {
+	public int getBlockSize() {
 		return this.blockSize;
 	}
 

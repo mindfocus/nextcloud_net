@@ -23,7 +23,7 @@ namespace OC.User
      *
      * @package OC\User
      */
-    class Manager : Hooks.PublicEmitter , IUserManager
+    public class Manager : Hooks.PublicEmitter , IUserManager
     {
     /**
 	 * @var \OCP\UserInterface[] $backends

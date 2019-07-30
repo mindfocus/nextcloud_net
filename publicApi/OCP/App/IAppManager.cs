@@ -106,7 +106,7 @@ namespace OCP.App
          * @return string[]
          * @since 8.1.0
          */
-        string[] getEnabledAppsForUser(IUser user);
+        IList<string> getEnabledAppsForUser(IUser user);
 
         /**
          * List all installed apps
@@ -114,7 +114,7 @@ namespace OCP.App
          * @return string[]
          * @since 8.1.0
          */
-        string[] getInstalledApps();
+        IList<string> getInstalledApps();
 
         /**
          * Clear the cached list of apps when enabling/disabling an app
@@ -133,7 +133,7 @@ namespace OCP.App
          * @return string[]
          * @since 9.0.0
          */
-        string[] getAlwaysEnabledApps();
+        IList<string> getAlwaysEnabledApps();
     }
 
 }

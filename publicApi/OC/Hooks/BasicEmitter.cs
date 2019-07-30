@@ -4,7 +4,7 @@ using System.Text;
 
 namespace OC.Hooks
 {
-    abstract class BasicEmitter : Emitter
+    public abstract class BasicEmitter : Emitter
     {
 
     /**

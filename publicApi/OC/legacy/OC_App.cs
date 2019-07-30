@@ -1013,7 +1013,7 @@ namespace OC.legacy
 	 * @param string lang
 	 * @return array improved app data
 	 */
-	public static function parseAppInfo(array data, lang = null): array {
+	public static IList parseAppInfo(IList data, string lang = null) {
 
 		if (lang && isset(data['name']) && is_array(data['name'])) {
 			data['name'] = self::findBestL10NOption(data['name'], lang);
@@ -1038,7 +1038,7 @@ namespace OC.legacy
 	 * @param array info
 	 * @throws \Exception
 	 */
-	public static function checkAppDependencies(\OCP\IConfig config, \OCP\IL10N l, array info, bool ignoreMax) {
+	public static function checkAppDependencies(OCP.IConfig config, \OCP\IL10N l, array info, bool ignoreMax) {
 		dependencyAnalyzer = new DependencyAnalyzer(new Platform(config), l);
 		missing = dependencyAnalyzer.analyze(info, ignoreMax);
 		if (!empty(missing)) {

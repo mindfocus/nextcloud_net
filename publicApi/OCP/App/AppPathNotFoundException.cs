@@ -6,5 +6,9 @@ namespace OCP.App
 {
     class AppPathNotFoundException : Exception
     {
+        public AppPathNotFoundException(string msg) : base(msg)
+        {
+            
+        }
     }
 }

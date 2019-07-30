@@ -20,7 +20,7 @@ namespace OC.Group
  *
  * @package OC\Group
  */
-class Manager : PublicEmitter , IGroupManager {
+public class Manager : PublicEmitter , IGroupManager {
 	/** @var GroupInterface[] */
 	private $backends = [];
 
