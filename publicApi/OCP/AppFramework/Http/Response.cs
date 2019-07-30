@@ -1,6 +1,9 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net;
+using ext;
+using OCP.AppFramework.Utility;
 using OCP.Security;
 
 namespace OCP.AppFramework.Http
@@ -11,7 +14,7 @@ namespace OCP.AppFramework.Http
  * It handles headers, HTTP status code, last modified and ETag.
  * @since 6.0.0
  */
-class Response {
+public class Response {
 
 	/**
 	 * Headers - defaults to ['Cache-Control' => 'no-cache, no-store, must-revalidate']
@@ -27,21 +30,21 @@ class Response {
 	 * Cookies that will be need to be constructed as header
 	 * @var array
 	 */
-	private IList<string> cookies = new List<string>();
+	private IDictionary<string,string> cookies = new Dictionary<string, string>();
 
 
 	/**
 	 * HTTP status code - defaults to STATUS OK
 	 * @var int
 	 */
-	private int status = WebRequestMethods.Http.STATUS_OK;
+	private HttpStatusCode status = HttpStatusCode.OK;
 
 
 	/**
 	 * Last modified date
 	 * @var \DateTime
 	 */
-	private DateTime lastModified;
+	private DateTime? lastModified = null;
 
 
 	/**
@@ -74,13 +77,14 @@ class Response {
 			// Set expires header
 			var expires = new DateTime();
 			/** @var ITimeFactory time */
-			var time = \OC::server.query(ITimeFactory::class);
+			var time = OC.server.query(typeof(ITimeFactory));
 			expires.setTimestamp(time.getTime());
 			expires.add(new \DateInterval('PT'.cacheSeconds.'S'));
 			this.addHeader('Expires', expires.format(\DateTime::RFC2822));
 		} else {
-			this.addHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
-			unset(this.headers['Expires'], this.headers['Pragma']);
+			this.addHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+			this.headers.Remove("Expires");
+			this.headers.Remove("Pragma");
 		}
 
 		return this;
@@ -96,7 +100,7 @@ class Response {
 	 * @return this
 	 * @since 8.0.0
 	 */
-	public function addCookie(name, value, \DateTime expireDate = null) {
+	public Response addCookie(name, value, \DateTime expireDate = null) {
 		this.cookies[name] = array('value' => value, 'expireDate' => expireDate);
 		return this;
 	}
@@ -108,7 +112,7 @@ class Response {
 	 * @return this
 	 * @since 8.0.0
 	 */
-	public function setCookies(array cookies) {
+	public Response setCookies(IDictionary<string,string> cookies) {
 		this.cookies = cookies;
 		return this;
 	}
@@ -120,8 +124,8 @@ class Response {
 	 * @return this
 	 * @since 8.0.0
 	 */
-	public function invalidateCookie(name) {
-		this.addCookie(name, 'expired', new \DateTime('1971-01-01 00:00'));
+	public Response invalidateCookie(string name) {
+		this.addCookie(name, "expired", new DateTime("1971-01-01 00:00"));
 		return this;
 	}
 
@@ -155,13 +159,14 @@ class Response {
 	 * @return this
 	 * @since 6.0.0 - return value was added in 7.0.0
 	 */
-	public function addHeader(name, value) {
-		name = trim(name);  // always remove leading and trailing whitespace
+	public Response addHeader(string name, string value) {
+		name = name.Trim();  // always remove leading and trailing whitespace
 		                      // to be able to reliably check for security
 		                      // headers
 
-		if(is_null(value)) {
-			unset(this.headers[name]);
+		if(value.IsEmpty())
+		{
+			this.headers.Remove(name);
 		} else {
 			this.headers[name] = value;
 		}
@@ -176,7 +181,7 @@ class Response {
 	 * @return this
 	 * @since 8.0.0
 	 */
-	public function setHeaders(array headers) {
+	public Response setHeaders(IDictionary<string,string> headers) {
 		this.headers = headers;
 
 		return this;
@@ -188,25 +193,27 @@ class Response {
 	 * @return array the headers
 	 * @since 6.0.0
 	 */
-	public function getHeaders() {
-		mergeWith = [];
+	public IDictionary<string,string> getHeaders() {
+		var mergeWith = new Dictionary<string,string>();
 
-		if(this.lastModified) {
-			mergeWith['Last-Modified'] =
-				this.lastModified.format(\DateTime::RFC2822);
+		if(this.lastModified != null)
+		{
+			mergeWith["Last-Modified"] =
+				this.lastModified?.ToString("R"); // format(\DateTime::RFC2822);
 		}
 
 		// Build Content-Security-Policy and use default if none has been specified
-		if(is_null(this.contentSecurityPolicy)) {
+		if (this.contentSecurityPolicy == null)
+		{
 			this.setContentSecurityPolicy(new ContentSecurityPolicy());
 		}
-		this.headers['Content-Security-Policy'] = this.contentSecurityPolicy.buildPolicy();
+		this.headers["Content-Security-Policy"] = this.contentSecurityPolicy.buildPolicy();
 
-		if(this.ETag) {
-			mergeWith['ETag'] = '"' . this.ETag . '"';
+		if(this.ETag.IsNotEmpty()) {
+			mergeWith["ETag"] = "\"" + this.ETag + "\"";
 		}
 
-		return array_merge(mergeWith, this.headers);
+		return mergeWith.Concat(this.headers).ToDictionary(o => o.Key, p => p.Value);
 	}
 
 
@@ -215,8 +222,8 @@ class Response {
 	 * @return string
 	 * @since 6.0.0
 	 */
-	public function render() {
-		return '';
+	public string render() {
+		return "";
 	}
 
 
@@ -226,7 +233,7 @@ class Response {
 	 * @return Response Reference to this object
 	 * @since 6.0.0 - return value was added in 7.0.0
 	 */
-	public function setStatus(status) {
+	public Response setStatus(HttpStatusCode status) {
 		this.status = status;
 
 		return this;
@@ -238,7 +245,7 @@ class Response {
 	 * @return this
 	 * @since 8.1.0
 	 */
-	public function setContentSecurityPolicy(EmptyContentSecurityPolicy csp) {
+	public Response setContentSecurityPolicy(EmptyContentSecurityPolicy csp) {
 		this.contentSecurityPolicy = csp;
 		return this;
 	}
@@ -249,7 +256,7 @@ class Response {
 	 *                                    none specified.
 	 * @since 8.1.0
 	 */
-	public function getContentSecurityPolicy() {
+	public ContentSecurityPolicyManager getContentSecurityPolicy() {
 		return this.contentSecurityPolicy;
 	}
 
@@ -258,7 +265,7 @@ class Response {
 	 * Get response status
 	 * @since 6.0.0
 	 */
-	public function getStatus() {
+	public HttpStatusCode getStatus() {
 		return this.status;
 	}
 
@@ -268,7 +275,7 @@ class Response {
 	 * @return string the etag
 	 * @since 6.0.0
 	 */
-	public function getETag() {
+	public string getETag() {
 		return this.ETag;
 	}
 
@@ -278,7 +285,7 @@ class Response {
 	 * @return \DateTime RFC2822 formatted last modified date
 	 * @since 6.0.0
 	 */
-	public function getLastModified() {
+	public DateTime? getLastModified() {
 		return this.lastModified;
 	}
 
@@ -289,9 +296,8 @@ class Response {
 	 * @return Response Reference to this object
 	 * @since 6.0.0 - return value was added in 7.0.0
 	 */
-	public function setETag(ETag) {
+	public Response setETag(string ETag) {
 		this.ETag = ETag;
-
 		return this;
 	}
 
@@ -302,9 +308,8 @@ class Response {
 	 * @return Response Reference to this object
 	 * @since 6.0.0 - return value was added in 7.0.0
 	 */
-	public function setLastModified(lastModified) {
+	public Response setLastModified(DateTime lastModified) {
 		this.lastModified = lastModified;
-
 		return this;
 	}
 
@@ -315,7 +320,7 @@ class Response {
 	 * @param array metadata
 	 * @since 12.0.0
 	 */
-	public function throttle(array metadata = []) {
+	public void throttle(IList<string>  metadata ) {
 		this.throttled = true;
 		this.throttleMetadata = metadata;
 	}
@@ -326,7 +331,7 @@ class Response {
 	 * @return array
 	 * @since 13.0.0
 	 */
-	public function getThrottleMetadata() {
+	public IList<string>  getThrottleMetadata() {
 		return this.throttleMetadata;
 	}
 
@@ -335,7 +340,7 @@ class Response {
 	 *
 	 * @since 12.0.0
 	 */
-	public function isThrottled() {
+	public bool isThrottled() {
 		return this.throttled;
 	}
 }

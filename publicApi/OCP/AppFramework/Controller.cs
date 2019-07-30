@@ -1,4 +1,9 @@
+using System;
 using System.Collections;
+using System.Collections.Generic;
+using OCP;
+using OCP.AppFramework.Http;
+using OCP.Http.Client;
 
 namespace OCP.AppFramework
 {
@@ -6,7 +11,7 @@ namespace OCP.AppFramework
  * Base class to inherit your controllers from
  * @since 6.0.0
  */
-abstract class Controller {
+public abstract class Controller {
 
 	/**
 	 * app name
@@ -17,7 +22,7 @@ abstract class Controller {
 
 	/**
 	 * current request
-	 * @var \OCP\IRequest
+	 * @var .OCP.IRequest
 	 * @since 6.0.0
 	 */
 	protected OCP.IRequest request;
@@ -26,7 +31,7 @@ abstract class Controller {
 	 * @var array
 	 * @since 7.0.0
 	 */
-	private IList responders;
+	private IDictionary<string,Func<Response, Response>> responders;
 
 	/**
 	 * constructor of the controller
@@ -34,15 +39,26 @@ abstract class Controller {
 	 * @param IRequest request an instance of the request
 	 * @since 6.0.0 - parameter appName was added in 7.0.0 - parameter app was removed in 7.0.0
 	 */
-	
 	public Controller(string appName,
 	                            IRequest request) {
 		this.appName = appName;
 		this.request = request;
-
+		this.responders.Add("json", data =>
+		{
+			if (data is DataResponse)
+			{
+				var response = new JSONResponse(((DataResponse)data).getData(), ((DataResponse)data).getHeaders());
+				var dataHeaders = data.getHeaders();
+				var headers = response.getHeaders();
+				if (dataHeaders)
+				{
+					
+				}
+			}
+		});
 		// default responders
 		this.responders = array(
-			'json' => function (data) {
+			"json" => function (data) {
 				if (data instanceof DataResponse) {
 					response = new JSONResponse(
 						data.getData(),
@@ -51,8 +67,8 @@ abstract class Controller {
 					dataHeaders = data.getHeaders();
 					headers = response.getHeaders();
 					// do not overwrite Content-Type if it already exists
-					if (isset(dataHeaders['Content-Type'])) {
-						unset(headers['Content-Type']);
+					if (isset(dataHeaders["Content-Type"])) {
+						unset(headers["Content-Type"]);
 					}
 					response.setHeaders(array_merge(dataHeaders, headers));
 					return response;
@@ -60,6 +76,7 @@ abstract class Controller {
 				return new JSONResponse(data);
 			}
 		);
+		
 	}
 
 
@@ -71,32 +88,34 @@ abstract class Controller {
 	 * @since 7.0.0
 	 * @since 9.1.0 Added default parameter
 	 */
-	public function getResponderByHTTPHeader(acceptHeader, default='json') {
-		headers = explode(',', acceptHeader);
+	public string getResponderByHTTPHeader(string acceptHeader, string @default="json")
+	{
+		var headers = acceptHeader.Split(',');
 
 		// return the first matching responder
-		foreach (headers as header) {
-			header = strtolower(trim(header));
+		foreach (var header in headers)
+		{
+			var headerLower = header.Trim().ToLower();
 
-			responder = str_replace('application/', '', header);
-
-			if (array_key_exists(responder, this.responders)) {
+			var responder = headerLower.Replace("application/", "");
+			if (this.responders.ContainsKey(responder))
+			{
 				return responder;
 			}
 		}
 
 		// no matching header return default
-		return default;
+		return @default;
 	}
 
 
 	/**
 	 * Registers a formatter for a type
 	 * @param string format
-	 * @param \Closure responder
+	 * @param .Closure responder
 	 * @since 7.0.0
 	 */
-	protected function registerResponder(format, \Closure responder) {
+	protected void registerResponder(string format, Func<Response,Response> responder) {
 		this.responders[format] = responder;
 	}
 
@@ -106,20 +125,19 @@ abstract class Controller {
 	 * @param mixed response the value that was returned from a controller and
 	 * is not a Response instance
 	 * @param string format the format for which a formatter has been registered
-	 * @throws \DomainException if format does not match a registered formatter
+	 * @throws .DomainException if format does not match a registered formatter
 	 * @return Response
 	 * @since 7.0.0
 	 */
-	public function buildResponse(response, format='json') {
-		if(array_key_exists(format, this.responders)) {
+	public Response buildResponse(Response response, string format="json") {
 
-			responder = this.responders[format];
-
+		if (responders.ContainsKey(format))
+		{
+			var responder = this.responders[format];
 			return responder(response);
-
 		}
-		throw new \DomainException('No responder registered for format '.
-			format . '!');
+		throw new Exception("No responder registered for format " +
+			format + "!");
 	}
 }
 

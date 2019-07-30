@@ -1,10 +1,12 @@
+using System.Collections;
+
 namespace OCP.AppFramework.Http
 {
 /**
  * A renderer for JSON calls
  * @since 6.0.0
  */
-    class JSONResponse extends Response {
+    class JSONResponse : Response {
 
     /**
      * response data
@@ -19,7 +21,7 @@ namespace OCP.AppFramework.Http
      * @param int statusCode the Http status code, defaults to 200
      * @since 6.0.0
      */
-    public function __construct(data=array(), statusCode=Http::STATUS_OK) {
+    public JSONResponse(IList data=array(), string statusCode=Http::STATUS_OK) {
         this.data = data;
         this.setStatus(statusCode);
         this.addHeader('Content-Type', 'application/json; charset=utf-8');
