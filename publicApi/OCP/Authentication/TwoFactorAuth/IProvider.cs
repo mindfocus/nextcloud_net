@@ -20,7 +20,7 @@ namespace OCP.Authentication.TwoFactorAuth
      *
      * @return string
      */
-    public string getId() ;
+    string getId() ;
 
     /**
      * Get the display name for selecting the 2FA provider
@@ -31,7 +31,7 @@ namespace OCP.Authentication.TwoFactorAuth
      *
      * @return string
      */
-    public string getDisplayName();
+    string getDisplayName();
 
     /**
      * Get the description for selecting the 2FA provider
@@ -42,7 +42,7 @@ namespace OCP.Authentication.TwoFactorAuth
      *
      * @return string
      */
-    public string getDescription();
+    string getDescription();
 
     /**
      * Get the template for rending the 2FA provider view
@@ -52,7 +52,7 @@ namespace OCP.Authentication.TwoFactorAuth
      * @param IUser user
      * @return Template
      */
-    public Template getTemplate(IUser user);
+    Template getTemplate(IUser user);
 
     /**
      * Verify the given challenge
@@ -63,7 +63,7 @@ namespace OCP.Authentication.TwoFactorAuth
      * @param string challenge
      * @return bool
      */
-    public bool verifyChallenge(IUser user, string challenge);
+    bool verifyChallenge(IUser user, string challenge);
 
     /**
      * Decides whether 2FA is enabled for the given user
@@ -73,7 +73,7 @@ namespace OCP.Authentication.TwoFactorAuth
      * @param IUser user
      * @return bool
      */
-    public bool isTwoFactorAuthEnabledForUser(IUser user);
+    bool isTwoFactorAuthEnabledForUser(IUser user);
 }
 
 }

@@ -1,25 +1,27 @@
+using OC.legacy;
+
 namespace OCP
 {
 /**
  * public api to access default strings and urls for your templates
  * @since 6.0.0
  */
-class Defaults {
+public class Defaults {
 
 	/**
 	 * \OC_Defaults instance to retrieve the defaults
 	 * @since 6.0.0
 	 */
-	private defaults;
+	private OC_Defaults defaults;
 
 	/**
 	 * creates a \OC_Defaults instance which is used in all methods to retrieve the
 	 * actual defaults
 	 * @since 6.0.0
 	 */
-	public Defaults(\OC_Defaults defaults = null) {
+	public Defaults(OC_Defaults defaults = null) {
 		if (defaults == null) {
-			defaults = \OC::server.getThemingDefaults();
+			defaults = OC.server.getThemingDefaults();
 		}
 
 		this.defaults = defaults;

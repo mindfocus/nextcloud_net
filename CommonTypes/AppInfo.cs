@@ -58,7 +58,12 @@ namespace CommonTypes
 		[XmlElement(ElementName="live-migration")]
 		public Livemigration Livemigration { get; set; }
 	}
-
+	[XmlRoot(ElementName="two-factor-providers")]
+	public class Twofactorproviders {
+		[XmlElement(ElementName="provider")]
+		public List<string> Providers { get; set; }
+	}
+	
 	[XmlRoot(ElementName="commands")]
 	public class Commands {
 		[XmlElement(ElementName="command")]
@@ -133,6 +138,8 @@ namespace CommonTypes
 		public Backgroundjobs Backgroundjobs { get; set; }
 		[XmlElement(ElementName="repair-steps")]
 		public Repairsteps Repairsteps { get; set; }
+		[XmlElement(ElementName="two-factor-providers")]
+		public Twofactorproviders Twofactorproviders { get; set; }
 		[XmlElement(ElementName="commands")]
 		public Commands Commands { get; set; }
 		[XmlElement(ElementName="settings")]

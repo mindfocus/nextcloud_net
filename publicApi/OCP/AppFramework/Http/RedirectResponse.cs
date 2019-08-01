@@ -1,22 +1,24 @@
+using System.Net;
+
 namespace OCP.AppFramework.Http
 {
 /**
  * Redirects to a different URL
  * @since 7.0.0
  */
-    class RedirectResponse : Response {
+    public class RedirectResponse : Response {
 
-    private redirectURL;
+    private string redirectURL;
 
     /**
      * Creates a response that redirects to a url
      * @param string redirectURL the url to redirect to
      * @since 7.0.0
      */
-    public function __construct(redirectURL) {
+    public RedirectResponse(string redirectURL) {
         this.redirectURL = redirectURL;
-        this.setStatus(Http::STATUS_SEE_OTHER);
-        this.addHeader('Location', redirectURL);
+        this.setStatus(HttpStatusCode.Redirect);
+        this.addHeader("Location", redirectURL);
     }
 
 
@@ -24,7 +26,7 @@ namespace OCP.AppFramework.Http
      * @return string the url to redirect
      * @since 7.0.0
      */
-    public function getRedirectURL() {
+    public string getRedirectURL() {
         return this.redirectURL;
     }
 

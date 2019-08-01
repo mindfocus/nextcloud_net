@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace OCP.AppFramework.Http
 {
 /**
@@ -6,32 +8,32 @@ namespace OCP.AppFramework.Http
  */
 public class TemplateResponse : Response {
 
-	const EVENT_LOAD_ADDITIONAL_SCRIPTS = self::class . '::loadAdditionalScripts';
-	const EVENT_LOAD_ADDITIONAL_SCRIPTS_LOGGEDIN = self::class . '::loadAdditionalScriptsLoggedIn';
+	const string EVENT_LOAD_ADDITIONAL_SCRIPTS = self::class . '::loadAdditionalScripts';
+	const string EVENT_LOAD_ADDITIONAL_SCRIPTS_LOGGEDIN = self::class . '::loadAdditionalScriptsLoggedIn';
 
 	/**
 	 * name of the template
 	 * @var string
 	 */
-	protected templateName;
+	protected string templateName;
 
 	/**
 	 * parameters
 	 * @var array
 	 */
-	protected params;
+	protected IDictionary<string,object>  paramters;
 
 	/**
 	 * rendering type (admin, user, blank)
 	 * @var string
 	 */
-	protected renderAs;
+	protected string _renderAs;
 
 	/**
 	 * app name
 	 * @var string
 	 */
-	protected appName;
+	protected string appName;
 
 	/**
 	 * constructor of TemplateResponse
@@ -42,12 +44,12 @@ public class TemplateResponse : Response {
 	 * @param string renderAs how the page should be rendered, defaults to user
 	 * @since 6.0.0 - parameters params and renderAs were added in 7.0.0
 	 */
-	public function __construct(appName, templateName, array params=array(),
-	                            renderAs='user') {
+	public TemplateResponse(string appName, string templateName, IDictionary<string,object> paramters,
+	                            string renderAs="user") {
 		this.templateName = templateName;
 		this.appName = appName;
-		this.params = params;
-		this.renderAs = renderAs;
+		this.paramters = paramters;
+		this._renderAs = renderAs;
 	}
 
 
@@ -58,8 +60,8 @@ public class TemplateResponse : Response {
 	 * @return TemplateResponse Reference to this object
 	 * @since 6.0.0 - return value was added in 7.0.0
 	 */
-	public function setParams(array params){
-		this.params = params;
+	public TemplateResponse setParams(IDictionary<string,object> paramters){
+		this.paramters = paramters;
 
 		return this;
 	}
@@ -70,8 +72,8 @@ public class TemplateResponse : Response {
 	 * @return array the params
 	 * @since 6.0.0
 	 */
-	public function getParams(){
-		return this.params;
+	public IDictionary<string,object> getParams(){
+		return this.paramters;
 	}
 
 
@@ -80,7 +82,7 @@ public class TemplateResponse : Response {
 	 * @return string the name of the used template
 	 * @since 6.0.0
 	 */
-	public function getTemplateName(){
+	public string getTemplateName(){
 		return this.templateName;
 	}
 
@@ -94,8 +96,8 @@ public class TemplateResponse : Response {
 	 * @return TemplateResponse Reference to this object
 	 * @since 6.0.0 - return value was added in 7.0.0
 	 */
-	public function renderAs(renderAs){
-		this.renderAs = renderAs;
+	public TemplateResponse renderAs(string renderAs){
+		this._renderAs = renderAs;
 
 		return this;
 	}
@@ -106,8 +108,8 @@ public class TemplateResponse : Response {
 	 * @return string the renderAs value
 	 * @since 6.0.0
 	 */
-	public function getRenderAs(){
-		return this.renderAs;
+	public string getRenderAs(){
+		return this._renderAs;
 	}
 
 
@@ -116,17 +118,17 @@ public class TemplateResponse : Response {
 	 * @return string the rendered html
 	 * @since 6.0.0
 	 */
-	public function render(){
+	public string render(){
 		// \OCP\Template needs an empty string instead of 'blank' for an unwrapped response
-		renderAs = this.renderAs === 'blank' ? '' : this.renderAs;
+		var renderAs = this._renderAs == "blank" ? "" : this._renderAs;
 
-		template = new \OCP\Template(this.appName, this.templateName, renderAs);
+		var template = new OCP.Template(this.appName, this.templateName, renderAs);
 
-		foreach(this.params as key => value){
-			template.assign(key, value);
+		foreach(var param in this.paramters){
+			template.assign(param.Key, param.Value);
 		}
 
-		return template.fetchPage(this.params);
+		return template.fetchPage(this.paramters);
 	}
 
 }

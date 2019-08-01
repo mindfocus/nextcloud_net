@@ -1,10 +1,17 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
     <PropertyGroup>
         <TargetFramework>netcoreapp3.0</TargetFramework>
+        <RootNamespace>OC</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\privatelib\privatelib.csproj" />
+      <ProjectReference Include="..\publicApi\publicApi.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="core" />
     </ItemGroup>
 
 </Project>

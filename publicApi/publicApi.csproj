@@ -60,7 +60,7 @@
       <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="2.2.0" />
       <PackageReference Include="Newtonsoft.Json" Version="12.0.1" />
       <PackageReference Include="NodaTime" Version="3.0.0-alpha01" />
-      <PackageReference Include="Peachpie.Library" Version="0.9.40" />
+      <PackageReference Include="Peachpie.Library" Version="0.9.44" />
       <PackageReference Include="Quartz" Version="3.0.7" />
       <PackageReference Include="System.Xml.XPath" Version="4.3.0" />
       <PackageReference Include="System.Xml.XPath.XmlDocument" Version="4.3.0" />
@@ -69,6 +69,7 @@
     <ItemGroup>
       <ProjectReference Include="..\CommonTypes\CommonTypes.csproj" />
       <ProjectReference Include="..\model\model.csproj" />
+      <ProjectReference Include="..\Utility\Utility.csproj" />
     </ItemGroup>
     <ItemGroup>
       <Folder Include="OCP\User\" />
@@ -77,14 +78,11 @@
       <Folder Include="OCP\Support\" />
       <Folder Include="OCP\Support\CrashReport\" />
       <Folder Include="OCP\Lockdown\" />
-      <Folder Include="OC\Authentication\" />
-      <Folder Include="OC\Authentication\Token\" />
       <Folder Include="OCP\LDAP\" />
       <Folder Include="OCP\Group\" />
       <Folder Include="OCP\Group\Backend\" />
       <Folder Include="OCP\Notification\" />
       <Folder Include="OCP\Migration\" />
       <Folder Include="OCP\FullTextSearch\Model\" />
-      <Folder Include="OC\Tagging" />
     </ItemGroup>
 </Project>

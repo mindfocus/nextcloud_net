@@ -12,7 +12,7 @@ namespace OCP.App
      * @package OCP\App
      * @since 8.0.0
      */
-    interface IAppManager
+    public interface IAppManager
     {
 
         /**

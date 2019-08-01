@@ -45,8 +45,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "nextcloud-icewind-searchdav
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "nextcloud-sabre", "nextcloud-sabre\nextcloud-sabre.msbuildproj", "{64C9C394-483A-453D-9BFD-92E25FC949D1}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "swiftmailer", "swiftmailer\swiftmailer.msbuildproj", "{908063AC-5595-4F62-8B6A-207796B001CA}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "nextcloud-egulias-email-validator", "nextcloud-egulias-email-validator\nextcloud-egulias-email-validator.msbuildproj", "{B61A527C-458E-42DB-AB54-4260DACF5083}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "nextcloud-interfasys-lognormalizer", "nextcloud-interfasys-lognormalizer\nextcloud-interfasys-lognormalizer.msbuildproj", "{89607B39-6314-4D4C-B219-ABFCA7EF7330}"
@@ -91,6 +89,12 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web1", "Web1\Web1.csproj", "{E55CAAD3-54D4-4113-89AC-D9EA3351C06F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "web3", "web3\web3.csproj", "{2B4D9251-D8C4-4699-8444-9A09A342596D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "twofactor_backupcodes", "twofactor_backupcodes\twofactor_backupcodes.csproj", "{9F86843D-9D48-4F7D-A9AF-3EFBDAD16467}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "privatelib", "privatelib\privatelib.csproj", "{5DCDDC40-2412-42C4-A191-A5B5DFEE49D6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Utility", "Utility\Utility.csproj", "{07AD62C1-98E0-40DF-A08C-2DDA4E054DEE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -174,10 +178,6 @@ Global
 		{64C9C394-483A-453D-9BFD-92E25FC949D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{64C9C394-483A-453D-9BFD-92E25FC949D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{64C9C394-483A-453D-9BFD-92E25FC949D1}.Release|Any CPU.Build.0 = Release|Any CPU
-		{908063AC-5595-4F62-8B6A-207796B001CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{908063AC-5595-4F62-8B6A-207796B001CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{908063AC-5595-4F62-8B6A-207796B001CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{908063AC-5595-4F62-8B6A-207796B001CA}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B61A527C-458E-42DB-AB54-4260DACF5083}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B61A527C-458E-42DB-AB54-4260DACF5083}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B61A527C-458E-42DB-AB54-4260DACF5083}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -258,6 +258,18 @@ Global
 		{2B4D9251-D8C4-4699-8444-9A09A342596D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2B4D9251-D8C4-4699-8444-9A09A342596D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2B4D9251-D8C4-4699-8444-9A09A342596D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9F86843D-9D48-4F7D-A9AF-3EFBDAD16467}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F86843D-9D48-4F7D-A9AF-3EFBDAD16467}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F86843D-9D48-4F7D-A9AF-3EFBDAD16467}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F86843D-9D48-4F7D-A9AF-3EFBDAD16467}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5DCDDC40-2412-42C4-A191-A5B5DFEE49D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5DCDDC40-2412-42C4-A191-A5B5DFEE49D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5DCDDC40-2412-42C4-A191-A5B5DFEE49D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5DCDDC40-2412-42C4-A191-A5B5DFEE49D6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{07AD62C1-98E0-40DF-A08C-2DDA4E054DEE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{07AD62C1-98E0-40DF-A08C-2DDA4E054DEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{07AD62C1-98E0-40DF-A08C-2DDA4E054DEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{07AD62C1-98E0-40DF-A08C-2DDA4E054DEE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -283,7 +295,6 @@ Global
 		{DD2E57DD-2A9E-4952-98ED-83EA020A6DD1} = {FADA6A78-A04F-4EA9-9BF0-EFF989E4C10F}
 		{006E16DC-D418-4EC3-9729-5FCE34C31BC2} = {FADA6A78-A04F-4EA9-9BF0-EFF989E4C10F}
 		{64C9C394-483A-453D-9BFD-92E25FC949D1} = {FADA6A78-A04F-4EA9-9BF0-EFF989E4C10F}
-		{908063AC-5595-4F62-8B6A-207796B001CA} = {FADA6A78-A04F-4EA9-9BF0-EFF989E4C10F}
 		{B61A527C-458E-42DB-AB54-4260DACF5083} = {FADA6A78-A04F-4EA9-9BF0-EFF989E4C10F}
 		{89607B39-6314-4D4C-B219-ABFCA7EF7330} = {FADA6A78-A04F-4EA9-9BF0-EFF989E4C10F}
 		{5FFA64E7-7E5F-4DBB-B00F-4F080C60EE64} = {FADA6A78-A04F-4EA9-9BF0-EFF989E4C10F}

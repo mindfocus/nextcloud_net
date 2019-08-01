@@ -1,4 +1,5 @@
 ﻿using System;
+
 namespace OCP.Authentication.TwoFactorAuth
 {
     /**
@@ -10,16 +11,13 @@ namespace OCP.Authentication.TwoFactorAuth
      */
     public interface IProvidesPersonalSettings : IProvider
     {
-
-    /**
-     * @param IUser user
-     *
-     * @return IPersonalProviderSettings
-     *
-     * @since 15.0.0
-     */
-    public IPersonalProviderSettings getPersonalSettings(IUser user) ;
-
-}
-
+        /**
+         * @param IUser user
+         *
+         * @return IPersonalProviderSettings
+         *
+         * @since 15.0.0
+         */
+        IPersonalProviderSettings getPersonalSettings(IUser user);
+    }
 }

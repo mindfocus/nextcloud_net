@@ -8,7 +8,7 @@ namespace OCP.AppFramework.Utility
      * Needed to mock calls to time()
      * @since 8.0.0
      */
-    interface ITimeFactory
+    public interface ITimeFactory
     {
 
         /**

@@ -40,7 +40,7 @@ namespace OCP
          * @return mixed the value or default
          * @since 6.0.0 - parameter default was added in 7.0.0
          */
-         object getSystemValue(string key, object @default);
+         object getSystemValue(string key, object @default = null);
 
         /**
          * Looks up a boolean system wide defined value

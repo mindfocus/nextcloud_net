@@ -27,7 +27,7 @@ namespace OCP.Authentication.TwoFactorAuth
      * @return string[] where the array key is the provider ID (string) and the
      *                  value is the enabled state (bool)
      */
-    public IList<string> getProviderStates(IUser user);
+    IDictionary<string, bool> getProviderStates(IUser user);
 
     /**
      * Enable the given 2FA provider for the given user

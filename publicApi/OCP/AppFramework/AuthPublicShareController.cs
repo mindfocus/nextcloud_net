@@ -1,3 +1,5 @@
+using OCP.AppFramework.Http;
+
 namespace OCP.AppFramework
 {
 /**
@@ -84,7 +86,7 @@ abstract class AuthPublicShareController : PublicShareController {
 	 *
 	 * @since 14.0.0
 	 */
-	final public function authenticate(string password = '') {
+	public function authenticate(string password = '') {
 		// Already authenticated
 		if (this.isAuthenticated()) {
 			return this.getRedirect();

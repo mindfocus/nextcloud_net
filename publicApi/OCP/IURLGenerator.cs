@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 
@@ -16,7 +17,7 @@ public interface IURLGenerator {
 	 * @return string the url
 	 * @since 6.0.0
 	 */
-	string linkToRoute(string routeName, IList<string> arguments);
+	string linkToRoute(string routeName, IDictionary<string,string> arguments);
 
 	/**
 	 * Returns the absolute URL for a route
@@ -25,7 +26,7 @@ public interface IURLGenerator {
 	 * @return string the absolute url
 	 * @since 8.0.0
 	 */
-	string linkToRouteAbsolute(string routeName, IList<string> arguments);
+	string linkToRouteAbsolute(string routeName, IDictionary<string,object> arguments);
 
 	/**
 	 * @param string routeName

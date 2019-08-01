@@ -22,7 +22,7 @@ namespace OCP
          * returned.
          * @since 6.0.0
          */
-        string t(string text, IList<string> parameters);
+        string t(string text, IList<string> parameters = null);
 
         /**
          * Translating

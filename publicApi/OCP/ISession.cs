@@ -29,7 +29,7 @@ namespace OCP
          * @return mixed should return null if key does not exist
          * @since 6.0.0
          */
-        string get(string key);
+        object get(string key);
 
         /**
          * Check if a named key exists in the session

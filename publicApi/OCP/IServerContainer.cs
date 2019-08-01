@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using OCP.Sym;
 
 namespace OCP
 {
@@ -372,7 +373,7 @@ namespace OCP
 	 * @return \OCP\App\IAppManager
 	 * @since 8.0.0
 	 */
-    public function getAppManager();
+    OCP.App.IAppManager getAppManager();
 
     /**
 	 * Get the webroot
@@ -400,7 +401,7 @@ namespace OCP
 	 * @return \OCP\Command\IBus
 	 * @since 8.1.0
 	 */
-    public function getCommandBus();
+    OCP.Command.IBus getCommandBus();
 
     /**
 	 * Creates a new mailer
@@ -446,7 +447,7 @@ namespace OCP
 	 * @return EventDispatcherInterface
 	 * @since 8.2.0
 	 */
-    public function getEventDispatcher();
+    EventDispatcherInterface getEventDispatcher();
 
     /**
 	 * Get the Notification Manager
@@ -454,13 +455,13 @@ namespace OCP
 	 * @return \OCP\Notification\IManager
 	 * @since 9.0.0
 	 */
-    public function getNotificationManager();
+    OCP.Notification.IManager getNotificationManager();
 
     /**
 	 * @return \OCP\Comments\ICommentsManager
 	 * @since 9.0.0
 	 */
-    public function getCommentsManager();
+    OCP.Comments.ICommentsManager getCommentsManager();
 
     /**
 	 * Returns the system-tag manager
@@ -510,7 +511,7 @@ namespace OCP
 	 * @return \OCP\Federation\ICloudIdManager
 	 * @since 12.0.0
 	 */
-    public function getCloudIdManager();
+    OCP.Federation.ICloudIdManager getCloudIdManager();
 
     /**
 	 * @return \OCP\GlobalScale\IConfig
@@ -522,13 +523,13 @@ namespace OCP
 	 * @return ICloudFederationFactory
 	 * @since 14.0.0
 	 */
-    public function getCloudFederationFactory();
+    OCP.Federation.ICloudFederationFactory getCloudFederationFactory();
 
     /**
 	 * @return ICloudFederationProviderManager
 	 * @since 14.0.0
 	 */
-    public function getCloudFederationProviderManager();
+    OCP.Federation.ICloudFederationFactory getCloudFederationProviderManager();
 
     /**
 	 * @return \OCP\Remote\Api\IApiFactory

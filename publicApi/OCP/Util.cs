@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using OC.legacy;
 
 namespace OCP
 {
@@ -152,9 +154,9 @@ namespace OCP
          * @param string text the text content for the element
          * @since 4.0.0
          */
-        public static function addHeader(tag, attributes, text= null)
+        public static void addHeader(string tag,IDictionary<string,object> attributes, string text= null)
         {
-        \OC_Util::addHeader(tag, attributes, text);
+            OC_Util.addHeader(tag, attributes, text);
         }
 
         /**
@@ -359,7 +361,7 @@ namespace OCP
          * @return string|array an array of sanitized strings or a single sanitized string, depends on the input parameter.
          * @since 4.5.0
          */
-        public static function sanitizeHTML(value) {
+        public static object sanitizeHTML(string value) {
         return \OC_Util::sanitizeHTML(value);
     }
 

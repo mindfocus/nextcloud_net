@@ -1,3 +1,9 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using ext;
+
 namespace OCP.AppFramework.Http
 {
 /**
@@ -15,44 +21,44 @@ public class EmptyContentSecurityPolicy {
 	/** @var bool Whether inline JS snippets are allowed */
 	protected bool? inlineScriptAllowed = null;
 	/** @var string Whether JS nonces should be used */
-	protected string? useJsNonce = null;
+	protected string? _useJsNonce = null;
 	/**
 	 * @var bool Whether eval in JS scripts is allowed
 	 * TODO: Disallow per default
 	 * @link https://github.com/owncloud/core/issues/11925
 	 */
-	protected evalScriptAllowed = null;
+	protected bool evalScriptAllowed = false;
 	/** @var array Domains from which scripts can get loaded */
-	protected allowedScriptDomains = null;
+	protected IList<string> allowedScriptDomains = null;
 	/**
 	 * @var bool Whether inline CSS is allowed
 	 * TODO: Disallow per default
 	 * @link https://github.com/owncloud/core/issues/13458
 	 */
-	protected inlineStyleAllowed = null;
+	protected bool inlineStyleAllowed = false;
 	/** @var array Domains from which CSS can get loaded */
-	protected allowedStyleDomains = null;
+	protected IList<string> allowedStyleDomains = null;
 	/** @var array Domains from which images can get loaded */
-	protected allowedImageDomains = null;
+	protected IList<string> allowedImageDomains = null;
 	/** @var array Domains to which connections can be done */
-	protected allowedConnectDomains = null;
+	protected IList<string> allowedConnectDomains = null;
 	/** @var array Domains from which media elements can be loaded */
-	protected allowedMediaDomains = null;
+	protected IList<string> allowedMediaDomains = null;
 	/** @var array Domains from which object elements can be loaded */
-	protected allowedObjectDomains = null;
+	protected IList<string> allowedObjectDomains = null;
 	/** @var array Domains from which iframes can be loaded */
-	protected allowedFrameDomains = null;
+	protected IList<string> allowedFrameDomains = null;
 	/** @var array Domains from which fonts can be loaded */
-	protected allowedFontDomains = null;
+	protected IList<string> allowedFontDomains = null;
 	/** @var array Domains from which web-workers and nested browsing content can load elements */
-	protected allowedChildSrcDomains = null;
+	protected IList<string> allowedChildSrcDomains = null;
 	/** @var array Domains which can embed this Nextcloud instance */
-	protected allowedFrameAncestors = null;
+	protected IList<string> allowedFrameAncestors = null;
 	/** @var array Domains from which web-workers can be loaded */
-	protected allowedWorkerSrcDomains = null;
+	protected IList<string> allowedWorkerSrcDomains = null;
 
 	/** @var array Locations to report violations to */
-	protected reportTo = null;
+	protected IList<string> reportTo = null;
 
 	/**
 	 * Whether inline JavaScript snippets are allowed or forbidden
@@ -61,7 +67,7 @@ public class EmptyContentSecurityPolicy {
 	 * @since 8.1.0
 	 * @deprecated 10.0 CSP tokens are now used
 	 */
-	public function allowInlineScript(state = false) {
+	public EmptyContentSecurityPolicy allowInlineScript(bool state = false) {
 		this.inlineScriptAllowed = state;
 		return this;
 	}
@@ -73,8 +79,8 @@ public class EmptyContentSecurityPolicy {
 	 * @return this
 	 * @since 11.0.0
 	 */
-	public function useJsNonce(nonce) {
-		this.useJsNonce = nonce;
+	public EmptyContentSecurityPolicy useJsNonce(string nonce) {
+		this._useJsNonce = nonce;
 		return this;
 	}
 
@@ -84,7 +90,7 @@ public class EmptyContentSecurityPolicy {
 	 * @return this
 	 * @since 8.1.0
 	 */
-	public function allowEvalScript(state = true) {
+	public EmptyContentSecurityPolicy allowEvalScript(bool state = true) {
 		this.evalScriptAllowed = state;
 		return this;
 	}
@@ -96,8 +102,8 @@ public class EmptyContentSecurityPolicy {
 	 * @return this
 	 * @since 8.1.0
 	 */
-	public function addAllowedScriptDomain(domain) {
-		this.allowedScriptDomains[] = domain;
+	public EmptyContentSecurityPolicy addAllowedScriptDomain(string domain) {
+		this.allowedScriptDomains.Add(domain);
 		return this;
 	}
 
@@ -108,8 +114,9 @@ public class EmptyContentSecurityPolicy {
 	 * @return this
 	 * @since 8.1.0
 	 */
-	public function disallowScriptDomain(domain) {
-		this.allowedScriptDomains = array_diff(this.allowedScriptDomains, [domain]);
+	public EmptyContentSecurityPolicy disallowScriptDomain(string domain)
+	{
+		this.allowedScriptDomains = this.allowedScriptDomains.Except(new List<string>{domain}).ToList();
 		return this;
 	}
 
@@ -119,7 +126,7 @@ public class EmptyContentSecurityPolicy {
 	 * @return this
 	 * @since 8.1.0
 	 */
-	public function allowInlineStyle(state = true) {
+	public EmptyContentSecurityPolicy allowInlineStyle(bool state = true) {
 		this.inlineStyleAllowed = state;
 		return this;
 	}
@@ -131,8 +138,8 @@ public class EmptyContentSecurityPolicy {
 	 * @return this
 	 * @since 8.1.0
 	 */
-	public function addAllowedStyleDomain(domain) {
-		this.allowedStyleDomains[] = domain;
+	public EmptyContentSecurityPolicy addAllowedStyleDomain(string domain) {
+		this.allowedStyleDomains.Add(domain);
 		return this;
 	}
 
@@ -143,8 +150,9 @@ public class EmptyContentSecurityPolicy {
 	 * @return this
 	 * @since 8.1.0
 	 */
-	public function disallowStyleDomain(domain) {
-		this.allowedStyleDomains = array_diff(this.allowedStyleDomains, [domain]);
+	public EmptyContentSecurityPolicy disallowStyleDomain(string domain)
+	{
+		this.allowedStyleDomains = this.allowedStyleDomains.Except(new List<string>() {domain}).ToList();
 		return this;
 	}
 
@@ -155,8 +163,8 @@ public class EmptyContentSecurityPolicy {
 	 * @return this
 	 * @since 8.1.0
 	 */
-	public function addAllowedFontDomain(domain) {
-		this.allowedFontDomains[] = domain;
+	public EmptyContentSecurityPolicy addAllowedFontDomain(string domain) {
+		this.allowedFontDomains.Add(domain);
 		return this;
 	}
 
@@ -167,8 +175,9 @@ public class EmptyContentSecurityPolicy {
 	 * @return this
 	 * @since 8.1.0
 	 */
-	public function disallowFontDomain(domain) {
-		this.allowedFontDomains = array_diff(this.allowedFontDomains, [domain]);
+	public EmptyContentSecurityPolicy disallowFontDomain(string domain)
+	{
+		this.allowedFontDomains = this.allowedFontDomains.Except(new List<string>() {domain}).ToList();
 		return this;
 	}
 
@@ -179,8 +188,8 @@ public class EmptyContentSecurityPolicy {
 	 * @return this
 	 * @since 8.1.0
 	 */
-	public function addAllowedImageDomain(domain) {
-		this.allowedImageDomains[] = domain;
+	public EmptyContentSecurityPolicy addAllowedImageDomain(string domain) {
+		this.allowedImageDomains.Add(domain);
 		return this;
 	}
 
@@ -191,8 +200,9 @@ public class EmptyContentSecurityPolicy {
 	 * @return this
 	 * @since 8.1.0
 	 */
-	public function disallowImageDomain(domain) {
-		this.allowedImageDomains = array_diff(this.allowedImageDomains, [domain]);
+	public EmptyContentSecurityPolicy disallowImageDomain(string domain)
+	{
+		this.allowedImageDomains = this.allowedImageDomains.Except(new List<string>(1) {domain}).ToList();
 		return this;
 	}
 
@@ -202,8 +212,8 @@ public class EmptyContentSecurityPolicy {
 	 * @return this
 	 * @since 8.1.0
 	 */
-	public function addAllowedConnectDomain(domain) {
-		this.allowedConnectDomains[] = domain;
+	public EmptyContentSecurityPolicy addAllowedConnectDomain(string domain) {
+		this.allowedConnectDomains.Add(domain);
 		return this;
 	}
 
@@ -214,8 +224,9 @@ public class EmptyContentSecurityPolicy {
 	 * @return this
 	 * @since 8.1.0
 	 */
-	public function disallowConnectDomain(domain) {
-		this.allowedConnectDomains = array_diff(this.allowedConnectDomains, [domain]);
+	public EmptyContentSecurityPolicy disallowConnectDomain(string domain)
+	{
+		this.allowedConnectDomains = this.allowedConnectDomains.Except(new List<string>(1) {domain}).ToList();
 		return this;
 	}
 
@@ -225,8 +236,8 @@ public class EmptyContentSecurityPolicy {
 	 * @return this
 	 * @since 8.1.0
 	 */
-	public function addAllowedMediaDomain(domain) {
-		this.allowedMediaDomains[] = domain;
+	public EmptyContentSecurityPolicy addAllowedMediaDomain(string domain) {
+		this.allowedMediaDomains.Add(domain);
 		return this;
 	}
 
@@ -237,8 +248,9 @@ public class EmptyContentSecurityPolicy {
 	 * @return this
 	 * @since 8.1.0
 	 */
-	public function disallowMediaDomain(domain) {
-		this.allowedMediaDomains = array_diff(this.allowedMediaDomains, [domain]);
+	public EmptyContentSecurityPolicy disallowMediaDomain(string domain)
+	{
+		this.allowedMediaDomains = this.allowedMediaDomains.Except(new List<string>(1) {domain}).ToList();
 		return this;
 	}
 
@@ -248,8 +260,8 @@ public class EmptyContentSecurityPolicy {
 	 * @return this
 	 * @since 8.1.0
 	 */
-	public function addAllowedObjectDomain(domain) {
-		this.allowedObjectDomains[] = domain;
+	public EmptyContentSecurityPolicy addAllowedObjectDomain(string domain) {
+		this.allowedObjectDomains.Add(domain);
 		return this;
 	}
 
@@ -260,8 +272,9 @@ public class EmptyContentSecurityPolicy {
 	 * @return this
 	 * @since 8.1.0
 	 */
-	public function disallowObjectDomain(domain) {
-		this.allowedObjectDomains = array_diff(this.allowedObjectDomains, [domain]);
+	public EmptyContentSecurityPolicy disallowObjectDomain(string domain)
+	{
+		this.allowedObjectDomains = this.allowedObjectDomains.Except(new List<string>(1) {domain}).ToList();
 		return this;
 	}
 
@@ -271,8 +284,8 @@ public class EmptyContentSecurityPolicy {
 	 * @return this
 	 * @since 8.1.0
 	 */
-	public function addAllowedFrameDomain(domain) {
-		this.allowedFrameDomains[] = domain;
+	public EmptyContentSecurityPolicy addAllowedFrameDomain(string domain) {
+		this.allowedFrameDomains.Add(domain);
 		return this;
 	}
 
@@ -283,8 +296,8 @@ public class EmptyContentSecurityPolicy {
 	 * @return this
 	 * @since 8.1.0
 	 */
-	public function disallowFrameDomain(domain) {
-		this.allowedFrameDomains = array_diff(this.allowedFrameDomains, [domain]);
+	public EmptyContentSecurityPolicy disallowFrameDomain(string domain) {
+		this.allowedFrameDomains = this.allowedFrameDomains.Except(new List<string>(1) {domain}).ToList();
 		return this;
 	}
 
@@ -295,8 +308,8 @@ public class EmptyContentSecurityPolicy {
 	 * @since 8.1.0
 	 * @deprecated 15.0.0 use addAllowedWorkerSrcDomains or addAllowedFrameDomain
 	 */
-	public function addAllowedChildSrcDomain(domain) {
-		this.allowedChildSrcDomains[] = domain;
+	public EmptyContentSecurityPolicy addAllowedChildSrcDomain(string domain) {
+		this.allowedChildSrcDomains.Add(domain);
 		return this;
 	}
 
@@ -308,8 +321,8 @@ public class EmptyContentSecurityPolicy {
 	 * @since 8.1.0
 	 * @deprecated 15.0.0 use the WorkerSrcDomains or FrameDomain
 	 */
-	public function disallowChildSrcDomain(domain) {
-		this.allowedChildSrcDomains = array_diff(this.allowedChildSrcDomains, [domain]);
+	public EmptyContentSecurityPolicy disallowChildSrcDomain(string domain) {
+		this.allowedChildSrcDomains = this.allowedChildSrcDomains.Except(new List<string>(1) {domain}).ToList();
 		return this;
 	}
 
@@ -320,8 +333,8 @@ public class EmptyContentSecurityPolicy {
 	 * @return this
 	 * @since 13.0.0
 	 */
-	public function addAllowedFrameAncestorDomain(domain) {
-		this.allowedFrameAncestors[] = domain;
+	public EmptyContentSecurityPolicy addAllowedFrameAncestorDomain(string domain) {
+		this.allowedFrameAncestors.Add(domain);
 		return this;
 	}
 
@@ -332,8 +345,8 @@ public class EmptyContentSecurityPolicy {
 	 * @return this
 	 * @since 13.0.0
 	 */
-	public function disallowFrameAncestorDomain(domain) {
-		this.allowedFrameAncestors = array_diff(this.allowedFrameAncestors, [domain]);
+	public EmptyContentSecurityPolicy disallowFrameAncestorDomain(string domain) {
+		this.allowedFrameAncestors = this.allowedFrameAncestors.Except(new List<string>(1) {domain}).ToList();
 		return this;
 	}
 
@@ -344,8 +357,8 @@ public class EmptyContentSecurityPolicy {
 	 * @return this
 	 * @since 15.0.0
 	 */
-	public function addAllowedWorkerSrcDomain(string domain) {
-		this.allowedWorkerSrcDomains[] = domain;
+	public EmptyContentSecurityPolicy addAllowedWorkerSrcDomain(string domain) {
+		this.allowedWorkerSrcDomains.Add(domain);
 		return this;
 	}
 
@@ -356,8 +369,8 @@ public class EmptyContentSecurityPolicy {
 	 * @return this
 	 * @since 15.0.0
 	 */
-	public function disallowWorkerSrcDomain(string domain) {
-		this.allowedWorkerSrcDomains = array_diff(this.allowedWorkerSrcDomains, [domain]);
+	public EmptyContentSecurityPolicy disallowWorkerSrcDomain(string domain) {
+		this.allowedWorkerSrcDomains = this.allowedWorkerSrcDomains.Except(new List<string>(1) {domain}).ToList();
 		return this;
 	}
 
@@ -368,8 +381,8 @@ public class EmptyContentSecurityPolicy {
 	 * @return this
 	 * @since 15.0.0
 	 */
-	public function addReportTo(string location) {
-		this.reportTo[] = location;
+	public EmptyContentSecurityPolicy addReportTo(string location) {
+		this.reportTo.Add(location);
 		return this;
 	}
 
@@ -378,96 +391,105 @@ public class EmptyContentSecurityPolicy {
 	 * @return string
 	 * @since 8.1.0
 	 */
-	public function buildPolicy() {
-		policy = "default-src 'none';";
-		policy .= "base-uri 'none';";
-		policy .= "manifest-src 'self';";
+	public string buildPolicy() {
+		var policy = "default-src 'none';";
+		policy += "base-uri 'none';";
+		policy += "manifest-src 'self';";
 
-		if(!empty(this.allowedScriptDomains) || this.inlineScriptAllowed || this.evalScriptAllowed) {
-			policy .= 'script-src ';
-			if(is_string(this.useJsNonce)) {
-				policy .= '\'nonce-'.base64_encode(this.useJsNonce).'\'';
-				allowedScriptDomains = array_flip(this.allowedScriptDomains);
-				unset(allowedScriptDomains['\'self\'']);
-				this.allowedScriptDomains = array_flip(allowedScriptDomains);
-				if(count(allowedScriptDomains) !== 0) {
-					policy .= ' ';
+		if(this.allowedScriptDomains.IsNotEmpty() || this.inlineScriptAllowed.HasValue || this.evalScriptAllowed) {
+			policy += "script-src ";
+			if(this._useJsNonce != null) {
+				policy += "\'nonce-'.base64_encode(this.useJsNonce).'\'";
+				this.allowedScriptDomains.Remove("\'self\'");
+				if(allowedScriptDomains.Count != 0) {
+					policy += " ";
 				}
 			}
-			if(is_array(this.allowedScriptDomains)) {
-				policy .= implode(' ', this.allowedScriptDomains);
+			if(this.allowedScriptDomains != null)
+			{
+				policy += String.Join(" ", this.allowedScriptDomains);
 			}
-			if(this.inlineScriptAllowed) {
-				policy .= ' \'unsafe-inline\'';
+			if(this.inlineScriptAllowed != null) {
+				policy += " \'unsafe-inline\'";
 			}
 			if(this.evalScriptAllowed) {
-				policy .= ' \'unsafe-eval\'';
+				policy += " \'unsafe-eval\'";
 			}
-			policy .= ';';
+			policy += ";";
 		}
 
-		if(!empty(this.allowedStyleDomains) || this.inlineStyleAllowed) {
-			policy .= 'style-src ';
-			if(is_array(this.allowedStyleDomains)) {
-				policy .= implode(' ', this.allowedStyleDomains);
+		if(this.allowedStyleDomains.Any() || this.inlineStyleAllowed) {
+			policy += "style-src ";
+			if(this.allowedStyleDomains != null)
+			{
+				policy += String.Join(" ", this.allowedStyleDomains);
 			}
 			if(this.inlineStyleAllowed) {
-				policy .= ' \'unsafe-inline\'';
+				policy += " \'unsafe-inline\'";
 			}
-			policy .= ';';
+			policy += ";";
 		}
 
-		if(!empty(this.allowedImageDomains)) {
-			policy .= 'img-src ' . implode(' ', this.allowedImageDomains);
-			policy .= ';';
+		if(this.allowedImageDomains.Any())
+		{
+			policy += "img-src " + string.Join(" ", this.allowedImageDomains);
+			policy += ";";
 		}
 
-		if(!empty(this.allowedFontDomains)) {
-			policy .= 'font-src ' . implode(' ', this.allowedFontDomains);
-			policy .= ';';
+		if(this.allowedFontDomains.Any())
+		{
+			policy += "font-src " + String.Join(" ", this.allowedFontDomains);
+			policy += ";";
 		}
 
-		if(!empty(this.allowedConnectDomains)) {
-			policy .= 'connect-src ' . implode(' ', this.allowedConnectDomains);
-			policy .= ';';
+		if(this.allowedConnectDomains.Any())
+		{
+			policy += "connect-src " + String.Join(" ", this.allowedConnectDomains);
+			policy += ";";
 		}
 
-		if(!empty(this.allowedMediaDomains)) {
-			policy .= 'media-src ' . implode(' ', this.allowedMediaDomains);
-			policy .= ';';
+		if(this.allowedMediaDomains.Any()) {
+			policy += "media-src " + String.Join(" ", this.allowedMediaDomains);
+			policy += ";";
 		}
 
-		if(!empty(this.allowedObjectDomains)) {
-			policy .= 'object-src ' . implode(' ', this.allowedObjectDomains);
-			policy .= ';';
+		if(this.allowedObjectDomains.Any())
+		{
+			policy += "object-src " + String.Join(" ", this.allowedObjectDomains);
+			policy += ";";
 		}
 
-		if(!empty(this.allowedFrameDomains)) {
-			policy .= 'frame-src ' . implode(' ', this.allowedFrameDomains);
-			policy .= ';';
+		if(this.allowedFrameDomains.Any())
+		{
+			policy += "frame-src " + String.Join(" ", this.allowedFrameDomains);
+			policy += ";";
+		}
+		
+		if(this.allowedChildSrcDomains.Any())
+		{
+			policy += "child-src " + String.Join(" ", this.allowedChildSrcDomains);
+			policy += ";";
 		}
 
-		if(!empty(this.allowedChildSrcDomains)) {
-			policy .= 'child-src ' . implode(' ', this.allowedChildSrcDomains);
-			policy .= ';';
+		if(this.allowedFrameAncestors.Any())
+		{
+			policy += "frame-ancestors " + String.Join(" ", this.allowedFrameAncestors);
+			policy += ";";
+		}
+		
+		if(this.allowedWorkerSrcDomains.Any())
+		{
+			policy += "worker-src  " + String.Join(" ", this.allowedWorkerSrcDomains);
+			policy += ";";
+		}
+		
+		if(this.reportTo.Any())
+		{
+			policy += "report-uri  " + String.Join(" ", this.reportTo);
+			policy += ";";
 		}
 
-		if(!empty(this.allowedFrameAncestors)) {
-			policy .= 'frame-ancestors ' . implode(' ', this.allowedFrameAncestors);
-			policy .= ';';
-		}
-
-		if (!empty(this.allowedWorkerSrcDomains)) {
-			policy .= 'worker-src ' . implode(' ', this.allowedWorkerSrcDomains);
-			policy .= ';';
-		}
-
-		if (!empty(this.reportTo)) {
-			policy .= 'report-uri ' . implode(' ', this.reportTo);
-			policy .= ';';
-		}
-
-		return rtrim(policy, ';');
+		return policy.TrimEnd(';');
 	}
 }
 

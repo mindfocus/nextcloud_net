@@ -22,7 +22,7 @@ namespace OCP
          * @param string key
          * @param bool|int|float|string|array|\JsonSerializable data
          */
-        void provideInitialState(string appName, string key, JObject data);
+        void provideInitialState(string appName, string key, object data);
 
 	/**
 	 * Allows an app to provide its initial state via a lazy method.

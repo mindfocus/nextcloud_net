@@ -60,7 +60,7 @@ namespace OCP
          *              >= 13 month => last year, n years ago
          * @since 8.0.0
          */
-        string formatDateSpan(System.DateTime timestamp, System.DateTime baseTimestamp = null, IL10N l = null);
+        string formatDateSpan(System.DateTime timestamp, System.DateTime baseTimestamp, IL10N l = null);
 
         /**
          * Formats the time of the given timestamp
@@ -94,7 +94,7 @@ namespace OCP
          *              >= 13 month => last year, n years ago
          * @since 8.0.0
          */
-        string formatTimeSpan(System.DateTime timestamp, System.DateTime baseTimestamp = null, IL10N l = null);
+        string formatTimeSpan(System.DateTime timestamp, System.DateTime baseTimestamp, IL10N l = null);
 
         /**
          * Formats the date and time of the given timestamp

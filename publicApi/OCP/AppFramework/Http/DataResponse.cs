@@ -1,3 +1,7 @@
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+
 namespace OCP.AppFramework.Http
 {
 /**
@@ -5,13 +9,13 @@ namespace OCP.AppFramework.Http
  * for responders to transform
  * @since 8.0.0
  */
-    class DataResponse : Response {
+    public class DataResponse : Response {
 
     /**
      * response data
      * @var array|object
      */
-    protected data;
+    protected object data;
 
 
     /**
@@ -20,11 +24,14 @@ namespace OCP.AppFramework.Http
      * @param array headers additional key value based headers
      * @since 8.0.0
      */
-    public function __construct(data=array(), statusCode=Http::STATUS_OK,
-    array headers=array()) {
+    public DataResponse(object data, HttpStatusCode statusCode=HttpStatusCode.OK,
+    IDictionary<string,string> headers = null) {
         this.data = data;
         this.setStatus(statusCode);
-        this.setHeaders(array_merge(this.getHeaders(), headers));
+        if (headers != null)
+        {
+            this.setHeaders(this.getHeaders().Concat(headers).ToDictionary(o => o.Key, p=>p.Value));
+        }
     }
 
 
@@ -34,7 +41,7 @@ namespace OCP.AppFramework.Http
      * @return DataResponse Reference to this object
      * @since 8.0.0
      */
-    public function setData(data){
+    public DataResponse setData(object data){
         this.data = data;
 
         return this;
@@ -46,10 +53,9 @@ namespace OCP.AppFramework.Http
      * @return array the data
      * @since 8.0.0
      */
-    public function getData(){
+    public object getData(){
         return this.data;
     }
-
 
     }
 

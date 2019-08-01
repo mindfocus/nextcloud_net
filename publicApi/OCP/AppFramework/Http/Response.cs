@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -16,6 +17,11 @@ namespace OCP.AppFramework.Http
  */
 public class Response {
 
+	public struct CookieValue
+	{
+		public object value;
+		public DateTime? expireDate;
+	}
 	/**
 	 * Headers - defaults to ['Cache-Control' => 'no-cache, no-store, must-revalidate']
 	 * @var array
@@ -30,7 +36,7 @@ public class Response {
 	 * Cookies that will be need to be constructed as header
 	 * @var array
 	 */
-	private IDictionary<string,string> cookies = new Dictionary<string, string>();
+	private IDictionary<string,CookieValue> cookies = new Dictionary<string, CookieValue>();
 
 
 	/**
@@ -54,12 +60,12 @@ public class Response {
 	private string ETag;
 
 	/** @var ContentSecurityPolicy|null Used Content-Security-Policy */
-	private ContentSecurityPolicyManager contentSecurityPolicy = null;
+	private ContentSecurityPolicy contentSecurityPolicy = null;
 
 	/** @var bool */
 	private bool throttled = false;
 	/** @var array */
-	private IList<string> throttleMetadata = new List<string>();
+	private IDictionary<string,string> throttleMetadata = new Dictionary<string, string>();
 
 	/**
 	 * Caches the response
@@ -78,9 +84,9 @@ public class Response {
 			var expires = new DateTime();
 			/** @var ITimeFactory time */
 			var time = OC.server.query(typeof(ITimeFactory));
-			expires.setTimestamp(time.getTime());
-			expires.add(new \DateInterval('PT'.cacheSeconds.'S'));
-			this.addHeader('Expires', expires.format(\DateTime::RFC2822));
+			expires = time.getTime();
+			expires.AddSeconds(cacheSeconds);
+			this.addHeader("Expires", expires.ToString("R"));
 		} else {
 			this.addHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 			this.headers.Remove("Expires");
@@ -100,8 +106,12 @@ public class Response {
 	 * @return this
 	 * @since 8.0.0
 	 */
-	public Response addCookie(name, value, \DateTime expireDate = null) {
-		this.cookies[name] = array('value' => value, 'expireDate' => expireDate);
+	public Response addCookie(string name, object value, DateTime? expireDate = null) {
+		this.cookies[name] = new CookieValue()
+		{
+			value = value, 
+			expireDate = expireDate
+		};
 		return this;
 	}
 
@@ -112,7 +122,7 @@ public class Response {
 	 * @return this
 	 * @since 8.0.0
 	 */
-	public Response setCookies(IDictionary<string,string> cookies) {
+	public Response setCookies(IDictionary<string,CookieValue> cookies) {
 		this.cookies = cookies;
 		return this;
 	}
@@ -125,7 +135,7 @@ public class Response {
 	 * @since 8.0.0
 	 */
 	public Response invalidateCookie(string name) {
-		this.addCookie(name, "expired", new DateTime("1971-01-01 00:00"));
+		this.addCookie(name, "expired", new DateTime(0));
 		return this;
 	}
 
@@ -135,8 +145,8 @@ public class Response {
 	 * @return this
 	 * @since 8.0.0
 	 */
-	public function invalidateCookies(array cookieNames) {
-		foreach(cookieNames as cookieName) {
+	public Response invalidateCookies(IList<string> cookieNames) {
+		foreach(var cookieName in cookieNames) {
 			this.invalidateCookie(cookieName);
 		}
 		return this;
@@ -147,7 +157,7 @@ public class Response {
 	 * @return array
 	 * @since 8.0.0
 	 */
-	public function getCookies() {
+	public IDictionary<string,CookieValue> getCookies() {
 		return this.cookies;
 	}
 
@@ -246,7 +256,7 @@ public class Response {
 	 * @since 8.1.0
 	 */
 	public Response setContentSecurityPolicy(EmptyContentSecurityPolicy csp) {
-		this.contentSecurityPolicy = csp;
+		this.contentSecurityPolicy = csp as ContentSecurityPolicy;
 		return this;
 	}
 
@@ -256,7 +266,7 @@ public class Response {
 	 *                                    none specified.
 	 * @since 8.1.0
 	 */
-	public ContentSecurityPolicyManager getContentSecurityPolicy() {
+	public ContentSecurityPolicy getContentSecurityPolicy() {
 		return this.contentSecurityPolicy;
 	}
 
@@ -320,7 +330,7 @@ public class Response {
 	 * @param array metadata
 	 * @since 12.0.0
 	 */
-	public void throttle(IList<string>  metadata ) {
+	public void throttle(IDictionary<string,string> metadata = null ) {
 		this.throttled = true;
 		this.throttleMetadata = metadata;
 	}
@@ -331,7 +341,7 @@ public class Response {
 	 * @return array
 	 * @since 13.0.0
 	 */
-	public IList<string>  getThrottleMetadata() {
+	public IDictionary<string,string> getThrottleMetadata() {
 		return this.throttleMetadata;
 	}
 

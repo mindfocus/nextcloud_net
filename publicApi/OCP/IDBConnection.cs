@@ -11,11 +11,11 @@ namespace OCP
      * @package OCP
      * @since 6.0.0
      */
-    public interface IDBConnection
+     public interface IDBConnection
     {
 
-        const ADD_MISSING_INDEXES_EVENT = self::class . '::ADD_MISSING_INDEXES';
-	const CHECK_MISSING_INDEXES_EVENT = self::class . '::CHECK_MISSING_INDEXES';
+//        const ADD_MISSING_INDEXES_EVENT = self::class . '::ADD_MISSING_INDEXES';
+//	const CHECK_MISSING_INDEXES_EVENT = self::class . '::CHECK_MISSING_INDEXES';
 
 	/**
 	 * Gets the QueryBuilder for the connection.
@@ -23,7 +23,7 @@ namespace OCP
 	 * @return \OCP\DB\QueryBuilder\IQueryBuilder
 	 * @since 8.2.0
 	 */
-	public IQueryBuilder getQueryBuilder();
+	IQueryBuilder getQueryBuilder();
 
         /**
          * Used to abstract the ownCloud database access away
@@ -33,7 +33,7 @@ namespace OCP
          * @return \Doctrine\DBAL\Driver\Statement The prepared statement.
          * @since 6.0.0
          */
-        public function prepare(sql, limit= null, offset= null);
+        function prepare(sql, limit= null, offset= null);
 
         /**
          * Executes an, optionally parameterized, SQL query.
@@ -47,7 +47,7 @@ namespace OCP
          * @return \Doctrine\DBAL\Driver\Statement The executed statement.
          * @since 8.0.0
          */
-        public function executeQuery(query, array params = array(), types = array());
+         function executeQuery(query, array params = array(), types = array());
 
         /**
          * Executes an SQL INSERT/UPDATE/DELETE query with the given parameters
@@ -61,7 +61,7 @@ namespace OCP
          * @return integer The number of affected rows.
          * @since 8.0.0
          */
-        public function executeUpdate(query, array params = array(), array types = array());
+         function executeUpdate(query, array params = array(), array types = array());
 
         /**
          * Used to get the id of the just inserted element
@@ -69,7 +69,7 @@ namespace OCP
          * @return int the id of the inserted element
          * @since 6.0.0
          */
-        public function lastInsertId(table = null);
+         function lastInsertId(table = null);
 
         /**
          * Insert a row if the matching row does not exists. To accomplish proper race condition avoidance
@@ -86,7 +86,7 @@ namespace OCP
          * @since 6.0.0 - parameter compare was added in 8.1.0, return type changed from boolean in 8.1.0
          * @deprecated 15.0.0 - use unique index and "try { db.insert() } catch (UniqueConstraintViolationException e) {}" instead, because it is more reliable and does not have the risk for deadlocks - see https://github.com/nextcloud/server/pull/12371
          */
-        public function insertIfNotExist(table, input, array compare = null);
+         function insertIfNotExist(table, input, array compare = null);
 
         /**
          * Insert or update a row value
@@ -100,7 +100,7 @@ namespace OCP
          * @throws PreconditionNotMetException
          * @since 9.0.0
          */
-        public function setValues(table, array keys, array values, array updatePreconditionValues = []);
+         function setValues(table, array keys, array values, array updatePreconditionValues = []);
 
         /**
          * Create an exclusive read+write lock on a table
@@ -112,20 +112,20 @@ namespace OCP
          * @param string tableName
          * @since 9.1.0
          */
-        public function lockTable(tableName);
+         function lockTable(tableName);
 
         /**
          * Release a previous acquired lock again
          *
          * @since 9.1.0
          */
-        public function unlockTable();
+         function unlockTable();
 
         /**
          * Start a transaction
          * @since 6.0.0
          */
-        public function beginTransaction();
+         function beginTransaction();
 
         /**
          * Check if a transaction is active
@@ -133,26 +133,26 @@ namespace OCP
          * @return bool
          * @since 8.2.0
          */
-        public function inTransaction();
+         function inTransaction();
 
         /**
          * Commit the database changes done during a transaction that is in progress
          * @since 6.0.0
          */
-        public function commit();
+         function commit();
 
         /**
          * Rollback the database changes done during a transaction that is in progress
          * @since 6.0.0
          */
-        public function rollBack();
+         function rollBack();
 
         /**
          * Gets the error code and message as a string for logging
          * @return string
          * @since 6.0.0
          */
-        public function getError();
+         function getError();
 
         /**
          * Fetch the SQLSTATE associated with the last database operation.
@@ -160,7 +160,7 @@ namespace OCP
          * @return integer The last error code.
          * @since 8.0.0
          */
-        public function errorCode();
+         function errorCode();
 
         /**
          * Fetch extended error information associated with the last database operation.
@@ -168,7 +168,7 @@ namespace OCP
          * @return array The last error information.
          * @since 8.0.0
          */
-        public function errorInfo();
+         function errorInfo();
 
         /**
          * Establishes the connection with the database.
@@ -176,13 +176,13 @@ namespace OCP
          * @return bool
          * @since 8.0.0
          */
-        public function connect();
+         function connect();
 
         /**
          * Close the database connection
          * @since 8.0.0
          */
-        public function close();
+         function close();
 
         /**
          * Quotes a given input parameter.
@@ -192,7 +192,7 @@ namespace OCP
          * @return string The quoted parameter.
          * @since 8.0.0
          */
-        public function quote(input, type = IQueryBuilder::PARAM_STR);
+         function quote(input, type = IQueryBuilder::PARAM_STR);
 
         /**
          * Gets the DatabasePlatform instance that provides all the metadata about
@@ -201,7 +201,7 @@ namespace OCP
          * @return \Doctrine\DBAL\Platforms\AbstractPlatform The database platform.
          * @since 8.0.0
          */
-        public function getDatabasePlatform();
+         function getDatabasePlatform();
 
         /**
          * Drop a table from the database if it exists
@@ -209,7 +209,7 @@ namespace OCP
          * @param string table table name without the prefix
          * @since 8.0.0
          */
-        public function dropTable(table);
+         function dropTable(table);
 
         /**
          * Check if a table exists
@@ -218,7 +218,7 @@ namespace OCP
          * @return bool
          * @since 8.0.0
          */
-        public function tableExists(table);
+         function tableExists(table);
 
         /**
          * Escape a parameter to be used in a LIKE query
@@ -227,7 +227,7 @@ namespace OCP
          * @return string
          * @since 9.0.0
          */
-        public function escapeLikeParameter(param);
+         function escapeLikeParameter(param);
 
         /**
          * Check whether or not the current database support 4byte wide unicode
@@ -235,7 +235,7 @@ namespace OCP
          * @return bool
          * @since 11.0.0
          */
-        public function supports4ByteText();
+         function supports4ByteText();
 
         /**
          * Create the schema of the connected database
@@ -243,7 +243,7 @@ namespace OCP
          * @return Schema
          * @since 13.0.0
          */
-        public function createSchema();
+         function createSchema();
 
         /**
          * Migrate the database to the given schema
@@ -251,7 +251,7 @@ namespace OCP
          * @param Schema toSchema
          * @since 13.0.0
          */
-        public function migrateToSchema(Schema toSchema);
+         function migrateToSchema(Schema toSchema);
     }
 
 }
