@@ -113,7 +113,7 @@ public interface ILogger {
 	 * @return null
 	 * @since 7.0.0
 	 */
-	void debug(string message, Array context);
+	void debug(string message, IDictionary<string,string> context);
 
 	/**
 	 * Logs with an arbitrary level.

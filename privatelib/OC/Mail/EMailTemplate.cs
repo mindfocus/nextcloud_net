@@ -1,3 +1,6 @@
+using System;
+using ext;
+using OCP;
 using OCP.Mail;
 
 namespace OC.Mail
@@ -12,306 +15,306 @@ namespace OC.Mail
  */
 class EMailTemplate : IEMailTemplate {
 	/** @var Defaults */
-	protected themingDefaults;
+	protected Defaults themingDefaults;
 	/** @var IURLGenerator */
-	protected urlGenerator;
+	protected IURLGenerator urlGenerator;
 	/** @var IL10N */
-	protected l10n;
+	protected IL10N l10n;
 	/** @var string */
-	protected emailId;
+	protected string emailId;
 	/** @var array */
-	protected data;
+	protected object data;
 
 	/** @var string */
-	protected subject = '';
+	protected string subject = "";
 	/** @var string */
-	protected htmlBody = '';
+	protected string htmlBody = "";
 	/** @var string */
-	protected plainBody = '';
+	protected string plainBody = "";
 	/** @var bool indicated if the footer is added */
-	protected headerAdded = false;
+	protected bool headerAdded = false;
 	/** @var bool indicated if the body is already opened */
-	protected bodyOpened = false;
+	protected bool bodyOpened = false;
 	/** @var bool indicated if there is a list open in the body */
-	protected bodyListOpened = false;
+	protected bool bodyListOpened = false;
 	/** @var bool indicated if the footer is added */
-	protected footerAdded = false;
+	protected bool footerAdded = false;
 
-	protected head = <<<EOF
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en" style="-webkit-font-smoothing:antialiased;background:#f3f3f3!important">
-<head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<meta name="viewport" content="width=device-width">
-	<title></title>
-	<style type="text/css">@media only screen{html{min-height:100%;background:#F5F5F5}}@media only screen and (max-width:610px){table.body img{width:auto;height:auto}table.body center{min-width:0!important}table.body .container{width:95%!important}table.body .columns{height:auto!important;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;box-sizing:border-box;padding-left:30px!important;padding-right:30px!important}th.small-12{display:inline-block!important;width:100%!important}table.menu{width:100%!important}table.menu td,table.menu th{width:auto!important;display:inline-block!important}table.menu.vertical td,table.menu.vertical th{display:block!important}table.menu[align=center]{width:auto!important}}</style>
-</head>
-<body style="-moz-box-sizing:border-box;-ms-text-size-adjust:100%;-webkit-box-sizing:border-box;-webkit-font-smoothing:antialiased;-webkit-text-size-adjust:100%;Margin:0;background:#f3f3f3!important;box-sizing:border-box;color:#0a0a0a;font-family:Lucida Grande,Geneva,Verdana,sans-serif;font-size:16px;font-weight:400;line-height:1.3;margin:0;min-width:100%;padding:0;text-align:left;width:100%!important">
-	<span class="preheader" style="color:#F5F5F5;display:none!important;font-size:1px;line-height:1px;max-height:0;max-width:0;mso-hide:all!important;opacity:0;overflow:hidden;visibility:hidden">
-	</span>
-	<table class="body" style="-webkit-font-smoothing:antialiased;Margin:0;background:#f3f3f3!important;border-collapse:collapse;border-spacing:0;color:#0a0a0a;font-family:Lucida Grande,Geneva,Verdana,sans-serif;font-size:16px;font-weight:400;height:100%;line-height:1.3;margin:0;padding:0;text-align:left;vertical-align:top;width:100%">
-		<tr style="padding:0;text-align:left;vertical-align:top">
-			<td class="center" align="center" valign="top" style="-moz-hyphens:auto;-webkit-hyphens:auto;Margin:0;border-collapse:collapse!important;color:#0a0a0a;font-family:Lucida Grande,Geneva,Verdana,sans-serif;font-size:16px;font-weight:400;hyphens:auto;line-height:1.3;margin:0;padding:0;text-align:left;vertical-align:top;word-wrap:break-word">
-				<center data-parsed="" style="min-width:580px;width:100%">
-EOF;
+	protected string head = @"";
+//<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+//<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en" style="-webkit-font-smoothing:antialiased;background:#f3f3f3!important">
+//<head>
+//	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+//	<meta name="viewport" content="width=device-width">
+//	<title></title>
+//	<style type="text/css">@media only screen{html{min-height:100%;background:#F5F5F5}}@media only screen and (max-width:610px){table.body img{width:auto;height:auto}table.body center{min-width:0!important}table.body .container{width:95%!important}table.body .columns{height:auto!important;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;box-sizing:border-box;padding-left:30px!important;padding-right:30px!important}th.small-12{display:inline-block!important;width:100%!important}table.menu{width:100%!important}table.menu td,table.menu th{width:auto!important;display:inline-block!important}table.menu.vertical td,table.menu.vertical th{display:block!important}table.menu[align=center]{width:auto!important}}</style>
+//</head>
+//<body style="-moz-box-sizing:border-box;-ms-text-size-adjust:100%;-webkit-box-sizing:border-box;-webkit-font-smoothing:antialiased;-webkit-text-size-adjust:100%;Margin:0;background:#f3f3f3!important;box-sizing:border-box;color:#0a0a0a;font-family:Lucida Grande,Geneva,Verdana,sans-serif;font-size:16px;font-weight:400;line-height:1.3;margin:0;min-width:100%;padding:0;text-align:left;width:100%!important">
+//	<span class="preheader" style="color:#F5F5F5;display:none!important;font-size:1px;line-height:1px;max-height:0;max-width:0;mso-hide:all!important;opacity:0;overflow:hidden;visibility:hidden">
+//	</span>
+//	<table class="body" style="-webkit-font-smoothing:antialiased;Margin:0;background:#f3f3f3!important;border-collapse:collapse;border-spacing:0;color:#0a0a0a;font-family:Lucida Grande,Geneva,Verdana,sans-serif;font-size:16px;font-weight:400;height:100%;line-height:1.3;margin:0;padding:0;text-align:left;vertical-align:top;width:100%">
+//		<tr style="padding:0;text-align:left;vertical-align:top">
+//			<td class="center" align="center" valign="top" style="-moz-hyphens:auto;-webkit-hyphens:auto;Margin:0;border-collapse:collapse!important;color:#0a0a0a;font-family:Lucida Grande,Geneva,Verdana,sans-serif;font-size:16px;font-weight:400;hyphens:auto;line-height:1.3;margin:0;padding:0;text-align:left;vertical-align:top;word-wrap:break-word">
+//				<center data-parsed="" style="min-width:580px;width:100%">
+//";
 
-	protected tail = <<<EOF
-					</center>
-				</td>
-			</tr>
-		</table>
-		<!-- prevent Gmail on iOS font size manipulation -->
-		<div style="display:none;white-space:nowrap;font:15px courier;line-height:0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</div>
-	</body>
-</html>
-EOF;
+	protected string tail = ""
+//					</center>
+//				</td>
+//			</tr>
+//		</table>
+//		<!-- prevent Gmail on iOS font size manipulation -.
+//		<div style="display:none;white-space:nowrap;font:15px courier;line-height:0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</div>
+//	</body>
+//</html>
+;
 
-	protected header = <<<EOF
-<table align="center" class="wrapper header float-center" style="Margin:0 auto;background:#8a8a8a;background-color:%s;border-collapse:collapse;border-spacing:0;float:none;margin:0 auto;padding:0;text-align:center;vertical-align:top;width:100%%">
-	<tr style="padding:0;text-align:left;vertical-align:top">
-		<td class="wrapper-inner" style="-moz-hyphens:auto;-webkit-hyphens:auto;Margin:0;border-collapse:collapse!important;color:#0a0a0a;font-family:Lucida Grande,Geneva,Verdana,sans-serif;font-size:16px;font-weight:400;hyphens:auto;line-height:1.3;margin:0;padding:20px;text-align:left;vertical-align:top;word-wrap:break-word">
-			<table align="center" class="container" style="Margin:0 auto;background:0 0;border-collapse:collapse;border-spacing:0;margin:0 auto;padding:0;text-align:inherit;vertical-align:top;width:580px">
-				<tbody>
-				<tr style="padding:0;text-align:left;vertical-align:top">
-					<td style="-moz-hyphens:auto;-webkit-hyphens:auto;Margin:0;border-collapse:collapse!important;color:#0a0a0a;font-family:Lucida Grande,Geneva,Verdana,sans-serif;font-size:16px;font-weight:400;hyphens:auto;line-height:1.3;margin:0;padding:0;text-align:left;vertical-align:top;word-wrap:break-word">
-						<table class="row collapse" style="border-collapse:collapse;border-spacing:0;display:table;padding:0;position:relative;text-align:left;vertical-align:top;width:100%%">
-							<tbody>
-							<tr style="padding:0;text-align:left;vertical-align:top">
-								<center data-parsed="" style="min-width:580px;width:100%%">
-									<img class="logo float-center" src="%s" alt="%s" align="center" style="-ms-interpolation-mode:bicubic;Margin:0 auto;clear:both;display:block;float:none;margin:0 auto;outline:0;text-align:center;text-decoration:none" height="50">
-								</center>
-							</tr>
-							</tbody>
-						</table>
-					</td>
-				</tr>
-				</tbody>
-			</table>
-		</td>
-	</tr>
-</table>
-<table class="spacer float-center" style="Margin:0 auto;border-collapse:collapse;border-spacing:0;float:none;margin:0 auto;padding:0;text-align:center;vertical-align:top;width:100%%">
-	<tbody>
-	<tr style="padding:0;text-align:left;vertical-align:top">
-		<td height="80px" style="-moz-hyphens:auto;-webkit-hyphens:auto;Margin:0;border-collapse:collapse!important;color:#0a0a0a;font-family:Lucida Grande,Geneva,Verdana,sans-serif;font-size:80px;font-weight:400;hyphens:auto;line-height:80px;margin:0;mso-line-height-rule:exactly;padding:0;text-align:left;vertical-align:top;word-wrap:break-word">&#xA0;</td>
-	</tr>
-	</tbody>
-</table>
-EOF;
+	protected string header = ""
+//<table align="center" class="wrapper header float-center" style="Margin:0 auto;background:#8a8a8a;background-color:%s;border-collapse:collapse;border-spacing:0;float:none;margin:0 auto;padding:0;text-align:center;vertical-align:top;width:100%%">
+//	<tr style="padding:0;text-align:left;vertical-align:top">
+//		<td class="wrapper-inner" style="-moz-hyphens:auto;-webkit-hyphens:auto;Margin:0;border-collapse:collapse!important;color:#0a0a0a;font-family:Lucida Grande,Geneva,Verdana,sans-serif;font-size:16px;font-weight:400;hyphens:auto;line-height:1.3;margin:0;padding:20px;text-align:left;vertical-align:top;word-wrap:break-word">
+//			<table align="center" class="container" style="Margin:0 auto;background:0 0;border-collapse:collapse;border-spacing:0;margin:0 auto;padding:0;text-align:inherit;vertical-align:top;width:580px">
+//				<tbody>
+//				<tr style="padding:0;text-align:left;vertical-align:top">
+//					<td style="-moz-hyphens:auto;-webkit-hyphens:auto;Margin:0;border-collapse:collapse!important;color:#0a0a0a;font-family:Lucida Grande,Geneva,Verdana,sans-serif;font-size:16px;font-weight:400;hyphens:auto;line-height:1.3;margin:0;padding:0;text-align:left;vertical-align:top;word-wrap:break-word">
+//						<table class="row collapse" style="border-collapse:collapse;border-spacing:0;display:table;padding:0;position:relative;text-align:left;vertical-align:top;width:100%%">
+//							<tbody>
+//							<tr style="padding:0;text-align:left;vertical-align:top">
+//								<center data-parsed="" style="min-width:580px;width:100%%">
+//									<img class="logo float-center" src="%s" alt="%s" align="center" style="-ms-interpolation-mode:bicubic;Margin:0 auto;clear:both;display:block;float:none;margin:0 auto;outline:0;text-align:center;text-decoration:none" height="50">
+//								</center>
+//							</tr>
+//							</tbody>
+//						</table>
+//					</td>
+//				</tr>
+//				</tbody>
+//			</table>
+//		</td>
+//	</tr>
+//</table>
+//<table class="spacer float-center" style="Margin:0 auto;border-collapse:collapse;border-spacing:0;float:none;margin:0 auto;padding:0;text-align:center;vertical-align:top;width:100%%">
+//	<tbody>
+//	<tr style="padding:0;text-align:left;vertical-align:top">
+//		<td height="80px" style="-moz-hyphens:auto;-webkit-hyphens:auto;Margin:0;border-collapse:collapse!important;color:#0a0a0a;font-family:Lucida Grande,Geneva,Verdana,sans-serif;font-size:80px;font-weight:400;hyphens:auto;line-height:80px;margin:0;mso-line-height-rule:exactly;padding:0;text-align:left;vertical-align:top;word-wrap:break-word">&#xA0;</td>
+//	</tr>
+//	</tbody>
+//</table>
+;
 
-	protected heading = <<<EOF
-<table align="center" class="container main-heading float-center" style="Margin:0 auto;background:0 0!important;border-collapse:collapse;border-spacing:0;float:none;margin:0 auto;padding:0;text-align:center;vertical-align:top;width:580px">
-	<tbody>
-	<tr style="padding:0;text-align:left;vertical-align:top">
-		<td style="-moz-hyphens:auto;-webkit-hyphens:auto;Margin:0;border-collapse:collapse!important;color:#0a0a0a;font-family:Lucida Grande,Geneva,Verdana,sans-serif;font-size:16px;font-weight:400;hyphens:auto;line-height:1.3;margin:0;padding:0;text-align:left;vertical-align:top;word-wrap:break-word">
-			<h1 class="text-center" style="Margin:0;Margin-bottom:10px;color:inherit;font-family:Lucida Grande,Geneva,Verdana,sans-serif;font-size:24px;font-weight:400;line-height:1.3;margin:0;margin-bottom:10px;padding:0;text-align:center;word-wrap:normal">%s</h1>
-		</td>
-	</tr>
-	</tbody>
-</table>
-<table class="spacer float-center" style="Margin:0 auto;border-collapse:collapse;border-spacing:0;float:none;margin:0 auto;padding:0;text-align:center;vertical-align:top;width:100%%">
-	<tbody>
-	<tr style="padding:0;text-align:left;vertical-align:top">
-		<td height="40px" style="-moz-hyphens:auto;-webkit-hyphens:auto;Margin:0;border-collapse:collapse!important;color:#0a0a0a;font-family:Lucida Grande,Geneva,Verdana,sans-serif;font-size:40px;font-weight:400;hyphens:auto;line-height:40px;margin:0;mso-line-height-rule:exactly;padding:0;text-align:left;vertical-align:top;word-wrap:break-word">&#xA0;</td>
-	</tr>
-	</tbody>
-</table>
-EOF;
+	protected string heading = ""
+//<table align="center" class="container main-heading float-center" style="Margin:0 auto;background:0 0!important;border-collapse:collapse;border-spacing:0;float:none;margin:0 auto;padding:0;text-align:center;vertical-align:top;width:580px">
+//	<tbody>
+//	<tr style="padding:0;text-align:left;vertical-align:top">
+//		<td style="-moz-hyphens:auto;-webkit-hyphens:auto;Margin:0;border-collapse:collapse!important;color:#0a0a0a;font-family:Lucida Grande,Geneva,Verdana,sans-serif;font-size:16px;font-weight:400;hyphens:auto;line-height:1.3;margin:0;padding:0;text-align:left;vertical-align:top;word-wrap:break-word">
+//			<h1 class="text-center" style="Margin:0;Margin-bottom:10px;color:inherit;font-family:Lucida Grande,Geneva,Verdana,sans-serif;font-size:24px;font-weight:400;line-height:1.3;margin:0;margin-bottom:10px;padding:0;text-align:center;word-wrap:normal">%s</h1>
+//		</td>
+//	</tr>
+//	</tbody>
+//</table>
+//<table class="spacer float-center" style="Margin:0 auto;border-collapse:collapse;border-spacing:0;float:none;margin:0 auto;padding:0;text-align:center;vertical-align:top;width:100%%">
+//	<tbody>
+//	<tr style="padding:0;text-align:left;vertical-align:top">
+//		<td height="40px" style="-moz-hyphens:auto;-webkit-hyphens:auto;Margin:0;border-collapse:collapse!important;color:#0a0a0a;font-family:Lucida Grande,Geneva,Verdana,sans-serif;font-size:40px;font-weight:400;hyphens:auto;line-height:40px;margin:0;mso-line-height-rule:exactly;padding:0;text-align:left;vertical-align:top;word-wrap:break-word">&#xA0;</td>
+//	</tr>
+//	</tbody>
+//</table>
+;
 
-	protected bodyBegin = <<<EOF
-<table align="center" class="wrapper content float-center" style="Margin:0 auto;border-collapse:collapse;border-spacing:0;float:none;margin:0 auto;padding:0;text-align:center;vertical-align:top;width:100%">
-	<tr style="padding:0;text-align:left;vertical-align:top">
-		<td class="wrapper-inner" style="-moz-hyphens:auto;-webkit-hyphens:auto;Margin:0;border-collapse:collapse!important;color:#0a0a0a;font-family:Lucida Grande,Geneva,Verdana,sans-serif;font-size:16px;font-weight:400;hyphens:auto;line-height:1.3;margin:0;padding:0;text-align:left;vertical-align:top;word-wrap:break-word">
-			<table align="center" class="container has-shadow" style="Margin:0 auto;background:#fefefe;border-collapse:collapse;border-spacing:0;box-shadow:0 1px 2px 0 rgba(0,0,0,.2),0 1px 3px 0 rgba(0,0,0,.1);margin:0 auto;padding:0;text-align:inherit;vertical-align:top;width:580px">
-				<tbody>
-				<tr style="padding:0;text-align:left;vertical-align:top">
-					<td style="-moz-hyphens:auto;-webkit-hyphens:auto;Margin:0;border-collapse:collapse!important;color:#0a0a0a;font-family:Lucida Grande,Geneva,Verdana,sans-serif;font-size:16px;font-weight:400;hyphens:auto;line-height:1.3;margin:0;padding:0;text-align:left;vertical-align:top;word-wrap:break-word">
-						<table class="spacer" style="border-collapse:collapse;border-spacing:0;padding:0;text-align:left;vertical-align:top;width:100%">
-							<tbody>
-							<tr style="padding:0;text-align:left;vertical-align:top">
-								<td height="60px" style="-moz-hyphens:auto;-webkit-hyphens:auto;Margin:0;border-collapse:collapse!important;color:#0a0a0a;font-family:Lucida Grande,Geneva,Verdana,sans-serif;font-size:60px;font-weight:400;hyphens:auto;line-height:60px;margin:0;mso-line-height-rule:exactly;padding:0;text-align:left;vertical-align:top;word-wrap:break-word">&#xA0;</td>
-							</tr>
-							</tbody>
-						</table>
-EOF;
+	protected string bodyBegin = ""
+//<table align="center" class="wrapper content float-center" style="Margin:0 auto;border-collapse:collapse;border-spacing:0;float:none;margin:0 auto;padding:0;text-align:center;vertical-align:top;width:100%">
+//	<tr style="padding:0;text-align:left;vertical-align:top">
+//		<td class="wrapper-inner" style="-moz-hyphens:auto;-webkit-hyphens:auto;Margin:0;border-collapse:collapse!important;color:#0a0a0a;font-family:Lucida Grande,Geneva,Verdana,sans-serif;font-size:16px;font-weight:400;hyphens:auto;line-height:1.3;margin:0;padding:0;text-align:left;vertical-align:top;word-wrap:break-word">
+//			<table align="center" class="container has-shadow" style="Margin:0 auto;background:#fefefe;border-collapse:collapse;border-spacing:0;box-shadow:0 1px 2px 0 rgba(0,0,0,.2),0 1px 3px 0 rgba(0,0,0,.1);margin:0 auto;padding:0;text-align:inherit;vertical-align:top;width:580px">
+//				<tbody>
+//				<tr style="padding:0;text-align:left;vertical-align:top">
+//					<td style="-moz-hyphens:auto;-webkit-hyphens:auto;Margin:0;border-collapse:collapse!important;color:#0a0a0a;font-family:Lucida Grande,Geneva,Verdana,sans-serif;font-size:16px;font-weight:400;hyphens:auto;line-height:1.3;margin:0;padding:0;text-align:left;vertical-align:top;word-wrap:break-word">
+//						<table class="spacer" style="border-collapse:collapse;border-spacing:0;padding:0;text-align:left;vertical-align:top;width:100%">
+//							<tbody>
+//							<tr style="padding:0;text-align:left;vertical-align:top">
+//								<td height="60px" style="-moz-hyphens:auto;-webkit-hyphens:auto;Margin:0;border-collapse:collapse!important;color:#0a0a0a;font-family:Lucida Grande,Geneva,Verdana,sans-serif;font-size:60px;font-weight:400;hyphens:auto;line-height:60px;margin:0;mso-line-height-rule:exactly;padding:0;text-align:left;vertical-align:top;word-wrap:break-word">&#xA0;</td>
+//							</tr>
+//							</tbody>
+//						</table>
+;
 
-	protected bodyText = <<<EOF
-<table class="row description" style="border-collapse:collapse;border-spacing:0;display:table;padding:0;position:relative;text-align:left;vertical-align:top;width:100%%">
-	<tbody>
-	<tr style="padding:0;text-align:left;vertical-align:top">
-		<th class="small-12 large-12 columns first last" style="Margin:0 auto;color:#0a0a0a;font-family:Lucida Grande,Geneva,Verdana,sans-serif;font-size:16px;font-weight:400;line-height:1.3;margin:0 auto;padding:0;padding-bottom:30px;padding-left:30px;padding-right:30px;text-align:left;width:550px">
-			<table style="border-collapse:collapse;border-spacing:0;padding:0;text-align:left;vertical-align:top;width:100%%">
-				<tr style="padding:0;text-align:left;vertical-align:top">
-					<th style="Margin:0;color:#0a0a0a;font-family:Lucida Grande,Geneva,Verdana,sans-serif;font-size:16px;font-weight:400;line-height:1.3;margin:0;padding:0;text-align:left">
-						<p class="text-left" style="Margin:0;Margin-bottom:10px;color:#777;font-family:Lucida Grande,Geneva,Verdana,sans-serif;font-size:16px;font-weight:400;line-height:1.3;margin:0;margin-bottom:10px;padding:0;text-align:left">%s</p>
-					</th>
-					<th class="expander" style="Margin:0;color:#0a0a0a;font-family:Lucida Grande,Geneva,Verdana,sans-serif;font-size:16px;font-weight:400;line-height:1.3;margin:0;padding:0!important;text-align:left;visibility:hidden;width:0"></th>
-				</tr>
-			</table>
-		</th>
-	</tr>
-	</tbody>
-</table>
-EOF;
+	protected string bodyText = ""
+//<table class="row description" style="border-collapse:collapse;border-spacing:0;display:table;padding:0;position:relative;text-align:left;vertical-align:top;width:100%%">
+//	<tbody>
+//	<tr style="padding:0;text-align:left;vertical-align:top">
+//		<th class="small-12 large-12 columns first last" style="Margin:0 auto;color:#0a0a0a;font-family:Lucida Grande,Geneva,Verdana,sans-serif;font-size:16px;font-weight:400;line-height:1.3;margin:0 auto;padding:0;padding-bottom:30px;padding-left:30px;padding-right:30px;text-align:left;width:550px">
+//			<table style="border-collapse:collapse;border-spacing:0;padding:0;text-align:left;vertical-align:top;width:100%%">
+//				<tr style="padding:0;text-align:left;vertical-align:top">
+//					<th style="Margin:0;color:#0a0a0a;font-family:Lucida Grande,Geneva,Verdana,sans-serif;font-size:16px;font-weight:400;line-height:1.3;margin:0;padding:0;text-align:left">
+//						<p class="text-left" style="Margin:0;Margin-bottom:10px;color:#777;font-family:Lucida Grande,Geneva,Verdana,sans-serif;font-size:16px;font-weight:400;line-height:1.3;margin:0;margin-bottom:10px;padding:0;text-align:left">%s</p>
+//					</th>
+//					<th class="expander" style="Margin:0;color:#0a0a0a;font-family:Lucida Grande,Geneva,Verdana,sans-serif;font-size:16px;font-weight:400;line-height:1.3;margin:0;padding:0!important;text-align:left;visibility:hidden;width:0"></th>
+//				</tr>
+//			</table>
+//		</th>
+//	</tr>
+//	</tbody>
+//</table>
+;
 
   // note: listBegin (like bodyBegin) is not processed through sprintf, so "%" is not escaped as "%%". (bug #12151)
-	protected listBegin = <<<EOF
-<table class="row description" style="border-collapse:collapse;border-spacing:0;display:table;padding:0;position:relative;text-align:left;vertical-align:top;width:100%">
-	<tbody>
-	<tr style="padding:0;text-align:left;vertical-align:top">
-		<th class="small-12 large-12 columns first last" style="Margin:0 auto;color:#0a0a0a;font-family:Lucida Grande,Geneva,Verdana,sans-serif;font-size:16px;font-weight:400;line-height:1.3;margin:0 auto;padding:0;padding-bottom:30px;padding-left:30px;padding-right:30px;text-align:left;width:550px">
-			<table style="border-collapse:collapse;border-spacing:0;padding:0;text-align:left;vertical-align:top;width:100%">
-EOF;
+	protected string listBegin = ""
+//<table class="row description" style="border-collapse:collapse;border-spacing:0;display:table;padding:0;position:relative;text-align:left;vertical-align:top;width:100%">
+//	<tbody>
+//	<tr style="padding:0;text-align:left;vertical-align:top">
+//		<th class="small-12 large-12 columns first last" style="Margin:0 auto;color:#0a0a0a;font-family:Lucida Grande,Geneva,Verdana,sans-serif;font-size:16px;font-weight:400;line-height:1.3;margin:0 auto;padding:0;padding-bottom:30px;padding-left:30px;padding-right:30px;text-align:left;width:550px">
+//			<table style="border-collapse:collapse;border-spacing:0;padding:0;text-align:left;vertical-align:top;width:100%">
+;
 
-	protected listItem = <<<EOF
-				<tr style="padding:0;text-align:left;vertical-align:top">
-					<td style="Margin:0;color:#0a0a0a;font-family:Lucida Grande,Geneva,Verdana,sans-serif;font-size:16px;font-weight:400;line-height:1.3;margin:0;padding:0;text-align:left;width:15px;">
-						<p class="text-left" style="Margin:0;Margin-bottom:10px;color:#777;font-family:Lucida Grande,Geneva,Verdana,sans-serif;font-size:16px;font-weight:400;line-height:1.3;margin:0;margin-bottom:10px;padding:0;padding-left:10px;text-align:left">%s</p>
-					</td>
-					<td style="Margin:0;color:#0a0a0a;font-family:Lucida Grande,Geneva,Verdana,sans-serif;font-size:16px;font-weight:400;line-height:1.3;margin:0;padding:0;text-align:left">
-						<p class="text-left" style="Margin:0;Margin-bottom:10px;color:#555;font-family:Lucida Grande,Geneva,Verdana,sans-serif;font-size:16px;font-weight:400;line-height:1.3;margin:0;margin-bottom:10px;padding:0;padding-left:10px;text-align:left">%s</p>
-					</td>
-					<td class="expander" style="Margin:0;color:#0a0a0a;font-family:Lucida Grande,Geneva,Verdana,sans-serif;font-size:16px;font-weight:400;line-height:1.3;margin:0;padding:0!important;text-align:left;visibility:hidden;width:0"></td>
-				</tr>
-EOF;
+	protected string listItem = ""
+//				<tr style="padding:0;text-align:left;vertical-align:top">
+//					<td style="Margin:0;color:#0a0a0a;font-family:Lucida Grande,Geneva,Verdana,sans-serif;font-size:16px;font-weight:400;line-height:1.3;margin:0;padding:0;text-align:left;width:15px;">
+//						<p class="text-left" style="Margin:0;Margin-bottom:10px;color:#777;font-family:Lucida Grande,Geneva,Verdana,sans-serif;font-size:16px;font-weight:400;line-height:1.3;margin:0;margin-bottom:10px;padding:0;padding-left:10px;text-align:left">%s</p>
+//					</td>
+//					<td style="Margin:0;color:#0a0a0a;font-family:Lucida Grande,Geneva,Verdana,sans-serif;font-size:16px;font-weight:400;line-height:1.3;margin:0;padding:0;text-align:left">
+//						<p class="text-left" style="Margin:0;Margin-bottom:10px;color:#555;font-family:Lucida Grande,Geneva,Verdana,sans-serif;font-size:16px;font-weight:400;line-height:1.3;margin:0;margin-bottom:10px;padding:0;padding-left:10px;text-align:left">%s</p>
+//					</td>
+//					<td class="expander" style="Margin:0;color:#0a0a0a;font-family:Lucida Grande,Geneva,Verdana,sans-serif;font-size:16px;font-weight:400;line-height:1.3;margin:0;padding:0!important;text-align:left;visibility:hidden;width:0"></td>
+//				</tr>
+;
 
-	protected listEnd = <<<EOF
-			</table>
-		</th>
-	</tr>
-	</tbody>
-</table>
-EOF;
+	protected string listEnd = ""
+//			</table>
+//		</th>
+//	</tr>
+//	</tbody>
+//</table>
+;
 
-	protected buttonGroup = <<<EOF
-<table class="spacer" style="border-collapse:collapse;border-spacing:0;padding:0;text-align:left;vertical-align:top;width:100%%">
-	<tbody>
-	<tr style="padding:0;text-align:left;vertical-align:top">
-		<td height="50px" style="-moz-hyphens:auto;-webkit-hyphens:auto;Margin:0;border-collapse:collapse!important;color:#0a0a0a;font-family:Lucida Grande,Geneva,Verdana,sans-serif;font-size:50px;font-weight:400;hyphens:auto;line-height:50px;margin:0;mso-line-height-rule:exactly;padding:0;text-align:left;vertical-align:top;word-wrap:break-word">&#xA0;</td>
-	</tr>
-	</tbody>
-</table>
-<table align="center" class="row btn-group" style="border-collapse:collapse;border-spacing:0;display:table;padding:0;position:relative;text-align:left;vertical-align:top;width:100%%">
-	<tbody>
-	<tr style="padding:0;text-align:left;vertical-align:top">
-		<th class="small-12 large-12 columns first last" style="Margin:0 auto;color:#0a0a0a;font-family:Lucida Grande,Geneva,Verdana,sans-serif;font-size:16px;font-weight:400;line-height:1.3;margin:0 auto;padding:0;padding-bottom:30px;padding-left:30px;padding-right:30px;text-align:left;width:550px">
-			<table style="border-collapse:collapse;border-spacing:0;padding:0;text-align:left;vertical-align:top;width:100%%">
-				<tr style="padding:0;text-align:left;vertical-align:top">
-					<th style="Margin:0;color:#0a0a0a;font-family:Lucida Grande,Geneva,Verdana,sans-serif;font-size:16px;font-weight:400;line-height:1.3;margin:0;padding:0;text-align:left">
-						<center data-parsed="" style="min-width:490px;width:100%%">
-							<table class="button btn default primary float-center" style="Margin:0 0 30px 0;border-collapse:collapse;border-spacing:0;display:inline-block;float:none;margin:0 0 30px 0;margin-right:15px;max-height:40px;max-width:200px;padding:0;text-align:center;vertical-align:top;width:auto;background:%1\s;background-color:%1\s;color:#fefefe;">
-								<tr style="padding:0;text-align:left;vertical-align:top">
-									<td style="-moz-hyphens:auto;-webkit-hyphens:auto;Margin:0;border-collapse:collapse!important;color:#0a0a0a;font-family:Lucida Grande,Geneva,Verdana,sans-serif;font-size:16px;font-weight:400;hyphens:auto;line-height:1.3;margin:0;padding:0;text-align:left;vertical-align:top;word-wrap:break-word">
-										<table style="border-collapse:collapse;border-spacing:0;padding:0;text-align:left;vertical-align:top;width:100%%">
-											<tr style="padding:0;text-align:left;vertical-align:top">
-												<td style="-moz-hyphens:auto;-webkit-hyphens:auto;Margin:0;border:0 solid %2\s;border-collapse:collapse!important;font-family:Lucida Grande,Geneva,Verdana,sans-serif;font-size:16px;font-weight:400;hyphens:auto;line-height:1.3;margin:0;padding:0;text-align:left;vertical-align:top;word-wrap:break-word">
-													<a href="%3\s" style="Margin:0;border:0 solid %4\s;border-radius:2px;color:%5\s;display:inline-block;font-family:Lucida Grande,Geneva,Verdana,sans-serif;font-size:16px;font-weight:regular;line-height:1.3;margin:0;padding:10px 25px 10px 25px;text-align:left;outline:1px solid %6\s;text-decoration:none">%7\s</a>
-												</td>
-											</tr>
-										</table>
-									</td>
-								</tr>
-							</table>
-							<table class="button btn default secondary float-center" style="Margin:0 0 30px 0;border-collapse:collapse;border-spacing:0;display:inline-block;float:none;margin:0 0 30px 0;max-height:40px;max-width:200px;padding:0;text-align:center;vertical-align:top;width:auto">
-								<tr style="padding:0;text-align:left;vertical-align:top">
-									<td style="-moz-hyphens:auto;-webkit-hyphens:auto;Margin:0;border-collapse:collapse!important;color:#0a0a0a;font-family:Lucida Grande,Geneva,Verdana,sans-serif;font-size:16px;font-weight:400;hyphens:auto;line-height:1.3;margin:0;padding:0;text-align:left;vertical-align:top;word-wrap:break-word">
-										<table style="border-collapse:collapse;border-spacing:0;padding:0;text-align:left;vertical-align:top;width:100%%">
-											<tr style="padding:0;text-align:left;vertical-align:top">
-												<td style="-moz-hyphens:auto;-webkit-hyphens:auto;Margin:0;background:#777;border:0 solid #777;border-collapse:collapse!important;color:#fefefe;font-family:Lucida Grande,Geneva,Verdana,sans-serif;font-size:16px;font-weight:400;hyphens:auto;line-height:1.3;margin:0;padding:0;text-align:left;vertical-align:top;word-wrap:break-word">
-													<a href="%8\s" style="Margin:0;background-color:#fff;border:0 solid #777;border-radius:2px;color:#6C6C6C!important;display:inline-block;font-family:Lucida Grande,Geneva,Verdana,sans-serif;font-size:16px;font-weight:regular;line-height:1.3;margin:0;outline:1px solid #CBCBCB;padding:10px 25px 10px 25px;text-align:left;text-decoration:none">%9\s</a>
-												</td>
-											</tr>
-										</table>
-									</td>
-								</tr>
-							</table>
-						</center>
-					</th>
-					<th class="expander" style="Margin:0;color:#0a0a0a;font-family:Lucida Grande,Geneva,Verdana,sans-serif;font-size:16px;font-weight:400;line-height:1.3;margin:0;padding:0!important;text-align:left;visibility:hidden;width:0"></th>
-				</tr>
-			</table>
-		</th>
-	</tr>
-	</tbody>
-</table>
-EOF;
+	protected string buttonGroup = ""
+//<table class="spacer" style="border-collapse:collapse;border-spacing:0;padding:0;text-align:left;vertical-align:top;width:100%%">
+//	<tbody>
+//	<tr style="padding:0;text-align:left;vertical-align:top">
+//		<td height="50px" style="-moz-hyphens:auto;-webkit-hyphens:auto;Margin:0;border-collapse:collapse!important;color:#0a0a0a;font-family:Lucida Grande,Geneva,Verdana,sans-serif;font-size:50px;font-weight:400;hyphens:auto;line-height:50px;margin:0;mso-line-height-rule:exactly;padding:0;text-align:left;vertical-align:top;word-wrap:break-word">&#xA0;</td>
+//	</tr>
+//	</tbody>
+//</table>
+//<table align="center" class="row btn-group" style="border-collapse:collapse;border-spacing:0;display:table;padding:0;position:relative;text-align:left;vertical-align:top;width:100%%">
+//	<tbody>
+//	<tr style="padding:0;text-align:left;vertical-align:top">
+//		<th class="small-12 large-12 columns first last" style="Margin:0 auto;color:#0a0a0a;font-family:Lucida Grande,Geneva,Verdana,sans-serif;font-size:16px;font-weight:400;line-height:1.3;margin:0 auto;padding:0;padding-bottom:30px;padding-left:30px;padding-right:30px;text-align:left;width:550px">
+//			<table style="border-collapse:collapse;border-spacing:0;padding:0;text-align:left;vertical-align:top;width:100%%">
+//				<tr style="padding:0;text-align:left;vertical-align:top">
+//					<th style="Margin:0;color:#0a0a0a;font-family:Lucida Grande,Geneva,Verdana,sans-serif;font-size:16px;font-weight:400;line-height:1.3;margin:0;padding:0;text-align:left">
+//						<center data-parsed="" style="min-width:490px;width:100%%">
+//							<table class="button btn default primary float-center" style="Margin:0 0 30px 0;border-collapse:collapse;border-spacing:0;display:inline-block;float:none;margin:0 0 30px 0;margin-right:15px;max-height:40px;max-width:200px;padding:0;text-align:center;vertical-align:top;width:auto;background:%1\s;background-color:%1\s;color:#fefefe;">
+//								<tr style="padding:0;text-align:left;vertical-align:top">
+//									<td style="-moz-hyphens:auto;-webkit-hyphens:auto;Margin:0;border-collapse:collapse!important;color:#0a0a0a;font-family:Lucida Grande,Geneva,Verdana,sans-serif;font-size:16px;font-weight:400;hyphens:auto;line-height:1.3;margin:0;padding:0;text-align:left;vertical-align:top;word-wrap:break-word">
+//										<table style="border-collapse:collapse;border-spacing:0;padding:0;text-align:left;vertical-align:top;width:100%%">
+//											<tr style="padding:0;text-align:left;vertical-align:top">
+//												<td style="-moz-hyphens:auto;-webkit-hyphens:auto;Margin:0;border:0 solid %2\s;border-collapse:collapse!important;font-family:Lucida Grande,Geneva,Verdana,sans-serif;font-size:16px;font-weight:400;hyphens:auto;line-height:1.3;margin:0;padding:0;text-align:left;vertical-align:top;word-wrap:break-word">
+//													<a href="%3\s" style="Margin:0;border:0 solid %4\s;border-radius:2px;color:%5\s;display:inline-block;font-family:Lucida Grande,Geneva,Verdana,sans-serif;font-size:16px;font-weight:regular;line-height:1.3;margin:0;padding:10px 25px 10px 25px;text-align:left;outline:1px solid %6\s;text-decoration:none">%7\s</a>
+//												</td>
+//											</tr>
+//										</table>
+//									</td>
+//								</tr>
+//							</table>
+//							<table class="button btn default secondary float-center" style="Margin:0 0 30px 0;border-collapse:collapse;border-spacing:0;display:inline-block;float:none;margin:0 0 30px 0;max-height:40px;max-width:200px;padding:0;text-align:center;vertical-align:top;width:auto">
+//								<tr style="padding:0;text-align:left;vertical-align:top">
+//									<td style="-moz-hyphens:auto;-webkit-hyphens:auto;Margin:0;border-collapse:collapse!important;color:#0a0a0a;font-family:Lucida Grande,Geneva,Verdana,sans-serif;font-size:16px;font-weight:400;hyphens:auto;line-height:1.3;margin:0;padding:0;text-align:left;vertical-align:top;word-wrap:break-word">
+//										<table style="border-collapse:collapse;border-spacing:0;padding:0;text-align:left;vertical-align:top;width:100%%">
+//											<tr style="padding:0;text-align:left;vertical-align:top">
+//												<td style="-moz-hyphens:auto;-webkit-hyphens:auto;Margin:0;background:#777;border:0 solid #777;border-collapse:collapse!important;color:#fefefe;font-family:Lucida Grande,Geneva,Verdana,sans-serif;font-size:16px;font-weight:400;hyphens:auto;line-height:1.3;margin:0;padding:0;text-align:left;vertical-align:top;word-wrap:break-word">
+//													<a href="%8\s" style="Margin:0;background-color:#fff;border:0 solid #777;border-radius:2px;color:#6C6C6C!important;display:inline-block;font-family:Lucida Grande,Geneva,Verdana,sans-serif;font-size:16px;font-weight:regular;line-height:1.3;margin:0;outline:1px solid #CBCBCB;padding:10px 25px 10px 25px;text-align:left;text-decoration:none">%9\s</a>
+//												</td>
+//											</tr>
+//										</table>
+//									</td>
+//								</tr>
+//							</table>
+//						</center>
+//					</th>
+//					<th class="expander" style="Margin:0;color:#0a0a0a;font-family:Lucida Grande,Geneva,Verdana,sans-serif;font-size:16px;font-weight:400;line-height:1.3;margin:0;padding:0!important;text-align:left;visibility:hidden;width:0"></th>
+//				</tr>
+//			</table>
+//		</th>
+//	</tr>
+//	</tbody>
+//</table>
+;
 
-	protected button = <<<EOF
-<table class="spacer" style="border-collapse:collapse;border-spacing:0;padding:0;text-align:left;vertical-align:top;width:100%%">
-	<tbody>
-	<tr style="padding:0;text-align:left;vertical-align:top">
-		<td height="50px" style="-moz-hyphens:auto;-webkit-hyphens:auto;Margin:0;border-collapse:collapse!important;color:#0a0a0a;font-family:Lucida Grande,Geneva,Verdana,sans-serif;font-size:50px;font-weight:400;hyphens:auto;line-height:50px;margin:0;mso-line-height-rule:exactly;padding:0;text-align:left;vertical-align:top;word-wrap:break-word">&#xA0;</td>
-	</tr>
-	</tbody>
-</table>
-<table align="center" class="row btn-group" style="border-collapse:collapse;border-spacing:0;display:table;padding:0;position:relative;text-align:left;vertical-align:top;width:100%%">
-	<tbody>
-	<tr style="padding:0;text-align:left;vertical-align:top">
-		<th class="small-12 large-12 columns first last" style="Margin:0 auto;color:#0a0a0a;font-family:Lucida Grande,Geneva,Verdana,sans-serif;font-size:16px;font-weight:400;line-height:1.3;margin:0 auto;padding:0;padding-bottom:30px;padding-left:30px;padding-right:30px;text-align:left;width:550px">
-			<table style="border-collapse:collapse;border-spacing:0;padding:0;text-align:left;vertical-align:top;width:100%%">
-				<tr style="padding:0;text-align:left;vertical-align:top">
-					<th style="Margin:0;color:#0a0a0a;font-family:Lucida Grande,Geneva,Verdana,sans-serif;font-size:16px;font-weight:400;line-height:1.3;margin:0;padding:0;text-align:left">
-						<center data-parsed="" style="min-width:490px;width:100%%">
-							<table class="button btn default primary float-center" style="Margin:0;border-collapse:collapse;border-spacing:0;display:inline-block;float:none;margin:0;max-height:40px;padding:0;text-align:center;vertical-align:top;width:auto;background:%1\s;color:#fefefe;background-color:%1\s;">
-								<tr style="padding:0;text-align:left;vertical-align:top">
-									<td style="-moz-hyphens:auto;-webkit-hyphens:auto;Margin:0;border-collapse:collapse!important;color:#0a0a0a;font-family:Lucida Grande,Geneva,Verdana,sans-serif;font-size:16px;font-weight:400;hyphens:auto;line-height:1.3;margin:0;padding:0;text-align:left;vertical-align:top;word-wrap:break-word">
-										<table style="border-collapse:collapse;border-spacing:0;padding:0;text-align:left;vertical-align:top;width:100%%">
-											<tr style="padding:0;text-align:left;vertical-align:top">
-												<td style="-moz-hyphens:auto;-webkit-hyphens:auto;Margin:0;border:0 solid %2\;border-collapse:collapse!important;font-family:Lucida Grande,Geneva,Verdana,sans-serif;font-size:16px;font-weight:400;hyphens:auto;line-height:1.3;margin:0;padding:0;text-align:left;vertical-align:top;word-wrap:break-word">
-													<a href="%3\s" style="Margin:0;border:0 solid %4\s;border-radius:2px;color:%5\s;display:inline-block;font-family:Lucida Grande,Geneva,Verdana,sans-serif;font-size:16px;font-weight:regular;line-height:1.3;margin:0;padding:10px 25px 10px 25px;text-align:left;outline:1px solid %5\s;text-decoration:none">%7\s</a>
-												</td>
-											</tr>
-										</table>
-									</td>
-								</tr>
-							</table>
-						</center>
-					</th>
-					<th class="expander" style="Margin:0;color:#0a0a0a;font-family:Lucida Grande,Geneva,Verdana,sans-serif;font-size:16px;font-weight:400;line-height:1.3;margin:0;padding:0!important;text-align:left;visibility:hidden;width:0"></th>
-				</tr>
-			</table>
-		</th>
-	</tr>
-	</tbody>
-</table>
-EOF;
+	protected string button = ""
+//<table class="spacer" style="border-collapse:collapse;border-spacing:0;padding:0;text-align:left;vertical-align:top;width:100%%">
+//	<tbody>
+//	<tr style="padding:0;text-align:left;vertical-align:top">
+//		<td height="50px" style="-moz-hyphens:auto;-webkit-hyphens:auto;Margin:0;border-collapse:collapse!important;color:#0a0a0a;font-family:Lucida Grande,Geneva,Verdana,sans-serif;font-size:50px;font-weight:400;hyphens:auto;line-height:50px;margin:0;mso-line-height-rule:exactly;padding:0;text-align:left;vertical-align:top;word-wrap:break-word">&#xA0;</td>
+//	</tr>
+//	</tbody>
+//</table>
+//<table align="center" class="row btn-group" style="border-collapse:collapse;border-spacing:0;display:table;padding:0;position:relative;text-align:left;vertical-align:top;width:100%%">
+//	<tbody>
+//	<tr style="padding:0;text-align:left;vertical-align:top">
+//		<th class="small-12 large-12 columns first last" style="Margin:0 auto;color:#0a0a0a;font-family:Lucida Grande,Geneva,Verdana,sans-serif;font-size:16px;font-weight:400;line-height:1.3;margin:0 auto;padding:0;padding-bottom:30px;padding-left:30px;padding-right:30px;text-align:left;width:550px">
+//			<table style="border-collapse:collapse;border-spacing:0;padding:0;text-align:left;vertical-align:top;width:100%%">
+//				<tr style="padding:0;text-align:left;vertical-align:top">
+//					<th style="Margin:0;color:#0a0a0a;font-family:Lucida Grande,Geneva,Verdana,sans-serif;font-size:16px;font-weight:400;line-height:1.3;margin:0;padding:0;text-align:left">
+//						<center data-parsed="" style="min-width:490px;width:100%%">
+//							<table class="button btn default primary float-center" style="Margin:0;border-collapse:collapse;border-spacing:0;display:inline-block;float:none;margin:0;max-height:40px;padding:0;text-align:center;vertical-align:top;width:auto;background:%1\s;color:#fefefe;background-color:%1\s;">
+//								<tr style="padding:0;text-align:left;vertical-align:top">
+//									<td style="-moz-hyphens:auto;-webkit-hyphens:auto;Margin:0;border-collapse:collapse!important;color:#0a0a0a;font-family:Lucida Grande,Geneva,Verdana,sans-serif;font-size:16px;font-weight:400;hyphens:auto;line-height:1.3;margin:0;padding:0;text-align:left;vertical-align:top;word-wrap:break-word">
+//										<table style="border-collapse:collapse;border-spacing:0;padding:0;text-align:left;vertical-align:top;width:100%%">
+//											<tr style="padding:0;text-align:left;vertical-align:top">
+//												<td style="-moz-hyphens:auto;-webkit-hyphens:auto;Margin:0;border:0 solid %2\;border-collapse:collapse!important;font-family:Lucida Grande,Geneva,Verdana,sans-serif;font-size:16px;font-weight:400;hyphens:auto;line-height:1.3;margin:0;padding:0;text-align:left;vertical-align:top;word-wrap:break-word">
+//													<a href="%3\s" style="Margin:0;border:0 solid %4\s;border-radius:2px;color:%5\s;display:inline-block;font-family:Lucida Grande,Geneva,Verdana,sans-serif;font-size:16px;font-weight:regular;line-height:1.3;margin:0;padding:10px 25px 10px 25px;text-align:left;outline:1px solid %5\s;text-decoration:none">%7\s</a>
+//												</td>
+//											</tr>
+//										</table>
+//									</td>
+//								</tr>
+//							</table>
+//						</center>
+//					</th>
+//					<th class="expander" style="Margin:0;color:#0a0a0a;font-family:Lucida Grande,Geneva,Verdana,sans-serif;font-size:16px;font-weight:400;line-height:1.3;margin:0;padding:0!important;text-align:left;visibility:hidden;width:0"></th>
+//				</tr>
+//			</table>
+//		</th>
+//	</tr>
+//	</tbody>
+//</table>
+;
 
-	protected bodyEnd = <<<EOF
+	protected string bodyEnd = ""
+//
+//					</td>
+//				</tr>
+//				</tbody>
+//			</table>
+//		</td>
+//	</tr>
+//</table>
+;
 
-					</td>
-				</tr>
-				</tbody>
-			</table>
-		</td>
-	</tr>
-</table>
-EOF;
-
-	protected footer = <<<EOF
-<table class="spacer float-center" style="Margin:0 auto;border-collapse:collapse;border-spacing:0;float:none;margin:0 auto;padding:0;text-align:center;vertical-align:top;width:100%%">
-	<tbody>
-	<tr style="padding:0;text-align:left;vertical-align:top">
-		<td height="60px" style="-moz-hyphens:auto;-webkit-hyphens:auto;Margin:0;border-collapse:collapse!important;color:#0a0a0a;font-family:Lucida Grande,Geneva,Verdana,sans-serif;font-size:60px;font-weight:400;hyphens:auto;line-height:60px;margin:0;mso-line-height-rule:exactly;padding:0;text-align:left;vertical-align:top;word-wrap:break-word">&#xA0;</td>
-	</tr>
-	</tbody>
-</table>
-<table align="center" class="wrapper footer float-center" style="Margin:0 auto;border-collapse:collapse;border-spacing:0;float:none;margin:0 auto;padding:0;text-align:center;vertical-align:top;width:100%%">
-	<tr style="padding:0;text-align:left;vertical-align:top">
-		<td class="wrapper-inner" style="-moz-hyphens:auto;-webkit-hyphens:auto;Margin:0;border-collapse:collapse!important;color:#0a0a0a;font-family:Lucida Grande,Geneva,Verdana,sans-serif;font-size:16px;font-weight:400;hyphens:auto;line-height:1.3;margin:0;padding:0;text-align:left;vertical-align:top;word-wrap:break-word">
-			<center data-parsed="" style="min-width:580px;width:100%%">
-				<table class="spacer float-center" style="Margin:0 auto;border-collapse:collapse;border-spacing:0;float:none;margin:0 auto;padding:0;text-align:center;vertical-align:top;width:100%%">
-					<tbody>
-					<tr style="padding:0;text-align:left;vertical-align:top">
-						<td height="15px" style="-moz-hyphens:auto;-webkit-hyphens:auto;Margin:0;border-collapse:collapse!important;color:#0a0a0a;font-family:Lucida Grande,Geneva,Verdana,sans-serif;font-size:15px;font-weight:400;hyphens:auto;line-height:15px;margin:0;mso-line-height-rule:exactly;padding:0;text-align:left;vertical-align:top;word-wrap:break-word">&#xA0;</td>
-					</tr>
-					</tbody>
-				</table>
-				<p class="text-center float-center" align="center" style="Margin:0;Margin-bottom:10px;color:#C8C8C8;font-family:Lucida Grande,Geneva,Verdana,sans-serif;font-size:12px;font-weight:400;line-height:16px;margin:0;margin-bottom:10px;padding:0;text-align:center">%s</p>
-			</center>
-		</td>
-	</tr>
-</table>
-EOF;
+	protected string footer = ""
+//<table class="spacer float-center" style="Margin:0 auto;border-collapse:collapse;border-spacing:0;float:none;margin:0 auto;padding:0;text-align:center;vertical-align:top;width:100%%">
+//	<tbody>
+//	<tr style="padding:0;text-align:left;vertical-align:top">
+//		<td height="60px" style="-moz-hyphens:auto;-webkit-hyphens:auto;Margin:0;border-collapse:collapse!important;color:#0a0a0a;font-family:Lucida Grande,Geneva,Verdana,sans-serif;font-size:60px;font-weight:400;hyphens:auto;line-height:60px;margin:0;mso-line-height-rule:exactly;padding:0;text-align:left;vertical-align:top;word-wrap:break-word">&#xA0;</td>
+//	</tr>
+//	</tbody>
+//</table>
+//<table align="center" class="wrapper footer float-center" style="Margin:0 auto;border-collapse:collapse;border-spacing:0;float:none;margin:0 auto;padding:0;text-align:center;vertical-align:top;width:100%%">
+//	<tr style="padding:0;text-align:left;vertical-align:top">
+//		<td class="wrapper-inner" style="-moz-hyphens:auto;-webkit-hyphens:auto;Margin:0;border-collapse:collapse!important;color:#0a0a0a;font-family:Lucida Grande,Geneva,Verdana,sans-serif;font-size:16px;font-weight:400;hyphens:auto;line-height:1.3;margin:0;padding:0;text-align:left;vertical-align:top;word-wrap:break-word">
+//			<center data-parsed="" style="min-width:580px;width:100%%">
+//				<table class="spacer float-center" style="Margin:0 auto;border-collapse:collapse;border-spacing:0;float:none;margin:0 auto;padding:0;text-align:center;vertical-align:top;width:100%%">
+//					<tbody>
+//					<tr style="padding:0;text-align:left;vertical-align:top">
+//						<td height="15px" style="-moz-hyphens:auto;-webkit-hyphens:auto;Margin:0;border-collapse:collapse!important;color:#0a0a0a;font-family:Lucida Grande,Geneva,Verdana,sans-serif;font-size:15px;font-weight:400;hyphens:auto;line-height:15px;margin:0;mso-line-height-rule:exactly;padding:0;text-align:left;vertical-align:top;word-wrap:break-word">&#xA0;</td>
+//					</tr>
+//					</tbody>
+//				</table>
+//				<p class="text-center float-center" align="center" style="Margin:0;Margin-bottom:10px;color:#C8C8C8;font-family:Lucida Grande,Geneva,Verdana,sans-serif;font-size:12px;font-weight:400;line-height:16px;margin:0;margin-bottom:10px;padding:0;text-align:center">%s</p>
+//			</center>
+//		</td>
+//	</tr>
+//</table>
+;
 
 	/**
 	 * @param Defaults themingDefaults
@@ -320,17 +323,17 @@ EOF;
 	 * @param string emailId
 	 * @param array data
 	 */
-	public function __construct(Defaults themingDefaults,
+	public EMailTemplate(Defaults themingDefaults,
 								IURLGenerator urlGenerator,
 								IL10N l10n,
-								emailId,
-								array data) {
-		this->themingDefaults = themingDefaults;
-		this->urlGenerator = urlGenerator;
-		this->l10n = l10n;
-		this->htmlBody .= this->head;
-		this->emailId = emailId;
-		this->data = data;
+								string emailId,
+								object data) {
+		this.themingDefaults = themingDefaults;
+		this.urlGenerator = urlGenerator;
+		this.l10n = l10n;
+		this.htmlBody += this.head;
+		this.emailId = emailId;
+		this.data = data;
 	}
 
 	/**
@@ -338,21 +341,22 @@ EOF;
 	 *
 	 * @param string subject
 	 */
-	public function setSubject(string subject) {
-		this->subject = subject;
+	public void setSubject(string subject) {
+		this.subject = subject;
 	}
 
 	/**
 	 * Adds a header to the email
 	 */
-	public function addHeader() {
-		if (this->headerAdded) {
+	public void addHeader() {
+		if (this.headerAdded) {
 			return;
 		}
-		this->headerAdded = true;
+		this.headerAdded = true;
 
-		logoUrl = this->urlGenerator->getAbsoluteURL(this->themingDefaults->getLogo(false));
-		this->htmlBody .= vsprintf(this->header, [this->themingDefaults->getColorPrimary(), logoUrl, this->themingDefaults->getName()]);
+		var logoUrl = this.urlGenerator.getAbsoluteURL(this.themingDefaults.getLogo(false));
+		this.htmlBody += string.Format(this.header, this.themingDefaults.getColorPrimary(), logoUrl,
+			this.themingDefaults.getName());
 	}
 
 	/**
@@ -362,30 +366,30 @@ EOF;
 	 * @param string|bool plainTitle Title that is used in the plain text email
 	 *   if empty the title is used, if false none will be used
 	 */
-	public function addHeading(string title, plainTitle = '') {
-		if (this->footerAdded) {
+	public void addHeading(string title,string plainTitle = "") {
+		if (this.footerAdded) {
 			return;
 		}
-		if (plainTitle === '') {
+		if (plainTitle.IsEmpty()) {
 			plainTitle = title;
 		}
 
-		this->htmlBody .= vsprintf(this->heading, [htmlspecialchars(title)]);
-		if (plainTitle !== false) {
-			this->plainBody .= plainTitle . PHP_EOL . PHP_EOL;
+		this.htmlBody += string.Format(this.heading, System.Web.HttpUtility.HtmlEncode(title));
+		if (plainTitle.IsNotEmpty()) {
+			this.plainBody += plainTitle + Environment.NewLine + Environment.NewLine;
 		}
 	}
 
 	/**
 	 * Open the HTML body when it is not already
 	 */
-	protected function ensureBodyIsOpened() {
-		if (this->bodyOpened) {
+	protected void ensureBodyIsOpened() {
+		if (this.bodyOpened) {
 			return;
 		}
 
-		this->htmlBody .= this->bodyBegin;
-		this->bodyOpened = true;
+		this.htmlBody += this.bodyBegin;
+		this.bodyOpened = true;
 	}
 
 	/**
@@ -395,21 +399,21 @@ EOF;
 	 * @param string|bool plainText Text that is used in the plain text email
 	 *   if empty the text is used, if false none will be used
 	 */
-	public function addBodyText(string text, plainText = '') {
-		if (this->footerAdded) {
+	public void addBodyText(string text, string plainText = "") {
+		if (this.footerAdded) {
 			return;
 		}
-		if (plainText === '') {
+		if (plainText.IsEmpty()) {
 			plainText = text;
-			text = htmlspecialchars(text);
+			text = System.Web.HttpUtility.HtmlEncode(text);
 		}
 
-		this->ensureBodyListClosed();
-		this->ensureBodyIsOpened();
+		this.ensureBodyListClosed();
+		this.ensureBodyIsOpened();
 
-		this->htmlBody .= vsprintf(this->bodyText, [text]);
-		if (plainText !== false) {
-			this->plainBody .= plainText . PHP_EOL . PHP_EOL;
+		this.htmlBody += string.Format(this.bodyText, text);
+		if (plainText.IsNotEmpty()) {
+			this.plainBody += plainText + Environment.NewLine + Environment.NewLine;
 		}
 	}
 
@@ -425,54 +429,56 @@ EOF;
 	 *   if empty the metaInfo is used, if false none will be used
 	 * @since 12.0.0
 	 */
-	public function addBodyListItem(string text, string metaInfo = '', string icon = '', plainText = '', plainMetaInfo = '') {
-		this->ensureBodyListOpened();
+	public void addBodyListItem(string text, string metaInfo = "", string icon = "",string plainText = "", string plainMetaInfo = "") {
+		this.ensureBodyListOpened();
 
-		if (plainText === '') {
+		if (plainText.IsEmpty()) {
 			plainText = text;
-			text = htmlspecialchars(text);
+			text = System.Web.HttpUtility.HtmlEncode(text);
 		}
-		if (plainMetaInfo === '') {
+		if (plainMetaInfo.IsEmpty()) {
 			plainMetaInfo = metaInfo;
-			metaInfo = htmlspecialchars(metaInfo);
+			metaInfo = System.Web.HttpUtility.HtmlEncode(metaInfo);
 		}
 
-		htmlText = text;
-		if (metaInfo) {
-			htmlText = '<em style="color:#777;">' . metaInfo . '</em><br>' . htmlText;
+		var htmlText = text;
+		if (metaInfo.IsNotEmpty()) {
+			htmlText = "<em style=\"color:#777;\">" + metaInfo + "</em><br>" + htmlText;
 		}
-		if (icon !== '') {
-			icon = '<img src="' . htmlspecialchars(icon) . '" alt="&bull;">';
+		if (icon.IsNotEmpty()) {
+			icon = "<img src=\"" + System.Web.HttpUtility.HtmlEncode(icon) + "\" alt=\"&bull;\">";
 		} else {
-			icon = '&bull;';
+			icon = "&bull;";
 		}
-		this->htmlBody .= vsprintf(this->listItem, [icon, htmlText]);
-		if (plainText !== false) {
-			this->plainBody .= '  * ' . plainText;
-			if (plainMetaInfo !== false) {
-				this->plainBody .= ' (' . plainMetaInfo . ')';
+
+		this.htmlBody += string.Format(this.listItem, icon, htmlText);
+		if (plainText.IsNotEmpty()) {
+			this.plainBody += "  * " + plainText;
+			if (plainMetaInfo.IsNotEmpty()) {
+				this.plainBody += " (" + plainMetaInfo + ")";
 			}
-			this->plainBody .= PHP_EOL;
+
+			this.plainBody += Environment.NewLine;
 		}
 	}
 
-	protected function ensureBodyListOpened() {
-		if (this->bodyListOpened) {
+	protected void ensureBodyListOpened() {
+		if (this.bodyListOpened) {
 			return;
 		}
 
-		this->ensureBodyIsOpened();
-		this->bodyListOpened = true;
-		this->htmlBody .= this->listBegin;
+		this.ensureBodyIsOpened();
+		this.bodyListOpened = true;
+		this.htmlBody += this.listBegin;
 	}
 
-	protected function ensureBodyListClosed() {
-		if (!this->bodyListOpened) {
+	protected void ensureBodyListClosed() {
+		if (!this.bodyListOpened) {
 			return;
 		}
 
-		this->bodyListOpened = false;
-		this->htmlBody .= this->listEnd;
+		this.bodyListOpened = false;
+		this.htmlBody += this.listEnd;
 	}
 
 	/**
@@ -485,34 +491,35 @@ EOF;
 	 * @param string plainTextLeft Text of left button that is used in the plain text version - if unset the textLeft is used
 	 * @param string plainTextRight Text of right button that is used in the plain text version - if unset the textRight is used
 	 */
-	public function addBodyButtonGroup(string textLeft,
+	public void addBodyButtonGroup(string textLeft,
 									   string urlLeft,
 									   string textRight,
 									   string urlRight,
-									   string plainTextLeft = '',
-									   string plainTextRight = '') {
-		if (this->footerAdded) {
+									   string plainTextLeft = "",
+									   string plainTextRight = "") {
+		if (this.footerAdded) {
 			return;
 		}
-		if (plainTextLeft === '') {
+		if (plainTextLeft.IsEmpty()) {
 			plainTextLeft = textLeft;
-			textLeft = htmlspecialchars(textLeft);
+			textLeft = System.Web.HttpUtility.HtmlEncode(textLeft);
 		}
 
-		if (plainTextRight === '') {
+		if (plainTextRight.IsEmpty()) {
 			plainTextRight = textRight;
-			textRight = htmlspecialchars(textRight);
+			textRight = System.Web.HttpUtility.HtmlEncode(textRight);
 		}
 
-		this->ensureBodyIsOpened();
-		this->ensureBodyListClosed();
+		this.ensureBodyIsOpened();
+		this.ensureBodyListClosed();
 
-		color = this->themingDefaults->getColorPrimary();
-		textColor = this->themingDefaults->getTextColorPrimary();
+		var color = this.themingDefaults.getColorPrimary();
+		var textColor = this.themingDefaults.getTextColorPrimary();
 
-		this->htmlBody .= vsprintf(this->buttonGroup, [color, color, urlLeft, color, textColor, textColor, textLeft, urlRight, textRight]);
-		this->plainBody .= plainTextLeft . ': ' . urlLeft . PHP_EOL;
-		this->plainBody .= plainTextRight . ': ' . urlRight . PHP_EOL . PHP_EOL;
+		this.htmlBody += string.Format(this.buttonGroup, color, color, urlLeft, color, textColor, textColor, textLeft,
+			urlRight, textRight);
+		this.plainBody += plainTextLeft + ": " + urlLeft + Environment.NewLine;
+		this.plainBody += plainTextRight + ": " + urlRight + Environment.NewLine + Environment.NewLine;
 
 	}
 
@@ -526,43 +533,43 @@ EOF;
 	 *
 	 * @since 12.0.0
 	 */
-	public function addBodyButton(string text, string url, plainText = '') {
-		if (this->footerAdded) {
+	public void addBodyButton(string text, string url, string plainText = "") {
+		if (this.footerAdded) {
 			return;
 		}
 
-		this->ensureBodyIsOpened();
-		this->ensureBodyListClosed();
+		this.ensureBodyIsOpened();
+		this.ensureBodyListClosed();
 
-		if (plainText === '') {
+		if (plainText.IsEmpty()) {
 			plainText = text;
-			text = htmlspecialchars(text);
+			text = System.Web.HttpUtility.HtmlEncode(text);
 		}
 
-		color = this->themingDefaults->getColorPrimary();
-		textColor = this->themingDefaults->getTextColorPrimary();
-		this->htmlBody .= vsprintf(this->button, [color, color, url, color, textColor, textColor, text]);
+		var color = this.themingDefaults.getColorPrimary();
+		var textColor = this.themingDefaults.getTextColorPrimary();
+		this.htmlBody += string.Format(this.button, color, color, url, color, textColor, textColor, text);
 
-		if (plainText !== false) {
-			this->plainBody .= plainText . ': ';
+		if (plainText.IsNotEmpty()) {
+			this.plainBody += plainText + ": ";
 		}
 
-		this->plainBody .=  url . PHP_EOL;
+		this.plainBody +=  url + Environment.NewLine;
 
 	}
 
 	/**
 	 * Close the HTML body when it is open
 	 */
-	protected function ensureBodyIsClosed() {
-		if (!this->bodyOpened) {
+	protected void ensureBodyIsClosed() {
+		if (!this.bodyOpened) {
 			return;
 		}
 
-		this->ensureBodyListClosed();
+		this.ensureBodyListClosed();
 
-		this->htmlBody .= this->bodyEnd;
-		this->bodyOpened = false;
+		this.htmlBody += this.bodyEnd;
+		this.bodyOpened = false;
 	}
 
 	/**
@@ -570,22 +577,22 @@ EOF;
 	 *
 	 * @param string text If the text is empty the default "Name - Slogan<br>This is an automatically sent email" will be used
 	 */
-	public function addFooter(string text = '') {
-		if(text === '') {
-			text = this->themingDefaults->getName() . ' - ' . this->themingDefaults->getSlogan() . '<br>' . this->l10n->t('This is an automatically sent email, please do not reply.');
+	public void addFooter(string text = "") {
+		if(text.IsEmpty()) {
+			text = this.themingDefaults.getName() + " - " + this.themingDefaults.getSlogan() + "<br>" + this.l10n.t("This is an automatically sent email, please do not reply.");
 		}
 
-		if (this->footerAdded) {
+		if (this.footerAdded) {
 			return;
 		}
-		this->footerAdded = true;
+		this.footerAdded = true;
 
-		this->ensureBodyIsClosed();
+		this.ensureBodyIsClosed();
 
-		this->htmlBody .= vsprintf(this->footer, [text]);
-		this->htmlBody .= this->tail;
-		this->plainBody .= PHP_EOL . '-- ' . PHP_EOL;
-		this->plainBody .= str_replace('<br>', PHP_EOL, text);
+		this.htmlBody += string.Format(this.footer, text);
+		this.htmlBody += this.tail;
+		this.plainBody += Environment.NewLine + "-- " + Environment.NewLine;
+		this.plainBody += text.Replace("<br>", Environment.NewLine);
 	}
 
 	/**
@@ -593,8 +600,8 @@ EOF;
 	 *
 	 * @return string
 	 */
-	public function renderSubject(): string {
-		return this->subject;
+	public string renderSubject() {
+		return this.subject;
 	}
 
 	/**
@@ -602,13 +609,13 @@ EOF;
 	 *
 	 * @return string
 	 */
-	public function renderHtml(): string {
-		if (!this->footerAdded) {
-			this->footerAdded = true;
-			this->ensureBodyIsClosed();
-			this->htmlBody .= this->tail;
+	public string renderHtml() {
+		if (!this.footerAdded) {
+			this.footerAdded = true;
+			this.ensureBodyIsClosed();
+			this.htmlBody += this.tail;
 		}
-		return this->htmlBody;
+		return this.htmlBody;
 	}
 
 	/**
@@ -616,13 +623,13 @@ EOF;
 	 *
 	 * @return string
 	 */
-	public function renderText(): string {
-		if (!this->footerAdded) {
-			this->footerAdded = true;
-			this->ensureBodyIsClosed();
-			this->htmlBody .= this->tail;
+	public string renderText() {
+		if (!this.footerAdded) {
+			this.footerAdded = true;
+			this.ensureBodyIsClosed();
+			this.htmlBody += this.tail;
 		}
-		return this->plainBody;
+		return this.plainBody;
 	}
 }
 

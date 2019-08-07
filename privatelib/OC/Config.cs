@@ -10,13 +10,13 @@ namespace OC
      * This class is responsible for reading and writing config.php, the very basic
      * configuration file of Nextcloud.
      */
-    class Config
+    public class Config
     {
 
         const string ENV_PREFIX = "NC_";
 
         /** @var array Associative array (key => value) */
-        protected IDictionary<string, string> cache = new Dictionary<string, string>();
+        protected IDictionary<string, object> cache = new Dictionary<string, object>();
 
         /** @var string */
         protected string configDir;
@@ -46,7 +46,7 @@ namespace OC
          *
          * @return array an array of key names
          */
-        IList<string> getKeys()
+        public IList<string> getKeys()
         {
             return this.cache.Keys.ToList();
             //return array_keys(this.cache);
@@ -63,7 +63,7 @@ namespace OC
          * @param mixed default = null default value
          * @return mixed the value or default
          */
-        string getValue(string key, string @default = null)
+        public object getValue(string key, object @default = null)
         {
             var envValue = System.Environment.GetEnvironmentVariable(ENV_PREFIX + key);
             if (envValue != null)
@@ -85,7 +85,7 @@ namespace OC
          * @param array configs Associative array with `key => value` pairs
          *                       If value is null, the config key will be deleted
          */
-        void setValues(IDictionary<string, string> configs)
+        public void setValues(IDictionary<string, object> configs)
         {
             var needsUpdate = false;
             foreach (var config in configs)
@@ -113,7 +113,7 @@ namespace OC
          * @param string key key
          * @param mixed value value
          */
-        public void setValue(string key, string value)
+        public void setValue(string key, object value)
         {
             if (this.set(key, value))
             {
@@ -129,7 +129,7 @@ namespace OC
          * @param mixed value value
          * @return bool True if the file needs to be updated, false otherwise
          */
-        protected bool set(string key, string value)
+        protected bool set(string key, object value)
         {
             if (this.cache.ContainsKey(key) || this.cache[key] != value)
             {

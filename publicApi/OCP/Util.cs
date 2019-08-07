@@ -239,21 +239,21 @@ namespace OCP
          * is passed to this function
          * @since 5.0.0
          */
-        public static function getDefaultEmailAddress(user_part)
+        public static string getDefaultEmailAddress(string user_part)
         {
-        config = \OC::server.getConfig();
-        user_part = config.getSystemValue('mail_from_address', user_part);
-        host_name = self::getServerHostName();
-        host_name = config.getSystemValue('mail_domain', host_name);
-        defaultEmailAddress = user_part.'@'.host_name;
+        var config = OC.server.getConfig();
+        user_part = config.getSystemValue("mail_from_address", user_part);
+        var host_name = getServerHostName();
+        host_name = config.getSystemValue("mail_domain", host_name);
+        var defaultEmailAddress = user_part+"@"+host_name;
 
-        mailer = \OC::server.getMailer();
+        var mailer = OC.server.getMailer();
             if (mailer.validateMailAddress(defaultEmailAddress)) {
                 return defaultEmailAddress;
             }
 
             // in case we cannot build a valid email address from the hostname let's fallback to 'localhost.localdomain'
-            return user_part.'@localhost.localdomain';
+            return user_part+"@localhost.localdomain";
         }
 
         /**

@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace OC.Files.Storage
 {
 
@@ -24,7 +26,7 @@ interface Storage : OCP.Files.Storage.IStorage {
 	 * @param .OC.Files.Storage.Storage (optional) the storage to pass to the scanner
 	 * @return .OC.Files.Cache.Scanner
 	 */
-	function getScanner(path = "", storage = null);
+	OC.Files.Cache.Scanner getScanner(string path = "", OC.Files.Storage.Storage storage = null);
 
 
 	/**
@@ -33,7 +35,7 @@ interface Storage : OCP.Files.Storage.IStorage {
 	 * @param string path
 	 * @return string
 	 */
-	function getOwner(path);
+	string getOwner(string path);
 
 	/**
 	 * get a watcher instance for the cache
@@ -42,7 +44,7 @@ interface Storage : OCP.Files.Storage.IStorage {
 	 * @param .OC.Files.Storage.Storage (optional) the storage to pass to the watcher
 	 * @return .OC.Files.Cache.Watcher
 	 */
-	function getWatcher(path = "", storage = null);
+	OC.Files.Cache.Watcher getWatcher(string path = "", OC.Files.Storage.Storage storage = null);
 
 	/**
 	 * get a propagator instance for the cache
@@ -50,7 +52,7 @@ interface Storage : OCP.Files.Storage.IStorage {
 	 * @param .OC.Files.Storage.Storage (optional) the storage to pass to the watcher
 	 * @return .OC.Files.Cache.Propagator
 	 */
-	function getPropagator(storage = null);
+	OC.Files.Cache.Propagator getPropagator(Storage storage = null);
 
 	/**
 	 * get a updater instance for the cache
@@ -58,18 +60,18 @@ interface Storage : OCP.Files.Storage.IStorage {
 	 * @param .OC.Files.Storage.Storage (optional) the storage to pass to the watcher
 	 * @return .OC.Files.Cache.Updater
 	 */
-	function getUpdater(storage = null);
+	OC.Files.Cache.Updater getUpdater(Storage storage = null);
 
 	/**
 	 * @return .OC.Files.Cache.Storage
 	 */
-	function getStorageCache();
+	OC.Files.Cache.Storage getStorageCache();
 
 	/**
 	 * @param string path
 	 * @return array
 	 */
-	function getMetaData(path);
+	IDictionary<string,object> getMetaData(string path);
 
 	/**
 	 * @param string path The path of the file to acquire the lock for
@@ -77,7 +79,7 @@ interface Storage : OCP.Files.Storage.IStorage {
 	 * @param .OCP.Lock.ILockingProvider provider
 	 * @throws .OCP.Lock.LockedException
 	 */
-	function acquireLock(path, type, ILockingProvider provider);
+	void acquireLock(string path,int type, OCP.Lock.ILockingProvider provider);
 
 	/**
 	 * @param string path The path of the file to release the lock for
@@ -85,7 +87,7 @@ interface Storage : OCP.Files.Storage.IStorage {
 	 * @param .OCP.Lock.ILockingProvider provider
 	 * @throws .OCP.Lock.LockedException
 	 */
-	function releaseLock(path, type, ILockingProvider provider);
+	void releaseLock(string path,int type, OCP.Lock.ILockingProvider provider);
 
 	/**
 	 * @param string path The path of the file to change the lock for
@@ -93,7 +95,7 @@ interface Storage : OCP.Files.Storage.IStorage {
 	 * @param .OCP.Lock.ILockingProvider provider
 	 * @throws .OCP.Lock.LockedException
 	 */
-	function changeLock(path, type, ILockingProvider provider);
+	void changeLock(string path,int type, OCP.Lock.ILockingProvider provider);
 }
 
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using ext;
 using OCP.Files;
 
 namespace OC.Files
@@ -110,10 +111,10 @@ namespace OC.Files
          * @param string path
          * @return string
          */
-        public function getRelativePath(path)
+        public string getRelativePath(string path)
         {
-		this.assertPathLength(path);
-            if (this.fakeRoot == '') {
+			this.assertPathLength(path);
+            if (this.fakeRoot.IsEmpty()) {
                 return path;
             }
 
