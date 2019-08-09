@@ -10,7 +10,7 @@ namespace OCP.Activity
  * @package OCP\Activity
  * @since 11.0
  */
-    interface IEventMerger
+    public interface IEventMerger
     {
         /**
 	 * Combines two events when possible to have grouping:

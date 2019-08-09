@@ -8,89 +8,89 @@ namespace OC.Hooks
     {
 
     /**
-	 * @var callable[][] $listeners
+	 * @var callable[][] listeners
 	 */
     protected IList<IList<Action>> listeners;
 
     /**
-	 * @param string $scope
-	 * @param string $method
-	 * @param callable $callback
+	 * @param string scope
+	 * @param string method
+	 * @param callable callback
 	 */
     public void listen(string scope, string method, Action callback)
     {
 		var eventName = scope + "::" + method;
-        if (!isset($this.listeners[$eventName]))
+        if (!isset(this.listeners[eventName]))
         {
-			$this.listeners[$eventName] = array();
+			this.listeners[eventName] = array();
         }
-        if (array_search($callback, $this.listeners[$eventName], true) === false)
+        if (array_search(callback, this.listeners[eventName], true) === false)
         {
-			$this.listeners[$eventName][] = $callback;
+			this.listeners[eventName][] = callback;
         }
     }
 
     /**
-	 * @param string $scope optional
-	 * @param string $method optional
-	 * @param callable $callback optional
+	 * @param string scope optional
+	 * @param string method optional
+	 * @param callable callback optional
 	 */
-    public function removeListener($scope = null, $method = null, callable $callback = null)
+    public function removeListener(scope = null, method = null, callable callback = null)
     {
-		$names = array();
-		$allNames = array_keys($this.listeners);
-        if ($scope and $method) {
-			$name = $scope. '::'. $method;
-            if (isset($this.listeners[$name]))
+		names = array();
+		allNames = array_keys(this.listeners);
+        if (scope and method) {
+			name = scope. '::'. method;
+            if (isset(this.listeners[name]))
             {
-				$names[] = $name;
+				names[] = name;
             }
         }
-        elseif($scope) {
-            foreach ($allNames as $name) {
-				$parts = explode('::', $name, 2);
-                if ($parts[0] == $scope) {
-					$names[] = $name;
+        elseif(scope) {
+            foreach (allNames as name) {
+				parts = explode('::', name, 2);
+                if (parts[0] == scope) {
+					names[] = name;
                 }
             }
         }
-        elseif($method) {
-            foreach ($allNames as $name) {
-				$parts = explode('::', $name, 2);
-                if ($parts[1] == $method) {
-					$names[] = $name;
+        elseif(method) {
+            foreach (allNames as name) {
+				parts = explode('::', name, 2);
+                if (parts[1] == method) {
+					names[] = name;
                 }
             }
         } else
         {
-			$names = $allNames;
+			names = allNames;
         }
 
-        foreach ($names as $name) {
-            if ($callback) {
-				$index = array_search($callback, $this.listeners[$name], true);
-                if ($index !== false) {
-                    unset($this.listeners[$name][$index]);
+        foreach (names as name) {
+            if (callback) {
+				index = array_search(callback, this.listeners[name], true);
+                if (index !== false) {
+                    unset(this.listeners[name][index]);
                 }
             } else
             {
-				$this.listeners[$name] = array();
+				this.listeners[name] = array();
             }
         }
     }
 
     /**
-	 * @param string $scope
-	 * @param string $method
-	 * @param array $arguments optional
+	 * @param string scope
+	 * @param string method
+	 * @param array arguments optional
 	 */
     protected void emit(string scope, string method, IList<string> arguments)
     {
-		$eventName = $scope. '::'. $method;
-        if (isset($this.listeners[$eventName]))
+		eventName = scope. '::'. method;
+        if (isset(this.listeners[eventName]))
         {
-            foreach ($this.listeners[$eventName] as $callback) {
-                call_user_func_array($callback, $arguments);
+            foreach (this.listeners[eventName] as callback) {
+                call_user_func_array(callback, arguments);
             }
         }
     }
