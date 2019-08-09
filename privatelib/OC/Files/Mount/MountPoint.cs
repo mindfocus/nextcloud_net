@@ -87,7 +87,7 @@ class MountPoint : IMountPoint {
 	 *
 	 * @return string
 	 */
-	public function getMountPoint() {
+	public string getMountPoint() {
 		return this.mountPoint;
 	}
 
@@ -135,7 +135,7 @@ class MountPoint : IMountPoint {
 	/**
 	 * @return .OC.Files.Storage.Storage
 	 */
-	public function getStorage() {
+	public OC.Files.Storage.Storage getStorage() {
 		if (is_null(this.storage)) {
 			this.createStorage();
 		}

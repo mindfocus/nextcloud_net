@@ -1,4 +1,6 @@
+using System.Linq;
 using OCP;
+using OCP.App;
 using OCP.Authentication.TwoFactorAuth;
 
 namespace OCA.TwoFactorBackupCodes.Provider
@@ -6,18 +8,18 @@ namespace OCA.TwoFactorBackupCodes.Provider
     public class BackupCodesProvider : IProvider, IProvidesPersonalSettings
     {
         /** @var string */
-	private appName;
+	private string appName;
 
 	/** @var BackupCodeStorage */
-	private storage;
+	private BackupCodeStorage storage;
 
 	/** @var IL10N */
-	private l10n;
+	private IL10N l10n;
 
 	/** @var AppManager */
-	private appManager;
+	private IAppManager appManager;
 	/** @var IInitialStateService */
-	private initialStateService;
+	private IInitialStateService initialStateService;
 
 	/**
 	 * @param string appName
@@ -28,13 +30,13 @@ namespace OCA.TwoFactorBackupCodes.Provider
 	public BackupCodesProvider(string appName,
 								BackupCodeStorage storage,
 								IL10N l10n,
-								AppManager appManager,
+								IAppManager appManager,
 								IInitialStateService initialStateService) {
-		this->appName = appName;
-		this->l10n = l10n;
-		this->storage = storage;
-		this->appManager = appManager;
-		this->initialStateService = initialStateService;
+		this.appName = appName;
+		this.l10n = l10n;
+		this.storage = storage;
+		this.appManager = appManager;
+		this.initialStateService = initialStateService;
 	}
 
 	/**
@@ -42,8 +44,8 @@ namespace OCA.TwoFactorBackupCodes.Provider
 	 *
 	 * @return string
 	 */
-	public function getId(): string {
-		return 'backup_codes';
+	public string getId() {
+		return "backup_codes";
 	}
 
 	/**
@@ -51,8 +53,8 @@ namespace OCA.TwoFactorBackupCodes.Provider
 	 *
 	 * @return string
 	 */
-	public function getDisplayName(): string {
-		return this->l10n->t('Backup code');
+	public string getDisplayName()  {
+		return this.l10n.t("Backup code");
 	}
 
 	/**
@@ -60,8 +62,8 @@ namespace OCA.TwoFactorBackupCodes.Provider
 	 *
 	 * @return string
 	 */
-	public function getDescription(): string {
-		return this->l10n->t('Use backup code');
+	public string getDescription() {
+		return this.l10n.t("Use backup code");
 	}
 
 	/**
@@ -70,8 +72,8 @@ namespace OCA.TwoFactorBackupCodes.Provider
 	 * @param IUser user
 	 * @return Template
 	 */
-	public function getTemplate(IUser user): Template {
-		return new Template('twofactor_backupcodes', 'challenge');
+	public Template getTemplate(IUser user) {
+		return new Template("twofactor_backupcodes", "challenge");
 	}
 
 	/**
@@ -81,8 +83,8 @@ namespace OCA.TwoFactorBackupCodes.Provider
 	 * @param string challenge
 	 * @return bool
 	 */
-	public function verifyChallenge(IUser user, string challenge): bool {
-		return this->storage->validateCode(user, challenge);
+	public bool verifyChallenge(IUser user, string challenge) {
+		return this.storage.validateCode(user, challenge);
 	}
 
 	/**
@@ -91,8 +93,8 @@ namespace OCA.TwoFactorBackupCodes.Provider
 	 * @param IUser user
 	 * @return boolean
 	 */
-	public function isTwoFactorAuthEnabledForUser(IUser user): bool {
-		return this->storage->hasBackupCodes(user);
+	public bool isTwoFactorAuthEnabledForUser(IUser user) {
+		return this.storage.hasBackupCodes(user);
 	}
 
 	/**
@@ -106,16 +108,17 @@ namespace OCA.TwoFactorBackupCodes.Provider
 	 * @param IUser user
 	 * @return boolean
 	 */
-	public function isActive(IUser user): bool {
-		appIds = array_filter(this->appManager->getEnabledAppsForUser(user), function(appId) {
-			return appId !== this->appName;
-		});
-		foreach (appIds as appId) {
-			info = this->appManager->getAppInfo(appId);
-			if (isset(info['two-factor-providers']) && count(info['two-factor-providers']) > 0) {
+	public bool isActive(IUser user) {
+		var appIds = this.appManager.getEnabledAppsForUser(user).Where(appId => appId != this.appName).ToList();
+		foreach (var appId in appIds)
+		{
+			var info = this.appManager.getAppInfo(appId);
+			if (info.Twofactorproviders != null && info.Twofactorproviders.Providers.Count > 0 )
+			{
 				return true;
 			}
 		}
+
 		return false;
 	}
 
@@ -124,9 +127,9 @@ namespace OCA.TwoFactorBackupCodes.Provider
 	 *
 	 * @return IPersonalProviderSettings
 	 */
-	public function getPersonalSettings(IUser user): IPersonalProviderSettings {
-		state = this->storage->getBackupCodesState(user);
-		this->initialStateService->provideInitialState(this->appName, 'state', state);
+	public IPersonalProviderSettings getPersonalSettings(IUser user) {
+		var state = this.storage.getBackupCodesState(user);
+		this.initialStateService.provideInitialState(this.appName, "state", state);
 		return new Personal();
 	}
     }

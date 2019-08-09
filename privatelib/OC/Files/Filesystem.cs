@@ -1,3 +1,12 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using OC.Files.Cache;
+using OC.Files.Mount;
+using OC.legacy;
+using OCP;
+using OCP.Files.Config;
+
 namespace OC.Files
 {
 
@@ -35,17 +44,17 @@ class Filesystem {
 	 */
 	static private OC.Files.View defaultInstance;
 
-	static private usersSetup = array();
+	static private object usersSetup = array();
 
-	static private normalizedPathCache = null;
+	static private object normalizedPathCache = null;
 
-	static private listeningForProviders = false;
+	static private object listeningForProviders = false;
 
 	/**
 	 * classname which used for hooks handling
 	 * used as signalclass in OC_Hooks::emit()
 	 */
-	const CLASSNAME = "OC_Filesystem";
+	const string CLASSNAME = "OC_Filesystem";
 
 	/**
 	 * signalname emitted before file renaming
@@ -53,7 +62,7 @@ class Filesystem {
 	 * @param string oldpath
 	 * @param string newpath
 	 */
-	const signal_rename = "rename";
+	const string signal_rename = "rename";
 
 	/**
 	 * signal emitted after file renaming
@@ -61,7 +70,7 @@ class Filesystem {
 	 * @param string oldpath
 	 * @param string newpath
 	 */
-	const signal_post_rename = "post_rename";
+	const string signal_post_rename = "post_rename";
 
 	/**
 	 * signal emitted before file/dir creation
@@ -69,7 +78,7 @@ class Filesystem {
 	 * @param string path
 	 * @param bool run changing this flag to false in hook handler will cancel event
 	 */
-	const signal_create = "create";
+	const string signal_create = "create";
 
 	/**
 	 * signal emitted after file/dir creation
@@ -77,7 +86,7 @@ class Filesystem {
 	 * @param string path
 	 * @param bool run changing this flag to false in hook handler will cancel event
 	 */
-	const signal_post_create = "post_create";
+	const string signal_post_create = "post_create";
 
 	/**
 	 * signal emits before file/dir copy
@@ -86,7 +95,7 @@ class Filesystem {
 	 * @param string newpath
 	 * @param bool run changing this flag to false in hook handler will cancel event
 	 */
-	const signal_copy = "copy";
+	const string signal_copy = "copy";
 
 	/**
 	 * signal emits after file/dir copy
@@ -94,7 +103,7 @@ class Filesystem {
 	 * @param string oldpath
 	 * @param string newpath
 	 */
-	const signal_post_copy = "post_copy";
+	const string signal_post_copy = "post_copy";
 
 	/**
 	 * signal emits before file/dir save
@@ -102,14 +111,14 @@ class Filesystem {
 	 * @param string path
 	 * @param bool run changing this flag to false in hook handler will cancel event
 	 */
-	const signal_write = "write";
+	const string signal_write = "write";
 
 	/**
 	 * signal emits after file/dir save
 	 *
 	 * @param string path
 	 */
-	const signal_post_write = "post_write";
+	const string signal_post_write = "post_write";
 
 	/**
 	 * signal emitted before file/dir update
@@ -117,7 +126,7 @@ class Filesystem {
 	 * @param string path
 	 * @param bool run changing this flag to false in hook handler will cancel event
 	 */
-	const signal_update = "update";
+	const string signal_update = "update";
 
 	/**
 	 * signal emitted after file/dir update
@@ -125,55 +134,55 @@ class Filesystem {
 	 * @param string path
 	 * @param bool run changing this flag to false in hook handler will cancel event
 	 */
-	const signal_post_update = "post_update";
+	const string signal_post_update = "post_update";
 
 	/**
 	 * signal emits when reading file/dir
 	 *
 	 * @param string path
 	 */
-	const signal_read = "read";
+	const string signal_read = "read";
 
 	/**
 	 * signal emits when removing file/dir
 	 *
 	 * @param string path
 	 */
-	const signal_delete = "delete";
+	const string signal_delete = "delete";
 
 	/**
 	 * parameters definitions for signals
 	 */
-	const signal_param_path = "path";
-	const signal_param_oldpath = "oldpath";
-	const signal_param_newpath = "newpath";
+	const string signal_param_path = "path";
+	const string signal_param_oldpath = "oldpath";
+	const string signal_param_newpath = "newpath";
 
 	/**
 	 * run - changing this flag to false in hook handler will cancel event
 	 */
-	const signal_param_run = "run";
+	const string signal_param_run = "run";
 
-	const signal_create_mount = "create_mount";
-	const signal_delete_mount = "delete_mount";
-	const signal_param_mount_type = "mounttype";
-	const signal_param_users = "users";
+	const string signal_create_mount = "create_mount";
+	const string signal_delete_mount = "delete_mount";
+	const string signal_param_mount_type = "mounttype";
+	const string signal_param_users = "users";
 
 	/**
 	 * @var .OC.Files.Storage.StorageFactory loader
 	 */
-	private static loader;
+	private static OC.Files.Storage.StorageFactory loader;
 
 	/** @var bool */
-	private static logWarningWhenAddingStorageWrapper = true;
+	private static bool _logWarningWhenAddingStorageWrapper = true;
 
 	/**
 	 * @param bool shouldLog
 	 * @return bool previous value
 	 * @internal
 	 */
-	public static function logWarningWhenAddingStorageWrapper(shouldLog) {
-		previousValue = self::logWarningWhenAddingStorageWrapper;
-		self::logWarningWhenAddingStorageWrapper = (bool) shouldLog;
+	public static bool logWarningWhenAddingStorageWrapper(bool shouldLog) {
+		var previousValue = _logWarningWhenAddingStorageWrapper;
+		_logWarningWhenAddingStorageWrapper = (bool) shouldLog;
 		return previousValue;
 	}
 
@@ -182,16 +191,16 @@ class Filesystem {
 	 * @param callable wrapper
 	 * @param int priority
 	 */
-	public static function addStorageWrapper(wrapperName, wrapper, priority = 50) {
-		if (self::logWarningWhenAddingStorageWrapper) {
-			.OC::server.getLogger().warning("Storage wrapper "{wrapper}" was not registered via the "OC_Filesystem - preSetup" hook which could cause potential problems.", [
+	public static void addStorageWrapper(string wrapperName, Action<object> wrapper, int priority = 50) {
+		if (_logWarningWhenAddingStorageWrapper) {
+			OC.server.getLogger().warning("Storage wrapper "{wrapper}" was not registered via the "OC_Filesystem - preSetup" hook which could cause potential problems.", [
 				"wrapper" => wrapperName,
 				"app" => "filesystem",
 			]);
 		}
 
-		mounts = self::getMountManager().getAll();
-		if (!self::getLoader().addStorageWrapper(wrapperName, wrapper, priority, mounts)) {
+		mounts = getMountManager().getAll();
+		if (!getLoader().addStorageWrapper(wrapperName, wrapper, priority, mounts)) {
 			// do not re-wrap if storage with this name already existed
 			return;
 		}
@@ -202,11 +211,11 @@ class Filesystem {
 	 *
 	 * @return IStorageFactory
 	 */
-	public static function getLoader() {
-		if (!self::loader) {
-			self::loader = .OC::server.query(IStorageFactory::class);
+	public static OC.Files.Storage.StorageFactory getLoader() {
+		if (loader == null) {
+			loader = OC.server.query(IStorageFactory::class);
 		}
-		return self::loader;
+		return loader;
 	}
 
 	/**
@@ -214,11 +223,11 @@ class Filesystem {
 	 *
 	 * @return .OC.Files.Mount.Manager
 	 */
-	public static function getMountManager(user = "") {
-		if (!self::mounts) {
-			.OC_Util::setupFS(user);
+	public static OC.Files.Mount.Manager getMountManager(string user = "") {
+		if (mounts == null) {
+			OC_Util.setupFS(user);
 		}
-		return self::mounts;
+		return mounts;
 	}
 
 	/**
@@ -230,12 +239,12 @@ class Filesystem {
 	 * @param string path
 	 * @return string
 	 */
-	static public function getMountPoint(path) {
-		if (!self::mounts) {
-			.OC_Util::setupFS();
+	static public string getMountPoint(string path) {
+		if (mounts == null) {
+			OC_Util.setupFS();
 		}
-		mount = self::mounts.find(path);
-		if (mount) {
+		var mount = mounts.find(path);
+		if (mount != null) {
 			return mount.getMountPoint();
 		} else {
 			return "";
@@ -248,14 +257,14 @@ class Filesystem {
 	 * @param string path
 	 * @return string[]
 	 */
-	static public function getMountPoints(path) {
-		if (!self::mounts) {
-			.OC_Util::setupFS();
+	static public IList<string> getMountPoints(string path) {
+		if (mounts == null) {
+			OC_Util.setupFS();
 		}
-		result = array();
-		mounts = self::mounts.findIn(path);
-		foreach (mounts as mount) {
-			result[] = mount.getMountPoint();
+		var result = new List<string>();
+		var mountsP = mounts.findIn(path);
+		foreach (var mount in mountsP) {
+			result.Add(mount.getMountPoint());
 		}
 		return result;
 	}
@@ -266,11 +275,11 @@ class Filesystem {
 	 * @param string mountPoint
 	 * @return .OC.Files.Storage.Storage
 	 */
-	public static function getStorage(mountPoint) {
-		if (!self::mounts) {
-			.OC_Util::setupFS();
+	public static OC.Files.Storage.Storage getStorage(string mountPoint) {
+		if (mounts == null) {
+			OC_Util.setupFS();
 		}
-		mount = self::mounts.find(mountPoint);
+		var mount = mounts.find(mountPoint);
 		return mount.getStorage();
 	}
 
@@ -278,22 +287,22 @@ class Filesystem {
 	 * @param string id
 	 * @return Mount.MountPoint[]
 	 */
-	public static function getMountByStorageId(id) {
-		if (!self::mounts) {
-			.OC_Util::setupFS();
+	public static IList<OCP.Files.Mount.IMountPoint> getMountByStorageId(string id) {
+		if (mounts == null) {
+			OC_Util.setupFS();
 		}
-		return self::mounts.findByStorageId(id);
+		return mounts.findByStorageId(id);
 	}
 
 	/**
 	 * @param int id
 	 * @return Mount.MountPoint[]
 	 */
-	public static function getMountByNumericId(id) {
-		if (!self::mounts) {
-			.OC_Util::setupFS();
+	public static IList<OCP.Files.Mount.IMountPoint> getMountByNumericId(int id) {
+		if (mounts == null) {
+			OC_Util.setupFS();
 		}
-		return self::mounts.findByNumericId(id);
+		return mounts.findByNumericId(id);
 	}
 
 	/**
@@ -303,8 +312,8 @@ class Filesystem {
 	 * @return array an array consisting of the storage and the internal path
 	 */
 	static public function resolvePath(path) {
-		if (!self::mounts) {
-			.OC_Util::setupFS();
+		if (mounts == null) {
+			OC_Util.setupFS();
 		}
 		mount = self::mounts.find(path);
 		if (mount) {
@@ -314,28 +323,28 @@ class Filesystem {
 		}
 	}
 
-	static public function init(user, root) {
-		if (self::defaultInstance) {
+	static public bool init(string user, string root) {
+		if (defaultInstance != null) {
 			return false;
 		}
-		self::getLoader();
-		self::defaultInstance = new View(root);
+		getLoader();
+		defaultInstance = new View(root);
 
-		if (!self::mounts) {
-			self::mounts = .OC::server.getMountManager();
+		if (mounts == null) {
+			mounts = OC.server.getMountManager();
 		}
 
 		//load custom mount config
-		self::initMountPoints(user);
+		initMountPoints(user);
 
-		self::loaded = true;
+		loaded = true;
 
 		return true;
 	}
 
-	static public function initMountManager() {
-		if (!self::mounts) {
-			self::mounts = .OC::server.getMountManager();
+	static public void initMountManager() {
+		if (mounts == null) {
+			mounts = OC.server.getMountManager();
 		}
 	}
 
@@ -345,11 +354,11 @@ class Filesystem {
 	 * @param string user
 	 * @throws .OC.User.NoUserException if the user is not available
 	 */
-	public static function initMountPoints(user = "") {
+	public static void initMountPoints(string user = "") {
 		if (user == "") {
-			user = .OC_User::getUser();
+			user = OC_User.getUser();
 		}
-		if (user === null || user === false || user === "") {
+		if (user == null || user == false || user == "") {
 			throw new .OC.User.NoUserException("Attempted to initialize mount points for null user and no user in session");
 		}
 
@@ -486,8 +495,8 @@ class Filesystem {
 	 * @param string mountpoint
 	 */
 	static public function mount(class, arguments, mountpoint) {
-		if (!self::mounts) {
-			.OC_Util::setupFS();
+		if (mounts != null) {
+			OC_Util.setupFS();
 		}
 		mount = new Mount.MountPoint(class, mountpoint, arguments, self::getLoader());
 		self::mounts.addMount(mount);

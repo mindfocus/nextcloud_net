@@ -1,3 +1,4 @@
+using System;
 using System.Text;
 
 namespace ext
@@ -6,7 +7,7 @@ namespace ext
     {
         public static bool IsEmpty(this string input)
         {
-            return input == "";
+            return input == String.Empty;
         }
         public static bool IsNotEmpty(this string input)
         {

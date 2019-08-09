@@ -111,7 +111,7 @@ namespace OC.legacy
 	 * @suppress PhanDeprecatedFunction
 	 * @suppress PhanAccessMethodInternal
 	 */
-	public static function setupFS($user = '') {
+	public static bool setupFS(string user = "") {
 		//setting up the filesystem twice can only lead to trouble
 		if (self::$fsSetup) {
 			return false;

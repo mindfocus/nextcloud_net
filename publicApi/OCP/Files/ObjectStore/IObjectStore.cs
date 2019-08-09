@@ -1,3 +1,5 @@
+using System.IO;
+
 namespace OCP.Files.ObjectStore
 {
     /**
@@ -21,7 +23,7 @@ public interface IObjectStore {
 	 * @throws NotFoundException if file does not exist
 	 * @since 7.0.0
 	 */
-	int readObject(string urn);
+	Stream readObject(string urn);
 
 	/**
 	 * @param string urn the unified resource name used to identify the object
@@ -29,7 +31,7 @@ public interface IObjectStore {
 	 * @throws \Exception when something goes wrong, message will be logged
 	 * @since 7.0.0
 	 */
-	void writeObject(string urn, int stream);
+	void writeObject(string urn, Stream stream);
 
 	/**
 	 * @param string urn the unified resource name used to identify the object

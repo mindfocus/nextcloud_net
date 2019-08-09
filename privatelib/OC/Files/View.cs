@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using ext;
 using OCP.Files;
+using File = System.IO.File;
 
 namespace OC.Files
 {
@@ -48,35 +49,37 @@ namespace OC.Files
 	 */
 	public View(string root = "")
         {
-            if (is_null(root))
-            {
-                throw new \InvalidArgumentException('Root can\'t be null');
-            }
-            if (!Filesystem::isValidPath(root))
-            {
-                throw new \Exception();
-            }
+	        if (root == null)
+	        {
+		        throw new ArgumentNullException("Root can\'t be null");
+	        }
+
+	        if (!File.Exists(root))
+	        {
+		        throw new Exception();
+	        }
 
 		this.fakeRoot = root;
-		this.lockingProvider = \OC::server.getLockingProvider();
-		this.lockingEnabled = !(this.lockingProvider instanceof \OC\Lock\NoopLockingProvider);
-		this.userManager = \OC::server.getUserManager();
-		this.logger = \OC::server.getLogger();
+		this.lockingProvider = OC.server.getLockingProvider();
+		this.lockingEnabled = !(this.lockingProvider is OC.Lock.NoopLockingProvider);
+		this.userManager = OC::server.getUserManager();
+		this.logger = OC::server.getLogger();
         }
 
-        public function getAbsolutePath(path = '/')
+        public string getAbsolutePath(string path = "/")
         {
-            if (path === null) {
-                return null;
+            if (path.IsEmpty())
+            {
+	            return null;
             }
-		this.assertPathLength(path);
-            if (path === '') {
-			path = '/';
+			this.assertPathLength(path);
+            if (path == "") {
+			path = "/";
             }
-            if (path[0] !== '/') {
-			path = '/'. path;
+            if (path[0] != '/') {
+				path = "/" +  path;
             }
-            return this.fakeRoot. path;
+            return this.fakeRoot + path;
         }
 
         /**
@@ -85,11 +88,11 @@ namespace OC.Files
          * @param string fakeRoot
          * @return boolean|null
          */
-        public bool chroot(string fakeRoot)
+        public void chroot(string fakeRoot)
         {
-            if (!fakeRoot == "") {
+            if (fakeRoot.IsNotEmpty()) {
                 if (fakeRoot[0] != '/') {
-				fakeRoot = '/' + fakeRoot;
+				fakeRoot = "/" + fakeRoot;
                 }
             }
             this.fakeRoot = fakeRoot;
@@ -118,24 +121,26 @@ namespace OC.Files
                 return path;
             }
 
-            if (rtrim(path, '/') === rtrim(this.fakeRoot, '/'))
+            if (path.TrimEnd('/') == this.fakeRoot.TrimEnd('/'))
             {
-                return '/';
+                return "/";
             }
 
 		// missing slashes can cause wrong matches!
-		root = rtrim(this.fakeRoot, '/'). '/';
+			var root = this.fakeRoot.TrimEnd('/') + "/";
 
-            if (strpos(path, root) !== 0)
+//			if (strpos($path, $root) !== 0) {
+
+            if (path.IndexOf(root) != 0)
             {
                 return null;
             }
             else
             {
-			path = substr(path, strlen(this.fakeRoot));
-                if (strlen(path) === 0)
+	            path = path.Substring(this.fakeRoot.Length);
+                if (path.Length == 0)
                 {
-                    return '/';
+                    return "/";
                 }
                 else
                 {
@@ -153,7 +158,7 @@ namespace OC.Files
          * @param string path
          * @return string
          */
-        public function getMountPoint(path)
+        public string getMountPoint(string path)
         {
             return Filesystem::getMountPoint(this.getAbsolutePath(path));
         }
@@ -1714,13 +1719,14 @@ namespace OC.Files
 	 * @param string path
 	 * @throws InvalidPathException
 	 */
-	private function assertPathLength(path) {
-		maxLen = min(PHP_MAXPATHLEN, 4000);
+	private void assertPathLength(string path)
+	{
+		var maxLen = 260; // min(MAX_PATH, 4000);
 		// Check for the string length - performed using isset() instead of strlen()
 		// because isset() is about 5x-40x faster.
-		if (isset(path[maxLen])) {
-			pathLen = strlen(path);
-			throw new \OCP\Files\InvalidPathException("Path length(pathLen) exceeds max path length(maxLen): path");
+		if (path.Length > maxLen ) {
+			var pathLen = path.Length;
+			throw new Exception($"Path length({pathLen}) exceeds max path length({maxLen}): path");
 		}
 	}
 
