@@ -1,33 +1,36 @@
+using System.Collections.Generic;
 using ext;
 using OC.Hooks;
+using OC.User;
 using OCP;
+using OCP.Group;
 using OCP.Group.Backend;
 using OCP.Sym;
 
 namespace OC.Group
 {
 
-class Group : IGroup {
+public class Group : IGroup {
 	/** @var null|string  */
-	protected displayName;
+	protected string displayName;
 
 	/** @var string */
-	private gid;
+	private string gid;
 
 	/** @var \OC\User\User[] */
-	private users = array();
+	private IDictionary<string, OC.User.User> users = new Dictionary<string, User.User>();
 
 	/** @var bool */
-	private usersLoaded;
+	private bool usersLoaded;
 
 	/** @var Backend[] */
-	private backends;
+	private IList<GroupInterface> backends;
 	/** @var EventDispatcherInterface */
-	private dispatcher;
+	private EventDispatcherInterface dispatcher;
 	/** @var \OC\User\Manager|IUserManager  */
-	private userManager;
+	private IUserManager userManager;
 	/** @var PublicEmitter */
-	private emitter;
+	private PublicEmitter emitter;
 
 
 	/**
@@ -38,7 +41,7 @@ class Group : IGroup {
 	 * @param PublicEmitter emitter
 	 * @param string displayName
 	 */
-	public Group(string gid, array backends, EventDispatcherInterface dispatcher, IUserManager userManager, PublicEmitter emitter = null, ?string displayName = null) {
+	public Group(string gid, IList<GroupInterface> backends, EventDispatcherInterface dispatcher, IUserManager userManager, PublicEmitter emitter = null, string displayName = null) {
 		this.gid = gid;
 		this.backends = backends;
 		this.dispatcher = dispatcher;
@@ -47,17 +50,17 @@ class Group : IGroup {
 		this.displayName = displayName;
 	}
 
-	public function getGID() {
+	public string getGID() {
 		return this.gid;
 	}
 
-	public function getDisplayName() {
-		if (is_null(this.displayName)) {
-			foreach (this.backends as backend) {
-				if (backend instanceof IGetDisplayNameBackend) {
-					displayName = backend.getDisplayName(this.gid);
-					if (trim(displayName) !== '') {
-						this.displayName = displayName;
+	public string getDisplayName() {
+		if (this.displayName == null) {
+			foreach (var backend in this.backends) {
+				if (backend is IGetDisplayNameBackend displayNameBackend) {
+					var displayNameTemp = displayNameBackend.getDisplayName(this.gid);
+					if (displayNameTemp.Trim().IsNotEmpty()) {
+						this.displayName = displayNameTemp;
 						return this.displayName;
 					}
 				}
@@ -72,13 +75,13 @@ class Group : IGroup {
 	 *
 	 * @return \OC\User\User[]
 	 */
-	public function getUsers() {
+	public IList<IUser> getUsers() {
 		if (this.usersLoaded) {
 			return this.users;
 		}
 
-		userIds = array();
-		foreach (this.backends as backend) {
+		var userIds = new List<string>();
+		foreach (var backend in this.backends) {
 			diff = array_diff(
 				backend.usersInGroup(this.gid),
 				userIds
@@ -99,13 +102,13 @@ class Group : IGroup {
 	 * @param IUser user
 	 * @return bool
 	 */
-	public function inGroup(IUser user) {
-		if (isset(this.users[user.getUID()])) {
+	public bool inGroup(IUser user) {
+		if (this.users.ContainsKey(user.getUID())) {
 			return true;
 		}
-		foreach (this.backends as backend) {
+		foreach (var backend in this.backends) {
 			if (backend.inGroup(user.getUID(), this.gid)) {
-				this.users[user.getUID()] = user;
+				this.users[user.getUID()] = (User.User)user;
 				return true;
 			}
 		}
@@ -117,9 +120,9 @@ class Group : IGroup {
 	 *
 	 * @param IUser user
 	 */
-	public function addUser(IUser user) {
+	public bool addUser(IUser user) {
 		if (this.inGroup(user)) {
-			return;
+			return true;
 		}
 
 		this.dispatcher.dispatch(IGroup::class . '::preAddUser', new GenericEvent(this, [
@@ -153,8 +156,8 @@ class Group : IGroup {
 	 *
 	 * @param \OC\User\User user
 	 */
-	public function removeUser(user) {
-		result = false;
+	public bool removeUser(IUser user) {
+		var result = false;
 		this.dispatcher.dispatch(IGroup::class . '::preRemoveUser', new GenericEvent(this, [
 			'user' => user,
 		]));
@@ -193,14 +196,11 @@ class Group : IGroup {
 	 * @param int offset
 	 * @return \OC\User\User[]
 	 */
-	public function searchUsers(search, limit = null, offset = null) {
-		users = array();
-		foreach (this.backends as backend) {
-			userIds = backend.usersInGroup(this.gid, search, limit, offset);
-			users += this.getVerifiedUsers(userIds);
-			if (!is_null(limit) and limit <= 0) {
-				return users;
-			}
+	public IList<User.User> searchUsers(string search, int limit = -1, int offset = -1) {
+		var users = new List<User.User>();
+		foreach (var backend in this.backends) {
+			var userIds = backend.usersInGroup(this.gid, search, limit, offset);
+			users.AddRange(this.getVerifiedUsers(userIds));
 		}
 		return users;
 	}
@@ -211,19 +211,21 @@ class Group : IGroup {
 	 * @param string search
 	 * @return int|bool
 	 */
-	public function count(search = '') {
-		users = false;
-		foreach (this.backends as backend) {
-			if(backend.implementsActions(\OC\Group\Backend::COUNT_USERS)) {
-				if(users === false) {
+	public int count(string search = "") {
+		var usersCount = 0;
+		var countAlready = false;
+		foreach (var backend in this.backends) {
+			if(backend is ICountUsersBackend countUsersBackend) {
+				if(countAlready == false) {
 					//we could directly add to a bool variable, but this would
 					//be ugly
-					users = 0;
+					usersCount = 0;
+					countAlready = true;
 				}
-				users += backend.countUsersInGroup(this.gid, search);
+				usersCount += countUsersBackend.countUsersInGroup(this.gid);
 			}
 		}
-		return users;
+		return usersCount;
 	}
 
 	/**
@@ -231,19 +233,21 @@ class Group : IGroup {
 	 *
 	 * @return int|bool
 	 */
-	public function countDisabled() {
-		users = false;
-		foreach (this.backends as backend) {
-			if(backend instanceOf ICountDisabledInGroup) {
-				if(users === false) {
+	public int countDisabled() {
+		var usersCount = 0;
+		var countAlready = false;
+		foreach (var backend in this.backends) {
+			if(backend is ICountDisabledInGroup countDisabledInGroup) {
+				if(countAlready == false) {
 					//we could directly add to a bool variable, but this would
 					//be ugly
-					users = 0;
+					usersCount = 0;
+					countAlready = true;
 				}
-				users += backend.countDisabledInGroup(this.gid);
+				usersCount += countDisabledInGroup.countDisabledInGroup(this.gid);
 			}
 		}
-		return users;
+		return usersCount;
 	}
 
 	/**
@@ -254,16 +258,13 @@ class Group : IGroup {
 	 * @param int offset
 	 * @return \OC\User\User[]
 	 */
-	public function searchDisplayName(search, limit = null, offset = null) {
-		users = array();
-		foreach (this.backends as backend) {
-			userIds = backend.usersInGroup(this.gid, search, limit, offset);
-			users = this.getVerifiedUsers(userIds);
-			if (!is_null(limit) and limit <= 0) {
-				return array_values(users);
-			}
+	public IList<User.User> searchDisplayName(string search, int limit = -1, int offset = -1) {
+		var users = new List<User.User>();
+		foreach (var backend in this.backends) {
+			var userIds = backend.usersInGroup(this.gid, search, limit, offset);
+			users.AddRange(this.getVerifiedUsers(userIds));
 		}
-		return array_values(users);
+		return users;
 	}
 
 	/**
@@ -271,21 +272,21 @@ class Group : IGroup {
 	 *
 	 * @return bool
 	 */
-	public function delete() {
+	public bool delete() {
 		// Prevent users from deleting group admin
-		if (this.getGID() === 'admin') {
+		if (this.getGID() == "admin") {
 			return false;
 		}
 
-		result = false;
+		var result = false;
 		this.dispatcher.dispatch(IGroup::class . '::preDelete', new GenericEvent(this));
 		if (this.emitter) {
 			this.emitter.emit('\OC\Group', 'preDelete', array(this));
 		}
-		foreach (this.backends as backend) {
+		foreach (var backend in this.backends) {
 			if (backend.implementsActions(\OC\Group\Backend::DELETE_GROUP)) {
 				result = true;
-				backend.deleteGroup(this.gid);
+				((IDeleteGroupBackend)backend).deleteGroup(this.gid);
 			}
 		}
 		if (result) {
@@ -302,15 +303,14 @@ class Group : IGroup {
 	 * @param string[] userIds an array containing user IDs
 	 * @return \OC\User\User[] an Array with the userId as Key and \OC\User\User as value
 	 */
-	private function getVerifiedUsers(userIds) {
-		if (!is_array(userIds)) {
-			return array();
-		}
-		users = array();
-		foreach (userIds as userId) {
-			user = this.userManager.get(userId);
-			if (!is_null(user)) {
-				users[userId] = user;
+	private IList<OC.User.User> getVerifiedUsers(IList<string> userIds) {
+		var users = new List<User.User>();
+		foreach (var userId in userIds)
+		{
+			var user = this.userManager.get(userId);
+			if (user!= null)
+			{
+				users.Add((User.User)user);
 			}
 		}
 		return users;
@@ -320,8 +320,8 @@ class Group : IGroup {
 	 * @return bool
 	 * @since 14.0.0
 	 */
-	public function canRemoveUser() {
-		foreach (this.backends as backend) {
+	public bool canRemoveUser() {
+		foreach (var backend in this.backends) {
 			if (backend.implementsActions(GroupInterface::REMOVE_FROM_GOUP)) {
 				return true;
 			}
@@ -333,8 +333,8 @@ class Group : IGroup {
 	 * @return bool
 	 * @since 14.0.0
 	 */
-	public function canAddUser() {
-		foreach (this.backends as backend) {
+	public bool canAddUser() {
+		foreach (var backend in this.backends) {
 			if (backend.implementsActions(GroupInterface::ADD_TO_GROUP)) {
 				return true;
 			}
@@ -346,10 +346,16 @@ class Group : IGroup {
 	 * @return bool
 	 * @since 16.0.0
 	 */
-	public function hideFromCollaboration(): bool {
-		return array_reduce(this.backends, function(bool hide, GroupInterface backend) {
-			return hide | (backend instanceof IHideFromCollaborationBackend && backend.hideGroup(this.gid));
-		}, false);
+	public bool hideFromCollaboration(){
+		foreach (var groupInterface in this.backends)
+		{
+			if (groupInterface is IHideFromCollaborationBackend hideFromCollaborationBackend && hideFromCollaborationBackend.hideGroup(this.gid))
+			{
+				return true;
+			}
+		}
+
+		return false;
 	}
 }
 

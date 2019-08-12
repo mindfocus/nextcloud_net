@@ -23,7 +23,7 @@ namespace OCP.L10N
  *
  * @since 14.0.0
  */
-interface ILanguageIterator : Iterator {
+public interface ILanguageIterator : Iterator {
 
 	/**
 	 * Return the current element

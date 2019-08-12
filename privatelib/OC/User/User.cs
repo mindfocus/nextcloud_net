@@ -5,7 +5,7 @@ using System.Text;
 
 namespace OC.User
 {
-    class User : OCP.IUser
+    public class User : OCP.IUser
     {
     /** @var string */
     private string uid;
@@ -14,7 +14,7 @@ namespace OC.User
 	private string displayName;
 
 	/** @var UserInterface|null */
-	private OCP.UserInterface? backend;
+	private OCP.UserInterface backend;
 	/** @var EventDispatcherInterface */
 	private ext.Event dispatcher;
 

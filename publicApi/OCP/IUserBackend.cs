@@ -6,7 +6,7 @@ namespace OCP
      * @package OCP
      * @since 8.0.0
      */
-    interface IUserBackend
+    public interface IUserBackend
     {
 
         /**

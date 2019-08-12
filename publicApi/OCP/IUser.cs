@@ -7,119 +7,135 @@ namespace OCP
     public interface IUser
     {
         /**
- * get the user id
- *
- * @return string
- * @since 8.0.0
- */
+        * get the user id
+        *
+        * @return string
+        * @since 8.0.0
+        */
         string getUID();
+
         /**
- * get the display name for the user, if no specific display name is set it will fallback to the user id
- *
- * @return string
- * @since 8.0.0
- */
+        * get the display name for the user, if no specific display name is set it will fallback to the user id
+        *
+        * @return string
+        * @since 8.0.0
+        */
         string getDisplayName();
+
         /**
- * set the display name for the user
- *
- * @param string displayName
- * @return bool
- * @since 8.0.0
- */
+        * set the display name for the user
+        *
+        * @param string displayName
+        * @return bool
+        * @since 8.0.0
+        */
         bool setDisplayName(string displayName);
+
         /**
- * returns the timestamp of the user's last login or 0 if the user did never
- * login
- *
- * @return int
- * @since 8.0.0
- */
+        * returns the timestamp of the user's last login or 0 if the user did never
+        * login
+        *
+        * @return int
+        * @since 8.0.0
+        */
         long getLastLogin();
+
         /**
- * updates the timestamp of the most recent login of this user
- * @since 8.0.0
- */
+        * updates the timestamp of the most recent login of this user
+        * @since 8.0.0
+        */
         bool updateLastLoginTimestamp();
+
         /**
- * Delete the user
- *
- * @return bool
- * @since 8.0.0
- */
+        * Delete the user
+        *
+        * @return bool
+        * @since 8.0.0
+        */
         bool delete();
+
         /**
- * Set the password of the user
- *
- * @param string password
- * @param string recoveryPassword for the encryption app to reset encryption keys
- * @return bool
- * @since 8.0.0
- */
+        * Set the password of the user
+        *
+        * @param string password
+        * @param string recoveryPassword for the encryption app to reset encryption keys
+        * @return bool
+        * @since 8.0.0
+        */
         bool setPassword(string password, string recoveryPassword = null);
+
         /**
- * get the users home folder to mount
- *
- * @return string
- * @since 8.0.0
- */
+        * get the users home folder to mount
+        *
+        * @return string
+        * @since 8.0.0
+        */
         string getHome();
+
         /**
- * Get the name of the backend class the user is connected with
- *
- * @return string
- * @since 8.0.0
- */
+        * Get the name of the backend class the user is connected with
+        *
+        * @return string
+        * @since 8.0.0
+        */
         string getBackendClassName();
+
         /**
- * Get the backend for the current user object
- *
- * @return UserInterface
- * @since 15.0.0
- */
+        * Get the backend for the current user object
+        *
+        * @return UserInterface
+        * @since 15.0.0
+        */
         UserInterface getBackend();
+
         /**
- * check if the backend allows the user to change his avatar on Personal page
- *
- * @return bool
- * @since 8.0.0
- */
+        * check if the backend allows the user to change his avatar on Personal page
+        *
+        * @return bool
+        * @since 8.0.0
+        */
         bool canChangeAvatar();
+
         /**
- * check if the backend supports changing passwords
- *
- * @return bool
- * @since 8.0.0
- */
+        * check if the backend supports changing passwords
+        *
+        * @return bool
+        * @since 8.0.0
+        */
         bool canChangePassword();
+
         /**
- * check if the backend supports changing display names
- *
- * @return bool
- * @since 8.0.0
- */
+        * check if the backend supports changing display names
+        *
+        * @return bool
+        * @since 8.0.0
+        */
         bool canChangeDisplayName();
+
         /**
- * check if the user is enabled
- *
- * @return bool
- * @since 8.0.0
- */
+         * check if the user is enabled
+         *
+         * @return bool
+         * @since 8.0.0
+         */
         bool isEnabled();
+
         /**
- * set the enabled status for the user
- *
- * @param bool enabled
- * @since 8.0.0
- */
+         * set the enabled status for the user
+         *
+         * @param bool enabled
+         * @since 8.0.0
+         */
         void setEnabled(bool enabled = true);
+
         /**
- * get the users email address
- *
- * @return string|null
- * @since 9.0.0
- */
+         * get the users email address
+         *
+         * @return string|null
+         * @since 9.0.0
+         */
         string getEMailAddress();
+
         /**
  * get the avatar image if it exists
  *
@@ -128,6 +144,7 @@ namespace OCP
  * @since 9.0.0
  */
         IImage getAvatarImage(int size);
+
         /**
 	 * get the federation cloud id
 	 *

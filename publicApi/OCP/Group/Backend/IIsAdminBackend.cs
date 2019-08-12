@@ -4,7 +4,7 @@ namespace OCP.Group.Backend
     /**
      * @since 14.0.0
      */
-    interface IIsAdminBackend
+    interface IIsAdminBackend : IBackend
     {
 
         /**

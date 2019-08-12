@@ -38,7 +38,7 @@ namespace OCP
          * Returns the supported actions as int to be
          * compared with \OC_Group_Backend::CREATE_GROUP etc.
          */
-        //public function implementsActions(actions);
+        bool implementsActions(int actions);
 
         /**
          * is user in group?

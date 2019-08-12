@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using ext;
 using OC.Hooks;
 using OCP;
 using OCP.Sym;
@@ -84,7 +85,7 @@ public class Manager : PublicEmitter , IGroupManager {
 	 * @param string backendClass Full classname including complete namespace
 	 * @return bool
 	 */
-	public bool isBackendUsed(Type backendClass) {
+	public bool isBackendUsed(string backendClass) {
 		backendClass = strtolower(ltrim(backendClass, '\\'));
 
 		foreach (this.backends as backend) {
@@ -127,7 +128,7 @@ public class Manager : PublicEmitter , IGroupManager {
 	 * @param string gid
 	 * @return \OC\Group\Group
 	 */
-	public OC.Group.Group get(string gid) {
+	public OCP.IGroup get(string gid) {
 		if (isset(this.cachedGroups[gid])) {
 			return this.cachedGroups[gid];
 		}
@@ -139,7 +140,7 @@ public class Manager : PublicEmitter , IGroupManager {
 	 * @param string displayName
 	 * @return \OCP\IGroup
 	 */
-	protected function getGroupObject(gid, displayName = null) {
+	protected IGroup getGroupObject(string gid, string displayName = null) {
 		backends = [];
 		foreach (this.backends as backend) {
 			if (backend.implementsActions(\OC\Group\Backend::GROUP_DETAILS)) {
@@ -166,21 +167,28 @@ public class Manager : PublicEmitter , IGroupManager {
 	 * @param string gid
 	 * @return bool
 	 */
-	public function groupExists(gid) {
-		return this.get(gid) instanceof IGroup;
+	public bool groupExists(string gid) {
+		return this.get(gid) is IGroup;
 	}
 
 	/**
 	 * @param string gid
 	 * @return \OC\Group\Group
 	 */
-	public function createGroup(gid) {
-		if (gid === '' || gid === null) {
-			return false;
-		} else if (group = this.get(gid)) {
-			return group;
+	public IGroup createGroup(string gid) {
+		if (gid.IsEmpty()) {
+			return null;
+		} else if (this.get(gid) != null) {
+			return this.get(gid) ;
 		} else {
-			this.emit('\OC\Group', 'preCreate', array(gid));
+//			this.emit("\OC\Group", "preCreate", array(gid));
+			foreach (var backend in this.backends)
+			{
+				if (backend.)
+				{
+					
+				}
+			}
 			foreach (this.backends as backend) {
 				if (backend.implementsActions(\OC\Group\Backend::CREATE_GROUP)) {
 					backend.createGroup(gid);
@@ -199,7 +207,7 @@ public class Manager : PublicEmitter , IGroupManager {
 	 * @param int offset
 	 * @return \OC\Group\Group[]
 	 */
-	public function search(search, limit = null, offset = null) {
+	public IList<Group> search(string search, int limit = -1 , int offset = -1) {
 		groups = [];
 		foreach (this.backends as backend) {
 			groupIds = backend.getGroups(search, limit, offset);
@@ -222,7 +230,7 @@ public class Manager : PublicEmitter , IGroupManager {
 	 * @param IUser|null user
 	 * @return \OC\Group\Group[]
 	 */
-	public function getUserGroups(IUser user= null) {
+	public IList<IGroup> getUserGroups(IUser user= null) {
 		if (!user instanceof IUser) {
 			return [];
 		}
@@ -233,7 +241,7 @@ public class Manager : PublicEmitter , IGroupManager {
 	 * @param string uid the user id
 	 * @return \OC\Group\Group[]
 	 */
-	public function getUserIdGroups(uid) {
+	public IList<IGroup> getUserIdGroups(string uid) {
 		if (isset(this.cachedUserGroups[uid])) {
 			return this.cachedUserGroups[uid];
 		}
@@ -266,7 +274,7 @@ public class Manager : PublicEmitter , IGroupManager {
 				return true;
 			}
 		}
-		return this.isInGroup(userId, 'admin');
+		return this.isInGroup(userId, "admin");
 	}
 
 	/**
@@ -275,7 +283,7 @@ public class Manager : PublicEmitter , IGroupManager {
 	 * @param string group
 	 * @return bool if in group
 	 */
-	public function isInGroup(userId, group) {
+	public bool isInGroup(string userId, string group) {
 		return array_key_exists(group, this.getUserIdGroups(userId));
 	}
 
@@ -284,7 +292,7 @@ public class Manager : PublicEmitter , IGroupManager {
 	 * @param IUser user
 	 * @return array with group ids
 	 */
-	public function getUserGroupIds(IUser user) {
+	public IList<string> getUserGroupIds(IUser user) {
 		return array_map(function(value) {
 			return (string) value;
 		}, array_keys(this.getUserGroups(user)));
@@ -295,7 +303,7 @@ public class Manager : PublicEmitter , IGroupManager {
 	 * @param IUser user
 	 * @return array ['displayName' => displayname]
 	 */
-	public function getUserGroupNames(IUser user) {
+	public IDictionary<string,string> getUserGroupNames(IUser user) {
 		return array_map(function(group) {
 			return array('displayName' => group.getDisplayName());
 		}, this.getUserGroups(user));
@@ -309,7 +317,7 @@ public class Manager : PublicEmitter , IGroupManager {
 	 * @param int offset
 	 * @return array an array of display names (value) and user ids (key)
 	 */
-	public function displayNamesInGroup(gid, search = '', limit = -1, offset = 0) {
+	public IDictionary<string,string> displayNamesInGroup(string gid, string search = "", int limit = -1, int offset = 0) {
 		group = this.get(gid);
 		if(is_null(group)) {
 			return [];

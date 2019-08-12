@@ -6,7 +6,7 @@ namespace OCP.Group.Backend
      *
      * Allow the backend to mark groups to be excluded from being shown in search dialogs
      */
-    public interface IHideFromCollaborationBackend
+    public interface IHideFromCollaborationBackend : IBackend
     {
         /**
          * Check if a group should be hidden from search dialogs

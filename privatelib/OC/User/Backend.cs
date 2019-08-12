@@ -9,7 +9,7 @@ namespace OC.User
      * Abstract base class for user management. Provides methods for querying backend
      * capabilities.
      */
-    abstract class Backend : OCP.UserInterface
+    public abstract class Backend : OCP.UserInterface
     {
         /**
          * error code for functions not provided by the user backend
@@ -19,22 +19,24 @@ namespace OC.User
         /**
          * actions that user backends can define
          */
-        public static int CREATE_USER = 1;          // 1 << 0
-        public static int SET_PASSWORD = 16;            // 1 << 4
-        public static int CHECK_PASSWORD = 256;         // 1 << 8
-        public static int GET_HOME = 4096;          // 1 << 12
-        public static int GET_DISPLAYNAME = 65536;      // 1 << 16
-        public static int SET_DISPLAYNAME = 1048576;        // 1 << 20
-        public static int PROVIDE_AVATAR = 16777216;        // 1 << 24
-        public static int COUNT_USERS = 268435456;  // 1 << 28
+        public static int CREATE_USER = 1; // 1 << 0
+        public static int SET_PASSWORD = 16; // 1 << 4
+        public static int CHECK_PASSWORD = 256; // 1 << 8
+        public static int GET_HOME = 4096; // 1 << 12
+        public static int GET_DISPLAYNAME = 65536; // 1 << 16
+        public static int SET_DISPLAYNAME = 1048576; // 1 << 20
+        public static int PROVIDE_AVATAR = 16777216; // 1 << 24
+        public static int COUNT_USERS = 268435456; // 1 << 28
 
 
         protected IDictionary<int, string> possibleActions = new Dictionary<int, string>
-    {
-        {CREATE_USER, "createUser" },{SET_PASSWORD, "setPassword"},{CHECK_PASSWORD,"checkPassword" },{GET_HOME, "getHome"},
-        {GET_DISPLAYNAME,"getDisplayName" }, {SET_DISPLAYNAME,"setDisplayName"},{PROVIDE_AVATAR, "canChangeAvatar"},
-        {COUNT_USERS, "countUsers" }
-    };
+        {
+            {CREATE_USER, "createUser"}, {SET_PASSWORD, "setPassword"}, {CHECK_PASSWORD, "checkPassword"},
+            {GET_HOME, "getHome"},
+            {GET_DISPLAYNAME, "getDisplayName"}, {SET_DISPLAYNAME, "setDisplayName"},
+            {PROVIDE_AVATAR, "canChangeAvatar"},
+            {COUNT_USERS, "countUsers"}
+        };
 
         /**
         * Get all supported actions
@@ -141,6 +143,7 @@ namespace OC.User
             {
                 displayNames[user] = user;
             }
+
             return displayNames;
         }
 
@@ -153,5 +156,4 @@ namespace OC.User
             return false;
         }
     }
-
 }

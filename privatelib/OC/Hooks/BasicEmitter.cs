@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace OC.Hooks
@@ -10,23 +11,25 @@ namespace OC.Hooks
     /**
 	 * @var callable[][] listeners
 	 */
-    protected IList<IList<Action>> listeners;
+    protected IDictionary<string,IList<Action<IList<string>>>> listeners = new Dictionary<string, IList<Action<IList<string>>>>();
 
     /**
 	 * @param string scope
 	 * @param string method
 	 * @param callable callback
 	 */
-    public void listen(string scope, string method, Action callback)
+    public void listen(string scope, string method, Action<IList<string>> callback)
     {
-		var eventName = scope + "::" + method;
-        if (!isset(this.listeners[eventName]))
+		var eventName = scope + "." + method;
+
+		if (!this.listeners.ContainsKey(eventName))
         {
-			this.listeners[eventName] = array();
+	        this.listeners.Add(eventName, new List<Action<IList<string>>>());
         }
-        if (array_search(callback, this.listeners[eventName], true) === false)
+
+        if (!this.listeners[eventName].Contains(callback))
         {
-			this.listeners[eventName][] = callback;
+	        this.listeners[eventName].Add(callback);
         }
     }
 
@@ -35,46 +38,51 @@ namespace OC.Hooks
 	 * @param string method optional
 	 * @param callable callback optional
 	 */
-    public function removeListener(scope = null, method = null, callable callback = null)
+    public void removeListener(string scope = null, string method = null, Action<IList<string>> callback = null)
     {
-		names = array();
-		allNames = array_keys(this.listeners);
-        if (scope and method) {
-			name = scope. '::'. method;
-            if (isset(this.listeners[name]))
+		var names = new List<string>();
+		var allNames = this.listeners.Keys.ToList();
+        if (scope != null && method != null) {
+			var name = scope + "." + method;
+			if (this.listeners.ContainsKey(name))
+			{
+				names.Add(name);
+			}
+        }
+        else if(scope != null) {
+            foreach (var name in allNames)
             {
-				names[] = name;
-            }
-        }
-        elseif(scope) {
-            foreach (allNames as name) {
-				parts = explode('::', name, 2);
-                if (parts[0] == scope) {
-					names[] = name;
+	            var parts = name.Split(".".ToCharArray(), StringSplitOptions.RemoveEmptyEntries); // explode('::', name, 2);
+                if (parts[0] == scope)
+                {
+	                names.Add(name);
                 }
             }
         }
-        elseif(method) {
-            foreach (allNames as name) {
-				parts = explode('::', name, 2);
-                if (parts[1] == method) {
-					names[] = name;
-                }
+        else if(method != null) {
+            foreach (var name in allNames) {
+	            var parts = name.Split(".".ToCharArray(), StringSplitOptions.RemoveEmptyEntries); // explode('::', name, 2);
+	            if (parts[1] == method)
+	            {
+		            names.Add(name);
+	            }
             }
         } else
         {
 			names = allNames;
         }
 
-        foreach (names as name) {
-            if (callback) {
-				index = array_search(callback, this.listeners[name], true);
-                if (index !== false) {
-                    unset(this.listeners[name][index]);
+        foreach (var name in names) {
+            if (callback != null)
+            {
+	            var exist = this.listeners[name].Contains(callback);
+                if (exist)
+                {
+	                this.listeners[name].Remove(callback);
                 }
             } else
             {
-				this.listeners[name] = array();
+				this.listeners[name] = new List<Action<IList<string>>>();
             }
         }
     }
@@ -86,11 +94,13 @@ namespace OC.Hooks
 	 */
     protected void emit(string scope, string method, IList<string> arguments)
     {
-		eventName = scope. '::'. method;
-        if (isset(this.listeners[eventName]))
+		var eventName = scope + "." + method;
+        if (this.listeners.ContainsKey(eventName))
         {
-            foreach (this.listeners[eventName] as callback) {
-                call_user_func_array(callback, arguments);
+            foreach (var callback in this.listeners[eventName])
+            {
+	            callback(arguments);
+//                call_user_func_array(callback, arguments);
             }
         }
     }

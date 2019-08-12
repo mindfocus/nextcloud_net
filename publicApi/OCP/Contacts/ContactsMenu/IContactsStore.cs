@@ -8,7 +8,7 @@ namespace OCP.ContactsNs.ContactsMenu
     /**
      * @since 13.0.0
      */
-    interface IContactsStore
+    public interface IContactsStore
     {
 
 

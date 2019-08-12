@@ -4,7 +4,7 @@ namespace OCP.Group.Backend
     /**
      * @since 14.0.0
      */
-    public interface ICountUsersBackend
+    public interface ICountUsersBackend : IBackend
     {
 
         /**

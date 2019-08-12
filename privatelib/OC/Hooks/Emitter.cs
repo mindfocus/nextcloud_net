@@ -19,7 +19,7 @@ namespace OC.Hooks
          * @param callable callback
          * @return void
          */
-        void listen(string scope, string method, Action callback);
+        void listen(string scope, string method, Action<IList<string>> callback);
 
         /**
          * @param string scope optional
@@ -27,7 +27,7 @@ namespace OC.Hooks
          * @param callable callback optional
          * @return void
          */
-        void removeListener(string scope = null, string method = null, Action callback = null);
+        void removeListener(string scope = null, string method = null, Action<IList<string>> callback = null);
     }
 
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 
@@ -32,7 +33,7 @@ namespace OCP
          * @return \OCP\IUser[]
          * @since 8.0.0
          */
-        IUser[] getUsers();
+        IList<IUser> getUsers();
 
         /**
          * check if a user is in the group

@@ -5,7 +5,6 @@ using System.Text;
 
 namespace OCP.Sym
 {
-
     /**
      * The EventDispatcherInterface is the central point of Symfony's event listener system.
      * Listeners are registered on the manager and events are dispatched through the
@@ -32,17 +31,17 @@ namespace OCP.Sym
          */
         ext.Event dispatch(string eventName, ext.Event eventp = null);
 
-    /**
-     * Adds an event listener that listens on the specified events.
-     *
-     * @param string   eventName The event to listen on
-     * @param callable listener  The listener
-     * @param integer  priority  The higher this value, the earlier an event
-     *                            listener will be triggered in the chain (defaults to 0)
-     *
-     * @api
-     */
-    void addListener(string eventName, ext.Event listener, int priority = 0);
+        /**
+         * Adds an event listener that listens on the specified events.
+         *
+         * @param string   eventName The event to listen on
+         * @param callable listener  The listener
+         * @param integer  priority  The higher this value, the earlier an event
+         *                            listener will be triggered in the chain (defaults to 0)
+         *
+         * @api
+         */
+        void addListener(string eventName, ext.Event listener, int priority = 0);
 
         /**
          * Adds an event subscriber.
@@ -89,5 +88,4 @@ namespace OCP.Sym
          */
         bool hasListeners(string eventName = null);
     }
-
 }

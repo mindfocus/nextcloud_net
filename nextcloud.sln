@@ -35,8 +35,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "nextcloud-icewind-streams",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "nextcloud-icewind-searchdav", "nextcloud-icewind-searchdav\nextcloud-icewind-searchdav.msbuildproj", "{006E16DC-D418-4EC3-9729-5FCE34C31BC2}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "nextcloud-sabre", "nextcloud-sabre\nextcloud-sabre.msbuildproj", "{64C9C394-483A-453D-9BFD-92E25FC949D1}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "nextcloud-interfasys-lognormalizer", "nextcloud-interfasys-lognormalizer\nextcloud-interfasys-lognormalizer.msbuildproj", "{89607B39-6314-4D4C-B219-ABFCA7EF7330}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "nextcloud-jeremeamia-SuperClosure", "nextcloud-jeremeamia-SuperClosure\nextcloud-jeremeamia-SuperClosure.msbuildproj", "{5FFA64E7-7E5F-4DBB-B00F-4F080C60EE64}"
@@ -85,6 +83,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "privatelib", "privatelib\privatelib.csproj", "{5DCDDC40-2412-42C4-A191-A5B5DFEE49D6}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Utility", "Utility\Utility.csproj", "{07AD62C1-98E0-40DF-A08C-2DDA4E054DEE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "sabre.net", "sabre.net\sabre.net.csproj", "{DA8F4554-D5C7-43E9-89BC-8239E6A094DB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -148,10 +148,6 @@ Global
 		{006E16DC-D418-4EC3-9729-5FCE34C31BC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{006E16DC-D418-4EC3-9729-5FCE34C31BC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{006E16DC-D418-4EC3-9729-5FCE34C31BC2}.Release|Any CPU.Build.0 = Release|Any CPU
-		{64C9C394-483A-453D-9BFD-92E25FC949D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{64C9C394-483A-453D-9BFD-92E25FC949D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{64C9C394-483A-453D-9BFD-92E25FC949D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{64C9C394-483A-453D-9BFD-92E25FC949D1}.Release|Any CPU.Build.0 = Release|Any CPU
 		{89607B39-6314-4D4C-B219-ABFCA7EF7330}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{89607B39-6314-4D4C-B219-ABFCA7EF7330}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{89607B39-6314-4D4C-B219-ABFCA7EF7330}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -240,6 +236,10 @@ Global
 		{07AD62C1-98E0-40DF-A08C-2DDA4E054DEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{07AD62C1-98E0-40DF-A08C-2DDA4E054DEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{07AD62C1-98E0-40DF-A08C-2DDA4E054DEE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA8F4554-D5C7-43E9-89BC-8239E6A094DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA8F4554-D5C7-43E9-89BC-8239E6A094DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA8F4554-D5C7-43E9-89BC-8239E6A094DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA8F4554-D5C7-43E9-89BC-8239E6A094DB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -260,7 +260,6 @@ Global
 		{4736E5D0-44B5-4DE2-B708-6090D5C93440} = {3AC695DD-9447-4BC9-AF2C-C0A113C4B190}
 		{DD2E57DD-2A9E-4952-98ED-83EA020A6DD1} = {FADA6A78-A04F-4EA9-9BF0-EFF989E4C10F}
 		{006E16DC-D418-4EC3-9729-5FCE34C31BC2} = {FADA6A78-A04F-4EA9-9BF0-EFF989E4C10F}
-		{64C9C394-483A-453D-9BFD-92E25FC949D1} = {FADA6A78-A04F-4EA9-9BF0-EFF989E4C10F}
 		{89607B39-6314-4D4C-B219-ABFCA7EF7330} = {FADA6A78-A04F-4EA9-9BF0-EFF989E4C10F}
 		{5FFA64E7-7E5F-4DBB-B00F-4F080C60EE64} = {FADA6A78-A04F-4EA9-9BF0-EFF989E4C10F}
 		{CA03C906-0C53-4C7B-B758-DF47240F612C} = {FADA6A78-A04F-4EA9-9BF0-EFF989E4C10F}

@@ -77,7 +77,7 @@ namespace OCP
          * @return \OCP\IGroup[]
          * @since 8.0.0
          */
-        IList<IGroup> search(string search, int? limit = null, int? offset = null);
+        IList<IGroup> search(string search, int limit = -1, int offset = 0);
 
         /**
          * @param \OCP\IUser|null user

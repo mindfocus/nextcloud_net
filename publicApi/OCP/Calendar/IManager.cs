@@ -50,7 +50,7 @@ namespace OCP.Calendar
          * @return array an array of events/journals/todos which are arrays of arrays of key-value-pairs
          * @since 13.0.0
          */
-        IDictionary<string,object> search(string pattern, IList<string> searchProperties, IDictionary<string,object> options, int? limit= null, int? offset= null);
+        IDictionary<string,object> search(string pattern, IList<string> searchProperties, IDictionary<string,object> options, int limit= -1, int offset= 0);
 
         /**
          * Check if calendars are available

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace OCP.ContactsNs.ContactsMenu
 {
-    interface IEntry : ISerializable
+    public interface IEntry : ISerializable
     {
         /**
  * @since 12.0
