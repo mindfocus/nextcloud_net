@@ -6,6 +6,7 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\peachpie-sabre\peachpie-sabre.msbuildproj" />
       <ProjectReference Include="..\publicApi\publicApi.csproj" />
       <ProjectReference Include="..\twofactor_backupcodes\twofactor_backupcodes.csproj" />
     </ItemGroup>
