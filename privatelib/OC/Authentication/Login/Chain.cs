@@ -3,13 +3,13 @@ namespace OC.Authentication.Login
     public class Chain
     {
         /** @var PreLoginHookCommand */
-	private preLoginHookCommand;
+	private PreLoginHookCommand preLoginHookCommand;
 
 	/** @var UserDisabledCheckCommand */
 	private userDisabledCheckCommand;
 
 	/** @var UidLoginCommand */
-	private uidLoginCommand;
+	private UidLoginCommand uidLoginCommand;
 
 	/** @var EmailLoginCommand */
 	private emailLoginCommand;
@@ -38,7 +38,7 @@ namespace OC.Authentication.Login
 	/** @var FinishRememberedLoginCommand */
 	private finishRememberedLoginCommand;
 
-	public function __construct(PreLoginHookCommand preLoginHookCommand,
+	public Chain (PreLoginHookCommand preLoginHookCommand,
 								UserDisabledCheckCommand userDisabledCheckCommand,
 								UidLoginCommand uidLoginCommand,
 								EmailLoginCommand emailLoginCommand,
@@ -66,7 +66,7 @@ namespace OC.Authentication.Login
 	}
 
 	public LoginResult process(LoginData loginData) {
-		chain = this.preLoginHookCommand;
+		var chain = this.preLoginHookCommand;
 		chain
 			.setNext(this.userDisabledCheckCommand)
 			.setNext(this.uidLoginCommand)
@@ -81,7 +81,6 @@ namespace OC.Authentication.Login
 			.setNext(this.finishRememberedLoginCommand);
 
 		return chain.process(loginData);
-	}
-
+		}
     }
 }
