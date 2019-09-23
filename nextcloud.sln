@@ -7,8 +7,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "nextcloud-3rdparty", "nextc
 EndProject
 Project("{13B669BE-BB05-4DDF-9536-439F39A36129}") = "nextcloud-nikic-php-parser", "nextcloud-nikic-php-parser\nextcloud-nikic-php-parser.msbuildproj", "{7C644FE9-BE92-48C1-9F1D-947C61D879D8}"
 EndProject
-Project("{13B669BE-BB05-4DDF-9536-439F39A36129}") = "nextcloud-deepdiver-zipstreamer", "nextcloud-deepdiver-zipstreamer\nextcloud-deepdiver-zipstreamer.msbuildproj", "{A1434130-79E8-4999-B27D-A209293C1FC1}"
-EndProject
 Project("{13B669BE-BB05-4DDF-9536-439F39A36129}") = "nextcloud-deepdiver1975-tarstreamer", "nextcloud-deepdiver1975-tarstreamer\nextcloud-deepdiver1975-tarstreamer.msbuildproj", "{6C8956B4-6493-40F2-A4F2-0F80615D8D85}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "guzzlehttp", "guzzlehttp", "{3AC695DD-9447-4BC9-AF2C-C0A113C4B190}"
@@ -96,10 +94,6 @@ Global
 		{7C644FE9-BE92-48C1-9F1D-947C61D879D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7C644FE9-BE92-48C1-9F1D-947C61D879D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7C644FE9-BE92-48C1-9F1D-947C61D879D8}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A1434130-79E8-4999-B27D-A209293C1FC1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A1434130-79E8-4999-B27D-A209293C1FC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A1434130-79E8-4999-B27D-A209293C1FC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A1434130-79E8-4999-B27D-A209293C1FC1}.Release|Any CPU.Build.0 = Release|Any CPU
 		{6C8956B4-6493-40F2-A4F2-0F80615D8D85}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{6C8956B4-6493-40F2-A4F2-0F80615D8D85}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6C8956B4-6493-40F2-A4F2-0F80615D8D85}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -246,7 +240,6 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{7C644FE9-BE92-48C1-9F1D-947C61D879D8} = {FADA6A78-A04F-4EA9-9BF0-EFF989E4C10F}
-		{A1434130-79E8-4999-B27D-A209293C1FC1} = {FADA6A78-A04F-4EA9-9BF0-EFF989E4C10F}
 		{6C8956B4-6493-40F2-A4F2-0F80615D8D85} = {FADA6A78-A04F-4EA9-9BF0-EFF989E4C10F}
 		{3AC695DD-9447-4BC9-AF2C-C0A113C4B190} = {FADA6A78-A04F-4EA9-9BF0-EFF989E4C10F}
 		{97C4E86B-941A-4464-A900-AF2428ED429B} = {3AC695DD-9447-4BC9-AF2C-C0A113C4B190}
