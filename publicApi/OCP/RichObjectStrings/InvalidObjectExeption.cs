@@ -11,7 +11,7 @@ namespace OCP.RichObjectStrings
      * @package OCP\RichObjectStrings
      * @since 11.0.0
      */
-    class InvalidObjectExeption : InvalidArgumentException {
+    public class InvalidObjectExeption : InvalidArgumentException {
 }
 
 }

@@ -1,36 +1,41 @@
+using System;
+using OC.Authentication.Token;
 using OC.Hooks;
 using OCP;
+using OCP.AppFramework.Utility;
+using OCP.Lockdown;
+using OCP.Security;
 
 namespace OC.User
 {
     public class Session : IUserSession, Emitter
     {
         /** @var Manager|PublicEmitter manager */
-	private manager;
+	private Manager manager;
 
 	/** @var ISession session */
-	private session;
+	private ISession session;
 
 	/** @var ITimeFactory */
-	private timeFactory;
+	private ITimeFactory timeFactory;
 
 	/** @var IProvider */
-	private tokenProvider;
+	private IProvider tokenProvider;
 
 	/** @var IConfig */
-	private config;
+	private IConfig config;
 
 	/** @var User activeUser */
-	protected activeUser;
+	protected User activeUser;
 
 	/** @var ISecureRandom */
-	private random;
+	private ISecureRandom random;
 
 	/** @var ILockdownManager  */
-	private lockdownManager;
+	private  ILockdownManager lockdownManager;
 
 	/** @var ILogger */
-	private logger;
+	private ILogger logger;
 
 	/**
 	 * @param Manager manager
@@ -42,10 +47,10 @@ namespace OC.User
 	 * @param ILockdownManager lockdownManager
 	 * @param ILogger logger
 	 */
-	public function __construct(Manager manager,
+	public Session(Manager manager,
 								ISession session,
 								ITimeFactory timeFactory,
-								tokenProvider,
+								IProvider tokenProvider,
 								IConfig config,
 								ISecureRandom random,
 								ILockdownManager lockdownManager,
@@ -63,7 +68,7 @@ namespace OC.User
 	/**
 	 * @param IProvider provider
 	 */
-	public function setTokenProvider(IProvider provider) {
+	public void setTokenProvider(IProvider provider) {
 		this.tokenProvider = provider;
 	}
 
@@ -72,7 +77,7 @@ namespace OC.User
 	 * @param string method
 	 * @param callable callback
 	 */
-	public function listen(scope, method, callable callback) {
+	public void listen(string scope, string method, Action callback) {
 		this.manager.listen(scope, method, callback);
 	}
 
@@ -81,7 +86,7 @@ namespace OC.User
 	 * @param string method optional
 	 * @param callable callback optional
 	 */
-	public function removeListener(scope = null, method = null, callable callback = null) {
+	public void removeListener(string scope = null, string method = null, Action callback = null) {
 		this.manager.removeListener(scope, method, callback);
 	}
 
@@ -90,7 +95,7 @@ namespace OC.User
 	 *
 	 * @return Manager|PublicEmitter
 	 */
-	public function getManager() {
+	public Manager getManager() {
 		return this.manager;
 	}
 
@@ -99,7 +104,7 @@ namespace OC.User
 	 *
 	 * @return ISession
 	 */
-	public function getSession() {
+	public ISession getSession() {
 		return this.session;
 	}
 
@@ -108,8 +113,8 @@ namespace OC.User
 	 *
 	 * @param ISession session
 	 */
-	public function setSession(ISession session) {
-		if (this.session instanceof ISession) {
+	public void setSession(ISession session) {
+		if (this.session is ISession) {
 			this.session.close();
 		}
 		this.session = session;
@@ -121,11 +126,11 @@ namespace OC.User
 	 *
 	 * @param IUser|null user
 	 */
-	public function setUser(user) {
-		if (is_null(user)) {
-			this.session.remove('user_id');
+	public void setUser(IUser user) {
+		if ( user == null ) {
+			this.session.remove("user_id");
 		} else {
-			this.session.set('user_id', user.getUID());
+			this.session.set("user_id", user.getUID());
 		}
 		this.activeUser = user;
 	}
@@ -135,19 +140,19 @@ namespace OC.User
 	 *
 	 * @return IUser|null Current user, otherwise null
 	 */
-	public function getUser() {
+	public IUser getUser() {
 		// FIXME: This is a quick'n dirty work-around for the incognito mode as
 		// described at https://github.com/owncloud/core/pull/12912#issuecomment-67391155
 		if (OC_User::isIncognitoMode()) {
 			return null;
 		}
-		if (is_null(this.activeUser)) {
-			uid = this.session.get('user_id');
-			if (is_null(uid)) {
+		if ( this.activeUser == null ) {
+			var uid = this.session.get("user_id");
+			if ( uid == null) {
 				return null;
 			}
 			this.activeUser = this.manager.get(uid);
-			if (is_null(this.activeUser)) {
+			if ( this.activeUser == null) {
 				return null;
 			}
 			this.validateSession();
@@ -161,7 +166,7 @@ namespace OC.User
 	 * - For token-authenticated clients, the token validity is checked
 	 * - For browsers, the session token validity is checked
 	 */
-	protected function validateSession() {
+	protected void validateSession() {
 		token = null;
 		appPassword = this.session.get('app_password');
 

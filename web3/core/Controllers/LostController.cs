@@ -340,25 +340,26 @@ namespace OC.core.Controllers
 	 * @return IUser
 	 * @throws ResetPasswordException
 	 */
-	protected function findUserByIdOrMail(input) {
-		user = this.userManager.get(input);
-		if (user instanceof IUser) {
+	protected IUser findUserByIdOrMail(string input) {
+		var user = this.userManager.get(input);
+		if (user is IUser) {
 			if (!user.isEnabled()) {
-				throw new ResetPasswordException('User is disabled');
+				throw new ResetPasswordException("User is disabled");
 			}
 
 			return user;
 		}
 
-		users = array_filter(this.userManager.getByEmail(input), function (IUser user) {
-			return user.isEnabled();
-		});
-
-		if (count(users) === 1) {
-			return reset(users);
+		var users = this.userManager.getByEmail(input).Where(o => o.isEnabled()).ToList();
+		if (users.Count == 1)
+		{
+			return users[0];
 		}
+//		if (count(users) === 1) {
+//			return reset(users);
+//		}
 
-		throw new ResetPasswordException('Could not find user');
+		throw new ResetPasswordException("Could not find user");
 	}
     }
 }

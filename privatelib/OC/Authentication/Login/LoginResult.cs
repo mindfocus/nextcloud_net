@@ -47,11 +47,11 @@ namespace OC.Authentication.Login
             return this._success;
         }
 
-        public string? getRedirectUrl(){
+        public string getRedirectUrl(){
             return this._redirectUrl;
         }
 
-        public string? getErrorMessage() {
+        public string getErrorMessage() {
             return this.errorMessage;
         }
     }
