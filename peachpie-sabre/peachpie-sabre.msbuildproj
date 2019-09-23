@@ -1,0 +1,12 @@
+<Project Sdk="Peachpie.NET.Sdk/0.9.46">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <RootNamespace>console</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="**/*.php" />
+  </ItemGroup>
+
+</Project>

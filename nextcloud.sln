@@ -84,6 +84,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Utility", "Utility\Utility.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "sabre.net", "sabre.net\sabre.net.csproj", "{DA8F4554-D5C7-43E9-89BC-8239E6A094DB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "peachpie-sabre", "peachpie-sabre\peachpie-sabre.msbuildproj", "{A64B0C3A-35CC-42F1-9637-70611999E019}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -234,6 +236,10 @@ Global
 		{DA8F4554-D5C7-43E9-89BC-8239E6A094DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DA8F4554-D5C7-43E9-89BC-8239E6A094DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DA8F4554-D5C7-43E9-89BC-8239E6A094DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A64B0C3A-35CC-42F1-9637-70611999E019}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A64B0C3A-35CC-42F1-9637-70611999E019}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A64B0C3A-35CC-42F1-9637-70611999E019}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A64B0C3A-35CC-42F1-9637-70611999E019}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

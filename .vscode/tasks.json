@@ -3,34 +3,14 @@
     "tasks": [
         {
             "label": "build",
-            "command": "dotnet",
-            "type": "process",
             "args": [
-                "build",
-                "${workspaceFolder}/web/web.csproj"
+                "${workspaceRoot}"
             ],
-            "problemMatcher": "$tsc"
-        },
-        {
-            "label": "publish",
-            "command": "dotnet",
-            "type": "process",
-            "args": [
-                "publish",
-                "${workspaceFolder}/web/web.csproj"
-            ],
-            "problemMatcher": "$tsc"
-        },
-        {
-            "label": "watch",
-            "command": "dotnet",
-            "type": "process",
-            "args": [
-                "watch",
-                "run",
-                "${workspaceFolder}/web/web.csproj"
-            ],
-            "problemMatcher": "$tsc"
+            "group": {"kind":"build","isDefault":true},
+            "problemMatcher": "$msCompile"
         }
-    ]
+    ],
+    "command": "dotnet",
+    "type": "shell",
+    "args": []
 }
