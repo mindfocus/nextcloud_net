@@ -9,7 +9,7 @@ using OCP.Files.SimpleFS;
 
 namespace OC.Files.AppData
 {
-class AppData : IAppData {
+public class AppData : IAppData {
 
 	/** @var IRootFolder */
 	private IRootFolder rootFolder;
