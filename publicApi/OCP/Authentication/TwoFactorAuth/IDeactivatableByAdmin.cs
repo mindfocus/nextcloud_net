@@ -20,7 +20,7 @@ namespace OCP.Authentication.TwoFactorAuth
      *
      * @since 15.0.0
      */
-    public void disableFor(IUser user);
+    void disableFor(IUser user);
 
 }
 

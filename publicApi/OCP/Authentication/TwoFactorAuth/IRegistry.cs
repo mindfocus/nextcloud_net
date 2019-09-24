@@ -34,14 +34,14 @@ namespace OCP.Authentication.TwoFactorAuth
      *
      * @since 14.0.0
      */
-    public void enableProviderFor(IProvider provider, IUser user);
+    void enableProviderFor(IProvider provider, IUser user);
 
         /**
          * Disable the given 2FA provider for the given user
          *
          * @since 14.0.0
          */
-        public void disableProviderFor(IProvider provider, IUser user);
+        void disableProviderFor(IProvider provider, IUser user);
 
         /**
          * Cleans up all entries of the provider with the given id. This is only
@@ -55,7 +55,7 @@ namespace OCP.Authentication.TwoFactorAuth
          *
          * @return void
          */
-        public void cleanUp(string providerId);
+        void cleanUp(string providerId);
 
     }
 

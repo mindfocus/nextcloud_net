@@ -15,7 +15,7 @@ namespace OCP.Authentication.LoginCredentials
          * @throws CredentialsUnavailableException
          * @return ICredentials the login credentials of the current user
          */
-        public ICredentials getLoginCredentials();
+        ICredentials getLoginCredentials();
 
     }
 }

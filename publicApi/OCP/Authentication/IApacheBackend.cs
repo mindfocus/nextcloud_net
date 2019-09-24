@@ -16,7 +16,7 @@ namespace OCP.Authentication
          * @return boolean whether the module reports a user as currently logged in.
          * @since 6.0.0
          */
-        public bool isSessionActive();
+        bool isSessionActive();
 
         /**
          * Gets the current logout URL
@@ -24,14 +24,14 @@ namespace OCP.Authentication
          * @return string
          * @since 12.0.3
          */
-        public string getLogoutUrl();
+        string getLogoutUrl();
 
         /**
          * Return the id of the current user
          * @return string
          * @since 6.0.0
          */
-        public string getCurrentUserId();
+        string getCurrentUserId();
 
     }
 

@@ -14,7 +14,7 @@ namespace OCP.Authentication.TwoFactorAuth
          *
          * @since 15.0.0
          */
-        public Template getBody();
+        Template getBody();
 
 }
 

@@ -14,7 +14,7 @@ namespace OCP.Authentication.LoginCredentials
          *
          * @return string
          */
-        public string getUID();
+        string getUID();
 
         /**
          * Get the login name the users used to login
@@ -23,7 +23,7 @@ namespace OCP.Authentication.LoginCredentials
          *
          * @return string
          */
-        public string getLoginName();
+        string getLoginName();
 
         /**
          * Get the password
@@ -33,7 +33,7 @@ namespace OCP.Authentication.LoginCredentials
          * @return string
          * @throws PasswordUnavailableException
          */
-        public string getPassword();
+        string getPassword();
     }
 
 }

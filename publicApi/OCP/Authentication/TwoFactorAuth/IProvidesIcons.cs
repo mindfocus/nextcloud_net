@@ -17,7 +17,7 @@ namespace OCP.Authentication.TwoFactorAuth
      *
      * @since 15.0.0
      */
-    public string getLightIcon();
+    string getLightIcon();
 
     /**
      * Get the path to the dark (black) icon of this provider
@@ -26,7 +26,7 @@ namespace OCP.Authentication.TwoFactorAuth
      *
      * @since 15.0.0
      */
-    public string getDarkIcon();
+    string getDarkIcon();
 
 }
 
