@@ -13,6 +13,11 @@ namespace ext
         {
             return !input.IsEmpty();
         }
+
+        public static string MD5ext(this string input)
+        {
+            return MD5(input);
+        }
         public static string MD5(string input)
         {
             // Use input string to calculate MD5 hash

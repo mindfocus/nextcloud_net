@@ -1,7 +1,12 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using ext;
+using Microsoft.EntityFrameworkCore;
+using model;
 using OCP;
 using OCP.Files.Cache;
+using Pchp.Library.Spl;
 
 namespace OC.Files.Cache
 {
@@ -58,27 +63,26 @@ class Propagator : IPropagator {
 		var parents = this.getParents(internalPath);
 
 		if (this.inBatch) {
-			foreach (parents as parent) {
+			foreach (var parent in parents) {
 				this.addToBatch(parent, time, sizeDifference);
 			}
 			return;
 		}
 
-		parentHashes = array_map('md5', parents);
-		etag = uniqid(); // since we give all folders the same etag we don't ask the storage for the etag
+		var parentHashes = parents.Select(o => o.MD5ext());
+		var etag = Guid.NewGuid().ToString("N"); // since we give all folders the same etag we don't ask the storage for the etag
+		using (var context = new NCContext())
+		{
+//			using (var transaction = context.Database.BeginTransaction())
+//			{
+//				
+//			}
 
-		builder = this.connection.getQueryBuilder();
-		hashParams = array_map(function (hash) use (builder) {
-			return builder.expr().literal(hash);
-		}, parentHashes);
-
-		builder.update('filecache')
-			.set('mtime', builder.createFunction('GREATEST(' . builder.getColumnName('mtime') . ', ' . builder.createNamedParameter((int)time, IQueryBuilder::PARAM_INT) . ')'))
-			.set('etag', builder.createNamedParameter(etag, IQueryBuilder::PARAM_STR))
-			.where(builder.expr().eq('storage', builder.createNamedParameter(storageId, IQueryBuilder::PARAM_INT)))
-			.andWhere(builder.expr().in('path_hash', hashParams));
-
-		builder.execute();
+			var record = context.FileCaches.Single(o => o.storage == storageId && parentHashes.Contains(o.path_hash));
+			record.mtime = time; // builder.createFunction('GREATEST(' . builder.getColumnName('mtime') . ', ' . builder.createNamedParameter((int)time, IQueryBuilder::PARAM_INT) . ')'))
+			record.etag = etag;
+			context.Update(record);
+		}
 
 		if (sizeDifference !== 0) {
 			// we need to do size separably so we can ignore entries with uncalculated size
@@ -93,13 +97,15 @@ class Propagator : IPropagator {
 		}
 	}
 
-	protected function getParents(string path) {
-		parts = explode('/', path);
-		parent = '';
-		parents = [];
-		foreach (parts as part) {
-			parents[] = parent;
-			parent = trim(parent . '/' . part, '/');
+	protected IList<string> getParents(string path)
+	{
+		var parts = path.Split("/");
+		var parent = "";
+		var parents = new List<string>();
+		foreach (var part in parts)
+		{
+			parent = parent.Trim() + "/" + part + "/";
+			parents.Add(parent);
 		}
 		return parents;
 	}
@@ -112,11 +118,11 @@ class Propagator : IPropagator {
 	 * Batching for cache setups that do support it has to be explicit since the cache state is not fully consistent
 	 * before the batch is committed.
 	 */
-	public function beginBatch() {
+	public void beginBatch() {
 		this.inBatch = true;
 	}
 
-	private function addToBatch(internalPath, time, sizeDifference) {
+	private void addToBatch(string internalPath,int time,int sizeDifference) {
 		if (!isset(this.batch[internalPath])) {
 			this.batch[internalPath] = [
 				'hash' => md5(internalPath),
@@ -135,16 +141,16 @@ class Propagator : IPropagator {
 	 * Commit the active propagation batch
 	 * @suppress SqlInjectionChecker
 	 */
-	public function commitBatch() {
+	public void commitBatch() {
 		if (!this.inBatch) {
-			throw new \BadMethodCallException('Not in batch');
+			throw new BadMethodCallException("Not in batch");
 		}
 		this.inBatch = false;
 
 		this.connection.beginTransaction();
 
 		query = this.connection.getQueryBuilder();
-		storageId = (int)this.storage.getStorageCache().getNumericId();
+		var storageId = (int)this.storage.getStorageCache().getNumericId();
 
 		query.update('filecache')
 			.set('mtime', query.createFunction('GREATEST(' . query.getColumnName('mtime') . ', ' . query.createParameter('time') . ')'))
