@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using ext;
 using OCP;
 using OCP.Activity;
@@ -45,6 +46,23 @@ namespace OC.Activity
             return @event;
         }
         /**
+	 * @param array[] $parameters
+	 * @param string $mergeParameter
+	 * @param array $parameter
+	 * @return bool
+	 */
+        protected bool checkParameterAlreadyExits(IDictionary<string,string> parameters, string mergeParameter, string parameter) {
+            foreach (var param in parameters) {
+                if (Regex.IsMatch(param.Key, @"/^" +  mergeParameter +  @"(\d+)?$/" )) {
+                    if (param.Value == parameter) {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+
+        /**
          * @param string $mergeParameter
          * @param IEvent $event
          * @param IEvent $previousEvent
@@ -53,9 +71,7 @@ namespace OC.Activity
          */
         protected IDictionary<string,string> combineParameters(string mergeParameter, IEvent @event, IEvent previousEvent)
         {
-            var params1 = @event.getRichSubjectParameters();
-            var params2 = previousEvent.getRichSubjectParameters();
-            int combined = 0;
+            return null;
         }
     }
 }

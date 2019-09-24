@@ -121,7 +121,7 @@ namespace OC.core.Controllers
 
 		try {
 			this.checkPasswordResetToken(token, userId);
-		} catch (Exception e) {
+		} catch (System.Exception e) {
 			return new TemplateResponse(
 				"core", "error",
 				new Dictionary<string, object>
@@ -157,7 +157,7 @@ namespace OC.core.Controllers
 	protected void checkPasswordResetToken(string token, string userId) {
 		var user = this.userManager.get(userId);
 		if(user == null || !user.isEnabled()) {
-			throw new Exception(this.l10n.t("Couldn't reset password because the token is invalid"));
+			throw new System.Exception(this.l10n.t("Couldn't reset password because the token is invalid"));
 		}
 
 		var decryptedToken = "";
@@ -165,22 +165,22 @@ namespace OC.core.Controllers
 			var encryptedToken = this.config.getUserValue<string>(userId, "core", "lostpassword", null);
 			var mailAddress = user.getEMailAddress()!= null ? user.getEMailAddress() : "";
 			decryptedToken = this.crypto.decrypt(encryptedToken, mailAddress + this.config.getSystemValue("secret"));
-		} catch (Exception e) {
-			throw new Exception(this.l10n.t("Couldn't reset password because the token is invalid"));
+		} catch (System.Exception e) {
+			throw new System.Exception(this.l10n.t("Couldn't reset password because the token is invalid"));
 		}
 
 		var splittedToken = decryptedToken.Split(":").ToList();
 		if(splittedToken.Count != 2) {
-			throw new Exception(this.l10n.t("Couldn't reset password because the token is invalid"));
+			throw new System.Exception(this.l10n.t("Couldn't reset password because the token is invalid"));
 		}
 
 		if ( Convert.ToInt32(splittedToken[0]) < (this.timeFactory.getTime() - 60*60*24*7) ||
 			user.getLastLogin() > Convert.ToInt32(splittedToken[0])){
-			throw new Exception(this.l10n.t("Couldn\'t reset password because the token is expired"));
+			throw new System.Exception(this.l10n.t("Couldn\'t reset password because the token is expired"));
 		}
 
 		if (!splittedToken[1].Equals(token)) {
-			throw new Exception(this.l10n.t("Couldn\'t reset password because the token is invalid"));
+			throw new System.Exception(this.l10n.t("Couldn\'t reset password because the token is invalid"));
 		}
 	}
 

@@ -127,7 +127,7 @@ namespace OCP.Activity
 	 * @return array[]
 	 * @since 11.0.0
 	 */
-	IList<string> getRichSubjectParameters();
+	IDictionary<string,string> getRichSubjectParameters();
 
         /**
          * Set the message of the activity
