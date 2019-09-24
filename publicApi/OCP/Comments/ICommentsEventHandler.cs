@@ -12,7 +12,7 @@ namespace OCP.Comments
          * @param CommentsEvent event
          * @since 11.0.0
          */
-        void handle(CommentsEvent event);
+        void handle(CommentsEvent @event);
     }
 
 }

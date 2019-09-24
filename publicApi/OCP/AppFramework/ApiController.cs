@@ -6,9 +6,9 @@ namespace OCP.AppFramework
  */
 abstract class ApiController : Controller {
 
-    private corsMethods;
-    private corsAllowedHeaders;
-    private corsMaxAge;
+    private string corsMethods;
+    private string corsAllowedHeaders;
+    private int corsMaxAge;
 
     /**
      * constructor of the controller
@@ -24,12 +24,12 @@ abstract class ApiController : Controller {
      * request should be cached, defaults to 1728000 seconds
 	 * @since 7.0.0
      */
-    public function __construct(appName,
+    public ApiController(string appName,
                                 IRequest request,
-                                corsMethods='PUT, POST, GET, DELETE, PATCH',
-                                corsAllowedHeaders='Authorization, Content-Type, Accept',
-                                corsMaxAge=1728000){
-        parent::__construct(appName, request);
+                                string corsMethods="PUT, POST, GET, DELETE, PATCH",
+                                string corsAllowedHeaders="Authorization, Content-Type, Accept",
+                                int corsMaxAge=1728000) : base(appName, request)
+    {
         this.corsMethods = corsMethods;
         this.corsAllowedHeaders = corsAllowedHeaders;
         this.corsMaxAge = corsMaxAge;

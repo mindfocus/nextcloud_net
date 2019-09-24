@@ -13,7 +13,7 @@ namespace OCP.Command
          * Run the command
          * @since 8.1.0
          */
-        public void handle();
+        void handle();
     }
 
 }

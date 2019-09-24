@@ -1,34 +1,39 @@
+using System;
+using System.Collections.Generic;
+using OCP;
+using OCP.Files.Cache;
+
 namespace OC.Files.Cache
 {
 /**
  * Propagate etags and mtimes within the storage
  */
-class Propagator implements IPropagator {
-	private inBatch = false;
+class Propagator : IPropagator {
+	private bool inBatch = false;
 
-	private batch = [];
+	private IList<string> batch = new List<string>();
 
 	/**
 	 * @var \OC\Files\Storage\Storage
 	 */
-	protected storage;
+	protected OC.Files.Storage.Storage storage;
 
 	/**
 	 * @var IDBConnection
 	 */
-	private connection;
+	private IDBConnection connection;
 
 	/**
 	 * @var array
 	 */
-	private ignore = [];
+	private IList<string> ignores = new List<string>();
 
-	public function __construct(\OC\Files\Storage\Storage storage, IDBConnection connection, array ignore = []) {
+	public Propagator(Files.Storage.Storage storage, IDBConnection connection, IList<string> ignores)
+	{
 		this.storage = storage;
 		this.connection = connection;
-		this.ignore = ignore;
+		this.ignores = ignores;
 	}
-
 
 	/**
 	 * @param string internalPath
@@ -36,17 +41,21 @@ class Propagator implements IPropagator {
 	 * @param int sizeDifference number of bytes the file has grown
 	 * @suppress SqlInjectionChecker
 	 */
-	public function propagateChange(internalPath, time, sizeDifference = 0) {
+	public void propagateChange(string internalPath, int time,int sizeDifference = 0) {
 		// Do not propogate changes in ignored paths
-		foreach (this.ignore as ignore) {
-			if (strpos(internalPath, ignore) === 0) {
+		foreach (var ignore in this.ignores) {
+			if (internalPath.IndexOf(ignore, StringComparison.Ordinal) == 0)
+			{
 				return;
 			}
+//			if (strpos(internalPath, ignore) == 0) {
+//				return;
+//			}
 		}
 
-		storageId = (int)this.storage.getStorageCache().getNumericId();
+		var storageId = (int)this.storage.getStorageCache().getNumericId();
 
-		parents = this.getParents(internalPath);
+		var parents = this.getParents(internalPath);
 
 		if (this.inBatch) {
 			foreach (parents as parent) {
@@ -84,7 +93,7 @@ class Propagator implements IPropagator {
 		}
 	}
 
-	protected function getParents(path) {
+	protected function getParents(string path) {
 		parts = explode('/', path);
 		parent = '';
 		parents = [];

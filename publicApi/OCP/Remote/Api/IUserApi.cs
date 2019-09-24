@@ -7,7 +7,7 @@ namespace OCP.Remote.Api
     /**
      * @since 13.0.0
      */
-    interface IUserApi
+    public interface IUserApi
     {
         /**
          * @param string userId

@@ -142,6 +142,6 @@ public interface ILogger {
 	 * @return void
 	 * @since 8.2.0
 	 */
-	void logException(Exception exception, Dictionary<string,object> context);
+	void logException(Exception exception, Dictionary<string,object> context = null);
 }
 }

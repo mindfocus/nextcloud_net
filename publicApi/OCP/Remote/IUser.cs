@@ -9,7 +9,7 @@ namespace OCP.Remote
      *
      * @since 13.0.0
      */
-    interface IUser
+    public interface IUser
     {
         /**
          * @return string

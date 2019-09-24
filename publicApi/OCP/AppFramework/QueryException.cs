@@ -4,7 +4,7 @@ using System.Text;
 
 namespace OCP.AppFramework
 {
-    class QueryException : System.Exception
+    public class QueryException : System.Exception
     {
     }
 }

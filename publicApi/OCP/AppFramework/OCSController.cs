@@ -27,8 +27,8 @@ abstract class OCSController : ApiController {
 	 */
 	public OCSController(string appName,
 								IRequest request,
-								string corsMethods='PUT, POST, GET, DELETE, PATCH',
-								string corsAllowedHeaders='Authorization, Content-Type, Accept',
+								string corsMethods="PUT, POST, GET, DELETE, PATCH",
+								string corsAllowedHeaders="Authorization, Content-Type, Accept",
 								int corsMaxAge=1728000) : base(appName, request, corsMethods,corsAllowedHeaders , corsMaxAge){
 		parent::__construct(appName, request, corsMethods,
 							corsAllowedHeaders, corsMaxAge);

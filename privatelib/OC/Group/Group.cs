@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using ext;
 using OC.Hooks;
 using OC.User;
@@ -77,7 +78,7 @@ public class Group : IGroup {
 	 */
 	public IList<IUser> getUsers() {
 		if (this.usersLoaded) {
-			return this.users;
+			return this.users.Values.ToList();
 		}
 
 		var userIds = new List<string>();

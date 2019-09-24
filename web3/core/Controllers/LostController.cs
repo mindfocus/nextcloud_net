@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using ext;
+using OC.core.Exception;
 using OCP;
 using OCP.AppFramework;
 using OCP.AppFramework.Http;
@@ -119,22 +121,31 @@ namespace OC.core.Controllers
 
 		try {
 			this.checkPasswordResetToken(token, userId);
-		} catch (\Exception e) {
+		} catch (Exception e) {
 			return new TemplateResponse(
-				'core', 'error', [
-					"errors" => array(array("error" => e.getMessage()))
-				],
-				'guest'
+				"core", "error",
+				new Dictionary<string, object>
+				{
+					{"errors", new List<object>(){ new Dictionary<string ,string>()
+					{
+						{"error", e.Message}
+					}}}
+				},
+				"guest"
 			);
 		}
 
 		return new TemplateResponse(
-			'core',
-			'lostpassword/resetpassword',
-			array(
-				'link' => this.urlGenerator.linkToRouteAbsolute('core.lost.setPassword', array('userId' => userId, 'token' => token)),
-			),
-			'guest'
+			"core",
+			"lostpassword/resetpassword", new Dictionary<string, object>()
+			{
+				{"link", this.urlGenerator.linkToRouteAbsolute("core.lost.setPassword", new Dictionary<string, object>()
+				{
+					{"userId", userId},
+					{"token", token}
+				})}
+			},
+			"guest"
 		);
 	}
 
@@ -279,29 +290,29 @@ namespace OC.core.Controllers
 	 * @throws ResetPasswordException
 	 * @throws \OCP\PreConditionNotMetException
 	 */
-	protected function sendEmail(input) {
-		user = this.findUserByIdOrMail(input);
-		email = user.getEMailAddress();
+	protected void sendEmail(string input) {
+		var user = this.findUserByIdOrMail(input);
+		var email = user.getEMailAddress();
 
-		if (empty(email)) {
-			throw new ResetPasswordException('Could not send reset e-mail since there is no email for username ' . input);
+		if (email.IsEmpty()) {
+			throw new ResetPasswordException($"Could not send reset e-mail since there is no email for username {input}");
 		}
 
 		// Generate the token. It is stored encrypted in the database with the
 		// secret being the users' email address appended with the system secret.
 		// This makes the token automatically invalidate once the user changes
 		// their email address.
-		token = this.secureRandom.generate(
+		var token = this.secureRandom.generate(
 			21,
 			ISecureRandom::CHAR_DIGITS.
 			ISecureRandom::CHAR_LOWER.
 			ISecureRandom::CHAR_UPPER
 		);
-		tokenValue = this.timeFactory.getTime() .':'. token;
-		encryptedValue = this.crypto.encrypt(tokenValue, email . this.config.getSystemValue('secret'));
-		this.config.setUserValue(user.getUID(), 'core', 'lostpassword', encryptedValue);
+		var tokenValue = this.timeFactory.getTime() + ":" + token;
+		var encryptedValue = this.crypto.encrypt(tokenValue, email + this.config.getSystemValue("secret"));
+		this.config.setUserValue(user.getUID(), "core", "lostpassword", encryptedValue);
 
-		link = this.urlGenerator.linkToRouteAbsolute('core.lost.resetform', array('userId' => user.getUID(), 'token' => token));
+		var link = this.urlGenerator.linkToRouteAbsolute("core.lost.resetform", array('userId' => user.getUID(), 'token' => token));
 
 		emailTemplate = this.mailer.createEMailTemplate('core.ResetPassword', [
 			'link' => link,
@@ -329,7 +340,7 @@ namespace OC.core.Controllers
 			message.setFrom([this.from => this.defaults.getName()]);
 			message.useTemplate(emailTemplate);
 			this.mailer.send(message);
-		} catch (\Exception e) {
+		} catch (System.Exception e) {
 			// Log the exception and continue
 			this.logger.logException(e);
 		}

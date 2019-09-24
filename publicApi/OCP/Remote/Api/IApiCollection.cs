@@ -9,7 +9,7 @@ namespace OCP.Remote.Api
      *
      * @since 13.0.0
      */
-    interface IApiCollection
+    public interface IApiCollection
     {
         /**
          * @return IUserApi

@@ -42,7 +42,7 @@ namespace OCP.Comments
      */
     public void addEntityCollection(string name, Action entityExistsFunction) {
         if (!this.collections.ContainsKey(name)) {
-            throw new OutOfBoundsException("Duplicate entity name " + name );
+            throw new IndexOutOfRangeException("Duplicate entity name " + name);
         }
         this.collections[name] = entityExistsFunction;
     }

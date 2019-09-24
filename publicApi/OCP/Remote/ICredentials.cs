@@ -9,7 +9,7 @@ namespace OCP.Remote
      *
      * @since 13.0.0
      */
-    interface ICredentials
+    public interface ICredentials
     {
         /**
          * @return string

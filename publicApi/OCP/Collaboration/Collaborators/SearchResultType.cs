@@ -1,3 +1,5 @@
+using System;
+
 namespace OCP.Collaboration.Collaborators
 {
 /**
@@ -40,11 +42,11 @@ namespace OCP.Collaboration.Collaborators
         {
             type = type.Trim();
             if(type == "") {
-                throw new InvalidArgumentException("Type must not be empty");
+                throw new ArgumentException("Type must not be empty");
             }
 
             if(type == "exact") {
-                throw new InvalidArgumentException("Provided type is a reserved word");
+                throw new ArgumentException("Provided type is a reserved word");
             }
 
             return type;

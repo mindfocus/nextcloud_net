@@ -388,7 +388,7 @@ namespace OCP.DB.QueryBuilder
          * @return \OCP\DB\QueryBuilder\IQueryBuilder This QueryBuilder instance.
          * @since 8.2.0
          */
-        IQueryBuilder insert(insert = null);
+        IQueryBuilder insert(string insert = null);
 
         /**
          * Creates and adds a query root corresponding to the table identified by the
@@ -406,7 +406,7 @@ namespace OCP.DB.QueryBuilder
          * @return \OCP\DB\QueryBuilder\IQueryBuilder This QueryBuilder instance.
          * @since 8.2.0
          */
-        public function from(from, alias = null);
+        IQueryBuilder from(from, alias = null);
 
         /**
          * Creates and adds a join to the query.
@@ -426,7 +426,7 @@ namespace OCP.DB.QueryBuilder
          * @return \OCP\DB\QueryBuilder\IQueryBuilder This QueryBuilder instance.
          * @since 8.2.0
          */
-        public function join(fromAlias, join, alias, condition = null);
+         function join(fromAlias, join, alias, condition = null);
 
         /**
          * Creates and adds a join to the query.

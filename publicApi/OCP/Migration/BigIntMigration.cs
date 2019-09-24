@@ -1,4 +1,6 @@
 ﻿using System;
+using Pchp.Core;
+
 namespace OCP.Migration
 {
     /**
@@ -12,7 +14,7 @@ namespace OCP.Migration
      * ['table1' => ['column1', 'column2'], ...]
      * @since 13.0.0
      */
-    abstract protected function getColumnsByTable();
+    abstract protected PhpArray getColumnsByTable();
 
     /**
      * @param IOutput output
