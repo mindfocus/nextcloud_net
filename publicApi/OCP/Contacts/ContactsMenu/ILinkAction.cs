@@ -7,7 +7,7 @@ namespace OCP.ContactsNs.ContactsMenu
     /**
      * @since 12.0
      */
-    interface ILinkAction : IAction
+    public interface ILinkAction : IAction
     {
 
     /**

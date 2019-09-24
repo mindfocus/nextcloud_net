@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using OC.Authentication.Token;
 using OC.Hooks;
 using OCP;
@@ -268,7 +269,7 @@ namespace OC.User
 	 * @return true returns true if login successful or an exception otherwise
 	 * @throws LoginException
 	 */
-	public function completeLogin(IUser user, array loginDetails, regenerateSessionId = true) {
+	public bool completeLogin(IUser user, IDictionary<string,string> loginDetails, bool regenerateSessionId = true) {
 		if (!user.isEnabled()) {
 			// disabled users can not log in
 			// injecting l10n does not work - there is a circular dependency between session and \OCP\L10N\IFactory
@@ -555,7 +556,7 @@ namespace OC.User
 	 * @param int remember
 	 * @return boolean
 	 */
-	public function createSessionToken(IRequest request, uid, loginName, password = null, remember = IToken::DO_NOT_REMEMBER) {
+	public bool createSessionToken(IRequest request, string uid,string loginName,string password = null, int remember = (int)Authentication.Token.RememberType.DO_NOT_REMEMBER) {
 		if (is_null(this.manager.get(uid))) {
 			// User does not exist
 			return false;
@@ -583,7 +584,7 @@ namespace OC.User
 	 * @param string password either the login password or a device token
 	 * @return string|null the password or null if none was set in the token
 	 */
-	private function getPassword(password) {
+	private string getPassword(string password) {
 		if (is_null(password)) {
 			// This is surely no token ;-)
 			return null;

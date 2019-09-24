@@ -47,6 +47,9 @@
       <None Remove="public\L10N\**" />
       <None Remove="public\Log\**" />
       <None Remove="public\WorkflowEngine\**" />
+      <Compile Remove="OCP\Calendar\**" />
+      <EmbeddedResource Remove="OCP\Calendar\**" />
+      <None Remove="OCP\Calendar\**" />
     </ItemGroup>
 
     <ItemGroup>

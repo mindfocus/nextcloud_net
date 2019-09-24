@@ -78,7 +78,7 @@ namespace OCP
          * @return mixed the User object on success, false otherwise
          * @since 8.0.0
          */
-        object checkPassword(string loginName, string password);
+        IUser checkPassword(string loginName, string password);
 
         /**
          * search by user id

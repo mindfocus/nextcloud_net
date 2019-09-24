@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using CommonTypes;
 using ext;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using OC.legacy;
 using OCP;
@@ -112,11 +113,9 @@ namespace OC.App
 	 */
 	public IList<string> getEnabledAppsForUser(IUser user) {
 		var apps = this.getInstalledAppsValues();
-		var appsForUser = apps.Where(o => this.checkAppForUser(o.Value, user)).ToList();
-		appsForUser = array_filter(apps, function (enabled) use (user) {
-			return this.checkAppForUser(enabled, user);
-		});
-		return array_keys(appsForUser);
+		var appsForUser = apps.Where(o => this.checkAppForUser(o.Value, user)).ToDictionary( o => o.Key, p => p.Value);
+
+		return appsForUser.Keys.ToList();
 	}
 
 	/**
@@ -235,19 +234,17 @@ namespace OC.App
 		this.getAppPath(appId);
 
 		var info = this.getAppInfo(appId);
-		if (!empty(info["types"]) && this.hasProtectedAppType(info["types"])) {
-			throw new \InvalidArgumentException("appId can"t be enabled for groups.");
+		if ( info.Types.IsNotEmpty() && this.hasProtectedAppType(info.Types.Select(o => o.Filesystem).ToList())) {
+			throw new ArgumentException (@"appId can't be enabled for groups.");
 		}
 
-		groupIds = array_map(function (group) {
-			/** @var \OCP\IGroup group */
-			return group.getGID();
-		}, groups);
-		this.installedAppsCache[appId] = json_encode(groupIds);
-		this.appConfig.setValue(appId, "enabled", json_encode(groupIds));
-		this.dispatcher.dispatch(ManagerEvent::EVENT_APP_ENABLE_FOR_GROUPS, new ManagerEvent(
-			ManagerEvent::EVENT_APP_ENABLE_FOR_GROUPS, appId, groups
-		));
+		var groupIds = groups.Select(o => o.getGID());
+
+		this.installedAppsCache[appId] = JsonConvert.SerializeObject(groupIds);
+		this.appConfig.setValue(appId, "enabled", groupIds);
+//		this.dispatcher.dispatch(ManagerEvent::EVENT_APP_ENABLE_FOR_GROUPS, new ManagerEvent(
+//			ManagerEvent::EVENT_APP_ENABLE_FOR_GROUPS, appId, groups
+//		));
 		this.clearAppsCache();
 	}
 
@@ -259,20 +256,21 @@ namespace OC.App
 	 */
 	public void disableApp(string appId) {
 		if (this.isAlwaysEnabled(appId)) {
-			throw new \Exception("appId can"t be disabled.");
+			throw new Exception("appId can't be disabled.");
 		}
-		unset(this.installedAppsCache[appId]);
+
+		this.installedAppsCache.Remove(appId);
 		this.appConfig.setValue(appId, "enabled", "no");
 
 		// run uninstall steps
-		appData = this.getAppInfo(appId);
-		if (!is_null(appData)) {
-			\OC_App::executeRepairSteps(appId, appData["repair-steps"]["uninstall"]);
+		var appData = this.getAppInfo(appId);
+		if ( null != appData ) {
+//			OC_App::executeRepairSteps(appId, appData["repair-steps"]["uninstall"]);
 		}
 
-		this.dispatcher.dispatch(ManagerEvent::EVENT_APP_DISABLE, new ManagerEvent(
-			ManagerEvent::EVENT_APP_DISABLE, appId
-		));
+//		this.dispatcher.dispatch(ManagerEvent::EVENT_APP_DISABLE, new ManagerEvent(
+//			ManagerEvent::EVENT_APP_DISABLE, appId
+//		));
 		this.clearAppsCache();
 	}
 

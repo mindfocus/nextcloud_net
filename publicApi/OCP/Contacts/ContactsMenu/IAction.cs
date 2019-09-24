@@ -10,7 +10,7 @@ namespace OCP.ContactsNs.ContactsMenu
      *
      * @since 12.0
      */
-    interface IAction : ISerializable
+    public interface IAction : ISerializable
     {
 
     /**

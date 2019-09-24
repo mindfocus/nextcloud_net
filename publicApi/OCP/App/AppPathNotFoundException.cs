@@ -4,7 +4,7 @@ using System.Text;
 
 namespace OCP.App
 {
-    class AppPathNotFoundException : Exception
+    public class AppPathNotFoundException : Exception
     {
         public AppPathNotFoundException(string msg) : base(msg)
         {

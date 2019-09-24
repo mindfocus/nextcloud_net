@@ -33,7 +33,7 @@ class AppConfig : IAppConfig {
 	protected IDBConnection conn;
 
 	/** @var array[] */
-	private IList<Tuple<string,string,string>>  cache = new List<Tuple<string, string, string>>();
+	private List<(string appId, string key, string value)> cache = new List<(string, string, string)>();
 
 	/** @var bool */
 	private bool configLoaded = false;
@@ -52,7 +52,7 @@ class AppConfig : IAppConfig {
 	 */
 	private IDictionary<string,string> getAppValues(string app) {
 		this.loadConfigValues();
-		var result = (from tuple in this.cache where tuple.Item1 == app select tuple).ToDictionary(k => k.Item2, v => v.Item3);
+		var result = (from tuple in this.cache where tuple.appId == app select tuple).ToDictionary(k => k.key, v => v.value);
 		if (result.IsNotEmpty())
 		{
 			return result;
@@ -71,7 +71,7 @@ class AppConfig : IAppConfig {
 	public IList<string> getApps() {
 		this.loadConfigValues();
 
-		return this.getSortedKeys(this.cache.ToDictionary( o=> o.Item1, o =>o.Item2));
+		return this.getSortedKeys(this.cache.ToDictionary( o=> o.appId, o =>o.key));
 	}
 
 	/**
@@ -85,7 +85,7 @@ class AppConfig : IAppConfig {
 	 */
 	public IList<string> getKeys(string app) {
 		this.loadConfigValues();
-		return (from tuple in this.cache where tuple.Item1 == app select tuple.Item1).ToList();
+		return (from tuple in this.cache where tuple.appId == app select tuple.appId).ToList();
 	}
 
 	public IList<string> getSortedKeys(IDictionary<string , string> data)
@@ -110,8 +110,9 @@ class AppConfig : IAppConfig {
 	public string getValue(string app, string key, string @default = null) {
 		this.loadConfigValues();
 
-		if (this.hasKey(app, key)) {
-			return this.cache[app][key];
+		if (this.hasKey(app, key))
+		{
+			return this.cache.FirstOrDefault(o => o.appId == app && o.key == key).value;
 		}
 
 		return @default;
@@ -126,7 +127,7 @@ class AppConfig : IAppConfig {
 	 */
 	public bool hasKey(string app, string key) {
 		this.loadConfigValues();
-		return this.cache.Any(o => o.Item1 == app && o.Item2 == key);
+		return this.cache.Any(o => o.appId == app && o.key == key);
 	}
 
 	/**
@@ -288,9 +289,9 @@ class AppConfig : IAppConfig {
 		{
 			foreach (var appConfig in context.AppConfigs)
 			{
-				var record =
-					new Tuple<string, string, string>(appConfig.appId, appConfig.configKey, appConfig.configValue);
-				this.cache.Add(record);
+//				var record = Tuple.Create(appConfig.appId, appConfig.configKey, appConfig.configValue);
+//					new (string, string, string)(appConfig.appId, appConfig.configKey, appConfig.configValue);
+				this.cache.Add((appConfig.appId, appConfig.configKey, appConfig.configValue));
 			}
 		}
 

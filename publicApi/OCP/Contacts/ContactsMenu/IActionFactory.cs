@@ -7,7 +7,7 @@ namespace OCP.ContactsNs.ContactsMenu
     /**
      * @since 12.0
      */
-    interface IActionFactory
+    public interface IActionFactory
     {
 
         /**

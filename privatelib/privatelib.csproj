@@ -6,7 +6,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\peachpie-sabre\peachpie-sabre.msbuildproj" />
       <ProjectReference Include="..\publicApi\publicApi.csproj" />
       <ProjectReference Include="..\twofactor_backupcodes\twofactor_backupcodes.csproj" />
     </ItemGroup>
@@ -20,6 +19,18 @@
       <PackageReference Include="Microsoft.Azure.Storage.Blob" Version="11.0.0" />
       <PackageReference Include="Microsoft.Azure.Storage.Common" Version="11.0.0" />
       <PackageReference Include="Peachpie.Library" Version="0.9.45" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Remove="OC\Calendar\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Remove="OC\Calendar\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="OC\Calendar\**" />
     </ItemGroup>
 
 </Project>

@@ -388,7 +388,7 @@ namespace OCP.DB.QueryBuilder
          * @return \OCP\DB\QueryBuilder\IQueryBuilder This QueryBuilder instance.
          * @since 8.2.0
          */
-        public function insert(insert = null);
+        IQueryBuilder insert(insert = null);
 
         /**
          * Creates and adds a query root corresponding to the table identified by the

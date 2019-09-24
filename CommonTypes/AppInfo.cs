@@ -127,7 +127,7 @@ namespace CommonTypes
 		[XmlElement(ElementName="default_enable")]
 		public string Default_enable { get; set; }
 		[XmlElement(ElementName="types")]
-		public Types Types { get; set; }
+		public IList<Types> Types { get; set; }
 		[XmlElement(ElementName="category")]
 		public string Category { get; set; }
 		[XmlElement(ElementName="bugs")]

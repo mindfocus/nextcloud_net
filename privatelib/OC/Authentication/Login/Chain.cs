@@ -6,37 +6,37 @@ namespace OC.Authentication.Login
 	private PreLoginHookCommand preLoginHookCommand;
 
 	/** @var UserDisabledCheckCommand */
-	private userDisabledCheckCommand;
+	private UserDisabledCheckCommand userDisabledCheckCommand;
 
 	/** @var UidLoginCommand */
 	private UidLoginCommand uidLoginCommand;
 
 	/** @var EmailLoginCommand */
-	private emailLoginCommand;
+	private EmailLoginCommand emailLoginCommand;
 
 	/** @var LoggedInCheckCommand */
-	private loggedInCheckCommand;
+	private LoggedInCheckCommand loggedInCheckCommand;
 
 	/** @var CompleteLoginCommand */
-	private completeLoginCommand;
+	private CompleteLoginCommand completeLoginCommand;
 
 	/** @var CreateSessionTokenCommand */
-	private createSessionTokenCommand;
+	private CreateSessionTokenCommand createSessionTokenCommand;
 
 	/** @var ClearLostPasswordTokensCommand */
-	private clearLostPasswordTokensCommand;
+	private ClearLostPasswordTokensCommand clearLostPasswordTokensCommand;
 
 	/** @var UpdateLastPasswordConfirmCommand */
-	private updateLastPasswordConfirmCommand;
+	private UpdateLastPasswordConfirmCommand updateLastPasswordConfirmCommand;
 
 	/** @var SetUserTimezoneCommand */
-	private setUserTimezoneCommand;
+	private SetUserTimezoneCommand setUserTimezoneCommand;
 
 	/** @var TwoFactorCommand */
-	private twoFactorCommand;
+	private TwoFactorCommand twoFactorCommand;
 
 	/** @var FinishRememberedLoginCommand */
-	private finishRememberedLoginCommand;
+	private FinishRememberedLoginCommand finishRememberedLoginCommand;
 
 	public Chain (PreLoginHookCommand preLoginHookCommand,
 								UserDisabledCheckCommand userDisabledCheckCommand,

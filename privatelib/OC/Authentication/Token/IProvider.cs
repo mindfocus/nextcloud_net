@@ -20,7 +20,7 @@ namespace OC.Authentication.Token
         IToken generateToken(string token,
             string uid,
             string loginName,
-            string? password,
+            string password,
             string name,
             TokenType type = TokenType.PERMANENT_TOKEN,
             RememberType remember = RememberType.DO_NOT_REMEMBER);

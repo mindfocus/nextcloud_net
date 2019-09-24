@@ -45,6 +45,9 @@ namespace web3
             builder.Populate(services);
             builder.RegisterType<OC.Calendar.Manager>().Named<OCP.Calendar.IManager>("CalendarManager");
             builder.RegisterType<OC.Calendar.Resource.Manager>().Named<OCP.Calendar.Resource.IManager>("CalendarResourceBackendManager");
+            builder.RegisterType<OC.Calendar.Room.Manager>()
+                .Named<OCP.Calendar.Room.IManager>("CalendarRoomBackendManager");
+            
             this.ApplicationContainer = builder.Build();
 
             // Create the IServiceProvider based on the container.

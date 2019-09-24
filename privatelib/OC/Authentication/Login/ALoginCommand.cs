@@ -10,19 +10,19 @@ namespace OC.Authentication.Login
             return next;
         }
 
-        protected LoginResult processNextOrFinishSuccessfully(LoginData data)
+        protected LoginResult processNextOrFinishSuccessfully(LoginData loginData)
         {
             if (this.next != null)
             {
-                return this.next.process(data);
+                return this.next.process(loginData);
             }
             else
             {
-                return LoginResult.success(data);
+                return LoginResult.success(loginData);
             }
         }
 
-        public abstract LoginResult process(LoginData data);
+        public abstract LoginResult process(LoginData loginData);
 
     }
 }
