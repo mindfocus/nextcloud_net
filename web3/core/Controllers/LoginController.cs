@@ -16,8 +16,8 @@ namespace OC.core.Controllers
 {
     public class LoginController : Controller
     {
-        const string LOGIN_MSG_INVALIDPASSWORD = "invalidpassword";
-        const string LOGIN_MSG_USERDISABLED = "userdisabled";
+        public static string LOGIN_MSG_INVALIDPASSWORD = "invalidpassword";
+        public static string LOGIN_MSG_USERDISABLED = "userdisabled";
 
         /** @var IUserManager */
         private IUserManager userManager;

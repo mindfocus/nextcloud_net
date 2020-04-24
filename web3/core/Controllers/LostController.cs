@@ -1,15 +1,17 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using CommonTypes.Email;
 using ext;
+using Microsoft.AspNetCore.Mvc;
 using OC.core.Exception;
 using OCP;
-using OCP.AppFramework;
 using OCP.AppFramework.Http;
 using OCP.AppFramework.Utility;
 using OCP.Encryption;
 using OCP.Mail;
 using OCP.Security;
+using Controller = OCP.AppFramework.Controller;
 
 namespace OC.core.Controllers
 {
@@ -189,16 +191,28 @@ namespace OC.core.Controllers
 	 * @param array additional
 	 * @return array
 	 */
-	private function error(message, array additional=array()) {
-		return array_merge(array('status' => 'error', 'msg' => message), additional);
+	private IDictionary<string, object> error(string message, IDictionary<string, object> additional = null) {
+		IDictionary<string, object> data = new Dictionary<string, object>();
+		data.AddOrMerge("status", "error");
+		data.AddOrMerge("msg", message);
+		if (additional != null)
+		{
+			data.AddOrMergeRange(additional);
+		}
+		return data;
 	}
 
 	/**
 	 * @param array data
 	 * @return array
 	 */
-	private function success(data = []) {
-		return array_merge(data, ['status'=>'success']);
+	private IDictionary<string, object> success(IDictionary<string, object> data = null)
+	{
+		if (data == null)
+		{
+			data = new Dictionary<string, object>();
+		}
+		return data.AddOrMerge("status", "success");
 	}
 
 	/**
@@ -209,30 +223,30 @@ namespace OC.core.Controllers
 	 * @param string user
 	 * @return JSONResponse
 	 */
-	public function email(user){
-		if (this.config.getSystemValue('lost_password_link', '') !== '') {
-			return new JSONResponse(this.error(this.l10n.t('Password reset is disabled')));
+	public IActionResult email(string user){
+		if (this.config.getSystemValue("lost_password_link", "") != "") {
+			return new JsonResult(error(l10n.t("Password reset is disabled")));
 		}
 
-		\OCP\Util::emitHook(
-			'\OCA\Files_Sharing\API\Server2Server',
-			'preLoginNameUsedAsUserName',
-			['uid' => &user]
-		);
+		// \OCP\Util::emitHook(
+		// 	'\OCA\Files_Sharing\API\Server2Server',
+		// 	'preLoginNameUsedAsUserName',
+		// 	['uid' => &user]
+		// );
 
 		// FIXME: use HTTP error codes
 		try {
 			this.sendEmail(user);
 		} catch (ResetPasswordException e) {
 			// Ignore the error since we do not want to leak this info
-			this.logger.warning('Could not send password reset email: ' . e.getMessage());
-		} catch (\Exception e) {
+			this.logger.warning("Could not send password reset email: " + e.Message);
+		} catch (System.Exception e) {
 			this.logger.logException(e);
 		}
 
-		response = new JSONResponse(this.success());
-		response.throttle();
-		return response;
+		// response = new JSONResponse(this.success());
+		// response.throttle();
+		return new JsonResult(success());
 	}
 
 	/**
@@ -243,46 +257,45 @@ namespace OC.core.Controllers
 	 * @param boolean proceed
 	 * @return array
 	 */
-	public function setPassword(token, userId, password, proceed) {
-		if (this.config.getSystemValue('lost_password_link', '') !== '') {
-			return this.error(this.l10n.t('Password reset is disabled'));
+	public IActionResult setPassword(string token, string userId, string password, bool proceed) {
+		if (this.config.getSystemValue("lost_password_link", "") != "") {
+			return new JsonResult(this.error(this.l10n.t("Password reset is disabled")));
 		}
-
 		if (this.encryptionManager.isEnabled() && !proceed) {
-			encryptionModules = this.encryptionManager.getEncryptionModules();
-			foreach (encryptionModules as module) {
+			var encryptionModules = this.encryptionManager.getEncryptionModules();
+			foreach (var module in encryptionModules) {
 				/** @var IEncryptionModule instance */
-				instance = call_user_func(module['callback']);
+				// instance = call_user_func(module['callback']);
 				// this way we can find out whether per-user keys are used or a system wide encryption key
-				if (instance.needDetailedAccessList()) {
-					return this.error('', array('encryption' => true));
-				}
+				// if (instance.needDetailedAccessList()) {
+				// 	return this.error('', array('encryption' => true));
+				// }
 			}
 		}
 
 		try {
 			this.checkPasswordResetToken(token, userId);
-			user = this.userManager.get(userId);
+			var user = this.userManager.get(userId);
 
-			\OC_Hook::emit('\OC\Core\LostPassword\Controller\LostController', 'pre_passwordReset', array('uid' => userId, 'password' => password));
+			// \OC_Hook::emit('\OC\Core\LostPassword\Controller\LostController', 'pre_passwordReset', array('uid' => userId, 'password' => password));
 
 			if (!user.setPassword(password)) {
-				throw new \Exception();
+				throw new System.Exception();
 			}
 
-			\OC_Hook::emit('\OC\Core\LostPassword\Controller\LostController', 'post_passwordReset', array('uid' => userId, 'password' => password));
+			// \OC_Hook::emit('\OC\Core\LostPassword\Controller\LostController', 'post_passwordReset', array('uid' => userId, 'password' => password));
 
 			this.twoFactorManager.clearTwoFactorPending(userId);
 
-			this.config.deleteUserValue(userId, 'core', 'lostpassword');
-			@\OC::server.getUserSession().unsetMagicInCookie();
+			this.config.deleteUserValue(userId, "core", "lostpassword");
+			// @\OC::server.getUserSession().unsetMagicInCookie();
 		} catch (HintException e){
-			return this.error(e.getHint());
-		} catch (\Exception e){
-			return this.error(e.getMessage());
+			return new JsonResult(this.error(e.getHint()));
+		} catch (System.Exception e){
+			return  new JsonResult(this.error(e.Message));
 		}
 
-		return this.success(['user' => userId]);
+		return new JsonResult(this.success(new Dictionary<string, object> {{"user", userId}}));
 	}
 
 	/**
@@ -304,40 +317,37 @@ namespace OC.core.Controllers
 		// their email address.
 		var token = this.secureRandom.generate(
 			21,
-			ISecureRandom::CHAR_DIGITS.
-			ISecureRandom::CHAR_LOWER.
-			ISecureRandom::CHAR_UPPER
+			SecureRandomType.CHAR_DIGITS + SecureRandomType.CHAR_LOWER + SecureRandomType.CHAR_UPPER
 		);
 		var tokenValue = this.timeFactory.getTime() + ":" + token;
 		var encryptedValue = this.crypto.encrypt(tokenValue, email + this.config.getSystemValue("secret"));
 		this.config.setUserValue(user.getUID(), "core", "lostpassword", encryptedValue);
 
-		var link = this.urlGenerator.linkToRouteAbsolute("core.lost.resetform", array('userId' => user.getUID(), 'token' => token));
+		var link = this.urlGenerator.linkToRouteAbsolute("core.lost.resetform",  new Dictionary<string, object> {{"userId", user.getUID()}, {"token", token}});
+		
 
-		emailTemplate = this.mailer.createEMailTemplate('core.ResetPassword', [
-			'link' => link,
-		]);
+		var emailTemplate = this.mailer.createEMailTemplate("core.ResetPassword", new Dictionary<string, object> {{"link", link}});
 
-		emailTemplate.setSubject(this.l10n.t('%s password reset', [this.defaults.getName()]));
+		emailTemplate.setSubject(this.l10n.t("%s password reset", this.defaults.getName()));
 		emailTemplate.addHeader();
-		emailTemplate.addHeading(this.l10n.t('Password reset'));
+		emailTemplate.addHeading(this.l10n.t("Password reset"));
 
 		emailTemplate.addBodyText(
-			htmlspecialchars(this.l10n.t('Click the following button to reset your password. If you have not requested the password reset, then ignore this email.')),
-			this.l10n.t('Click the following link to reset your password. If you have not requested the password reset, then ignore this email.')
+			(this.l10n.t("Click the following button to reset your password. If you have not requested the password reset, then ignore this email.")),
+			this.l10n.t("Click the following link to reset your password. If you have not requested the password reset, then ignore this email.")
 		);
 
 		emailTemplate.addBodyButton(
-			htmlspecialchars(this.l10n.t('Reset your password')),
+			(this.l10n.t("Reset your password")),
 			link,
-			false
+			""
 		);
 		emailTemplate.addFooter();
 
 		try {
-			message = this.mailer.createMessage();
-			message.setTo([email => user.getUID()]);
-			message.setFrom([this.from => this.defaults.getName()]);
+			var message = this.mailer.createMessage();
+			message.setTo(new List<EmailAddress> { new EmailAddress(email, user.getUID())});
+			message.setFrom(new EmailAddress(this.@from, this.defaults.getName()));
 			message.useTemplate(emailTemplate);
 			this.mailer.send(message);
 		} catch (System.Exception e) {

@@ -17,7 +17,7 @@ namespace OC.Authentication.Login
                 var username = loginData.getUsername();
                 var ip = loginData.getRequest().getRemoteAddress();
                 this.logger.warning($"Login failed: {username} (Remote IP: {ip})");
-                return LoginResult.failure(loginData, LoginController::LOGIN_MSG_INVALIDPASSWORD);
+                return LoginResult.failure(loginData, "invalidpassword");
             }
 
             return this.processNextOrFinishSuccessfully(loginData);

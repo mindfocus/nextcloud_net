@@ -60,7 +60,7 @@ namespace OCP.Mail
          * @return IEMailTemplate
          * @since 12.0.0 Parameters added in 12.0.3
          */
-        IEMailTemplate createEMailTemplate(string emailId, IList<object> data);
+        IEMailTemplate createEMailTemplate(string emailId, IDictionary<string,object> data);
 
         /**
          * Send the specified message. Also sets the from address to the value defined in config.php

@@ -22,7 +22,7 @@ namespace OC.Authentication.Login
                 var username = data.getUsername();
                 var ip = data.getRequest().getRemoteAddress();
                 logger.warning($"Login failed: {username} disabled (Remote IP: {ip}");
-                return LoginResult.failure(data, LoginController::LOGIN_MSG_USERDISABLED);
+                return LoginResult.failure(data, "userdisabled");
             }
 
             return this.processNextOrFinishSuccessfully(data);
