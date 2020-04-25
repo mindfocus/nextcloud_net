@@ -148,6 +148,8 @@ namespace CommonTypes
 		public Activity Activity { get; set; }
 		[XmlElement(ElementName="public")]
 		public Public Public { get; set; }
+		[XmlElement(ElementName="contactsmenu")]
+		public object Contactsmenu { get; set; }
 		[XmlAttribute(AttributeName="xsi", Namespace="http://www.w3.org/2000/xmlns/")]
 		public string Xsi { get; set; }
 		[XmlAttribute(AttributeName="noNamespaceSchemaLocation", Namespace="http://www.w3.org/2001/XMLSchema-instance")]

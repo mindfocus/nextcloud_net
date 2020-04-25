@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using OC.legacy;
 using OCP;
@@ -26,9 +25,9 @@ namespace OC.Authentication.TwoFactorAuth
          * @return IProvider[]
          * @throws Exception
          */
-        public IList<IProvider> getProviders(IUser user) {
+        public IDictionary<string, IProvider> getProviders(IUser user) {
             var allApps = this.appManager.getEnabledAppsForUser(user);
-            var providers = new List<IProvider>();
+            var providers = new Dictionary<string, IProvider>();
 
             foreach (var appId in allApps) {
                 var info = this.appManager.getAppInfo(appId);
@@ -38,7 +37,7 @@ namespace OC.Authentication.TwoFactorAuth
                     foreach (var clazz in providerClasses ) {
                         try {
                             this.loadTwoFactorApp(appId);
-                            var provider = OC.server.query(clazz);
+                            var provider = (IProvider)OC.server.query(clazz);
                             providers[provider.getId()] = provider;
                         } catch (QueryException exc) {
                             // Provider class can not be resolved

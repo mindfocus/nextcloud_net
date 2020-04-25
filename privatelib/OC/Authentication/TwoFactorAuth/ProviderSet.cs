@@ -39,9 +39,9 @@ namespace OC.Authentication.TwoFactorAuth
         /**
          * @return IProvider[]
          */
-        public IList<IProvider> getProviders()
+        public IDictionary<string, IProvider> getProviders()
         {
-            return this.providers.Values.ToList();
+            return this.providers;
         }
 
         /**

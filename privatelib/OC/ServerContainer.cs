@@ -13,7 +13,7 @@ namespace OC
      *
      * @package OC
      */
-    class ServerContainer : SimpleContainer
+    public class ServerContainer : SimpleContainer
     {
         /** @var DIContainer[] */
         protected IDictionary<string, IContainer> appContainers;

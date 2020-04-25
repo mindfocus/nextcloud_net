@@ -151,7 +151,7 @@ namespace OCP
          * @throws \UnexpectedValueException when trying to store an unexpected value
          * @since 6.0.0 - parameter precondition was added in 8.0.0
          */
-         void setUserValue(string userId, string appName, string key, string value, string? preCondition = null);
+         void setUserValue(string userId, string appName, string key, object value, object preCondition = null);
 
         /**
          * Shortcut for getting a user defined value

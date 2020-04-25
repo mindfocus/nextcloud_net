@@ -6,7 +6,7 @@ using OCP.ContactsNs.ContactsMenu;
 
 namespace OC.Contacts.ContactsMenu
 {
-class ContactsStore : IContactsStore {
+public class ContactsStore : IContactsStore {
 
 	/** @var IManager */
 	private IManager contactsManager;
@@ -149,7 +149,7 @@ class ContactsStore : IContactsStore {
 	 * @param string shareWith
 	 * @return IEntry|null
 	 */
-	public function findOne(IUser user, shareType, shareWith) {
+	public IEntry findOne(IUser user, int shareType, string shareWith) {
 		switch(shareType) {
 			case 0:
 			case 6:
@@ -162,9 +162,9 @@ class ContactsStore : IContactsStore {
 				return null;
 		}
 
-		userId = user.getUID();
-		allContacts = this.contactsManager.search(shareWith, filter);
-		contacts = array_filter(allContacts, function(contact) use (userId) {
+		var userId = user.getUID();
+		var allContacts = this.contactsManager.search(shareWith, filter);
+		var contacts = array_filter(allContacts, function(contact) use (userId) {
 			return contact["UID"] !== userId;
 		});
 		match = null;

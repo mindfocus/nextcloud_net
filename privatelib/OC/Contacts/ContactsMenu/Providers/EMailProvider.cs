@@ -4,7 +4,7 @@ using OCP.ContactsNs.ContactsMenu;
 
 namespace OC.Contacts.ContactsMenu.Providers
 {
-    class EMailProvider : IProvider {
+    public class EMailProvider : IProvider {
 
     /** @var IActionFactory */
     private IActionFactory actionFactory;

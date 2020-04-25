@@ -1,6 +1,8 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using ext;
+using OC.Authentication.Exceptions;
 using OCP;
 using OCP.Activity;
 using OCP.AppFramework.Utility;
@@ -121,21 +123,21 @@ namespace OC.Authentication.TwoFactorAuth
 	 * @return string[] the updated providerStates variable
 	 */
 	private IDictionary<string, bool> fixMissingProviderStates(IDictionary<string, bool> providerStates,
-		IList<IProvider> providers, IUser user) {
+		IDictionary<string, IProvider> providers, IUser user) {
 
-		foreach (var provider in providers) {
-			if (providerStates.ContainsKey(provider.getId()))
+		foreach (var providerPair in providers) {
+			if (providerStates.ContainsKey(providerPair.Key))
 			{
 				// All good
 				continue;
 			}
-			var enabled = provider.isTwoFactorAuthEnabledForUser(user);
+			var enabled = providerPair.Value.isTwoFactorAuthEnabledForUser(user);
 			if (enabled) {
-				this.providerRegistry.enableProviderFor(provider, user);
+				this.providerRegistry.enableProviderFor(providerPair.Value, user);
 			} else {
-				this.providerRegistry.disableProviderFor(provider, user);
+				this.providerRegistry.disableProviderFor(providerPair.Value, user);
 			}
-			providerStates[provider.getId()] = enabled;
+			providerStates[providerPair.Key] = enabled;
 		}
 
 		return providerStates;
@@ -145,31 +147,32 @@ namespace OC.Authentication.TwoFactorAuth
 	 * @param array states
 	 * @param IProvider providers
 	 */
-	private bool isProviderMissing(array states, array providers) {
-		indexed = [];
-		foreach (providers as provider) {
-			indexed[provider.getId()] = provider;
+	private bool isProviderMissing(IDictionary<string, bool> states, IDictionary<string, IProvider> providers) {
+		IDictionary<string, IProvider> indexed = new Dictionary<string, IProvider>();
+		foreach (var providerPair in providers) {
+			indexed[providerPair.Key] = providerPair.Value;
 		}
 
-		missing = [];
-		foreach (states as providerId => enabled) {
-			if (!enabled) {
-				// Don"t care
+		var missing = new List<string>();
+		foreach (var statePair in states)
+		{
+			if (!statePair.Value)
+			{
 				continue;
 			}
 
-			if (!isset(indexed[providerId])) {
-				missing[] = providerId;
-				this.logger.alert("two-factor auth provider "providerId" failed to load",
-					[
-					"app" => "core",
-				]);
+			if (!indexed.ContainsKey(statePair.Key))
+			{
+				missing.Add(statePair.Key);
+				this.logger.alert($"two-factor auth provider {statePair.Key} failed to load", new Dictionary<string,string>{{"app", "core"}});
 			}
 		}
 
-		if (!empty(missing)) {
+		if (missing.IsNotEmpty())
+		{
 			// There was at least one provider missing
-			this.logger.alert(count(missing) . " two-factor auth providers failed to load", ["app" => "core"]);
+
+			this.logger.alert( $" {missing.Count} two-factor auth providers failed to load", new Dictionary<string,string>{{"app", "core"}});
 
 			return true;
 		}
@@ -185,15 +188,12 @@ namespace OC.Authentication.TwoFactorAuth
 	 * @throws Exception
 	 */
 	public ProviderSet getProviderSet(IUser user) {
-		providerStates = this.providerRegistry.getProviderStates(user);
-		providers = this.providerLoader.getProviders(user);
+		var providerStates = this.providerRegistry.getProviderStates(user);
+		var providers = this.providerLoader.getProviders(user);
 
-		fixedStates = this.fixMissingProviderStates(providerStates, providers, user);
-		isProviderMissing = this.isProviderMissing(fixedStates, providers);
-
-		enabled = array_filter(providers, function (IProvider provider) use (fixedStates) {
-			return fixedStates[provider.getId()];
-		});
+		var fixedStates = this.fixMissingProviderStates(providerStates, providers, user);
+		var isProviderMissing = this.isProviderMissing(fixedStates, providers);
+		var enabled = providers.Where(o => fixedStates.ContainsKey(o.Value.getId())).Select(o => o.Value).ToList();
 		return new ProviderSet(enabled, isProviderMissing);
 	}
 
@@ -205,41 +205,40 @@ namespace OC.Authentication.TwoFactorAuth
 	 * @param string challenge
 	 * @return boolean
 	 */
-	public function verifyChallenge(string providerId, IUser user, string challenge): bool {
-		provider = this.getProvider(user, providerId);
-		if (provider === null) {
+	public bool verifyChallenge(string providerId, IUser user, string challenge) {
+		var provider = this.getProvider(user, providerId);
+		if (provider == null) {
 			return false;
 		}
 
-		passed = provider.verifyChallenge(user, challenge);
+		var passed = provider.verifyChallenge(user, challenge);
 		if (passed) {
-			if (this.session.get(self::REMEMBER_LOGIN) === true) {
+			if ((bool)this.session.get(REMEMBER_LOGIN) == true) {
 				// TODO: resolve cyclic dependency and use DI
-				\OC::server.getUserSession().createRememberMeToken(user);
+				OC::server.getUserSession().createRememberMeToken(user);
 			}
-			this.session.remove(self::SESSION_UID_KEY);
-			this.session.remove(self::REMEMBER_LOGIN);
-			this.session.set(self::SESSION_UID_DONE, user.getUID());
+			this.session.remove(SESSION_UID_KEY);
+			this.session.remove(REMEMBER_LOGIN);
+			this.session.set(SESSION_UID_DONE, user.getUID());
 
 			// Clear token from db
-			sessionId = this.session.getId();
-			token = this.tokenProvider.getToken(sessionId);
-			tokenId = token.getId();
-			this.config.deleteUserValue(user.getUID(), "login_token_2fa", tokenId);
+			var sessionId = this.session.getId();
+			var token = this.tokenProvider.getToken(sessionId);
+			var tokenId = token.getId();
+			this.config.deleteUserValue(user.getUID(), "login_token_2fa", tokenId.ToString());
 
-			dispatchEvent = new GenericEvent(user, ["provider" => provider.getDisplayName()]);
-			this.dispatcher.dispatch(IProvider::EVENT_SUCCESS, dispatchEvent);
+			var dispatchEvent = new GenericEvent(user, new Dictionary<string, object>{{"provider", provider.getDisplayName()}});
+			
+			// this.dispatcher.dispatch(IProvider::EVENT_SUCCESS, dispatchEvent);
 
-			this.publishEvent(user, "twofactor_success", [
-				"provider" => provider.getDisplayName(),
-			]);
+			this.publishEvent(user, "twofactor_success",
+				new Dictionary<string, object> {{"provider", provider.getDisplayName()}});
+			
 		} else {
-			dispatchEvent = new GenericEvent(user, ["provider" => provider.getDisplayName()]);
-			this.dispatcher.dispatch(IProvider::EVENT_FAILED, dispatchEvent);
+			var dispatchEvent = new GenericEvent(user, new Dictionary<string, object>{{"provider", provider.getDisplayName()}});
+			// this.dispatcher.dispatch(IProvider::EVENT_FAILED, dispatchEvent);
 
-			this.publishEvent(user, "twofactor_failed", [
-				"provider" => provider.getDisplayName(),
-			]);
+			this.publishEvent(user, "twofactor_failed", new Dictionary<string, object>{{"provider", provider.getDisplayName()}});
 		}
 		return passed;
 	}
@@ -251,8 +250,8 @@ namespace OC.Authentication.TwoFactorAuth
 	 * @param string event
 	 * @param array params
 	 */
-	private function publishEvent(IUser user, string event, array params) {
-		activity = this.activityManager.generateEvent();
+	private void publishEvent(IUser user, string @event, IDictionary<string, object> paramList) {
+		var activity = this.activityManager.generateEvent();
 		activity.setApp("core")
 			.setType("security")
 			.setAuthor(user.getUID())
@@ -261,8 +260,8 @@ namespace OC.Authentication.TwoFactorAuth
 		try {
 			this.activityManager.publish(activity);
 		} catch (BadMethodCallException e) {
-			this.logger.warning("could not publish activity", ["app" => "core"]);
-			this.logger.logException(e, ["app" => "core"]);
+			this.logger.warning("could not publish activity", new Dictionary<string, object>{{"app", "core"}});
+			this.logger.logException(e, new Dictionary<string, object>{{"app", "core"}});
 		}
 	}
 
@@ -272,8 +271,8 @@ namespace OC.Authentication.TwoFactorAuth
 	 * @param IUser user the currently logged in user
 	 * @return boolean
 	 */
-	public function needsSecondFactor(IUser user = null): bool {
-		if (user === null) {
+	public bool needsSecondFactor(IUser user = null) {
+		if (user == null) {
 			return false;
 		}
 
@@ -283,11 +282,11 @@ namespace OC.Authentication.TwoFactorAuth
 		}
 
 		// First check if the session tells us we should do 2FA (99% case)
-		if (!this.session.exists(self::SESSION_UID_KEY)) {
+		if (!this.session.exists(SESSION_UID_KEY)) {
 
 			// Check if the session tells us it is 2FA authenticated already
-			if (this.session.exists(self::SESSION_UID_DONE) &&
-				this.session.get(self::SESSION_UID_DONE) === user.getUID()) {
+			if (this.session.exists(SESSION_UID_DONE) &&
+				this.session.get(SESSION_UID_DONE) == user.getUID()) {
 				return false;
 			}
 
@@ -296,13 +295,15 @@ namespace OC.Authentication.TwoFactorAuth
 			 * that still needs 2FA auth
 			 */
 			try {
-				sessionId = this.session.getId();
-				token = this.tokenProvider.getToken(sessionId);
-				tokenId = token.getId();
-				tokensNeeding2FA = this.config.getUserKeys(user.getUID(), "login_token_2fa");
+				var sessionId = this.session.getId();
+				var token = this.tokenProvider.getToken(sessionId);
+				var tokenId = token.getId();
+				var tokensNeeding2FA = this.config.getUserKeys(user.getUID(), "login_token_2fa");
 
-				if (!\in_array(tokenId, tokensNeeding2FA, true)) {
-					this.session.set(self::SESSION_UID_DONE, user.getUID());
+				
+				
+				if (!tokensNeeding2FA.Contains(tokenId.ToString())) {
+					this.session.set(SESSION_UID_DONE, user.getUID());
 					return false;
 				}
 			} catch (InvalidTokenException e) {
@@ -314,10 +315,10 @@ namespace OC.Authentication.TwoFactorAuth
 			//   This prevents infinite redirect loops when a user is about
 			//   to solve the 2FA challenge, and the provider app is
 			//   disabled the same time
-			this.session.remove(self::SESSION_UID_KEY);
+			this.session.remove(SESSION_UID_KEY);
 
-			keys = this.config.getUserKeys(user.getUID(), "login_token_2fa");
-			foreach (keys as key) {
+			var keys = this.config.getUserKeys(user.getUID(), "login_token_2fa");
+			foreach (var key in keys) {
 				this.config.deleteUserValue(user.getUID(), "login_token_2fa", key);
 			}
 			return false;
@@ -332,20 +333,20 @@ namespace OC.Authentication.TwoFactorAuth
 	 * @param IUser user
 	 * @param boolean rememberMe
 	 */
-	public function prepareTwoFactorLogin(IUser user, bool rememberMe) {
-		this.session.set(self::SESSION_UID_KEY, user.getUID());
-		this.session.set(self::REMEMBER_LOGIN, rememberMe);
+	public void prepareTwoFactorLogin(IUser user, bool rememberMe) {
+		this.session.set(SESSION_UID_KEY, user.getUID());
+		this.session.set(REMEMBER_LOGIN, rememberMe);
 
-		id = this.session.getId();
-		token = this.tokenProvider.getToken(id);
-		this.config.setUserValue(user.getUID(), "login_token_2fa", token.getId(), this.timeFactory.getTime());
+		var id = this.session.getId();
+		var token = this.tokenProvider.getToken(id);
+		this.config.setUserValue(user.getUID(), "login_token_2fa", token.getId().ToString(), this.timeFactory.getTime());
 	}
 
-	public function clearTwoFactorPending(string userId) {
-		tokensNeeding2FA = this.config.getUserKeys(userId, "login_token_2fa");
+	public void clearTwoFactorPending(string userId) {
+		var tokensNeeding2FA = this.config.getUserKeys(userId, "login_token_2fa");
 
-		foreach (tokensNeeding2FA as tokenId) {
-			this.tokenProvider.invalidateTokenById(userId, tokenId);
+		foreach (var tokenId in tokensNeeding2FA) {
+			this.tokenProvider.invalidateTokenById(userId, Convert.ToInt32(tokenId));
 		}
 	}
     }

@@ -52,7 +52,7 @@ public interface ILogger {
 	 * @return null
 	 * @since 7.0.0
 	 */
-	void alert(string message, List<string> context);
+	void alert(string message, IDictionary<string, string> context = null);
 
 	/**
 	 * Critical conditions.
@@ -83,7 +83,7 @@ public interface ILogger {
 	 * @return null
 	 * @since 7.0.0
 	 */
-	void warning(string message);
+	void warning(string message, IDictionary<string, object> context = null);
 
 	/**
 	 * Normal but significant events.
@@ -113,7 +113,7 @@ public interface ILogger {
 	 * @return null
 	 * @since 7.0.0
 	 */
-	void debug(string message, IDictionary<string,string> context);
+	void debug(string message, IDictionary<string,string> context = null);
 
 	/**
 	 * Logs with an arbitrary level.
@@ -142,6 +142,6 @@ public interface ILogger {
 	 * @return void
 	 * @since 8.2.0
 	 */
-	void logException(Exception exception, Dictionary<string,object> context = null);
+	void logException(Exception exception, IDictionary<string,object> context = null);
 }
 }

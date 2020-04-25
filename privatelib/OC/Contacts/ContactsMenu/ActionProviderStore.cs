@@ -1,5 +1,8 @@
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using OC.App;
+using OC.Contacts.ContactsMenu.Providers;
 using OCP;
 using OCP.AppFramework;
 using OCP.ContactsNs.ContactsMenu;
@@ -34,19 +37,19 @@ namespace OC.Contacts.ContactsMenu
          * @throws Exception
          */
         public IList<IProvider> getProviders(IUser user) {
-            appClasses = this.getAppProviderClasses(user);
-            providerClasses = this.getServerProviderClasses();
-                allClasses = array_merge(providerClasses, appClasses);
-            providers = [];
+            var appClasses = this.getAppProviderClasses(user);
+            var providerClasses = this.getServerProviderClasses();
+            var allClasses = providerClasses.Concat(appClasses); // array_merge(providerClasses, appClasses);
+            var providers = new List<IProvider>();
 
-            foreach (allClasses as class) {
+            foreach (var @class in allClasses) {
                 try {
-                    providers[] = this.serverContainer.query(class);
-                } catch (QueryException ex) {
-                    this.logger.logException(ex, [
-                    "message" => "Could not load contacts menu action provider class",
-                    "app" => "core",
-                        ]);
+                    providers.Add(this.serverContainer.query(@class) as IProvider);
+                } catch (QueryException ex)
+                {
+                    this.logger.logException(ex,
+                        new Dictionary<string, object>
+                            {{"message", "Could not load contacts menu action provider class"}, {"app", "core"}});
                     throw new Exception("Could not load contacts menu action provider");
                 }
             }
@@ -57,31 +60,33 @@ namespace OC.Contacts.ContactsMenu
         /**
          * @return string[]
          */
-        private function getServerProviderClasses() {
-            return [
-            EMailProvider::class,
-                ];
+        private IList<string> getServerProviderClasses()
+        {
+            
+            return new List<string> {{ typeof(EMailProvider).FullName}};
         }
 
         /**
          * @param IUser user
          * @return string[]
          */
-        private IList<string> getAppProviderClasses(IUser user) {
-            return array_reduce(this.appManager.getEnabledAppsForUser(user), function(all, appId) {
-                info = this.appManager.getAppInfo(appId);
-
-                if (!isset(info["contactsmenu"]) || !isset(info["contactsmenu"])) {
-                    // Nothing to add
-                    return all;
-                }
-
-                providers = array_reduce(info["contactsmenu"], function(all, provider) {
-                    return array_merge(all, [provider]);
-                }, []);
-
-                return array_merge(all, providers);
-            }, []);
+        private IList<string> getAppProviderClasses(IUser user)
+        {
+            return this.appManager.getEnabledAppsForUser(user);
+            // return array_reduce(this.appManager.getEnabledAppsForUser(user), function(all, appId) {
+            //     info = this.appManager.getAppInfo(appId);
+            //
+            //     if (!isset(info["contactsmenu"]) || !isset(info["contactsmenu"])) {
+            //         // Nothing to add
+            //         return all;
+            //     }
+            //
+            //     providers = array_reduce(info["contactsmenu"], function(all, provider) {
+            //         return array_merge(all, [provider]);
+            //     }, []);
+            //
+            //     return array_merge(all, providers);
+            // }, []);
         }
 
     }

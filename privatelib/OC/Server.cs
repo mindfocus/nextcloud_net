@@ -32,7 +32,7 @@ namespace OC
      *
      * TODO: hookup all manager classes
      */
-    class Server : ServerContainer , IServerContainer
+    public class Server : ServerContainer , IServerContainer
     {
     /** @var string */
     private string webRoot;
