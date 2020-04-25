@@ -21,7 +21,6 @@
       <Compile Remove="public\L10N\**" />
       <Compile Remove="public\Log\**" />
       <Compile Remove="public\WorkflowEngine\**" />
-      <Compile Include="OCP\Calendar\BackendTemporarilyUnavailableException.cs" />
       <EmbeddedResource Remove="Authentication\**" />
       <EmbeddedResource Remove="Command\**" />
       <EmbeddedResource Remove="public\App\**" />
@@ -69,11 +68,10 @@
     <ItemGroup>
       <ProjectReference Include="..\CommonTypes\CommonTypes.csproj" />
       <ProjectReference Include="..\model\model.csproj" />
+      <ProjectReference Include="..\nclib\nclib.csproj" />
       <ProjectReference Include="..\Utility\Utility.csproj" />
     </ItemGroup>
     <ItemGroup>
-      <Folder Include="OCP\User\" />
-      <Folder Include="OCP\User\Backend\" />
       <Folder Include="OCP\SystemTag\" />
       <Folder Include="OCP\Support\" />
       <Folder Include="OCP\Support\CrashReport\" />

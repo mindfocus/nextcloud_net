@@ -1,4 +1,7 @@
 ﻿using System;
+using OCP.FullTextSearch.Model;
+using OCP.FullTextSearch.Service;
+
 namespace OCP.FullTextSearch
 {
     /**
@@ -22,7 +25,7 @@ namespace OCP.FullTextSearch
          *
          * @param IProviderService providerService
          */
-        public function registerProviderService(IProviderService providerService);
+        public void registerProviderService(IProviderService providerService);
 
         /**
          * Register a IIndexService.
@@ -31,7 +34,7 @@ namespace OCP.FullTextSearch
          *
          * @param IIndexService indexService
          */
-        public function registerIndexService(IIndexService indexService);
+        public void registerIndexService(IIndexService indexService);
 
         /**
          * Register a ISearchService.
@@ -40,7 +43,7 @@ namespace OCP.FullTextSearch
          *
          * @param ISearchService searchService
          */
-        public function registerSearchService(ISearchService searchService);
+        public void registerSearchService(ISearchService searchService);
 
 
         /**
@@ -49,7 +52,7 @@ namespace OCP.FullTextSearch
          *
          * @since 15.0.0
          */
-        public function addJavascriptAPI();
+        public void addJavascriptAPI();
 
 
         /**
@@ -61,7 +64,7 @@ namespace OCP.FullTextSearch
          *
          * @return bool
          */
-        public function isProviderIndexed(string providerId): bool;
+        public bool isProviderIndexed(string providerId);
 
 
     /**
@@ -75,7 +78,7 @@ namespace OCP.FullTextSearch
      *
      * @return IIndex
      */
-    public function getIndex(string providerId, string documentId): IIndex;
+    public IIndex getIndex(string providerId, string documentId);
 
 
     /**
@@ -92,7 +95,7 @@ namespace OCP.FullTextSearch
      *
      * @return IIndex
      */
-    public function createIndex(string providerId, string documentId, string userId, int status = 0): IIndex;
+    public IIndex createIndex(string providerId, string documentId, string userId, int status = 0);
 
 
     /**
@@ -106,7 +109,7 @@ namespace OCP.FullTextSearch
      * @param int status
      * @param bool reset
      */
-    public function updateIndexStatus(string providerId, string documentId, int status, bool reset = false);
+    public void updateIndexStatus(string providerId, string documentId, int status, bool reset = false);
 
 
         /**
@@ -120,7 +123,7 @@ namespace OCP.FullTextSearch
          * @param int status
          * @param bool reset
          */
-        public function updateIndexesStatus(string providerId, array documentIds, int status, bool reset = false);
+        public void updateIndexesStatus(string providerId, array documentIds, int status, bool reset = false);
 
         /**
          * Update an array of Index.
@@ -129,7 +132,7 @@ namespace OCP.FullTextSearch
          *
          * @param IIndex[] indexes
          */
-        public function updateIndexes(array indexes);
+        public void updateIndexes(array indexes);
 
         /**
          * Search using an array as request. If userId is empty, will use the
@@ -143,7 +146,7 @@ namespace OCP.FullTextSearch
          * @param string userId
          * @return ISearchResult[]
          */
-        public function search(array request, string userId = ''): array;
+        public array search(array request, string userId = '');
 
 
 }

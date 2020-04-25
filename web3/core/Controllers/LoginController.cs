@@ -4,6 +4,9 @@ using System.Collections.Generic;
 using System.Net;
 using System.Web;
 using ext;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using OC.Authentication.Login;
 using OC.legacy;
 using OC.Security.Bruteforce;
@@ -11,6 +14,7 @@ using OC.User;
 using OCP;
 using OCP.AppFramework;
 using OCP.AppFramework.Http;
+using Pchp.Library;
 
 namespace OC.core.Controllers
 {

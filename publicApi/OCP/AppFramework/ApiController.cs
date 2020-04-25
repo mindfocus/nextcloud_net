@@ -1,3 +1,5 @@
+using OCP.AppFramework.Http;
+
 namespace OCP.AppFramework
 {
 /**
@@ -16,10 +18,10 @@ abstract class ApiController : Controller {
      * @param IRequest request an instance of the request
      * @param string corsMethods comma separated string of HTTP verbs which
      * should be allowed for websites or webapps when calling your API, defaults to
-     * 'PUT, POST, GET, DELETE, PATCH'
+     * "PUT, POST, GET, DELETE, PATCH"
      * @param string corsAllowedHeaders comma separated string of HTTP headers
      * which should be allowed for websites or webapps when calling your API,
-     * defaults to 'Authorization, Content-Type, Accept'
+     * defaults to "Authorization, Content-Type, Accept"
      * @param int corsMaxAge number in seconds how long a preflighted OPTIONS
      * request should be cached, defaults to 1728000 seconds
 	 * @since 7.0.0
@@ -45,19 +47,19 @@ abstract class ApiController : Controller {
      * @PublicPage
 	 * @since 7.0.0
      */
-    public function preflightedCors() {
-        if(isset(this.request.server['HTTP_ORIGIN'])) {
-            origin = this.request.server['HTTP_ORIGIN'];
+    public Response preflightedCors() {
+        if(isset(this.request.server["HTTP_ORIGIN"])) {
+            origin = this.request.server["HTTP_ORIGIN"];
         } else {
-            origin = '*';
+            origin = "*";
         }
 
-        response = new Response();
-        response.addHeader('Access-Control-Allow-Origin', origin);
-        response.addHeader('Access-Control-Allow-Methods', this.corsMethods);
-        response.addHeader('Access-Control-Max-Age', (string)this.corsMaxAge);
-        response.addHeader('Access-Control-Allow-Headers', this.corsAllowedHeaders);
-        response.addHeader('Access-Control-Allow-Credentials', 'false');
+        var response = new Response();
+        response.addHeader("Access-Control-Allow-Origin", origin);
+        response.addHeader("Access-Control-Allow-Methods", this.corsMethods);
+        response.addHeader("Access-Control-Max-Age", this.corsMaxAge);
+        response.addHeader("Access-Control-Allow-Headers", this.corsAllowedHeaders);
+        response.addHeader("Access-Control-Allow-Credentials", "false");
         return response;
     }
 
