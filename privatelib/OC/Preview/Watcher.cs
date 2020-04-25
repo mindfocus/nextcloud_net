@@ -11,7 +11,7 @@ namespace OC.Preview
  *
  * Class that will watch filesystem activity and remove previews as needed.
  */
-    class Watcher {
+    public class Watcher {
         /** @var IAppData */
         private IAppData appData;
 

@@ -1,0 +1,14 @@
+<Project Sdk="Peachpie.NET.Sdk/0.9.950">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <Description>Simpliest PHP project for .NET Core, a console application.</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="**/*.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <DotNetCliToolReference Include="Peachpie.Compiler.Tools" Version="0.9.0-*" />
+  </ItemGroup>
+</Project>

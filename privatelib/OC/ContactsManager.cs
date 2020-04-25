@@ -8,7 +8,7 @@ using OCP.ContactsNs;
 
 namespace OC
 {
-    class ContactsManager : IManager
+    public class ContactsManager : IManager
     {
         /**
      * @var \Closure[] to call to load/register address books

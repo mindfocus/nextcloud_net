@@ -23,15 +23,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Compile Remove="OC\Calendar\**" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <EmbeddedResource Remove="OC\Calendar\**" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <None Remove="OC\Calendar\**" />
+      <Compile Include="OC\Calendar\Manager.cs" />
     </ItemGroup>
 
 </Project>

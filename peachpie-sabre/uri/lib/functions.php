@@ -1,9 +1,8 @@
 <?php
 
-declare(strict_types=1);
-
 namespace Sabre\Uri;
 
+class UriFunc{
 /**
  * This file contains all the uri handling functions.
  *
@@ -102,7 +101,53 @@ function resolve(string $basePath, string $newPath): string
 
     return build($newParts);
 }
+/**
+ * Parses a URI and returns its individual components.
+ *
+ * This method largely behaves the same as PHP's parse_url, except that it will
+ * return an array with all the array keys, including the ones that are not
+ * set by parse_url, which makes it a bit easier to work with.
+ *
+ * Unlike PHP's parse_url, it will also convert any non-ascii characters to
+ * percent-encoded strings. PHP's parse_url corrupts these characters on OS X.
+ *
+ * @param string $uri
+ *
+ * @return array
+ *
+ * @throws InvalidUriException
+ */
+function parse(string $uri): array
+{
+    // Normally a URI must be ASCII, however. However, often it's not and
+    // parse_url might corrupt these strings.
+    //
+    // For that reason we take any non-ascii characters from the uri and
+    // uriencode them first.
+    $uri = preg_replace_callback(
+        '/[^[:ascii:]]/u',
+        function ($matches) {
+            return rawurlencode($matches[0]);
+        },
+        $uri
+    );
 
+    $result = parse_url($uri);
+    if (!$result) {
+        $result = _parse_fallback($uri);
+    }
+
+    return
+         $result + [
+            'scheme' => null,
+            'host' => null,
+            'path' => null,
+            'port' => null,
+            'user' => null,
+            'query' => null,
+            'fragment' => null,
+        ];
+}
 /**
  * Takes a URI or partial URI as its argument, and normalizes it.
  *
@@ -120,7 +165,7 @@ function resolve(string $basePath, string $newPath): string
  */
 function normalize(string $uri): string
 {
-    $parts = parse($uri);
+    $parts = $this->parse($uri);
 
     if (!empty($parts['path'])) {
         $pathParts = explode('/', ltrim($parts['path'], '/'));
@@ -170,56 +215,10 @@ function normalize(string $uri): string
         $parts['host'] = strtolower($parts['host']);
     }
 
-    return build($parts);
+    return $this->build($parts);
 }
 
-/**
- * Parses a URI and returns its individual components.
- *
- * This method largely behaves the same as PHP's parse_url, except that it will
- * return an array with all the array keys, including the ones that are not
- * set by parse_url, which makes it a bit easier to work with.
- *
- * Unlike PHP's parse_url, it will also convert any non-ascii characters to
- * percent-encoded strings. PHP's parse_url corrupts these characters on OS X.
- *
- * @param string $uri
- *
- * @return array
- *
- * @throws InvalidUriException
- */
-function parse(string $uri): array
-{
-    // Normally a URI must be ASCII, however. However, often it's not and
-    // parse_url might corrupt these strings.
-    //
-    // For that reason we take any non-ascii characters from the uri and
-    // uriencode them first.
-    $uri = preg_replace_callback(
-        '/[^[:ascii:]]/u',
-        function ($matches) {
-            return rawurlencode($matches[0]);
-        },
-        $uri
-    );
 
-    $result = parse_url($uri);
-    if (!$result) {
-        $result = _parse_fallback($uri);
-    }
-
-    return
-         $result + [
-            'scheme' => null,
-            'host' => null,
-            'path' => null,
-            'port' => null,
-            'user' => null,
-            'query' => null,
-            'fragment' => null,
-        ];
-}
 
 /**
  * This function takes the components returned from PHP's parse_url, and uses
@@ -390,4 +389,5 @@ function _parse_fallback(string $uri): array
     }
 
     return $result;
+}
 }

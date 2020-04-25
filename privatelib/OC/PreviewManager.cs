@@ -10,7 +10,7 @@ using OCP.Sym;
 
 namespace OC
 {
-class PreviewManager : IPreview {
+public class PreviewManager : IPreview {
 	/** @var IConfig */
 	protected IConfig config;
 

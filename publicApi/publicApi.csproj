@@ -21,6 +21,7 @@
       <Compile Remove="public\L10N\**" />
       <Compile Remove="public\Log\**" />
       <Compile Remove="public\WorkflowEngine\**" />
+      <Compile Include="OCP\Calendar\BackendTemporarilyUnavailableException.cs" />
       <EmbeddedResource Remove="Authentication\**" />
       <EmbeddedResource Remove="Command\**" />
       <EmbeddedResource Remove="public\App\**" />
@@ -47,9 +48,6 @@
       <None Remove="public\L10N\**" />
       <None Remove="public\Log\**" />
       <None Remove="public\WorkflowEngine\**" />
-      <Compile Remove="OCP\Calendar\**" />
-      <EmbeddedResource Remove="OCP\Calendar\**" />
-      <None Remove="OCP\Calendar\**" />
     </ItemGroup>
 
     <ItemGroup>

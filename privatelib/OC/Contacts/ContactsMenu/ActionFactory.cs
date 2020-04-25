@@ -3,7 +3,7 @@ using OCP.ContactsNs.ContactsMenu;
 
 namespace OC.Contacts.ContactsMenu
 {
-    class ActionFactory : IActionFactory {
+    public class ActionFactory : IActionFactory {
 
     /**
      * @param string icon

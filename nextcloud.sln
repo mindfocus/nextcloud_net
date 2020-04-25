@@ -1,29 +1,27 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.572
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30021.99
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "model", "model\model.csproj", "{45445EF2-5D99-4BEA-BAD1-9CC5499E05F4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "model", "model\model.csproj", "{45445EF2-5D99-4BEA-BAD1-9CC5499E05F4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommonTypes", "CommonTypes\CommonTypes.csproj", "{3BF364D0-E4B3-4ECD-98E5-227CA1825EEF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CommonTypes", "CommonTypes\CommonTypes.csproj", "{3BF364D0-E4B3-4ECD-98E5-227CA1825EEF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "peachpie-sabre", "peachpie-sabre\peachpie-sabre.msbuildproj", "{4241FBD5-0880-45BB-BA74-9262ECCDA667}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "sabre.net", "peachpie-sabre\sabre.net.msbuildproj", "{4241FBD5-0880-45BB-BA74-9262ECCDA667}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "privatelib", "privatelib\privatelib.csproj", "{98424F9E-AA39-4BE6-A68A-CF0F8999812F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "privatelib", "privatelib\privatelib.csproj", "{98424F9E-AA39-4BE6-A68A-CF0F8999812F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "publicApi", "publicApi\publicApi.csproj", "{32A26DE5-7CAC-4B21-89A1-7325E7534788}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "publicApi", "publicApi\publicApi.csproj", "{32A26DE5-7CAC-4B21-89A1-7325E7534788}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "publicApiTest", "publicApiTest\publicApiTest.csproj", "{58790F55-AF8F-4BF2-893E-074A8B75B4AF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "publicApiTest", "publicApiTest\publicApiTest.csproj", "{58790F55-AF8F-4BF2-893E-074A8B75B4AF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "sabre.net", "sabre.net\sabre.net.csproj", "{F9E38C40-AFC2-41BB-8043-D5708AB523B4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "twofactor_backupcodes", "twofactor_backupcodes\twofactor_backupcodes.csproj", "{095DA566-C6CF-44BC-AC15-CEB32D8FC334}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "sabre.vobject", "sabre.vobject\sabre.vobject.csproj", "{86FF8607-3822-49DF-94A2-56165ECE948E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Utility", "Utility\Utility.csproj", "{441669E6-F0CB-47F7-B8BA-C194BB6EA03A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "twofactor_backupcodes", "twofactor_backupcodes\twofactor_backupcodes.csproj", "{095DA566-C6CF-44BC-AC15-CEB32D8FC334}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "web3", "web3\web3.csproj", "{C0CDF32D-7040-466B-903B-B0FDA70E3A6A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Utility", "Utility\Utility.csproj", "{441669E6-F0CB-47F7-B8BA-C194BB6EA03A}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "web3", "web3\web3.csproj", "{C0CDF32D-7040-466B-903B-B0FDA70E3A6A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "sabre.netrun", "sabre.netrun\sabre.netrun.csproj", "{172E4D2F-064B-4368-8B3E-EBC2711589FB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +37,10 @@ Global
 		{3BF364D0-E4B3-4ECD-98E5-227CA1825EEF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3BF364D0-E4B3-4ECD-98E5-227CA1825EEF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3BF364D0-E4B3-4ECD-98E5-227CA1825EEF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4241FBD5-0880-45BB-BA74-9262ECCDA667}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4241FBD5-0880-45BB-BA74-9262ECCDA667}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4241FBD5-0880-45BB-BA74-9262ECCDA667}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4241FBD5-0880-45BB-BA74-9262ECCDA667}.Release|Any CPU.Build.0 = Release|Any CPU
 		{98424F9E-AA39-4BE6-A68A-CF0F8999812F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{98424F9E-AA39-4BE6-A68A-CF0F8999812F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{98424F9E-AA39-4BE6-A68A-CF0F8999812F}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -51,14 +53,6 @@ Global
 		{58790F55-AF8F-4BF2-893E-074A8B75B4AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{58790F55-AF8F-4BF2-893E-074A8B75B4AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{58790F55-AF8F-4BF2-893E-074A8B75B4AF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F9E38C40-AFC2-41BB-8043-D5708AB523B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F9E38C40-AFC2-41BB-8043-D5708AB523B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F9E38C40-AFC2-41BB-8043-D5708AB523B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F9E38C40-AFC2-41BB-8043-D5708AB523B4}.Release|Any CPU.Build.0 = Release|Any CPU
-		{86FF8607-3822-49DF-94A2-56165ECE948E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{86FF8607-3822-49DF-94A2-56165ECE948E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{86FF8607-3822-49DF-94A2-56165ECE948E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{86FF8607-3822-49DF-94A2-56165ECE948E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{095DA566-C6CF-44BC-AC15-CEB32D8FC334}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{095DA566-C6CF-44BC-AC15-CEB32D8FC334}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{095DA566-C6CF-44BC-AC15-CEB32D8FC334}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -71,11 +65,13 @@ Global
 		{C0CDF32D-7040-466B-903B-B0FDA70E3A6A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C0CDF32D-7040-466B-903B-B0FDA70E3A6A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C0CDF32D-7040-466B-903B-B0FDA70E3A6A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{172E4D2F-064B-4368-8B3E-EBC2711589FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{172E4D2F-064B-4368-8B3E-EBC2711589FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{172E4D2F-064B-4368-8B3E-EBC2711589FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{172E4D2F-064B-4368-8B3E-EBC2711589FB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0F851AAA-350E-4E33-A035-9973A8476173}

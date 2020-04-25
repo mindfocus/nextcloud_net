@@ -1,6 +1,6 @@
 <?php
 
-namespace Sabre\VObject\Component;
+namespace Sabre\VObject\ComponentNs;
 
 use Sabre\VObject;
 use Sabre\Xml;
