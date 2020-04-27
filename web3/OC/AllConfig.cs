@@ -57,8 +57,8 @@ namespace OC
 	 * otherwise a SQLite database is created in the wrong directory
 	 * because the database connection was created with an uninitialized config
 	 */
-	private function fixDIInit() {
-		if(this.connection === null) {
+	private void fixDIInit() {
+		if(this.connection == null) {
 			this.connection = \OC::server.getDatabaseConnection();
 		}
 	}
@@ -69,7 +69,7 @@ namespace OC
 	 * @param array configs Associative array with `key => value` pairs
 	 *                       If value is null, the config key will be deleted
 	 */
-	public function setSystemValues(array configs) {
+	public void setSystemValues(array configs) {
 		this.systemConfig.setValues(configs);
 	}
 
@@ -79,7 +79,7 @@ namespace OC
 	 * @param string key the key of the value, under which will be saved
 	 * @param mixed value the value that should be stored
 	 */
-	public function setSystemValue(key, value) {
+	public void setSystemValue(key, value) {
 		this.systemConfig.setValue(key, value);
 	}
 

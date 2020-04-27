@@ -14,7 +14,7 @@ namespace OCP.AppFramework.OCS
      * @param Exception|null previous
      * @since 9.1.0
      */
-    public function __construct(message = '', Exception previous = null) {
+    public OCSForbiddenException(string message = "", Exception previous = null) {
         parent::__construct(message, Http::STATUS_FORBIDDEN, previous);
     }
     }

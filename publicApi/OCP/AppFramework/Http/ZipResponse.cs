@@ -5,7 +5,7 @@ namespace OCP.AppFramework.Http
  *
  * @since 15.0.0
  */
-    class ZipResponse extends Response implements ICallbackResponse {
+    class ZipResponse : Response , ICallbackResponse {
     /** @var resource[] Files to be added to the zip response */
     private resources;
     /** @var string Filename that the zip file should have */

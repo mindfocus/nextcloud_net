@@ -8,7 +8,7 @@ namespace OCP.User.Backend
     /**
      * @since 14.0.0
      */
-    abstract class ABackend : IUserBackend, UserInterface
+    public abstract class ABackend : IUserBackend, UserInterface
     {
 
         /**

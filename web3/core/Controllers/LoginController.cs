@@ -30,7 +30,7 @@ namespace OC.core.Controllers
         private IConfig config;
 
         /** @var ISession */
-        private ISession session;
+        private OCP.ISession session;
 
         /** @var IUserSession|Session */
         private IUserSession userSession;
@@ -39,7 +39,7 @@ namespace OC.core.Controllers
         private IURLGenerator urlGenerator;
 
         /** @var ILogger */
-        private ILogger logger;
+        private OCP.ILogger logger;
 
         /** @var Defaults */
         private Defaults defaults;
@@ -57,10 +57,10 @@ namespace OC.core.Controllers
             IRequest request,
             IUserManager userManager,
             IConfig config,
-            ISession session,
+            OCP.ISession session,
             IUserSession userSession,
             IURLGenerator urlGenerator,
-            ILogger logger,
+            OCP.ILogger logger,
             Defaults defaults,
             Throttler throttler,
             Chain loginChain,
@@ -385,7 +385,7 @@ namespace OC.core.Controllers
          */
         public DataResponse confirmPassword(string password)
         {
-            var loginName = ((Session) this.userSession).getLoginName();
+            var loginName = ((OC.User.Session) this.userSession).getLoginName();
             var loginResult = this.userManager.checkPassword(loginName, password);
             if (loginResult == null)
             {

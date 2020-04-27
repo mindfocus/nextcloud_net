@@ -11,8 +11,8 @@ namespace OC.User
 {
     public class Session : IUserSession, Emitter
     {
-        /** @var Manager|PublicEmitter manager */
-	private Manager manager;
+	    /** @var Manager|PublicEmitter manager */ 
+	    private Manager manager;
 
 	/** @var ISession session */
 	private ISession session;
@@ -33,7 +33,7 @@ namespace OC.User
 	private ISecureRandom random;
 
 	/** @var ILockdownManager  */
-	private  ILockdownManager lockdownManager;
+	private ILockdownManager lockdownManager;
 
 	/** @var ILogger */
 	private ILogger logger;
@@ -152,7 +152,7 @@ namespace OC.User
 			if ( uid == null) {
 				return null;
 			}
-			this.activeUser = this.manager.get(uid);
+			this.activeUser = this.manager.get((string)uid);
 			if ( this.activeUser == null) {
 				return null;
 			}
