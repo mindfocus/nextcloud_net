@@ -11,7 +11,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="AWSSDK.S3" Version="3.3.110.71" />
+      <PackageReference Include="AWSSDK.S3" Version="3.3.111.3" />
       <PackageReference Include="FluentEmail.Core" Version="2.7.0" />
       <PackageReference Include="FluentEmail.Mailgun" Version="2.7.0" />
       <PackageReference Include="FluentEmail.SendGrid" Version="2.7.0" />
