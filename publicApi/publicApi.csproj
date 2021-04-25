@@ -50,7 +50,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="Autofac" Version="5.2.0" />
+      <PackageReference Include="Autofac" Version="6.2.0" />
       <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="6.0.0" />
       <PackageReference Include="CalDav" Version="0.0.1-beta4" />
       <PackageReference Include="Humanizer" Version="2.8.26" />
