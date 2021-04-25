@@ -13,7 +13,7 @@
     <ItemGroup>
       <PackageReference Include="AWSSDK.S3" Version="3.3.111.26" />
       <PackageReference Include="FluentEmail.Core" Version="2.7.0" />
-      <PackageReference Include="FluentEmail.Mailgun" Version="2.8.0" />
+      <PackageReference Include="FluentEmail.Mailgun" Version="3.0.0" />
       <PackageReference Include="FluentEmail.SendGrid" Version="2.7.0" />
       <PackageReference Include="FluentEmail.Smtp" Version="2.7.1" />
       <PackageReference Include="Microsoft.Azure.Storage.Common" Version="11.1.5" />
