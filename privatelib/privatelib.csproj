@@ -17,7 +17,7 @@
       <PackageReference Include="FluentEmail.SendGrid" Version="2.7.0" />
       <PackageReference Include="FluentEmail.Smtp" Version="2.7.1" />
       <PackageReference Include="Microsoft.Azure.Storage.Common" Version="11.1.5" />
-      <PackageReference Include="Microsoft.Azure.Storage.Blob" Version="11.1.5" />
+      <PackageReference Include="Microsoft.Azure.Storage.Blob" Version="11.2.3" />
       <PackageReference Include="Peachpie.Library" Version="0.9.970" />
       <PackageReference Include="System.Data.Common" Version="4.3.0" />
     </ItemGroup>
